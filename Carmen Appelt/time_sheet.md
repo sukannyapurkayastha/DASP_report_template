@@ -14,7 +14,7 @@
 |------------|------------|-----------------|--------------------------|--------------------|---------------|
 | [11.11.2024] | [12.11.2024] | [Initial Setup]   | [Github Setup, Element Setup, Understanding Tasks]  | [0,5]       | [Completed] |
 | [12.11.2024] | [12.11.2024] | [Reading Literature]   | [Reading papers: JITSUPEER, DISAPERE]  | [2,5]       | [Completed]   |
-| [12.11.2024] | [MM/DD/YY] | [GUI Draft]   | [Draft to make sure, all participants share the same idea of the task]  | [0,5]       | [Completed]     |
+| [12.11.2024] | [12.11.2024] | [GUI Draft]   | [Draft to make sure, all participants share the same idea of the task]  | [0,5]       | [Completed]     |
 
 ---
 
