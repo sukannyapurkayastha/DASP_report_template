@@ -1,4 +1,4 @@
-# [Student's Name] Timesheet
+# Carmen Appelt Timesheet
 
 ## Student Information
 - **Name**: Carmen Appelt
@@ -12,9 +12,9 @@
 
 | Start      | End        | Task Name       | Task Description         | Time Spent (hours) | Status        |
 |------------|------------|-----------------|--------------------------|--------------------|---------------|
-| [MM/DD/YY] | [MM/DD/YY] | [Task 1 Name]   | [Description of Task 1]  | [Time spent]       | [In Progress] |
-| [MM/DD/YY] | [MM/DD/YY] | [Task 2 Name]   | [Description of Task 2]  | [Time spent]       | [Completed]   |
-| [MM/DD/YY] | [MM/DD/YY] | [Task 3 Name]   | [Description of Task 3]  | [Time spent]       | [Pending]     |
+| [11.11.2024] | [12.11.2024] | [Initial Setup]   | [Github Setup, Element Setup, Understanding Tasks]  | [0,5]       | [Completed] |
+| [12.11.2024] | [12.11.2024] | [Reading Literature]   | [Reading papers: JITSUPEER, DISAPERE]  | [2,5]       | [Completed]   |
+| [12.11.2024] | [MM/DD/YY] | [GUI Draft]   | [Draft to make sure, all participants share the same idea of the task]  | [0,5]       | [Completed]     |
 
 ---
 
