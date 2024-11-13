@@ -17,7 +17,7 @@
 | [11/11/24] | [11/11/24] | [Learning]           | [Streamlit Documentation and YT tutorial]  | [1]                | [Completed] |
 | [13/11/24] | [13/11/24] | [Meeting]            | [Weekly meeting]                           | [1]                | [Completed] |
 | [13/11/24] | [13/11/24] | [Meeting]            | [Internal developer meeting]               | [0.5]              | [Completed] |
-| [13/11/24] | [13/11/24] | [Coding]             | [Project setup & test dataset creation]    | [5]              | [In Progess] |
+| [13/11/24] | [13/11/24] | [Coding]             | [Project setup & test dataset creation]    | [6]                | [In Progess] |
 
 ---
 
