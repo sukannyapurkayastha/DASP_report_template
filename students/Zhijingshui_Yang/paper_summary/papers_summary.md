@@ -53,7 +53,7 @@ review-rebuttal pairs from the International Conference on Learning Representati
             - If the originality is lacking, it might receive a **negative** label for originality.
     
 
-![image.png](image%201.png)
+![image.png](image 1.png)
 
 - review_sentences
     - {
@@ -69,7 +69,7 @@ review-rebuttal pairs from the International Conference on Learning Representati
 
 ## Rebuttal Labels
 
-![image.png](image%202.png)
+![image.png](image 2.png)
 
 ### Rebuttal context labels
 
@@ -131,15 +131,15 @@ Process
 
 acl review guidelines
 
-![image.png](image%203.png)
+![image.png](image 3.png)
 
 Descs are for human interpretability
 
 ## reviews-to-descrip examples
 
-![image.png](image%204.png)
+![image.png](image 4.png)
 
-![image.png](image%205.png)
+![image.png](image 5.png)
 
 is there a set of certain descs? that we can choose from? 
 
@@ -174,7 +174,7 @@ should I try to run the repo?
 or use the model from paper, predict for all the data and check if it’s correct
 - what kind of request labels do we have, like following?
     
-    ![image.png](image%206.png)
+    ![image.png](image 6.png)
     
 
 > Generate a **short TL:DR summary** of concerns and requests. [[3](https://aclanthology.org/2024.naacl-long.478.pdf)]

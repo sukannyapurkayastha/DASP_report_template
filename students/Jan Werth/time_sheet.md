@@ -14,6 +14,10 @@
 |------------|------------|----------------------|--------------------------------------------|--------------------|-------------|
 | [11/11/24] | [11/11/24] | [Reading literature] | [Reading the JITSUPEER and DISAPERE paper] | [2]                | [Completed] |
 | [11/11/24] | [11/11/24] | [Coding]             | [Testing the openreview api]               | [0.5]              | [Completed] |
+| [11/11/24] | [11/11/24] | [Learning]           | [Streamlit Documentation and YT tutorial]  | [1]                | [Completed] |
+| [13/11/24] | [13/11/24] | [Meeting]            | [Weekly meeting]                           | [1]                | [Completed] |
+| [13/11/24] | [13/11/24] | [Coding]             | [Project setup & test dataset creation]    | [1]                | [In Progess] |
+
 | [11/11/24] | [MM/DD/YY] | [Learning]           | [Streamlit Documentation and YT tutorial]  | [1]                | [Completed] |
 
 ---

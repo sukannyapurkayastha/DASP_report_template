@@ -137,3 +137,7 @@ dmypy.json
 # Project files
 sketch*
 ukp_report_template/sketch*
+
+# PyCharm Files
+.idea
+misc.xml
