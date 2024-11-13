@@ -10,11 +10,11 @@
 
 ## Reports
 
-### Week [n]
+### Week [1]
 
-- **Update 1**: 
-- **Update 2**: 
-- **Update 3**: 
+- **Update 1**: Read literature for JITSUPEER and DISAPEER dataset.
+- **Update 2**: Tried the openreview api -> Was able to download all the reviews for an article if ID is provided.
+- **Update 3**: Tried streamlit and watched a YT tutorial.
 - **Challenges**: 
 - **Next Steps**: 
 
