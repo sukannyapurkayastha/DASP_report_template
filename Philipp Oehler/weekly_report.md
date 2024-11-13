@@ -1,4 +1,4 @@
-# Carmen Appelt Weekly Reports
+# Philipp Oehler Weekly Reports
 
 ## Student Information
 - **Name**: Philipp Oehler
