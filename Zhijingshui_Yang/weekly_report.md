@@ -11,7 +11,7 @@
 ## Reports
 
 ### Week 1
-- **Update 1**: [papers_summary](\paper_summary\papers_summary.md)
+- **Update 1**: [papers_summary](paper_summary/papers_summary.md)
 - **Update 2**: fill out IP form
 - **Update 3**: check how to get reviews for ICLR 2024 OpenReview. 
   - https://docs.openreview.net/how-to-guides/data-retrieval-and-modification/how-to-export-all-reviews-into-a-csv
