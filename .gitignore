@@ -141,3 +141,4 @@ ukp_report_template/sketch*
 # PyCharm Files
 .idea
 misc.xml
+*.code-workspace
