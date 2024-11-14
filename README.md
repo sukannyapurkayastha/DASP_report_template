@@ -18,3 +18,5 @@ Don't hesitate to send us an e-mail or report an issue, if something is broken (
 ## Contributing
 
 If you wish to contribute a specific report template please open a pull request and notify the contact person.
+
+
