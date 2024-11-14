@@ -15,6 +15,11 @@
 | [11/11/2024] | [11/12/2024] | [Initial Setup]   | [GitHub Setup, Matrix Account]  | [0,5]       | [Completed] |
 | [11/12/2024] | [11/12/2024] | [Reading Literature]   | [Reading the papers JITSUPEER and DISAPERE]  | [2]       | [Completed]   |
 | [11/12/2024] | [11/12/2024] | [Familiarization]   | [Learning About python package streamlit]  | [1]       | [Completed]     |
+| [11/13/2024] | [11/13/2024] | [Meeting]            | [Weekly meeting]                           | [1]                | [Completed] |
+| [11/13/2024] | [11/13/2024] | [Meeting]            | [Internal developer meeting]               | [0.5]              | [Completed] |
+| [11/13/2024] | [11/13/2024] | [Coding]             | [Exploration and setup classification model]    | [2]                | [In Progess] |
+| [11/14/2024] | [11/14/2024] | [Coding]             | [Exploration and setup classification model]    | [4]                | [In Progess] |
+
 
 ---
 
