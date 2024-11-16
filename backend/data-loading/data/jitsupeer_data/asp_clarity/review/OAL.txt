@@ -1,0 +1,60 @@
+This poses a challenge in evaluating this paper.
+Finally, the style (font) of the paper does not adhere to the ICLR style template, and must be changed.
+- some parts of the paper are quite unclear
+The primary difficulty in reviewing this paper is the poor presentation of the paper.
+This issues makes reviewing this paper very difficult.
+There are many typos and grammar errors
+Weaknesses: Paper could have been written better. I had hard time understanding it.
+The notations are overall confusing and not explained well.
+I also had a hard time going through the paper - there aren't many details.
+The paper lacks rigor and the writing is of low quality, both in its clarity and its grammar.
+However, there are some key issues with the paper that are not clear.
+- This paper is a slightly difficult read - not because of the
+- Minor grammatical mistakes (missing "a" or "the" in front of some terms, suggest proofread.)
+2) The writing is poor and hard to follow.
+- the paper is poorly written and sentences are generally very hard to parse. For example, section 3.1 is opened by statements such as "(we use) a multi-task evaluator which trains on the principal and auxiliary tasks, and evaluates the performance of the auxiliary tasks on a meta set"??
+- Paper is often hard to follow, and contains a significant number of typos.
+The paper can benefit from a proofreading.
+There are a few typos throughout the paper such as:
+* The text is quite hard to read.
+There are many typos (see below).
+In general, I feel the paper is interesting but would benefit from a major revision which makes the message of the paper more clear, and addresses these and other issues raised in the review phase. Thus I am holding my current rating.
+I had trouble to understand some parts of this paper, since some of the sentences do not make sense to me. For example
+I think this is a very interesting direction, but the present paper is somewhat unclear.
+Overall, I think this paper has some interesting ideas, but those need to be fleshed out and clearly explained in a future revision.
+The paper is relatively well-written, although the description of the neural models can be improved.
+The main criticism I have is that I found the paper harder to read.
+(4) The writing quality is not satisfactory.
+3. [Presentation.] The presentation is undesirable. It may make the readers hard to follow the paper.
+Overall the paper, while interesting is unacceptably messy.
+The paper is also littered with typos and vague statements (many enumerated below under *small issues*).
+3. The paper is not nicely written or rather easy to follow.
+I recommend adjust the language to be more consistent throughout.
+Especially given the very specific nature of the topic I miss a strong and clear path through the paper.
+In terms of writing, the paper is a bit confusing in terms of motivations and notations.
+The paper is well-written but the structure is a bit disconnected; most notably, I didn't see clearly how Section 2 and 3 fit together.
+I think the paper could benefit from having this in the earlier sections.
+First, this paper is not easy to follow.
+Fourth, there are some grammar mistakes and typos.
+Third, the writing in the paper has some significant lapses in clarity.
+I found the paper confusing at times.
+It is well-written from a syntactical and grammatical point of view, but some key concepts are stated without being explained, which gives the impression that the authors have a clear understanding of the material presented in the paper but communicate only part of the full picture to the reader.
+Clarity: The clarity is below average.
+The clarity of this paper needs to be strengthened.
+2) The main contributions of this paper are not quite clear to me.
+In terms of presentation, the notation and statement of theorems are precise, however, the presentation is rather dry, and I think the paper can be significantly more accessible.
+- Some parts of the paper feel long-winded and aimless.
+Honestly, this paper is very difficult to follow.
+2) The presentation is not professional, hard to follow and the submission overall looks very rushed:
+- The writing looks very rushed, and should be improved.
+This paper looks very hastily put together, especially pages 7 and 8.
+There are many typos and unclear statements.
+To change to a firm accept, I think the paper needs some changes in written style mainly, to make it friendlier to newcomers to the area, which can easily be implemented in the camera ready stage of paper preparation.
+Overall, the paper is a little confusing.
+Unfortunately, it is riddled with grammatical errors and should be proof-read carefully. A lot of singular/plurals are off, and some formulations are odd or downright unclear.
+- Grammatical errors and odd formulations all over the place
+Current representation is difficult to read / parse.
+The overall presentation could be better, and I would encourage the authors to tidy the paper up in any subsequent submission.
+Second, the writing can be greatly improved.
+3) The paper needs a thorough proof-reading. There are many grammar mistakes, typos, missing citations. For example,
+Therefore, I recommend to accept the paper but after revision because the presentation and explanation of the ideas contain multiple typos and lacking some details (see bellow).

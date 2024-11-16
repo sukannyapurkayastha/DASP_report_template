@@ -1,0 +1,2 @@
+- Limited analysis of model/architecture design choices
+However, I believe the assumptions needed to show this point force the analysis to only characterize learning close to convergence.

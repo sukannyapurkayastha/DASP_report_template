@@ -1,0 +1,11 @@
+However, you are in a different computational model in which you now have access to an oracle.
+- offers minimal (but some) evidence that curiosity-based reward works in more realistic settings
+As a result, constraining the model will alter the mutual information and I think the effect of this should be remarked on.
+In terms of modeling, since the input into the prior network has finite possible discrete values, we do not need a fully connected network to generate $\hat{\mu}_c$ and $\hat{\sigma}_c$. Instead, we can directly optimize $\hat{\mu}_c$ and $\hat{\sigma}_c$ for each $c$ as parameters.
+The theory tells the same as in case 2 above but with an additional price of optimizing a different function.
+For example, the original GNN, ChebNet, etc. that leads to GCN can be mentioned.
+- The notion of divergence D(P|G) is not made concrete in section 3 and 3.1, which makes the notation of rather little use.
+What are the differences to your approach?
+Meanwhile the actual method used in the paper is hidden in Appendices A.1.1-A.2.
+Finally, could you give a more accurate citation (chapter-page number) for the single-channel version of Theorem 2.?
+Also, try using the consistent dimension for x throughout the paper, it confuses the reader.

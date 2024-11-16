@@ -1,0 +1,1 @@
+Specifically, the first contribution listed in the introduction makes it look like this paper introduces the idea of not learning the decoder on the dataset (the one that starts with “The network is not learned and itself incorporates all assumptions on the data.”).

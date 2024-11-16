@@ -1,0 +1,1 @@
+The idea of using a constrained formulation is not novel either (constrained MDPs have been thoroughly studied since Altman (1999)).

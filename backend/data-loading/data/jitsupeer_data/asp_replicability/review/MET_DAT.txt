@@ -1,0 +1,4 @@
+In general, the space that was used to explain the Transformer baselines---which are essentially straightforward ways to adapt transformers to this task---could have been used to give more detail on the dataset.
+1. What are the key limitations of AutoLoss ? Did we observe some undesirable behavior of the learned optimization schedule, especially when transfer between different datasets or different models ?
+Does the discriminator exclude the poisoning data according to certain rule?
+But there is no attempt to generalize the findings (e.g. new datasets not from original study, changing other parameters and then evaluating again if these techniques help etc.), not clear
