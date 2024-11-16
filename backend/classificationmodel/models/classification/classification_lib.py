@@ -34,9 +34,10 @@ def get_features_and_labels(data_dir, get_labels=False):
 
 
 def get_examples(filename):
-  with open(filename, 'r') as f:
+  with open(filename, 'r', encoding='utf-8') as f:
     example_dicts = [json.loads(l.strip()) for l in f.readlines()]
 
   joint_list = [[example[k] for k in "text index target_index".split()]
                for example in example_dicts]
   return zip(*joint_list)
+

@@ -41,7 +41,7 @@ parser.add_argument(
 )
 
 DEVICE = "cpu"
-EPOCHS = 100
+EPOCHS = 2
 PATIENCE = 5
 BATCH_SIZE = 8
 LEARNING_RATE = 2e-5
@@ -93,7 +93,7 @@ class ClassificationDataset(Dataset):
         self.target_indices,
     ) = classification_lib.get_examples(filename)
 
-    num_classes = len(LABEL_MAP[category])
+    num_classes = len(LABEL_MAP['label_name_map'][category])
     EYE = np.eye(num_classes, dtype=np.float64)
     self.targets = [EYE[int(i)] for i in self.target_indices]
     self.tokenizer = tokenizer
