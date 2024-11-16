@@ -1,0 +1,1 @@
+If I were to go through the computation of then why not just train a smaller version of that representation technique instead and **directly** see how well it can encode data in k dimensions via that technique / for that task?

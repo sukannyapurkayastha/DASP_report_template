@@ -1,0 +1,7 @@
+The same holds for the type of data, since the paper only shows results for image classification benchmarks.
+As for the experimental results, the paper only provides results on the sentimental analysis results and digit datasets, which are small benchmarks.
+The results on real datasets are similar to the regular GCN.
+They might be more convincing if there were results on a very large corpus such as 1 billion word corpus.
+My overall concern is that the experiment result doesn’t really fully support the claim in the two aspects: 1) the SASNet takes the enriched dataset as input to the neural net but it also uses the complex (validation set) to train the optimal parameters, so strictly it doesn’t really fit in the “transfer” learning scenario.
+With this dataset, it's a bit of a stretch to say there was "only a 1 point drop in BLEU score". That's a significant drop, and in fact the DynamicConv paper goes to significant lengths to make a smaller 0.8 point improvement.
+In terms of evaluation, the authors only presented a few qualitative results on simple datasets, which is not comprehensive and convincing.

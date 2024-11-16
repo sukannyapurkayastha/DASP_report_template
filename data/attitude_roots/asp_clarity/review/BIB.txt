@@ -1,0 +1,4 @@
+Here are a few examples: The ICLR citation style needs to use sometimes \citep.
+- There is no need for such repetitive citing (esp paragraph 2 on page 2).
+Sometimes the same paper is cited 4 times within a few lines.
+- Missing references on page 3

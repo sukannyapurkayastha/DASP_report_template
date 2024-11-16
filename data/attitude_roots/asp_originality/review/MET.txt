@@ -1,0 +1,62 @@
+The novelty of the algorithm itself is limited, since GAN and adversarial training are both minmax problems, and the original algorithm can be carried over easily.
+1.	Lack of technical novelty.
+It seems to me just a combination of several mature techniques.
+- The technical contribution of the proposed method is not high, because the architecture space of neural network is similar to the prior works.
+Although this extension seems to be easily derived using the contributions made at point 2.
+Therefore, I cannot find any advantage in the proposed method, compared with these existing MAP based image restoration approaches.
+The negatives are that the paper does not really show this modified DNC can solve a task that the original DNC could not. As the authors also admit, there have been other DNC improvements that have had more dramatic improvements on bAbI.
+However, as the "selection network" uses exactly the same input as "classification network", it is hard to imagine how it can learn additional information.
+In the current form of evaluation, it is hard to say if there is any benefit of using the "selection network" that is the main novelty of the paper.
+First of all, the proposed SST algorithm alone only performs better than baselines in 1 case, equal to them in 1 case and worse in 1 (table 3).
+The combination of ideas is ok, however, it is unclear how novel or how good is the proposed MF training of the RBMs.
+From this viewpoint, the actor-critic component in Dreamer is an incremental contribution.
+It seems that the proposed algorithm is not very original because its two parts, namely prediction (coefficient estimation) and learning (dictionary update) have been widely used in the literature, using respectively a IHT and a gradient descent.
+The authors need to describe in detail the algorithmic novelty of their work.
+The technical approach of using a Lagrangian relaxation is the standard way one goes about handling constrained optimization problems, and thus I do not see any novelty there either.
+Therefore, the paper cannot be qualified for ``meta domain adaptation’’ and has very limited novelty in terms of its contribution to meta-learning; however, the combination of domain adaptation and few-shot learning is fair.
+However, my criticisms remain that the paper is a simple combination of cycle GAN and prototypical networks, and lacks new insights/novelty.
+- novelty is low: the proposed algorithm is a heuristic similar to previously proposed algorithms in the transfer learning and auxiliary learning space
+The only new result seem to be Theorem 4.7 which is a natural extension to theorem 4.3 to zeroth-order methods.
+There exists more principled approaches for selecting out-distribution images that has not considered here like those based on uncertainty estimation or recently proposed direct out-distribution detectors.
+1. The work has limited novelty: the learning of the world model (recurrent state-space model) closely follows the prior work of PlaNet.
+4. The novelty of the model is relatively limited as it is a combination of previous techniques on a new problem.
+I don't think Cakewalk is different enough from the cross-entropy method to warrant acceptance in ICLR.
+While the model seems to perform well, the originality and the improvement w.r.t. baselines are somewhat limited.
+Though the Bayesian inference using GAN is a natural idea, learning algorithms proposed in this paper are simple and are not intensively developed.
+The reviewer votes for rejection as the method has limited novelty.
+The novelty of this method is minimal.
+The theoretical contribution is very limited.
+The main theorem of this paper is an extension of existing methods, so the novelty of theoretical analysis is somewhat limited.
+Overall, I like the approach of the proposed method, especially tuning coefficient during training procedure although novelty in the theoretical analysis is somewhat limited.
+However, the fact that models with less parameters perform better than BERT-based models in the low-resource case is not very surprising.
+It is also not clear how the loss function proposed differs from that of the CDVAE, etc.
+Given that, the novelty of the paper is fairly incremental as it uses NerveNet to evaluate fitness and ES for the main design search.
+- Incremental modeling contribution
+While I found the derivation of the Cramer-Wold distance interesting, the final form of this distance (Eq. 2), to me, looks very similar to the MMD with a particular kernel.
+However, I believe this is also the case in the MMD, since if one of the distributions is Gaussian or analytically known, then E[k(x,x')] in the MMD can be analytically computed.
+- That learning simple functions and composing them to compute more complex functions would be more data efficient than directly learning the complex functions does not seem very surprising.
+After all, the former approach gets a lot more knowledge about the target function built into it.
+Is it a combination of DGR and HAT with some capacity expansion?
+The proposed model seems like a straightforward extension of the nCRP with a deep model hanging off the end of it.
+The originality is relative low though, since it is mainly an application of  deep InfoMax to language modeling, not inventing a new algorithm and applying to language modeling.
+The remaining components of the proposed method are not very new.
+Overall, I think the novelty of the paper is very limited, as all the weight distortion algorithms in the paper can be formulated as the proximal function in proximal gradient descent.
+In this way, we can easily see that the proposed framework is a stochastic version of proximal gradient descent.
+In summary, I find there is no novelty involved apart from combining the already existing SOTA model in disentangled feature learning (beta-VAE) and image generation (StackGAN).
+(1) My main problem with this paper is that the novel objective proposed by the authors in Eq. 7 is equivalent to the objective of WAEs appearing in Eq. 4 of [1] (up to a heuristic of applying logarithm to the divergence measure, which is not justified but meant to "improve the balance between two terms", see footnote 2), where the authors use the newly introduced Cramer-Wold divergence as a choice of the penalty term in Eq. 4 of [1].
+(2) When viewed in this way, CW-distance introduced in Eq (2) closely resembles the unbiased U-statistic estimate of the MMD used in WAE-MMD [1, Algorithm 2].
+-The proposed technique does not seem to be original enough, and it does not handle the problem foundationally well.
+The proposed technique is heavily dependent on GBDT (Indeed the algorithm and the learned trees are used at least three times).
+However, I am unable to assess the technical novelty of this work as it seems to heavily rely on prior work which in turn use techniques from random matrix theory.
+1) the proof techniques are very standard
+2. I am not convinced this method is sufficiently new, given that there are other methods that try to directly reward visiting new states.
+From this perspective, the paper seems like an application of existing tools (such as CNN, graph convolutional network and binary classification).
+It is unclear, why one should use the proposed duality gap GAN.
+First, the novelty of the approach is limited -- the approach amounts to using a sparse integer layer instead of a floating-point layer within a feed-forward architecture.
+1. The regularization techniques in reproducing kernel Hilbert space (RKHS) has
+(1) using codes and codebooks to compress weights; and
+Clarification of the connections/differences, and comparison with these related methods should be made to show the efficacy of the proposed method.
+First, the technical contribution is lean. Neither the multi-agent learning or the hierarchical learning of the algorithm is novel.
+The combination of these two methods seems straightforward.
+The latter model is similar to RAND-WALK, so it is not surprising that statistical functions there are similarly concentrated.
+- The final method is a mixup of many different techniques, thus, not a strong contribution, but many smaller contributions.

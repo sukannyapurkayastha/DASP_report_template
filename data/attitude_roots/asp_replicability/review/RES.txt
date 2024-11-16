@@ -1,0 +1,6 @@
+While the authors do report some interesting results, they do a poor job of motivating the proposed extensions.
+These points remain me puzzled regarding either practical or theoretical application of the result. It would be great if authors could elaborate.
+Because of this concern, I believe the results in the paper can only really characterize the learning close to convergence, since the network is already able to provide correct classification.
+Can you explain somewhere exactly what you mean when you say "learning dynamics of deep learning"? Given the specific nature of the results presented in the paper it would be nice to be precise also when it comes to the overall topic under study.
+3.	Are the authors willing to release the code? Overall the model looks complicated and the appendix is not sufficient to reproduce the results in the paper.
+I trust that the authors did in fact achieve these results but I cannot figure out how or why.

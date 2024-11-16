@@ -1,0 +1,24 @@
+In Figure 5, a legend indicating the relationship between color intensity and distance would be helpful.
+In Figure 6 there seem to be unnecessary discrepancies between the y-axis and colorbar of subplots (a) and (b), and keeping those more consistent would improve readability.
+Similarly, figure 3 as well as figures 5-7 and 8 in the appendix provide very good information about the tunability of the various optimizers without using the introduced metrics.
+Information similar (although not identical) to that summarized in table 5 could be captured by substituting the 3 metrics with the best performance after tuning for 4, 16 and 64 iterations respectively (just as examples).
+* minor: in figure 8 in the appendix, the results after 100 iterations is, as far as I understand, over a single replication, so is not particularly reliable (and will always be 100% of a single optimizer)
+Furthermore, it may be informative to show the saliency maps in Figure 5 not only for cases in which the learner classified the image correctly in both time steps, but also cases in which the learner classified the image correctly the first time and incorrectly the second time.
+From the plots in Figure 2 and 3, it is hard to find the convergence of the method within 100 iterations.
+Also, the claim in Fig. 1 that the transition from ‘’high capacity’’ to low capacity happens at the number of parameters in the network seems a bit loose and hard to substantiate from what I understand, and should be toned down. (*)
+Also, from the three Tables in the experimental part, the improvement of F-pooling over AA-pooling (developed by the main reference of this work) does not seem to be significant or consistent.
+For example, in Table 2, the F-pooling only wins at either accuracy (marginally) or consistency, but not both.
+* Section 5.3 (Fig. 6) is the part most relevant to the generalisation problem.
+Yet, in Fig.1 some difference is observed between the methods, why is that so?
+To continue with the experimental evaluation, I found the plots with the predictive uncertainty in Figure 3 a bit confusing.
+There is no value in being very confident if you are wrong and vice-versa, so unless there is an accompanying plot/table reporting the accuracy I see not much value from this plot alone.
+And finally, the discussion of this figure makes claims about the behaviour of the model that seems to be too strong to be based on a single image experiment.
+- Table 1: Not sure why there is only one model that employs beam search (with beam size = 2) among all the comparisons. It looks strange.
+- In Table 4, it is hard to compare DeepTwist with the other methods because activation quantization is not used.
+An example is presented in Figure 3 but is not expanded upon in the main text.
+In my opinion, to support the above claim, shouldn’t the authors provide a similar table as Table 1, directly comparing the certified radii of the natural images and adversarial images?
+- From Figure 9, we see the certificate radii of the natural have at least two peaks. Though on average the certificate radii of the adversarial attacks is higher than that of the natural images, it is smaller than the right peak. Could the authors elaborate more of the results?
+1. (Also AREA CHAIR NOTE): Another parallel submission to ICLR titled “Generative Ensembles for Robust Anomaly Detection” makes similar observations and seemed to suggest that ensembling can help counter the observed CIFAR/SVHN phenomena unlike what we see in Figure 10.
+2. Even though Figure 2b shows that SVHN test likelihoods are higher than CIFAR test likelihoods, the overlap in the histograms of CIFAR-train and CIFAR-test is much higher than the overlap in CIFAR-train and SVHN-test.
+I don’t see a significant difference between RAN and DNN in Figure 5. Maybe more explanation or better visualization would help.
+It is not clear how the compression ratio in table 1 is obtained.

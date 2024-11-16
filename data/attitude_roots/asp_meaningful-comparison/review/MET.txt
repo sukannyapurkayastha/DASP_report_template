@@ -1,0 +1,50 @@
+Given that object manipulation is the specific application of interest, the comparison with DIAYN and the combined objective with DIAYN is interesting but little motivation or discussion has been provided in the paper.
+As I have mentioned above, actually a lot of methods have been developed to address general image restoration tasks.
+Thus I believe authors must compare their method with these state-of-the-art approaches.
+The model-based method achieves better validation error than the other baselines that use actual data.
+There are tons of algorithms for image inpainting, denoising, and super-resolution, but the proposed method was not compared with them.
+While the authors say "attributing a deep network’s prediction to its input is well-studied" they don't compare directly against these methods.
+* Comparison with other methods did not take into account a variety of hyperparameters.
+Hence the theoretical sample complexities contributed are not comparable to those of MIME.
+It would have been useful to compare the general models here with some specific math problem-focused ones as well.
+The proposed approach should compared to other stronger methods such as graph convolution neural network/message passing neural networks/structure2vec.
+However, it’s noteworthy that embedding to a vector could be useful too if the embedding espace is representative of the entire history and the timing of the events.
+For example, in Sections 4 and 5 I was hoping to see comparisons to methods like MAML.
+1. Can you clarify why the proposed approach is better than the Meta-RevGrad baseline?
+The authors acknowledge this connection, but I think they should begin by introducing CE and then explain how Cakewalk generalizes it.
+- In active learning, the proposed method should be compared with other methods such as Bayesian DNN using dropout, etc.
+However, the un-standard design of the LSTM models makes it unclear whether the comparisons are solid enough.
+My main concerns are about the evaluation and comparison of standard neural models.
+I think these issues are against the goal of evaluating standard neural models on the benchmark and will raise doubts about the comparison between different models.
+While the comparison with HSIC is a helpful one, it is also required to compare with the competing method closest to yours, i.e.
+If the authors claim that the proposed MaxConfidence attack method is more powerful than the MaxLoss based attacks, they should provide more comparisons between these methods.
+My main concern about this paper is why this algorithm has a better performance than CW attack?
+I would suggest comparing with CW attack under different sets of hyper-parameters.
+One of the main area which is missing in the paper is the comparison to two other class of RL methods: count-based exploration and novelty search.
+It is fine, but it seems weird that the author still mentioned the setup of MNIST+SVHN in the main text.
+The choice of RBMs is not motivated well and without any comparisons to alternatives, it comes across
+This is true throughout; as stated before it is not clear how many parameters and how much memory these methods need, which makes it impossible to compare.
+In summary, the paper presents what seems like an effective strategy for continual learning, by combining some existing methods together, but does not make it precise what the contributions are and the methodology/analysis make it hard to determine if the comparisons are fair or not.
+Why is the second objective log(#params) instead of just #params when the introduction mentions explicitly that tuning the scales between different objectives is not needed in LEMONADE?
+Three of these methods, i.e. Lime, GradCam, PDA, are not designed for producing contrastive explanations, so I am not sure to what extend this comparison is appropriate.
+However, attack in Wasserstein distance and some other methods can also do so.
+Especially if the lower-level component of the hierarchy is pre-trained in a non-MARL setup, it can just be seen as part of the environment from the point of view of the MARL training, offerring limited new insight into MARL.
+Given that you observed that SVHN has higher likelihood on all three model types (PixelCNN, VAE, Glow), why investigate a component specific to just flow-based models (the volume term)?
+The paper should compare the proposed work to the InfoGAN work both quantitatively and qualitatively to justify its novelty.
+Finally, the CNN architecture should be compared with modern SAT solvers which have been participating to SAT competitions.
+If the two NNs used in DNN and DNN(resized) are different, I believe it’s still possible to apply the algorithm in DNN(resized) to the NN used in DNN, and get a full trace in the figure as noise and projection changes, which would lead to more fair comparison.
+Though Kaleidoscope include these as special cases, it is not clear whether when given the same resources (either memory or computational cost), Kaleidoscope would outperform them.
+Finally, the paper needs to compare its parameter-reduction approaches against other compression and hyperparameter optimization techniques.
+And while there is an argument to be made for the inherent interestingness of exploring these questions, this angle would be more compelling if multiple encoder architectures were explored and compared.
+Have the authors considered to use categorical or binary variables?
+Given that BERT is most robust against their manipulation, it would be good to see a more powerful recurrent model for comparison.
+Alternatively why not try using a factorization technique to reduce the rank and then see how well the method does for different ranks?
+1a. Comparison to other exploration methods.
+- Since the proposed method starts from Laplace transform, it would be helpful to further discuss the connection between other methods that regularises the eigenvalues of the Jacobian (such as spectral-normalisation), which work in the frequency domain from a different perspective.
+Spare few lines of equations to define what are DeepSets and PointNetSeg in the paper and point out the difference since these networks are used throughout the paper extensively without proper mathematical definition.
+But the only negative aspect is the basis competitor algorithms are very simple in nature without any form of learning and that are very old.
+Otherwise, it is hard to tell how significant these correlations are. Since the end goal is to determine transferability of tasks and not the methods, it does seem like there are simpler baselines that you could compare against.
+My biggest concern is the lack of comparison with other representation learning methods, which is a very well studied problem.
+However, it looks like authors only compared with VIB which is similar to the proposed method in terms of the objective function.
+- The paper mentions the MSVV algorithm twice but no reference or explanation is provided.
+While the authors are using an existing model, they shouldn't assume that the reader has read the paper describing that model.

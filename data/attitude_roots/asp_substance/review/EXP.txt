@@ -1,0 +1,98 @@
+The paper does not talk about settings where states of interest are not known, so all of the experiments are based on this strong assumption.
+Yet the experiments considered in the paper are limited to very few time series.
+It would be good to have some experiments in the sequence to sequence setting to understand if the obtained complexities are in fact what one would expect in practice.
+The only set of experiments are comparisons on first 500 MNIST test images.
+Moreover, I don't think some of the presented experiments are necessary.
+Moreover, authors should conduct experiments on state-of-the-art benchmarks, including natural images.
+One could understand the use of "selection network" as a way to automatically select a threshold of what to consider confident, however, in this case, the prediction of "selection network" should be thresholded at 0.5 (correct prediction or not), but the experiments use complex thresholds.
+I would have been interested in "false detection" experiments: comparing estimator in a variety of problems where the mutual information is zero, but for different marginal distribution.
+We think that this is not enough, and more extensive experimental results would provide a better paper.
+However, I am wondering whether this paper is perfectly suited to ICLR conference due to the lack of experiment, practical implication given by the theory, or theory in the non-convex setting (I know that the latter is a huge open question and I am not criticizing the absence of theory in the non-convex-concave setting).
+One way to improve to work would be to provide practical takeaways from the theory or to provide experiments in the main paper.
+It would be nice to see a better case made for spherical convolutions within the experimental section.
+* The connections to deep learning seem arbitrary in some of the experiments.
+For example, what is the number_iterations in the experiments? How are they chosen or what's the specific stopping criteria?
+Given the paper title, the reviewer would have expected more experiments in a multiple domain context.
+- The performance gain is not substantial in experiments.
+Furthermore, the claims of the model working for non-MCAR missingness are not substantiated by the experiments.
+I think that this is the crux of the paper that should be significantly expanded and experimentally validated.
+* The baselines in the experiments could be improved.
+I also remain unconvinced by the response to my issue with the claim “Our experiments show that our networks can remember a large number of images and distinguish them from unseen images”, where the negative images are also seen by the memorization model, so they are not unseen.
+3. The experimental study is weak.
+While the experiments across several domains convincingly show the presence of an anti-ME bias in neural network training, I recommend that the paper be rejected because it falls short in demonstrating to what extent performance could be improved by correcting or reversing this bias.
+- Detailed experimental setups are missing.
+However, the experimental results are weak in justifying the paper's claims.
+However, I found the contribution of the actor-critic model is insufficient and requires additional experimental validation (see below).
+The main problems come from the experiments, which I would ask for more things.
+So how importance of each component to the whole framework? I would ask for the ablation study/additional experiments of using each component.
+This triggers my curiosity of which difficulty is it? It would be nice to see this point more elaborated, and to see ablation study experiments.
+- the authors fix the number of layers of the used network based on "our experience". For the sake of completeness, more experiments in this area would be nice.
+Regarding the experimental evaluation of the model rather confusing.
+1. As mentioned in the paragraph before Section 4.1, it would be much simpler to consider a single latent embedding space L. In that case, \sigma and \alpha become unnecessary and we only need to train \omega.
+I would imagine that even if an embedding X is a bit noisy, because not exactly equal to gamma(P) where P is the expression it represents, you could consider doing the propagation with gamma(G(X)).
+Experimental results itself are fine but not complete.
+It would therefore be instructive to add experiments for ResNet to see how well the results generalize to other network architectures.
+The second weakness is experimental design.
+In sec. 4, there's a reference to an initial set of experiments with count-based methods without much details.
+=> Environment: The experimental section of the paper can be further improved.
+1- Why not use a single Boltzmann machine with 128 fully connected latent variables? Could you add this experiment please.
+6, the experimental design of Sec. 4.2 is also a bit unfair.
+So the experiments in this paper is also not convincing.
+- The counter example at the bottom of page 2 is limited, in the sense that the oracle assumption seems highly non-realistic, casting doubt on the relevance of the argument.
+-  could you please explain the setting for the “gold standard” experiment. I'd have to assume, for instance, you train a GNN in a supervised way by using both source (non-suspicious) and target (suspicious) behaviour, and label accordingly? That said I am not 100% sure of this problem setting.
+However, my concern is about the experiments.
+- While the current experiments are a good start, I do not think they are extensive enough to count as strong evidence for the  power-law form of \(\epsilon(m,n)\).
+The paper’s primary drawback is the restrictive setting under which the experiments are performed.
+Therefore, I am not convinced that the power-law form of the generalization error would hold when the experimental settings are marginally different (like when using the Adam optimizer or a VGG-like architecture).
+This needs to be changed: a) you should run all the baselines for each of the current tasks b) you should also expand the experiments evaluated to include tasks where it is not obvious that a hierarchy would help/is necessary c) you should include more baselines.
+Please run at least 10 experiments.
+The evaluation section lacks experiments that evaluate the computational savings.
+The authors could run each WAE training process K times (with random initialization) to see if the closed-form distance enables more stable results.
+Additional experiments on at least ImageNet would have made the paper stronger.
+Specifically, since the explanations provided are visual saliency maps the paper would have been stronger if there were experiments suggesting -- what needs to change in a region of an image classified as a ‘cat’ to be classified as a ‘dog’ while there is an instance of the class - ‘dog’ present in the image itself.
+However, the experiments are overall not very useful to the comprehension of the paper and not that illustrative.
+2.	The experiments are rather insufficient.
+However, it seems the experiments do not seem to support this.
+In fact, the separate training seems to make this unlikely.
+I can understand the point that training NNLM accelerates the experiments, but the author(s) should consider trying a simply LSTM model after the best settings had been discovered (e.g. Table 1).
+I maintain my concerns that the experiments are limited and do not showcase the individual benefit of using explicit information placement.
+More experiments based on different transformations that the authors have mentioned would make this a stronger contribution.
+Thus the experiment comparison is not really fair.
+A more rigorous setting is to, for N runs, each run splitting the validation and testing set differently.
+Since this paper is an application paper, rather than a theoretical paper that bears theoretical findings, I would expect much more thorough experimental setup and analysis.
+2 The experimental settings are not reasonable.
+The current experimental settings are not matched with the practice environment.
+One set of experiments that I think would be interesting is aimed at understanding the distribution-matching part.
+Section 3 too much redundancy -- it just explains that SVHN has a higher likelihood when trained on CIFAR, and a few variations of the same experiment.
+Thus, the evidence of the experiments is not enough.
+The experiment section needs significant improvement, especially when there is space left.
+The experiments of this paper lack comparisons to certified verification
+It might be beneficial to include comparison to this approach in the experimental section.
+3) The experiments are completely preliminary and not reasonable:
+These issues would maybe be excusable if not for the totally inadequate experimental validation.
+1. The experiment uses a single run each of the baseline and DG-GAN, when it's well-known that GAN training runs
+3. It would be helpful to show the $\gamma$ value on each experiment with different tasks.
+The weight sharing was also needed further investigation and experimental data on sharing different parts.
+The rest experiments
+- The arguments for why the experimental evidence actually supports the existance of an approximate number system (ANS) could be made more clear.
+- Experiments were conducted only using a few recent results as baselines (ICM, forward dynamics, RND).
+Section 2.2 mentioned how different kind of layers would help with the encoder’s utility and privacy. It would be better to back up the argument with some experiments.
+- For the speed processing experiment, did you test what the performance would be if K matrix is replaced by a fully connected layer?
+- The setup for the learning to permute experiment is not as general as it would imply in the main text.
+- How easy is it to train with K matrices? Did you have to change optimizer hyperparameter compared to existing baselines?
+It looks like neither the experiments nor Theorem 3.2 show any benefit to PowerSGDM over PowerSGD.
+(4) For the error-specific attack task, it would be better to provide an ablation experiment.
+*The experimental section is too limited.
+-I find the experimental studies a bit limited and I would expect larger studies which would have improve the interest of the paper.
+- (W5) Multi-task learning: I did not see any mention or experiments of what can be expected when the representations are themselves trained on multiple tasks.
+3) The simulation is not convincing.
+Experiments are on toy domains with very few goals and sub-task dependencies.
+Authors acknowledge the fact that their experimental setup is rather limited in Appendix C.1, which I agree with and they also claim that there is a representation for a uniform algorithm for any number of advertisers for the AdWords problem, however they leave this as a future work, which I find unfortunate. I would recommend taking this direction rigorously and expand the contribution, which would prove to be a very sound contribution.
+- at the start of section 3: what is an "experiment"?
+- in 3.1 towards the end of the first paragraph, what is a "study", is that the same as experiment or something different?
+It is hard to support this motivation when no experiments are done in its favor.
+- The experiments show the learning results, but do not provide a peak "under the hood" to understand the way attention evolved and contributed to the results.
+The proposed diversity measuring metric is lacking both in terms of experimental proofs and intuitive motivations.
+1. Please provide experiments and/or citation for using the face identity as a proxy for face image diversity.
+this is important since all your experiments rely on that assumption.
+1. In the experimental study, the authors present the value of their tuning parameters (learning rate, target rate, discount rate…) at the initialisation phase without any justifications. And the experiments are limited to simulated data obtained from MUJOCO physics engine - a very classical benchmark.

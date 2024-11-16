@@ -1,0 +1,273 @@
+I vote for weak reject as (1) the paper makes a strong assumption about the availability of both the robot and object states which is not realistic in typical robotic manipulation applications and (2) the objective in the paper will not work if there is no notion of an “object” or object-state e.g.: this algorithm will not learn skills for a robot trying to control itself; hence, it is not truly a general purpose skill discovery algorithm but rather a skill discovery algorithm specifically meant for robot-object manipulation tasks.
+I am also not entirely satisfied by using accuracy as the only metric; how about using something like beam search to build a "soft", secondary metric?
+This appears to be very restrictive, since typically the values of time series j at time t-1 are typically depending say of those that time t-2, t-3 etc.
+While training on one image does reduce the burden of number of images, the computational burden remains the same. And as mentioned above, it doesn’t seem likely that *any* image would work for this method.
+Besides visible artifacts, what does it mean? Why does a smoother G reduces those artifacts?
+Additionally, the previously mentioned evaluation steps, i.e., using a fixed attention map as baseline for the evaluation and evaluating the correlation between FSM and accuracy may be informative to illustrate the advantages of the proposed approach.
+It does intuitively makes sense, but more mathematical definition (e.g., dimensionality) may be needed.
+If the goal is to learn representation for low-shot setting, the method needs to be compared with other representation learning methods such as jigsaw[1], colorization[2] and rotation[3].
+The drawback in this model here is that ultimately networks are embedded, but not really generated during test time.
+- The proposed method does not outperform the existing state-of-the-art methods in terms of classification accuracy.
+Including at least one set of black box attacks is necessary to verify to what degree the vanishing gradient is the case here.
+In addition, I would like to see some discussions whether this technique could be applied to off-policy learning as well.
+(3) FGSM is a quite weak adversarial attack method, which makes evaluating adversarial robustness on FGSM may be misleading.
+5. On relational detection task, is there a way to compare with the STOA method on some specific data split? This will leads to much more convincing results.
+- the complexity of the proposed algorithm seems to be very high
+Beyond this simplification, I am not clear if that is actually intended by the authors.
+The authors explain how they trained their own model but there is no mention on how they trained benchmark models.
+It does not seem sensible to drop X^{j}_{t-1} + \eta_X \cdot \epsilon_X and attain a smaller value of the cost function at the same time.
+Moreover, due to the trace based loss function, the computational cost will also be very high.
+3. How do PPO and SimPLe handle partial observability? Is it principled to apply them to partially-observable environments?
+4. Why not use continuous actions with a parameterized policy (e.g. Gaussian)?
+5. Is it reasonable to assume that the learning dynamics of all deep learning architectures are similar enough that a model trained on one set of deep learning architectures and problems will generalize to new architectures and problems?
+- The evaluation of the proposed method is not complete.
+In section 4.1 the authors have a good discussion on what is wrong with other methods in order to motivate their approach but then they don't deliver significant evidence in the later part of the section.
+- evaluated models (feed-forward NNs and LSTMs) are very basic and far from current SotA architectures
+Furthermore PTB is not a "challenging" LM benchmark.
+Lemma 2.4, Point 1: The proof is confusing.
+What is G_t in Theorem 2.5. It should be defined in the theorem itself.
+Thus, the theoretical contribution of this paper is limited.
+1) The critical issue of this paper is that the algorithm is designed to minimize the upper bound.
+It is better to explain the major difference and the motivation of updating the hidden states.
+Without doing so, it leaves the reader wondering why not simply a standard RBM trained using a standard method (e.g. contrastive divergence).
+It would be very interesting to contrast the proposed method with other previously proposed MF based method, in particular using Free energy to approximate the expectation of the model without constraints.
+For example, it is curious to see how denoising Auto encoders would perform.
+- The authors should make a distinction on what kinds of attack is considered: white box, black box or grey box.
+The problem with this strategy is that the rigid composition only works for actions that can be split into consecutive temporal parts with prefixed duration and anchor points in time, which is clearly challenged by many works later when more complicated video events are studied.
+Weaknesses: Not all model modifications are studied in all the algorithmic tasks.
+In such a situation, there are better strategies for higher-order tests of independence than estimating mutual information, in particular estimator that give a control p-value.
+Making this algorithm not very practical.
+- I didn't understand the motivation for testing only very general-purpose models (this is described in Section 3).
+Edit (leaving everything else unchanged for now): After reading R3's assessment, I agree with them that it's worrying that the Deterministic Meta-Dropout performs better than baseline MAML - maybe it's an effect of a larger number of parameters in the model?
+How do we choose a proper beta, and will the algorithm be sensitive to beta?
+compared two schemes of this work, the ones with attentions are “almost” identical with ones
+in practice. For most of newly proposed graph embedding algorithms, it is hard to convince
+* The oracle-augmented datasteam model needs to be contextualized better.
+What is the benefit of using DL algorithms within the oracle-augmented datastream model?
+Is a simple algorithm enough? What algorithms should we ideally use in practice?
+What if you used simpler online learning algorithms with formal accuracy guarantees?
+- My biggest issue is that there is no clear evaluation of the runtime benefit of the second Viterbi decompressor.
+The explanation for underperforming on SVHM (page 7) may be valid, but you could easily prove it right or wrong by adding an option to SST for "stratified SSL." Without this extra work, your claim is just a conjecture.
+All of these pieces are very well-known methods (e.g. VAEs, conditional VAEs, CL, catastrophic forgetting, domain transformation) in the literature and this paper puts them together in a straightforward way.
+Why not compare with Sparsely-Gated MoE?
+It would be nice to see how a “gold standard” HMC based inference does on at least the small toy problem of Sec 5.1?
+Comparisons against these more standard inference algorithms is essential for understanding what advantages are afforded by the objective proposed in the paper.
+Another concern is that the evaluation of domain adaptation does not have much varieties.
+- there is no attempt to provide a theoretical insight into the performance of the algorithm
+-  Why have you chosen the 4 operations at the bottom of page 4? It appears to be a subset of those used in DARTS.
+- Consequently why did not you compare simple projected gradient method ?
+- I might have missed that, but are the authors offering an interpretation of their observation that the performance of the self-modulation model performs worse in the combination of spectral normalization and the SNDC architecture?
+- I would like to see some more interpretation on why this method works.
+I would like to suggest to use the state-of-the-arts classifier for the principal task and to evaluate how much gain your method can get with the help of auxiliary tasks.
+- If the information on the hierarchy of sub-categories is not available, it will be an annoying hyperparameters that should be well tuned.
+1. Since the method is only evaluated on several video sequences, I am not sure how the method will perform on other different scenes.
+I wonder how the straightforward regression term plus the smooth term will perform for the mask.
+Here, the straightforward regression term means directly regress the output mask to the target densepose mask. Will the proposed mask term perform better?
+This reduces the paper to an empirical exercise rather than a true understanding of their method's advantages and limitations.
+In general, I feel this section could use some tighter formalism and justifications.
+Are there any other advantages for F-pooling s.t. people might want to use it as opposed to AA-pooling?
+- also, if the authors can explain more on sec 2.5 it will be helpful. If we simply ignore the imaginary part, although the theory is not applicable, but what would the empirical performance be?
+The method is only evaluated on a single task and many confounding variables (the design of the reward function, factorizing the parametric distribution into marginals, reporting results for a single (non-tuned?) learning rate, etc.) make evaluation difficult.
+It’s not obvious to me that ME bias will provide a significant advantage in a one-shot or few-shot learning setting - i.e. how useful is having made a better initial guess (which is random amongst the unseen classes) after you gain some specific information about the target class? Perhaps the benefit is small relative to that of the one-shot or few-shot information gained - I think this needs to be quantified empirically.
+Compared to using just a very simple dense reward (e.g. negative L2 distance between the robot and the object), what would be the advantage of using MI discriminator? It would be great to show the comparison between using simple dense reward and MI discriminator for each Push, Pick&Place, and Slide task.
+1. The focus of this paper is the hyper-parameter, please focus and explain more on the usage with hyper-parameters.
+It is known that SGD with fixed step-size can not find the optimal for convex (perhaps, also simple) problems.
+It is thus unclear whether the advantage can be maintained after applying these standard regularsisers.
+What happen for Meta-RevGrad + idt or Meta-RevGrad + revMap?
+i.e., omniglot <-> omniglot-M. I wonder whether the proposed approach can still work in large domain shift such as omniglot to fashion-mnist etc.
+In terms of actual technical contributions, I believe much less significant.
+It seems that the discriminator takes a whole sequence as input, but some precision on how this done could be added.
+There is however a misunderstanding about the properties of the alt-az convolution that must be cleared up before this paper can be published.
+As noted in the paper, this is a general element of SO(3) (and hence not in the set of alt-az rotations)
+So the closure axiom of a group is violated.
+This matters, because the notion of equivariance really only makes sense for a group.
+The paper does not contain an attempted proof of equivariance, and if one tries to give one, the impossibility of doing so will become apparent.
+I note that the alt-az convolution *is* equivariant to rotations in the subgroup SO(2) of rotations around the Z-axis.
+This is ultimately due to the fact that the set of alt-az rotations is not the same as the set of points on the sphere, topologically speaking.
+3. Can the authors show if the decomposition is also useful for trigger patterns that are not necessarily regular shapes?
+It should be pointed out that the D in the hinge loss represents a neural network output without range restriction, while the D in the non-saturating loss represents sigmoid output, limiting to take in [0,1].
+Though fundamental understanding can happen asynchronously, I reserve my concern that such empirical method is not substantial enough to motivate acceptance in ICLR, especially considering that in (only) 124/144 (86%) of the studied settings, the results are improved. And there is no analysis of the failure settings.
+In what concerns the optimization, the method achieves a better objective value much faster, confirming that it is a lower variance gradient estimator.
+Theorem 1 does not take account for the above conditions.
+I have some concerns regarding the presentation of the main objective and the lack of justification in certain parts of the methodology.
+While I agree with the authors that it is generally desirable for a model to be more confident when predicting in MNIST (since it has already seen samples of it) compared to when predicting in notMNIST (completely different data), these plots tells us nothing regarding the predictive power of the model.
+There isn't a tested hypothesis, but rather it's a feat of engineering to get this to work.
+This restriction of the number of parameters to be small is only mentioned in the theorem itself, not in the discussion of its implications.
+Did you try to have a single network?
+6. Did you consider using an inverse function (say G), that maps an embedding in L / L' back to S (i.e. the inverse function of gamma / gamma').
+Also, G could be used to check whether you obtain the expected formula after 4 steps, which would be a more informative information than the L2 distance between the resulting embedding and the embedding of the final formula.
+The Gamma approximation has no statistical guarantees, as stated explicitly in the HSIC testing paper of NeurIPS 2007.
+The improved training procedures for MI estimation are of interest, however the hypothesis testing parts of the paper could still be improved.
+I wonder why the authors didn’t compare or mention optimizers such as ADAM and ADAGRAD which adapt their parameters on-the-fly as well.
+I am concerned though why the authors didn’t compare to adaptive optimizers such as ADAM and ADAGRAD and how the performance compares with population based training techniques.
+The drawbacks  of the work include the following: (1) There is not much technical contribution.
+When learning rates are in focus, a convincing message would be to show that adaptation of learning rates is more efficient and simpler than their scheduling when tested on state-of-the-art architectures.
+It would be interesting to see if the proposed method is competitive for training contemporary networks and w.r.t. simple schedule schemes.
+Although the concept of "task" is not explicitly defined in this paper, the authors seem to associate each task with a specific class.
+The KL divergence regularization introduces extra randomness to the auxiliary labels and thus mitigates the problem, but it hardly provides any useful information except randomness.
+Since this paper is about distributed robustness and distributed attacks, it would be very informative to the community to illustrate DBA attack on these methods to have a more compelling message.
+In this case, the paper proves that no careful selection of the learning rate is necessary.
+The use of Glorot uniform initializer is somewhat subtle.
+For noisy K-FAC and MNF the lambda (which should be fixed to 1 for a correct Bayesian model) was tuned and in general lower than 1 lambdas lead to models that are overconfident and hence underperform on uncertainty tasks.
+Thus I believe that it would be better if you consider the same hyper parameter on all of these methods, e.g. the precision of the Gaussian prior.
+It’s probably a bit unfair or misleading to claim neural networks suffering from ME bias.
+- what prior distributions p(z) and p(u) are used? What is the choice based on?
+- The model G_theta does not appear in the training objective function (4), how is this module trained precisely?
+Please comment on the choice, and its impact on the behavior of the model.
+Overall, the proposed method is elegant; however, the presentation, the claim, and the experiments suffer from significant flaws.
+I like the directions using surrogate to speed up HPO in general but I feel the learning curve prediction part can be improved. There are already some works, not using deep learning method, for example the following:
+Why these methods are not considered in the beginning? In my opinion, transformer is good for modeling long term dependency and concurrent predictions which is not necessarily the case for learning curves.
+How does the transformer based method comparing to others?
+Why, for example, did the authors only perform variational inference with the current and previous frames? Did conditioning on additional frames offer limited further improvement? Can the blurriness instead be attributable to the weak inference model?
+- Theorem 3.2: "[...] converges at a speed proportional to [...]". Isn't \bar{u}_t logarithmic (non-linear) in t?
+1. The proxy f(z) does not bear any resemblance to LP(z).
+2. Can you elaborate more on the metric for measuring the learning progress LP? Why does the myopic metric make sense in spite of the there being plateaus in the training curves?
+Given there is no theoretical justification for the approximation, I believe the paper claims more than what it delivers and should change the presentation, so as not to claim that it is measuring and capturing learning progress to learn faster.
+This is a lot of architectures, which makes me wonder: how would a “cost-aware” random sampling perform with the same number of sampled architectures?
+However, there are significant limitations in demonstrating the effectiveness/impact of the proposed technique:
+As far as I understand, this involves only minor changes in the code since reasonable hyperparameters required for the convergence of Adam have been extensively studied.
+- The use of random exploration for the discoverer is underwhelming. Have you tried different approaches? Would more advanced exploration techniques work or improve the performance?
+Otherwise, this choice is incomprehensible.
+It’s also unclear if the proposed method is more memory efficient, since the authors only unroll 4 iterations of it.
+I would strongly recommend including the computational cost of each method in the evaluation section.
+On the other hand, the authors give no evidence, empirical or otherwise, that their method is useful on any downstream tasks.
+Plugging this distance into the WAE produces similar performance to existing WAE variants, but does not really advance the existing achievable performance.
+Since the novelty of this work lies in the introduction of the CW distance, I would like to see an independent evaluation of this distance as a  general statistical distance measure (independently of its use in CWAE).
+Can you use this distance as a multivariate-Gaussian goodness of fit measure for high-dimensional data drawn from both Gaussian and non-Gaussian distributions and show that it actually outperforms other standard statistical distances (e.g. in two-sample testing power)?
+Besides having closed form in the case of a Gaussian prior (which other statistical distances could potentially also achieve), it would be nice to see some discussion of why the authors believe their CW-distance is conceptually superior to such alternatives.
+My main question is that: what is the main advantage of the Cramer-Wold distance to an MMD with a proper kernel?
+My question here is that how is this method better than the standard VAE, where we also have an analytic form for the ELBO when the prior is Gaussian, an no sampling is required.
+Indeed, in VAEs, the prior does not have to be Gaussian, and as long as the density of the prior can be evaluated, we can efficiently optimize the ELBO without sampling the prior; which I don't think is the case for the Cramer-Wold autoencoder.
+- In the case of the search space II, how many GPU days does the proposed method require?
+- About line 10 in Algorithm 1, how does the proposed method update the population P? Please elaborate on this procedure.
+Obviously there is a tradeoff in terms of memory usage, privacy, performance, etc. but since none of these methods currently achieve the best across all of these there is no reason to rule out any of the methods.
+This suggests that the strictly incremental training methodology indeed forced the network to learn better generalizations
+The proposed approach seems reasonable but it is mostly a work of engineering and provides little insights into the problem nor the proposed model.
+- It is a bit unclear to me how the authors propose to obtain independent posteriors over z and c. Is it purely empirical or is there a formal reason that guarantees it?
+The structure is obtained by the shared and sparse rows of matrix A. I would like the authors to comment on how the studies will be affected by this property of the common networks.
+- the reasoning behind picking VGMM as the density estimator is not fully convincing and (dis)advantages of other candidate density estimators are almost not highlighted.
+- it is unclear and possibly could be better explained why one needs to concatenate the goals (what would change if we would not concatenate but estimate state densities rather than trajectories?)
+Even if the assumptions aren't satisfied everywhere for typical deep networks, they may be satisfied at most points encountered during training, which would make the contribution even more compelling.
+It seems like LEMONADE would scale poorly to more than 2 objectives, since it effectively requires approximating an #objectves-1 dimensional surface with the population of parents.
+- The authors haven't come up with a recommendation for a single configuration of their approach.
+Also, the plus-one smoothing handles unknown words (or word piece?) and I'm not sure why. If we're using the test set to compute IDF, and the sentences we're looking *are* in the test set, then there shouldn't be unknown words and no smoothing is required.
+1. In Section 2, I find the sentence "We follow a similar intuition but instead of decomposing a 1D signal of time into its components, we transform the time itself and feed its transformation into the model that is to consume the time information" really unclear. Could you rephrase it?
+The paper shows two applications (semi-supervised learning and novelty detection) and it is not clear that the proposed method outperforms existing GAN methods in the classification accuracy in MNIST/SVHN/CIFAR10 (Table 1) and existing sampling methods (Table. 3).
+Apart from combining these to existing ideas, what can be considered as an added novelty to improve the quality of the disentangled features?
+- All the variations considered for the behaviour policy performs only myopic exploration and thus provably inefficient in RL.
+How this proxy incentives the agent to explore poorly-understood regions?
+6. On a lighter note, I don't believe using a coffe-brewing machine has a 'universally invariant structure' of coffee-making. That's a luxurious way of making coffee :) In the developing world, we still need to boil water, pour coffee powder in it, etc., all without a coffee-brewing machine.
+Similarly, the paper mentions that the "general approach to solving these combinatorial optimization problems is to recognize the atomic unit necessary to solve the problem", but at that point the reader has no concrete example of what combinatorial optimization problem would be mapped onto training and inference in RBMS.
+This is a very strong initial assumption, I am not sure how likely this assumption would be satisfied.
+For instance, how deep should a model be for a classification or regression task?
+Repeated equations usually indicate that there is something new happening, but all of these are just restatements of your theta sin(omega tau + phi) term.
+I would introduce the notation for t2v(tau) upfront and use that to define a(tau, k)[j] and f_j
+What was wrong with LSTMs/GRUs as they've been used extensively for recursive problems including operations on trees?
+2) The evaluation metrics used while borrowed from the language or IR fields doesn't seem to translate to UI design.
+I do not think that there is enough justification/demonstration for the fact that a general NN solution for Tabular Data invented.
+It might be more fruitful if these linear combinations were learned or sub-senses of words (e.g. [1]).
+- Why does temporal correlation reduce the non-stationarity of the MARL problem?
+- Why does structured exploration reduce the number of network parameters that need to be learned?
+- Why does partial parameter sharing make it easier for each agent to estimate other agents potential changes in behavior?
+- This approach seems very limited, as there must exist a known transformation that removes the desired information.
+- Can this approach learn multiple factors as opposed to just two?
+- What if the desired factors are not clearly disjoint and collectively exhaustive? (e.g. mustache vs. gender on human faces.)
+Can the proposed approach perform just as well without a modified objective?
+Ablation studies that show the proposed algorithm can improve upon the baseline in all settings would make this a stronger paper.
+The use of beta>1 is fine if it helps alongside the use of this approach, but it would have been better to see the effects of this approach and beta>1 (and other hyperparameters such as k in Table 1) in isolation.
+Also, what will be the performance of a standard image captioning system on the task ?
+Also, the compared methods don’t really use the validation set from the complex data for training at all.
+Currently it is still missing discussion such as, when SASNet would perform better and when it would perform worse, what it is that the state of the art features can’t capture while SASNet can.
+Moreover, it is the prediction performance that matters to such task, but the authors remove the non-structure features from the compared methods.
+3)	Some discussion on why the “SASNet ensemble” would yield better performance would be good; could it be overfitting?
+Section 4 seems to lack a high-level idea of what it want to prove -- the hypothesis around the volume term is dismissed shortly after, and it ultimately proves that we do not know what is the reason behind the high SVHN likelihood, making it look like a distracting side-experiment.
+This is clearly interested in as far as solving this particular task but does not provide any general insights for the design of (MA)RL algorithms.
+If we define both maximum and minimum thresholds based on the CIFAR-train histogram, it seems like one could detect most SVHN samples just by the virtue that there likelihoods are much higher than even the max threshold determined by the CIFAR-train histogram?
+However, the Pareto front of the proposed method is concentrated on a specific point.
+For example, the proposed method does not achieve high "privacy" as "noisy" does.
+In this sense, the proposed method is not comparable with "noisy".
+2) Does the proposed method store immediate activations or recompute the activations in the backward pass?
+The authors should try to find a real-world domain which can really demonstrate the effectiveness of the method.
+(3) The experiment section lacks more detailed analysis which can intuitively explain how well the proposed method performs on the benchmarks.
+and bounded failure rate, otherwise it is not really a verification method.
+methods. There are some scalable property verification methods that can give a
+Issues of convergence seem like they deserve some discussion here and potentially could be examined empirically (is CEM-TD3 converging in the swimmer?).
+However, the evaluation of the proposed adaptive kernels is rather limited.
+How big is the generalization gap for the tested models when adaptive kernel is used?
+5. Adaptive kernels have only been tested in the first convolutional layer, would the adaptive kernels work well also in different layers?
+In Section 3, the authors compare the game scores of DeepCS proposed in this paper only against to A2C.
+3. The architecture of the neural networks used for the Generator and Discriminator is very non-standard, which
+I would like to see a convergence proof where the batch size $B_{t}$ is treated as a small constant like other SGD proofs assume.
+It would be good to know how $\gamma$ varies across tasks.
+As proposed in the comments, this should be assessed in the paper by replacing BERT representations by non-contextual representations such as GloVE.
+Since this is for ILCR, I think the authors should have taken a deeper dive into examining those latent representations and potentially visualizing those distances and how they correspond to different policy behaviors.
+The proposed dual-BCFW still contains a hyperparameter (eta) due to the need to introduce a convex subproblem, which makes its number of hyperparameters still the same to SGD.
+-- The algorithm proposed in the paper is very straightforward and just removes heavy hitters using oracle advice and then hashes everything else using the standard CountMin sketch.
+What would the pairing-based strategy look like in Figure 6 right? Are there not significance tests that could be used to more carefully quantify the level of support for the two alternative strategies?
+1. The formulation uses REINFORCE, which is often known with high variance.
+I think it needs to be made clearer how reconstruction error works as a measure of privacy.
+Language modeling is a fast-moving field, so the very latest and greatest techniques are not strictly necessary for this paper, but at least midsize LSTM models that get scores in the ~80 ppl range for Penn Treebank are important, otherwise it becomes very questionable whether the results will provide any practical impact in today's best models.
+As noted by the authors, transfer is most attractive in low-supervision regimes, w.r.t. the target task.
+Yet the metrics proposed depend on supervision in the target domain.
+- no downstream applications are given which show that these higher order interactions can be useful for downstream tasks.
+- the higher-order features T*a*b are useful only when a is noun and b is an adjective: why not investigate using T to model higher-order interaction for all (a,b) pairs regardless of the syntactic relationships between a and b?
+More importantly: (1) It does not show any advantage of replica exchange over standard dynamics; (2) It does not provide any quantitative insight for high-dimensional problems.
+They are an exercise in applying standard formalism to this problem, without really showing any significative advantage of replica exchange.
+As of now, the greedy nature of the algorithm is hidden across a number of sections (not introduced when presenting the main algorithm).
+3. The structure of the meta-training loop was unclear to me.
+This seems like a limitation of the method if this is the case.
+The WGAN framework is built upon a loss that can be optimized, and should be optimized, until convergence (the discriminator loss is non-saturating) -- not the reverse (more G steps than D steps) as suggested here.
+For example, authors could implement pGAN by ignoring the detectability of the discriminator (i.e. \alpha=0) or typical pGAN when they compare with the label-flip operation.
+However, the authors do not provide an in-depth discussion of this phenomena.
+Given that previous works [1,2,3] have successfully addressed this problem using a completely unsupervised approach, it would be necessary to give more insights about: (i) why the proposed method is failing (ii) why this negative result is interesting and (iii) if the method could be useful in other potential scenarios.
+The authors could provide a similar evaluation for their method by using the feature representations learned by the siamese networks in order to evaluate how much information they convey about real factors of variation.
+This does not seem surprising to me, as in the unguided case, the constrative loss seems not strong enough to encourage the latent partitions to be different.
+Further, no proper convergence analysis of the proposed approach is provided and is desired due to the likely divergence in the optimization.
+1. Can you comment on the quantization time of the suggested method? Repeatedly solving the EM steps can add up to quite an overhead.
+* The BiLSTM they use is very small (embedding and hidden dimension 50).
+While it seems ok to estimate these different metrics using only linear models, my concern with this is that the linear models are only given a subset of the **exact** dimensions of the original representations.
+This is very much unlike the learning objectives of most of these representation learning methods and hence is highly biased and dependent on the actual methods and the random seeds used and the rotations it performs. (In many cases the representations are used starting with a fully connected layer bottom layer on top of the representations and hence rotations of the representations do not affect performance)
+Suppose we rotated these representations. Now the signal from the original dimension is split across multiple dimensions and hence the CFS may be deceivingly high.
+To me this is a big concern as different runs of the same representation technique can likely have very different CFS scores based on initializations and random seeds.
+(W7) Alternatives to CFS / Computational concerns: A big concern I had was the computational expense of the proposed approach. Unfortunately I did not see any discussion about this in the paper or empirically.
+For example using LASSO / LARS like methods you can perhaps figure out a good reduced dimension set more efficiently.
+(W7b) Likewise I wonder if we could just measure transfer more directly as well and why we need to go via these CFS sets
+If the paper cannot compare various architecture, it is more convincing to at least use some standard architecture, like DCGAN. Or at least report the parameter tuning effort made for getting the results.
+My question is a bit philosophical: The only thing which I was concerned about when reading the paper is projection of the embeddings back to the d-dimensional space.
+have you thought about how it would be possible to avoid this step and keep the original variable-size embeddings?
+The mode of language modeling evaluation presented here, without considering an actual language or speech processing task, provides limited insight w.r.t. its utility in actual applications.
+Moreover, the very limited size of the language modeling tasks chosen here is highly advantageous for smoothing/regularization approaches.
+Authors should scope the paper to the specific function family these networks can approximate.
+However, the function of interest is limited to a small family of affine equivariant transformations.
+Authors claim adding one layer of DeepSet layer to a PointNet becomes PointNetST, but I see this as a special DeepSet with a single transmission layer.
+Lemma 3 is too trivial.
+However, it is not further discussed how the overall KL-based data similarity measure would help in this case since it seems likely that it would also exhibit the same issue.
+- In the empirical results, the performance of the proposed method and Reg-GAN (from the numerics of GAN paper) are quite similar. Are there instances that the proposed approach significantly improves the stability of practical GAN architectures?
+-Is there any reason not comparing the proposed algorithm with other compression schemes? (e.g., network pruning and low-rank approximation)
+o feedforward rather than recurrent network;
+The authors use numerous jargon words to describe the techniques studied (e.g. dragon penalty, gradient penalty, spectral normalization, Gaussian process regression in the bandit setting) but they do not explain them,
+Those seem to be quite limiting features of these methods, which is not to say that they are not useful in that realm, but only to clarify my understanding of their possible scope of application.
+Although a generic framework that learns to solve online combinatorial optimization problems without domain knowledge is by itself a very motivational goal neither the paper successfully demonstrates that the framework the authors propose achieves this goal nor it explains well enough why one would take the machine learning approach to find good algorithms to such problems.
+This paper should be rejected because proposed method demonstrates that an instance of one class of problems, Fractional Adwords, can be learned to solve without domain expertise, however fails to prove that the approach would be beneficial for any other instances of the same problem.
+In particular there is not any theoretical not experimental evidence that the approach would scale to any instances where a pure optimization approach would be slow to provide any meaningful solutions.
+Can one walk the latent distribution of the algorithm agent and draw insights, which might lead into tailoring some algorithms that would be appropriate for some input distribution although in general inferior in terms of worst case guarantees?
+2. The main technical contribution claim needs to be elaborated.
+I understand how the game theoretic framework is established but how does this manifest itself in the algorithm described in Section 3.1 needs more explanation.
+They need to elaborate how their method overcomes these issues better.
+Yet their approach is only able to solve the fractional version of the AdWords problem.
+Yet the authors stop at only solving this version with a machine learning approach, which does not hit the bar for me.
+I would have expected the authors to at least elaborate on why the current framework is not suitable for the non-relaxed problem.
+However, they state they loosely follow this approach. What does that entail? What kind of theoretical guarantees are given up due to not following this, a better exposition on this topic would help to support the claims.
+One would at least expect an after-the-fact interpretation for the weighted tensor term and what this implies with regard to their method and syntactic embedding compositions in general.
+I feel that this discussion devolved into a discussion, again, about normalization rather than the architectural differences in performance.
+- MAAC still requires all observations and actions of all other agents as an input to the value function, which makes this approach not scalable to settings with many agents.
+- The centralized nature is also semantically improbable, as the observations might be high-dimensional in nature, so exchanging these between agents becomes impractical with complex problems.
+One main concern is, how general this approach would be? As it is a good extension for Neural LP, it is not clear that the framework of Neural LP is flexible or powerful enough in general.
+For example, if rules contain quantifiers, how would this be extended?
+While the black-box calibration of a GAN model may be attractive under specific settings, the authors did not consider the restrictions under those situations and their design may be hard to implement as a result.
+As a minor note, were different feature extractors compared?
+Is that also true in this domain?
+* The architecture of the particular model is described very briefly, and at multiple points there’s an implication that this is an investigation of “deep learning models” more generally, even though those models may vary widely.
+This assertion is not justified, and seems surprising to me; we have very useful natural language processing systems that do not perform in a way that is comparable to humans (the hedge "some degree of" is really neither here nor there).
+I understand why a human who needs to saccade back and forth between the two groups of objects might lose track of the objects that have been paired so far, but I don't understand why that would affect the architecture in question.
+In equation 1, 2 the updates of  \mu_new and \sigma_new uses \lambda_i, however the authors provide common choices for \lambda without any justification or references.
