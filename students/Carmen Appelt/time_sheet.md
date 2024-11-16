@@ -12,9 +12,9 @@
 
 | Start         | End           | Task Name             | Task Description                                                          | Time Spent (h)| Status        |
 |---------------|---------------|-----------------------|---------------------------------------------------------------------------|--------------------|----------|
-| [06/11/24]    | [06/11/24]    | [Third lecture]       | [Third lecture]                                                           | [1.5]         | [Completed]   | 
-| [30/10/24] | [30/10/24] | [Second lecture]            | [Second lecture]                                                          | [1.5]         | [Completed]   | 
-| [23/10/24] | [23/10/24] | [First lecture]             | [First Intro ]                                                            | [1.5]         | [Completed]   | 
+| [06.11.24]    | [06.11.24]    | [Third lecture]       | [Third lecture]                                                           | [1.5]         | [Completed]   | 
+| [30.10.24] | [30.10.24] | [Second lecture]            | [Second lecture]                                                          | [1.5]         | [Completed]   | 
+| [23.10.24] | [23.10.24] | [First lecture]             | [First Intro ]                                                            | [1.5]         | [Completed]   | 
 | [11.11.2024]  | [12.11.2024]  | [Initial Setup]       | [Github Setup, Element Setup, Understanding Tasks]                        | [0,5]         | [Completed]   |
 | [12.11.2024]  | [12.11.2024]  | [Reading Literature]  | [Reading papers: JITSUPEER, DISAPERE]                                     | [2,5]         | [Completed]   |
 | [12.11.2024]  | [12.11.2024]  | [GUI Draft]           | [Draft to make sure, all participants share the same idea of the task]    | [0,5]         | [Completed]   |
