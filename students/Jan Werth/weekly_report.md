@@ -27,12 +27,13 @@
   metadata, etc. which we can use in the frontend)
 - **Update 2**: The largest part of the OpenReviewLoader until yet is the possibility to create a test set, which was my
   task for this week.
-- **Update 3**:
+- **Update 3**: Setting up slurm
 - **Challenges**:
     - Design of the testset
         - What information should it contain and how the sentences should be preprocessed
         - In general, the preprocessing with spacy was very difficult. But I think also with an LLM it would be
           difficult.
+    - How to install python/conda on slurm? How do I change node?
 - **Next Steps**:
     - Write tests for the OpenReviewLoader
     - Extend the functionality of the OpenReviewLoader (if needed)

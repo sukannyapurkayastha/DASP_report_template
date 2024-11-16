@@ -18,6 +18,8 @@
 | [13/11/24] | [13/11/24] | [Meeting]            | [Weekly meeting]                           | [1]                | [Completed] |
 | [13/11/24] | [13/11/24] | [Meeting]            | [Internal developer meeting]               | [0.5]              | [Completed] |
 | [13/11/24] | [13/11/24] | [Coding]             | [Project setup & test dataset creation]    | [6]                | [In Progess] |
+| [16/11/24] | [16/11/24] | [Setup]              | [Setting up slurm]                         | [4]                | [In Progess] |
+
 
 ---
 

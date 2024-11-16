@@ -6,7 +6,7 @@ from typing import List, Literal
 import spacy
 
 
-class OpenReviewLoader:
+class OpenReviewLoader(object):
     def __init__(
             self,
             username: str,
@@ -29,17 +29,17 @@ class OpenReviewLoader:
 
         logger.info("OpenReview client initialized.")
 
-    def load_all_submissions(self, venue: str, year: str, type: str = "Conference",
+    def load_all_submissions(self, venue: str, year: int, type: str = "Conference",
                              detail: Literal["replies", "directReplies"] = "directReplies") -> List[openreview.Note]:
         """
         Load all submissions from a specific venue.
-        :param venue: The venue name (e.g. "ICLR")
+        :param venue: The venue name (e.g. "ICLR.cc")
         :param year: The year of the venue (e.g. "2024")
         :param type: The type of venue (e.g. "Conference", "TinyPapers)
         :param detail: The detail of retrieved information (e.g. "replies", "directReplies")
         :return: A list of submissions
         """
-        invitation = f"{venue}.cc/{year}/{type}/-/Submission"
+        invitation = f"{venue}/{year}/{type}/-/Submission"
         logger.info(f"Fetching submissions with invitation: {invitation}")
 
         try:
