@@ -10,6 +10,46 @@
 
 ## Reports
 
+### Week [8]
+
+- **Update 1**: 
+- **Update 2**: 
+- **Update 3**: 
+- **Challenges**: 
+- **Next Steps**: 
+
+### Week [7]
+
+- **Update 1**: 
+- **Update 2**: 
+- **Update 3**: 
+- **Challenges**: 
+- **Next Steps**: 
+
+### Week [6]
+
+- **Update 1**: 
+- **Update 2**: 
+- **Update 3**: 
+- **Challenges**: 
+- **Next Steps**: 
+
+### Week [5]
+
+- **Update 1**: 
+- **Update 2**: 
+- **Update 3**: 
+- **Challenges**: 
+- **Next Steps**: 
+
+### Week [4]
+
+- **Update 1**: 
+- **Update 2**: 
+- **Update 3**: 
+- **Challenges**: 
+- **Next Steps**: 
+
 ### Week [3]
 
 - **Update 1**: 
@@ -20,11 +60,11 @@
 
 ### Week [2]
 
-- **Update 1**: 
-- **Update 2**: 
-- **Update 3**: 
-- **Challenges**: 
-- **Next Steps**: 
+- **Update 1**: First UI mockup
+- **Update 2**: First UI experiments
+- **Update 3**: SLURM setup
+- **Challenges**: Reading into streamlit, get overview of elements
+- **Next Steps**: get feedback on Mock-up, based on that continue work on UI, maybe read into backend stuff further when frontend is finished
 
 ### Week [1]
 

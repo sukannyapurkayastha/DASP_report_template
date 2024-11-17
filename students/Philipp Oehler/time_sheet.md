@@ -17,7 +17,7 @@
 | [xx/11/24] | [xx/11/24] | [Dummy]                     | []                                                                        | [0.0]              | [In Progress] | 
 
 
-
+| [16/11/24] | [16/11/24] | [SLURM]                     | [Try setting up slurm]                                                    | [4.0]              | [In Progress] | 
 | [13/11/24] | [16/11/24] | [Mock-Up]                   | [First design + update based on internal feedback]                        | [4.0]              | [In Progress] | 
 | [13/11/24] | [13/11/24] | [Weekly]                    | [Preperation + Meeting itself + Internal team meeting]                    | [1.6]              | [Completed]   |  
 | [11/11/24] | [11/11/24] | [Front End]                 | [Streamlit exploration, first modeling]                                   | [2.5]              | [In Progress] |
