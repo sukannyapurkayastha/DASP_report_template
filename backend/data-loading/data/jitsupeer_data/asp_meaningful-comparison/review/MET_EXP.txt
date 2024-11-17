@@ -1,0 +1,7 @@
+Additionally, I believe the experimental tasks are new, and as a result all implementations of competing techniques are by the paper authors. This makes it difficult to have confidence in the higher reported performance of the proposed techniques.
+The theoretical proof depends on the convexity assumption, I would also suggest comparing the proposed attack with CW and other benchmarks on some simple models that satisfy the assumptions.
+In this light, experiments demonstrating comparisons between GANs and VAEs as the reference generative model for explanations would have made the paper stronger (as the proposed approach relies explicitly on how good the generative model is).
+Furthermore, the experimental section does not compare to other forms of hierarchical approaches for MARL, and generally only provides a single comparison to PPO & MADDPG.
+Besides, in the experiments, the proposed method is not compared to other transfer learning methods.
+The proposed method is not appropriately compared with the other methods in experiments.
+4) In the experiments, more comparisons with methods in [1] or [2] should be conducted given they are all parallelizing the backpropagation algorithm and achieve speedup in the training.

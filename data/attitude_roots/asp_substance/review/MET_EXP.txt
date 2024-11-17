@@ -1,0 +1,25 @@
+In particular I do not think the satement 'all the pre-training methods are at most linear with respect to the number of edges' made in appendix F is correct.
+2. I think that the claim that the use of neural networks with discrete inputs can approximately solve NP-hard optimization problems is an exciting one, which likely necessitates more experiments (or theoretical results), but as it stands I don't think it is a fundamentally different conclusion from the fact that this method provides a great scalable solution for the ordinal embedding problem.
+Finally, the experimental part is also too weak to evaluate the proposed method.
+However, the experiments feel like they are missing motivation as to why this method is being used.
+While the experiments are only performed on sentimental analysis and digit recognition. How about evaluating the proposed methods on real image recognition such as DomainNet or Office-Home?
+Along this direction, it is problematic that, in the synthetic examples, the relative  performance of methods changes significantly from experiment to experiment and there does not seem to be a simple way to control that.
+The experiments on SHREC17 show all three spherical methods under-performing other approaches.
+Also it seems that the regular batch normalization could be very sensitive to domain shifts, and it would be good if the authors can test other normalization schemes such as layer/group normalization as baselines.
+However, unlike as advertised, the paper does not address the domain shift issue in meta-learning, and the experiments lack thorough evaluation as the paper considers itself as a meta-learning paper and only compares to other meta-learning approaches without much comparison to domain adaptation papers.
+However I find the white-box experiments lacking as almost every method has 100% success rate.
+- White-box attack experiments don’t really prove the strength of the method, even with imagenet experiments, as almost all attacks get 100% success rate making it hard to compare.
+I think that the current draft lacks strong experimental results to properly demonstrate the usefulness of the method.
+In the current experiments there is a comparison only with CO algorithm and SGDA.
+So overall I have the feeling that the authors have not succeeded to evaluate the model’s power with these two experiments and we cannot draw any strong conclusions regarding the benefit of the proposed mixing approach.
+#9) I think that MNIST is almost a toy experiment, since the crucial component of the proposed method is the prior modeling with the GAN.
+The MNIST is a relatively simple experiment, and I would like to see how the method works in more challenging problems.
+I also was not convinced by the experiments which are mostly qualitative. I did not find that this set of experiments provide enough support to the proposed method.
+- The paper proposes an interesting experiment to show that the proposed approach is somewhat capable of capturing slightly adversarial biases in the input domain (adding square to the top-left of images of class ‘8’). While I like this experiment, I feel this has not been explored to completion in the sense of experimenting with robustness with respect to structured as well as unstructured perturbations.
+Thus my question for the rebuttal period: How would pGAN perform when defense mechanisms are deployed during the learning phase? (ideally, a thorough experiment illustrating the strength of pGAN against a few defense mechanisms would help re-evaluating the score)
+4. I think in the comparative experiments, the plain SGD should be added as another reference algorithm.
+The method has intuitive appeal and the experimental results are suggestive, but the experiments do not conclusively show that the method achieves something that ordinary machine learning does not.
+Second, and more importantly, the experiments need to be re-done to better measure the practical impact of the techniques.
+The main appeal is the idea of using T to model syntactic interactions, and the algorithm for learning T. Given that the main attraction of the paper is the potential for more performant word embeddings, I do not believe the work will have wide appeal to ICLR attendees, because no evidence is provided that the features from the learned tensor, say [a, b, T*a*b], are more useful in downstream applications than [a,b] (one experiment in sentiment analysis is tried in the supplementary material with no compelling difference shown).
+Since the LM-like approach is the main contribution, and the reported experiments do not show an advantage over GN-like approaches (already taken by previous work), this is my main reason for proposing rejection.
+Furthermore, there are no experimental results demonstrating the effect of the permutation head and the design choices above — if we could get by with only using the Hungarian algorithm, why bother classifying an exponential number of permutations? Do they help when added as an auxiliary loss?

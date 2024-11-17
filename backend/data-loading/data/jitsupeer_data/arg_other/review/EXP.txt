@@ -1,0 +1,1 @@
+Some of the experiments (eg. comparisons involving ShakeShake and ScheduledDropPath, Section 5.2) could also be moved to the appendix in order to make room for a description of LEMONADE in the main paper.

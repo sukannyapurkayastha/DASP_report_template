@@ -1,0 +1,12 @@
+Specifically, the policy update in Dreamer resembles that of SVG (Heess et al., 2015), which also backpropagates re-parameterized gradients through a value function and a transition model.
+Since the latent models are learned based on existing techniques, the paper presents an incremental contribution.
+Though, I still think the contribution is incremental, since back-propagating gradients through values and dynamics has been studied in prior works (albeit with less empirical successes compared to Dreamer).
+The proposed approach is very similar to the CE method by Rubinstein (as stated by the authors in the related work section), limiting the contributions of this paper.
+[-] It seems to me the motivation is similar to that of Sparsely-Gated MoE (Shazeer et al. 2017), but it is not clear how the proposed two-hierarchy method is superior to the Sparsely-Gated MoE. It would be helpful the paper discuss more about this.
+The proposed method adapt a previously presented hierarchical clustering method in the "standard space" (Griffiths et al., 2004) to an embedding space defined by a variational autoencoder model.
+The inference algorithm builds on standard techniques of deep generative models and, also, on previously proposed methods (Wand and Blei, 2003) for dealing with the complex hierarchical priors involved in this kind of models.
+Further the contributions are not clear at all, since a large part of the detailed approach/equations relate to the masking which was taken from previous work.
+Furthermore, there are several similar ideas already published, so comparison against those (for example by J. Peng, N. Heess or J. Mere) either as argument or even better as experiment, would be helpful to evaluate the quality of the proposed hierarchy.
+The proposed method PowerSGD is an extension of the method in Yuan et al. (extended to handle stochastic gradient and momentum).
+A weighted k-means solver is also used in [2], though the "weighted" in [2] comes from second-order information instead of minimizing reconstruction error.
+Once a low-level walking controller is trained, the high-level multi-agent navigation control is not much different from simple environments, e.g. point mass control, used in the previous works.

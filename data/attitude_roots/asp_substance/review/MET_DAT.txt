@@ -1,0 +1,10 @@
+More precisely, for the digit datasets, the reviewer was interested to see how the proposed MDL performs on jointly adapting SVHN, MNIST, MNIST-M, and USPS or jointly adapting DSLR, Amazon, and Webcam for OFFICE dataset.
+2. Sec. 3.3, Fig. 3: The capacity (in terms of parameters)of both Resnet-18 and VGG-16 is higher than the capcity for YFCC100M dataset for n=10K images (comes to 161K bits), while the capacity of Resnet-18, with 14.7 million parameters (assuming float32 encoding) has 14.7 * 32 bits = 470.4 million bits, thus capacity alone cannot explain why VGG converges faster than Resnet-18, since both networks exceed the capacity, and capacity does not seem to have an established formal connection to rate of memorization.
+- Does the MonoGAN exhibit stable training dynamics comparable to training WGAN on CIFAR-10, or do the training dynamics change on the single-image data set?
+Clearly, replaying data accurately from all tasks will work well, but why is it harder to guard against the generative forgetting problem than the discriminative one?
+Generative replay also brings the time complexity problem since it is time consuming to generate previous data.
+What is the minimum/maximum layers of a deep model? How much data is sufficient for a model to learn?
+What's the relation between the size of a model and that of a data set? By increasing the depth/width of a neural network, how much new data should be collected for achieving a reasonable performance?
+* p.4 first paragraph you claim that this method responds well to data which exhibits seasonality, but none of your datasets deal with data that would exhibit seasonality.
+In particular, if the goal is to use this method to augment the data we use to train NLP systems in order to make them more robust, it seems that the time cost of the process will be prohibitive.
+These classification datasets are often so close, that I do wonder whether even simpler methods would work just as well.

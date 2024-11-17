@@ -1,0 +1,14 @@
+Although some promising
+Hence, I kindly do not think the outcome is truly a research result.
+As the authors admit, the main result is not especially surprising.
+The results are not strong. And, unfortunately, the model contribution currently is too modest.
+I find the observations interesting, but the contribution is empirical and not entirely new. It would be nice if there were some theoretical results to back up the observations.
+Although I personally enjoyed reading the results that from control theory perspective are inline with GAN literature, the paper does not provide novel surprising results.
+However, this limits the novelty of the results relative to existing literature.
+2) although there must be some small innovations, I thought that all the results had more or less been proven by Dupuis and co-authors:
+It was kind of surprising that the authors did not cite this paper given the results are pretty much the same.
+A lot of the times, the result seem to be a derivative of the work by Bietti and Mairal, and looks like the main results in this paper are intertwined with stuff B+M already showed in their paper.
+- Page 7 offers a result (expression for the Dirichlet form), which is hardly more than an exercise for anybody familiar with Markov Chains theory.
+Again, this follows from known results.
+Many of the results have been already presented in
+While I wish there were more such studies -- as I believe reproducing past results experimentally is important, and so is providing practical advice for practitioners -- this work in many parts hard to follow, and it is hard to get lot of new insight from the results, or a better understanding of GANs.

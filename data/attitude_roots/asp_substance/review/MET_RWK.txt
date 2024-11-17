@@ -1,0 +1,26 @@
+Therefore, an interesting baseline for the evaluation of the ICL approach would be a predefined, fixed attention map consisting of concentric circles with the image center as their center, to show that the proposed approach does more than just deemphasizing the corners of the image)
+6. Similar as above question, on the object counting task, is there a way to compare with previous counting methods?
+However, in its current state the work lacks sufficiently strong baselines to support the paper’s claims; thus, the merits of this approach cannot yet be properly assessed.
+Third, it is rather surprising that the authors didn't mention anything about the traditional causal discovery methods based on conditional independence relations in the data, known as constraint-based methods, such as the PC algorithm (Spirtes et al., 1993), IC algorithm (Pearl, 2000), and FCI (Spirtes et al., 1993).
+All in all, the results show that the proposed method provides a significant speedup with respect to Shim et al., but it lacks comparison with other methods in the literature.
+This is a very good point, however the paper do not compare or contrast with existing methods.
+For the language translation results, were there any other state-of-the-art methods that the authors could compare against? It seems they are only comparing against their own implementations.
+Second, SST itself is only comparable with or even worse than the state-of-art methods.
+- Did the authors inspect generated samples of the baseline and the proposed method? Is there a notable qualitative difference?
+What instead is missing is an answer to the question: Is it worth using a neural graph? what are the advantages and disadvantages compared to previous approaches?
+- It would be also better to show the coefficient of existing methods that have no theoretical justification.
+- It would be better to compare with a naive approach that uses domain discrepancy between each source and target as (fixed) coefficient since this approach such as Mansour (2009), Ben-David(2007, 2010) and Kuroki et al (2019) which explicitly consider the hypothesis class has theoretical justification in the form of generalization error bound in the target domain.
+- How general is the proposed approach? How likely is it to generalize to other approaches such as Jigsaw (Doersch et al., 2015) and Exemplar (Dosovitskiy et al., 2016)? It would be good to comment on this.
+As a final point; the hyper parameters that were tuned for the MNF, noisy K-FAC and KFLA baselines are not on common ground.
+In addition, only the transformer baselines were considered, and it would seem natural to consider LSTM-based baselines, or some other related techniques.
+In my view, they do not even show that the distribution of atom usage will be better with their algorithm after the learning has converged, as at least according to their learning curves, the baselines have not finished converging.
+(a) a comparison to other methods (outside the current framework) for sound separation
+However, the method they propose offers very little that is new when compared to e.g. Vaswani (https://arxiv.org/pdf/1706.03762.pdf, section 3.5) (the authors acknowledge this work several times).
+Similarly, I'd have expected baselines that included those models in the evaluation section showing the differences in performance between the newly proposed Transformer model for trees and previously used methods.
+While most (or all) of the paper is devoted to illustrate the effectiveness of the approach against *non-protected* ML. My only and biggest concern with this paper is that no defense mechanism has been tested against, and there are many in the literature. (see e.g. Diakonikolas et al ICML 2019).
+1) There are several important works on model-parallelism and convergence guarantee of pipeline-based methods missing in this paper, for example [1][2].
+-- The overall error model in this paper, which is borrowed from Roy et al. is quite restrictive as at it assumes that the queries to the frequency estimation data structure are coming from the same distribution as that given by f_i’s themselves.
+This latter baseline is a zero-cost baseline as it is not even dependent on the method.
+The connections of the proposed approach with existing literature should be better explained.
+Unlike Arora's original work, the assumptions they make on their subject material are not supported enough, as in their lack of explanation of why linear addition of two word embeddings should be a bad idea for composition of the embedding vectors of two syntactically related words, and why the corrective term produced by their method makes this a good idea.
+- MAAC does not consistently outperform baselines, and it is not clear how the stated explanations about the difference in performance apply to other problems.

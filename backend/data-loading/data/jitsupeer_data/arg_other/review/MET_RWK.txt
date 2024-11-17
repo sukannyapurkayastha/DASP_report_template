@@ -1,0 +1,1 @@
+[-] The combination of VAEs and GANs, while new for videos, had already been proposed for image generation as indicated in the Related Work section and its formulation for video prediction is relatively straightforward given existing VAE (Denton & Fergus 2018) and GAN models (Tulyakov et al. 2018).

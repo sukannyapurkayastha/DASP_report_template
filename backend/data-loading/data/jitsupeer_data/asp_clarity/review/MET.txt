@@ -1,0 +1,223 @@
+How to understand this phenomenon? Does this mean that the distribution of the layer outputs will not change too much if the layer is deep enough?
+In particular, the node-level pretraining described in section 3.1.1. seems rather complicated to implement as a context graph needs to be computed for each node in the graph.
+- The definition of g should depend on only \theta_k^I and \hat{\delta}_k^M, not \theta_k^k.
+- The equation (1) should hold for any \theta’, not \theta.
+- The equation (1) should contain \rho, not p.
+* The use of the name "batch-norm" for the layer wise normalization is both wrong and misleading.
+For example, it is unclear to me why some larger models are not amenable to truncation.
+- the notation q appeared in the middle part of page 3 before the definition of q is shown in the last paragraph of p.3.
+At the end of the subsection, the authors argue that 4D convolution is just k times larger than 3D kernels, which sounds like contradicting.
+-- It is not clear how the  per-example scalar sigma-i is learned. (for Eq 2)
+But the authors do not seem to describe how they chose the hyperparameters for the baselines algorithms.
+Since finding an adversarial with smaller perturbation is a harder problem, it is unclear how the algorithms compare for finding adversarial examples with similar distortion.
+In this sense, claims about the low-variance of GO-gradient wrt to other reparametrization baed estimators should be removed, as they are the same.
+On page 4, State update function, what is the meaning of variable "Epsilon" in the equation?
+From the supplementary, it seems Epsilon means the environment?
+- In Equation (2), How is P_ij defined exactly, are they parameters? I am quite confused about this part
+Fourth, please make it clear that the proposed method aims to estimate "causality-in-mean" because of the formulation in terms of regression.
+While I could imagine human judges preferring them as they are fluent, I think they are wrong as they express a different meaning than the SPARQL query they are supposed to express.
+The maths is not clear, in particular the gradient derivation in equation (8).
+But again, it's not super clear how the paper estimates this derivative.
+1. Are e_{i,t} and lambda_{i,t} vectors?
+The description of consistency regularisation methods in section 2.2 is not very clear and I would like to get better understanding of temporal ensembling and SNTG methods here as they play an important role in the experiments.
+Then, the important hyperparameter of the method---threshold---seems to be hard to select (both in sections 4.1 and 4.2).
+Section 2.1 is where the method is proposed, yet most of the descriptions there are unclear. Without these details it is impossible to judge the novelty of the "rule-based concept extractor", which is the key technical innovation.
+An example of lack of mathematical rigor is equation 4 in which the same variable name is used to describe the weights before and after pruning, as if it was computer code instead of an equation.
+Also pervasive is the use of the asterisk to denote multiplication, again as if it was code and not math.
+- q_theta was introduced in Eq. (8) before it is defined in Eq. (11).
+In the algorithm, the authors need to define the HT function in (3) and (4).
+It leaves it unclear to the reader when someone should choose to utilize a spherical method or when the proposed method would then be preferred compared to other spherical methods.
+Also, it is not clear why those are called axioms since they are not use to build anything else.
+- The interchangeable use of the term "conductance of neuron j" for equations 2 and 3 is confusing.
+- As said in the my main comments, I am not convinced by the use of the term Axiom. They are not use as building blocks, and are rather used as desirable properties for which the authors prove that only "path methods" can satisfy.
+I don't have a good sense of whether this is a reasonable theoretical model to explore and a lot of very basic questions remain unanswered for me.
+I take issue with the usage of the phrase "skill discovery".
+Here, there is only a single (unconditioned) policy, and the different "skills" come from modifications of the environment -- the number of skills is tied to the number of environments.
+The language around skills and the extent of prior knowledge still downplays things a bit too much for my liking.
+It is in the end plugged into a continual learning algorithm which also performs domain transformation.
+The purpose of the public set is explained only in section 5.2.
+-Something is a bit weird with the FGM results. While it is a weaker attack, a 0%/100% disparity between it and every other
+Also, it seems quite strange to me that making the FW overshot and then projecting back would be beneficial.
+- I am not sure what you mean in 5.4 “we omit all grid search/ binary search steps
+As is, the counter example proof itself is quite confusing: it would really help if the proof was more formal.
+However, the weakness is that the condition is opaque and it is not entirely clear how broad of class of problems this condition would apply to.
+However, I don't understand the use of $\alpha$ here.
+I believe that's what "Pred (One Step)" expresses, but it would maybe be generally helpful to be more precise about the notation
+* Equations (1, 2): z and \phi are not consistently boldfaced
+1. It is not clear that training a network to classify a set from another set is necessarily equivalent to ``memorization’’.
+I believe that the presentation of the proposed method can be significantly improved.
+The method description was a bit confusing and unclear to me.
+- the sentence under eq. (2)
+- the sentence "Bacause the identity of the datapoint can never be learned by ..." What is the identity of a dat point?
+It’s not obvious to me how useful the ME bias would be when there is a large number of classes since the probability assigned to the true novel class with a perfect ME bias would be 1 / (# unseen classes).
+- It is unclear how MISC-p is performed. Please elaborate on how MISC-p works for prioritization.
+4. I do not understand this: "to fit well the method overfitting rate" in Section 3.3.
+(2) Eq. (3): is there a superscription "(j)" on z_canon in decoder?
+- Section 3.3: “Different from pruning, which the search space is usually quite limited”. “which” should be “whose”?
+- Section 4.4.1: “DSO-NAS can also search architecture [...]”  -> “DSO-NAS can also search for architectures [...]”
+However, it isn’t entirely clear if the primary contribution is showing that ‘curiosity reward’ is a potentially promising approach or if game environments aren’t particularly good testbeds for practical RL algorithms — given the lack of significant results on more realistic domains, my intuition leans toward the later (the ant robot is interesting, but one can come up with ‘simulator artifact’ based explanations).
+While the general description of the model is clear, details are lacking.
+Similarly, you did not indicate what the deterministic version of your model is.
+Also, it is not clear from the discussion on z, whether sampling is performed once for each video of for each frame.
+Another somewhat jarring fact about the alt-az convolution is that it is not well defined on the south pole.
+The paragraph motivating the alt-az convolution on page 4 is not very clear, and some claims are questionable.
+I would suggest rewriting this paragraph to make it clearer and less speculative, and acknowledge that although rotating filters might increase computational complexity, it has often been shown very effective.
+-Some technical details  are missing.
+- Sec 3.4 can you recap all the parameters after eq.11? going through Sec 3.2 and 2.2 to find them is quite annoying.
+Reading it feels like reading about lattices when the work is about general graphs, and lattices provide no intuition about the proposed solution.
+It is still not clear why self-modulation stabilizes the generator towards small conditioning values.
+The clarity of the presentation (in particular the description of when the method is applicable) and the technical correctness of the paper are somewhat lacking.
+Because of the above many discussions about discrete vs. continuous variables are missleading.
+Many of the parameters here are also unclear and not properly defined/introduced.
+What is the relationship between $\theta$ and $\tilde\theta$ exactly?
+- The end of the 2nd line of lemma 1: P, G should be \mathbb{P}, \mathbb{G}
+- The 3rd line of lemma 1: epsilon1 -> epsilon_1
+- Page 14, Eq(14), \lambda should be s
+- Page 14, Eqs(13, 14), w(\mathbb{P}, \mathbb{G}) should appear on the right.
+Reading the Lemmas of Section 4 (Lemma 4.4) you can see that it is the smoothness parameter of function $H$. Thus, is not necessary to have it there (not important for the definition).
+For example, it is not clear the strong emphasis on the robust MDP formalization and the fact that MCTS finds a Nash equilibrium.
+Some statements don't make sense, however, eg. "HSIC-based estimators tend to have loose confidence intervals due to the need to bound generalization error of kernels f and g on unseen data points.
+The authors do not explicitly define continual learning, incremental learning, and catastrophic forgetting problem.
+2. It's very confusing when the authors introduce \sigma and \omega in the beginning of section 4: why would you need two networks predict the same thing?
+4. Even when the authors formally introduce \sigma and \omega in 4.2, it is still not clear that why both of them are used for modelling the success probability.
+For example, in Section 3.2, it can be made clear that the domain of the quantization function is the real and the codomain is a sequence k bits.
+This makes the contribution of this paper in terms of the method
+#3) There are several Equations that can be combined, such that to save enough white space in order to discuss further some actual technical details.
+- What is dt in Algorithm 1 description?
+--The notation for the proposed parameters theta, theta’, phi, phi’ are not consistent with the notation in the intro section, where phi was used for the encoder and theta for the decoder.
+In later sections they use theta and theta’ for encoder/decoder resp.
+Why mention it here, if it's not being defined.
+Also it's not clear from the details in the paper what are the architectures for the VAE and RFs (there's a reference to the code but would've been better to have sufficient details in the paper).
+I think it is necessary to make it clearer how s_{post_read} and attn_copy are computed with the updated {h^i_t} and what u^i is expected to encode.
+Minor:  Since the action is denoted by "a",  it will be more clear if the authors use another symbol to denote the parameter of q(z) instead of "\alpha" at Eq 10 and 15.
+Minor, 1/2 is missing in the last line of Eq 19.
+The authors seems interchangeably using “runs” and “iterations”, which makes the concept more confusable.
+- Lack of clarity in the following passage: “In our setting, each point xi in the point cloud can be considered to correspond to single images when we train GANs over images”
+Likewise, it is not well explained what is the value of the learnt relationships, and how uncertainty and errors in the causal learning are relevant to the downstream use of the learnt model.
+Here the end goal is less clear; this is understandable in the sense that the work is positioned as a piece in a grand objective, but it would seem valuable to nevertheless describe some concrete example(s) to elucidate this aspect of the algorithm (use case / error effects downstream).
+I don’t understand the claim that “GANs prioritize matching joint distributions of pixels over per-pixel reconstruction” and its implication that VAEs do not prioritize joint distribution matching.
+A minor comment is that the mutual information I(., .) being a function of two variables suddenly became a function of a single variable in Eq. (1) and in the text which precedes it.
+3. The key contribution of the paper that the authors could highlight better is that they do not add new hyper-parameters.
+It is not clear how smaller RBMs (and their associated parameters) are combined to obtain the larger RBM model.
+Perhaps a cleaner definition would just be “A is full rank and there does not exist any X such that Ax < 0?
+Also perhaps better to use the curly sign for vector inequality.
+|_{y>0} x + b |_{y>0}  <— what is the purpose of the subscripts here? Why is this notation never introduced?
+“From a high-level perspective both of these approaches” --> missing comma after “perspective”
+"reverse view on adversarial examples" --- what this means isn't clear from the preceding text.
+- It would be better to provide the details of the procedure of the proposed method (e.g., Algorithm 1 and each processing of Algorithm 1) in the paper, not in the Appendix.
+- The method is very confusingly presented and requires both knowledge of HAT as well as more than one reading to understand.
+The fact that HAT-like masks are used for a generative replay approach is clear, but the actual mechanism of "growing capacity" is not made clear at all especially in the beginning of the paper.
+2) Using the word "task" in describing "joint training" of the generative, discriminative, and classification networks is very confusing (since "task" is used for the continual learning description too,
+The method is difficult to understand, missing many details and essential explanation, and generally does not support a significant contribution.
+In equations 1 and 2, should a, b be written in capital? Since they represent random variables.
+Moreover, the way classical models are casted under the InfoNCE principle is badly written: it assumes that readers have a very good knowledge of the models, and the paper does not show well the mapping between the loss function of each model and the InfoNCE criterion.
+It gives technical details that could (in my opinion) get ignored, and I would clearly prefer to catch the main differences between the different models that being flooded by technical details.
+Here again, the article moves from technical details (e.g "hidden state of the first token (assumed to be a special start of sentence symbol ") without providing formal definitions.
+J_MLM is also not clear since x_i is never defined (I assume it is x_{i:i}).
+but the way the paper is written makes it very difficult to follow, and the description of the proposed model is unclear (making the experiments difficult to reproduce) and lacks of a better discussion about the interest of mixing multiple loss.
+There is a little typo in Formula 1 for the STFT spectrogram, I would use the modulus |.| rather than || . ||.
+I am a bit unclear about how comparisons are made to other methods that do not optimize for small numbers of parameters? Do you compare against the lowest error network found by LEMONADE? The closest match in # of parameters?
+I identify this ambiguity between BERTScore versions as an important weakness of the paper.
+Notably, I'm actually unsure whether you compute IDF over words or word pieces, and how this is applied.
+I found the method section a bit difficult to read though, and even after several readings I cannot get my head around it. Specifically, here are some issues that I hope the Authors could clarify.
+- There is a typo in equation 6
+In addition, Procedure 1 is not referenced in the text which makes is hard to understand the utility of the same.
+- I understand the upper bounds on the singular values, but I am not sure how they relate to inverse stability.
+The paper seems to lack clarity on certain design/ architecture/ model decisions.
+For example, the authors did not justify why VGMM model was chosen and how does it compare to other density estimators.
+Also, I had to go through a large chunk of the paper before coming across the exact setup.
+- Page 8: "differntiable methods for NAS." differentiable is misspelled.
+I did not completely follow the arguments towards directed graph deconvolution operators.
+A clearer explanation of the theory here would help, as I think Fourier's theorem nicely supports your claims.
+However, the motivation and benefits of introducing a parent and child variational approximation are not discussed adequately.
+I also struggled a little to understand what is the difference between forward interpolate and filtering.
+While the generation of this type of explanations is somewhat novel, from the text it seems that the proposed method may not be able to indicate what part of the image content drove the model to predict class A. Is this indeed the case?
+1) There is no clear rationale on why we need a new model based on Transformers for this task.
+Clarification regarding lemma 1: it seems that if the true posterior cannot be expressed by q, a gap will necessarily remain, even in the “limit” of perfect learning. Is this correct?
+- Lambda sim and lambda s are used interchangeably. Please make it consistent.
+I am not convinced that the measure theoretic perspective is always
+4.4, law of total variation -- define
+The authors do not focus (in the main paper) on GAN variants used currently, and it is not clear if the proposed approach provides improvement relative to the current state of the art implementations (see next paragraph)
+I believe in the second paragraph of 4.1 the authors provide some insight into this matter, however, I have to admit I do not understand this paragraph:
+However, what was not clear to me is how this reduces the non-stationarity of MARL.
+I feel like in the paragraph in questions, a lot of causes and effects are mixed up and more careful descriptions of the benefits of the algorithm would help.
+Apart from global vs. local, can the authors provide more examples of what sort of information this approach can disentangle? (Even for global vs. local, is there a transformation that can remove local information as opposed to global information?)
+- What is the choice of beta in the beta-VAE training objective?
+- Why were 30 discrete categories used in the clustering experiment? Is this still comparable to the approaches that use 10, which would correspond to the number of classes?
+1. What is M in Algorithm 1 ?
+Not sure why Eqns. 2 and 9 need any parentheses
+However, the explanation of the strategy wasn’t very clear for me, and the authors didn’t frame it as a major contribution.
+For the learnable data augmentation it would be great if the authors could provide more insight into the method, how it works, and why is it better than the alternatives.
+This second part is indeed what is used in the proof of the universality of the permutation invariant version of DeepSets, making the connection more visible.
+Generalizing this to the multi-channel input as the next step could make the proof more accessible.
+1) I do not really understand the emphasis on optimisation while all the proofs are related to the convergence to the stationary distributions.
+There are probably many other ways to trade BLEU score for efficiency, and without showing those other methods (and the point drops they have), it's not clear that K-matrices are a good way to speed up decoding a bit.
+- Direct duplication of text between parts of section 5.3 and 8.3 leading to the duplication of the error of describing the value function learning rate as 0.000.
+- The egocentric velocity field is not described (section 5)
+- The wording new paradigm in MARL might be unsuited given existing work on complex domains.
+‘Our proposed approach represents the first physics-based simulation of its kind that supports MARL.’ This sentence remains unclear as the authors do not propose a simulation engine.
+However, the  transfer learning model is unclear.
+Detail: section 4 describes the transfer learning model used in the work, but the description is unclear.
+It is unknown the used model is a new model or existing model.
+I have doubts on applying the proposed method to higher dimensional inputs.
+ReLU network with 2 hidden layers, and it is unknown if it works in general.
+positive - it unlikely to be true that an undefended network is predominantly
+adversarial examples (or counter-examples for property verification) with L_inf
+This change is noted, but it would be useful to make a least a brief (i.e. one sentence) comment on the motivation for this change.
+9.2.	In formula (1.5) “<=>” seems to be used at different levels (?) it would be good to use brackets to make clear which level “<=>” refers to.
+-In describing Eqn 3 there are some weird remarks, e.g. "N is the sum of all frequencies". Do you mean that N is the total number of available frequencies? i.e.
+- Your F and \tilde{f} are introduced as infinite series.
+- Still it is unclear where 'fj' comes from. You need to state in words eg "C[b] contains the accumulation of all fj's such that h(j)=b; i.e. for each sequence j \in U, if the hash function h maps the sequence to bin b (ie $h(j)=b$), then we include the *corresponding frequency* in the sum."
+- The term "sketch" is used in Algorithm1, like 10, before 'sketch' is defined!!
+-I'm not going to trudge through the proofs, because I don't think this is self-contained (and I'm clearly not an expert in the area).
+2. While the primary motivation of the work is claimed to be 'mode collapse', it does not turn out from the submission what mode collapse is.
+- The set F in Definition 3.5 looks odd, as it appears to be recursive and might not be unique.
+Isn't this just restating the point made in the first sentence?
+3, The notations in Eq. (1) and (2) are messy.
+However, the method, particularly on the weight sharing, lacked a bit of important background on adaptive softmax.
+It is unclear how well the proposed method works in general.
+Furthermore, I had some trouble understanding how a SAT instance is solved using algorithm 1.
+Specifically the text in Section 3.3 that explains Algorithm 1 is a bit confusing.
+In the start of Section 3, it is not clear why having the projection be sparse is desired.
+eqn (8): use something else to denote the function 'U'.
+Additionally, it is unclear how you will have vanishing rewards given the structure of the learned controller.
+This clipping will also introduce bias, this is not discussed, and will probably lower variance.
+This detail is not discussed in this paper, and some details -- such as the learning rate for the meta-optimizer I was unable to find.
+It would be better if the authors were a little more careful in their use of terminology here.
+*The strategy proposed to introduce weak-supervision is too ad-hoc.
+*It is not clear why the latent variables modelling the generative factors are defined using a Gaussian prior.
+How the case where two images have a very similar latent factor is avoided while generating pairs of images for the Siamese network?
+-The strategy proposed to provide weak-supervision to the model is too ad-hoc and it is not clear how to apply it in general applications
+Although a detailed discussion is provided related to the memory consumption between the proposed method and PipeDream, no detailed discussion is provided with respect to GPipe.
+- (W4) Metrics for ranking of transfer don't make sense (and some are missing) : I also don't understand how "precision" and NDCG are used as metrics.
+In most cases I would care about how well my model would perform on transfer not just which tasks I should transfer from. I would have wanted to understand something like the correlation of these produced scores with the actual ground truth performance numbers.
+- (top of p. 2) What exactly is the difference between "implicit feature combinations" and "explicit (?), expressive feature combinations"
+- (top of p. 2) "encourage parameter sharing" - between what and what? at which level? [reading on, I realized this applies to groups of features; it should maybe be made clear earlier]
+- U^m in Eq 1 is undefined and un-discussed.
+What probability term does it correspond to? It is supposed to make probabilities of different cardinalities comparable, but the exact mechanism is unclear.
+- The term p(w) disappears on the left hand side of Eq 2.
+- Notation in Sec. 3.2 is very cumbersome, making it hard to follow.
+Furthermore, I found the description ambiguous, preventing me from understanding how exactly the permutation head output is used in Eq 5.
+Specifically, there is some confusion about estimation of w~, which seems based on frequency estimation from past SGD iterations (Eq 3).
+- The network architecture is never described, especially the transition from Conv to Dense and the layer sizes, making the work hard to reproduce.
+In the main text (up to Section 7), there is no mentioning of how the low-level controllers are learned, and how to combine PPO in a MARL partial parameter sharing setting.
+Is there a constraint on the CFS and classifiers that ensure the difference between the weights really captures what is suggested?
+The paper would read much better if the authors better describe the phenomena based on the gap between the two distribution than using bling-spot.
+Is it because the ML solution would be faster to compute with big instances? Is it because with the proposed approach one can curate sophisticated heuristic solutions when provable optimality is out of reach?
+- I believe that in particular section 2 goes into too many mathematical details and subtleties that do not really add a lot.
+I think that either the reader already understand those concepts well (which I admit, I don't really, I'm merely curious about GANs and have been following the action from a distance, hence my low confidence rating to this review), or if they does not, it will be very hard to get much out of it.
+- "the variance of models obtained by Guassian Process regression is handled implicitely so we tran each model once"? I do not understand what this means, and I work with hyper-parameter tuning using gaussian processes daily.
+Although the method the authors suggest is a plausible way to explicitly model the relationship between syntactic pairs and to create a combined embedding for them, their presentation does not make this obvious and it takes effort to reach the conclusion above.
+If this is the case, authors should state it more clearly in the paper that a large proportion of the gap in performance between MixMatch and ReMixMatch is the introduction of stronger transformations (Autoaugment style).
+- The discussion/explanation of the differing performance of tying or not tying each part of the embedding weights for the different datasets is confusing; I think it could benefit from tightening up the wording but mostly I just had to read it a couple times. Perhaps all that's complicated is the distinction between embedding and projection weights; it would definitely be helpful to be as explicit about that as possible upfront.
+p2-3, Section 3.1 - I found the equations impossible to read. What
+- The importance mixing does not seem to provide a better performance and could therefore be shortened in the paper
+It is unclear how the model actually operates and uses attention during execution.
+- typo at the beginning os section 4:  missing 'be' in "... the algorithm must irrevocably *be* allocated to ..."
+-	Talking about depth parametrization use ‘basis’ or ‘bases’ not both and clearly defined the meaning of this important notion.
+-	Attention should be given to the notation in formulas (3) and (4).
+The projection function there is no longer accepts a 3D point parametrized by 3 variables.
+Instead only depth is provided.
+In addition, the subindex ‘1’ of the point ‘q’ is not explained.
+I don't understand what is meant by cognitively plausible but not human-like; perhaps an example of a cognitively implausible mechanism would help clarify this issue.
+* Another vague concept that is used without clarification: it is argued that if the network implements something like the Approximate Number System, that shows that it can "learn and utilize higher-level concepts than mere pattern matching".
