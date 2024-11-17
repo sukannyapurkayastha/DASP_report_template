@@ -1,0 +1,1 @@
+- It is unclear why the results on WikiSQL is presented in Appendix. Combining the results on both datasets in the experiments section would be more convincing.

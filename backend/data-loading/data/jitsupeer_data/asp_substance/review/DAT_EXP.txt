@@ -1,0 +1,17 @@
+- the data sets used in the experiments are very small
+However, given that the datasets used in the experiments were not used in the associated benchmark papers, it is necessary for authors to explain how they trained competing models.
+The experiments use fairly small datasets, where the performance can be largely influenced by how good the feature extractor backbone is (e.g. training on more data and using deeper architecture would warrant better performance, and thus may change the conclusion).
+The experimental results presented were all done on small synthetic datasets and it’s hard to evaluate whether the method is practically useful.
+2.	The experimental data set is too small, with only 635 problems.
+However, the selected experiments on the cubic regression toy data (Section 5.1) and the out-of-distribution classification (Section 5.2) are clear examples of system’s noise, i.e. epistemic uncertainty.
+I believe that a more challenging experiment should be conducted e.g. using celebA dataset.
+The empirical evaluation is quite weak- one sparsity setting, two baselines, one dataset
+Since the paper focuses explicitly on providing contrastive explanations for choosing a class A over another class B -- experiments on datasets which do not have real-images seem insufficient.
+Regarding contrastive explanations, experiments on datasets where distractor classes (y_probe) are present in addition to the class interest (y_true) seem important -- PASCAL VOC, COCO, etc.
+Three datasets cannot make the experiments convincing.
+It would also be interesting to see an experiment where the labeled data has a skewed distribution of classes, but we provide the method with information about the true class distribution, and demonstrating that this information helps predictive performance.
+However, only 1 dataset pair is experimented -- there should be more to ensure the findings generalize, since Sections 3 and 4 rely completely on empirical analysis.
+More experiments based on other types of data sets with clear global structures such as faces or stop signs will
+More experiments on datasets
+- It would be nice to have an experiment that varies the size of the external paired sentence-image dataset and tested the impact on performance.
+2. Were there experiments that applies your metric to the training datasets like CelebA and FFHQ? In theory your metric should show no gap between N_R_obs and N_R_ref measured on the training dataset since that's the sampled ground truth.

@@ -1,0 +1,3 @@
+The cited paper 'Learning an adaptive learning rate schedule' does not appear online.
+The above papers are not cited in this paper.
+Missing references - authors may want to consider citing https://arxiv.org/abs/1906.06187 as well in Sec. 2 - it seems very related to this work.

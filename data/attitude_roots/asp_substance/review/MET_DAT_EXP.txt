@@ -1,0 +1,3 @@
+3- Is the key that you used only 679 patches containing 98% of occurrences in the dataset as the first stage? What if we vary this percentage? How sensitive are the results? Such experiments could be useful to understand better why your method appears to work well.
+- Does training the generator and interpolation jointly improve the quality of the generator in general ? It would have been nice to run this method on more complicated dataset like CIFAR10 and see if this method increase the overall FID score.
+Although the proposed method does a good job in synthetic experiments, outperforming existing methods by a large margin, its performance on the numerical variants of Freebase/DBPedia dataset does not show consistent significant improvement.

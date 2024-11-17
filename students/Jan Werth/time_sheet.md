@@ -10,14 +10,18 @@
 
 ## Task Progress
 
-| Start      | End        | Task Name            | Task Description                           | Time Spent (hours) | Status      |
-|------------|------------|----------------------|--------------------------------------------|--------------------|-------------|
-| [11/11/24] | [11/11/24] | [Reading literature] | [Reading the JITSUPEER and DISAPERE paper] | [2]                | [Completed] |
-| [11/11/24] | [11/11/24] | [Coding]             | [Testing the openreview api]               | [0.5]              | [Completed] |
-| [11/11/24] | [11/11/24] | [Learning]           | [Streamlit Documentation and YT tutorial]  | [1]                | [Completed] |
-| [13/11/24] | [13/11/24] | [Meeting]            | [Weekly meeting]                           | [1]                | [Completed] |
-| [13/11/24] | [13/11/24] | [Meeting]            | [Internal developer meeting]               | [0.5]              | [Completed] |
-| [13/11/24] | [13/11/24] | [Coding]             | [Project setup & test dataset creation]    | [6]                | [In Progess] |
+| Start      | End        | Task Name            | Task Description                                           | Time Spent (hours) | Status       |
+|------------|------------|----------------------|------------------------------------------------------------|--------------------|--------------|
+| [11/11/24] | [11/11/24] | [Reading literature] | [Reading the JITSUPEER and DISAPERE paper]                 | [2]                | [Completed]  |
+| [11/11/24] | [11/11/24] | [Coding]             | [Testing the openreview api]                               | [0.5]              | [Completed]  |
+| [11/11/24] | [11/11/24] | [Learning]           | [Streamlit Documentation and YT tutorial]                  | [1]                | [Completed]  |
+| [13/11/24] | [13/11/24] | [Meeting]            | [Weekly meeting]                                           | [1]                | [Completed]  |
+| [13/11/24] | [13/11/24] | [Meeting]            | [Internal developer meeting]                               | [0.5]              | [Completed]  |
+| [13/11/24] | [13/11/24] | [Coding]             | [Project setup & unseen test dataset creation (from ICLR)] | [6]                | [Completed]  |
+| [16/11/24] | [16/11/24] | [Setup]              | [Setting up slurm]                                         | [4]                | [In Progess] |
+| [16/11/24] | [16/11/24] | [Coding]             | [Test set from Jitsupeer with splits]                      | [1]                | [Completed]  |
+
+
 
 ---
 

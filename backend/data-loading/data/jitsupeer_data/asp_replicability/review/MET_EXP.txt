@@ -1,0 +1,2 @@
+- Did the experiments on CIFAR-10 and ImageNet use the cosine learning rate schedule [1]? If or if not, either way, you should specify it in a revised version of this paper, e.g. did you use the cosine schedule in the first 120 steps to train the shared parameters W, did you use it in the retraining from scratch?
+- Although the authors discussed the experiment setting in detail in supplements, I believe open-sourcing the code / software used to conduct the experiments would be greatly help with the reproducibility of the proposed method for researchers or practitioners.

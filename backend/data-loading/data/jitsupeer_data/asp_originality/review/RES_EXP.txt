@@ -1,0 +1,1 @@
+- Gradient starvation, Kaggle experiment: I'm not too convinced about the novelty/usefulness of this result. In the end, even a decision tree stump would stop growing after learning the dark/light feature as a discriminator.

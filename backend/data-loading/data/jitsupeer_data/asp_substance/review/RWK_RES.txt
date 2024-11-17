@@ -1,0 +1,3 @@
+Besides, the results on the sentimental analysis are comparable with the compared baselines.
+The authors stated that "F-pooling remarkably increases accuracy and robustness w.r.t. shifts of moderns CNNs"; however, in Table 1-3, the winning margin of accuracy is actually quite small (<2%), and the consistency (<3.5% compared to the second best baseline except resnet-18 on CIFAR 100 has large improvement ~7-8%).
+The many-to-many results are clearly better than the pairwise results in this regard, but in the context of musical timbre transfer, I don't feel that this model successfully achieves its goal -- the results of Mor et al. (2018), although not perfect either, were better in this regard.

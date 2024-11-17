@@ -1,0 +1,9 @@
+- In Table 2 and 3, how are the degree and block information leveraged into the model?
+It is also unclear how the calculation of relative entropy "D" was performed in figure 3.
+1. Where is L_da in Figure 2? In Figure 2, what’s the unlabelled data from which testing tasks are drawn? Is it from meta-test data training set?
+- for Figure 6, there is not a clear conclusion.
+- in section 4.3 how is the reconstruction built (Figure 3b)?
+I'm not sure I understand the PCA figures. Can you please explain how the first principal component was used to generate them?
+(d) In Figure 2, it is unclear to me how the 1/f^2 law is observed in (a) but not in (c) or (e).
+It is not clear how the noise is introduced in the graphs.
+* \sigma is not given in Figure 3(a)

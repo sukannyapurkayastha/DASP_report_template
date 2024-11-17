@@ -1,0 +1,1 @@
+-- While the overall claim of the paper in the introduction seems to be to speed up frequency estimation using machine learned advice, results are only given for the Zipfian distribution.
