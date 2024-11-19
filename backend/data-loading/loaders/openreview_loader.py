@@ -179,11 +179,11 @@ class OpenReviewLoader(object):
 
         try:
             paper = self.get_paper(id=id)
-            reviews = paper.details["directReplies"].copy()
-            _ = [reviews.pop(idx) for idx, review in enumerate(reviews) if self._review_by_author(review["writers"])]
-            _ = [reviews.pop(idx) for idx, review in enumerate(reviews) if self._is_meta_review(review["writers"])]
-            _ = [reviews.pop(idx) for idx, review in enumerate(reviews) if self._is_paper_decision(review)]
-            prepared_reviews = self.prepare_reviews(reviews)
+            replies = paper.details["directReplies"].copy()
+            _ = [replies.pop(idx) for idx, reply in enumerate(replies) if self._review_by_author(reply["writers"])]
+            _ = [replies.pop(idx) for idx, reply in enumerate(replies) if self._is_meta_review(reply["writers"])]
+            _ = [replies.pop(idx) for idx, reply in enumerate(replies) if self._is_paper_decision(reply)]
+            prepared_reviews = self.prepare_reviews(replies)
             return prepared_reviews
         except Exception as e:
             logger.error("Failed to fetch paper reviews from OpenReview.")

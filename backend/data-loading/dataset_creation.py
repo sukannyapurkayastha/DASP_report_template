@@ -11,7 +11,8 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     client = OpenReviewLoader(username=args.username, password=args.password)
-    test_set = client.create_testset(ids=["zzv4Bf50RW", "KS8mIvetg2"])
+    test_set = client.create_testset(ids=["zzv4Bf50RW", "KS8mIvetg2", "aVh9KRZdRk"])
+    # test_set = client.create_testset(ids=["aVh9KRZdRk"])
 
     test_set = pd.DataFrame(test_set, columns=["sentences"])
     test_set.to_csv("data/test_set.csv", index=False, encoding="utf-8")
