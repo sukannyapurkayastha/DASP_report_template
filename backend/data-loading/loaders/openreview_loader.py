@@ -1,9 +1,33 @@
 import re
 
 import openreview
+import pandas as pd
 from loguru import logger
 from typing import List, Literal
 import spacy
+
+from dataclasses import dataclass
+
+
+@dataclass
+class Review:
+    forum: str
+    id: str
+    venue: str
+    year: str
+    type: str
+    reviewer: str
+    date: str | pd.Timestamp
+    rating: str | int
+    soundness: str | int
+    presentation: str | int
+    contribution: str | int
+    summary: str
+    strengths: str
+    weaknesses: str
+    questions: str
+    flag_for_ethic_review: str
+    confidence: str
 
 
 class OpenReviewLoader(object):
@@ -28,6 +52,22 @@ class OpenReviewLoader(object):
         self.nlp = spacy.load('en_core_web_sm')
 
         logger.info("OpenReview client initialized.")
+
+    @staticmethod
+    def _review_by_author(signatures: list) -> bool:
+        return any("Authors" in signature for signature in signatures)
+    
+    @staticmethod
+    def _is_meta_review(signatures: list) -> bool:
+        return any("Senior_Area_Chairs" in signature or "Area_Chair" in signature for signature in signatures)
+
+    @staticmethod
+    def _is_paper_decision(note: dict) -> bool:
+        return ("title" in note["content"]) & ("decision" in note["content"])
+
+    @staticmethod
+    def _is_paper(note: openreview.Note) -> bool:
+        return ("title" in note.content) & ("authors" in note.content)
 
     def load_all_submissions(self, venue: str, year: int, type: str = "Conference",
                              detail: Literal["replies", "directReplies"] = "directReplies") -> List[openreview.Note]:
@@ -60,16 +100,75 @@ class OpenReviewLoader(object):
         logger.info(f"Fetching paper with id: {id}")
 
         try:
-            papers = self.client.get_notes(id)
-            paper = papers[0]
-            logger.info(f"Fetched paper {paper.content['title']}")
+            papers = self.client.get_all_notes(forum=id, details="directReplies")
+            paper = next((papers.pop(idx) for idx, reply in enumerate(papers) if self._is_paper(reply)), None)
+            logger.info(f"Fetched paper: {paper.content['title']['value']}")
             return paper
         except Exception as e:
             logger.error("Failed to fetch paper from OpenReview.")
             logger.error(e)
             return []
 
-    def get_reviews(self, id: str) -> List[openreview.Note]:
+    def prepare_reviews(self, notes: List[openreview.Note]) -> List[Review]:
+        """
+        Prepares a list of reviews
+        :param notes: The openreview Notes to prepare.
+        :return: A list of prepared reviews
+        """
+        prepared_reviews = []
+        for note in notes:
+            prepared_reviews.append(self.prepare_review(note))
+
+        return prepared_reviews
+
+    def prepare_review(self, note: dict) -> Review:
+        """
+        Prepares a review.
+        :param note: The openreview Note as a dict to prepare.
+        :return: A prepared review.
+        """
+
+        logger.info(f"Preparing review for note: {note['id']}")
+        venue, year, type = note["domain"].split("/")
+        reviewer = next((item.split('/')[-1] for item in note["writers"] if 'Reviewer_' in item), None)
+
+        try:
+            content_dict = {}
+            for key, val in note["content"].items():
+                if isinstance(val, dict) and "value" in val:
+                    if isinstance(val["value"], list):
+                        text_value = " ".join(map(str, val["value"]))
+                    else:
+                        text_value = val["value"]
+                    content_dict[key] = text_value
+                else:
+                    content_dict[key] = val
+        except:
+            exit("Review has no content or is of wrong format.")
+
+        review = Review(
+            forum=note["forum"],
+            id=note["id"],
+            venue=venue,
+            year=year,
+            type=type,
+            reviewer=reviewer.replace("_", " "),
+            date=note["cdate"],
+            rating=content_dict["rating"],
+            soundness=content_dict["soundness"],
+            presentation=content_dict["presentation"],
+            contribution=content_dict["contribution"],
+            summary=content_dict["summary"],
+            strengths=content_dict["strengths"],
+            weaknesses=content_dict["weaknesses"],
+            questions=content_dict["questions"],
+            flag_for_ethic_review=content_dict["flag_for_ethics_review"],
+            confidence=content_dict["confidence"]
+        )
+
+        return review
+
+    def get_reviews(self, id: str) -> List[Review]:
         """
         Load all reviews from a specific paper.
         :param id: The id of the paper.
@@ -79,9 +178,13 @@ class OpenReviewLoader(object):
         logger.info(f"Fetching reviews for paper with id: {id}")
 
         try:
-            reviews = self.client.get_all_notes(forum=id, details="directReplies")
-            logger.info(f"Fetched {len(reviews)} for paper with id: {id}")
-            return reviews
+            paper = self.get_paper(id=id)
+            reviews = paper.details["directReplies"].copy()
+            _ = [reviews.pop(idx) for idx, review in enumerate(reviews) if self._review_by_author(review["writers"])]
+            _ = [reviews.pop(idx) for idx, review in enumerate(reviews) if self._is_meta_review(review["writers"])]
+            _ = [reviews.pop(idx) for idx, review in enumerate(reviews) if self._is_paper_decision(review)]
+            prepared_reviews = self.prepare_reviews(reviews)
+            return prepared_reviews
         except Exception as e:
             logger.error("Failed to fetch paper reviews from OpenReview.")
             logger.error(e)
@@ -99,7 +202,6 @@ class OpenReviewLoader(object):
         for id in ids:
             single_paper_reviews = self.get_reviews(id)
             reviews.extend(single_paper_reviews)
-            logger.info(f"Fetched reviews for paper with id: {id}")
 
         return reviews
 

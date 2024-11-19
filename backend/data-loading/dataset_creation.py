@@ -5,8 +5,8 @@ from loaders.openreview_loader import OpenReviewLoader
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument("-u", help="Openreview username")
-    parser.add_argument("-pw", help="Openreview password")
+    parser.add_argument("username", help="Openreview username")
+    parser.add_argument("password", help="Openreview password")
 
     args = parser.parse_args()
 
