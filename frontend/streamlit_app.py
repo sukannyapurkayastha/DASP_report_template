@@ -1,5 +1,12 @@
 import time
 import streamlit as st
+import pandas as pd
+import os
+
+attitude_roots = pd.read_csv(os.path.join("frontend", "dummy_data", "dummy_attitude_roots.csv"), sep=";", encoding="utf-8")
+request_information = pd.read_csv(os.path.join("frontend", "dummy_data", "dummy_request_information.csv"), sep=";", encoding="utf-8")
+summary = pd.read_csv(os.path.join("frontend", "dummy_data", "dummy_summary.csv"), sep=";", encoding="utf-8")
+
 
 # Set up the page layout
 st.set_page_config(page_title="Review Overview Generation for Papers", layout="wide")
