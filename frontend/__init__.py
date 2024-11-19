@@ -5,9 +5,9 @@ import pandas as pd
 import os
 
 
-attitude_roots = pd.read_csv(os.path.join("frontend", "dummy_data", "dummy_attitude_roots.csv"), sep=";", encoding="utf-8")
-request_information = pd.read_csv(os.path.join("frontend", "dummy_data", "dummy_request_information.csv"), sep=";", encoding="utf-8")
-summary = pd.read_csv(os.path.join("frontend", "dummy_data", "dummy_summary.csv"), sep=";", encoding="utf-8")
+attitude_roots = pd.read_csv(os.path.join("dummy_data", "dummy_attitude_roots.csv"), sep=";", encoding="utf-8")
+request_information = pd.read_csv(os.path.join("dummy_data", "dummy_request_information.csv"), sep=";", encoding="utf-8")
+summary = pd.read_csv(os.path.join("dummy_data", "dummy_summary.csv"), sep=";", encoding="utf-8")
 
 
 # Page configuration
@@ -77,7 +77,7 @@ with stylable_container(
                     st.markdown(f"<h4 style='font-size:18px; margin: 0px; padding: 0px;'>{row['Attitude root + Theme']}</h4>", unsafe_allow_html=True)
                 with col22:
                     st.markdown(f"<h4 style='font-size:18px; margin: 0px; padding: 0px;'>expand</h4>", unsafe_allow_html=True)
-                st.progress(row[' Frequency'])
+                st.progress(eval(row['Frequency']))
 
                 # Description
                 st.markdown(f"<div style='font-size:12px; margin-top: 0px; padding: 0px; margin-bottom: 5px;'>{row['Description']}</div>", unsafe_allow_html=True)
