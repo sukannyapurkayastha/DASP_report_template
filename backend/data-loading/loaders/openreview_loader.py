@@ -11,7 +11,7 @@ from spacy.tokens.doc import Doc
 from dataclasses import dataclass
 
 
-# SpaCy pipeline to protect lists
+# SpaCy pipeline to protect lists and citations
 # Component 1: Prevent splitting at enumerations like "1.", "2.", "1.1."
 @Language.component("prevent_splitting_on_list_numbers")
 def prevent_splitting_on_list_numbers(doc: Doc) -> Doc:
