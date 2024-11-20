@@ -20,36 +20,41 @@ class JitsupeerLoader(object):
         if not self.path.exists():
             raise FileNotFoundError(f"The specified path does not exist: {self.path}")
 
-    def yield_sentences_from_file(self, file_path: str, attitude_root: str) -> dict:
+    def yield_sentences_from_file(self, file_path: str, aspect: str, theme: str) -> dict:
         """
         Loads sentences from file
         :param file_path: path to file
-        :param attitude_root: label
+        :param aspect: label of the attitude_root
         :return: Dictionary of sentences with corresponding label
         """
         with open(file_path, "r", encoding="utf-8") as f:
             content = f.read()
             for sentence in content.strip().split("\n"):
                 if sentence.strip():
-                    yield {"sentence": sentence, "label": attitude_root}
+                    yield {"sentence": sentence, "aspect": aspect, "theme": theme}
 
-    def yield_data_from_folder(self, review_path: str, attitude_root: str) -> dict:
+    def yield_data_from_folder(self, review_path: str, aspect: str) -> dict:
         """
         Loads data from Jitsupeer Dataset attitude root folder
         :param review_path: path to review folder
-        :param attitude_root: label
+        :param aspect: label of the the attitude root
         :return: Dictionary of sentences with corresponding label
         """
         for filename in os.listdir(review_path):
             file_path = os.path.join(review_path, filename)
+            theme = filename.split(".")[0]
             if os.path.isfile(file_path):
-                yield from self.yield_sentences_from_file(file_path, attitude_root)
+                yield from self.yield_sentences_from_file(file_path, aspect, theme)
 
     def load_data(self) -> pd.DataFrame:
         """
         Reads data from Jitsupeer Dataset
         :return: Pandas dataframe of sentences with corresponding label
         """
+
+        all_cluster_desc = pd.read_csv(self.path.joinpath("all_cluster_descs.txt"), sep="\t")
+        all_cluster_desc = all_cluster_desc.rename(columns={"aspects": "aspect", "sections": "theme", "descs": "description"})
+
         data = []
         for attitude_root in os.listdir(self.path):
             attitude_path = os.path.join(self.path, attitude_root)
@@ -58,6 +63,10 @@ class JitsupeerLoader(object):
                 if os.path.exists(review_path):
                     for item in self.yield_data_from_folder(review_path, attitude_root):
                         data.append(item)
+
+        df = pd.DataFrame(data)
+        df = df.merge(all_cluster_desc, on=["aspect", "theme"], how="left")
+
         return pd.DataFrame(data)
 
     def load_data_with_splits(self, train_size: float = 0.7, val_size: float = 0.1, test_size: float = 0.2):
@@ -67,7 +76,7 @@ class JitsupeerLoader(object):
         data = self.load_data()
 
         X = data["sentence"]
-        y = data["label"]
+        y = data["label"]  # do we have to predict aspect and theme now? I don't get it
 
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size, random_state=1)
 
