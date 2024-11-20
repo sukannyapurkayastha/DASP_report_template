@@ -21,7 +21,7 @@
 | [16/11/24] | [16/11/24] | [Setup]              | [Setting up slurm]                                         | [4]                | [In Progess]  |
 | [16/11/24] | [16/11/24] | [Coding]             | [Test set from Jitsupeer with splits]                      | [1]                | [Completed]   |
 | [19/11/24] | [19/11/24] | [Meeting]            | [Weekly meeting]                                           | [1]                | [Completed]   |
-| [19/11/24] | [19/11/24] | [Coding]             | [Refactoring of OpenReviewLoader]                          | [3]                | [In Progress] |
+| [19/11/24] | [20/11/24] | [Coding]             | [Refactoring of OpenReviewLoader]                          | [9]                | [In Progress] |
 
 
 
