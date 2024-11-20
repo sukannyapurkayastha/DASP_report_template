@@ -1,0 +1,299 @@
+{
+  "metadata": {
+    "forum_id": "rkxtl3C5YX",
+    "review_id": "Hylj7vZsh7",
+    "rebuttal_id": "HJxewogcRX",
+    "title": "Understanding & Generalizing AlphaGo Zero",
+    "reviewer": "AnonReviewer3",
+    "rating": 7,
+    "conference": "ICLR2019",
+    "permalink": "https://openreview.net/forum?id=rkxtl3C5YX&noteId=HJxewogcRX",
+    "annotator": "anno2"
+  },
+  "review_sentences": [
+    {
+      "review_id": "Hylj7vZsh7",
+      "sentence_index": 0,
+      "text": "This paper analyzes the AlphaGo Zero algorithm by showing that the optimal policy corresponds to a Nash equilibrium.",
+      "suffix": "",
+      "review_action": "arg_structuring",
+      "fine_review_action": "arg-structuring_summary",
+      "aspect": "none",
+      "polarity": "none"
+    },
+    {
+      "review_id": "Hylj7vZsh7",
+      "sentence_index": 1,
+      "text": "The authors then show that the equilibrium corresponds to a KL-minimization.",
+      "suffix": "",
+      "review_action": "arg_structuring",
+      "fine_review_action": "arg-structuring_summary",
+      "aspect": "none",
+      "polarity": "none"
+    },
+    {
+      "review_id": "Hylj7vZsh7",
+      "sentence_index": 2,
+      "text": "Finally, the show on a classical scheduling task.",
+      "suffix": "\n\n",
+      "review_action": "arg_structuring",
+      "fine_review_action": "arg-structuring_summary",
+      "aspect": "none",
+      "polarity": "none"
+    },
+    {
+      "review_id": "Hylj7vZsh7",
+      "sentence_index": 3,
+      "text": "On the positive side, the paper is well written and structured.",
+      "suffix": "",
+      "review_action": "arg_evaluative",
+      "fine_review_action": "none",
+      "aspect": "asp_clarity",
+      "polarity": "pol_positive"
+    },
+    {
+      "review_id": "Hylj7vZsh7",
+      "sentence_index": 4,
+      "text": "The results presented are very interesting, specially showing that stochastic approximation of a KL-divergence minimization.",
+      "suffix": "",
+      "review_action": "arg_evaluative",
+      "fine_review_action": "none",
+      "aspect": "asp_substance",
+      "polarity": "pol_positive"
+    },
+    {
+      "review_id": "Hylj7vZsh7",
+      "sentence_index": 5,
+      "text": "The case-study is also interesting, although does not improve current state-of-the-art.",
+      "suffix": "",
+      "review_action": "arg_evaluative",
+      "fine_review_action": "none",
+      "aspect": "asp_soundness-correctness",
+      "polarity": "pol_positive"
+    },
+    {
+      "review_id": "Hylj7vZsh7",
+      "sentence_index": 6,
+      "text": "On the negative side, I think the relevance and novelty of the results should be explained better.",
+      "suffix": "\n\n",
+      "review_action": "arg_request",
+      "fine_review_action": "arg-request_edit",
+      "aspect": "asp_clarity",
+      "polarity": "none"
+    },
+    {
+      "review_id": "Hylj7vZsh7",
+      "sentence_index": 7,
+      "text": "For example, it is not clear the strong emphasis on the robust MDP formalization and the fact that MCTS finds a Nash equilibrium.",
+      "suffix": "",
+      "review_action": "arg_evaluative",
+      "fine_review_action": "none",
+      "aspect": "asp_clarity",
+      "polarity": "pol_negative"
+    },
+    {
+      "review_id": "Hylj7vZsh7",
+      "sentence_index": 8,
+      "text": "The MDP formalization is rather straightforward.",
+      "suffix": "",
+      "review_action": "arg_fact",
+      "fine_review_action": "none",
+      "aspect": "none",
+      "polarity": "none"
+    },
+    {
+      "review_id": "Hylj7vZsh7",
+      "sentence_index": 9,
+      "text": "Also, MCTS has been used extensively to find Nash equilibria in both perfect and imperfect games, e.g., \"Online monte carlo counterfactual regret minimization for search in imperfect information games\".",
+      "suffix": "",
+      "review_action": "arg_fact",
+      "fine_review_action": "none",
+      "aspect": "none",
+      "polarity": "none"
+    },
+    {
+      "review_id": "Hylj7vZsh7",
+      "sentence_index": 10,
+      "text": "Maybe the authors can elaborate more on the significance/relevance of this contribution.",
+      "suffix": "\n\n",
+      "review_action": "arg_request",
+      "fine_review_action": "arg-request_explanation",
+      "aspect": "asp_soundness-correctness",
+      "polarity": "none"
+    },
+    {
+      "review_id": "Hylj7vZsh7",
+      "sentence_index": 11,
+      "text": "Besides, the power of AlphaGo Zero resides in the combination of the MCTS together with the compact representation learning of the value functions.",
+      "suffix": "",
+      "review_action": "arg_fact",
+      "fine_review_action": "none",
+      "aspect": "none",
+      "polarity": "none"
+    },
+    {
+      "review_id": "Hylj7vZsh7",
+      "sentence_index": 12,
+      "text": "The presented analysis seems to neglect the error term corresponding to the value function.",
+      "suffix": "\n\n",
+      "review_action": "arg_evaluative",
+      "fine_review_action": "none",
+      "aspect": "asp_soundness-correctness",
+      "polarity": "pol_negative"
+    },
+    {
+      "review_id": "Hylj7vZsh7",
+      "sentence_index": 13,
+      "text": "There are other minor details:",
+      "suffix": "\n\n",
+      "review_action": "arg_structuring",
+      "fine_review_action": "arg-structuring_heading",
+      "aspect": "none",
+      "polarity": "none"
+    },
+    {
+      "review_id": "Hylj7vZsh7",
+      "sentence_index": 14,
+      "text": "- Eq(2)",
+      "suffix": "",
+      "review_action": "arg_request",
+      "fine_review_action": "arg-request_typo",
+      "aspect": "asp_soundness-correctness",
+      "polarity": "none"
+    },
+    {
+      "review_id": "Hylj7vZsh7",
+      "sentence_index": 15,
+      "text": ".",
+      "suffix": "",
+      "review_action": "none",
+      "fine_review_action": "none",
+      "aspect": "none",
+      "polarity": "none"
+    },
+    {
+      "review_id": "Hylj7vZsh7",
+      "sentence_index": 16,
+      "text": "notation: \\forall s is missing",
+      "suffix": "\n",
+      "review_action": "none",
+      "fine_review_action": "none",
+      "aspect": "none",
+      "polarity": "none"
+    },
+    {
+      "review_id": "Hylj7vZsh7",
+      "sentence_index": 17,
+      "text": "- Theorem 2 should be Theorem 1",
+      "suffix": "\n",
+      "review_action": "arg_request",
+      "fine_review_action": "arg-request_edit",
+      "aspect": "asp_soundness-correctness",
+      "polarity": "none"
+    },
+    {
+      "review_id": "Hylj7vZsh7",
+      "sentence_index": 18,
+      "text": "- \"there are constraints per which state can transition\"",
+      "suffix": "\n",
+      "review_action": "arg_request",
+      "fine_review_action": "arg-request_typo",
+      "aspect": "asp_clarity",
+      "polarity": "none"
+    },
+    {
+      "review_id": "Hylj7vZsh7",
+      "sentence_index": 19,
+      "text": "- \"P1 is agent\" -> \"P1 is the agent\"",
+      "suffix": "\n",
+      "review_action": "arg_request",
+      "fine_review_action": "arg-request_typo",
+      "aspect": "asp_clarity",
+      "polarity": "none"
+    },
+    {
+      "review_id": "Hylj7vZsh7",
+      "sentence_index": 20,
+      "text": "- \"Pinker\" -> \"Pinsker\"",
+      "suffix": "\n",
+      "review_action": "arg_request",
+      "fine_review_action": "arg-request_typo",
+      "aspect": "asp_clarity",
+      "polarity": "none"
+    },
+    {
+      "review_id": "Hylj7vZsh7",
+      "sentence_index": 21,
+      "text": "- C_R in Eq(5) is not introduced.",
+      "suffix": "",
+      "review_action": "arg_request",
+      "fine_review_action": "arg-request_edit",
+      "aspect": "asp_clarity",
+      "polarity": "none"
+    }
+  ],
+  "rebuttal_sentences": [
+    {
+      "review_id": "Hylj7vZsh7",
+      "rebuttal_id": "HJxewogcRX",
+      "sentence_index": 0,
+      "text": "Thank you for your encouraging comments.",
+      "suffix": "",
+      "rebuttal_stance": "nonarg",
+      "rebuttal_action": "rebuttal_social",
+      "alignment": [
+        "context_global",
+        null
+      ],
+      "details": {}
+    },
+    {
+      "review_id": "Hylj7vZsh7",
+      "rebuttal_id": "HJxewogcRX",
+      "sentence_index": 1,
+      "text": "We agree with your suggestions and we will revise our paper accordingly.",
+      "suffix": "",
+      "rebuttal_stance": "concur",
+      "rebuttal_action": "rebuttal_by-cr",
+      "alignment": [
+        "context_sentences",
+        [
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21
+        ]
+      ],
+      "details": {
+        "manuscript_change": true
+      }
+    },
+    {
+      "review_id": "Hylj7vZsh7",
+      "rebuttal_id": "HJxewogcRX",
+      "sentence_index": 2,
+      "text": "We will also comment on the gap between our analysis and AGZ in the introduction to make it clearer, and discuss potential future work (e.g., considering approximation errors due to MCTS and the value function) in the conclusion.",
+      "suffix": "",
+      "rebuttal_stance": "concur",
+      "rebuttal_action": "rebuttal_by-cr",
+      "alignment": [
+        "context_global",
+        null
+      ],
+      "details": {
+        "manuscript_change": true
+      }
+    }
+  ]
+}

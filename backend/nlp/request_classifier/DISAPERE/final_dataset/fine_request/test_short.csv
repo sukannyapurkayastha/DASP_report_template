@@ -1,0 +1,29 @@
+text,index,review_action,fine_review_action,target
+"1. Why the color distribution of generated images is evaluated on a sampled subset of pixels, not full images?",,arg_request,arg-request_explanation,0
+"2. On Figure 6, which classes are outlying on transformation limitation / data variability plots (bottom-right corner) and how it may be explained?",,arg_request,arg-request_explanation,0
+"3. While StyleGAN can not preserve geometry of objects for shift in location-based attributes, when walks are learned in the W space, have you experimented on manipulating those attributes with z space? What are the results?",,arg_request,arg-request_explanation,0
+1. Pictures in Fig. 2 are mixed up between G(z) and G(z + \alpha w),,arg_request,arg-request_edit,1
+"2. In Fig. 2 edit(G(z, \alpha)) -> edit(G(z), \alpha))",,arg_request,arg-request_typo,2
+3. In eq. (2) f^n(z) -> G(f^n(z)),,arg_request,arg-request_typo,2
+4. In eq. (6) +\alpha^* -> -\alpha^*,,arg_request,arg-request_typo,2
+"Overall, I quite liked the paper and think it is well-written, but I believe the authors need to highlight at least one practical advance introduced by the CW distance (in which case I will raise my score).",,arg_request,arg-request_explanation,0
+The authors could run each WAE training process K times (with random initialization) to see if the closed-form distance enables more stable results.,,arg_request,arg-request_experiment,3
+"Since the novelty of this work lies in the introduction of the CW distance, I would like to see an independent evaluation of this distance as a  general statistical distance measure (independently of its use in CWAE).",,arg_request,arg-request_experiment,3
+Can you use this distance as a multivariate-Gaussian goodness of fit measure for high-dimensional data drawn from both Gaussian and non-Gaussian distributions and show that it actually outperforms other standard statistical distances (e.g. in two-sample testing power)?,,arg_request,arg-request_experiment,3
+"Besides having closed form in the case of a Gaussian prior (which other statistical distances could potentially also achieve), it would be nice to see some discussion of why the authors believe their CW-distance is conceptually superior to such alternatives.",,arg_request,arg-request_explanation,0
+- Silverman's rule of thumb is only asymptotically optimal when the underlying data-generating distribution itself is Gaussian. Perhaps you can argue here that due to CLT: the projected data (for high-dimensional latent spaces) should look approximately Gaussian?,,arg_request,arg-request_explanation,0
+How this proxy incentives the agent to explore poorly-understood regions?,,arg_request,arg-request_explanation,0
+Is it a baseline with the best hyperprameters in hindsight?,,arg_request,arg-request_explanation,0
+The explanation in Fig 2 on why this is the case seem to me not so clear. Are you trying to show that the Wave-U-Net does not work since there is no 1/f^2 law for clean audio signals?,,arg_request,arg-request_explanation,0
+"There is a little typo in Formula 1 for the STFT spectrogram, I would use the modulus |.| rather than || . ||.",,arg_request,arg-request_edit,1
+Is Harmonic Convolution applicable to complex STFT coefficients as well?,,arg_request,arg-request_clarification,4
+If so it would be better to define the operator in a more general notation.,,arg_request,arg-request_edit,1
+"In Section 4.3 and 4.4, is the x_0 (defined in Section 2.1) complex-valued STFT coefficients or something else?",,arg_request,arg-request_explanation,0
+"What is the L1 loss defined in Section 4.4? To obtain the final separated audio waveform, an inverse STFT is applied on what?",,arg_request,arg-request_explanation,0
+These details can be written in supplementary material if more space is needed.,,arg_request,arg-request_explanation,0
+"I would ideally like to see results on more optimizers, at the very least for Adam, even if for fixed hyper-parameters.",,arg_request,arg-request_experiment,3
+"As far as I understand, this involves only minor changes in the code since reasonable hyperparameters required for the convergence of Adam have been extensively studied.",,arg_request,arg-request_experiment,3
+"- Given the current form of the paper, the abstract and introduction should be modified to reflect the fact that only limited architectures and optimizers were experimented with, and the claims of the paper are not experimentally validated in general.",,arg_request,arg-request_edit,1
+- It would be nice if more network architectures were analysed (such as VGG and DenseNets).,,arg_request,arg-request_experiment,3
+- It would be nice if different stopping criteria were analysed.,,arg_request,arg-request_experiment,3
+- It would greatly benefit the reader if eq. 5 were expanded.,,arg_request,arg-request_explanation,0

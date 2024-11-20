@@ -18,13 +18,13 @@
 - **Challenges**: 
 - **Next Steps**: Distribution of work 
 
-### Week [n-1]
+### Week [2]
 
-- **Update 1**: 
-- **Update 2**: 
+- **Update 1**: DISAPERE dataset implemented 
+- **Update 2**: model from DISAPERE working (low F1 score)
 - **Update 3**: 
 - **Challenges**: 
-- **Next Steps**: 
+- **Next Steps**: building an own model
 
 ### Week [n-2]
 

@@ -142,3 +142,10 @@ ukp_report_template/sketch*
 .idea
 misc.xml
 *.code-workspace
+
+
+# Ignoriere alle model.safetensors Dateien
+*.safetensors
+
+# Ignoriere alle optimizer.pt Dateien
+*.pt
