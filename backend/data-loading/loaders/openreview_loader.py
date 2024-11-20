@@ -3,11 +3,48 @@ import re
 import openreview
 import pandas as pd
 from loguru import logger
-from typing import List, Literal
+from typing import Literal
 import spacy
+from spacy.language import Language
+from spacy.tokens.doc import Doc
 
 from dataclasses import dataclass
 
+
+# SpaCy pipeline to protect lists
+# Component 1: Prevent splitting at enumerations like "1.", "2.", "1.1."
+@Language.component("prevent_splitting_on_list_numbers")
+def prevent_splitting_on_list_numbers(doc: Doc) -> Doc:
+    for i, token in enumerate(doc[:-2]):
+        # Check if the token is a number followed by a period
+        if token.like_num and doc[i + 1].text == ".":
+            if i + 2 < len(doc):
+                doc[i + 2].is_sent_start = False
+    return doc
+
+# Component 2: Prevent splitting after citations like "[2]."
+@Language.component("prevent_splitting_on_citations")
+def prevent_splitting_on_citations(doc: Doc) -> Doc:
+    def is_citation(tokens, end_idx):
+        idx = end_idx
+        if tokens[idx].text != "]":
+            return False
+        idx -= 1
+        # Collect tokens that are numbers, commas, or hyphens (for ranges)
+        while idx >= 0 and (tokens[idx].like_num or tokens[idx].text in [",", "-", "–"]):
+            idx -= 1
+        if idx >= 0 and tokens[idx].text == "[":
+            return True
+        else:
+            return False
+
+    for i, token in enumerate(doc[:-2]):
+        # Check for citations ending with "]."
+        if token.text == "]" and doc[i + 1].text == ".":
+            if is_citation(doc, i):
+                if i + 2 < len(doc):
+                    doc[i + 2].is_sent_start = False
+    return doc
 
 @dataclass
 class Review:
@@ -28,6 +65,8 @@ class Review:
     questions: str
     flag_for_ethic_review: str
     confidence: str
+    content: str | None = None  # All the text in a single string
+    sentences: list[str] | None = None  # Output of spacy sentencizer
 
 
 class OpenReviewLoader(object):
@@ -49,14 +88,25 @@ class OpenReviewLoader(object):
             username=username,
             password=password,
         )
-        self.nlp = spacy.load('en_core_web_sm')
+
+        self.nlp = spacy.load("en_core_web_sm", exclude=["parser"])
+        self.nlp.add_pipe("sentencizer")
+        self.nlp.add_pipe("prevent_splitting_on_list_numbers", before="sentencizer")
+        self.nlp.add_pipe("prevent_splitting_on_citations", before="sentencizer")
+
+
+        self.abbreviations = [
+            "e.g.", "i.e.", "Dr.", "Mr.", "Mrs.", "Prof.", "etc.", "Fig.", "Tab.", "al.", "et al.", "vol.", "no.",
+            "pp.", "Ch.", "Eq.", "Sec.", "Ref.", "Inc.", "Corp.", "Ltd.", "Co.", "Vs.", "approx.", "esp.", "incl.",
+            "viz.", "resp.", "cf.", "avg.", "max.", "min.", "std.", "dev.", "var.", "mean.", "median.", "p-value",
+            "s.d.", "a.k.a.", "b.c.", "a.d.", "m.a.", "n.d.", "ca."]
 
         logger.info("OpenReview client initialized.")
 
     @staticmethod
     def _review_by_author(signatures: list) -> bool:
         return any("Authors" in signature for signature in signatures)
-    
+
     @staticmethod
     def _is_meta_review(signatures: list) -> bool:
         return any("Senior_Area_Chairs" in signature or "Area_Chair" in signature for signature in signatures)
@@ -69,8 +119,16 @@ class OpenReviewLoader(object):
     def _is_paper(note: openreview.Note) -> bool:
         return ("title" in note.content) & ("authors" in note.content)
 
+    @staticmethod
+    def _protect_abbrevation(abbrevations: list[str], text: str) -> str:
+        for abbr in abbrevations:
+            protected = abbr.replace(".", "<DOT>")
+            text = text.replace(abbr, protected)
+
+        return text
+
     def load_all_submissions(self, venue: str, year: int, type: str = "Conference",
-                             detail: Literal["replies", "directReplies"] = "directReplies") -> List[openreview.Note]:
+                             detail: Literal["replies", "directReplies"] = "directReplies") -> list[openreview.Note]:
         """
         Load all submissions from a specific venue.
         :param venue: The venue name (e.g. "ICLR.cc")
@@ -107,9 +165,9 @@ class OpenReviewLoader(object):
         except Exception as e:
             logger.error("Failed to fetch paper from OpenReview.")
             logger.error(e)
-            return []
+            return None
 
-    def prepare_reviews(self, notes: List[openreview.Note]) -> List[Review]:
+    def prepare_reviews(self, notes: list[dict]) -> list[Review]:
         """
         Prepares a list of reviews
         :param notes: The openreview Notes to prepare.
@@ -130,7 +188,7 @@ class OpenReviewLoader(object):
 
         logger.info(f"Preparing review for note: {note['id']}")
         venue, year, type = note["domain"].split("/")
-        reviewer = next((item.split('/')[-1] for item in note["writers"] if 'Reviewer_' in item), None)
+        reviewer = next((item.split("/")[-1] for item in note["writers"] if "Reviewer_" in item), None)
 
         try:
             content_dict = {}
@@ -168,7 +226,7 @@ class OpenReviewLoader(object):
 
         return review
 
-    def get_reviews(self, id: str) -> List[Review]:
+    def get_reviews(self, id: str) -> list[Review]:
         """
         Load all reviews from a specific paper.
         :param id: The id of the paper.
@@ -190,7 +248,7 @@ class OpenReviewLoader(object):
             logger.error(e)
             return []
 
-    def get_reviews_from_multiple_papers(self, ids: List[str]) -> List:
+    def get_reviews_from_multiple_papers(self, ids: list[str]) -> list:
         """
         Load all reviews from multiple papers.
         :param ids: The ids of the papers.
@@ -205,9 +263,9 @@ class OpenReviewLoader(object):
 
         return reviews
 
-    def _process_reviews(self, reviews: List[openreview.Note],
-                         keys_to_extract: List[str] = ["summary", "strengths", "weaknesses", "questions", "rating",
-                                                       "confidence"]) -> List[str]:
+    def _preprocess_text(self, reviews: list[Review],
+                         keys_to_extract: list[str] = ["summary", "strengths", "weaknesses", "questions"]) -> list[
+        Review]:
         """
         Process the reviews provided as a list of strings.
         :param reviews: List of openreview notes.
@@ -215,68 +273,48 @@ class OpenReviewLoader(object):
         :return: List of processed reviews.
         """
 
-        review_contents = []
+        # abbreviations = ["e.g.", "i.e.", "Dr.", "Mr.", "Mrs.", "etc."]
 
         for review in reviews:
-            replies = review.details["directReplies"]
-            for reply in replies:
-                # Only get replies/comments/reviews from reviewers
-                if not "Reviewer" in reply["writers"][1]:
-                    continue
-                content = reply["content"]
+            content_list = []
+            for key in keys_to_extract:
+                text = getattr(review, key)
+                text = text.strip()  # Remove leading and trailing whitespaces
+                text = " ".join(text.split())  # Whitespaces in the string
+                text = text.encode("utf-8", "ignore").decode("utf-8")  # Handle special characters
+                text = re.sub(r"http\S+", "", text)  # Remove URLs
+                text = re.sub(r"\S+@\S+", "", text)  # Remove email addresses
+                text = text.replace(";", ".")  # Replace non-standard sentence delimiters
+                text = text.replace("*", "")  # Remove asterisk (are used for bullet list tokens)
+                text = self._protect_abbrevation(self.abbreviations, text)
 
-                # Undo nested dictionary structure
-                new_content_dict = {}
-                for key, val in content.items():
-                    if isinstance(val, dict) and "value" in val:
-                        if isinstance(val["value"], list):
-                            text_value = " ".join(map(str, val["value"]))
-                        else:
-                            text_value = val["value"]
-                        new_content_dict[key] = text_value
-                    else:
-                        new_content_dict[key] = val
+                text = text.strip()
+                content_list.append(text)
+            review.content = " ".join(content_list)
 
-                review_contents.append(
-                    ' '.join([new_content_dict[key] for key in keys_to_extract if key in new_content_dict]))
+        return reviews
 
-        return review_contents
-
-    def _segment_content(self, content: List[str]) -> List[str]:
+    def _segment_content(self, reviews: list[Review]) -> (list[Review], list[str]):
         """
         Segment the content of the reviews provided into single sentences.
-        :param content: The review content
-        :return: List of sentences.
+        :param reviews: The preprocessed reviews
+        :return: 2 objects, List of all reviews with the variable .sentences set to the output of the spacy sentencizer and second object is a list of sentences.
         """
 
-        combined_text = "".join(content)
+        sents = []
 
-        # I don't understand anything but regex is love <3
-        list_marker_pattern = re.compile(r'''
-            (^|\n)                  # Start of line or newline
-            \s*                     # Any whitespace characters
-            (
-                (\d+(\.\d+)*[\.\)\-]?)   # Matches numbers like '1', '2.1', '3.2.1', followed by '.', ')', or '-'
-                |                     # OR
-                [\-\*\•\●\•]          # Matches bullet points like '-', '*', '•', '●'
-            )
-            \s*                      # Any whitespace
-        ''', re.VERBOSE)
+        for review in reviews:
+            text = review.content
+            doc = self.nlp(text)
 
-        # Remove the list markers from the text
-        clean_text = re.sub(list_marker_pattern, '', combined_text)
+            sentences = [sent.text.replace("<DOT>", ".") for sent in doc.sents]
 
-        doc = self.nlp(clean_text)
-        sentences = [sent.text.strip() for sent in doc.sents]
+            review.sentences = sentences
+            sents.extend(sentences)
 
-        standalone_marker_pattern = re.compile(r'^(\d+(\.\d+)*[\.\)\-]?|[\-\*\•\●\•])$')
+        return reviews, sents
 
-        # Filter out sentences that are just list markers
-        final_sentences = [s for s in sentences if not standalone_marker_pattern.match(s)]
-
-        return final_sentences
-
-    def create_testset(self, ids: List[str]) -> List[str]:
+    def create_testset(self, ids: list[str]) -> list[str]:
         """
         Create a test set from multiple paper reviews.
         :param ids: The ids of the papers.
@@ -284,7 +322,7 @@ class OpenReviewLoader(object):
         """
 
         reviews = self.get_reviews_from_multiple_papers(ids)
-        processed_reviews = self._process_reviews(reviews)
-        test_set = self._segment_content(processed_reviews)
+        processed_reviews = self._preprocess_text(reviews)  # already preprocessed
+        final_reviews, sentences = self._segment_content(processed_reviews)
 
-        return test_set
+        return sentences
