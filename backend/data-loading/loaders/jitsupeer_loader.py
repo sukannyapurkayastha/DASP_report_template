@@ -3,19 +3,20 @@ from pathlib import Path
 
 import pandas as pd
 from sklearn.model_selection import train_test_split
+from .utils import get_project_root
 
 
 class JitsupeerLoader(object):
     def __init__(
             self,
-            path: str = "data/jitsupeer_data/",
+            path: str = "data/attitude_roots",
     ):
         """
         Loads data from Jitsupeer Dataset
         :param path:
         """
-        script_dir = os.path.dirname(os.path.abspath(__file__))
-        self.path = Path(script_dir).joinpath("..", path).resolve()
+        project_root = get_project_root()
+        self.path = Path(project_root).joinpath(path)
 
         if not self.path.exists():
             raise FileNotFoundError(f"The specified path does not exist: {self.path}")
@@ -53,7 +54,8 @@ class JitsupeerLoader(object):
         """
 
         all_cluster_desc = pd.read_csv(self.path.joinpath("all_cluster_descs.txt"), sep="\t")
-        all_cluster_desc = all_cluster_desc.rename(columns={"aspects": "aspect", "sections": "theme", "descs": "description"})
+        all_cluster_desc = all_cluster_desc.rename(
+            columns={"aspects": "aspect", "sections": "theme", "descs": "description"})
 
         data = []
         for attitude_root in os.listdir(self.path):
@@ -67,7 +69,7 @@ class JitsupeerLoader(object):
         df = pd.DataFrame(data)
         df = df.merge(all_cluster_desc, on=["aspect", "theme"], how="left")
 
-        return pd.DataFrame(data)
+        return df
 
     def load_data_with_splits(self, train_size: float = 0.7, val_size: float = 0.1, test_size: float = 0.2):
         if train_size + val_size + test_size != 1:
@@ -76,7 +78,7 @@ class JitsupeerLoader(object):
         data = self.load_data()
 
         X = data["sentence"]
-        y = data["label"]  # do we have to predict aspect and theme now? I don't get it
+        y = data["aspect"]  # do we have to predict aspect and theme now? I don't get it
 
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size, random_state=1)
 

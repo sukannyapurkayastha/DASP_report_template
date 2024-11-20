@@ -1,0 +1,144 @@
+aspects	sections	descs
+asp_substance	DAT_EXP	Lack of realistic datasets used in experiments (small siz, synthetic)
+asp_replicability	MET	Missing details on methodology (eg., use of notation, use on tasks, etc)
+asp_substance	MET_EXP	More variations of experiments needs to be added
+asp_clarity	RES	Improper explanation of results (as in advantages, why are results better, etc)
+asp_soundness-correctness	DAT	claims on the datasets is questionable
+asp_substance	MET_DAT	Lack of discussion of performance of method on different datasets
+arg_other	OAL	Reasons for rejection (not fit for conference, contains several weaknesses, etc.)
+asp_clarity	RWK	Improper writing of realted work section (as in 1 paragraph rather than multiple for related work, explanation of somepapers, etc)
+asp_substance	RWK	Limited improvement over baselines
+asp_substance	ANA_EXP	The advantage of this random encoding was to reduce the number of parameters for an embedding layer, but the results showed we gained much PPL from a 25% reduction in embedding size (Table 1).
+asp_clarity	ANA	Lack of discussion of analysis
+asp_soundness-correctness	RES	correctness of results presented is questionable(eg., metrics, complexity, etc)
+asp_originality	BIB	Suggest missing related work
+asp_soundness-correctness	ANA	Too strong assumptions in analysis
+asp_substance	MET_TNF	Incorrect claims about performance in tables and figures
+asp_substance	ANA	Lack of analysis
+asp_motivation-impact	MET	Limited insights based on design choices
+asp_soundness-correctness	DAT_EXP	Limited generalizability of claims on other datasets
+asp_originality	EXP	Not enough novelty in experiments (seems similar to previous work)
+asp_clarity	OAL	3. The paper is not nicely written or rather easy to follow.
+asp_replicability	DAT	Lacking details on datasets
+asp_clarity	TNF	Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+asp_meaningful-comparison	ANA	More experiments needed with related work
+asp_soundness-correctness	RWK_RES	* The differences between UNIT (GAN; C-po) and UNIT (MMD; C-po) in Table 1 seem very small and I'm not convinced that they are significant. Why does the MMD version constitute an improvement? Or is it simply more stable to train?
+asp_originality	RWK	Incremental novelty of method as compared to related work
+asp_substance	MET_ANA	Lack of analysis of proposed method
+asp_soundness-correctness	MET_DAT	generalizability of method on datasets created from different distributions is questionable
+asp_replicability	TNF	Missing details in tables and figures (how some value as calculated in fig, some notation missing in fig, etc)
+asp_meaningful-comparison	RES	More comparisons needed with variations of the proposed method
+asp_meaningful-comparison	TNF	Missing explanation of comparsion with related work in tables and figures
+asp_clarity	MET_RWK	Unclear connection of method with related work (description of the related work it is based on, why earlier methods fail, etc)
+asp_originality	DAT	In terms of applicability, it seems that many cases where discrete latent variables would be really interesting are not covered (e.g. sigmoid belief networks); the paper demonstrates experiments with discrete images (binary or 4-bit) not particularly motivated in my opinion.
+arg_other	BIB	Missing citations in the paper
+asp_motivation-impact	PDI	Limited contribution in problem definition
+asp_motivation-impact	EXP	Missing explanation of utility of proposed method
+asp_soundness-correctness	INT	Incorrect claims in introduction (confusing related work presented in intro, wrong claims)
+asp_meaningful-comparison	EXP	More experiments needed with related work
+asp_soundness-correctness	MET_RWK	incorrect claims for related work
+asp_substance	DAT	Less datasets used
+asp_originality	MET_RWK	Not much novelty in methodology (previous works already studied these methods, similar motiation of methodology)
+asp_soundness-correctness	RES_EXP	correctness of experiments is questionable
+asp_clarity	RES_TNF	Improper presentation of results in tables and figures
+asp_soundness-correctness	MET_RES	Incorrect explanation of resuts
+asp_soundness-correctness	PDI	While better than most of the baseline methods, the N^2 memory/computational complexity is not bad, but still too high to scale to very large graphs.
+asp_replicability	RWK	Missing implementation details of related work used as baselines
+arg_other	MET	Theoretical misunderstanding in methodology
+asp_originality	OAL	Overall not original enough (primary claim, limited evaluation, limited novelty)
+asp_clarity	EXP	Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+asp_originality	MET	Limited novelty in theoretical contribution
+asp_substance	MET	Incomplete details on perfromance of the method
+asp_substance	RES_TNF	The advantage of this random encoding was to reduce the number of parameters for an embedding layer, but the results showed we gained much PPL from a 25% reduction in embedding size (Table 1).
+asp_clarity	BIB	Incorrect citation styles
+asp_motivation-impact	MET_RES	While this is a new and interesting task, the contribution (as discussed above in “pros” above) is somewhat limited.
+asp_replicability	EXP	Lack of experimental details (no of images, sampling criteria, etc)
+asp_substance	MET_RWK	Improper comparison of related work in terms of implementation
+asp_soundness-correctness	MET_EXP	Concerns regarding correctness of methods (assumption, budget, etc)
+asp_meaningful-comparison	MET_EXP	Lack of comparison with related works
+asp_motivation-impact	RWK	Limited novelty as compared to related work
+asp_replicability	RES	Missing details for reproducibility of result
+asp_clarity	MET	Unclear description of method
+asp_substance	MET_RES	Generalizability of results in terms of method parameters (only applies for some number of parameters, only for these type of matrices, etc)
+asp_substance	OAL	Lacking clarity overall (needs better presentation)
+asp_replicability	MET_DAT	Missing ablation study (how to generalize findings, what happens if some changes are done to the method, etc)
+asp_meaningful-comparison	MET_RWK	Incorrect baselines used
+asp_substance	INT	5) Last but not least, convergence analysis of the proposed method should be provided given that asynchrony may lead to divergence in the optimization.
+asp_meaningful-comparison	RWK_EXP	Missing theoretical comparisons
+asp_substance	EXP	Experimental study not strong enough
+asp_soundness-correctness	RWK	Incorrect assumptions as compared to related work
+asp_originality	RES	Not enough originality in results (not surprising)
+asp_substance	RES	generalizability of results is questionable
+asp_meaningful-comparison	RES_EXP	Missing interpretation of results due to missing related work
+asp_soundness-correctness	MET	Correctness of algorithm proposed is questionable
+asp_meaningful-comparison	MET	Missing theoretical comparisons
+asp_soundness-correctness	TNF	Incomplete ablation in terms of tables and figures
+asp_replicability	MET_EXP	Because of this concern, I believe the results in the paper can only really characterize the learning close to convergence, since the network is already able to provide correct classification.
+asp_motivation-impact	RES	Limited impact of results
+asp_replicability	OAL	Because of this concern, I believe the results in the paper can only really characterize the learning close to convergence, since the network is already able to provide correct classification.
+asp_substance	MET_DAT_EXP	Lack of ablation on different datasets/ sizes
+asp_substance	RES_EXP	Need more experimental results
+asp_substance	RWK_EXP	Lack of experiments
+asp_clarity	PDI	Unclear problem definition
+asp_meaningful-comparison	MET_TNF	"Perhaps I missed it, but I believe Dan Ciresan's paper ""Multi-Column Deep Neural Networks for Image Classification"" should be cited."
+asp_substance	PDI	Need more interesting problem definition
+asp_substance	TNF	Incomprehensible tables and figures (what is the point of the plot, no decription of figure in main text, etc)
+asp_meaningful-comparison	RWK	Missing baselines
+asp_soundness-correctness	EXP	design choices are questionable
+asp_clarity	INT	Unclear intro (eg. contributions)
+asp_clarity	DAT	Lack of discussion on datasets (size, motivation for use, etc)
+asp_substance	RWK_RES	Results are more or less similar to baselines
+asp_substance	DAT_RES	In terms of evaluation, the authors only presented a few qualitative results on simple datasets, which is not comprehensive and convincing.
+asp_replicability	DAT_EXP	Not enough info on dataset and hyper-parameters
+asp_motivation-impact	OAL	While sensible, this seems to me to be too minor a contribution to stand alone as a paper.
+asp_meaningful-comparison	BIB	Incorrect citation
+asp_clarity	RES_EXP	Improper Structuring of experimental results on paper (as in on some page, before some section)
+asp_soundness-correctness	OAL	1. The presentation is somewhat convoluted.
+asp_clarity	MET_EXP	-The experimental section do not clarify the benefits of the proposed approach.
+asp_replicability	ANA	Reproducibility of result
+asp_originality	PDI	The main reason is that from the narration, I cannot figure out what is the idea or technique of other works and what is the contribution of this paper.
+arg_other	RWK	Missing literature review (some literature not included, misses baseline citations, etc)
+arg_other	MET_RWK	[-] The combination of VAEs and GANs, while new for videos, had already been proposed for image generation as indicated in the Related Work section and its formulation for video prediction is relatively straightforward given existing VAE (Denton & Fergus 2018) and GAN models (Tulyakov et al. 2018).
+arg_other	TNF	Also experiment figures are extremely compact. Try using log scale or other lines to make the gaps wider.
+arg_other	RES	I’m also confused by the presentation of the results.
+arg_other	MET_RES	hence, there is no connection between the theoretical results on MDL generalization bound and the proposed method MULANN.
+arg_other	EXP	Some of the experiments (eg. comparisons involving ShakeShake and ScheduledDropPath, Section 5.2) could also be moved to the appendix in order to make room for a description of LEMONADE in the main paper.
+arg_other	ANA	With regard to my first negative point above about the lack of discussions, it seems the analysis of Section 4 is disproportionate compared to other places.
+asp_clarity	MET_ANA	- My main concern about the analysis is that it shows why several methods (e.g., momentum, multiple update steps) are *not* helpful for stabilising GANs, but does not tell why training with these methods, as well as others such as gradient penalty, *do converge* in practice with properly chosen hyper-parameters?
+asp_clarity	MET_DAT_EXP	If I were to go through the computation of then why not just train a smaller version of that representation technique instead and **directly** see how well it can encode data in k dimensions via that technique / for that task?
+asp_clarity	RWK_EXP	9. It is not clear that baseline 1 and 2 correspond to which baselines in later experiments.
+asp_clarity	DAT_RES_EXP	- It is unclear why the results on WikiSQL is presented in Appendix. Combining the results on both datasets in the experiments section would be more convincing.
+asp_clarity	MET_DAT	As pointed out by R2, with depth there are a lot more number of possible ways in which one could carve out decision boundaries to separate data points, thus, it is not clear that the loose linear upper bound holds Specifically, as one might expect with depth it could be possible that linear capacity increase is a lower bound (I am not suggesting that it is, but that possibility should be considered and explained in the paper).
+asp_clarity	DAT_EXP	However, since quantitative exploration of large real-world datasets may be challenging and expensive to collect, the synthetic experiments could have been more detailed.
+asp_clarity	INT_PDI	Specifically, the first contribution listed in the introduction makes it look like this paper introduces the idea of not learning the decoder on the dataset (the one that starts with “The network is not learned and itself incorporates all assumptions on the data.”).
+asp_clarity	MET_RES	The details of the approach is not entirely clear and no theoritcal results are provided to support the approach.
+asp_meaningful-comparison	DAT_EXP	The real data experiments (sections 4.2 and 4.3) are not very convincing, not only because of the very small size of N, but also because there is no comparison with the other approaches.
+asp_meaningful-comparison	DAT	- I’d also like to see more extensive comparisons between FICM and ICM across different datasets, for example, Super Mario Bros. and the Atari games, instead of only comparing FICM against ICM on ViZDoom.
+asp_meaningful-comparison	MET_DAT	2:    The authors should compare against several costs/algorithms (e.g. l_0 with OMP, l_1 with LARS, etc.), and across various N_0/sparsity penalties, and across several datasets.
+asp_meaningful-comparison	RWK_RES	E.g., in Table 1 and 2,  the best result of VAT (Miyato et al., 2017) is VAT+Ent, 13.15 for CIFAR-10 (4000 labels) and 4.28 for SVHN (1000 labels).
+asp_meaningful-comparison	INT	3. In the introduction, the Authors point that prior methods have trouble dealing with textureless, reflective or transparent approaches, but it's not clear form the paper where it addresses these cases, and if yes, what is the mechanism for that.
+asp_meaningful-comparison	RWK_DAT	There should be some kind of comparison with test set results from other state-of-the-art work on these datasets.
+asp_motivation-impact	MET_DAT	In terms of method, the guidance for learning Siamese networks are designed heuristically (e.g. edges, colors, etc.) which limits its applicability over various datasets; I think that designing more principled approach to build such guidances from data should be one of the key contributions of the paper.
+asp_motivation-impact	PDI_MET	Overall, the idea is simple, the explanation is clear and experimentation is extensive. I would like to see more commentary on why this method might have long-term impact (or not).
+asp_motivation-impact	ANA	Unfortunately the paper doesn't provide any qualitative analysis on how modulation is employed by the models after training.
+asp_originality	RWK_RES	-The conclusions of the study were suggested by previous papers or are rather expected: adversarial transfer is not symmetric: Deep models less transferable than shallow ones, averaging gradient is better
+asp_originality	RWK_EXP	2. In experiments, the authors explored many existing methods on improving
+asp_originality	TNF	When it comes to experiments, constant epoch budget is also fairly well understood and the behavior in Figure 1 is not really surprising (as the eventual training performance gets worse with large batches).
+asp_originality	MET_DAT	that (except the minor small section of streaming data), the paper is more like a proper verification of how tree-based learning algorithms work very well in tabular data--which is far from the basis of the paper and does not make the paper novel enough for ICLR.
+asp_originality	DAT_RES	Overall, the method looks incremental and experimental results are mixed on small datasets so I vote for rejection.
+asp_originality	RES_EXP	- Gradient starvation, Kaggle experiment: I'm not too convinced about the novelty/usefulness of this result. In the end, even a decision tree stump would stop growing after learning the dark/light feature as a discriminator.
+asp_originality	MET_TNF	"3. The authors argue in their rebuttal that ""the grid"" is a novel idea that warrants investigation, but remark in figure 5 that likely it isn't the key aspect of their algorithm."
+asp_originality	PDI_RWK	The idea of using a constrained formulation is not novel either (constrained MDPs have been thoroughly studied since Altman (1999)).
+asp_originality	ANA	- little methodological innovation or analytical explanations
+asp_originality	MET_EXP	In the experiments, both the setting and the experimental results show that the proposed W_s will be very close to W_U. As a result, the improvement caused by the proposed method is incremental compared with its variants.
+asp_replicability	INT_RES	-- While the overall claim of the paper in the introduction seems to be to speed up frequency estimation using machine learned advice, results are only given for the Zipfian distribution.
+asp_replicability	MET_RWK	"For example, for baseline 1, it is very hard to understand why would we want to use such an unusual baseline, and why it is called a ""random baseline""."
+asp_replicability	PDI	This sort of two-stage generation is also potentially interesting, I was wondering if the authors had ideas to generalize this idea.
+asp_replicability	INT	"-In the introduction, ""it is in general impossible to find an embedding in R^d such that ..."", why do we have to make v and v'(and u, and u') far from each other?"
+asp_soundness-correctness	INT_MET	"and rendering the third claim from the introduction (""We propose an new algorithm with the new metric which demonstrates better results than state-of-the-art algorithms."") completely untrue."
+asp_soundness-correctness	RWK_EXP	I would have liked to see results for both trivial baselines like random ranking as well as more informed baselines where we can estimate transfer potential using say k representation techniques, and then use that to help us understand how well it would do on the other representations.
+asp_substance	DAT_RES_EXP	The MNIST+SVHN dataset setup is described in detail, yet there is no summary of the experimental results, which are presented in the appendix.
+asp_substance	MET_RWK_RES	- What is the difference between the result of Theorem 4.3 and the result from (Lacoste-Julien 2016)?
+asp_substance	MET_RES_EXP	Although the idea is interesting, I would like to see more experimental results showing the scalability of the proposed method and for evaluating defense strategies against different types of adversarial attacks.
+asp_substance	MET_RWK_DAT	Some baseline DA methods [A, B] and datasets [C, D] are not considered.
+asp_substance	PDI_RWK	The two ideas (use of grids, and intra-life curiosity vs inter-life curiosity) should be independently investigated and put in context of past work.

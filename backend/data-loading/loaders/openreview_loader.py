@@ -226,7 +226,7 @@ class OpenReviewLoader(object):
 
         return review
 
-    def get_reviews(self, id: str) -> list[Review]:
+    def _get_reviews(self, id: str) -> list[Review]:
         """
         Load all reviews from a specific paper.
         :param id: The id of the paper.
@@ -248,7 +248,7 @@ class OpenReviewLoader(object):
             logger.error(e)
             return []
 
-    def get_reviews_from_multiple_papers(self, ids: list[str]) -> list:
+    def _get_reviews_from_multiple_papers(self, ids: list[str]) -> list:
         """
         Load all reviews from multiple papers.
         :param ids: The ids of the papers.
@@ -258,7 +258,7 @@ class OpenReviewLoader(object):
 
         reviews = []
         for id in ids:
-            single_paper_reviews = self.get_reviews(id)
+            single_paper_reviews = self._get_reviews(id)
             reviews.extend(single_paper_reviews)
 
         return reviews
@@ -321,8 +321,24 @@ class OpenReviewLoader(object):
         :return: List with reviews segmented in sentences.
         """
 
-        reviews = self.get_reviews_from_multiple_papers(ids)
+        reviews = self._get_reviews_from_multiple_papers(ids)
         processed_reviews = self._preprocess_text(reviews)  # already preprocessed
         final_reviews, sentences = self._segment_content(processed_reviews)
 
         return sentences
+
+    def get_reviews(self, id: str | list[str]) -> list[Review]:
+        """
+        Load all reviews from a specific paper.
+        :param id: The id of the paper.
+        :return: All reviews for a paper.
+        """
+
+        if isinstance(id, str):
+            reviews = self._get_reviews(id)
+        else:
+            reviews = self._get_reviews_from_multiple_papers(ids=id)
+        processed_reviews = self._preprocess_text(reviews)
+        final_reviews, sentences = self._segment_content(processed_reviews)
+
+        return final_reviews
