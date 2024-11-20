@@ -39,6 +39,26 @@
     - Extend the functionality of the OpenReviewLoader (if needed)
     - API interface between Backend and Frontend
 
+### Week [3]
+
+- **Update 1**: Refactoring of OpenReviewLoader with better spacy sentence segmentation. It also works for papers from
+  Neurips 2024
+- **Update 2**:
+- **Update 3**:
+- **Challenges**: 
+  - Handling text data (it's no fun) and sentence segmentation. Even though you can do a lot with spacy
+    there are so many special cases you have to account for.
+- **Next Steps**:
+  - Reading reviews from files/manual upload (how to handle that if they are not in the same format as the api response?)
+
+### Week [n-2]
+
+- **Update 1**:
+- **Update 2**:
+- **Update 3**:
+- **Challenges**:
+- **Next Steps**:
+
 ### Week [n-2]
 
 - **Update 1**:

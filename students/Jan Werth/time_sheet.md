@@ -1,8 +1,9 @@
 # [Student's Name] Timesheet
 
 ## Student Information
+
 - **Name**: Jan Werth
-- **Project Title**: Review Overview Generation for papers through Attitude root-Review request Mapping 
+- **Project Title**: Review Overview Generation for papers through Attitude root-Review request Mapping
 - **Mentor**: Sukannya Purkayastha
 - **Course**: Data Analysis Software Project Seminar for Natural Language (WiSe 2024/25) / 6 ECTs
 
@@ -22,9 +23,7 @@
 | [16/11/24] | [16/11/24] | [Coding]             | [Test set from Jitsupeer with splits]                      | [1]                | [Completed]   |
 | [19/11/24] | [19/11/24] | [Meeting]            | [Weekly meeting]                                           | [1]                | [Completed]   |
 | [19/11/24] | [20/11/24] | [Coding]             | [Refactoring of OpenReviewLoader]                          | [9]                | [In Progress] |
-
-
-
+| [20/11/24] | [20/11/24] | [Coding]             | [Refactoring of JitsupeerLoader]                           | [1]                | [In Progress] |
 
 ---
 
