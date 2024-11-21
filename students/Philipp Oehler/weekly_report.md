@@ -52,11 +52,11 @@
 
 ### Week [3]
 
-- **Update 1**: 
-- **Update 2**: 
-- **Update 3**: 
-- **Challenges**: 
-- **Next Steps**: 
+- **Update 1**: Massive mainpage Progress (main_page.py)
+- **Update 2**: Massive pagelogic progress (app.py)
+- **Update 3**: Created landigpage dummy (landing_page.py)
+- **Challenges**: What file format is the landingpage supposed to support?, integrate backend
+- **Next Steps**: Design & develop landing page
 
 ### Week [2]
 
