@@ -1,0 +1,467 @@
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Experimental study not strong enough
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Incomplete details on perfromance of the method
+Experimental study not strong enough
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Incomplete details on perfromance of the method
+Experimental study not strong enough
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Correctness of algorithm proposed
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Overall, this appears to be a board-line paper with weak novelty.
+Incomplete details on perfromance of the method
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Experimental study not strong enough
+Unclear description of method
+Incomplete details on perfromance of the method
+Correctness of algorithm proposed
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Experimental study not strong enough
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Experimental study not strong enough
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Experimental study not strong enough
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Experimental study not strong enough
+Correctness of algorithm proposed
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Correctness of algorithm proposed
+Correctness of algorithm proposed
+Incomplete details on perfromance of the method
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Correctness of algorithm proposed
+Correctness of algorithm proposed
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Incomplete details on perfromance of the method
+Incomplete details on perfromance of the method
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Experimental study not strong enough
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Incomplete details on perfromance of the method
+Incomplete details on perfromance of the method
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Incomplete details on perfromance of the method
+Incomplete details on perfromance of the method
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Limited novelty in theoretical contribution
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Incomplete details on perfromance of the method
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Experimental study not strong enough
+Correctness of algorithm proposed
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+Overall, I like the approach of the proposed method, especially tuning coefficient during training procedure although novelty in the theoretical analysis is somewhat limited.
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Experimental study not strong enough
+Correctness of algorithm proposed
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+Incomplete details on perfromance of the method
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+Correctness of algorithm proposed
+Incomplete details on perfromance of the method
+Unclear description of method
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Incomplete details on perfromance of the method
+Incomplete details on perfromance of the method
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Experimental study not strong enough
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+Experimental study not strong enough
+Incomplete details on perfromance of the method
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Incomplete details on perfromance of the method
+Incomplete details on perfromance of the method
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+Unclear description of method
+Incomplete details on perfromance of the method
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Experimental study not strong enough
+Incomplete details on perfromance of the method
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+Experimental study not strong enough
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Correctness of algorithm proposed
+Incomplete details on perfromance of the method
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Incomplete details on perfromance of the method
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+Experimental study not strong enough
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Experimental study not strong enough
+Incomplete details on perfromance of the method
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Incomplete details on perfromance of the method
+Incomplete details on perfromance of the method
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Experimental study not strong enough
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+Incomplete details on perfromance of the method
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Experimental study not strong enough
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Unclear description of method
+Correctness of algorithm proposed
+Correctness of algorithm proposed
+Experimental study not strong enough
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Experimental study not strong enough
+Unclear description of method
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Incomplete details on perfromance of the method
+Experimental study not strong enough
+Experimental study not strong enough
+Correctness of algorithm proposed
+Incomplete details on perfromance of the method
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Experimental study not strong enough
+Incomplete details on perfromance of the method
+Incomplete details on perfromance of the method
+Limited novelty in theoretical contribution
+Correctness of algorithm proposed
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Overall, I think this paper has some interesting ideas, but those need to be fleshed out and clearly explained in a future revision.
+Incomplete details on perfromance of the method
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+Unfortunately, the results are quite disappointing in terms of sound quality, and feature many artifacts.
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Correctness of algorithm proposed
+Incomplete details on perfromance of the method
+Experimental study not strong enough
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Experimental study not strong enough
+Incomplete details on perfromance of the method
+Incomplete details on perfromance of the method
+Experimental study not strong enough
+Correctness of algorithm proposed
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Limited improvement over baselines
+Incomplete details on perfromance of the method
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+Incomplete details on perfromance of the method
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Experimental study not strong enough
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+Incomplete details on perfromance of the method
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+Correctness of algorithm proposed
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Experimental study not strong enough
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Experimental study not strong enough
+Incomplete details on perfromance of the method
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+Incomplete details on perfromance of the method
+Correctness of algorithm proposed
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Experimental study not strong enough
+Overall, I quite liked the paper and think the authors need to highlight at least one practical advance introduced by the CW distance (in which case I will raise my score). I believe the authors need to highlight at least one practical advance introduced by the CW distance (in which case I will raise my score).
+Incomplete details on perfromance of the method
+Correctness of algorithm proposed
+Experimental study not strong enough
+Incomplete details on perfromance of the method
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Correctness of algorithm proposed
+Experimental study not strong enough
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Incomplete details on perfromance of the method
+Experimental study not strong enough
+Incomplete details on perfromance of the method
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+Correctness of algorithm proposed
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Correctness of algorithm proposed
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Correctness of algorithm proposed
+Unclear description of method
+Incomplete details on perfromance of the method
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+Lack of evaluation of experimental setup (conclusion from experiments, poor experimental details, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Unclear description of method
+Correctness of algorithm proposed
+Experimental study not strong enough
+Incomplete details on perfromance of the method
+Incomplete details on perfromance of the method
+Missing citations
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+Unclear description of method
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Correctness of algorithm proposed
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+Correctness of algorithm proposed
+Incomplete details on perfromance of the method
+Correctness of algorithm proposed
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Incomplete details on perfromance of the method
+Experimental study not strong enough
+Correctness of algorithm proposed
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Incomplete details on perfromance of the method
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Correctness of algorithm proposed
+4. The paper is not nicely written or rather easy to follow.
+Incomplete details on perfromance of the method
+Correctness of algorithm proposed
+Experimental study not strong enough
+Experimental study not strong enough
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Experimental study not strong enough
+Unclear description of method
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Limited insights based on design choices
+Improper presentation of results in tables and figures (plots, typos in tables and figs. description of plot)
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+Incomplete details on perfromance of the method
+Correctness of algorithm proposed
+Correctness of algorithm proposed
+Experimental study not strong enough
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+Limited novelty in theoretical contribution
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+Experimental study not strong enough
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Unclear description of method
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Incomplete details on perfromance of the method
+Incomplete details on perfromance of the method
+Experimental study not strong enough
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+Overall, I find the paper to be a promising contribution, but until the authors provide a more thorough experimental evaluation, I hesitate to recommend acceptance.
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Limited novelty in theoretical contribution
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+Experimental study not strong enough
+Correctness of algorithm proposed
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on datasets (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Incomplete details on perfromance of the method
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Experimental study not strong enough
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+Correctness of algorithm proposed
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Correctness of algorithm proposed
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Unclear description of method
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Correctness of algorithm proposed
+Incomplete details on perfromance of the method
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
