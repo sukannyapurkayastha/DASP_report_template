@@ -1,0 +1,5 @@
+1. install Streamlit using requirements.txt
+2. at folder DASP_REPORT_TEMPLATE/ run 
+```
+streamlit run frontend\streamlit_app.py
+```
