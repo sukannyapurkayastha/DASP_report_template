@@ -26,13 +26,16 @@ pip install -r requirements.txt
 ```
 The env works in my setup but I am not so sure how good is the freeze requirements.txt. Just give it a try, if it doesn't work then install libs mentioned in main.py, that's how I did it, since the requirements.txt in original repo doesn't work at all, even version numbers are wrong.
 
+3. results you can find in t5-large-output. To visualise the predictions of test file, you can use vis_test_pred.ipynb
+   
 
 
-3. For finetuning, change the train test and dev files as needed for each of the folders
+4. For finetuning, change the train test and dev files as needed for each of the folders
 For BART/PEGASUS ((google/pegasus-large)), we use following commands. We have an example bash file contains training command and other parameters 
 ```
 sbatch run_main.sh
 ```
+Please change folder name when different models are chosen.
 ```
 python main.py \
 --model_name_or_path facebook/bart-large \ 
@@ -80,7 +83,7 @@ python main.py \
 --predict_with_generate
 ```
 
-4. We change the train and validation file for few-shot setups from the folder ```few_shot```. We use the test set created in Step 2.
+5. We change the train and validation file for few-shot setups from the folder ```few_shot```. We use the test set created in Step 2.
 * ```1_shot``` (contains 1 shot train,valid files)
 * ```2_shot``` (contains 2_shot train,valid files)
 
