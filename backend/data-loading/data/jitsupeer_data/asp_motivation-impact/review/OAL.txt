@@ -1,0 +1,11 @@
+Significance: It is hard to assess given the current submission.
+In sum, the paper has a very good application but not good enough as a research paper.
+Due to several shortcomings of the paper, most important of which is on presentation of the paper, this manuscript requires a significant revision by the authors to reach the necessary standards for publication, moreover it would be helpful to clarify the modeling choices and consequences of these choices more clearly.
+While sensible, this seems to me to be too minor a contribution to stand alone as a paper.
+This could have made the paper much stronger.
+As such the paper is not convincing.
+Overall, I am not sure what we could gain from this research direction.
+1) The motivation is unclear and overall structure of the paper is confusing.
+- Contribution overall may be a bit limited
+Significance: Below average
+The writing is understandable for the most part, but the paper seems to lack focus - there is no clear take home message.

@@ -1,0 +1,39 @@
+# Johannes Lemken Timesheet
+
+## Student Information
+- **Name**: Johannes Lemken
+- **Project Title**: Review Overview Generation for papers through Attitude root-Review request Mapping 
+- **Mentor**: Sukannya Purkayastha
+- **Course**: Data Analysis Software Project Seminar for Natural Language (WiSe 2024/25) / 6 ECTs
+
+---
+
+## Task Progress
+
+| Start      | End        | Task Name       | Task Description         | Time Spent (hours) | Status        |
+|------------|------------|-----------------|--------------------------|--------------------|---------------|
+| [06.11.24]    | [06.11.24]    | [Third lecture]       | [Third lecture]                                                           | [1.5]         | [Completed]   | 
+| [30.10.24] | [30.10.24] | [Second lecture]            | [Second lecture]                                                          | [1.5]         | [Completed]   | 
+| [23.10.24] | [23.10.24] | [First lecture]             | [First Intro ]                                                            | [1.5]         | [Completed]   | 
+| [11/11/2024] | [11/12/2024] | [Initial Setup]   | [GitHub Setup, Matrix Account]  | [0,5]       | [Completed] |
+| [11/12/2024] | [11/12/2024] | [Reading Literature]   | [Reading the papers JITSUPEER and DISAPERE]  | [2]       | [Completed]   |
+| [11/12/2024] | [11/12/2024] | [Familiarization]   | [Learning About python package streamlit]  | [1]       | [Completed]     |
+| [11/13/2024] | [11/13/2024] | [Meeting]            | [Weekly meeting]                           | [1]                | [Completed] |
+| [11/13/2024] | [11/13/2024] | [Meeting]            | [Internal developer meeting]               | [0.5]              | [Completed] |
+| [11/13/2024] | [11/13/2024] | [Coding]             | [Exploration and setup classification model]    | [2]                | [Completed] | 
+| [11/14/2024] | [11/14/2024] | [Coding]             | [DISAPERE model]    | [4]                | [In Progess] |
+| [11/15/2024] | [11/14/2024] | [Coding]             | [DISAPERE model]    | [4]                | [In Progess] |
+| [11/16/2024] | [11/14/2024] | [Coding]             | [Exploration and setup classification model]    | [3]                | [Completed] |
+| [11/17/2024] | [11/14/2024] | [Coding]             | [Own model request classification]    | [3]                | [In Progess] |
+| [11/19/2024] | [11/14/2024] | [Coding]             | [Own model request classification]    | [3]                | [In Progress] |
+| [11/19/2024] | [11/13/2024] | [Meeting]            | [Weekly meeting]                           | [1]                | [Completed] |
+| [11/19/2024] | [11/14/2024] | [Coding]             | [Own model request classification]    | [1]                | [Completed] |
+| [11/19/2024] | [11/14/2024] | [Coding]             | [Own model fine quest classification/Finetuning]    | [4]                | [In Progress] |
+| [11/19/2024] | [11/13/2024] | [Meeting]            | [Own Model fine request / Promting]                           | [3]                | [In Progress] |
+| [11/20/2024] | [11/13/2024] | [Meeting]            | [Own Model fine request / Promting]                           | [1]                | [In Progress] |
+
+
+
+---
+
+> **Status Options**: "In Progress," "Completed," or "Pending."

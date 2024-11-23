@@ -1,0 +1,4 @@
+In terms of applicability, it seems that many cases where discrete latent variables would be really interesting are not covered (e.g. sigmoid belief networks); the paper demonstrates experiments with discrete images (binary or 4-bit) not particularly motivated in my opinion.
+However, it looks to me that the authors need to better explain the motivation of DiVA, the differences of DiVA from existing supervised VAE, and the experimental settings, before the acceptance of this paper.
+After reading, the reviewer cannot understand why the user should bother to use hyperbolic representations that are more complex to compute in GCNs, given that the experimental results are roughly the same.
+If faster training of dictionary learning models was a bottleneck in practical applications, this might be of interest, but it is not.

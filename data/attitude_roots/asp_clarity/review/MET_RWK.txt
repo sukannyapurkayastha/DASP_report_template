@@ -1,0 +1,8 @@
+* It is unclear to me whether the "efficient method for SN in convolutional nets" is more efficient than the power iteration algorithm employed in previous work, such as Miyato et al. 2018, which also used SN in conv nets with different strides.
+The difference with the other reference model (SVG) is less clear.
+I agree that local SO(2) invariance is too limiting. But it is not true that rotating filters is not effective in planar/volumetric CNNs, as shown by many recent papers on equivariant networks.
+Since the paper relies so heavily on Lee et al., the authors should make an effort to summarize the approach in a mathematically precise way.
+In particular, the exact difference between the proposed method and the ES baseline is not as clear as it could be.
+Otherwise, it is impossible for a reader to correctly and objectively relate your proposed approach to previous literature.
+- The parameter count of a 2-layer network with $h$ hidden units and input dimension $d$ is $O(dh)$. So perhaps it makes sense to study an asymptotic regime where $dh/n$ approaches $\gamma$, instead of both d and h growing linearly in n. While this issue is hinted at in the discussion section, I don't understand the statement "the mechanism that provably gives rise to double descent from previous works Hastie et al. (2019); Belkin et al. (2019) might not translate to optimizing two-layer neural networks."
+Without the comparison it’s not clear how much improvement this approach provides compared to existing work that perform stale updates.

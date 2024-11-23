@@ -1,0 +1,2 @@
+- The claim made in the first line of the abstract (applying RL algorithms to continuous control problems often leads to bang-bang control)
+- Given the current form of the paper, the abstract and introduction should be modified to reflect the fact that only limited architectures and optimizers were experimented with, and the claims of the paper are not experimentally validated in general.

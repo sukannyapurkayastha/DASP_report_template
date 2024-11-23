@@ -1,0 +1,3 @@
+The author never explains. E.g., link to NRMSE and PFC to the Table.
+4. From Figure 6 and Figure 8-11, it looks like the bandit is more or less on par with fixed exploration policies.
+- I believe one should not compare the distance shown between the left and right columns of Figure 3 as they are obtained from two different models.

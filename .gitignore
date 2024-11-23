@@ -137,3 +137,15 @@ dmypy.json
 # Project files
 sketch*
 ukp_report_template/sketch*
+
+# PyCharm Files
+.idea
+misc.xml
+*.code-workspace
+
+
+# Ignoriere alle model.safetensors Dateien
+*.safetensors
+
+# Ignoriere alle optimizer.pt Dateien
+*.pt

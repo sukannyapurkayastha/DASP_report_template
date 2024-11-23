@@ -1,0 +1,3 @@
+However, the theoretical justification and experimental results are not.
+Regarding the presentation, I found odd having some experimental results (page 5) before the Section on experience even have started.
+Q2: Can the authors structure the experimental results with different sections? Currently it is just a single section which is difficult to read.

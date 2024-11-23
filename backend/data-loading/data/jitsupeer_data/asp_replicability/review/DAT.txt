@@ -1,0 +1,12 @@
+Because, the results are only shown on one dataset, it is harder to see how one might extend this work to other form of questions on slightly harder datasets.
+I also wonder if the video data will be released, which could be important for the following comparisons.
+4. How large is the training set of (T, P) pairs? I don't think this is mentioned in the paper.
+It is also not clear to me why CIFAR datasets involve two domains and how these domains are relevant in each of the tasks.
+It is necessary to test it on datasets with much more fine classes and much-complicated hierarchy, e.g., ImageNet, MS COCO or their subsets, which have ideal class hierarchy structures.
+- Lack of sufficient technical detail on models and dataset
+The IDF scores would be stronger if they were computed on a bigger in-domain corpus than the gold test set.
+My concern is, given this is an empirical work,  the number of datasets used in evolution is a bit small.
+- Please comment on the extra computation required for obtaining image data for MT sentences and for learning image representations.
+Although I really appreciate the authors' efforts on providing implementational details in the appendix, the code and data do not seem to be publicly available, and I'm expecting that the implementation of this technique is relatively hard due to their complex designs of the generator and discriminator.
+While reviewing this paper I went back and read the EN-DE evaluation data for the last few years trying to see how often I could reason that images would help and I came up severely lacking.
+It's then hard for me to square that with the +VR gains seen throughout this work on non-grounded datasets.

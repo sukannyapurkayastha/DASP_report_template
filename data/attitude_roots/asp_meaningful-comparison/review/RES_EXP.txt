@@ -1,0 +1,3 @@
+The experimental sections look rather mechanical. I would have put some results on the learned embedding. Or some demonstration of the embedded history or probability to intuitively convey the idea and how it works.
+- Experimental results provided in the paper are only qualitative -- as such, I do not find the comparisons (and improvements) over the existing approaches convincing enough.
+It's hard for me to judge of the experimental results of section 5.3, given that there are no other

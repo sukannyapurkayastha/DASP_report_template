@@ -1,0 +1,1 @@
+- What is the difference between the result of Theorem 4.3 and the result from (Lacoste-Julien 2016)?

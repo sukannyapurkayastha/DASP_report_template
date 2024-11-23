@@ -1,0 +1,12 @@
+Since quantitative real-world results are challenging to obtain, improved presentation of the qualitative results would be helpful as well.
+A reader’s most natural question is whether there is a large enough improvement to offset the extra computational cost, so the fact that wall-clock times are relegated to the appendix is a significant weakness.
+Particularly, the authors mixed their observations up with the results of published works, making it hard to identify the contributions of this paper.
+- There are better words than "decent" to describe the performance of DARTS, as it's very similar to the results in this work!
+This paper presents non-trivial theoretical results that are worth to be published but as I argue below its has a weak relevance to practice and the applicability of the obtained results is unclear.
+- Lack of a strong explanation for the results or a solution to the problem
+Since the results are far from state of the art, a clean and neat presentation of the theoretical advantages and contributions is crucial.
+It is hard to understand the results without discussing it.
+For instance, the omission of a results discussion section or a conclusion are clearly not reader friendly.
+They would have a very low weight difference score though they are ideal representations for each other.
+* Some turns of phrase like "recently gained a flourishing interest", "there is still a wide gap in quality of results", "which implies a variety of underlying factors", ... are vague / do not make much sense and should probably be reformulated to enhance readability.
+- Section 1.1 presents results with too many details without introducing the problem.
