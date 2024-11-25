@@ -1,0 +1,1 @@
+It is also not clear to me why CIFAR datasets involve two domains and how these domains are relevant in each of the tasks.

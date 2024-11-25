@@ -1,0 +1,1 @@
+Overall, while I find the proposed approach simple -- the paper needs to address some issues regarding the claims made and should provide more quantitative experimental results justifying the same.

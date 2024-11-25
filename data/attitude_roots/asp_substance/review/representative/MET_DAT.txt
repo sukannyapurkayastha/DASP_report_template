@@ -1,0 +1,1 @@
+What is the minimum/maximum layers of a deep model? How much data is sufficient for a model to learn?

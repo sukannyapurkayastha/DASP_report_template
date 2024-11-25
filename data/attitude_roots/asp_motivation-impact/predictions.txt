@@ -1,0 +1,92 @@
+My main concern with the paper is its limited applicability to robotic manipulation tasks with a clear divide between states of interest vs others.			MET
+Significance: It is hard to assess given the current submission.			OAL
+Overall, I do not feel the comparisons dramatically change the qualitative understanding the field has of the different optimizers and their tunability.			MET
+Again, discussions are lacking, and it doesn’t seem the authors tried to understand why such behaviors were shown.			NONE
+In sum, the paper has a very good application but not good enough as a research paper.			OAL
+The results  are overall not very impressive.			RES
+While the presentation is clear and the evaluation of the model is thorough, I am unsure of the significance of the proposed method.			MET
+As a minor weakness, some parts of the paper is not described in enough detail and the motivation is weak or not exactly clear (see detailed comments below).			NONE
+Due to several shortcomings of the paper, most important of which is on presentation of the paper, this manuscript requires a significant revision by the authors to reach the necessary standards for publication, moreover it would be helpful to clarify the modeling choices and consequences of these choices more clearly.			OAL
+First, the motivation of the proposed framework is not convincing for me.			NONE
+That is, authors assumed that they have a degradation function F and all the inference process is just based on this known function.			MET
+However, in real world scenarios, it is actually challenging to obtain exact degradation information.			NONE
+Thus we may only apply the proposed model on a few tasks with exactly known F.			MET
+If the authors don't discuss a motivation then how will a reader know how to apply the tool?			MET
+Unfortunately the paper doesn't provide any qualitative analysis on how modulation is employed by the models after training.			ANA
+While sensible, this seems to me to be too minor a contribution to stand alone as a paper.			OAL
+Applications are a bit unclear.			NONE
+Therefore, the technical contribution of this paper is moderate.			NONE
+The paper does not do a great job in clarify the debate.			NONE
+But does this paper really achieves this goal?			NONE
+- My biggest concern is that the technical contributions of the paper are not clear at all.			MET
+- Need more motivation for faster white-box attack.			NONE
+Overall, the idea is simple, the explanation is clear and experimentation is extensive. I would like to see more commentary on why this method might have long-term impact (or not).			PDI_MET
+This could have made the paper much stronger.			OAL
+In general, recent work has found that the raw number of parameters has little to do with the size of the model class or the capacity of a model for deep models, and thus work like [A] has been trying to come up with better complexity measures for models to explain generalization.			RWK
+While, the paper is a plaisant read, I find difficult to access its importance and the applicability of the ideas presented beyond the analogy with the capacity computation. Perhaps other referee will have a clearer opinion.			MET
+Con: not clear to me how strong and wide the implications are, beyond the analogies and the reinterpretation			MET
+In terms of applicability, it seems that many cases where discrete latent variables would be really interesting are not covered (e.g. sigmoid belief networks); the paper demonstrates experiments with discrete images (binary or 4-bit) not particularly motivated in my opinion.			EXP
+The result does not at all apply to all of them.			RES
+This very much limits the utility of the method.			MET
+In particular it is not applicable to learning e.g. sigmoid belief networks [Neal, 92] (with conditional Bernoulli units) and many other problems.			RWK
+- VAE, GAN: q is the generative model defined as a mapping of a standard multivariate normal distribution by a NN.			MET
+- sigmoid belief networks: q is a Bayesian network where each conditional distribution is a logistic regression model.			MET
+Then to state to which of these cases the results of the paper are applicable, allow for an improvement of the variance and at what additional computational cost (considering the cost of evaluating the discrete derivatives).			RES
+Hence, the effectiveness and advantage of the proposed methods are not clear.			MET
+The authors do not thoroughly explain the motivation of this paper.			PDI
+It is also not clear to me why these problems are important.			PDI
+However, it looks to me that the authors need to better explain the motivation of DiVA, the differences of DiVA from existing supervised VAE, and the experimental settings, before the acceptance of this paper.			EXP
+As such the paper is not convincing.			OAL
+-	While this is a new and interesting task, the contribution (as discussed above in “pros” above) is somewhat limited.			PDI
+I have no idea that what is the propose of defining a new evaluation method and how this new evaluation method helps in the further design of the MaxConfidence method.			MET
+I believe that this paper is not the first one to study question generation from logical form (cf. Guo et al, 2018 as cited), so it is unclear what is the contribution of this paper in that respect.			RWK
+I don’t think it is of any practical use to show that a new algorithm (such at DDGD) provide some defence compared to no defence.			MET
+(2) The method is not well motivated.			MET
+This is too general and not enough as a motivation.			NONE
+After reading, the reviewer cannot understand why the user should bother to use hyperbolic representations that are more complex to compute in GCNs, given that the experimental results are roughly the same.			EXP
+A concern I have is that the manuscript as it stands is positioned somewhere between two distinct fields (sparse learning/feature selection, and causal inference for counterfactual estimation/decision making), but doesn't entirely illustrate its relationship to either.			NONE
+1: The authors show no benefit of this scheme except perhaps faster convergence.			MET_RES
+If faster training of dictionary learning models was a bottleneck in practical applications, this might be of interest, but it is not.			EXP
+It's good that the paper empirically confirms the intuition, but doesn't feel like a significant contribution on its own.			NONE
+2. The paper never clearly demonstrates the problem they are trying to solve (nor well differentiates it from the compressed sensing problem  or sample selection problem)			PDI
+The model is not well motivated and the optimization algorithm is also not well described.			MET
+The authors study several dynamics like activation independence, gradient starvation, which gives new insights.			NONE
+While on the AE model / architecture side I feel the contribution is very marginal, I still think that the improvement in the training speed is something useful. Otherwise it is a nicely written and polished piece of work.			NONE
+I like the area of research the authors are looking into and I think it's an important application. However, the paper doesn't answer key questions about both the application and the models:			MET
+One drawback is that it is highly specific to language models.			MET
+In addition, there is not much theoretical justification for it, it seems like a one-off trick.			MET
+Overall, I am not sure what we could gain from this research direction.			OAL
+Generally speaking it seems like a lot of technicalities for a relatively simple result:			RES
+The main drawback of the paper is that it seems to be more engineering-focused, and doesn’t provide much insight into semi-supervised learning.			MET
+The privacy definition employed in this work is problematic.			MET
+This is not justified sufficiently.			NONE
+Why larger reconstruction error achieves stronger privacy protection? I could not find any formal relationship between reconstruction error and privacy.			MET
+(2) The paper does not do a great job of convincing the reader that the problem it is trying to solve is an important matter, or the proposed method is indeed effective in some applications.			MET
+The			NONE
+setting in the current paper is not ideal because a probabilistic estimate of			NONE
+violation of a single point is not very useful, especially without a guarantee			NONE
+of failure rates.			NONE
+3. Estimating entropies is a standard practice in statistics and machine learning, with an arsenal of estimators; the motivation of the submission is questionable.			MET
+1) The motivation is unclear and overall structure of the paper is confusing.			OAL
+As pointed out in the weakness section, many design choices are not well motivated, and the effects of those designs are not well studied.			MET
+In my opinion, due to how many researchers are and have been looking into improvements of language modeling, the authors may find it hard to break new ground in this direction.			MET
+However there are a few key weaknesses in my view, not least that the practical utility of these metrics is not obvious, since they require supervision in the target domain.			MET
+- The envisioned scenario (and hence utility) of these metrics is a bit unclear to me here.			MET
+- Contribution overall may be a bit limited			OAL
+The method provides impressive compression ratios (in the order of x20-30) but at the cost of a lower performance.			MET_RES
+Whether this is a valuable trade-off is highly application dependent.			NONE
+There are also concerns about the motivations behind parts of the technique.			MET
+Significance: Below average			OAL
+- (W6) Motivation for CFS: I still don't fully understand the need to understand the density of the representation (especially in the manner proposed in the paper). Why is this an important problem? Perhaps expanding on this would be helpful			MET
+In terms of method, the guidance for learning Siamese networks are designed heuristically (e.g. edges, colors, etc.) which limits its applicability over various datasets; I think that designing more principled approach to build such guidances from data should be one of the key contributions of the paper.			MET_DAT
+No baseline comparison with GraphNets.			RWK
+The idea is an interesting one, but			PDI
+The results of the paper do not give major insights into what are the preferred techniques for training GANs, and certainly not why and under what circumstances they'll work.			RES
+The writing is understandable for the most part, but the paper seems to lack focus - there is no clear take home message.			OAL
+- The novelty is limited related to multitask learning, thus it is an incremental paper.			NONE
+Although the paper proposes an interesting framework I would argue that it is a “green apple” in the sense that authors need to motivate the approach better and expand the contribution beyond solving a particular instance.			MET
+- limited amount of new insight, which is limiting as new and better understanding of GANs and practical guidelines are arguably the main contribution of a work of this type			MET
+This is hard to provide a meaningful interpretation of the task.			NONE
+This is not so interesting, even though results are impressive.			RES
+- The authors should include citations and motivation for some of their choices (what sequence identity is used, what cut-offs are used etc)			NONE
+* I found it difficult to follow the theoretical motivation for performing the work.			MET

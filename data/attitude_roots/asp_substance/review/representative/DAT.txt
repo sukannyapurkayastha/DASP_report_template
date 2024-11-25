@@ -1,0 +1,1 @@
+- it is not really clear to be what data the graphs show: the boxplots show 5% of what data? does it also include the models obtained by gaussian process regression? and what about the line plots, is it the best model so far as you train more and more models? if so, how are those models chosen and ordered? are they the results of single models or average of multiple ones?

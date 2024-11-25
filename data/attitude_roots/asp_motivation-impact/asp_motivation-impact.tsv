@@ -1,0 +1,303 @@
+reviews	paper_sections	rebuttal_accept-praise	rebuttal_answer	rebuttal_by-cr	rebuttal_concede-criticism	rebuttal_contradict-assertion	rebuttal_done	rebuttal_followup	rebuttal_future	rebuttal_mitigate-criticism	rebuttal_other	rebuttal_refute-question	rebuttal_reject-criticism	rebuttal_social	rebuttal_structuring	rebuttal_summary
+1: The authors show no benefit of this scheme except perhaps faster convergence.	MET_RES	NOOOOOONNNNNEEEE	"However, SPAMS is a great inspiration for our framework.
+.This shows a clear distinction between different methods and an important result: when $\ell_2$ normalizing atoms, dictionary learning may converge to a result for which the ratio of activity between the most activated and the least activated is of the order 2.
+.Even if they did show these convincingly, it is not obvious to me that it is valuable."", we have performed the same experiments on more iterations such that we clearly see that baseline stay separate.
+"	NOOOOOONNNNNEEEE	"However, we agree that this was not clear in this first revision: atoms which were displayed looked qualitatively similar.
+"	NOOOOOONNNNNEEEE	"We have solved this issue thanks to the comments of the anonymous reviewers by now displaying the most and least active atoms.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"First, the goal is not faster computation on a CPU.
+.Our (github-shared) code runs in a few dozens of seconds per learning on a standard laptop - but the goal is mainly to be able to test all parameters.
+.We have not used SPAMS in this work as we could use the similar methods which are used in the sklearn library.
+.It takes a dozens of minutes on a 100 nodes cluster.
+.).
+.Our motivation is mainly to understand biological vision and hope this would percolate to ML.
+.Yes, we obtain faster convergence, but as an epiphenomenon of the better efficiency of our adaptive homeostatic algorithm.
+.This result is often overlooked in dictionary learning and is a first novel result of the paper.
+.This being said, Figures 1 and 3 now show the clear qualitative advantage of using homeostasis in unsupervised learning.
+.This now certainly allow to understand *why* convergence speed is a good indicator ---not for an advantage on the running speed on a classical CPU--- but rather in showing that this allows a more efficient dictionary learning overall.
+"	NOOOOOONNNNNEEEE	"Concerning the point "" It is not even clear that the final compression of the baselines would not be better.
+"	"(For information, the complete simulations for this paper take approximately 12 hours --which are easily distributed on a cluster as we multiplied the number of independent learning runs using different classes of parameters, cross-validations and types of sparse coding algorithms - in total approx 500 experiments.
+"
+The method provides impressive compression ratios (in the order of x20-30) but at the cost of a lower performance.	MET_RES	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+The authors do not thoroughly explain the motivation of this paper.	PDI	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"(Importance and motivation)
+"	"To step forward to artificial general intelligence, we should further consider making an agent that can learn and remember many tasks incrementally [1].
+.However, this is particularly challenging in real-world settings: the agent may observe different tasks sequentially, and an individual task may not recur for a long time.
+.In this settings, a learned model might overfit to the most recently seen data, forgetting the rest, a phenomenon referred to as catastrophic forgetting, which is a core issue CL systems aim to address [2].
+.Recently, GR-based methods, inspired by the generative nature of the hippocampus as a short-term memory system in the primate brain [3], have been widely studied to address the catastrophic forgetting problem.
+.In terms of GR, we are trying to address the two open questions mentioned above.
+"
+It is also not clear to me why these problems are important.	PDI	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"(Importance and motivation)
+"	"To step forward to artificial general intelligence, we should further consider making an agent that can learn and remember many tasks incrementally [1].
+.However, this is particularly challenging in real-world settings: the agent may observe different tasks sequentially, and an individual task may not recur for a long time.
+.In this settings, a learned model might overfit to the most recently seen data, forgetting the rest, a phenomenon referred to as catastrophic forgetting, which is a core issue CL systems aim to address [2].
+.Recently, GR-based methods, inspired by the generative nature of the hippocampus as a short-term memory system in the primate brain [3], have been widely studied to address the catastrophic forgetting problem.
+.In terms of GR, we are trying to address the two open questions mentioned above.
+"
+"-	While this is a new and interesting task, the contribution (as discussed above in “pros” above) is somewhat limited."	PDI	NOOOOOONNNNNEEEE	"A key distinction between e-SNLI and Abductive-NLI is that the explanations in e-SNLI serve the purpose of justifying model decisions.
+.In contrast, the goal of Abductive-NLI and Abductive-NLG is to select or generate explanatory hypotheses for given observations.
+.Indeed, analogous to e-SNLI for SNLI, Abductive-NLI can be extended to “e-Abductive-NLI” by providing explanations that justify the selected hypothesis.
+.Consider the following example that BERT fails to predict correctly:
+.O1: Chad loves Barry Bonds.
+.H1: Chad got to meet Barry Bonds online, chatting.
+.H2: Chad waited after a game and met Barry.
+.O2: Chad ensured that he took a picture to remember the event.
+.The e-Abductive-NLI task would require models to generate an explanation for selecting H2.
+.For the above example, a possible explanation for selecting H2 could be: “People need to be physically co-located to take a picture with someone. Meeting online does not mean two people are physically co-located”.
+.We think generating such justifications is a great next step and hope that our work will foster such interesting future research.
+.We appreciate the opportunity to briefly restate our contributions and to discuss its significance.
+.Abductive Commonsense Reasoning, a critical capability in human reasoning, is relatively less studied in NLP research.
+.To support this line of research, our work introduces a dataset that focuses explicitly on this important reasoning capability.
+.Furthermore, several recent works [1,2,3,4] have shown the presence of annotation artifacts in crowdsourced datasets -- which poses a significant challenge for dataset curation.
+.Our work makes the following contributions:
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Discussion about e-SNLI:
+.Re. somewhat limited contribution:
+"	"i) proposes and formalizes two novel tasks of Abductive Inference and Abductive Generation,
+.ii) presents a new dataset in support of these tasks collected through careful crowdsourcing design and an adversarial filtering algorithm,
+.iii) establishes strong baselines on the task proving the difficulty of the tasks and
+.iv) analyses the types of commonsense reasoning that current state of the art models fall short on.
+"
+2. The paper never clearly demonstrates the problem they are trying to solve (nor well differentiates it from the compressed sensing problem  or sample selection problem)	PDI	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We would first like to refer the referee to third paragraph of the introduction, where we explicitly formulate the main shortcoming of compressed sensing:
+.“These [compressed sensing] methods, however, are lacking in the sense that they do not fully exploit both the underlying data distribution and information to solve the downstream task of interest.”
+.Then, in the list of main contributions, we write:
+.“DPS: A new regime for task-adaptive subsampling using a novel probabilistic deep learning framework for jointly learning a sub-Nyquist sampling scheme with a predictive model for downstream tasks”
+.Subquestion 2:
+.We are of course willing to further specify any details that the referee misses in the current paper. We would therefore like to kindly invite the referee to be specific about the details that he/she would like to be added to the manuscript.
+.We respectfully disagree with the referee’s conclusion that the method does not support a significant contribution.
+.We propose a fully-probabilistic generative model for trainable sampling, that exploits both the underlying data distribution and information to solve the downstream task of interest.
+.Our generative model builds upon recent advances on Gumbel max and top-k reparameterizations and their relaxations, showing for the first time how discrete sample selection can be done in a data-driven and task-adaptive fashion.
+.This opens up a vast array of new opportunities in compressed sensing.
+"	NOOOOOONNNNNEEEE	"Question 2:
+"	NOOOOOONNNNNEEEE
+The idea is an interesting one, but	PDI	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+In terms of method, the guidance for learning Siamese networks are designed heuristically (e.g. edges, colors, etc.) which limits its applicability over various datasets; I think that designing more principled approach to build such guidances from data should be one of the key contributions of the paper.	MET_DAT	NOOOOOONNNNNEEEE	"In this paper, we propose the idea of guidance itself and show that it is imposing a desired semantics on the latent space without having labeled data.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We now address this point in our ""Discussion"" section.
+.[Experiments Section] We have significantly updated qualitative and quantitative results in our ""Experiments"" section and now compare our methods against Beta-VAE, DIP-VAE, and InfoGAN.
+"	NOOOOOONNNNNEEEE	"In our future work, we plan to investigate more principled ways of deciding guidances.
+"	"[Principled Guidance] The design of guidances is heuristic, but as illustrated in Figure 2 and in Table 2, they are easy to design and are effective.
+.Further, we added our unsupervised analyses to show that the method works even without explicit guidance on all tested datasets.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+In general, recent work has found that the raw number of parameters has little to do with the size of the model class or the capacity of a model for deep models, and thus work like [A] has been trying to come up with better complexity measures for models to explain generalization.	RWK	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We agree raw parameter count is not a fine estimate of the capacity of the network.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"However, an information-theoretic argument shows that an upper-bound of the capacity is the raw parameter count times the size of the representation (i.e. 32 bits for float32, this argument is close to that of [A]).
+.Experimentally, we show that networks with no data-augmentation (figure 1 - purple curve) stop fitting perfectly when the parameters get within 1/10 of the quantity of information in the learning set, thus we think that raw parameter count is a good first-order approximation up to that factor.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"“1.[...] without sufficient justification the assertion in the paper that the capacity of the network is well approximated by the number of parameters does not seem correct.
+.Also, the claim in Fig. 1 that the transition from ‘’high capacity’’ to low capacity happens at the number of parameters in the network seems a bit loose and hard to substantiate from what I understand (*)”
+"	NOOOOOONNNNNEEEE
+In particular it is not applicable to learning e.g. sigmoid belief networks [Neal, 92] (with conditional Bernoulli units) and many other problems.	RWK	NOOOOOONNNNNEEEE	"We believe that procedure could be useful for the inference of models like the multi-layer sigmoid belief networks.
+.As for the conditional independency, it is actually removed after marginalizing out additional continuous RVs (which could be non-reparameterizable RVs like Gamma).
+.Also note that one can strengthen the aforementioned procedure by inserting more additional continuous internal RVs into the inference model to enlarge its (marginal) description power.
+"	NOOOOOONNNNNEEEE	"Thanks a lot for pointing out the smoothness conditions for reparameterization; we have carefully revised our paper to remove the misleading statements and to make it clearer when our method (and also the reparameterization trick, Rep) is applicable.
+"	NOOOOOONNNNNEEEE	"However, as stated in the last paragraph of Sec. 7.2, we presented in Appendix B.4 a procedure to assist our methods in handling discrete internal RVs.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"For your comments wrt discrete random variables (RVs), unfortunately, we haven’t found a principled way to back-propagate gradient through discrete internal RVs (like in multi-layer sigmoid belief networks).
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+I believe that this paper is not the first one to study question generation from logical form (cf. Guo et al, 2018 as cited), so it is unclear what is the contribution of this paper in that respect.	RWK	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+No baseline comparison with GraphNets.	RWK	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Overall, the idea is simple, the explanation is clear and experimentation is extensive. I would like to see more commentary on why this method might have long-term impact (or not).	PDI_MET	NOOOOOONNNNNEEEE	"We view this contribution as a simple yet generic architecture modification which leads to performance improvements.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Similarly to residual connections, we would like to see it used in GAN generator architectures, and more generally in decoder architectures in the long term.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"- Overall, the idea is simple, the explanation is clear and experimentation is extensive. I would like to see more commentary on why this method might have long-term impact (or not).
+"	NOOOOOONNNNNEEEE
+My main concern with the paper is its limited applicability to robotic manipulation tasks with a clear divide between states of interest vs others.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"- Although we evaluated our method in robotic manipulation tasks, it does not mean it won’t work for other tasks.
+.We added additional experiments in a new navigation task, see the video at https://youtu.be/l5KaYJWWu70?t=104
+.We consider our algorithm as a general-purpose skill learning algorithm in the sense that it guides the agent to learn any skills to control the states of interests.
+.The states of interest could be any states, such as the robot states, the object states, or the states of the environment.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Overall, I do not feel the comparisons dramatically change the qualitative understanding the field has of the different optimizers and their tunability.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"This is missing in existing papers, which consider best attained performance alone.
+.The importance of a proper hyperparameter search protocol is emphasized by Choi et al., 2019 (published after our submission and under review at ICLR).
+"	NOOOOOONNNNNEEEE	"a. Limited contribution to the qualitative understanding of the optimizers
+.a. Limited contribution to the qualitative understanding of the optimizers:
+"	"We consider the three main contributions of our work to be 1) a systematic evaluation protocol of optimizers, with off-the-shelf HPO to account for the cost of tuning of hyperparameters.
+.2) a “w-tunability” measure of the cost of hyperparameter optimization, and 3) under the experiments considered we find that Adam (with default beta and epsilon values) is the most tunable.
+"
+While the presentation is clear and the evaluation of the model is thorough, I am unsure of the significance of the proposed method.	MET	NOOOOOONNNNNEEEE	"LPIPS linearly calibrates AlexNet feature space to better match human perceptual similarity judgements.
+.Aside for the first two predicted frames, our VAE ablation and the SVG model both achieve similar SSIM and LPIPS.
+.After examining the KTH results further, we realized that our results are likely weaker than they should have been, because we did not use the same preprocessing as prior work.
+.The experiments from our original submission cropped the videos into a square before resizing, and thus discarded information from the sides of the video.
+.We also didn't choose particular hyperparameters to ensure diversity for our models, and we expect some improvement in diversity in the new sets of experiments.
+.However, that is typically not the case of synthetic datasets.
+.In early experiments, we trained our pure VAE model on the stochastic shape movement dataset from Babaeizadeh et al. (2018), and our pure VAE was able to model the dataset without any blur and with perfect separation of the possible futures.
+"	"We are currently rerunning the KTH experiments and we plan to update the results in the paper.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We added Section 3.5 to point out the differences between the VAE component of our model and prior work.
+.We have included a revised plot in Figure 14 (note that this temporary plot will be incorporated into Figure 6), where we use the official implementation of SSIM and replace the VGG metric with the LPIPS metric (Zhang et al., 2018).
+.The purpose of adding adversarial losses to a pure VAE is to improve on blurry predictions where the latent variables alone cannot capture the uncertainty of the data.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+That is, authors assumed that they have a degradation function F and all the inference process is just based on this known function.	MET	NOOOOOONNNNNEEEE	"A1: Many state-of-the-art approach, including SRCNN and SRGAN, has their own implicitly defined degradation function.
+.They use their function F to generate training samples during their training process, while we use our explicitly defined function F during the inference process.
+.If the assumed degradation function F is not exactly the function in real scenarios, both these state-of-the-art approach and our method will suffer.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"So it is unfair to criticize our motivation just because we explicitly write out the degradation function F.
+"	NOOOOOONNNNNEEEE	"Q1: The degradation function F is challenging to obtain in real world scenarios.
+"	NOOOOOONNNNNEEEE
+Thus we may only apply the proposed model on a few tasks with exactly known F.	MET	NOOOOOONNNNNEEEE	"A1: Many state-of-the-art approach, including SRCNN and SRGAN, has their own implicitly defined degradation function.
+.They use their function F to generate training samples during their training process, while we use our explicitly defined function F during the inference process.
+.If the assumed degradation function F is not exactly the function in real scenarios, both these state-of-the-art approach and our method will suffer.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"So it is unfair to criticize our motivation just because we explicitly write out the degradation function F.
+"	NOOOOOONNNNNEEEE	"Q1: The degradation function F is challenging to obtain in real world scenarios.
+"	NOOOOOONNNNNEEEE
+If the authors don't discuss a motivation then how will a reader know how to apply the tool?	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We will publish the code to compute conductance after the blind-review phase.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"In the new revision, we have added a discussion section to make a case for this.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"The reviewer notes the need to emphasize how and why to use this approach.
+"	NOOOOOONNNNNEEEE
+- My biggest concern is that the technical contributions of the paper are not clear at all.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+While, the paper is a plaisant read, I find difficult to access its importance and the applicability of the ideas presented beyond the analogy with the capacity computation. Perhaps other referee will have a clearer opinion.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"While the paper is a pleasant read, I find difficult to access its importance and the applicability of the ideas presented beyond the analogy with the capacity computation.
+.Perhaps other referee will have a clearer opinion.
+"	NOOOOOONNNNNEEEE
+Con: not clear to me how strong and wide the implications are, beyond the analogies and the reinterpretation	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+This very much limits the utility of the method.	MET	NOOOOOONNNNNEEEE	"We believe that procedure could be useful for the inference of models like the multi-layer sigmoid belief networks.
+.As for the conditional independency, it is actually removed after marginalizing out additional continuous RVs (which could be non-reparameterizable RVs like Gamma).
+.Also note that one can strengthen the aforementioned procedure by inserting more additional continuous internal RVs into the inference model to enlarge its (marginal) description power.
+"	NOOOOOONNNNNEEEE	"Thanks a lot for pointing out the smoothness conditions for reparameterization; we have carefully revised our paper to remove the misleading statements and to make it clearer when our method (and also the reparameterization trick, Rep) is applicable.
+"	NOOOOOONNNNNEEEE	"However, as stated in the last paragraph of Sec. 7.2, we presented in Appendix B.4 a procedure to assist our methods in handling discrete internal RVs.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"For your comments wrt discrete random variables (RVs), unfortunately, we haven’t found a principled way to back-propagate gradient through discrete internal RVs (like in multi-layer sigmoid belief networks).
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+- VAE, GAN: q is the generative model defined as a mapping of a standard multivariate normal distribution by a NN.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+- sigmoid belief networks: q is a Bayesian network where each conditional distribution is a logistic regression model.	MET	NOOOOOONNNNNEEEE	"Currently, the proposed method cannot be directly applied to multi-layer sigmoid belief networks (without the procedure in Appendix B.4).
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We have made an explicit statement of this in the revised manuscript.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Hence, the effectiveness and advantage of the proposed methods are not clear.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"""Though the Bayesian inference using GAN is a natural idea, learning algorithms proposed in this paper are simple and are not intensively developed.
+.In numerical experiments, there is no comparison with major competitors besides random sampling in the active learning setup.
+.Hence, the effectiveness and advantage of the proposed methods are not clear.""
+.We have addressed this by responding to the specific questions below.
+"	NOOOOOONNNNNEEEE
+I have no idea that what is the propose of defining a new evaluation method and how this new evaluation method helps in the further design of the MaxConfidence method.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+I don’t think it is of any practical use to show that a new algorithm (such at DDGD) provide some defence compared to no defence.	MET	NOOOOOONNNNNEEEE	"In both setups, our inference method is shown to be more robust compared to the softmax inference.
+.Such experimental results support our claim that the proposed generative classifier can improve the robustness against adversarial attacks as it utilizes multiple hidden features (i.e., harder to attack all of them).
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"In the revised draft, we also consider optimization-based adaptive attacks against our method under the black-box setup (see Table 5) and the white-box setup (see Table 10).
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Q5. Evaluation on adversarial attacks.
+"	"We further show that our method further improves the robustness of deep models optimized by adversarial training (see Table 6 and 11).
+"
+(2) The method is not well motivated.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We have rewritten the introduction and detailed the motivation of using spaces of constant curvature, i.e. they better represent certain classes of data such as hierarchical structures, scale-free graphs, complex networks and cyclical or spherical data.
+.This is in accordance with the previous related work on non-Euclidean embeddings.
+.Moreover, we have detailed some limitations of Euclidean spaces in Appendix B.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"MOTIVATION:
+"	NOOOOOONNNNNEEEE
+The model is not well motivated and the optimization algorithm is also not well described.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We did our best to write the paper such that it includes all details needed to fully understand the proposed method and its theoretical background.
+.The referee indicates (in sharp contrast to referee 3) that the paper is not nicely written, nor easy to follow.
+.We invite the referee to be specific about the sections of the original manuscript that need more clarification, allowing us to revise these sections.
+"	NOOOOOONNNNNEEEE	"Question 3:
+"	NOOOOOONNNNNEEEE
+I like the area of research the authors are looking into and I think it's an important application. However, the paper doesn't answer key questions about both the application and the models:	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+One drawback is that it is highly specific to language models.	MET	NOOOOOONNNNNEEEE	"Although we proposed Past Decode Regularization (PDR) with language modeling in mind to exploit the symmetry between the input and output vocabulary (and the corresponding word embedding and softmax layer), any model/task that has this symmetry can potentially use a PDR term.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+In addition, there is not much theoretical justification for it, it seems like a one-off trick.	MET	NOOOOOONNNNNEEEE	"We can justify PDR theoretically as an inductive bias on the language model.
+.The observed bigrams in a language are not random and the distribution of the second word given the first word in a bigram is not uniform.
+.Similarly, the distribution of the first word given the second word will be far from uniform.
+.A RNN based language model models the first dependence (and more long range ones) and our proposed PDR tries to model the second one.
+.In a unidirectional language model, we cannot look into the future tokens and hence we use the output distribution as a proxy for the ""true second word"" and decode the distribution of the first word.
+.Thus the PDR term can be thought of as biasing the language model to retain more information about the distribution of the first word given the second word in a bigram.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We will incorporate this discussion in the updated version of the paper.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+The main drawback of the paper is that it seems to be more engineering-focused, and doesn’t provide much insight into semi-supervised learning.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+The privacy definition employed in this work is problematic.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Why larger reconstruction error achieves stronger privacy protection? I could not find any formal relationship between reconstruction error and privacy.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+(2) The paper does not do a great job of convincing the reader that the problem it is trying to solve is an important matter, or the proposed method is indeed effective in some applications.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"With the rapid development of industrial and scientific knowledge graphs, we believe (and agree with the Reviewer #2) that learning rules that involve multiple modalities is an important and relevant problem.
+.Indeed, such rules can not only be used for data cleaning and completion, but they are also themselves extremely valuable assets carrying human-understandable structures that support both symbolic and subsymbolic representations and inference.
+"	NOOOOOONNNNNEEEE	"2a) - ""The paper does not do a great job of convincing the reader that the problem it is trying to solve is an important matter, or the proposed method is indeed effective in some applications.""
+"	NOOOOOONNNNNEEEE
+3. Estimating entropies is a standard practice in statistics and machine learning, with an arsenal of estimators; the motivation of the submission is questionable.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+As pointed out in the weakness section, many design choices are not well motivated, and the effects of those designs are not well studied.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"A: While ReMixMatch comprises many components (some of which are new), we believe our ablation study justifies the reason why each component exists. If there are additional ablation experiments that you think would be helpful for us to run, please let us know.
+"	NOOOOOONNNNNEEEE	"As pointed out in the weakness section, many design choices are not well motivated, and the effects of those designs are not well studied.
+"	NOOOOOONNNNNEEEE
+In my opinion, due to how many researchers are and have been looking into improvements of language modeling, the authors may find it hard to break new ground in this direction.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+However there are a few key weaknesses in my view, not least that the practical utility of these metrics is not obvious, since they require supervision in the target domain.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+- The envisioned scenario (and hence utility) of these metrics is a bit unclear to me here.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"> We agree that our approach to estimate transfer potential reaps true benefits only when n is large.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"However, this is not uncommon in scenarios like machine translation, where there are hundreds of potential language pairs that could be used as candidate tasks.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Furthermore, we believe (although acknowledge that this is subjective) that curiosity-driven questions about how the information is encoded are interesting: while they might not be useful in a way that is easily measurable by quantifiable metrics, they provide insights that can help guide future work.
+"	NOOOOOONNNNNEEEE	"Re: Utility of the methods is a bit unclear
+"	NOOOOOONNNNNEEEE
+There are also concerns about the motivations behind parts of the technique.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+- (W6) Motivation for CFS: I still don't fully understand the need to understand the density of the representation (especially in the manner proposed in the paper). Why is this an important problem? Perhaps expanding on this would be helpful	MET	NOOOOOONNNNNEEEE	"Re: (W6) Motivation for CFS
+.> There is a rich literature concerning what information is captured in the representations.
+.Further, there are a few initial works that show that certain characteristics like length [1][2], sentiment [3], presence and absence of tokens like brackets [4] are densely captured in a single dimension of the representation space.
+.In a similar spirit, we wanted to quantitatively study this surprising phenomenon, and we were curious about how densely is information encoded in representations.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Although the paper proposes an interesting framework I would argue that it is a “green apple” in the sense that authors need to motivate the approach better and expand the contribution beyond solving a particular instance.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"The point of this work is only to see if ML can find optimal algorithms, and not about doing it faster than the known theoretical algorithms.
+.Note that this is not similar to the case of solving an offline combinatorial problem via integer programming or other solvers, since our problems are online, i.e., the instance is not known beforehand, so there is no comparison to such “general-purpose” solvers.
+.Thus we don't compare to the running time of offline solvers, but to the worst-case competitive ratio of the optimal online algorithms.
+.Again drawing the analogy of playing Go, the objective is mostly on training an agent that can make competitive moves rather than very fast moves, and there is no known “general-purpose” strategy to accomplish this.
+.*Please also see reply to reviewer #2 on a similar question of evaluating against other methods*
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"-- Comment on scale / speed for large instances of combinatorial optimization:
+"	NOOOOOONNNNNEEEE
+- limited amount of new insight, which is limiting as new and better understanding of GANs and practical guidelines are arguably the main contribution of a work of this type	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"[A] Our paper presents many useful insights, namely: NS-GAN performs well, spectral norm is a good default normalization technique, gradient penalty should also be considered, even in combination with spectral norm but will cost substantially more in terms of computational resources, popular metrics such as KID and FID result in the same relative ordering of the models so there is no point in computing both, most Resnet tricks do not matter, etc.
+.All of these insights are supported by a fair and unbiased rigorous experimental process.
+.On top of that, our experiments are reproducible (as already reported by other works), we shared the resulting code and the pre-trained models.
+"	NOOOOOONNNNNEEEE	"[Q] Limited amount of new insight.
+"	NOOOOOONNNNNEEEE
+* I found it difficult to follow the theoretical motivation for performing the work.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"- There are a few points here:
+.*
+"	NOOOOOONNNNNEEEE
+In terms of applicability, it seems that many cases where discrete latent variables would be really interesting are not covered (e.g. sigmoid belief networks); the paper demonstrates experiments with discrete images (binary or 4-bit) not particularly motivated in my opinion.	EXP	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+However, it looks to me that the authors need to better explain the motivation of DiVA, the differences of DiVA from existing supervised VAE, and the experimental settings, before the acceptance of this paper.	EXP	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+After reading, the reviewer cannot understand why the user should bother to use hyperbolic representations that are more complex to compute in GCNs, given that the experimental results are roughly the same.	EXP	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We have rewritten the introduction and detailed the motivation of using spaces of constant curvature, i.e. they better represent certain classes of data such as hierarchical structures, scale-free graphs, complex networks and cyclical or spherical data.
+.This is in accordance with the previous related work on non-Euclidean embeddings.
+.Moreover, we have detailed some limitations of Euclidean spaces in Appendix B.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"MOTIVATION:
+"	NOOOOOONNNNNEEEE
+If faster training of dictionary learning models was a bottleneck in practical applications, this might be of interest, but it is not.	EXP	NOOOOOONNNNNEEEE	"However, SPAMS is a great inspiration for our framework.
+.This shows a clear distinction between different methods and an important result: when $\ell_2$ normalizing atoms, dictionary learning may converge to a result for which the ratio of activity between the most activated and the least activated is of the order 2.
+.Even if they did show these convincingly, it is not obvious to me that it is valuable."", we have performed the same experiments on more iterations such that we clearly see that baseline stay separate.
+"	NOOOOOONNNNNEEEE	"However, we agree that this was not clear in this first revision: atoms which were displayed looked qualitatively similar.
+"	NOOOOOONNNNNEEEE	"We have solved this issue thanks to the comments of the anonymous reviewers by now displaying the most and least active atoms.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"First, the goal is not faster computation on a CPU.
+.Our (github-shared) code runs in a few dozens of seconds per learning on a standard laptop - but the goal is mainly to be able to test all parameters.
+.We have not used SPAMS in this work as we could use the similar methods which are used in the sklearn library.
+.It takes a dozens of minutes on a 100 nodes cluster.
+.).
+.Our motivation is mainly to understand biological vision and hope this would percolate to ML.
+.Yes, we obtain faster convergence, but as an epiphenomenon of the better efficiency of our adaptive homeostatic algorithm.
+.This result is often overlooked in dictionary learning and is a first novel result of the paper.
+.This being said, Figures 1 and 3 now show the clear qualitative advantage of using homeostasis in unsupervised learning.
+.This now certainly allow to understand *why* convergence speed is a good indicator ---not for an advantage on the running speed on a classical CPU--- but rather in showing that this allows a more efficient dictionary learning overall.
+"	NOOOOOONNNNNEEEE	"Concerning the point "" It is not even clear that the final compression of the baselines would not be better.
+"	"(For information, the complete simulations for this paper take approximately 12 hours --which are easily distributed on a cluster as we multiplied the number of independent learning runs using different classes of parameters, cross-validations and types of sparse coding algorithms - in total approx 500 experiments.
+"
+The results  are overall not very impressive.	RES	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+The result does not at all apply to all of them.	RES	NOOOOOONNNNNEEEE	"We believe that procedure could be useful for the inference of models like the multi-layer sigmoid belief networks.
+.As for the conditional independency, it is actually removed after marginalizing out additional continuous RVs (which could be non-reparameterizable RVs like Gamma).
+.Also note that one can strengthen the aforementioned procedure by inserting more additional continuous internal RVs into the inference model to enlarge its (marginal) description power.
+"	NOOOOOONNNNNEEEE	"Thanks a lot for pointing out the smoothness conditions for reparameterization; we have carefully revised our paper to remove the misleading statements and to make it clearer when our method (and also the reparameterization trick, Rep) is applicable.
+"	NOOOOOONNNNNEEEE	"However, as stated in the last paragraph of Sec. 7.2, we presented in Appendix B.4 a procedure to assist our methods in handling discrete internal RVs.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"For your comments wrt discrete random variables (RVs), unfortunately, we haven’t found a principled way to back-propagate gradient through discrete internal RVs (like in multi-layer sigmoid belief networks).
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Then to state to which of these cases the results of the paper are applicable, allow for an improvement of the variance and at what additional computational cost (considering the cost of evaluating the discrete derivatives).	RES	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Generally speaking it seems like a lot of technicalities for a relatively simple result:	RES	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We agree that the measure theoretic approach is not always necessary (indeed for angular actions, it is not needed), but it is necessary for a very common scenario -- clipped actions.
+.Researchers and practitioners both almost always clip actions when using policy gradient algorithms for robotics control environments (read: MuJoCo tasks).
+.Recently, a reduced variance method was introduced by Fujita and Maeda (2018) for clipped action spaces.
+.Their algorithm is also a member of the marginal policy gradients family and our theoretical results for MPG significantly tighten the existing analysis of that algorithm.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"""I am not convinced that the measure theoretic perspective is always necessary to convey the insights, although I appreciate the desire for technical correctness."" / ""Generally speaking it seems like a lot of technicalities for a relatively simple result: marginalizing a distribution onto a lower-dimensional surface.""
+"	NOOOOOONNNNNEEEE
+The results of the paper do not give major insights into what are the preferred techniques for training GANs, and certainly not why and under what circumstances they'll work.	RES	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"[A]  We respectfully disagree.
+.To our knowledge, this is only the second work which attempts to fairly and systematically compare GANs in a large-scale setting.
+.The main conclusions of our work (about NS-GAN, spectral normalization, and gradient penalty) hold across several datasets and architectures.
+"	NOOOOOONNNNNEEEE	"[Q] The results of the paper do not give major insights into what are the preferred techniques for training GANs, and certainly not why and under what circumstances they'll work.
+"	NOOOOOONNNNNEEEE
+This is not so interesting, even though results are impressive.	RES	NOOOOOONNNNNEEEE	"We also found in our ablation study that using only strong augmentation (i.e., replacing weak augmentations with strong augmentations) resulted in very poor performance for ReMixMatch, suggesting that anchoring towards a weaker augmentation is important.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We mention this in the paper (""Since MixMatch uses a simple flip-and-crop augmentation strategy, we were interested to see if replacing the weak augmentation in MixMatch with AutoAugment would improve performance but found that training would not converge."") but will emphasize this more in the next draft.
+.We will update the labels in the ablation table to make this more clear.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"A: We actually found that using stronger augmentations in MixMatch resulted in divergence.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Significance: It is hard to assess given the current submission.	OAL	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+In sum, the paper has a very good application but not good enough as a research paper.	OAL	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Due to several shortcomings of the paper, most important of which is on presentation of the paper, this manuscript requires a significant revision by the authors to reach the necessary standards for publication, moreover it would be helpful to clarify the modeling choices and consequences of these choices more clearly.	OAL	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We attempted to much  improve the clarity of our paper by adding further explanations and correcting typos in many places.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+While sensible, this seems to me to be too minor a contribution to stand alone as a paper.	OAL	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We want to emphasis that the accumulator implemented in the newly proposed architectures has an inherently different nature than accumulators used so far: While accumulators such as LSTM cells accumulate knowledge about the state of a sequence, our architectures produce meaningful intermediate results, which can simply summed up to estimate the final set utility.
+.Producing such intermediate results, which model the nature of the problem much better than previous approaches, is the key idea presented in this paper and a major benefit of the proposed architectures.
+.This also follows the idea of the Choquet integral.
+"	NOOOOOONNNNNEEEE	"""RNN with an accumulator / too minor a contribution ""
+"	NOOOOOONNNNNEEEE
+This could have made the paper much stronger.	OAL	NOOOOOONNNNNEEEE	"The use of our recurrent architecture helps the process to distinguish some different diffusion contexts from the past.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"A: To give more clues about the good behavior of the algorithm, we added results about the accuracy of the sampled trajectories on the artificial datasets (for which we have the ground truth on who infected whom).
+.We report the rate of good infector choices (i.e., the rate of I_i that equal the ground truth) for our approach and the others.
+.Results show that our approach actually performs better infector choices than CTIC which does not consider the history of the diffusion in its infection probabilities.
+.We also added a second artificial dataset to further analyze the behavior of the approaches.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"R: ""The experimental sections look rather mechanical. I would have put some results on the learned embedding. Or some demonstration of the embedded history or probability to intuitively convey the idea and how it works. This could have made the paper much stronger.""
+"	NOOOOOONNNNNEEEE
+As such the paper is not convincing.	OAL	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Overall, I am not sure what we could gain from this research direction.	OAL	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+1) The motivation is unclear and overall structure of the paper is confusing.	OAL	NOOOOOONNNNNEEEE	"1) For the motivation, Because the traditional algorithms deal with GANs via a Markov chain:
+.$(f_0,g_0)\rightarrow (f_1, g_0)\rightarrow (f_1,g_1) \rightarrow \cdots\rightarrow (f_{n},g_{n-1})\rightarrow (f_n,g_n)$. It is like a kind of reinforcement learning--- but the environment (Here it is $f$) is changing. And we want to view it from the angle of game theory. And then we try to minimize the new loss.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+- Contribution overall may be a bit limited	OAL	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Significance: Below average	OAL	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+The writing is understandable for the most part, but the paper seems to lack focus - there is no clear take home message.	OAL	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Unfortunately the paper doesn't provide any qualitative analysis on how modulation is employed by the models after training.	ANA	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Re: ""- no qualitative analysis on how modulation is actually use by the systems.
+.E.g., when is modulation strong and when is it not used ""
+.Following the reviewer’s suggestion, we have added a figure that shows the dynamics of neuromodulation in the cue-response task (Figure 3, in the Appendix).
+.This figure shows that while neuromodulation clearly reacts to reward, this reaction is complex and varies both within each episode and between runs.
+"	NOOOOOONNNNNEEEE

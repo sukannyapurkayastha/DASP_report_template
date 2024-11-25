@@ -1,0 +1,1 @@
+- I believe one should not compare the distance shown between the left and right columns of Figure 3 as they are obtained from two different models.

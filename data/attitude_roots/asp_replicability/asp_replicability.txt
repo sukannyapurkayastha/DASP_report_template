@@ -1,0 +1,1001 @@
+reviews	paper_sections	rebuttal_accept-praise	rebuttal_answer	rebuttal_by-cr	rebuttal_concede-criticism	rebuttal_contradict-assertion	rebuttal_done	rebuttal_followup	rebuttal_future	rebuttal_mitigate-criticism	rebuttal_other	rebuttal_refute-question	rebuttal_reject-criticism	rebuttal_social	rebuttal_structuring	rebuttal_summary
+-- While the overall claim of the paper in the introduction seems to be to speed up frequency estimation using machine learned advice, results are only given for the Zipfian distribution.	INT_RES	NOOOOOONNNNNEEEE	"Many real-world data naturally follow the Zipf’s Law, as we showed in Figure 5.1 and Figure 5.3 for internet traffic and search query data.
+.Thus, our theoretical analysis assumes item frequencies follow the Zipfian distribution.
+.While our analysis makes this assumption, our algorithm does not have any assumption on the frequency distribution.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"[Results are only given for the Zipfian distribution]
+"	NOOOOOONNNNNEEEE
+- Given the small size of the dataset, I would propose experimenting with non-neural approaches as well, which are also quite common in NLG.	DAT_EXP	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+- experiments are performed using a synthetic setup on a single data set, so it remains unclear if the algorithm would be successful in a real life scenario	DAT_EXP	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Thus, we hope the reviewer could better explain why you think our algorithm could fail in real-world scenarios.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"4. Both CIFAR10 and CIFAR100 are the subsets from 80 million tiny images dataset [3].
+.As described in the website and paper, all images are collected from the internet and partially labelled by humans, and thus indeed present a real-world setup rather than a synthetic setup.
+.Further, we show that if a harder test set with a more variety exists (CIFAR10.1v6), out method could provide even better generalisation (Figure 4).
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+The experimental settings, e.g. how the train:test datasets are split, and hyperparameter settings, are not clearly given.	DAT_EXP	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Are added to section 4 and appendix E
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"EXPERIMENTAL SETTINGS & HYPERPARAMETERS:
+.EXPERIMENTAL RESULTS:
+"	"Our methods outperform the Euclidean GCN models for the synthetic datasets for minimizing distortion, while being better or competitive for node classification.
+.We believe further experimental investigations are needed to better train non-Euclidean graph neural network models.
+"
+Moreover, I  don't think that the data sets in experiments are good enough to cover the importance and the nature of the problem.	DAT_EXP	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Because, the results are only shown on one dataset, it is harder to see how one might extend this work to other form of questions on slightly harder datasets.	DAT	NOOOOOONNNNNEEEE	"This knowledge (e.g. the superiority of trees to chains, the sensitivity of layout induction to initialization, the emergence of spurious parameterization in end-to-end learning), will guide researchers in choosing, designing and troubleshooting their models, as they now know what to expect modulo the optimization challenges that they may face.
+.The field of language understanding with deep learning is not easily amenable to mathematical theoretical investigations and, with that in mind, rigorous minimalistic studies like ours are arguably very important.
+.To some extent, they play the role of the former: they inform researcher intuition and lay a solid foundation for scientific dialogue.
+.We purposely traded breadth for depth in our investigations, and we will go even deeper in the additional experiments that the upcoming revision will contain.
+.We believe that the total of our results makes a complete conference paper.
+"	NOOOOOONNNNNEEEE	"While we fully agree that more complex datasets with more complex questions would bring new challenges, these are ones we purposely put aside (such as the general unavailability of ground-truth layouts for vanilla NMN, the need to consider an exponentially large set of possible layouts for Stochastic N2NMN, etc.) We believe that it is highly valuable for the research community to know what happens in the simple ideal case of SQOOP, where we can precisely test our specific generalization criterion.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We would like to conclude our response by replying to the higher-level concern of R1 that the findings of our study may not “generalize to other more complex datasets where the network layout NMN might be more complex, the number of modules and type of modules might also be more”.
+"	NOOOOOONNNNNEEEE
+I also wonder if the video data will be released, which could be important for the following comparisons.	DAT	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"1. We aimed to provide a broad variety of example applications (playing tennis, walking, fencing, dancing), while mainly focusing on the most complicated (tennis) application, for a thorough analysis of our method.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+4. How large is the training set of (T, P) pairs? I don't think this is mentioned in the paper.	DAT	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We also include further details on the construction of training set.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+It is also not clear to me why CIFAR datasets involve two domains and how these domains are relevant in each of the tasks.	DAT	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"(Domains of CIFAR dataset) Since current generative models are not perfect for generating complex natural images, there is always a discrepancy between generated images and real images.
+.Thus, we can define two domains: real image domain (realistic) and generated image domain (blurry).
+.We used the domain translation for narrowing the gap.
+"
+It is necessary to test it on datasets with much more fine classes and much-complicated hierarchy, e.g., ImageNet, MS COCO or their subsets, which have ideal class hierarchy structures.	DAT	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"5) We would very much like to test our approach on more complex datasets with more varied classes, and this will be part of future work.
+"	"However, we would like to repeat that our approach can work with an arbitrary hierarchy (e.g. assigning the same number of sub-classes to every class).
+.The reason why we only used 100 classes in our experiments is for allowing the comparison with human-defined classes, but in principle we could use any number of sub-classes per primary class.
+.In the CIFAR10 dataset in which a hierarchy is not defined, we show that using 6 different hierarchies all lead to a better generalisation.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+- Lack of sufficient technical detail on models and dataset	DAT	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Thanks for pointing out the issues with our presentations.
+.We agree much detail on embeddings can be condensed or moved to Appendix.
+.We included embedding details in the paper because a reviewer from the venue we previously submitted to requested these details to be in the paper.
+"	NOOOOOONNNNNEEEE	"We revised the notations in the paper to make formulation clearer.
+.In addition, we added more details about the data as you suggested.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Given a partial tree, there can be more than one way to complete the layout.
+.Given a 10%, 50% and 80% BFS partial layout, the mean number of completions of the layout is 2.97, 1.23 and 1.17 respectively.
+.Given a 10%, 50% and 80% DFS partial layout, the mean number of completions is 3.63, 1.24, and 1.17 respectively.
+"
+The IDF scores would be stronger if they were computed on a bigger in-domain corpus than the gold test set.	DAT	NOOOOOONNNNNEEEE	"The candidate sentences generated by MT systems may contain words that never appear in the test set.
+.We apply plus-one smoothing to handle such words.
+.We have found that this leads to worse performance, likely because of the domain shift.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Following your suggestion, we further studied idf scoring.
+.We computed idf scores on the monolingual English corpus released by WMT18 and experimented with BERTScore computed with the Roberta-large model.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+My concern is, given this is an empirical work,  the number of datasets used in evolution is a bit small.	DAT	NOOOOOONNNNNEEEE	"Currently, there are 5 datasets in our experiments.
+"	"We can provide more experiment results in appendix to eliminate this concern.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Actually, we have evaluated the proposed methods by conducting experiments in many datasets and observed the similar results.
+"	NOOOOOONNNNNEEEE	"1. the number of benchmark datasets
+"	NOOOOOONNNNNEEEE
+- Please comment on the extra computation required for obtaining image data for MT sentences and for learning image representations.	DAT	NOOOOOONNNNNEEEE	"The extra computation is negligible.
+.The time of obtaining image data for MT sentences for EN-RO dataset, for example, is approximately less than 1 minute by tensor operation in GPU.
+.The lookup table is formed as the mapping of token (only topic words) index to image id.
+.Then, the retrieval method is applied as the tensor indexing from the sentence token (only topic words) index to image ids, which is the same as the procedure of word embedding.
+.The retrieved image ids are then sorted by frequency.
+.Learning image representations takes only about 2 minutes for all the 29,000 images in Multi30K using 6G GPU memory for feature extraction and 8 threads of CPU for transforming images.
+.The extracted features are formed as the “image embedding layer” with the size of (29000, 2400) for quick accessing in neural network.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"3. The extra computation:
+"	NOOOOOONNNNNEEEE
+Although I really appreciate the authors' efforts on providing implementational details in the appendix, the code and data do not seem to be publicly available, and I'm expecting that the implementation of this technique is relatively hard due to their complex designs of the generator and discriminator.	DAT	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We have added a pseudo-code description of TTS-GAN training algorithm to the updated submission.
+.We believe that, together with other architectural details present in the paper, it makes our work reproducible.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+While reviewing this paper I went back and read the EN-DE evaluation data for the last few years trying to see how often I could reason that images would help and I came up severely lacking.	DAT	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+It's then hard for me to square that with the +VR gains seen throughout this work on non-grounded datasets.	DAT	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+"For example, for baseline 1, it is very hard to understand why would we want to use such an unusual baseline, and why it is called a ""random baseline""."	MET_RWK	NOOOOOONNNNNEEEE	"The random baseline is necessary because of the unbalanced nature of the rewrite success, this is hard to control, so we added an extra baseline that shows that our results are better than just ignoring any of the input expressions (theorem or parameter).
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+This sort of two-stage generation is also potentially interesting, I was wondering if the authors had ideas to generalize this idea.	PDI	NOOOOOONNNNNEEEE	"3. Unsupervised results: For the unsupervised setting, in addition to our face dataset and CelebA, we also present the results on the chairs and cars in the Appendix (See Figure 5, Figure 7, Figure 12, Figure 13).
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+In general, the space that was used to explain the Transformer baselines---which are essentially straightforward ways to adapt transformers to this task---could have been used to give more detail on the dataset.	MET_DAT	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Thanks for pointing out the issues with our presentations.
+.We agree much detail on embeddings can be condensed or moved to Appendix.
+.We included embedding details in the paper because a reviewer from the venue we previously submitted to requested these details to be in the paper.
+"	NOOOOOONNNNNEEEE	"We revised the notations in the paper to make formulation clearer.
+.In addition, we added more details about the data as you suggested.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Given a partial tree, there can be more than one way to complete the layout.
+.Given a 10%, 50% and 80% BFS partial layout, the mean number of completions of the layout is 2.97, 1.23 and 1.17 respectively.
+.Given a 10%, 50% and 80% DFS partial layout, the mean number of completions is 3.63, 1.24, and 1.17 respectively.
+"
+1. What are the key limitations of AutoLoss ? Did we observe some undesirable behavior of the learned optimization schedule, especially when transfer between different datasets or different models ?	MET_DAT	NOOOOOONNNNNEEEE	"We observe AutoLoss has bounded transferability -- while we successfully transfer a controller across different CNNs, we can hardly transfer a controller trained for CNNs to RNNs.
+.This is slightly different from some related AutoML works, such as in [1], where auto-learned neural optimizers are able to produce decent results on even different families of neural networks.
+.We hypothesize that the optimization behaviors or trajectories of CNNs and RNNs are very different, hence the function mappings from status features to actions are different.
+.Another limitation of AutoLoss is the necessity of designing the feature vector X, which might require some prior knowledge on the task of interest, such as being aware of a rough range of the possible values of validation metrics, etc.
+.In fact, We initially experimented with directly feeding blackbox features (e.g. raw vectors of parameters, gradients, momentum, etc.) into controller, but found they empirically contributed little to the prediction, and sometimes hindered transferability (as different models have their parameter or gradient values at different scales).
+.Meta-learning discrete schedules involves non-differentiable optimization, which is by nature difficult.
+.Therefore, a lot of techniques in addition to vanilla REINFORCE are required to stabilize the training.
+.Please also see our answer to the next question for more details.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We haved add the above discussion to the latest version as Appendix A.9.
+"	NOOOOOONNNNNEEEE	"We leave it as a future work to study where the clear boundary is.
+.As a potential future work, we will seek for continuous representations of the update schedules and end-to-end training methodologies, as arisen in recent works [2].
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"These are indeed good questions.
+"	">> What are the key limitations of AutoLoss? Did we observe some undesirable behavior of the learned optimization schedule, especially when transfer between different datasets or different models ?
+.We list several limitations we discovered during the development of AutoLoss:
+.- Bounded transferability
+.- Design white-box features to capture optimization status
+.- Non-differentiable optimization
+"	NOOOOOONNNNNEEEE
+Does the discriminator exclude the poisoning data according to certain rule?	MET_DAT	NOOOOOONNNNNEEEE	"(2) In pGAN the discriminator allows to model detectability constraints for the poisoning points.
+.In other words, to evade detection or removal of points by algorithms that defend against poisoning attacks, such as the defences we used in our experiment, we want our attack points to be close to the distribution of the genuine data.
+.However, please, note that the discriminator’s loss is decoupled from the classifier’s loss.
+.In contrast, the generator is the element that competes with both the discriminator and the classifier.
+.On the other side, the discriminator does not exclude poisoning data or select any data point but helps to guide the generator to craft poisoning points that are difficult to detect.
+.In other words, the discriminator does not filter out the points that are used to train the classifier during the training of pGAN.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+But there is no attempt to generalize the findings (e.g. new datasets not from original study, changing other parameters and then evaluating again if these techniques help etc.), not clear	MET_DAT	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"[A] We again respectfully disagree -- both LSUN and CelebaHQ are used for the first time in such a large-scale evaluation.
+.In fact, none of the techniques were previously evaluated on CelebaHQ.
+.Furthermore, even if some data sets, such as LSUN, were used previously, the comparison to other works was always done by the authors of the new method usually with additional changes, such as architectural decisions and optimization tricks.
+"	NOOOOOONNNNNEEEE	"[Q] But there is no attempt to generalize the findings (e.g. new datasets not from original study, changing other parameters and then evaluating again if these techniques help etc.),
+"	NOOOOOONNNNNEEEE
+- very incremental improvements on PTB over a very simple baseline (far from SotA)	RWK	NOOOOOONNNNNEEEE	"As explained in the response to Reviewer 1, despite all our efforts, we found the technical challenges insurmountable given our computational and engineering resources.
+.Importantly, our purpose in this task is to show that, **all other things being equal**, a neuromodulated plastic LSTM can outperform a standard LSTM in realistic settings.
+.We believe that outperforming standard LSTMs (again, all else being equal) on their “workhorse” task domain (language processing) is worthy of notice, especially given the ease of implementation of our method which requires only adding a few lines of codes (<10) to a standard LSTM implementation and can then be used as a drop-in replacement to standard LSTM.
+"	NOOOOOONNNNNEEEE	"We agree that, ideally, a comparison with SOTA architectures would be desirable.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We will keep trying to investigate such massive architectures in the future.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+3. The graph neural networks used in the model are not described in the paper, only a reference to Paliwal et al (2019) is given.	RWK	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"In addition, we have included a brief description of the graph neural network architecture used in Paliwal et al (2019).
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+It would be helpful to have a brief paragraph describing this architecture, for readers not familiar with the referenced paper.	RWK	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+1) I wonder if the proposed method work for most GAN models, more experiments evaluated on more recent GAN-based  models should be added to verify the superiority claimed in this paper, e.g., TP-GAN [Huang et al., ICCV 2017], PIM [Zhao et al., CVPR 2018], DR-GAN [Tran et al., CVPR 2017], DA-GAN [Zhao et al., NIPS 2017], MH-Parser [Li et al., 2017], 3D-PIM [Zhao et al., IJCAI 2018], SimGAN [Shrivastava et al., CVPR 2016], AIM [Zhao et al., AAAI 2019].	RWK	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Q1: We are evaluating the proposed metrics on more recent GAN-based models you suggested and will update the results once the results become available.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Some details are missing, which is hardly reproduced by the other researchers.	RWK	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Moreover, we will ultimately release codes on Github.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"In addition to implementation details, the appendix has a rather detailed table of the architecture parameters.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"* Missing implementation steps and optimization details:
+"	NOOOOOONNNNNEEEE
+- In Table 2 and 3, how are the degree and block information leveraged into the model?	TNF	NOOOOOONNNNNEEEE	"Equation (6) defines the posterior of the network given the embedding, which we maximize w.r.t. the embedding.
+.It explicitly depends on the prior probabilities P_ij, which are computed based on the prior knowledge about the degrees or about the block density structure of the adjacency matrix.
+.Thus, this information is brought into the model by considering the posterior distribution for the network, where the prior models the degrees of the nodes, or the block structure.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"- ""In Table 2 and 3, how are [...]?""
+"	NOOOOOONNNNNEEEE
+"It is also unclear how the calculation of relative entropy ""D"" was performed in figure 3."	TNF	NOOOOOONNNNNEEEE	"4. D is calculated as the relative entropy over a batch of 10000 examples.
+.The reference probabilities are taken to be uniform and the model probabilities are calculated according to the procedure outlined in section 2.
+.Due to the approximations involved it is possible that the sum of the model probabilities exceeds one.
+.In this case we rescale the unclamped free energy to limit the total probability to one.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We have added a note to that effect to the article.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+1. Where is L_da in Figure 2? In Figure 2, what’s the unlabelled data from which testing tasks are drawn? Is it from meta-test data training set?	TNF	NOOOOOONNNNNEEEE	"Unlabelled data refers to only the domain of the meta-test data, but the meta-test data is never used in meta-training.
+.L_da is essentially the sum of L_gan and L_cycle.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Thanks for this; we have updated the draft to make the presentation clearer.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+- for Figure 6, there is not a clear conclusion.	TNF	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"In the revision, we will add the other plots to support the claim.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"- ""I don't see a clear conclusion of how to pick the width of hidden layers, maybe a better representation could be used.""
+"	"There exist three parameters in this experiment, which makes it hard to come up with the most conclusive representation.
+.We also generated line plots (multiple curves in one plot) and 3D mesh plots to show the dependency.
+.In the end, we found the heat-map more informative.
+"
+- in section 4.3 how is the reconstruction built (Figure 3b)?	TNF	NOOOOOONNNNNEEEE	"Figure 3b is the exact output of the ordinal embedding in two dimensions.
+.The colors are the initial labels of the input items.
+.There are two or three labels assigned to demonstrate the quality of reconstruction.
+.Note that the ordinal embedding output is unique only up to isometric transforms.
+.In other words, every valid output is still valid with rotation, scaling and translation.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"- ""in section 4.3
+.how is the reconstruction built (Figure 3b)?""
+"	NOOOOOONNNNNEEEE
+I'm not sure I understand the PCA figures. Can you please explain how the first principal component was used to generate them?	TNF	NOOOOOONNNNNEEEE	"A: Treating a canonicalizer as a standard linear projection, we explore z - P*z which should contain only the factor of interest (intuitively it is the difference between a representation and a version of it stripped off of the specific factor so that the factor is isolated).
+.Creating a set of such latent samples (here we took all examples to be of the same digit for visualization purposes) we ran PCA to get a dimension with the most significant variance.
+.If the above mentioned assumption indeed holds, the font should be the only change in the set.
+.We order the samples according to that axis and plot them in a row from left to right.
+.We see that indeed the font (bottom row) and angle (top row) present a good correlation with the value along the axis.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Q: I'm not sure I understand the PCA figures. Can you please explain how the first principal component was used to generate them?
+"	NOOOOOONNNNNEEEE
+(d) In Figure 2, it is unclear to me how the 1/f^2 law is observed in (a) but not in (c) or (e).	TNF	NOOOOOONNNNNEEEE	"Since the plots in Fig. 2 are log-scale, one would expect nearly linear fall-off of energy from low-frequency components to high-frequency components, which is the case of (a).
+.But (c)(e) exhibit drastically different fall-offs of energies compared with (a).
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We have modified the caption of Fig. 2 to be more specific.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"3. Clarification on Fig. 2.
+"	NOOOOOONNNNNEEEE
+It is not clear how the noise is introduced in the graphs.	TNF	NOOOOOONNNNNEEEE	"(1) The noise is introduced by the dropout function in each convolution layer.
+.Dropout functions by randomly ignore 50% of neuron’s output of a network in our mode by a uniform distribution.
+.(2) The way we add noise
+.is well-recognized and commonly-used in generative deep learning models[1].
+.The noises added in GANs aim to enable the diversities in the generated graphs to avoid the problem that GANs tend to favor producing same output rather than spreading it evenly over the domain.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"A: Thanks for the review comment.
+"	"Q: It is not clear how the noise is introduced in the graphs. I would have expected to see some analysis and results on the translation quality over systematic noise applied to the input graph.
+"	"(3) We have shown the analysis of the translation quality against noise in Figures 4 and 5.
+.In Figure 5 (see in the supplementary material), each logarithm plot in each column show the power-law trend of each randomly generated graph, which will look linear in such a logarithm plot.
+.It can be seen that the generated graphs show the similar randomness pattern as the real graphs.
+.Moreover, the larger the graph is (see the graph size of 150), the smaller the randomness is, and the clearer the power-law trend is, which verifies that the translation quality of our method.
+"
+* \sigma is not given in Figure 3(a)	TNF	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+How do we take a limit of M -> ∞ ? Does k also go ∞?	MET	NOOOOOONNNNNEEEE	"The result of this theorem holds uniformly for any $k$ (not a fixed $k$).
+.Besides, we do not require $k$ bigger than $M c_\eta$ in the definition of $\tilde{\rho}_k^M$. When $k$ is no more than $M c_\eta$, $\tilde{\rho}_k^M$ and $\rho_k^M$ are stochastic processes with same distribution and thus the Wasserstein distance between them is 0.
+.And for any $k$ is greater than $M c_\eta$, we have the uniform bound (w.r.t. $k$) as stated in the theorem 4.3.
+.We also point out that, as our system is complicated, in taking the limit of $M\to\infty$, we need to ensure that the number of iteration we run is larger than $Mc_\eta$. To be specific, the asymptotic convergence would be
+.$$\lim_{k,M \to\infty, \eta \to 0^+} \mathbb{D}_{\text{BL}} (\rho_k, \rho^*)=0$$
+.where the joint limit of k and M requires that $k\eta\to\infty$; $\exp(C\alpha^{2}k\eta)\eta^{2}=o(1)$; $(k\eta)/(Mc)=q(1+o(1))$ with $q>1$. Here if $q \leq 1$, we degenerate to Langevin. But when $q>1$ (intuitively that means, when $M$ is large, the number of iterations we run is larger), our dynamics is different from Langevin, which is what we do in the practice.
+.Also, we would like to remark that this seemingly strange things is in fact the ‘artifact’ caused by the using of Langevin dynamics at beginning to obtain the $M$ initial samples when we designed the practical implementation of the proposed methods.
+.However, it is not really necessary to use Langevin dynamics to get $M$ initial samples, as we can simply using some other initialization distribution and get the $M$ initial samples from that distribution (and by this setting, our dynamics is simply the second phases in Eq (3)).
+.All our theory can be easily generalized to this setting using almost identical argument, which can also address your concerns on this issue.
+"	"We are sorry for not stating this clearly in the theorem and we have revisited the present of the theorem. We will fix this issue in the next revision.
+"	"A1: Thanks for pointing this out.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"How do we take a limit of $M \to\infty$ ? Does k also go $\infty$?
+"	NOOOOOONNNNNEEEE
+Cons: While doing this leads to better convergence, each update is still very expensive compared to standard SGD, and for instance on vision tasks the algorithm needs to run for almost double the time to get similar accuracies as an SGD, adam solver.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"That said, we were indeed not able to demonstrate end-to-end gains in vision.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Please note that in the NLP benchmark our algorithm finds a better solution and wins in wall-clock time.
+"	NOOOOOONNNNNEEEE	"@Update overhead: We argue that per-iteration performance is a worthwhile objective in itself, which is less significant in some scenarios (e.g. costly function evaluation, like in RL, or expensive backprops, like in RNNs).
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Since q_rel require one hot vector as input, how to sample the q_rel given the importance score and how backprob the gradient in this case?	MET	NOOOOOONNNNNEEEE	"- The relationship module is fed an N-dimensional (corresponding to N image regions) one-hot vector as input during training.
+.When it is called by other task modules (such as counting), an N-dimensional probability vector is computed using softmax on image regions (see A.4, point 3) and not using the importance scores.
+.This acts as a soft version of the one-hot sampled vector so that we can backpropagate gradients.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"3. Query for the relationship module
+"	NOOOOOONNNNNEEEE
+- In Equation (6), the posterior distribution should be P(X|G) since X is the latent variable to be inferred, right	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"- ""In Equation (6), the posterior distribution should be P(X|G) [...]?""
+"	"The posterior is a distribution for the network, such that finding the best embedding is indeed a maximum likelihood problem (not a maximum a posteriori problem), even though the likelihood function is computed as a posterior given a prior for the network and a conditional for the embedding given the network.
+.We suspect that it is this unusual aspect of the CNE formulation that makes it original with respect to the state-of-the-art.
+"
+How are the lambda and threshold parameters tuned? The authors mention a validation set, are they just exhaustively explored on a 3D grid on the validation set?	MET	NOOOOOONNNNNEEEE	"The hyper-parameters related to DS-softmax (such as lambda) are tuned according to the performance on a validation dataset.
+.Also, as we mentioned in the paper, only one hyper-parameter (group lasso lambda) needs to be tuned.
+.The heuristic we use to tune group lasso lambda is to increase lambda, starting from a small value, until it hurts the performance.
+.Also threshold and balancing lambda variables are kept fixed as (0.01 and 10).
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"- How are the lambda and threshold parameters tuned? The authors mention a validation set, are they just exhaustively explored on a 3D grid on the validation set?
+"	NOOOOOONNNNNEEEE
+How does the proposed method perform in more complicated tasks such as	MET	NOOOOOONNNNNEEEE	"In the original version of the paper, all experiments are conducted on trimmed video classification datasets.
+.In fact, unlike previous video compositional methods, even when local events are not well aligned or misclassified, long-term modelling with 4D convolution and video-level aggregation with global average pooling are very likely to correct the partial error.
+"	NOOOOOONNNNNEEEE	"Although most papers in this field only report results on the trimmed video datasets, we do agree that more complicate cases should be tested.
+"	NOOOOOONNNNNEEEE	"Additionally, we evaluated our V4D for untrimmed video classification on ActivityNet v1.3, which contains videos of 5 to 10 minutes and typically large time lapses of the videos are not related with any activity of interest.
+.The very competitive result is reported in the appendix of the second version of paper, which demonstrated the generalization and robustness of our V4D.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"2.
+"	NOOOOOONNNNNEEEE
+Dual-1 and Dual-5 are introduced without explanation.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Thanks for pointing out that our original introduction to the names of baselines and models is not very clear.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"** Clarity **
+.Please kindly refer to first paragraph in Section 3.3.
+.You may check our updated paper with clarification and new experimental results.
+"	NOOOOOONNNNNEEEE
+However, their algorithm--while much less computationally expensive than true full-matrix adaptive preconditioning---is still far more expensive than the usual diagonal version.	MET	NOOOOOONNNNNEEEE	"- Another note: to perform a full wall-clock comparison with algorithms that have different per-iteration costs, one must disentangle and retune various hyperparameter choices, most notably the learning rate schedule.
+.Thus we decided to feature the per-iteration comparison in the main paper, as it is the cleanest one.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"As mentioned in the response to Reviewer 3, our NLP example does answer the natural question about end-to-end gains. Is the reviewer only concerned with the location of the plots?
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"@Wall-clock: We don’t quite understand the question.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+It is unclear whether the data augmentation techniques is applied only at training time or also at test time.	MET	NOOOOOONNNNNEEEE	"We apply the data augmentation both at training and test time.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"“It is unclear whether the data augmentation techniques is applied only at training time or also at test time. In other words: at test time, do you present the original images only or transformed images too?”
+"	NOOOOOONNNNNEEEE
+Since each domain may have different number of classes, it is not clear how the number of classes (L) is set in the classification module (maximum number of classes in all domain?).	MET	NOOOOOONNNNNEEEE	"A7 L is the cardinal of the union of classes with labeled examples in at least one domain.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"""Since each domain may have different number of classes, it is not clear how the number of classes (L) is set in the classification module (maximum number of classes in all domain?).""
+"	NOOOOOONNNNNEEEE
+- the problem assumptions are too simplistic and unrealistic (feature distributions of target and auxiliary data are identical), so it is questionable if the proposed algorithm has practical importance	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"3. Feature distributions of training and meta-training data (target and auxiliary data in your language) are actually not identical.
+.The ""learning to generalise"" success from our method is due to closing the *existing* distribution shift in these two datasets. If the distributions are identical, then we wouldn't have any improved generalisation from our method.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+- it wasn't clear how the sparsity percentage on page 3 was defined?	MET	NOOOOOONNNNNEEEE	"The sparsity in page 3 means the percentage of pruned words.
+"	NOOOOOONNNNNEEEE	"Sorry for the possible confusion.
+"	NOOOOOONNNNNEEEE	"We have added more clarifications in the revised version.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"- It wasn't clear how the sparsity percentage on page 3 was defined?
+"	NOOOOOONNNNNEEEE
+- Architecture choice unclear: Why are $\sigma$ and $\omega$ separate networks.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We have simplified the architecture described in the paper by combining the networks $\sigma$ and $\omega$, and included the results from this architecture as well, producing a more robust architecture that performs better for multiple rewrite steps (while keeping the original, more complicated solution as one of the baselines).
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+- page 4, Sect. 4.4: Architecture of $\alpha$ would be nice (more than a linear layer?)	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+The paper used very restricted Gaussian distributions for the formulation.	MET	NOOOOOONNNNNEEEE	"We have in the meantime been able to include struc2vec in the evaluation, again showing superiority of CNE by a wide margin -- showing that it is maybe more complex but certainly not 'stronger' as in 'more accurate'.
+.Perhaps the reviewer is incredulous regarding this large increase in performance a method as 'simple' as CNE achieves w.r.t. the state-of-the-art.
+.We believe that this is due to the conceptual advance made in CNE.
+.In our opinion a conceptual advance that achieves a strong boost in accuracy without increasing complexity, is at least as valuable as a method that achieves the same boost in accuracy while also increasing complexity.
+"	"The paper will be updated very soon to include these results.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We do not agree that its simplicity reduces its merit, we think it rather contributes to its merit.
+.Of the suggested methods, graph convolutional and message passing neural networks need attributed graphs as inputs, and are thus not applicable.
+"	"- We thank the reviewer for suggesting additional comparisons with specific more complex models, although we feel that calling these methods 'stronger' requires some clarification or support.
+.Also note that all code is provided, and we invite the reviewer to replicate our experiments.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+The problem of image classification is considered only, while authors claimed the method can be easily applied to other problems as well.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Then, there will be another question: how the two networks are trained? Are they trained separately or jointly?	MET	NOOOOOONNNNNEEEE	"2. The Pose2Pose and Pose2Frame networks are trained separately.
+.Specifically, the P2F network is trained on the original data, and not on the output frames of the P2P network.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+First of all, the setup for the AE and VAE is not specified.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We have updated the baseline details in the Appendix B.3.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"All baselines considered in the paper are designed to have comparable number of parameters (same or larger than our model) to make the comparison fair.
+.It is also important to note that VSAE is not a model designed only for imputation, but a generic framework to learn from partially-observed data for both imputation and generation.
+"	NOOOOOONNNNNEEEE	"(4) Baselines:
+"	NOOOOOONNNNNEEEE
+3. Scenario discussed in Sec. 4 seems somewhat impractical.	MET	NOOOOOONNNNNEEEE	"Section 4.2 shows how to use the K-S test to detect leakage, but the same test could tell if the m-set comes from neither the train nor the validation sets.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"In section 4, we do not train a classifier to distinguish between a training and a validation set.
+.Rather, we use a readily-available classifier (trained for e.g. image recognition) for a completely different purpose than what it was trained for, i.e. to distinguish datasets of images (section 4.1) or detect if a set of images comes from a given set (section 4.2).
+"	NOOOOOONNNNNEEEE	"“(*) 3. Scenario discussed in Sec. 4 seems somewhat impractical. [...] one might also need to figure out if it is neither train nor val”
+"	NOOOOOONNNNNEEEE
+In addition, the paper would also need to show that such a model does not generalize to a validation set of images.	MET	NOOOOOONNNNNEEEE	"With the setup used in section 3, there is no good notion of validation: our model is expected to predict “0” on held-out data.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"With the downstream application of sections 4 and 5, we are interested in “memorization” in the sense of any classifier that can tell apart images marked as “positives” from images marked as “negatives”.
+.This notion is somewhat different from
+.memorization as defined in other papers, where it is related to having a good training accuracy and a a validation accuracy close to random guessing.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"In addition, the paper would also need to show that such a model does not generalize to a validation set of images. [...]”
+"	NOOOOOONNNNNEEEE
+- in section 2.2, please explain more how gradients w.r.t hyper-parameters are computed.	MET	NOOOOOONNNNNEEEE	"We implemented custom versions of the optimizers we consider (SGD, RMSprop, and K-FAC) that treat the optimization hyperparameters as variables in the computation graph for an optimization step.
+.We then use automatic differentiation to compute the gradient of the meta-objective with respect to the hyperparameters (e.g., the learning rate).
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Q: Please explain more how gradients w.r.t hyper-parameters are computed.
+"	NOOOOOONNNNNEEEE
+"- how to tune lambda? it is an important hyper-parameter, but it is set without a good principle, e.g., ""For SGD-APO, we used lambda = 0.001, while for SGDm-APO, we used lambda = 0.01"", ""while for RMSprop-APO, the best lambda was 0.0001"	MET	NOOOOOONNNNNEEEE	"We tune lambda by performing a grid search over the range {1e-1, 1e-2, 1e-3, 1e-4, 1e-5}. Because each lambda value gives rise to a learning rate schedule, tuning lambda yields significantly more value than tuning a fixed learning rate.
+.Instead of trying to come up with a custom learning rate schedule, which would require deciding how frequently to decay the learning rate, and by what factor it should be decayed, all one needs to do is perform a grid search over a fixed set of lambdas to find an automated schedule that is competitive with hand-designed schedules (which are the result of years of accumulated experience in the field).
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Q: How to tune lambda?
+"	NOOOOOONNNNNEEEE
+In Section 3.2.2, the authors only explain how they learn example-based \sigma, but details on how to make graph construction end-to-end trainable are missing.	MET	NOOOOOONNNNNEEEE	"We want to clarify the few-shot setting.
+.We follow the widely-used episodic paradigm proposed by Matching Networks [1].
+.In each episode (training batch), our algorithm solves a small classification problem which contains N classes each having K support and Q query examples (e.g., N=5, K=1, Q=15, totally 80 examples).
+.The weight matrix is constructed on the support and query examples in each episode rather than the whole dataset.
+.This is very fast and efficient.
+.In deep neural networks, there is a common trick in computing the gradient of operations non-differentiable at some points, but differentiable elsewhere, such as Max-Pooling (top-1) and top-k.
+.In forward computation pass, the index position of the max (or top-k) values are stored.
+.While in the back propagation pass, the gradient is computed only with respect to these saved positions.
+.This trick is implemented in modern deep learning frameworks such as tensorflow and pytorch.
+.In our paper, we use the tensorflow function tf.nn.top_k() to compute k-nearest neighbor operation.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	">>> Thanks for pointing out the details.
+"	"""Some technical details are missing.
+.In Section 3.2.2, the authors only explain how they learn example-based \sigma, but details on how to make graph construction end-to-end trainable are missing.
+.Constructing the full weight matrix requires the whole dataset as input and selecting k-nearest neighbor is a non-differentiable operation. Can you give more explanations?""
+"	NOOOOOONNNNNEEEE
+The proofs are quite dense and I was unable to verify them carefully.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+1. For the evaluation of DBA, I assume that there are 4 adversarial parties, controlling each of the 4 local triggers. When using centralized attacks, are there still 4 adversarial parties, although they share the same global trigger, or if there is only 1 adversarial party?	MET	NOOOOOONNNNNEEEE	"A1: There is only one adversarial party in centralized attack.
+.But we make sure that the total injected triggers (e.g., modified pixels) of DBA attackers is close to and even less than that of the centralized attacker.
+.We stressed this setup in Section 3.2.
+.That is, the ratio of the global trigger of DBA pixels to the centralized is 0.992 for LOAN, 0.964 for MNIST, 0.990 for CIFAR and 0.991 for Tiny-imagenet.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Q1: Is there only 1 adversarial party?
+"	NOOOOOONNNNNEEEE
+Specifically, which features are perturbed, what are the values assigned as the trigger, and what is the corresponding target label?	MET	NOOOOOONNNNNEEEE	"A4: We note that we have mentioned our attack formulation and algorithm in Section 2.2;
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We have also provided more details about LOAN dataset and how we attack in Appendix A.1.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Q4: Can the authors show concrete examples on how the attacks are generated? The details are especially unclear on LOAN.
+"	NOOOOOONNNNNEEEE
+"- My main concern is reproducibility: the authors employ a number of large architectures, complex loss functions, and regularizers / ""additional improvements""."	MET	NOOOOOONNNNNEEEE	"Our code is built on top of existing code (Prototypical Networks and Image-to-Image Translation from CycleGAN).
+.Thus, we adopt the same hyperparameters and architectures as the prior work, and as a result our work is fairly easy to reproduce.
+.We will of course release the code.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"As suggested, we have utilized the appendices to give detailed information about the experimental setup.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Concern 1: Reproducibility
+"	NOOOOOONNNNNEEEE
+In this simple model, can we not calculate the mutual information directly (i.e., without the bottleneck)?	MET	NOOOOOONNNNNEEEE	"This is an excellent question.
+.In fact, we believe that trying to construct noise-free deep models with a specific mutual information of data and parameters for the purpose of generalization would be an interesting research direction.
+.Due to nonlinearities in typical deep models, it is at least not obvious how to calculate the mutual information between data and parameters.
+.The main challenge here would certainly be to come up with an effective estimator.
+.Relatedly, one would have to design priors and architecture to achieve a specific mutual information.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"> In this simple model, can we not calculate the mutual information directly (i.e., without the bottleneck)?
+"	NOOOOOONNNNNEEEE
+Specifically, how can mutual information in this context be formally linked to generalization/overfitting?	MET	NOOOOOONNNNNEEEE	"They explore the link of limiting mutual information and generalization error mostly in theory (and in particular for adaptive analysis).
+.In contrast, we deploy this principle in a practical model structure that is easily applicable to many existing deep and variational learning approaches and provide empirical evidence of the validity of our framework.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We updated section 2.2 to relate to the references you mentioned.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Specifically, how can mutual information in this context be formally linked to generalization/overfitting?
+"	NOOOOOONNNNNEEEE
+First of all, I don’t understand how the main equation of the compound density network in Equation (3) is different from the general case of a Bayesian neural network? Can the authors please comment on that?	MET	NOOOOOONNNNNEEEE	"(1) The equations are indeed very related.
+.Note however, that In a standard Bayesian neural network (BNN), one would assume that \theta is a global random variable (i.e. does not depend on input x), whereas in the CDN, we assume that \theta depends on x and is thus a local random variable.
+.Furthermore, in a Bayesian setting p(theta|...) would play the role of a approximate posterior, which would require variational inference (VI), and thus a different objective,  to estimate it.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+I also find weird the way that the authors arrive to their final objective in Equation (5).	MET	NOOOOOONNNNNEEEE	"(2) In Equation (4) we followed with  p(D | \psi) a standard notation for \sum_n p(y_n | x_n; \psi) (i.e. summation of Equation (3) wrt all data in D) which also can be found e.g. in the work of Graves (2011) [4] and Blundell et al. (2015) [5].
+.The objective we introduce for CDNs differs from the ELBO-based objective in VI in the way the logarithm is placed in the first term of the objective: in the ELBO we have a logarithm inside the expectation, while the logarithm is outside the expectation in the CDN objective (note however, that the sample-based approximations get equivalent if only one sample is used).
+.Furthermore, in the ELBO we have a fixed value of \lambda = 1.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We added a new Section 4 in the revised version of the paper discussing these differences.
+.Moreover, we investigated the impact of the different objectives empirically and found that the CDN-based objective led to significantly better results, as shown in the newly added Section 6.4 in the revised manuscript.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Then they continue to Equation (5) which they present as the combination of the true likelihood with a KL regularisation term.	MET	NOOOOOONNNNNEEEE	"(2) In Equation (4) we followed with  p(D | \psi) a standard notation for \sum_n p(y_n | x_n; \psi) (i.e. summation of Equation (3) wrt all data in D) which also can be found e.g. in the work of Graves (2011) [4] and Blundell et al. (2015) [5].
+.The objective we introduce for CDNs differs from the ELBO-based objective in VI in the way the logarithm is placed in the first term of the objective: in the ELBO we have a logarithm inside the expectation, while the logarithm is outside the expectation in the CDN objective (note however, that the sample-based approximations get equivalent if only one sample is used).
+.Furthermore, in the ELBO we have a fixed value of \lambda = 1.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We added a new Section 4 in the revised version of the paper discussing these differences.
+.Moreover, we investigated the impact of the different objectives empirically and found that the CDN-based objective led to significantly better results, as shown in the newly added Section 6.4 in the revised manuscript.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+However, what the authors implicitly did was to perform variational inference for maximising their likelihood by introducing a variational distribution q(\theta) = p(\theta | g(x_n; \psi).	MET	NOOOOOONNNNNEEEE	"(2) In Equation (4) we followed with  p(D | \psi) a standard notation for \sum_n p(y_n | x_n; \psi) (i.e. summation of Equation (3) wrt all data in D) which also can be found e.g. in the work of Graves (2011) [4] and Blundell et al. (2015) [5].
+.The objective we introduce for CDNs differs from the ELBO-based objective in VI in the way the logarithm is placed in the first term of the objective: in the ELBO we have a logarithm inside the expectation, while the logarithm is outside the expectation in the CDN objective (note however, that the sample-based approximations get equivalent if only one sample is used).
+.Furthermore, in the ELBO we have a fixed value of \lambda = 1.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We added a new Section 4 in the revised version of the paper discussing these differences.
+.Moreover, we investigated the impact of the different objectives empirically and found that the CDN-based objective led to significantly better results, as shown in the newly added Section 6.4 in the revised manuscript.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Is there a reason why the authors do not introduce their objective by following the variational framework?	MET	NOOOOOONNNNNEEEE	"(2) In Equation (4) we followed with  p(D | \psi) a standard notation for \sum_n p(y_n | x_n; \psi) (i.e. summation of Equation (3) wrt all data in D) which also can be found e.g. in the work of Graves (2011) [4] and Blundell et al. (2015) [5].
+.The objective we introduce for CDNs differs from the ELBO-based objective in VI in the way the logarithm is placed in the first term of the objective: in the ELBO we have a logarithm inside the expectation, while the logarithm is outside the expectation in the CDN objective (note however, that the sample-based approximations get equivalent if only one sample is used).
+.Furthermore, in the ELBO we have a fixed value of \lambda = 1.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We added a new Section 4 in the revised version of the paper discussing these differences.
+.Moreover, we investigated the impact of the different objectives empirically and found that the CDN-based objective led to significantly better results, as shown in the newly added Section 6.4 in the revised manuscript.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+My biggest concern in the methodology, however, has to do with the selection of the matrix variate normal prior for the weights and the imposition of diagonal covariances (diag(a) and diag(b)).	MET	NOOOOOONNNNNEEEE	"(4) We used a matrix-variate normal (MVN) to reduce the parameters of the model.
+.Using a diagonal MVN for X \in R^{p x q} one needs pq+p+q parameters.
+.In contrast a fully-factorized diagonal Gaussian needs pq+pq.
+"	NOOOOOONNNNNEEEE	"But you are right, we could easily extend our approach to account for more flexible distributions by using a ""diagonal plus rank-one"" structure diag(a)+uu^T, with vectors a and u, as noted by Louizos and Welling ( 2016) [3] (the increase of parameters is negligible: adding additional vector u).
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We will investigate the benefits of more flexible mixing distributions in future work.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+What is the purpose then for introducing the matrix variate Gaussian?	MET	NOOOOOONNNNNEEEE	"(4) We used a matrix-variate normal (MVN) to reduce the parameters of the model.
+.Using a diagonal MVN for X \in R^{p x q} one needs pq+p+q parameters.
+.In contrast a fully-factorized diagonal Gaussian needs pq+pq.
+"	NOOOOOONNNNNEEEE	"But you are right, we could easily extend our approach to account for more flexible distributions by using a ""diagonal plus rank-one"" structure diag(a)+uu^T, with vectors a and u, as noted by Louizos and Welling ( 2016) [3] (the increase of parameters is negligible: adding additional vector u).
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We will investigate the benefits of more flexible mixing distributions in future work.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Finally, it is unclear how the authors have picked the best \lambda parameter for their approach? On page 5 they state that they “pick the value that results in a good trade-off between high uncertainty estimates and high prediction accuracy.” Does this mean that you get to observe the performance in the test in order to select the appropriate value for \lambda? If this is the case this is completely undesirable and is considered a bad practice.	MET	NOOOOOONNNNNEEEE	"We observed that generally as \lambda increases, the uncertainty is increasing, while the accuracy is decreasing.
+.Therefore a simple and effective heuristic for choosing \lambda is to look at the validation set of MNIST and choose the highest \lambda that still results in high accuracy (e.g. >. 0.97).
+"	NOOOOOONNNNNEEEE	"(7) Sorry, for this unfortunate formulation!
+"	NOOOOOONNNNNEEEE	"We have made this procedure clear in the revised manuscript.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+You mention that negative mining should improve over this strategy. What does negative mining correspond to in this context? Are there bad rewrites better than others?	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+I do not understand why making use of labels is important for solving the catastrophic forgetting problem and how the labels are useful in the generative replay process.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"(Use of labels and novelty) In GR-based approaches, the quality of generated samples is crucial to keep the performance of previous tasks.
+.If we use labels, we can construct a conditional generative model.
+.Generally, conditioning on a generative model yields higher quality samples than unconditional one and makes it possible to generate class-balanced samples [4]; the importance of conditional generation is also described in section 6.1 in our paper.
+.In this paper, we showed that discriminative regularization could make VAE possible to conduct both class conditional generation and classification with one integrated model.
+.Thus, we do not need to train an additional classifier, e.g., deep CNN, which is necessary for other works, including Narayanaswamy et al. There is also classifier integrated VAE such as [6].
+.The difference with [6] is the use of class-conditional priors; more details are explained at the response (Difference with CDVAE) for reviewer 3 and section 4.1 in our paper.
+"
+It is also not clear to me how domain translation is relevant to continual learning.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"(Domain translation) Even though the conditional generation improves the quality of the generated samples, there is still a big difference between real and generated images.
+.Because a deep neural network is vulnerable to even single-pixel perturbation [5], the difference can seriously affect the classification performance of GR-based algorithms.
+.Thus, we suggested applying the domain translation to address this issue.
+.By narrowing distribution discrepancy between real and generated images using the domain translation technique, we were able to alleviate the catastrophic forgetting problem successfully (Table 2).
+"
+I do not understand how the model is trained to solve multiple tasks.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We added an additional figure in Figure 6 in Appendix E, for helping conceptual understanding.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"(Experimental settings)
+"	"Generally, CL systems assume that each task comes sequentially, and an agent can not directly access previous experience [2].
+.We exactly follow the assumption.
+.Also, we train DiVA sequentially for each task with one same model.
+.To clarify our training process, we provide a brief summarization.
+.Firstly, we train DiVA with task 1 that consists of real images and labels.
+.Then, when new task 2 is coming, DiVA generates images and its labels of task 1 and learns both task 2 and the generated task 1 simultaneously.
+"
+Do the same model is trained for multiple tasks? Is each of the tasks trained sequentially or simultaneously?	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We added an additional figure in Figure 6 in Appendix E, for helping conceptual understanding.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"(Experimental settings)
+"	"Generally, CL systems assume that each task comes sequentially, and an agent can not directly access previous experience [2].
+.We exactly follow the assumption.
+.Also, we train DiVA sequentially for each task with one same model.
+.To clarify our training process, we provide a brief summarization.
+.Firstly, we train DiVA with task 1 that consists of real images and labels.
+.Then, when new task 2 is coming, DiVA generates images and its labels of task 1 and learns both task 2 and the generated task 1 simultaneously.
+"
+6. The rationale of the two tower design (why not combine two) is not clearly explained.	MET	NOOOOOONNNNNEEEE	"The two tower design was necessary since the decision whether theorem T can be rewritten using parameters P requires both pieces of information, so we need to feed them to the network.
+.In fact $\omega$ does not need to predict p, but it gives extra supervision signal and therefore regularizes the prediction.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Doesn't the classification loss have a dependency on the input condition?	MET	NOOOOOONNNNNEEEE	"- The classification loss has implicit dependency with input conditions by minimizing the KL divergence in Equation 2.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+"--What does a ""heavy classifier"" imply concretely?"	MET	NOOOOOONNNNNEEEE	"(heavy classifier) A classifier such as resnet.
+.We used this term to distinguish the additional classifier from our integrated encoder that has discriminative power.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+In contrast, the studied learning rates are asymptotic and there is a big discrepancy.	MET	NOOOOOONNNNNEEEE	"Note that “time” here refers to number of iterations, not epochs.
+.We are not aware of results establishing SGD is faster in this measure.
+"	"(As noted on p2,  we are working within the standard paradigm of convergence rates in optimization.
+.The only new part is the automatic rate tuning  behavior shown for most parameters when BN is used.)
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"(i) Speed of SGD vs GD:
+"	NOOOOOONNNNNEEEE
+2- Why is a two-stage pre-training (Figure 2) process needed? Why not just a single stage?	MET	NOOOOOONNNNNEEEE	"(a) We have evaluated the adversarial resistance when training a Boltzmann machine with 256 fully connected latent variables directly on the 8x8 patches.
+.The version with only 128 hidden units was not able to reduce the relative entropy to the values of the larger, stacked machine.
+.We find that the model without stacking is not able to increase the adversarial resistance.
+.It is possible that we are unable to complete the training due to the approximations involved.
+.For a small machine (16 units) of full hidden connectivity we can observe the noise rejection behaviour, as shown in appendix D.
+.(d) There are a total of 28800 parameters in the Boltzmann machine.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"(b) We have trained a machine with the same connectivity as the stacked machine directly on the 8x8 patches.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We will gladly provide files with the trained weights and also fully trained neural networks on request.
+"	NOOOOOONNNNNEEEE	"This training gives similar results to the training in stages.
+.(c) From the result in (b) we conclude that the particular manner of the pre-training does not matter.
+.Therefore also the choice of first training set (98% coverage or full coverage) does not influence adversarial resistance.
+"
+However, it is not obvious that how to move from line 3 to line 4 at Eq 15.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Q1: We have added one more line to explain the derivation.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"1) Elaborated derivation of Eq. 10
+"	"Basically a baseline is subtracted, and GAE is introduced.
+"
+(4) Are \theta and \phi jointly and simultaneously optimized at Eq 12?	MET	NOOOOOONNNNNEEEE	"Q4: Yes \theta and \phi are jointly and simultaneously optimized at Eq. 12, though the gradients w.r.t. \phi from the KL divergence is stopped.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+(5) Due to the mean policy approximation, does the mean policy depend on \phi?	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Q5: In the updated version, we have explicitly pointed out that the gradients w.r.t. \phi from KL divergence is stopped. Thanks for this suggestion.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+The authors should clearly explain how to update \phi when optimizing Eq 12.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Q5: In the updated version, we have explicitly pointed out that the gradients w.r.t. \phi from KL divergence is stopped. Thanks for this suggestion.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+However, the derivations about \phi are missing.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Q7: Due to the stop-gradient manipulation in the KL divergence, gradients w.r.t. \phi remains the same as in stated in last subsection.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+For example, how to compute the gradient w.r.t. \phi? Since the mean policy is used, it is not apparent that how to compute the gradient w.r.t. \phi.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Q7: Due to the stop-gradient manipulation in the KL divergence, gradients w.r.t. \phi remains the same as in stated in last subsection.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Second, the authors claim they are using/motivated by Choquet integral, but do not have any (appendix) sections to explain how this mathematical tool is really integrated into their models.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+How do you guarantee that the representation learned by the neural network still obeys the property of Choquet integral? What is your loss or your algorithm?	MET	NOOOOOONNNNNEEEE	"As described above, the proposed approaches are inspired by the way Choquet integrals handle non-additive utility aggregations.
+.We do not claim that we obtain any theoretical guarantees or properties of the Choquet integral.
+.Furthermore, the main idea of this work is to not learn a representation.
+.Instead, we propose to predict many meaningful intermediate values that can simply be summed to obtain a set utility.
+.We describe in Section 3.3 that we use mean squared error (MSE) and mean absolute error (MAE) in our experiments.
+.We use MSE because it is usually used in regression problems.
+.We were also interested in the mean absolute error because minimizing this loss might be more appropriate in a task such as automatic summarization, in which we don't want to punish a model strong if it makes a few severe mistakes compared to making many small mistakes.
+.We also describe in Section 3.3. that we use Adam as optimizer.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"""How do you guarantee that the representation learned by the neural network still obeys the property of Choquet integral?""
+.""What is your loss or your algorithm?""
+"	NOOOOOONNNNNEEEE
+It is limited, however, in the sense that it (only) measures auto-encoding capabilities: to what extent can the shape be reproduced given a sample point cloud from the given shape.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+"As previously mentioned in public comments on this forum, some points in the paper are not very clear; specifically regarding the loss function, the definition of ""edge-to-edge"" convolutions and generally the architectural choice related to the conditional GAN discriminator."	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+- how exactly do you do a L1 loss on graphs? I'd have to assume the topology of the graph is unchanged between Gy and T(Gx) ~ and then maybe take L1 of weight matrix? But then is this general enough ~ given your stated goal of modeling different topologies? Either ways, more explanation / and perhaps equations to clarify this loss would be very helpful.	MET	NOOOOOONNNNNEEEE	"A: (1) L1 norm is applied to the weight matrix.
+.Our methodology is still general enough which is achieved by a trade-off between L1 loss and adversarial loss (GAN-D), which jointly enforces Gy and T(Gx) to follow a similar topological pattern but may not necessarily the same.
+.Specifically, L1 makes T(Gx) share the same rough outline of sparsity pattern like Gy, while under this outline, adversarial loss allows the T(Gx) to vary to some degree.
+.(2) Combining L1 loss and adversarial loss is well-recognized and validated.
+.Works on image-translation have proposed and utilized L1 loss and adversarial loss jointly in GAN, for example, reference [1] (with 600+ citations) and reference [2] (with 1300+ citations).
+.They have done extensive experiments to show the advantage of such a strategy.
+.Furthermore, in our experiments, we found the performance when using L1 loss and adversarial loss jointly is better than using either of them.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Q: how exactly do you do a L1 loss on graphs? I'd have to assume the topology of the graph is unchanged between Gy and T(Gx) ~ and then maybe take L1 of weight matrix? But then is this general enough ~ given your stated goal of modeling different topologies?
+.Either ways, more explanation / and perhaps equations to clarify this loss would be very helpful.
+"	NOOOOOONNNNNEEEE
+There is not sufficient detail to reproduce the models based on the paper alone.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Thanks for pointing out the issues with our presentations.
+.We agree much detail on embeddings can be condensed or moved to Appendix.
+.We included embedding details in the paper because a reviewer from the venue we previously submitted to requested these details to be in the paper.
+"	NOOOOOONNNNNEEEE	"We revised the notations in the paper to make formulation clearer.
+.In addition, we added more details about the data as you suggested.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Given a partial tree, there can be more than one way to complete the layout.
+.Given a 10%, 50% and 80% BFS partial layout, the mean number of completions of the layout is 2.97, 1.23 and 1.17 respectively.
+.Given a 10%, 50% and 80% DFS partial layout, the mean number of completions is 3.63, 1.24, and 1.17 respectively.
+"
+Moreover, it seems strange that significant space was used to give equations describing simple embedding lookups (i.e., matrix multiplications with one-hot vectors), but the basic technical foundations of Transformers were not adequately explained.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Thanks for pointing out the issues with our presentations.
+.We agree much detail on embeddings can be condensed or moved to Appendix.
+.We included embedding details in the paper because a reviewer from the venue we previously submitted to requested these details to be in the paper.
+"	NOOOOOONNNNNEEEE	"We revised the notations in the paper to make formulation clearer.
+.In addition, we added more details about the data as you suggested.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Given a partial tree, there can be more than one way to complete the layout.
+.Given a 10%, 50% and 80% BFS partial layout, the mean number of completions of the layout is 2.97, 1.23 and 1.17 respectively.
+.Given a 10%, 50% and 80% DFS partial layout, the mean number of completions is 3.63, 1.24, and 1.17 respectively.
+"
+For example, one question is how often a single partial tree has multiple possible completions in the data.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Thanks for pointing out the issues with our presentations.
+.We agree much detail on embeddings can be condensed or moved to Appendix.
+.We included embedding details in the paper because a reviewer from the venue we previously submitted to requested these details to be in the paper.
+"	NOOOOOONNNNNEEEE	"We revised the notations in the paper to make formulation clearer.
+.In addition, we added more details about the data as you suggested.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Given a partial tree, there can be more than one way to complete the layout.
+.Given a 10%, 50% and 80% BFS partial layout, the mean number of completions of the layout is 2.97, 1.23 and 1.17 respectively.
+.Given a 10%, 50% and 80% DFS partial layout, the mean number of completions is 3.63, 1.24, and 1.17 respectively.
+"
+Why? If we are learning the distribution, would not it make sense to sample all architectures only after training the supernet at our best?	MET	NOOOOOONNNNNEEEE	"We sample architectures every a few epochs, mainly because in our experiments, we want to analyze the behavior of the architecture distribution at different super net training epochs.
+.This analysis is illustrated in figure 3 of our paper.
+.We can see that at epoch-0, where the architecture distribution is trained for only one epoch (close to random sampling), the sampled architectures have much lower compression rate.
+.Similarly, for epoch-9, architectures also have relatively low compression rate.
+.In comparison, at epoch-79 and epoch-89, architectures have higher compression rates and accuracy.
+.The difference between epoch-79 vs. epoch-89 is small since the distribution has converged.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Major concern: Trained sampling vs random sampling
+"	NOOOOOONNNNNEEEE
+Do they here refer to the gradients with respect to the weights ONLY?	MET	NOOOOOONNNNNEEEE	"Minor concern #1: Value of the Gumbel Softmax function
+.Yes. We agree with the comments that the advantages of the Gumbel Softmax technique are two-fold:
+.1. It makes the loss function differentiable with respect
+.to the architecture parameter \theta
+..
+.2. Compared with other gradient estimation techniques such as Reinforce, Gumbel Softmax balances the variance/bias of the gradient estimation with respects to weights.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Could we say that the advantage of the Gumbel Softmax technique is two-fold? i) make the loss differentiable with respect to the arch parameters; ii) reduce the variance of the estimate of the loss gradients with respect to the network weights.	MET	NOOOOOONNNNNEEEE	"Minor concern #1: Value of the Gumbel Softmax function
+.Yes. We agree with the comments that the advantages of the Gumbel Softmax technique are two-fold:
+.1. It makes the loss function differentiable with respect
+.to the architecture parameter \theta
+..
+.2. Compared with other gradient estimation techniques such as Reinforce, Gumbel Softmax balances the variance/bias of the gradient estimation with respects to weights.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+"2)	Can the author discuss why the soft sampling procedure in [1] is not enough? I have an intuitive understanding of this, but I think this should be clearly discussed in the manuscript as this is a central aspect of the paper."	MET	NOOOOOONNNNNEEEE	"DARTS [1] does not really sample candidate operators during the forward pass.
+.Outputs of candidate operators are multiplied with some coefficients and summed together.
+.For the problem of mixed precision quantization, this can be problematic.
+.Let's consider a simplified scenario
+.y = alpha_1 * y_1 + alpha_2 * y_2
+.Let's assume both y_1 and y_2 are in binary and are in {0, 1}. Assuming alpha_1=0.5 and alpha_2=0.25, then the possible values of y are {0, 0.25, 0.5, 0.75}, which essentially extend the effective bit-width to 2 bit.
+.This is good for the super net's accuracy, but the performance of the super net cannot transfer to the searched architectures in which we have to pick only one operator per layer.
+.Using our method, however, the sampling ensures that the super net only picks one operator at a time and the behavior can transfer to the searched architectures.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Minor concern #2: Comparison with non-stochastic method such as DARTS
+"	NOOOOOONNNNNEEEE
+"3)	The authors use a certain number of warmup steps to train the network weights without updating the architecture parameters to ensure that “the weights are sufficiently trained”. Can the authors discuss the choice on the number of warmup epochs?"	MET	NOOOOOONNNNNEEEE	"We use warmup training since in our ImageNet experiments.
+.We observe that at the beginning of the super net training, the operators are not sufficiently trained, and their contributions to the overall accuracy are not clear, but their cost differences are always significant.
+.As a result, the search always picks low-cost operators.
+.To prevent this, we use warmup training to ensure all the candidate operators are sufficiently trained before we optimize architecture parameters.
+.In our ImageNet experiments, we found that ten warmup epochs are good enough.
+.In CIFAR-10 experiments, warmup training is not needed.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Minor concern #3: Warmup training
+"	NOOOOOONNNNNEEEE
+- It would greatly benefit the reader if eq. 5 were expanded.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+- The approach also seems to add a lot of complexity and heuristics/hyper-parameters.	MET	NOOOOOONNNNNEEEE	"4.
+.Our approach has 2 important hyperparameters: scaling parameter s used for calculating binary mask from the embedding matrix as well as  λ_RU, that controls the size accuracy trade-off (see Sec. 4.1 “joint training”).
+.We add a table analyzing the sensitivity of the parameter λ_RU observing the expected behavior: higher values of λ_RU lead to a smaller model size, however, reduced G size is positively correlated with the final classification performance of D (smaller G -> lower accuracy of D).
+.+---------+---------+-------+
+.| λ_RU  | Acc.5 | Size |
+.+---------+---------+-------+
+.| 2E-06 | 98.16 | 660
+.|
+.+---------+--------+--------+
+.| 0.002 | 98.22 | 638
+.|
+.+---------+--------+--------+
+.| 0.2     | 98.02 | 598
+.|
+.+---------+--------+--------+
+.| 0.75   | 97.36 | 577
+.|
+.+---------+--------+--------+
+.| 2        | 86.82 | 522
+.|
+.+---------+--------+--------+
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+(c) The authors should present what they mean by a dilated convolution using the notation of the paper.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We have added a section in the appendix to include dilated convolution in the paper's formulation.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"2. Dilated convolution in paper’s notation.
+"	NOOOOOONNNNNEEEE
+- the method is not applicable to episodes of different length	MET	NOOOOOONNNNNEEEE	"- For episodes of different length, we can pad or truncate the trajectories into same lengths and apply V-GMM.
+.Another method is to use PCA or auto-encoder to reduce the dimension into a fixed size and then apply CDP.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+At last, I am pretty sure to not be able to reproduce the model described in the paper (adding a section on that in the supplementary material would help), and many concrete aspects are described too fast (like the way to sample negative pairs).	MET	NOOOOOONNNNNEEEE	"- We have included model and training hyperparameter details in Section 5.1 and Appendix B.
+.- We added a motivation for mixing two different terms in the objective function.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Is Harmonic Convolution applicable to complex STFT coefficients as well?	MET	NOOOOOONNNNNEEEE	"We intentionally use the spectrogram notation as we do not use complex-valued kernels with complex-valued convolution.
+.Yet in order to generate the audio signal, we simply generate the real and imaginary parts of the STFT coefficients such that we can convert them to waveform using inverse STFT.
+"	NOOOOOONNNNNEEEE	"Thanks for the suggestion.
+"	NOOOOOONNNNNEEEE	"We have modified the text in the implementation details in Sec. 3 and the setup paragraphs in Sec. 4.2, 4.3, and 4.4 to make this point.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"3. Complex Coefficient vs Spectrograms.
+"	NOOOOOONNNNNEEEE
+If so it would be better to define the operator in a more general notation.	MET	NOOOOOONNNNNEEEE	"We intentionally use the spectrogram notation as we do not use complex-valued kernels with complex-valued convolution.
+.Yet in order to generate the audio signal, we simply generate the real and imaginary parts of the STFT coefficients such that we can convert them to waveform using inverse STFT.
+"	NOOOOOONNNNNEEEE	"Thanks for the suggestion.
+"	NOOOOOONNNNNEEEE	"We have modified the text in the implementation details in Sec. 3 and the setup paragraphs in Sec. 4.2, 4.3, and 4.4 to make this point.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"3. Complex Coefficient vs Spectrograms.
+"	NOOOOOONNNNNEEEE
+In Section 4.3 and 4.4, is the x_0 (defined in Section 2.1) complex-valued STFT coefficients or something else?	MET	NOOOOOONNNNNEEEE	"For experiments in Sec. 4.2 and 4.3, the network’s output is the complex STFT coefficient, the raw waveform is then recovered by inverse STFT using the overlap-and-add method.
+.For experiments in Sec 4.4, the output of the network is the ratio mask, and the separated audio is generated by an Inverse STFT operated on the input STFT coefficients multiplied by the predicted ratio mask.
+.The L1 loss is calculated between the predicted ratio mask and the ground truth ratio mask.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We have modified the text in Sec. 4.2, 4.3, and 4.4 to make the details more clear.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"4. Details in the experiments to clear up the settings.
+"	NOOOOOONNNNNEEEE
+What is the L1 loss defined in Section 4.4? To obtain the final separated audio waveform, an inverse STFT is applied on what?	MET	NOOOOOONNNNNEEEE	"For experiments in Sec. 4.2 and 4.3, the network’s output is the complex STFT coefficient, the raw waveform is then recovered by inverse STFT using the overlap-and-add method.
+.For experiments in Sec 4.4, the output of the network is the ratio mask, and the separated audio is generated by an Inverse STFT operated on the input STFT coefficients multiplied by the predicted ratio mask.
+.The L1 loss is calculated between the predicted ratio mask and the ground truth ratio mask.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We have modified the text in Sec. 4.2, 4.3, and 4.4 to make the details more clear.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"4. Details in the experiments to clear up the settings.
+"	NOOOOOONNNNNEEEE
+The main problem I see with these approaches is that they rely on sufficiently large batch sizes which could be (currently) problematic for many real-world applications.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Lastly, if the authors are not planning to release the code, the implementation details section is a bit too high-level and does not contain enough details to reimplement the Author's technique.	MET	NOOOOOONNNNNEEEE	"Furthermore, we have put more details about model architecture as in Appendix A Figure 4 and Figure 6.
+"	"A4. Thanks for your suggestions, we will release code upon the acceptance.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Q4: the implementation details section is a bit too high-level and does not contain enough details to reimplement the Author's technique.
+"	NOOOOOONNNNNEEEE
+Also how many steps are required to learn the linear interpolation ? How much the does it influence the quality of the interpolation ?	MET	NOOOOOONNNNNEEEE	"A1: We pick the ranges using two criteria: qualitatively acceptable and quantitatively under a fixed threshold for FID score.
+.We pick alpha steps uniformly within the ranges (shifts and rotations are integer steps).
+.For training, we have between 20k and 40k samples for all models, and beyond these numbers we don’t see much improvement.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Also how many steps are required to learn the linear interpolation ? How much the does it influence the quality of the interpolation ?
+"	NOOOOOONNNNNEEEE
+It is also not clear what are the assumptions made on the connectivity of the input graph and the target graph.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Q: It is also not clear what are the assumptions made on the connectivity of the input graph and the target graph.
+"	NOOOOOONNNNNEEEE
+Do we know how does the connectedness of the  input graph affect the translation quality in the case of strongly connected directed graphs? Or what happens if the target graph has a strong connectivity?	MET	NOOOOOONNNNNEEEE	"A: (1) Similar to all the existing graph deep generative learning methods for generic graphs, we do not have additional assumptions on the graphs.
+.The domain of graph deep generative learning methods typically do not require to distinguish or preprocess specific topological types of graphs before applying it, no matter it is strongly- or weakly- connected graph, complete graph, planar graph, scale-free graph, or graphs that have other specific patterns.
+.This is actually one of the core advantages of deep learning based models where the graph patterns are not extracted or pre-identified manually by the human but automatically discovered by the end-to-end deep models.
+.(2) This paper has given the time complexity in the worst case: O(n^2) as shown in 3.4.
+.The worst case happens when the graph is a complete graph.
+.The time complexity of a strongly-connected graph will not be worse than that.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Do we know how does the connectedness of the input graph affect the translation quality in the case of strongly connected directed graphs? Or what happens if the target graph has a strong connectivity?
+"	NOOOOOONNNNNEEEE
+Towards this, how does the computational complexity scale wrt to the connectedness?	MET	NOOOOOONNNNNEEEE	"A: (1) Similar to all the existing graph deep generative learning methods for generic graphs, we do not have additional assumptions on the graphs.
+.The domain of graph deep generative learning methods typically do not require to distinguish or preprocess specific topological types of graphs before applying it, no matter it is strongly- or weakly- connected graph, complete graph, planar graph, scale-free graph, or graphs that have other specific patterns.
+.This is actually one of the core advantages of deep learning based models where the graph patterns are not extracted or pre-identified manually by the human but automatically discovered by the end-to-end deep models.
+.(2) This paper has given the time complexity in the worst case: O(n^2) as shown in 3.4.
+.The worst case happens when the graph is a complete graph.
+.The time complexity of a strongly-connected graph will not be worse than that.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Towards this, how does the computational complexity scale wrt to the connectedness?
+"	NOOOOOONNNNNEEEE
+A lot of clarity is required on the choice of evaluation metric; for example choice of distance measure ?	MET	NOOOOOONNNNNEEEE	"(1) We want to evaluate if the generated graphs are scale-free graphs in the direct evaluation for dataset scale-free graphs.
+.If the degree distribution of generated graphs is the same to the degree distribution of real target graphs, the generated graphs are good.
+.(2) There are many classical evaluation metrics focusing on measuring the similarities or distance of two distributions.
+.The four metrics in this paper are among the most authoritative and commonly used ones in existing works, e.g., [2][3][4][5].
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Q：A lot of clarity is required on the choice of evaluation metric; for example, choice of distance measure?
+.A: Answer about Evaluation metrics:
+"	NOOOOOONNNNNEEEE
+What is the L1 norm applied on?	MET	NOOOOOONNNNNEEEE	"(1) L1 norm is applied to the weight adjacent matrix of the graph.
+.Our methodology is achieved by a trade-off between L1 loss and adversarial loss (GAN-D).
+.Specifically, L1 makes generated graphs share the same rough outline of sparsity pattern like generated graphs, while under this outline, adversarial loss allows them to vary to some degree.
+.(2) L1 norm is commonly used in GAN in relevant domains, e.g., in image-translation domain, for example, reference [1] (with 600+ citations) and reference [6] (with 1300+ citations).
+.They have done extensive experiments to show the advantage of such a strategy.
+.(3) The experiment demonstrates its effectiveness.
+.Specifically, the proposed GT-GAN that uses L1 norm outperformed all the other comparison methods shown in Table 2,3 and 4.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"What is the L1 norm applied on?
+.Answer about L1 norm:
+"	NOOOOOONNNNNEEEE
+- Trick is specific to LM.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+It seems heavily dependent on GBDT.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+1. I do not get the point of bringing up NCE. Did you actually use NCE loss? Did you only refer to NCE as a weight tying which can be used in a standard XENT loss [3]? The first paragraph of 3.3 did not help clarify this point either.	MET	NOOOOOONNNNNEEEE	"Approximations like NCE (in conjunction with random projections) would allow us to remove the restriction in the output layer.
+.We want to imply that our proposal is not incompatible with NCE, but we did not yet explore it so, to make the paper more self-contained it is probably best to leave this out.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"1. I do not get the point of bringing up NCE...
+"	NOOOOOONNNNNEEEE
+2) Beware of overstating: the argument that the framework is broadly applicable is not that useful, given that it's a lot of work to derive closed-form marginalized estimators.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+The method presented is interesting; but it is not clear that it is present with enough detail for it's results to be replicated.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"R) Now we have a pytorch version of the code at https://github.com/adapconv/adaptive-cnn
+.With MNIST and CIFAR.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"The method presented is interesting; but it is not clear that it is present with enough detail for it's results to be replicated.
+"	NOOOOOONNNNNEEEE
+Was crossvalidation used to select the topology?	MET	NOOOOOONNNNNEEEE	"We started with the reference topology like: ResNet18, LeNet, etc. then we reduce the number of kernels and layers keeping similar accuracy.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"7) Was crossvalidation used to select the topology?
+"	NOOOOOONNNNNEEEE
+If so, what was the methodology.	MET	NOOOOOONNNNNEEEE	"We started with the reference topology like: ResNet18, LeNet, etc. then we reduce the number of kernels and layers keeping similar accuracy.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"If so, what was the methodology.
+"	NOOOOOONNNNNEEEE
+Moreover, these bounds are just in the case where the teacher model is linear and while it is claimed that this could be relaxed to a more general class of functions, the specific bounds might change drastically.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+So any insights on the nature of these bounds will be valuable, especially with some comments on how these bounds change if the teacher model is itself realized as a 2-layer neural network.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+1 The implementation steps of the proposed method (MoVE) are not clear.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Moreover, we will ultimately release codes on Github.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"In addition to implementation details, the appendix has a rather detailed table of the architecture parameters.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"* Missing implementation steps and optimization details:
+"	NOOOOOONNNNNEEEE
+In 3/4 of the pairs the author tried, this phenomenon is not there. Whether the findings generalize to other situations where the phenomenon appears is uncertain.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"1.  “In particular, Section 4 is a series of empirical analyses, based on one dataset pair….However, only 1 dataset pair is experimented -- there should be more to ensure the findings generalize, since Sections 3 and 4 rely completely on empirical analysis.”
+.See general responses #1 and #3.
+"	NOOOOOONNNNNEEEE
+2. I might have missed it, but I couldn't find any motivation on why tanh is used as nonlinearity. Would the method work with relu?	MET	NOOOOOONNNNNEEEE	"R) We can use any Activation function.
+.We actually tested ReLu with good results, but we chose tanh because it generates weights in the range of (-1,1) avoiding large values given by ReLu.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"(Added to the paper)
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"2. I might have missed it, but I couldn't find any motivation on why tanh is used as nonlinearity. Would the method work with relu?
+"	NOOOOOONNNNNEEEE
+To be honest, the theoretical contribution of the paper is limited.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We agree that our main contribution is to cast a graph convolution network as a binary classifier learning to discriminate clean from noisy data and show its excellent results for few-shot learning.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+More discussions on these questions can be very helpful to further understand the proposed method.	MET	NOOOOOONNNNNEEEE	"We observe AutoLoss has bounded transferability -- while we successfully transfer a controller across different CNNs, we can hardly transfer a controller trained for CNNs to RNNs.
+.This is slightly different from some related AutoML works, such as in [1], where auto-learned neural optimizers are able to produce decent results on even different families of neural networks.
+.We hypothesize that the optimization behaviors or trajectories of CNNs and RNNs are very different, hence the function mappings from status features to actions are different.
+.Another limitation of AutoLoss is the necessity of designing the feature vector X, which might require some prior knowledge on the task of interest, such as being aware of a rough range of the possible values of validation metrics, etc.
+.In fact, We initially experimented with directly feeding blackbox features (e.g. raw vectors of parameters, gradients, momentum, etc.) into controller, but found they empirically contributed little to the prediction, and sometimes hindered transferability (as different models have their parameter or gradient values at different scales).
+.Meta-learning discrete schedules involves non-differentiable optimization, which is by nature difficult.
+.Therefore, a lot of techniques in addition to vanilla REINFORCE are required to stabilize the training.
+.Please also see our answer to the next question for more details.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We haved add the above discussion to the latest version as Appendix A.9.
+"	NOOOOOONNNNNEEEE	"We leave it as a future work to study where the clear boundary is.
+.As a potential future work, we will seek for continuous representations of the update schedules and end-to-end training methodologies, as arisen in recent works [2].
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"These are indeed good questions.
+"	"More discussions on these questions can be very helpful to further understand the proposed method.
+.We list several limitations we discovered during the development of AutoLoss:
+.- Bounded transferability
+.- Design white-box features to capture optimization status
+.- Non-differentiable optimization
+"	NOOOOOONNNNNEEEE
+2. As the problem is formulated as an RL problem, which is well-known for its difficulty in training, did we encounter similar issues? More details in the implementation can be very helpful for reproducibility.	MET	NOOOOOONNNNNEEEE	"We acknowledge the difficulties of training controllers using vanilla REINFORCE.
+.During our development of the training algorithm (See Eq.2, the “discussion” section in Sec.4, and Appendix A.1), we found the vanilla form of REINFORCE algorithm leads to unstable training.
+.We therefore have made many improvements and adaptations by either referring to existing literature, or depending on the specific tasks.
+.They include:
+.- Substitute from the reward a baseline term, which is a moving average (see section 3, Eq.2)
+.- Reward clipping (see section 3, under Eq.2)
+.- Use different values of T for different tasks (see “discussion” in section 4)
+.- Use improved training algorithms (e.g. PPO) for more challenging tasks, and slightly adjust reward generation schemes (see “discussion” in section 4, and Appendix A.1).
+"	"We will make all code and models trained in this paper available for reproducibility.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We have also revised the submission to disclose more details on how we make these improvements.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	">> As the problem is formulated as an RL problem, which is well-known for its difficulty in training, did we encounter similar issues? More details in the implementation can be very helpful for reproducibility.
+"	NOOOOOONNNNNEEEE
+"It should be better motivated why one should use the duality gap as an upper bound for the ""F-distance""."	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Minimizing the F-distance as is usually done seems like the more direct and simple approach.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+- I have trouble understanding the overall idea behind Algorithm 1 and Eq. (22).	MET	NOOOOOONNNNNEEEE	"The $f^*$ and $g^*$ means the dependent variable of duality gap.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+What is the definition of f^* and g^* in Eq. (22)? Some explanatory text would be valuable.	MET	NOOOOOONNNNNEEEE	"The $f^*$ and $g^*$ means the dependent variable of duality gap.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+1. The authors should provide more details on how the hand-crafted demonstrator agents were made.	MET	NOOOOOONNNNNEEEE	"We indeed implemented search algorithm with simple heuristics for acceleration for all grid-world tasks.
+.In Maze Navigation, the state space is extended to the combination of map status and the agent's inventory.
+.By this definition of states, an efficiency search can still be achieved.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We have added more details, and plan to release the code.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"1. The authors should provide more details on how the hand-crafted demonstrator agents were made.
+"	NOOOOOONNNNNEEEE
+I assume something similar to an a* algorithm was probably used for the passing task, but what about the maze navigation task?	MET	NOOOOOONNNNNEEEE	"We indeed implemented search algorithm with simple heuristics for acceleration for all grid-world tasks.
+.In Maze Navigation, the state space is extended to the combination of map status and the agent's inventory.
+.By this definition of states, an efficiency search can still be achieved.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+How do “we choose a specific number of assignments based on prediction probabilities”?	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+"- The CFS metric depends on a hyperparameter (the ""retention ratio""), which here is arbitrarily set to 80% without any justification."	MET	NOOOOOONNNNNEEEE	"To clarify, we used the elbow method (used to find an appropriate number of clusters for clustering) and observed that the ‘elbow’ in the accuracy vs dimensions plot was around the 80% accuracy mark for most tasks, and hence, we used 80% as the retention ratio.
+"	"We will discuss this process and test with different retention ratios in the final version.
+"	"> Sorry about the lack of clarity!
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Re: CFS metric depends on a hyperparameter (the ""retention ratio"")
+"	NOOOOOONNNNNEEEE
+13. Reproducibility seems like it would be hard. There are a few parameters (meta-learning rates, meta-optimizers) that I could not find for example and there is a lot of complexity.	MET	NOOOOOONNNNNEEEE	">> Comment #13
+"	"All code and model weights used in this paper will be made available.
+"	NOOOOOONNNNNEEEE	"We have added Appendix A.8 to disclose all hyperparameters.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Negative points: (1) The authors should provide more justification on equation-3.	MET	NOOOOOONNNNNEEEE	"(1) In equation (3) we are using scalarization, a well-known technique to solve multi-objective optimization problems (see for example Boyd’s book “Convex optimization” Ch. 4).
+.In this case, the maximization problem is a multi-objective optimization problem including both the parameters of the discriminator and of the classifier.
+.The parameter alpha controls the importance/priority of each of the objectives.
+.The parameter alpha also allows to control the detectability constraints for the attack, which allows us to test the robustness of learning algorithms and defences in different settings, considering more or less aggressive adversaries.
+.This is common in most security settings to test system’s robustness and resilience in different attack scenarios.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Why do the authors directly average different loss for the discriminator and the classifer?	MET	NOOOOOONNNNNEEEE	"(1) In equation (3) we are using scalarization, a well-known technique to solve multi-objective optimization problems (see for example Boyd’s book “Convex optimization” Ch. 4).
+.In this case, the maximization problem is a multi-objective optimization problem including both the parameters of the discriminator and of the classifier.
+.The parameter alpha controls the importance/priority of each of the objectives.
+.The parameter alpha also allows to control the detectability constraints for the attack, which allows us to test the robustness of learning algorithms and defences in different settings, considering more or less aggressive adversaries.
+.This is common in most security settings to test system’s robustness and resilience in different attack scenarios.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+(2) The function of the discriminator is not very clear, especially for the classification error test.	MET	NOOOOOONNNNNEEEE	"(2) In pGAN the discriminator allows to model detectability constraints for the poisoning points.
+.In other words, to evade detection or removal of points by algorithms that defend against poisoning attacks, such as the defences we used in our experiment, we want our attack points to be close to the distribution of the genuine data.
+.However, please, note that the discriminator’s loss is decoupled from the classifier’s loss.
+.In contrast, the generator is the element that competes with both the discriminator and the classifier.
+.On the other side, the discriminator does not exclude poisoning data or select any data point but helps to guide the generator to craft poisoning points that are difficult to detect.
+.In other words, the discriminator does not filter out the points that are used to train the classifier during the training of pGAN.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Why can pGAN lead to the inclination? Is it possible for pGAN to control the specific error tendency?	MET	NOOOOOONNNNNEEEE	"(3)-(4) To some extent pGAN can control the specific errors produced in the system, as shown both in Figures 5 and 6.
+.But the changes produced in the system may also depend on the characteristics of the dataset and the learning algorithms used.
+.pGAN produces poisoning attack points that are close to the decision boundary, “pushing the decision boundary away” from the source class (i.e. the same class as the labels of the poisoning points) towards the samples of the target class.
+.Then, we can expect an increase of the false positive rate, which is shown in Figure 6 (centre).
+.At some point, when the fraction of poisoning points increases significantly the decision boundary starts to change in a different (and possibly more abrupt way), so that the false negatives also start to increase.
+.In Figure 6 (right) this happens when the fraction of poisoning points is larger than 25%.
+.In contrast, the label flipping attack is less subtle as it does not consider detectability constraints.
+.The attack points are therefore not necessarily close to the decision boundary, and thus, the changes produced in the algorithm are more unpredictable and affect the errors for the two classes.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+However, it is unclear how a similar strategy could be applied if we are interested in learning variables with higher-level semantics such as the expression of a face or its pose.	MET	NOOOOOONNNNNEEEE	"The main premise behind guiding our siamese networks is to find very simple, yet effective ways to capture some of the variation in the data, through weak supervision.
+.For more complex semantics, we discuss the possibility of using a pre-trained network as guidance.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Please refer to our “Discussion” section for more details.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+3. how are predicted labels embedded? Do you learn a vector of each tag of BIOES and then take a weighted sum of these vectors with predicted probabilities as weights?	MET	NOOOOOONNNNNEEEE	"Before training, all unique entity labels (e.g. B-PER, I-PER, ... etc.) are embedded by assigning them to randomly initialized, continuous vectors of 128 dimensions (this hyperparam is mentioned in Table A.2 of the appendix).
+.The embeddings are then updated along with the rest of the models' parameters during training.
+.Practically speaking, this is handled for us via the embedding layer in PyTorch [4].
+.This is the same method used in the works we compare to ([1], [5], [6]).
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We have updated the text in the manuscript (under section 2) to make this more clear.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Regarding predicted entity label embeddings,
+"	NOOOOOONNNNNEEEE
+The main drawback would be the rather incrementality of that paper (basically sample before projecting is a bit better than projecting after sampling) and that this directional setting is quite limited...	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"(2) To the best of our knowledge, our work is the first to apply such variance reduction techniques to RL.
+.For these reasons, we feel that our work is not incremental at all, and is actually quite novel.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+2. The learning procedure is confusing.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"R1: We will provide the pseudocode in the future versions of the paper:
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Q1: The learning procedure is confusing. It is highly recommended to provide the pseudocode of the proposed method.
+.Training:
+.Testing
+"	"X_L : clean set
+.C_L : class set
+.X_Z : noisy set
+.# For each class name
+.For c in C_L:
+.#Take the clean examples belonging to this class
+.X_L^c : subset of X_L with label c
+.#Only consider noisy examples with the class name in the text
+.X_Z^c = filter_by_text(X_Z)
+.# Build the graph for this class, and learn the GCN for cleaning
+.A^c = build_graph(X_Z^c)
+.M^c = GCN_model(X_L^c, X_Z^c, A^c)
+.#Clean examples always get weight 1
+.for i in X_L^c:
+.r_i = 1.0
+.#Noisy examples get the learned weight
+.for i in X_Z^c:
+.r_i = assign_relevance(M^c(X_Z^c(i))
+.#Add the noisy examples to the list of training images for this class
+.X_L^c = concatenate(X_L^c, X_z^c)
+.#Learn a classifier jointly for all classes.
+.Use the relevance weights for noisy examples when learning the classifier
+.W = train_classifier(X_L^c, r)
+.Given test image Q
+.v = extract_feature(Q)
+.scores = W^T v
+.prediction = argmax(scores)
+"
+It is highly recommended to provide the pseudocode of the proposed method.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"R1: We will provide the pseudocode in the future versions of the paper:
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Q1: The learning procedure is confusing. It is highly recommended to provide the pseudocode of the proposed method.
+.Training:
+.Testing
+"	"X_L : clean set
+.C_L : class set
+.X_Z : noisy set
+.# For each class name
+.For c in C_L:
+.#Take the clean examples belonging to this class
+.X_L^c : subset of X_L with label c
+.#Only consider noisy examples with the class name in the text
+.X_Z^c = filter_by_text(X_Z)
+.# Build the graph for this class, and learn the GCN for cleaning
+.A^c = build_graph(X_Z^c)
+.M^c = GCN_model(X_L^c, X_Z^c, A^c)
+.#Clean examples always get weight 1
+.for i in X_L^c:
+.r_i = 1.0
+.#Noisy examples get the learned weight
+.for i in X_Z^c:
+.r_i = assign_relevance(M^c(X_Z^c(i))
+.#Add the noisy examples to the list of training images for this class
+.X_L^c = concatenate(X_L^c, X_z^c)
+.#Learn a classifier jointly for all classes.
+.Use the relevance weights for noisy examples when learning the classifier
+.W = train_classifier(X_L^c, r)
+.Given test image Q
+.v = extract_feature(Q)
+.scores = W^T v
+.prediction = argmax(scores)
+"
+The reasons for the use of the energy-based formulation are not clear to me.	MET	NOOOOOONNNNNEEEE	"This formulation is fundamental for the next step of the work in which we are removing the restrictions from the output layer and learning word probability distributions without prior knowledge of the vocabulary size.
+.That said, the formulation is just the re-use of the embedding layer transposed.
+.It removed an entire set of m x V parameters and got us better results in all our experiments so we decided to use it.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"*The reasons for the use of the energy-based formulation are not clear to me.
+"	NOOOOOONNNNNEEEE
+Is the energy-based model particularly well-suited to the random-projection setup, or are there other reasons for using it, independent of the use of random projections?	MET	NOOOOOONNNNNEEEE	"This formulation is fundamental for the next step of the work in which we are removing the restrictions from the output layer and learning word probability distributions without prior knowledge of the vocabulary size.
+.That said, the formulation is just the re-use of the embedding layer transposed.
+.It removed an entire set of m x V parameters and got us better results in all our experiments so we decided to use it.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Is the energy-based model particularly well-suited to the random-projection setup, or are there other reasons for using it, independent of the use of random projections?
+"	NOOOOOONNNNNEEEE
+The index over which the sum happens is n, but n is fixed? So this looks like a sum with just one component in it, namely the first n-gram.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+- It is not clear how the initialisation (10) is implemented.	MET	NOOOOOONNNNNEEEE	"A: Generally, Eq.10 is an idea of behavior cloning algorithm.
+.Clone a good initialization, and then continuously update the two neural networks using our method.
+.In the large extensive game, the initial strategy is obtained from an abstracted game which has a manageable number of information sets.
+.The abstracted game is generated by domain knowledge, such as clustering similar hand strength cards into the  same buckets.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"(refer to section 3.3 in the revised paper.)
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Q4: It is not clear how the initialisation (10) is implemented.
+"	NOOOOOONNNNNEEEE
+"Particularly the ""fusion"" module remains extremely unclear."	MET	NOOOOOONNNNNEEEE	"Regarding your questions: i) demonstrators policies are implemented by search algorithms; ii) the behavior tracker is an LSTM with 128 hidden units; iii) fusion module produces a 32-dim attention vector corresponding to 32 feature maps from the state encoder, and each element of that vector is used to reweight one of the feature map in order to reshape the state feature.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We have provided more details in the revision and plan to release our code.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"2. More implementation details
+"	NOOOOOONNNNNEEEE
+It is not clear to me that the classifier difference metric is well-defined.	MET	NOOOOOONNNNNEEEE	"Owing to similar concerns, we recommend using CFS information transfer metric over classifier weight difference (which is also supported by results in Table 2 and Figure 3).
+"	NOOOOOONNNNNEEEE	"Re: not clear if the classifier weight difference is well defined
+.> You are right in noting that the classifier weights might capture dissimilar yet useful features for two similar tasks, and hence the classifier weight difference might under-predict the transfer potential.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We discuss this issue in the paper (section 4.1), which is why we avoid the set overlap metric.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Equation (4). What is d_{k,l}? A pixel-wise target label? Where does it come from?	MET	NOOOOOONNNNNEEEE	"{k,l} locate the convolving window inside of the input image
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Equation (4). What is d_{k,l}? A pixel-wise target label? Where does it come from?
+"	NOOOOOONNNNNEEEE
+2) How are the rules from in Eq (2)? i.e., how is \beta_i selected for each i?	MET	NOOOOOONNNNNEEEE	"To avoid exponential enumeration of the predicate orderings sophisticated transformation of the rules has been applied in the Neural LP framework (see [Yang et al. 2017]).
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Minor comment 2) - ""How are the rules from in Eq (2)? i.e., how is \beta_i selected for each i? In the extreme case it would be all the permutations.""
+"	NOOOOOONNNNNEEEE
+- Very little details (apart from the optimization algorithm) are given regarding the architecture used (types of input, output, neural units, activation functions, number of hidden layers, loss function, etc...), which makes it very hard to reproduce this approach.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Thanks, these help improve the presentation greatly (we realize we wrote the exposition more  from a theoretical view and missed important ML details).
+"	NOOOOOONNNNNEEEE	"Details on architecture: Agreed, and thanks. We have added some details on the specific network architectures to Appendix C (for ski rental) and Appendix D (for AdWords).
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"** Addressing comments on the write-up:
+"	NOOOOOONNNNNEEEE
+It would be interesting to know the evaluation times for the BA-net and more importantly to have some implementation details to ensure reproducibility.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We will share all the source code to make sure it is reproducible.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We have added the detailed running time for each component in Table 3 in Appendix A of the revised version.
+.Meanwhile, we have included more details as suggested in Appendix A, including a visualization of all layers of the different parts of the network. If 1-2 extra pages are allowed, we can include those details to the paper.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Q1. Evaluation Time:
+.Q2. Implementation Details:
+"	NOOOOOONNNNNEEEE
+Overall it would be helpful for reproducibility if authors can visualize all the layers of all the different parts of the network as it is commonly done in the DL papers.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We have updated the figure to make it more intuitive and contains more details.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Q3. Figure 1 is too abstract:
+"	NOOOOOONNNNNEEEE
+"-	How the first camera pose is initialized?"	MET	NOOOOOONNNNNEEEE	"All the camera pose including the first camera are initialized with identity rotation and zero translation, which are aligned with the coordinate system of the first camera.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We clarified this at the end of Section 4.3 in the revised version.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Q5. How the first camera pose is initialized?:
+"	NOOOOOONNNNNEEEE
+This is all further confused by the semantic topics used for clustering the images which ignores stop words and therefore spatial relations or any grammatical nuances.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"2. Why stop words are ignored.
+"	"According to the explanation above, we think the spatial relations or grammatical nuances would not be so important in this task if we take the images as topic guidance.
+.Ignoring the stopwords can help us get rid of the disturbance of unnecessary high-frequency words (such as function words) being the topic, as the standard practice for TF-IDF topic extraction.
+"
+- The hyperparameter selection regime (and the experiments used to find them) is not described	EXP	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We’ll include more details about hyperparameters and hyperparameter selection in any future revision.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Response: We selected hyperparameters in a standard way by tuning on a validation set as we were developing our model.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"“The hyperparameter selection regime (and the experiments used to find them) is not described”
+"	NOOOOOONNNNNEEEE
+2. during sampling, either training or testing, how do authors handle temporal overlap or make it overlap?	EXP	NOOOOOONNNNNEEEE	"2.	During training, we uniformly divide the whole video into U sections and randomly select one action unit from each section.
+.So there are no overlaps for training.
+.For testing, there might be overlapping during sampling due to the limit length of video.
+.However, our V4D inference algorithm in section 3.4 guarantees that only the non-overlapping action units will interact with each other during testing.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+3) The paper only conducts comparison experiments with fixed-alpha baselines.	EXP	NOOOOOONNNNNEEEE	"It is indeed the case that constrained MDPs are often considered in safe RL.
+.In those cases there is generally an upper bound on a penalty function that should never be exceeded, including during training itself.
+.These algorithms generally restrict policy updates to remain within the constraint-satisfying regime.
+.While our approach can similarly be applied to upper bounds on penalties, there’s unfortunately no guarantee that the constraints will be satisfied at every moment during training, but only at convergence.
+.As such it is not clear how these methods would apply to our specific experimental setups.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"3) Relation to safe reinforcement learning
+"	NOOOOOONNNNNEEEE
+Without an empirical example in a realistic setting, it is hard to judge whether the benefits of introducing an ME bias for better classification of new inputs belonging to new classes can outweigh the negatives via a potential increase in misclassification of those belonging to old classes.	EXP	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+4. Can the authors show concrete examples on how the attacks are generated?	EXP	NOOOOOONNNNNEEEE	"A4: We note that we have mentioned our attack formulation and algorithm in Section 2.2;
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We have also provided more details about LOAN dataset and how we attack in Appendix A.1.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Q4: Can the authors show concrete examples on how the attacks are generated? The details are especially unclear on LOAN.
+"	NOOOOOONNNNNEEEE
+- for the experiment with Imagenet images, it is not very clear how many pictures are used. Is this number 2500?	EXP	NOOOOOONNNNNEEEE	"We had 7500 images in total.
+.We had 3 concept classes, and 2500 images for each concept.
+"	"We will mention the total number in the main text.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"- How many images did you have in the experiment?
+"	NOOOOOONNNNNEEEE
+However it's not clear how is this range used in practice ? Do you sample uniformly $\alpha$ in this range to train the linear interpolation ?	EXP	NOOOOOONNNNNEEEE	"A1: We pick the ranges using two criteria: qualitatively acceptable and quantitatively under a fixed threshold for FID score.
+.We pick alpha steps uniformly within the ranges (shifts and rotations are integer steps).
+.For training, we have between 20k and 40k samples for all models, and beyond these numbers we don’t see much improvement.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Q1: In appendix A.2 the authors explain how the range of is set for the different experiments. However it's not clear how is this range used in practice ? Do you sample uniformly in this range to train the linear interpolation ?
+"	NOOOOOONNNNNEEEE
+3. Shouldn't random indexing produce non-uniform numbers of non-zero entries depending on alpha? Why did you have an exact number of non-zero entries, s, in the experiments?	EXP	NOOOOOONNNNNEEEE	"yes but not necessarily. Alpha can be used to control the expected proportion of non-zero entries, but as long as the probability of a sparse configuration is random uniform, our mechanism guarantees that any sampled index is almost orthogonal to any other sampled index, so it's easier achieve the same while guaranteeing the sparsity in the inputs.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"3. Shouldn't random indexing produce non-uniform numbers of non-zero entries depending on alpha? Why did you have an exact number of non-zero entries, s, in the experiments?
+"	NOOOOOONNNNNEEEE
+It would be nice if the authors pointed to a git repository with their code an experiments.	EXP	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"R) Now we have a pytorch version of the code at https://github.com/adapconv/adaptive-cnn
+.With MNIST and CIFAR.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"It would be nice if the authors pointed to a git repository with their code an experiments.
+"	NOOOOOONNNNNEEEE
+"2)	It is not clear what the “replicates” refer to in the experiments."	EXP	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Given this, I wonder why all experiments are conducted on sets of two to five images, even for Kitti where standard evaluation protocols would demand predicting entire sequences.	EXP	NOOOOOONNNNNEEEE	"Our current implementation only allows up to 5 images in a single 2015 TITANX GPU with 12GB memories.
+.This is because we implemented the whole pipeline using tensorflow in python, which is memory inefficient, especially during training.
+.Each image takes about 2.3GB memory on average, and most of the memory is consumed by the CNN features and matrix operation.
+.But it is straightforward to concatenate multiple 5-frame segments to reconstruct a complete sequence, which is demonstrated in the comparison with CodeSLAM in Figure 7 of the revised version.
+.It is also straightforward to implement our BA-Layer in CUDA directly to reduce the memory consumption of matrix operation and push the number of frames.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Q2. Whole sequence reconstruction results:
+"	NOOOOOONNNNNEEEE
+I think all claims about running time should be corroborated by controlled experiments.	EXP	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Indeed we didn’t benchmark yet our models on Nsyth and our approach differs from others such as Mor et al. that report using « eight Tesla V100 GPUs for a total of 6 days
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"* All claims about running time should be corroborated by controlled experiments:
+"	"From the beginning of our experiment we aim at a much lighter-weight system that could be trained/used more broadly (eg. with a single mid-range GPU).
+.The computational cost difference is not rigorously estimated on a same given dataset/task to learn but still we think it is relevent to point that the results we report can be achieved in less that a day on a single Tesla V100 GPU.
+"
+While the authors do report some interesting results, they do a poor job of motivating the proposed extensions.	RES	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+These points remain me puzzled regarding either practical or theoretical application of the result. It would be great if authors could elaborate.	RES	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Because of this concern, I believe the results in the paper can only really characterize the learning close to convergence, since the network is already able to provide correct classification.	RES	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+"Can you explain somewhere exactly what you mean when you say ""learning dynamics of deep learning""? Given the specific nature of the results presented in the paper it would be nice to be precise also when it comes to the overall topic under study."	RES	NOOOOOONNNNNEEEE	"It usually refers to the evolution of weights and outputs of neural networks throughout training.
+.For instance, the work by Saxe et al in 2013 is entitled “Exact solutions to the nonlinear dynamics of learning in deep linear neural networks”.
+.We based our title on that paper since it extends some of its results to nonlinear neural networks.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We have added an explanation of what we mean by “learning dynamics of deep learning” in the last paragraph of the first page.
+"	NOOOOOONNNNNEEEE
+"3.	Are the authors willing to release the code? Overall the model looks complicated and the appendix is not sufficient to reproduce the results in the paper."	RES	NOOOOOONNNNNEEEE	"Yes, we do plan to open source our implementation.
+.Specifically, the game environment and the worker agents were implemented in Python and it runs at a speed of more than 300 steps per second.
+.We used PyTorch as the framework for implementing all the network modules.
+.Typically it took < 10 hours to get a converged result by our approach on a single Nvidia Tesla V100 GPU.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"3. Are the authors willing to release the code?
+"	NOOOOOONNNNNEEEE
+I trust that the authors did in fact achieve these results but I cannot figure out how or why.	RES	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We have added a detailed discussion in the paper (please see Analysis 6.1).
+"	NOOOOOONNNNNEEEE	"We believe this finding would be suggestive for the future research since most previous work focused on the content of the image itself.
+.As a different research line, we highlight the consistency among the mono-modality to bridge the gap of language and image modeling.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"1. How or why is the benefit.
+"	"This comment is insightful and we also considered about it.
+.Intuitively, we would easily fall into the connections between each sentence and image.
+.However, it is nearly impossible to pair sentence with images with completely the same meaning all the time.
+.According to our investigation, we conclude that the major contribution would be more effective contextualized sentence encoding for better representation from the visual clue combination instead of single image enhancement for encoding each individual sentence or word.
+.According to Distributional Hypothesis (Harris et al., 1954) which states that “words that occur in similar contexts tend to have similar meanings”, we are inspired to extend the concept in multimodal world, “the sentences with similar meanings would be likely to pair with similar even the same images”, where the consistent images (with similar topic) could play the role of topic or type clues for similar sentence modeling.
+.For your example, the topic words are {private, courts, table}, which can be paired with relevant images and other sentences with the same (similar) topics will be paired with the same (similar) group of images.
+.This is also very similar to the idea of word embedding by taking each image as a “word”.
+.Because we use the average pooled output of ResNet, each image is represented as 2400d vector.
+.For all the 29,000 images, we have an embedding layer with size (29000, 2400).
+.The “content” of the image is just like the embedding initialization.
+.It indeed makes effects, but the capacity of the neural network is not up to it.
+.In contrast, the mapping from text word to the index in the word embedding is critical.
+.Similarly, the mapping of sentence to image in image embedding would be essential, i.e., the similar sentences (with the same topic words) tend to map the similar images.
+.To verify the hypothesis, we shuffle the image embeddings but keep the lookup table, to only exchange the features of each image but maintain the sentence-image mapping.
+.Unsurprisingly, the BLEU score (EN-RO) is 33.53, which is very close to the reported one (33.78).
+.In addition, we randomly initialize the image embedding instead of ResNet, the result is 33.28.
+.In comparison, if we randomly retrieve unrelated images to break the lookup, the result is 32.14.
+.These results verify the necessity of the lookup table.
+"
+"-In the introduction, ""it is in general impossible to find an embedding in R^d such that ..."", why do we have to make v and v'(and u, and u') far from each other?"	INT	NOOOOOONNNNNEEEE	"We meant to say that in network embedding methods that aim to model first-order proximity (where proximity in the embedding space implies a higher probability of being linked), this is a requirement (otherwise, proximity of v and v' would imply they are likely to be linked).
+.Thus our argument only applies to such first-order proximity methods.
+.Methods that aim to model second-order proximities (where proximity in the embedding space implies a greater overlap between the sets of adjacent nodes), however, are similarly vulnerable.
+.For example, there can be a 50% overlap (which is highly significant in sparse networks) between the neighborhoods of nodes A and B, as well as between the neighborhoods of nodes B and C, but zero overlap between the neighborhoods of nodes A and C.
+.This would mean that nodes A and B need to be embedded close to each other, nodes B and C as well, but nodes A and C distant from each other.
+.The triangle inequality makes this hard.
+.Finally, these are but examples of how a Euclidean embedding on its own lacks representational power.
+.We believe that our empirical results also demonstrate this without having to refer to easy-to-identify problematic situations for pure embedding-based methods.
+"	"We apologize for having been a bit brief here, we will clarify this in the revision (uploaded asap).
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"- ""In the introduction, ""it is in general impossible to find an embedding in R^d such that ..."", [...]?""
+"	NOOOOOONNNNNEEEE
+- Did the experiments on CIFAR-10 and ImageNet use the cosine learning rate schedule [1]? If or if not, either way, you should specify it in a revised version of this paper, e.g. did you use the cosine schedule in the first 120 steps to train the shared parameters W, did you use it in the retraining from scratch?	MET_EXP	NOOOOOONNNNNEEEE	"CIFAR: In the pretrain stage and search stage, the learning rate is fixed to 0.1 with batch size 128; In the retraining stage, we use cosine learning rate schedule.
+.ImageNet: In the pretrain stage and search stage, the learning rate is fixed to 0.1 with batch 224; In the retraining stage, we use linear decay learning rate schedule.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Q2: “Did the experiments on CIFAR-10 and ImageNet use the cosine learning rate schedule?”
+"	NOOOOOONNNNNEEEE
+- Although the authors discussed the experiment setting in detail in supplements, I believe open-sourcing the code / software used to conduct the experiments would be greatly help with the reproducibility of the proposed method for researchers or practitioners.	MET_EXP	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We have already uploaded our source codes as well as the demonstration videos to the following sites.
+.Our experimental results and statements presented in the manuscript are fully reproducible and verifiable.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Clarifications of these points, and more in general the philosophy behind the architectural choices made, would make this paper a much clearer accept.	OAL	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+My concern for this paper is reproducibility.	OAL	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+- Limited analysis of model/architecture design choices	ANA	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+However, I believe the assumptions needed to show this point force the analysis to only characterize learning close to convergence.	ANA	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE

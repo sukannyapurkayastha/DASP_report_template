@@ -1,0 +1,1 @@
+As a result, constraining the model will alter the mutual information and I think the effect of this should be remarked on.

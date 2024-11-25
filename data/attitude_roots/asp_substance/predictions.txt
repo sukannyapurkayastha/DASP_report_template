@@ -1,0 +1,893 @@
+I vote for weak reject as (1) the paper makes a strong assumption about the availability of both the robot and object states which is not realistic in typical robotic manipulation applications and (2) the objective in the paper will not work if there is no notion of an “object” or object-state e.g.: this algorithm will not learn skills for a robot trying to control itself; hence, it is not truly a general purpose skill discovery algorithm but rather a skill discovery algorithm specifically meant for robot-object manipulation tasks.			MET
+The paper does not talk about settings where states of interest are not known, so all of the experiments are based on this strong assumption.			EXP
+It doesn’t seem like a surprising discovery that maximizing the mutual information between the robot state and object state will lead to skills that actually make the robot move the object.			NONE
+The results and discussions in the main part of the paper are too light in my opinion; the average model accuracy across modules is not an interesting metric at all, although it does show that the Transformer performs better than recurrent networks.			RES
+I am also not entirely satisfied by using accuracy as the only metric; how about using something like beam search to build a "soft", secondary metric?			MET
+The main problem is that directly predicting the context is intractable because of combinatorial explosion.			PDI
+It is a pity that the code is not provided.			NONE
+In particular I do not think the satement 'all the pre-training methods are at most linear with respect to the number of edges' made in appendix F is correct.			MET_EXP
+This appears to be very restrictive, since typically the values of time series j at time t-1 are typically depending say of those that time t-2, t-3 etc.			MET
+Another key concern concerns scalability.			NONE
+Yet the experiments considered in the paper are limited to very few time series.			EXP
+which is much smaller than the number of time series usually involved say in gene regulatory network data			DAT
+This is way to small.			NONE
+2. I think that the claim that the use of neural networks with discrete inputs can approximately solve NP-hard optimization problems is an exciting one, which likely necessitates more experiments (or theoretical results), but as it stands I don't think it is a fundamentally different conclusion from the fact that this method provides a great scalable solution for the ordinal embedding problem.			MET_EXP
+In Figure 5, a legend indicating the relationship between color intensity and distance would be helpful.			TNF
+In Figure 6 there seem to be unnecessary discrepancies between the y-axis and colorbar of subplots (a) and (b), and keeping those more consistent would improve readability.			TNF
+Another weakness of the paper is that the empirical evaluation is not sufficiently rigorous:			NONE
+3) Furthermore, for the experiments only one neural network architecture was considered and it remains an open question, how the presented results translate to other architectures.			RES_EXP
+The same holds for the type of data, since the paper only shows results for image classification benchmarks.			DAT_RES
+Further, it seems that the results in Table 4 might be a bit obscured by the size of the downstream task dataset.			RES
+While I appreciate the computational burden of testing more images, it does feel that Image A and B are quite cherry-picked in being very visually diverse.			NONE
+Because of this, it seems like a precise answer to what makes a good single training image remains unknown.			NONE
+I disagree with the claim of practicality in the introduction (page 2, top).			NONE
+While training on one image does reduce the burden of number of images, the computational burden remains the same. And as mentioned above, it doesn’t seem likely that *any* image would work for this method.			MET
+Finally, more images are needed to learn the deeper layers for the downstream task anyway.			NONE
+However, I do not think the metric they introduce is good enough to be recommended in future work, when comparing tunability of optimizers (or other algorithms with hyperparameters).			NONE
+The reason is that simpler methods provide just as much information, and do not rely on the need of interpreting the choice of the weights and K. This point is proven in the paper itself, where for example Figure 2 provides a more concrete and easier to interpret information than the tunability metric, similar graphs could be easily provided per dataset.			NONE
+Similarly, figure 3 as well as figures 5-7 and 8 in the appendix provide very good information about the tunability of the various optimizers without using the introduced metrics.			TNF
+Information similar (although not identical) to that summarized in table 5 could be captured by substituting the 3 metrics with the best performance after tuning for 4, 16 and 64 iterations respectively (just as examples).			TNF
+I enjoyed reading the submission, which is very clearly written, but due to the relatively limited value of the contributions, and excessive focus on the tunability metric which I do not feel is giustified, I slightly lean against acceptance here at ICLR. I do think, however, that it would make a great submission to a smaller venue or workshop.			OAL
+* minor: in figure 8 in the appendix, the results after 100 iterations is, as far as I understand, over a single replication, so is not particularly reliable (and will always be 100% of a single optimizer)			TNF
+* similarly to the above, if the configurations are always sampled from the same 100, confidence intervals in the graphs become less reliable as the budget increases.			NONE
+- Discussions sometimes lack depth or are absent.			NONE
+Besides visible artifacts, what does it mean? Why does a smoother G reduces those artifacts?			MET
+In this case, if future readers limit themselves to the main text, I think it can have more value to present some content form Appendix B and C than to have more than a full page on stability investigations and attempted tricks that turned out not to be used to reach maximal performance.			NONE
+Similar curves could also be produced with the hyper-sphere projection proposed above to have a slightly clearer idea of the behavior on the limit of that hyper-sphere.			NONE
+This investigation of GAN scalability is successful results-wise even though the inability to stabilize training without sacrificing great performance on ImageNet is disappointing.			NONE
+Therefore, an interesting baseline for the evaluation of the ICL approach would be a predefined, fixed attention map consisting of concentric circles with the image center as their center, to show that the proposed approach does more than just deemphasizing the corners of the image)			MET_RWK
+Therefore, it may be a good idea for the authors to analyze the correlation between FSM changes and accuracy changes.			ANA
+However, given that the achieved performance gains over the state-of-the-art are fairly small, it would be good to assess if the obtained improvements are statistically significant.			RES
+Furthermore, it may be informative to show the saliency maps in Figure 5 not only for cases in which the learner classified the image correctly in both time steps, but also cases in which the learner classified the image correctly the first time and incorrectly the second time.			TNF
+Additionally, the previously mentioned evaluation steps, i.e., using a fixed attention map as baseline for the evaluation and evaluating the correlation between FSM and accuracy may be informative to illustrate the advantages of the proposed approach.			MET
+2.	Data size is too small, and the baselines			DAT
+Same for action units.			NONE
+It does intuitively makes sense, but more mathematical definition (e.g., dimensionality) may be needed.			MET
+I'd say these short videos are still clips.			NONE
+Overall, I find the paper a promising contribution. But until the authors provide a more thorough experimental evaluation, I hesitate to recommend acceptance.			OAL
+I encourage the authors to clarify these points in an updated version of their paper.			NONE
+If the goal is to learn representation for low-shot setting, the method needs to be compared with other representation learning methods such as jigsaw[1], colorization[2] and rotation[3].			MET
+1. Missing comparison with parameter counting bounds: there has been a long line of research on generalization bounds for RNNs by obtaining bounds on the VC dimension of the function class [1, 2] which provide generalization bounds for various non-linearities.			NONE
+The bounds obtained are polynomial in the sequence length T (often sublinear or linear) and should be compared with the existing bounds for a thorough comparison.			NONE
+4. Missing experiments to validate nature of bounds: Bartlett et al. [3] performed extensive experiments to exhibit the correct scaling of the generalization bounds with the "model complexity" introduced upto numerical constants.			RWK_EXP
+It would be good to have some experiments in the sequence to sequence setting to understand if the obtained complexities are in fact what one would expect in practice.			EXP
+The work here tries to not learn a lot of these structures but impose them.			NONE
+The drawback in this model here is that ultimately networks are embedded, but not really generated during test time.			MET
+- The proposed method does not outperform the existing state-of-the-art methods in terms of classification accuracy.			MET
+The only set of experiments are comparisons on first 500 MNIST test images.			EXP
+Including at least one set of black box attacks is necessary to verify to what degree the vanishing gradient is the case here.			MET
+Moreover, I don't think some of the presented experiments are necessary.			EXP
+In addition, I would like to see some discussions whether this technique could be applied to off-policy learning as well.			MET
+(3) FGSM is a quite weak adversarial attack method, which makes evaluating adversarial robustness on FGSM may be misleading.			MET
+5. On relational detection task, is there a way to compare with the STOA method on some specific data split? This will leads to much more convincing results.			MET
+6. Similar as above question, on the object counting task, is there a way to compare with previous counting methods?			MET_RWK
+The papers discusses some (not surprising) theoretical properties relating to scaling, permutation, covariance, correlation, while making less efforts on the more interesting characteristics  sparsity, dead units, rank, mutual information.			NONE
+Did the authors also examine the relationship between mutual information and generalization error for CIFAR data sets? Does it not make sense to examine this for all (most of) the setups considered in Table 4, 8, and 9.			DAT
+[-] The results indicate that SAVP offers a trade-off between the properties of GANs and VAEs, but does not go beyond its individual parts.			RES
+However, in its current state the work lacks sufficiently strong baselines to support the paper’s claims; thus, the merits of this approach cannot yet be properly assessed.			MET_RWK
+- the complexity of the proposed algorithm seems to be very high			MET
+- the data sets used in the experiments are very small			DAT_EXP
+Beyond this simplification, I am not clear if that is actually intended by the authors.			MET
+The authors explain how they trained their own model but there is no mention on how they trained benchmark models.			MET
+However, given that the datasets used in the experiments were not used in the associated benchmark papers, it is necessary for authors to explain how they trained competing models.			DAT_EXP
+First, In Theorem 2, which seems to be a main result of the paper, the authors were concerned with the condition when W_{ji} >0, but there is not conclusion if W_{ji} =0.			MET_RES
+It does not seem sensible to drop X^{j}_{t-1} + \eta_X \cdot \epsilon_X and attain a smaller value of the cost function at the same time.			MET
+Third, it is rather surprising that the authors didn't mention anything about the traditional causal discovery methods based on conditional independence relations in the data, known as constraint-based methods, such as the PC algorithm (Spirtes et al., 1993), IC algorithm (Pearl, 2000), and FCI (Spirtes et al., 1993).			MET_RWK
+Second, due to the norm based constraints, authors actually need to optimize a highly nonconvex optimization problem.			NONE
+Moreover, due to the trace based loss function, the computational cost will also be very high.			MET
+Finally, the experimental part is also too weak to evaluate the proposed method.			MET_EXP
+Moreover, authors should conduct experiments on state-of-the-art benchmarks, including natural images.			EXP
+Most importantly, I would like to see a measure of variance/uncertainty like confidence intervals included in the results; otherwise it's impossible to assess whether the results are likely to be significant or not. Other questions:			RES
+2. Why were more baselines from the related work not included? I understand the experiments are a proof of concept, but it would be nice to get a feeling for what some of the other methods do.			RWK
+3. How do PPO and SimPLe handle partial observability? Is it principled to apply them to partially-observable environments?			MET
+4. Why not use continuous actions with a parameterized policy (e.g. Gaussian)?			MET
+5. Is it reasonable to assume that the learning dynamics of all deep learning architectures are similar enough that a model trained on one set of deep learning architectures and problems will generalize to new architectures and problems?			MET
+This work is an interesting application of deep learning, but it gives little insight as to why deep networks are able to solve the problem and how to solve ordinal embedding itself.			NONE
+Thinking along these directions would bring more insight and impact to both the ordinal embedding problem and optimization in deep networks.			NONE
+While these may indeed be working as advertised, it would be good to see some evaluation that verifies that after learning, what is actually happening is coreference.			NONE
+- The evaluation of the proposed method is not complete.			MET
+Some baseline DA methods [A, B] and datasets [C, D] are not considered.			MET_RWK_DAT
+- For the automatic evaluation measures there should be multiple references per SPARQL query since this is how BLEU et al are supposed to be used.			RWK
+In addition, the results seem very weak.			RES
+This is not true.			NONE
+Perhaps the results would be a little more convincing if additional common word embeddings were also tested.			RES
+Due to the different objects used in the different datasets, some of the experiments have a smaller set of words.			DAT
+However, the experiments feel like they are missing motivation as to why this method is being used.			MET_EXP
+In section 4.1 the authors have a good discussion on what is wrong with other methods in order to motivate their approach but then they don't deliver significant evidence in the later part of the section.			MET
+However, as the authors acknowledge the overall simplicity of the tasks being evaluated with mostly marginal improvements makes the overall evaluation fall short.			RES
+- evaluated models (feed-forward NNs and LSTMs) are very basic and far from current SotA architectures			MET
+- no qualitative analysis on how modulation is actually use by the systems.			ANA
+- perplexity improvements of less than 1.3 points over plasticity alone (which is the actual baseline for this paper) can hardy be called "significant". Even though they might be statistically significant (meaning nothing more than the two models being statistically different), minor architectural changes can lead to such improvements.			NONE
+Furthermore PTB is not a "challenging" LM benchmark.			MET
+-2 Diversity of additional "agents" not analyzed (more below).			ANA
+-3 For image-to-image translation experiments, no quantitative analysis whatsoever is offered so the reader can't really conclude anything about the effect of the proposed method in this domain.			MET_ANA
+Lemma 2.4, Point 1: The proof is confusing.			MET
+What is G_t in Theorem 2.5. It should be defined in the theorem itself.			MET
+Thus, the theoretical contribution of this paper is limited.			MET
+As for the experimental results, the paper only provides results on the sentimental analysis results and digit datasets, which are small benchmarks.			DAT_RES
+The selected baselines are not sufficient.			RWK
+The improvement from the baselines is also limited.			RWK
+1) The critical issue of this paper is that the algorithm is designed to minimize the upper bound.			MET
+2) The experimental results provided in this paper are weak.			RES_EXP
+But the paper only provides empirical results on sentimental analysis and digit recognition.			RES
+Besides, the results on the sentimental analysis are comparable with the compared baselines.			RWK_RES
+It will be also interesting to see how does the proposed method perform on large-scale datasets such as DomainNet and Office-Home dataset:			DAT
+While the experiments are only performed on sentimental analysis and digit recognition. How about evaluating the proposed methods on real image recognition such as DomainNet or Office-Home?			MET_EXP
+* The biggest problem for me was the unconvincing results.			RES
+It is better to explain the major difference and the motivation of updating the hidden states.			MET
+One could understand the use of "selection network" as a way to automatically select a threshold of what to consider confident, however, in this case, the prediction of "selection network" should be thresholded at 0.5 (correct prediction or not), but the experiments use complex thresholds.			EXP
+Ablation study shows that the use of the "selection network" strategy does not improve the results without these heuristics.			NONE
+For tutoring applications, the most important thing is to select a problem that can help students improve; even if you can indeed select a problem that is the most similar to another problem, is it the best one to show a student? There are no evaluations on real students in the paper.			NONE
+All in all, the results show that the proposed method provides a significant speedup with respect to Shim et al., but it lacks comparison with other methods in the literature.			MET_RWK
+It would make the paper much stronger if the authors perform quantitative + qualitative evaluation on the MF training of RBMs first.			NONE
+Without doing so, it leaves the reader wondering why not simply a standard RBM trained using a standard method (e.g. contrastive divergence).			MET
+It would be very interesting to contrast the proposed method with other previously proposed MF based method, in particular using Free energy to approximate the expectation of the model without constraints.			MET
+This is a very good point, however the paper do not compare or contrast with existing methods.			MET_RWK
+For example, it is curious to see how denoising Auto encoders would perform.			MET
+In addition, it could be worthwhile to compare and benchmark on existing evaluations: https://arxiv.org/pdf/1802.06806.pdf			RWK
+- The authors should make a distinction on what kinds of attack is considered: white box, black box or grey box.			MET
+The problem with this strategy is that the rigid composition only works for actions that can be split into consecutive temporal parts with prefixed duration and anchor points in time, which is clearly challenged by many works later when more complicated video events are studied.			MET
+That said, I would like to see more analysis on the behavior of the proposed method under various interesting cases not tested yet.			MET_ANA
+Better literature review to reflect the relevant previous video action recognitions, especially those on video compositional models.			RWK
+Weaknesses: Not all model modifications are studied in all the algorithmic tasks.			MET
+The total error in estimating the mutual information must take this error in account, and not only the validation error.			NONE
+Along this direction, it is problematic that, in the synthetic examples, the relative  performance of methods changes significantly from experiment to experiment and there does not seem to be a simple way to control that.			MET_EXP
+I would have been interested in "false detection" experiments: comparing estimator in a variety of problems where the mutual information is zero, but for different marginal distribution.			EXP
+In such a situation, there are better strategies for higher-order tests of independence than estimating mutual information, in particular estimator that give a control p-value.			MET
+In its current state, I am not sure that it adds a lot to the manuscript.			OAL
+There are many acronyms that are never defined: MINE, TCPC			NONE
+The empirical evaluation is limited in considering only one task (clique finding), and the results seem to be quite sensitive to the chosen optimizer.			RES
+We think that this is not enough, and more extensive experimental results would provide a better paper.			EXP
+However, I am wondering whether this paper is perfectly suited to ICLR conference due to the lack of experiment, practical implication given by the theory, or theory in the non-convex setting (I know that the latter is a huge open question and I am not criticizing the absence of theory in the non-convex-concave setting).			EXP
+One way to improve to work would be to provide practical takeaways from the theory or to provide experiments in the main paper.			EXP
+Making this algorithm not very practical.			MET
+For the language translation results, were there any other state-of-the-art methods that the authors could compare against? It seems they are only comparing against their own implementations.			MET_RWK
+It would be nice to see a better case made for spherical convolutions within the experimental section.			EXP
+The experiments on SHREC17 show all three spherical methods under-performing other approaches.			MET_EXP
+Weaknesses: The dataset created here is entirely synthetic, and the paper only includes one single small real-world case; it seems like it would be easy to generate a larger and more varied real world dataset as well (possibly from the large literature of extant solved problems in workbooks).			DAT
+- I didn't understand the motivation for testing only very general-purpose models (this is described in Section 3).			MET
+Edit (leaving everything else unchanged for now): After reading R3's assessment, I agree with them that it's worrying that the Deterministic Meta-Dropout performs better than baseline MAML - maybe it's an effect of a larger number of parameters in the model?			MET
+images. It would be great if the paper also made some attempt to			NONE
+This issue is not really commented upon in the paper. Is			NONE
+- The conclusions focus on the importance of section 3 and			RES
+How do we choose a proper beta, and will the algorithm be sensitive to beta?			MET
+ii) In table 2, I don’t really see any promising results compared to baselines. There are			RES_TNF
+little improvements over the baselines or even significantly worse. More importantly,			RWK
+compared two schemes of this work, the ones with attentions are “almost” identical with ones			MET
+in practice. For most of newly proposed graph embedding algorithms, it is hard to convince			MET
+It reads very much like a STOC theory paper, and a lot of the key ML details that would be relevant to audience at this conference seem to have been shoved under the rug in a way.			OAL
+* The oracle-augmented datasteam model needs to be contextualized better.			MET
+* The connections to deep learning seem arbitrary in some of the experiments.			EXP
+What is the benefit of using DL algorithms within the oracle-augmented datastream model?			MET
+Is a simple algorithm enough? What algorithms should we ideally use in practice?			MET
+What if you used simpler online learning algorithms with formal accuracy guarantees?			MET
+- My biggest issue is that there is no clear evaluation of the runtime benefit of the second Viterbi decompressor.			MET
+For example, what is the number_iterations in the experiments? How are they chosen or what's the specific stopping criteria?			EXP
+From the plots in Figure 2 and 3, it is hard to find the convergence of the method within 100 iterations.			TNF
+The descriptions of the datasets used are not clear, e.g., the number of classes for each data.			DAT
+Second, many typos and grammar errors need to fix, e.g., "the proposed SST is suitable for lifelong learning which make use...", "the error 21.44% was lower than" 18.97?			NONE
+First, the labeled data portion is fixed and is relatively high			DAT
+Second, SST itself is only comparable with or even worse than the state-of-art methods.			MET_RWK
+and it also includes some weak claims that should be removed.			NONE
+For example, the number of labeled examples in Table 1 is fairly large and inconsistent (4K, 1K, 10K for the 3 organic datasets).			DAT
+The explanation for underperforming on SVHM (page 7) may be valid, but you could easily prove it right or wrong by adding an option to SST for "stratified SSL." Without this extra work, your claim is just a conjecture.			MET
+however, you do not provide any evidence for it, so you should avoid making such claims.			NONE
+All of these pieces are very well-known methods (e.g. VAEs, conditional VAEs, CL, catastrophic forgetting, domain transformation) in the literature and this paper puts them together in a straightforward way.			MET
+The next submission of the paper could choose one or few of these pieces as target research problems and develop a thoroughly analyzed novel technical solution for them.			NONE
+If this solution can be proven to improve a valuable metric (e.g. accuracy, interpretability, theoretical understanding, or computational efficiency) of a setup, it is then worthwhile being published.			RES
+-	The experimental results of section 5.2 are somewhat disappointing.			RES_EXP
+Even with no data augmentation, and even with the original networks, membership can only be assessed with a 90% accuracy.			MET_RES
+Results are much lower in less favorable cases, sometimes close to random (see last line of Table 3).			RES
+This seems to be too low to be of practical use.			NONE
+Besides, in evaluation, the paper only compares Doubly Sparse with full softmax.			NONE
+Why not compare with Sparsely-Gated MoE?			MET
+Overall, I think this paper is below the borderline of acceptance due to insufficient comparison with Sparsely-Gated MoE.			OAL
+It would be nice to see how a “gold standard” HMC based inference does on at least the small toy problem of Sec 5.1?			MET
+Comparisons against these more standard inference algorithms is essential for understanding what advantages are afforded by the objective proposed in the paper.			MET
+It would be good to include comparisons against VI with \lambda = 1.			NONE
+However, as presented these ideas are poorly justified and careful comparisons against sensible baselines are missing.			RWK
+- The claim made in the first line of the abstract (applying RL algorithms to continuous control problems often leads to bang-bang control)			INT
+Also it seems that the regular batch normalization could be very sensitive to domain shifts, and it would be good if the authors can test other normalization schemes such as layer/group normalization as baselines.			MET_EXP
+Another concern is that the evaluation of domain adaptation does not have much varieties.			MET
+BSD 500 only contains 500 images, and it would be good if more diverse set of images are considered.			DAT
+However, unlike as advertised, the paper does not address the domain shift issue in meta-learning, and the experiments lack thorough evaluation as the paper considers itself as a meta-learning paper and only compares to other meta-learning approaches without much comparison to domain adaptation papers.			MET_EXP
+The experiments use fairly small datasets, where the performance can be largely influenced by how good the feature extractor backbone is (e.g. training on more data and using deeper architecture would warrant better performance, and thus may change the conclusion).			DAT_EXP
+Given the paper title, the reviewer would have expected more experiments in a multiple domain context.			EXP
+More precisely, for the digit datasets, the reviewer was interested to see how the proposed MDL performs on jointly adapting SVHN, MNIST, MNIST-M, and USPS or jointly adapting DSLR, Amazon, and Webcam for OFFICE dataset.			MET_DAT
+Moreover, comparison with some of the DA baselines (ADDA[1], DSN[2]) is missing.			RWK
+- there is no attempt to provide a theoretical insight into the performance of the algorithm			MET
+I believe the results all relate to inference but it would be good to get an overview of the impact of training time as well.			RES
+Maybe in section 3.7 you can address how often that occurs as well?			NONE
+However I find the white-box experiments lacking as almost every method has 100% success rate.			MET_EXP
+- White-box attack experiments don’t really prove the strength of the method, even with imagenet experiments, as almost all attacks get 100% success rate making it hard to compare.			MET_EXP
+Need to compare in more challenging settings where the success rate is meaningful, e.g. smaller epsilon or a more robust NN using some defence.			NONE
+Also stating the 100% success rate in the abstract is a bit misleading for the this reason.			NONE
+e.g. "In specific" --> "Specifically" in the abstract, "computational budge" -> "budget" (page 6) etc.			NONE
+- Pioneering work is not necessarily equivalent to "using all the GPUs"			RWK
+-  Why have you chosen the 4 operations at the bottom of page 4? It appears to be a subset of those used in DARTS.			MET
+- Consequently why did not you compare simple projected gradient method ?			MET
+- What is the difference between the result of Theorem 4.3 and the result from (Lacoste-Julien 2016)?			MET_RWK_RES
+In don't see why there is a need to work on any $y$. If it is true			NONE
+- Missed opportunity of better analysis of which theorem/rewrite rule properties are more likely to fail			ANA
+However, I feel like the main result is a bit too predictable, and for acceptance I'd like to see a much more detailed exploration of the questions around systematic generalization.			RES
+- I might have missed that, but are the authors offering an interpretation of their observation that the performance of the self-modulation model performs worse in the combination of spectral normalization and the SNDC architecture?			MET
+- I would like to see some more interpretation on why this method works.			MET
+- Did the authors inspect generated samples of the baseline and the proposed method? Is there a notable qualitative difference?			MET_RWK
+- The performance gain is not substantial in experiments.			EXP
+I would like to suggest to use the state-of-the-arts classifier for the principal task and to evaluate how much gain your method can get with the help of auxiliary tasks.			MET
+- If the information on the hierarchy of sub-categories is not available, it will be an annoying hyperparameters that should be well tuned.			MET
+- Some of the datasets the authors currently test on are quite toy, especially for the image-based MNIST and SVHN datasets.			DAT
+1. Since the method is only evaluated on several video sequences, I am not sure how the method will perform on other different scenes.			MET
+Results on more scenes will make the performance more convincing.			RES
+2. As to the results of the Pose2Pose network, I wonder if there are some artifacts that will affect the performance of the Pose2Frame network.			MET_RES
+Otherwise, the artifacts from Pose2Pose will affect the testing performance of the Pose2Frame network.			NONE
+I wonder how the straightforward regression term plus the smooth term will perform for the mask.			MET
+Here, the straightforward regression term means directly regress the output mask to the target densepose mask. Will the proposed mask term perform better?			MET
+This was not done.			NONE
+This reduces the paper to an empirical exercise rather than a true understanding of their method's advantages and limitations.			MET
+Finally, the experimental results do not show any significant advantage over PGD, either in running time (they are slower) or norm perturbation.			RES_EXP
+While I like the premise of the paper, I feel that it needs more work.			OAL
+Furthermore, the claims of the model working for non-MCAR missingness are not substantiated by the experiments.			EXP
+The MNIST+SVHN dataset setup is described in detail, yet there is no summary of the experimental results, which are presented in the appendix.			DAT_RES_EXP
+I think that this is the crux of the paper that should be significantly expanded and experimentally validated.			EXP
+* The baselines in the experiments could be improved.			EXP
+In general, I feel this section could use some tighter formalism and justifications.			MET
+I also remain unconvinced by the response to my issue with the claim “Our experiments show that our networks can remember a large number of images and distinguish them from unseen images”, where the negative images are also seen by the memorization model, so they are not unseen.			EXP
+That does not seem like a small enough percentage to claim that these are “unseen” images.			NONE
+Also, the claim in Fig. 1 that the transition from ‘’high capacity’’ to low capacity happens at the number of parameters in the network seems a bit loose and hard to substantiate from what I understand, and should be toned down. (*)			TNF
+2. Sec. 3.3, Fig. 3: The capacity (in terms of parameters)of both Resnet-18 and VGG-16 is higher than the capcity for YFCC100M dataset for n=10K images (comes to 161K bits), while the capacity of Resnet-18, with 14.7 million parameters (assuming float32 encoding) has 14.7 * 32 bits = 470.4 million bits, thus capacity alone cannot explain why VGG converges faster than Resnet-18, since both networks exceed the capacity, and capacity does not seem to have an established formal connection to rate of memorization.			MET_DAT
+The experimental results presented were all done on small synthetic datasets and it’s hard to evaluate whether the method is practically useful.			DAT_EXP
+The experimental results are actually less impressive than what are claimed in contribution and conclusion.			RES_EXP
+The authors stated that "F-pooling remarkably increases accuracy and robustness w.r.t. shifts of moderns CNNs"; however, in Table 1-3, the winning margin of accuracy is actually quite small (<2%), and the consistency (<3.5% compared to the second best baseline except resnet-18 on CIFAR 100 has large improvement ~7-8%).			RWK_RES
+But other than this, the empirical performance seem not showing particular advantage over AA-pooling.			NONE
+Are there any other advantages for F-pooling s.t. people might want to use it as opposed to AA-pooling?			MET
+- also, if the authors can explain more on sec 2.5 it will be helpful. If we simply ignore the imaginary part, although the theory is not applicable, but what would the empirical performance be?			MET
+I think that the current draft lacks strong experimental results to properly demonstrate the usefulness of the method.			MET_EXP
+The method is only evaluated on a single task and many confounding variables (the design of the reward function, factorizing the parametric distribution into marginals, reporting results for a single (non-tuned?) learning rate, etc.) make evaluation difficult.			MET
+3. The experimental study is weak.			EXP
+Also, from the three Tables in the experimental part, the improvement of F-pooling over AA-pooling (developed by the main reference of this work) does not seem to be significant or consistent.			TNF
+For example, in Table 2, the F-pooling only wins at either accuracy (marginally) or consistency, but not both.			TNF
+- impact: the results achieved in the experiments are very small improvements compared to the baseline of RGCN (~ +0.01 in two experiments and ~ -0.04 in another) and often these small variations in results can be compensated with better baselines training (e.g. better hyper-params, ...)			RES_EXP
+While the experiments across several domains convincingly show the presence of an anti-ME bias in neural network training, I recommend that the paper be rejected because it falls short in demonstrating to what extent performance could be improved by correcting or reversing this bias.			EXP
+Presumably, whether the benefit scales well will depend on the loss function - in any case, this warrants some analysis/discussion especially given that there are no experiments to test it.			ANA
+It’s not obvious to me that ME bias will provide a significant advantage in a one-shot or few-shot learning setting - i.e. how useful is having made a better initial guess (which is random amongst the unseen classes) after you gain some specific information about the target class? Perhaps the benefit is small relative to that of the one-shot or few-shot information gained - I think this needs to be quantified empirically.			MET
+- Detailed experimental setups are missing.			EXP
+Compared to using just a very simple dense reward (e.g. negative L2 distance between the robot and the object), what would be the advantage of using MI discriminator? It would be great to show the comparison between using simple dense reward and MI discriminator for each Push, Pick&Place, and Slide task.			MET
+- it's better to show time v.s. testing accuracy as well.			RES
+1. The focus of this paper is the hyper-parameter, please focus and explain more on the usage with hyper-parameters.			MET
+Is it better to decay learning rates for toy data sets?			DAT
+It is known that SGD with fixed step-size can not find the optimal for convex (perhaps, also simple) problems.			MET
+Tuning a good lambda v.s. tuning a good step-size, which one costs more?			NONE
+However, the experimental results are weak in justifying the paper's claims.			EXP
+* Section 5.3 (Fig. 6) is the part most relevant to the generalisation problem.			TNF
+However, the results are unconvincing: only the results for epsilon = 0.1 are shown, and even so the advantage is marginal.			RES
+It is thus unclear whether the advantage can be maintained after applying these standard regularsisers.			MET
+However, I found the contribution of the actor-critic model is insufficient and requires additional experimental validation (see below).			EXP
+The main problems come from the experiments, which I would ask for more things.			EXP
+So how importance of each component to the whole framework? I would ask for the ablation study/additional experiments of using each component.			EXP
+How about combining only Pose2Pose/ Pose2Frame  with pix2pixHD? Whether the performance can get improved?			NONE
+What happen for Meta-RevGrad + idt or Meta-RevGrad + revMap?			MET
+I feel the baseline in domain adaptation area is a bit limited.			RWK
+2. How is the performance of a simpler baseline such as combining a subset of new domain as training set to train MAML or PN (probably in 5-shot, 5-class case)?			RWK_EXP
+i.e., omniglot <-> omniglot-M. I wonder whether the proposed approach can still work in large domain shift such as omniglot to fashion-mnist etc.			MET
+This triggers my curiosity of which difficulty is it? It would be nice to see this point more elaborated, and to see ablation study experiments.			EXP
+I think this will be a good comparison.			NONE
+The authors discuss their results on k-medoids in the appendices, but it seems like these results aren't quite complete yet.			RES
+From the perspective of a purely technical contribution, there are fewer exciting results.			RES
+In terms of actual technical contributions, I believe much less significant.			MET
+- the more interesting problem, RL + auxiliary loss isn’t evaluated in detail			PDI
+It seems that the discriminator takes a whole sequence as input, but some precision on how this done could be added.			MET
+There is however a misunderstanding about the properties of the alt-az convolution that must be cleared up before this paper can be published.			MET
+As noted in the paper, this is a general element of SO(3) (and hence not in the set of alt-az rotations)			MET
+So the closure axiom of a group is violated.			MET
+This matters, because the notion of equivariance really only makes sense for a group.			MET
+The paper does not contain an attempted proof of equivariance, and if one tries to give one, the impossibility of doing so will become apparent.			MET
+I note that the alt-az convolution *is* equivariant to rotations in the subgroup SO(2) of rotations around the Z-axis.			MET
+This is ultimately due to the fact that the set of alt-az rotations is not the same as the set of points on the sphere, topologically speaking.			MET
+My main concern about the paper is that, currently, the experiments do not include any strong baseline (the ES currently is not a strong baseline, see comments below).			RWK_EXP
+What instead is missing is an answer to the question: Is it worth using a neural graph? what are the advantages and disadvantages compared to previous approaches?			MET_RWK
+2.	The experimental data set is too small, with only 635 problems.			DAT_EXP
+It is difficult to judge the performance of the proposed model based on so small data set.			DAT
+The first point would be: what's the meaning of synthetically generating training curves other than proving that transformer achieves good performance in modeling discrete distribution? Most practical problems would not have the same distribution as the previously gathered public dataset, thus the data is not representative, and synthetic training curves just does not make sence.			DAT
+- One thing I am confused about is the residual model, which seems quite important for the pipeline but I cannot find details describing it and much analysis on this component.			ANA
+3. Can the authors show if the decomposition is also useful for trigger patterns that are not necessarily regular shapes?			MET
+It should be pointed out that the D in the hinge loss represents a neural network output without range restriction, while the D in the non-saturating loss represents sigmoid output, limiting to take in [0,1].			MET
+In addition to report the median scores, standard deviations should be reported.			NONE
+Though fundamental understanding can happen asynchronously, I reserve my concern that such empirical method is not substantial enough to motivate acceptance in ICLR, especially considering that in (only) 124/144 (86%) of the studied settings, the results are improved. And there is no analysis of the failure settings.			MET
+- the authors state that they use "the power of DNNs" while they are experimenting with a neural network with only 4 layers. While there is no clear line between shallow and deep neural networks, I would argue that a 4 layer NN is rather shallow.			NONE
+- the authors fix the number of layers of the used network based on "our experience". For the sake of completeness, more experiments in this area would be nice.			EXP
+- in section 4.4			NONE
+In what concerns the optimization, the method achieves a better objective value much faster, confirming that it is a lower variance gradient estimator.			MET
+In the abstract the paper promises more than it delivers.			NONE
+Many problems can be cast as optimizing an expectation-based objective.			NONE
+However, this only affects the method of drawing the samples from a fixed known distribution and should have no more effect on the results than say a choice of a pseudo-random number generator.			MET_RES
+Yet, in Fig.1 some difference is observed between the methods, why is that so?			TNF
+Theorem 1 does not take account for the above conditions.			MET
+The connection between mutual information and generalization has been studied in several contexts [see, e.g., the references in this paper and https://arxiv.org/abs/1511.05219 https://arxiv.org/abs/1705.07809 https://arxiv.org/abs/1712.07196 https://arxiv.org/pdf/1605.02277.pdf https://arxiv.org/abs/1710.05233 https://arxiv.org/pdf/1706.00820.pdf ] and further exploration is desirable.			RWK
+Such a perspective is interesting, but needs to be further developed and explained.			NONE
+4. Mean field analysis, although it lends an insight into the statistics of the activations, needs to connected with empirical observations.			ANA
+In the current experiments there is a comparison only with CO algorithm and SGDA.			MET_EXP
+I have some concerns regarding the presentation of the main objective and the lack of justification in certain parts of the methodology.			MET
+Regarding the experimental evaluation of the model rather confusing.			EXP
+However, the selected experiments on the cubic regression toy data (Section 5.1) and the out-of-distribution classification (Section 5.2) are clear examples of system’s noise, i.e. epistemic uncertainty.			DAT_EXP
+So overall I have the feeling that the authors have not succeeded to evaluate the model’s power with these two experiments and we cannot draw any strong conclusions regarding the benefit of the proposed mixing approach.			MET_EXP
+To continue with the experimental evaluation, I found the plots with the predictive uncertainty in Figure 3 a bit confusing.			TNF
+While I agree with the authors that it is generally desirable for a model to be more confident when predicting in MNIST (since it has already seen samples of it) compared to when predicting in notMNIST (completely different data), these plots tells us nothing regarding the predictive power of the model.			MET
+There is no value in being very confident if you are wrong and vice-versa, so unless there is an accompanying plot/table reporting the accuracy I see not much value from this plot alone.			TNF
+If I had a complaint, it would be that I did not learn anything scientifically from the paper.			NONE
+There isn't a tested hypothesis, but rather it's a feat of engineering to get this to work.			MET
+For example, it's not close to getting realistic spatial movement relative to the plane nor is the control that impressive wrt limbs.			NONE
+On the other hand, the obtained results are very weak: only one layered version of the paper is analysed and the theorem applies only to networks with less than some threshold of parameters.			MET_RES
+This restriction of the number of parameters to be small is only mentioned in the theorem itself, not in the discussion of its implications.			MET
+And finally, the discussion of this figure makes claims about the behaviour of the model that seems to be too strong to be based on a single image experiment.			TNF
+1. As mentioned in the paragraph before Section 4.1, it would be much simpler to consider a single latent embedding space L. In that case, \sigma and \alpha become unnecessary and we only need to train \omega.			EXP
+Did you try to have a single network?			MET
+This seems a much more natural approach to me, and I'm surprised that you did not start with that.			NONE
+6. Did you consider using an inverse function (say G), that maps an embedding in L / L' back to S (i.e. the inverse function of gamma / gamma').			MET
+I would imagine that even if an embedding X is a bit noisy, because not exactly equal to gamma(P) where P is the expression it represents, you could consider doing the propagation with gamma(G(X)).			EXP
+Also, G could be used to check whether you obtain the expected formula after 4 steps, which would be a more informative information than the L2 distance between the resulting embedding and the embedding of the final formula.			MET
+A naive approach to estimate coefficient with single-source domain discrepancy measures such as [1]Mansour (2009), [2,3] Ben-David(2007, 2010), [4] Kuroki et al (2019), and W1-distance is not considered.			RWK
+Experimental results itself are fine but not complete.			EXP
+- Although disc can be easily estimated in the regression task (differently from d_A distance which is a special case of disc), there are no experimental results of the regression task even in the synthetic data.			RES_EXP
+- It would be also better to show the coefficient of existing methods that have no theoretical justification.			MET_RWK
+- It would be better to compare with a naive approach that uses domain discrepancy between each source and target as (fixed) coefficient since this approach such as Mansour (2009), Ben-David(2007, 2010) and Kuroki et al (2019) which explicitly consider the hypothesis class has theoretical justification in the form of generalization error bound in the target domain.			MET_RWK
+So this work has to be supported with more detailed experimental results to express the potential of this approach fully.			RES_EXP
+Questions: I would like to see more discussion about difference between this work and [Z Hu, arXiv:1905.13728].			RWK
+* There is still no comparison with competing nonparametric tests on the fMRI data.			DAT
+The Gamma approximation has no statistical guarantees, as stated explicitly in the HSIC testing paper of NeurIPS 2007.			MET
+The improved training procedures for MI estimation are of interest, however the hypothesis testing parts of the paper could still be improved.			MET
+In the absence of citation or comparison with any of the prior work on multivariate statistical dependence testing, the current submission is not suitable for publication.			RWK
+I wonder why the authors didn’t compare or mention optimizers such as ADAM and ADAGRAD which adapt their parameters on-the-fly as well.			MET
+I am concerned though why the authors didn’t compare to adaptive optimizers such as ADAM and ADAGRAD and how the performance compares with population based training techniques.			MET
+The drawbacks  of the work include the following: (1) There is not much technical contribution.			MET
+Moreover, the performance reported in this paper seems to be much inferior to the state-of-the-art results reported in the literature.			RES
+But the problem settings are not clear to me.			PDI
+When learning rates are in focus, a convincing message would be to show that adaptation of learning rates is more efficient and simpler than their scheduling when tested on state-of-the-art architectures.			MET
+A. You demonstrate the results on CIFAR-10 for 10% error rates which corresponds to networks which are far from what is currently used in deep learning.			RES
+Thus, it is hard to say whether the results are applicable in practice.			RES
+It would be interesting to see if the proposed method is competitive for training contemporary networks and w.r.t. simple schedule schemes.			MET
+The paper not only claims 'large scale representation learning' but also utilizing the described idea to use neural networks to "directly, approximately solve non-convex NP-hard optimization problems that arise naturally in unsupervised learning problems." Both claims are not really shown in the paper: (i) The experiments are not large scale and (ii)  it becomes not clear how any substantiate insight with respect to NP-hard problems can be gained here apart from the fact that it tackles a ML problem, which many seem to be computationally hard problems.			PDI
+- How much does the image matter for the single-image data set?			DAT
+The selected images A and B are of very high entropy and show a lot of different objects (image A) and animals (image B). How do the results change if e.g. a landscape image or an abstract architecture photo is used?			NONE
+- How general is the proposed approach? How likely is it to generalize to other approaches such as Jigsaw (Doersch et al., 2015) and Exemplar (Dosovitskiy et al., 2016)? It would be good to comment on this.			MET_RWK
+It would therefore be instructive to add experiments for ResNet to see how well the results generalize to other network architectures.			EXP
+- Does the MonoGAN exhibit stable training dynamics comparable to training WGAN on CIFAR-10, or do the training dynamics change on the single-image data set?			MET_DAT
+The second weakness is experimental design.			EXP
+Both the results on the development set and on the test set should be reported for the validity of the experiments.			RES_EXP
+Although the concept of "task" is not explicitly defined in this paper, the authors seem to associate each task with a specific class.			MET
+The KL divergence regularization introduces extra randomness to the auxiliary labels and thus mitigates the problem, but it hardly provides any useful information except randomness.			MET
+In practice, such hierarchy might be much harder to achieve than the primary (coarse) labels, and might be as costly to obtain as the true fine-class labels.			NONE
+#9) I think that MNIST is almost a toy experiment, since the crucial component of the proposed method is the prior modeling with the GAN.			MET_EXP
+I believe that a more challenging experiment should be conducted e.g. using celebA dataset.			DAT_EXP
+The MNIST is a relatively simple experiment, and I would like to see how the method works in more challenging problems.			MET_EXP
+Since this paper is about distributed robustness and distributed attacks, it would be very informative to the community to illustrate DBA attack on these methods to have a more compelling message.			MET
+There is in fact no experimental evidence that the practical advantages of BN are relevant to the results proven.			RES_EXP
+Considering theoretically, what advantages truly follow from the paper for optimizing a given function? Let’s consider the following cases.			NONE
+In this case, the paper proves that no careful selection of the learning rate is necessary.			MET
+Note, ICLR policy says that arxiv preprints earlier than one month before submission are considered a prior art. Could the authors elaborate more on possible practical/theoretical applications?			NONE
+The use of Glorot uniform initializer is somewhat subtle.			MET
+- The experiments were entirely focused on uncertainty quality but we are always interested in both performance on the task at hand as as well as good uncertainty estimates. What was the performance based on e.g. classification accuracy on each of these tasks compared to the baselines? I believe that including these results will strengthen the paper and provide a more complete picture.			RES_EXP
+More discussion on both of these aspects can help in improving this paper.			NONE
+As a final point; the hyper parameters that were tuned for the MNF, noisy K-FAC and KFLA baselines are not on common ground.			MET_RWK
+For noisy K-FAC and MNF the lambda (which should be fixed to 1 for a correct Bayesian model) was tuned and in general lower than 1 lambdas lead to models that are overconfident and hence underperform on uncertainty tasks.			MET
+Thus I believe that it would be better if you consider the same hyper parameter on all of these methods, e.g. the precision of the Gaussian prior.			MET
+In sec. 4, there's a reference to an initial set of experiments with count-based methods without much details.			EXP
+=> Environment: The experimental section of the paper can be further improved.			EXP
+1- Why not use a single Boltzmann machine with 128 fully connected latent variables? Could you add this experiment please.			EXP
+3- Is the key that you used only 679 patches containing 98% of occurrences in the dataset as the first stage? What if we vary this percentage? How sensitive are the results? Such experiments could be useful to understand better why your method appears to work well.			MET_DAT_EXP
+For the modeling contribution, although it shows some improvements on the benchmarks and some nice analysis, the paper really doesn’t explain well the intuition of this “write” operation/Scratchpad (also the improvement of Scratchpad vs coverage is relatively limited). Is this something tailored to question generation? Why does it expect to improve on the question generation or it can improve any tasks which build on top of seq2seq+att framework (e.g., machine translation, summarization -- if some results can be shown on the most competitive benchmarks, that would be much more convincing)?			ANA
+\alpha^i_t and u^i are also pretty complex and it would be good to conduct some ablation analysis.			ANA
+- Table 1: Not sure why there is only one model that employs beam search (with beam size = 2) among all the comparisons. It looks strange.			TNF
+It’s probably a bit unfair or misleading to claim neural networks suffering from ME bias.			MET
+6, the experimental design of Sec. 4.2 is also a bit unfair.			EXP
+For example, [1] could be used to reduce the variance of gradient w.r.t. \phi.			RWK
+A missing empirical analysis is on class-conditional noise (see for example Patrini et al. 17 for a definition).			RWK
+(1) The experimental results cannot show the usefulness of the proposed GCN.			RES_EXP
+The results on real datasets are similar to the regular GCN.			DAT_RES
+So the experiments in this paper is also not convincing.			EXP
+The motivation of defining tunability of optimizer is a very interesting question, however, the study seems to preliminary and the conclusion is not quite convencing due to several reasons:			NONE
+I would have liked to see a bit more analysis as to why some pre-training strategies work over others.			ANA
+However, this does not take into account the time already spent on pre-training. Perhaps the authors can include some results as to the total time taken as well as amortized total time over a number of different downstream tasks.			RES
+- The counter example at the bottom of page 2 is limited, in the sense that the oracle assumption seems highly non-realistic, casting doubt on the relevance of the argument.			EXP
+- The notation in section 3 (before 3.1) is rather sloppy.			NONE
+- what prior distributions p(z) and p(u) are used? What is the choice based on?			MET
+- abbreviation IPM is referred several times in the paper, but remains undefined in the paper until end of page 4, please define earlier.			NONE
+- The model G_theta does not appear in the training objective function (4), how is this module trained precisely?			MET
+Please comment on the choice, and its impact on the behavior of the model.			MET
+Overall, the proposed method is elegant; however, the presentation, the claim, and the experiments suffer from significant flaws.			MET
+The author can perhaps consider the datasets used by Tsai et al. There are seven datasets, and they can all be modified to the setting of partially-observable multimodal data.			DAT
+I like the directions using surrogate to speed up HPO in general but I feel the learning curve prediction part can be improved. There are already some works, not using deep learning method, for example the following:			MET
+Why these methods are not considered in the beginning? In my opinion, transformer is good for modeling long term dependency and concurrent predictions which is not necessarily the case for learning curves.			MET
+How does the transformer based method comparing to others?			MET
+Why, for example, did the authors only perform variational inference with the current and previous frames? Did conditioning on additional frames offer limited further improvement? Can the blurriness instead be attributable to the weak inference model?			MET
+The resulting receptive fields			NONE
+-  could you please explain the setting for the “gold standard” experiment. I'd have to assume, for instance, you train a GNN in a supervised way by using both source (non-suspicious) and target (suspicious) behaviour, and label accordingly? That said I am not 100% sure of this problem setting.			EXP
+I highly encourage the authors to finetune the ImageNet pre-trained BagNet on PASCAL VOC and compare to the previous patch-based deep networks.			RWK
+In addition, only the transformer baselines were considered, and it would seem natural to consider LSTM-based baselines, or some other related techniques.			MET_RWK
+However, my concern is about the experiments.			EXP
+Apart from the assumption H1 of linear separability of the data (which I don't mind), the results require very strong assumptions, in particular hypothesis H2 stating "at the beginning of training data points from different classes do not activate the same neurons".			DAT
+This is of course an extremely stringent assumption that doesn't hold in practice (eg, the probability of such an initialization shrinks to zero exponentially in the number of dimensions and in the number of neurons).			NONE
+- Theorem 3.2: "[...] converges at a speed proportional to [...]". Isn't \bar{u}_t logarithmic (non-linear) in t?			MET
+Why is the random seed being used to compare the performance of different arms? Do you instead mean that s and s’ are two values of the arm in Figure 4?			MET_TNF
+1. The proxy f(z) does not bear any resemblance to LP(z).			MET
+2. Can you elaborate more on the metric for measuring the learning progress LP? Why does the myopic metric make sense in spite of the there being plateaus in the training curves?			MET
+The paper motivates the problem that we need to pick out an exploration sequence that optimizes learning progress, but then approximates it as simply measuring the return.			PDI
+Given there is no theoretical justification for the approximation, I believe the paper claims more than what it delivers and should change the presentation, so as not to claim that it is measuring and capturing learning progress to learn faster.			MET
+This is a lot of architectures, which makes me wonder: how would a “cost-aware” random sampling perform with the same number of sampled architectures?			MET
+However, there are significant limitations in demonstrating the effectiveness/impact of the proposed technique:			MET
+- While the current experiments are a good start, I do not think they are extensive enough to count as strong evidence for the  power-law form of \(\epsilon(m,n)\).			EXP
+As far as I understand, this involves only minor changes in the code since reasonable hyperparameters required for the convergence of Adam have been extensively studied.			MET
+- Given the current form of the paper, the abstract and introduction should be modified to reflect the fact that only limited architectures and optimizers were experimented with, and the claims of the paper are not experimentally validated in general.			INT
+- It would be nice if more network architectures were analysed (such as VGG and DenseNets).			ANA
+- It would be nice if different stopping criteria were analysed.			ANA
+The paper’s primary drawback is the restrictive setting under which the experiments are performed.			EXP
+Therefore, I am not convinced that the power-law form of the generalization error would hold when the experimental settings are marginally different (like when using the Adam optimizer or a VGG-like architecture).			EXP
+I think this work would have much greater impact if the authors can show that the power-law form holds for a larger variety of architectures and optimizers thus allowing researchers to more confidently incorporate the results of this work into the design and training deep neural networks.			RES
+Moreover, said the analysis is in my opinion not sufficiently rigorous, with hand-wavy arguments, no formal proof and unclear terms (e.g. how do you define near-optimal?)			ANA
+Overall, if you want to claim theoretical guarantees you will have to significantly improve the manuscript.			NONE
+3) In its current form, the experimental results are extremely cherry-picked, with a very small number of tasks evaluated, and for each task a single selected baseline used.			RES_EXP
+This needs to be changed: a) you should run all the baselines for each of the current tasks b) you should also expand the experiments evaluated to include tasks where it is not obvious that a hierarchy would help/is necessary c) you should include more baselines.			EXP
+- The use of random exploration for the discoverer is underwhelming. Have you tried different approaches? Would more advanced exploration techniques work or improve the performance?			MET
+- Using only 4 seeds seems too little to provide accurate standard deviations.			NONE
+Please run at least 10 experiments.			EXP
+- The use of RAM is a fairly serious limitation of your experimental setting in my view. You should include results also for the pixel space, even if negative.			RES_EXP
+Otherwise, this choice is incomprehensible.			MET
+It’s also unclear if the proposed method is more memory efficient, since the authors only unroll 4 iterations of it.			MET
+The evaluation section lacks experiments that evaluate the computational savings.			EXP
+I would strongly recommend including the computational cost of each method in the evaluation section.			MET
+On the other hand, the authors give no evidence, empirical or otherwise, that their method is useful on any downstream tasks.			MET
+In my view, they do not even show that the distribution of atom usage will be better with their algorithm after the learning has converged, as at least according to their learning curves, the baselines have not finished converging.			MET_RWK
+The empirical evaluation is quite weak- one sparsity setting, two baselines, one dataset			DAT_EXP
+Plugging this distance into the WAE produces similar performance to existing WAE variants, but does not really advance the existing achievable performance.			MET
+Overall, I quite liked the paper and think it is well-written, but I believe the authors need to highlight at least one practical advance introduced by the CW distance (in which case I will raise my score).			OAL
+The authors could run each WAE training process K times (with random initialization) to see if the closed-form distance enables more stable results.			EXP
+Since the novelty of this work lies in the introduction of the CW distance, I would like to see an independent evaluation of this distance as a  general statistical distance measure (independently of its use in CWAE).			MET
+Can you use this distance as a multivariate-Gaussian goodness of fit measure for high-dimensional data drawn from both Gaussian and non-Gaussian distributions and show that it actually outperforms other standard statistical distances (e.g. in two-sample testing power)?			MET
+Besides having closed form in the case of a Gaussian prior (which other statistical distances could potentially also achieve), it would be nice to see some discussion of why the authors believe their CW-distance is conceptually superior to such alternatives.			MET
+Overall, the paper seems to be a report consisting of a few interesting observations rather than introducing a solid and novel contribution with theoretical guarantees.			NONE
+My main question is that: what is the main advantage of the Cramer-Wold distance to an MMD with a proper kernel?			MET
+My question here is that how is this method better than the standard VAE, where we also have an analytic form for the ELBO when the prior is Gaussian, an no sampling is required.			MET
+Indeed, in VAEs, the prior does not have to be Gaussian, and as long as the density of the prior can be evaluated, we can efficiently optimize the ELBO without sampling the prior; which I don't think is the case for the Cramer-Wold autoencoder.			MET
+Ultimately this paper is interesting but falls well below the standards of exposition that I expect from a theory paper and doesn’t go very far at connecting the analysis back to the claimed motivation of investigating practical invariances. If the authors significantly improve the quality of the draft, I’ll be happy to revisit it and re-evaluate my score.			OAL
+The current tasks and problem sizes are not very convincing, and the accuracy results are not very compelling.			RES
+- Judging from Table 1, the proposed method does not seem to provide a large contribution.			MET_TNF
+- In the case of the search space II, how many GPU days does the proposed method require?			MET
+- About line 10 in Algorithm 1, how does the proposed method update the population P? Please elaborate on this procedure.			MET
+Clearly, replaying data accurately from all tasks will work well, but why is it harder to guard against the generative forgetting problem than the discriminative one?			MET_DAT
+Obviously there is a tradeoff in terms of memory usage, privacy, performance, etc. but since none of these methods currently achieve the best across all of these there is no reason to rule out any of the methods.			MET
+This suggests that the strictly incremental training methodology indeed forced the network to learn better generalizations			MET
+3) There is no legend for CIFAR; what do the colors represent?			NONE
+More rigorous experiments and analysis is needed to make this a good ICLR paper.			ANA_EXP
+Overall, the paper requires significant improvement.			OAL
+5. The paper is imprecise and unpolished and the presentation needs improvement.			OAL
+However, I found that the contribution of this paper is fairly small.			OAL
+The proposed approach seems reasonable but it is mostly a work of engineering and provides little insights into the problem nor the proposed model.			MET
+Perhaps the authors could give examples of situations where this would naturally arise.			NONE
+The unsupervised results are more interesting but not very much explored (a single set of sampled faces).			RES
+I was also curious as to why the learned Y's are blurry.			NONE
+I also was not convinced by the experiments which are mostly qualitative. I did not find that this set of experiments provide enough support to the proposed method.			MET_EXP
+- It is a bit unclear to me how the authors propose to obtain independent posteriors over z and c. Is it purely empirical or is there a formal reason that guarantees it?			MET
+In that regard, I would like the authors to comment on the worst-case computational complexity of the numerical analysis for determining the volume of a preimage through multiple layers.			ANA
+The structure is obtained by the shared and sparse rows of matrix A. I would like the authors to comment on how the studies will be affected by this property of the common networks.			MET
+(a) a comparison to other methods (outside the current framework) for sound separation			MET_RWK
+- the reasoning behind picking VGMM as the density estimator is not fully convincing and (dis)advantages of other candidate density estimators are almost not highlighted.			MET
+- it is unclear and possibly could be better explained why one needs to concatenate the goals (what would change if we would not concatenate but estimate state densities rather than trajectories?)			MET
+At last			NONE
+While this assumption seems plausible,  no analysis has been done to verify it in a systematic way.			ANA
+However, I would have given a higher rating if some further exploration of the validity of these properties was carried out for problems closer to those of interest to the broader ICLR community.			NONE
+Even if the assumptions aren't satisfied everywhere for typical deep networks, they may be satisfied at most points encountered during training, which would make the contribution even more compelling.			MET
+This may also help to understand some of the limitations of this analysis.			ANA
+It seems like LEMONADE would scale poorly to more than 2 objectives, since it effectively requires approximating an #objectves-1 dimensional surface with the population of parents.			MET
+- The authors haven't come up with a recommendation for a single configuration of their approach.			MET
+Also, the plus-one smoothing handles unknown words (or word piece?) and I'm not sure why. If we're using the test set to compute IDF, and the sentences we're looking *are* in the test set, then there shouldn't be unknown words and no smoothing is required.			MET
+However, the method they propose offers very little that is new when compared to e.g. Vaswani (https://arxiv.org/pdf/1706.03762.pdf, section 3.5) (the authors acknowledge this work several times).			MET_RWK
+1. In Section 2, I find the sentence "We follow a similar intuition but instead of decomposing a 1D signal of time into its components, we transform the time itself and feed its transformation into the model that is to consume the time information" really unclear. Could you rephrase it?			MET
+Since positional encoding with Fourier transforms is well known, this seems like the relevant benchmark but it receives only a brief treatment.			RWK
+I would like to see this comparison expanded.			NONE
+- In Table 4, it is hard to compare DeepTwist with the other methods because activation quantization is not used.			TNF
+It would have been very interesting to study the quality of interpolations on more models and datasets, and compare their generalization capabilities as well as the bias present in the different datasets.			DAT
+- Does training the generator and interpolation jointly improve the quality of the generator in general ? It would have been nice to run this method on more complicated dataset like CIFAR10 and see if this method increase the overall FID score.			MET_DAT_EXP
+The paper shows two applications (semi-supervised learning and novelty detection) and it is not clear that the proposed method outperforms existing GAN methods in the classification accuracy in MNIST/SVHN/CIFAR10 (Table 1) and existing sampling methods (Table. 3).			MET
+It seems that the sampled reconstruction results (Fig. 8) are not as good as VAE on CIFAR10.			RES
+I would also expect more ablation studies about how to pick p_{\had d}, which seems to be the key of this approach, in MNIST and CIFAR10.			RWK
+Overall, while I find the proposed approach simple -- the paper needs to address some issues regarding the claims made and should provide more quantitative experimental results justifying the same.			MET_RES
+- The paper proposes an interesting experiment to show that the proposed approach is somewhat capable of capturing slightly adversarial biases in the input domain (adding square to the top-left of images of class ‘8’). While I like this experiment, I feel this has not been explored to completion in the sense of experimenting with robustness with respect to structured as well as unstructured perturbations.			MET_EXP
+- Experimental results are provided only on MNIST and Fashion-MNIST.			RES_EXP
+Since the paper focuses explicitly on providing contrastive explanations for choosing a class A over another class B -- experiments on datasets which do not have real-images seem insufficient.			DAT_EXP
+Additional experiments on at least ImageNet would have made the paper stronger.			EXP
+Regarding contrastive explanations, experiments on datasets where distractor classes (y_probe) are present in addition to the class interest (y_true) seem important -- PASCAL VOC, COCO, etc.			DAT_EXP
+Specifically, since the explanations provided are visual saliency maps the paper would have been stronger if there were experiments suggesting -- what needs to change in a region of an image classified as a ‘cat’ to be classified as a ‘dog’ while there is an instance of the class - ‘dog’ present in the image itself.			EXP
+Apart from combining these to existing ideas, what can be considered as an added novelty to improve the quality of the disentangled features?			MET
+- All the variations considered for the behaviour policy performs only myopic exploration and thus provably inefficient in RL.			MET
+How this proxy incentives the agent to explore poorly-understood regions?			MET
+-  From the plots of learning curves in appendix, the proposed methods doesn’t seem to show a huge boost of performance comparing to the uniform bandit. Could you show aggregated comparison between the proposed method and uniform bandit similarly to what is done in Figure 4 ?			MET_TNF
+I'm curious what happens if SECRET is allowed to exploit relations in the environment.			NONE
+6. On a lighter note, I don't believe using a coffe-brewing machine has a 'universally invariant structure' of coffee-making. That's a luxurious way of making coffee :) In the developing world, we still need to boil water, pour coffee powder in it, etc., all without a coffee-brewing machine.			MET
+However, the experiments are overall not very useful to the comprehension of the paper and not that illustrative.			EXP
+2.	The experiments are rather insufficient.			EXP
+Generative replay also brings the time complexity problem since it is time consuming to generate previous data.			MET_DAT
+Third, the datasets used in this paper are rather limited.			DAT
+Three datasets cannot make the experiments convincing.			DAT_EXP
+The paper states that the problem of training "large modules" is "equivalent to solving the optimization problem", but does not explain how.			NONE
+Similarly, the paper mentions that the "general approach to solving these combinatorial optimization problems is to recognize the atomic unit necessary to solve the problem", but at that point the reader has no concrete example of what combinatorial optimization problem would be mapped onto training and inference in RBMS.			MET
+An example is presented in Figure 3 but is not expanded upon in the main text.			TNF
+This is a very strong initial assumption, I am not sure how likely this assumption would be satisfied.			MET
+For instance, how deep should a model be for a classification or regression task?			MET
+What is the minimum/maximum layers of a deep model? How much data is sufficient for a model to learn?			MET_DAT
+What is the minimum/maximum size of the data set? Do we really need a large data set or just a subset that covers the data distribution?			DAT
+What's the relation between the size of a model and that of a data set? By increasing the depth/width of a neural network, how much new data should be collected for achieving a reasonable performance?			MET_DAT
+How about the gain of the task performance?			NONE
+The submission could maybe improved by segmenting the work into intro / related / background (with clear equations presenting the existing GP) / analysis / approach / experiments			RWK
+- Fitting 6 parameters to 42-49 data points raises concerns about overfitting.			DAT
+Consider doing cross validation over those 42-49 data points, and report the mean of deviations computed on the test folds.			DAT
+Taking the standard deviation over the deviations measured on different folds of the data would be better measure of uncertainty.			NONE
+However, it seems the experiments do not seem to support this.			EXP
+I would have expected to see some analysis and results on the translation quality over systematic noise applied to the input graph.			RES
+Repeated equations usually indicate that there is something new happening, but all of these are just restatements of your theta sin(omega tau + phi) term.			MET
+I would introduce the notation for t2v(tau) upfront and use that to define a(tau, k)[j] and f_j			MET
+* p.4 first paragraph you claim that this method responds well to data which exhibits seasonality, but none of your datasets deal with data that would exhibit seasonality.			MET_DAT
+* p.6 Showing accuracy/recall across training epochs is not sufficient evidence to show that this is a useful representation.			NONE
+Still, it would be good to show that trained performance doesn't depend on the initialization values more than a standard LSTM+T model.			NONE
+iv) Finally, the reported results are mostly qualitative.			RES
+I find the set of provided qualitative examples quite reduced.			NONE
+In this regard, I encourage the authors to update the supplementary material in order to show extended qualitative results of the explanations produced by their method.			RES
+What was wrong with LSTMs/GRUs as they've been used extensively for recursive problems including operations on trees?			MET
+Similarly, I'd have expected baselines that included those models in the evaluation section showing the differences in performance between the newly proposed Transformer model for trees and previously used methods.			MET_RWK
+2) The evaluation metrics used while borrowed from the language or IR fields doesn't seem to translate to UI design.			MET
+Overall: this paper makes a convincing case that it can be used to generate higher quality images, but not that this improves the quality of the disentangled representations.			RES
+In fact, the separate training seems to make this unlikely.			EXP
+My only issue here is that very little information was given about the size of the training sets. Did they use all the samples?			DAT
+They might be more convincing if there were results on a very large corpus such as 1 billion word corpus.			DAT_RES
+- No large corpus results.			RES
+It also shows itself in the results that final algorithm is almost indistinguishable from GBDT regarding results.			RES
+I do not think that there is enough justification/demonstration for the fact that a general NN solution for Tabular Data invented.			MET
+This shows itself in the results; i.e., the proposed algorithm is either negligibly performing better than GBDT or when  GBDT dependence removed, it performs worse. It seems to me			MET_RES
+However, in the proposed domain of tabular data, often data sets are significantly more high dimensional in reality and include at least one set of sparse large dimensional features			DAT
+However such problems are entirely missing in the results section.			RES
+I also think that this is a lost opportunity for the authors as they could be showing that it is the NN part contributing.			NONE
+Second, I notice that compared to the result in Table 1, PGD attack can yield better results [1].			RES
+In my opinion, to support the above claim, shouldn’t the authors provide a similar table as Table 1, directly comparing the certified radii of the natural images and adversarial images?			TNF
+- From Figure 9, we see the certificate radii of the natural have at least two peaks. Though on average the certificate radii of the adversarial attacks is higher than that of the natural images, it is smaller than the right peak. Could the authors elaborate more of the results?			TNF
+The advantage of this random encoding was to reduce the number of parameters for an embedding layer, but the results showed we gained much PPL from a 25% reduction in embedding size (Table 1).			RES
+In addition, the fact that the random projections preserved the inner product (centered at zero) was probably not desirable.			NONE
+It might be more fruitful if these linear combinations were learned or sub-senses of words (e.g. [1]).			MET
+However, these were done using 1 dataset and also a simple feed-forward network (rather than LSTM).			DAT
+I can understand the point that training NNLM accelerates the experiments, but the author(s) should consider trying a simply LSTM model after the best settings had been discovered (e.g. Table 1).			EXP
+Thus, it might be helpful to test the result on another dataset (e.g. WikiText).			DAT
+3) Typos need to be corrected in next version, e.g., all equations should have punctuation mark at the end, all e.g., i.e., et al., etc. should be italic, format of references should be consistent.			NONE
+The generalization is relatively			NONE
+The paper would gain in clarity			OAL
+ICLR may not in this case be the right			NONE
+1) Provide stronger empirical results (these are not too convincing).			RES
+- Why does temporal correlation reduce the non-stationarity of the MARL problem?			MET
+- Why does structured exploration reduce the number of network parameters that need to be learned?			MET
+- Why does partial parameter sharing make it easier for each agent to estimate other agents potential changes in behavior?			MET
+I do apologize if my original comment wasn't clear regarding the contribution part of the paper. What I was trying to say is not that I didn't see the individual contributions of the paper, but instead that the paper does multiple things simultaneously, without comparing against the relevant baselines for any of the individual contributions.			RWK
+- This approach seems very limited, as there must exist a known transformation that removes the desired information.			MET
+- Can this approach learn multiple factors as opposed to just two?			MET
+- What if the desired factors are not clearly disjoint and collectively exhaustive? (e.g. mustache vs. gender on human faces.)			MET
+Can the proposed approach perform just as well without a modified objective?			MET
+Ablation studies that show the proposed algorithm can improve upon the baseline in all settings would make this a stronger paper.			MET
+Comparing to this approach, I wonder if it would be better to provide samples that exhibit a particular factor, or samples that conceal the factor?			DAT
+I maintain my concerns that the experiments are limited and do not showcase the individual benefit of using explicit information placement.			EXP
+More experiments based on different transformations that the authors have mentioned would make this a stronger contribution.			EXP
+The use of beta>1 is fine if it helps alongside the use of this approach, but it would have been better to see the effects of this approach and beta>1 (and other hyperparameters such as k in Table 1) in isolation.			MET
+However image captioning datasets are not mentioned.			DAT
+It would make sense to use image captioning data to create the image lookup.			DAT
+Also, what will be the performance of a standard image captioning system on the task ?			MET
+I believe it will not be great, but I think for completeness, you should add such a baseline.			RWK
+The authors' should add some wording to explain this value.			NONE
+More importantly, the results presented are quite meager.			RES
+If this is a method for image recognition, it would be better to present results for a more substantial image recognition problem than MNIST and CIFAR-10.			RES
+And the analysis of the "dynamic range" of the algorithim is missing.			ANA
+My overall concern is that the experiment result doesn’t really fully support the claim in the two aspects: 1) the SASNet takes the enriched dataset as input to the neural net but it also uses the complex (validation set) to train the optimal parameters, so strictly it doesn’t really fit in the “transfer” learning scenario.			DAT_RES
+Also, the compared methods don’t really use the validation set from the complex data for training at all.			MET
+Thus the experiment comparison is not really fair.			EXP
+2) The experiment results include standard errors for different replicates where such replicates correspond to different training random seeds (or different samples from the enriched set?), however, it doesn’t include any significance of the sampling.			RES_EXP
+A more rigorous setting is to, for N runs, each run splitting the validation and testing set differently.			EXP
+Since this paper is an application paper, rather than a theoretical paper that bears theoretical findings, I would expect much more thorough experimental setup and analysis.			EXP
+Currently it is still missing discussion such as, when SASNet would perform better and when it would perform worse, what it is that the state of the art features can’t capture while SASNet can.			MET
+Moreover, it is the prediction performance that matters to such task, but the authors remove the non-structure features from the compared methods.			MET
+Results and discussion about how the previous methods with full features perform compared to SASNet, and also how we can include those features into SASNet should complete the paper.			MET_RES
+3)	Some discussion on why the “SASNet ensemble” would yield better performance would be good; could it be overfitting?			MET
+Given the title of the paper, it would have been nice if this paper explored more than just MNIST vs NotMNIST and SVHN vs CIFAR10, so that the readers can gain a better feel for when generative models will be able to detect outliers.			DAT
+The second order analysis is good but it seems to come down to just a measure of the empirical variances of the datasets.			DAT
+- Lack of an extensive exploration of datasets			DAT
+2 The experimental settings are not reasonable.			EXP
+The current experimental settings are not matched with the practice environment.			EXP
+One set of experiments that I think would be interesting is aimed at understanding the distribution-matching part.			EXP
+It would also be interesting to see an experiment where the labeled data has a skewed distribution of classes, but we provide the method with information about the true class distribution, and demonstrating that this information helps predictive performance.			DAT_EXP
+1. Both reviewer 2 and I commented on the ablation study regarding the grid but received no reply.			NONE
+- The premises of the analyses are not very convincing, limiting the significance of the paper.			ANA
+- In particular, Section 4 is a series of empirical analyses, based on one dataset pair.			DAT
+Section 3 too much redundancy -- it just explains that SVHN has a higher likelihood when trained on CIFAR, and a few variations of the same experiment.			EXP
+Section 4 seems to lack a high-level idea of what it want to prove -- the hypothesis around the volume term is dismissed shortly after, and it ultimately proves that we do not know what is the reason behind the high SVHN likelihood, making it look like a distracting side-experiment.			MET
+However, only 1 dataset pair is experimented -- there should be more to ensure the findings generalize, since Sections 3 and 4 rely completely on empirical analysis.			DAT_EXP
+According to the conclusions of the paper, such dataset pairs should be easy to find -- just find a dataset that "lies within" another. Did you try e.g. CIFAR-100 train and CIFAR-10 test?			DAT
+However, I think the relative novelty of the paper does not meet ICLR standards, and it’s better suited as a whitepaper attached to an open dataset release.			OAL
+With this dataset, it's a bit of a stretch to say there was "only a 1 point drop in BLEU score". That's a significant drop, and in fact the DynamicConv paper goes to significant lengths to make a smaller 0.8 point improvement.			DAT_RES
+This is clearly interested in as far as solving this particular task but does not provide any general insights for the design of (MA)RL algorithms.			MET
+While most (or all) of the paper is devoted to illustrate the effectiveness of the approach against *non-protected* ML. My only and biggest concern with this paper is that no defense mechanism has been tested against, and there are many in the literature. (see e.g. Diakonikolas et al ICML 2019).			MET_RWK
+Thus my question for the rebuttal period: How would pGAN perform when defense mechanisms are deployed during the learning phase? (ideally, a thorough experiment illustrating the strength of pGAN against a few defense mechanisms would help re-evaluating the score)			MET_EXP
+Thus, the evidence of the experiments is not enough.			EXP
+1. (Also AREA CHAIR NOTE): Another parallel submission to ICLR titled “Generative Ensembles for Robust Anomaly Detection” makes similar observations and seemed to suggest that ensembling can help counter the observed CIFAR/SVHN phenomena unlike what we see in Figure 10.			TNF
+2. Even though Figure 2b shows that SVHN test likelihoods are higher than CIFAR test likelihoods, the overlap in the histograms of CIFAR-train and CIFAR-test is much higher than the overlap in CIFAR-train and SVHN-test.			TNF
+If we define both maximum and minimum thresholds based on the CIFAR-train histogram, it seems like one could detect most SVHN samples just by the virtue that there likelihoods are much higher than even the max threshold determined by the CIFAR-train histogram?			MET
+In Fig. 3 the author claim that the proposed method dominates the other methods in terms of privacy and utility but this is not correct.			MET_TNF
+However, the Pareto front of the proposed method is concentrated on a specific point.			MET
+For example, the proposed method does not achieve high "privacy" as "noisy" does.			MET
+In this sense, the proposed method is not comparable with "noisy".			MET
+Providing training plots might increase the quality of the paper.			NONE
+2. Section 3.3 argues that K-matrices allow to obtain an improvement of inference speed, however, providing the results of convergence speed (e.g. training plots with a number of epochs) will allow a better understanding of the proposed approach and will improve the quality of the paper.			MET_RES
+1) There are several important works on model-parallelism and convergence guarantee of pipeline-based methods missing in this paper, for example [1][2].			MET_RWK
+2) Does the proposed method store immediate activations or recompute the activations in the backward pass?			MET
+5) Last but not least, convergence analysis of the proposed method should be provided given that asynchrony may lead to divergence in the optimization.			MET_ANA
+Although the proposed method does a good job in synthetic experiments, outperforming existing methods by a large margin, its performance on the numerical variants of Freebase/DBPedia dataset does not show consistent significant improvement.			MET_DAT_EXP
+The authors should try to find a real-world domain which can really demonstrate the effectiveness of the method.			MET
+(3) The experiment section lacks more detailed analysis which can intuitively explain how well the proposed method performs on the benchmarks.			MET
+A good place to start with is to visualize(print out) the learned numerical rules and see if they make any sense.			NONE
+The experiment section needs significant improvement, especially when there is space left.			EXP
+Verification needs			NONE
+something that is either deterministic, or a probabilistic result with a small			RES
+and bounded failure rate, otherwise it is not really a verification method.			MET
+The experiments of this paper lack comparisons to certified verification			EXP
+methods. There are some scalable property verification methods that can give a			MET
+lower bound on the input perturbation (see [1][2][3])			NONE
+Issues of convergence seem like they deserve some discussion here and potentially could be examined empirically (is CEM-TD3 converging in the swimmer?).			MET
+However, the evaluation of the proposed adaptive kernels is rather limited.			MET
+How big is the generalization gap for the tested models when adaptive kernel is used?			MET
+4. How sensitive are the results to the number of adaptive kernels in the layers.			RES
+5. Adaptive kernels have only been tested in the first convolutional layer, would the adaptive kernels work well also in different layers?			MET
+6. On CIFAR10 the results seem to be worse that other methods.			RWK
+It would be interesting to see how the performance of adaptive kernels based CNNs scales with the number of parameters.			NONE
+7. The evaluation on two datasets seems to be rather limited, additional comparisons should be included.			DAT
+It might be beneficial to include comparison to this approach in the experimental section.			EXP
+Moreover, given the similarities, it might be good to discuss the differences in the approaches in the introduction section.			NONE
+It would be nice to position the ideas from the paper w.r.t. this line of research too.			PDI
+10. Another related paper seems to be Spatial Transformer Networks (Jaderberg et al.).			RWK
+I'd encourage the authors to extend the intro and position the ideas w.r.t. existing works and extend the evaluation.			RWK
+The paper looks into an interesting direction to study CNN models but has some limitations including studying only a single VQA model type, limited to artificially generated images.			NONE
+- In general the intro should focus more on an intuitive (and/or formal) explanation of the problem setting, with some equations that explain the problem you want to work on. Right now it is too heavy on 'related work' (this is just my opinion).			NONE
+- In general the intro should focus more on an intuitive (and/or formal) explanation of the problem setting, with some equations that explain the problem you want to work on. Right now it is too heavy on 'related work' (this is just my opinion).			NONE
+The paper has few really minor grammatical errors and typos. Please fix those before uploading the final draft.			OAL
+However, the results are not enough to be accepted to ICLR having a very high standard.			RES
+In Section 3, the authors compare the game scores of DeepCS proposed in this paper only against to A2C.			MET
+For instance, I would like to see the comparison between DeepCS and SmartHash by Tang et al 2017.			RWK
+This is the major disappointment in the paper.			NONE
+The basic idea is very interesting, but I would have expect more interesting use cases as teased by the first sentence of the abstract "find algorithms with strong worst-case guarantees for online combinatorial optimization problems".			PDI
+So at the end, I am a bit puzzled. I really like the idea, but I have the feeling that this technique should have been developed for more complicated setting. Or maybe it is actually not working on more difficult combinatorial problem (and this is hidden in the paper).			PDI
+I believe that this paper is thus not in its final form and could be largely improved.			OAL
+3) The experiments are completely preliminary and not reasonable:			EXP
+- The WGAN-GP baseline is very weak, i.e. does not show any reasonable generated images (Fig. 9).			RWK
+There are countless open pytorch implementations on GitHub which out-of-the-box produce much better results.			NONE
+- The shown inception scores are far from state-of-the-art.			RES
+2. The authors should provide ablation study and analysis of their CTAugment.			ANA
+4. The authors hypothesize that “stronger augmentation can result in disparate predictions, so their average may not be a meaningful target.” However, they do not show any analysis to support this hypothesis.			ANA
+I think this paper's contribution is rather theoretical than practical.			NONE
+These issues would maybe be excusable if not for the totally inadequate experimental validation.			EXP
+1. The experiment uses a single run each of the baseline and DG-GAN, when it's well-known that GAN training runs			EXP
+2. The models have not been trained for long enough.			NONE
+3. The architecture of the neural networks used for the Generator and Discriminator is very non-standard, which			MET
+4. The scores achieved by the baseline are very far from state of the art, making the comparison mostly useless,			RWK
+I would like to see a convergence proof where the batch size $B_{t}$ is treated as a small constant like other SGD proofs assume.			MET
+3. It would be helpful to show the $\gamma$ value on each experiment with different tasks.			EXP
+It would be good to know how $\gamma$ varies across tasks.			MET
+4. I think in the comparative experiments, the plain SGD should be added as another reference algorithm.			MET_EXP
+As proposed in the comments, this should be assessed in the paper by replacing BERT representations by non-contextual representations such as GloVE.			MET
+Since this is for ILCR, I think the authors should have taken a deeper dive into examining those latent representations and potentially visualizing those distances and how they correspond to different policy behaviors.			MET
+The weight sharing was also needed further investigation and experimental data on sharing different parts.			EXP
+The runtime of ADP seemed to lose in term of scaling as well to BPE.			NONE
+First of all, the paper does not include any numerical evaluation.			NONE
+It only shows a couple of examples.			NONE
+The rest experiments			EXP
+More experiments based on other types of data sets with clear global structures such as faces or stop signs will			DAT_EXP
+However			NONE
+The idea in this paper is novel but experiments do not seem to be enough.			PDI
+More experiments on datasets			DAT_EXP
+An ablation study showing that this layer is actually necessary is missing from the paper.			NONE
+The proposed dual-BCFW still contains a hyperparameter (eta) due to the need to introduce a convex subproblem, which makes its number of hyperparameters still the same to SGD.			MET
+-- The overall error model in this paper, which is borrowed from Roy et al. is quite restrictive as at it assumes that the queries to the frequency estimation data structure are coming from the same distribution as that given by f_i’s themselves.			MET_RWK
+-- The algorithm proposed in the paper is very straightforward and just removes heavy hitters using oracle advice and then hashes everything else using the standard CountMin sketch.			MET
+-- The analysis is relatively straightforward and boils down to bucketing the error and integration over the buckets.			ANA
+-- The machine learned advice is assumed to be flawless at identifying the Heavy Hitters, authors might want to consider incorporating errors in the analysis.			ANA
+- The arguments for why the experimental evidence actually supports the existance of an approximate number system (ANS) could be made more clear.			EXP
+For example, the section on “Ratios andWeber fraction” argues that “these curves align well with the trend predicted by Weber’s law”, but does not explain how the experimental data would present if the alternative hypothesis (pairing-based strategy) was being used.			NONE
+What would the pairing-based strategy look like in Figure 6 right? Are there not significance tests that could be used to more carefully quantify the level of support for the two alternative strategies?			MET
+The main limitation of the paper is that the evidence is largely circumstantial.			NONE
+The method has intuitive appeal and the experimental results are suggestive, but the experiments do not conclusively show that the method achieves something that ordinary machine learning does not.			MET_EXP
+- Experiments were conducted only using a few recent results as baselines (ICM, forward dynamics, RND).			EXP
+A good paper overall, but the experiments were relatively weak (common for most ICLR submissions) and the novelty was somewhat limited.			OAL
+1. The formulation uses REINFORCE, which is often known with high variance.			MET
+2. It is hard to understand what the model has learned compared to hand-crafted schedule. Are there any analysis other than the results alone?			ANA
+5. The evaluation metric of multi-task MT is quite weird. Normally people report BLEU, whereas the authors use PPL.			NONE
+However, since the framework is focused on solving random SAT problems (especially random 3-SAT instances), the paper is missing a detailed description of this active research topic in AI and the SAT community (see e.g. [1,2]).			NONE
+Also, as mentioned above, it would be interesting to incorporate some structures (such as, for example, community attachments or popularity-similarities) in SAT instances, in order to estimate whether CNNSAT could handle pseudo-industrial problems.			NONE
+* the choice \sigma = 15 in Section 6.2 should be justified by the following study			NONE
+I don’t see a significant difference between RAN and DNN in Figure 5. Maybe more explanation or better visualization would help.			TNF
+Section 2.2 mentioned how different kind of layers would help with the encoder’s utility and privacy. It would be better to back up the argument with some experiments.			EXP
+I think it needs to be made clearer how reconstruction error works as a measure of privacy.			MET
+There is also a matter of ease of training compared to existing approximations or relaxations, e.g. Gumbel-Sinkhorn.			RWK
+- For the speed processing experiment, did you test what the performance would be if K matrix is replaced by a fully connected layer?			EXP
+- The setup for the learning to permute experiment is not as general as it would imply in the main text.			EXP
+- How easy is it to train with K matrices? Did you have to change optimizer hyperparameter compared to existing baselines?			EXP
+Second, and more importantly, the experiments need to be re-done to better measure the practical impact of the techniques.			MET_EXP
+First, larger data sets such as Wikitext-2 and Wikitext-103, and/or the billion-word benchmark, are needed to understand how well the approach works in practical LM settings.			DAT
+Second, the paper needs to use more state-of-the-art architectures.			NONE
+Language modeling is a fast-moving field, so the very latest and greatest techniques are not strictly necessary for this paper, but at least midsize LSTM models that get scores in the ~80 ppl range for Penn Treebank are important, otherwise it becomes very questionable whether the results will provide any practical impact in today's best models.			MET
+As noted by the authors, transfer is most attractive in low-supervision regimes, w.r.t. the target task.			MET
+Yet the metrics proposed depend on supervision in the target domain.			MET
+The main appeal is the idea of using T to model syntactic interactions, and the algorithm for learning T. Given that the main attraction of the paper is the potential for more performant word embeddings, I do not believe the work will have wide appeal to ICLR attendees, because no evidence is provided that the features from the learned tensor, say [a, b, T*a*b], are more useful in downstream applications than [a,b] (one experiment in sentiment analysis is tried in the supplementary material with no compelling difference shown).			MET_EXP
+- no downstream applications are given which show that these higher order interactions can be useful for downstream tasks.			MET
+- the higher-order features T*a*b are useful only when a is noun and b is an adjective: why not investigate using T to model higher-order interaction for all (a,b) pairs regardless of the syntactic relationships between a and b?			MET
+One thing that puts me off is that, in Table 2, AnyBurl (the single one baseline authors considered other than the original NeuralLP) yields better Hits@10 values than Neural-LP-N, but the corresponding bold in the results is conveniently omitted.			RES_TNF
+Unfortunately this paper offers only weak results.			RES
+More importantly: (1) It does not show any advantage of replica exchange over standard dynamics; (2) It does not provide any quantitative insight for high-dimensional problems.			MET
+They are an exercise in applying standard formalism to this problem, without really showing any significative advantage of replica exchange.			MET
+If one reframes the convergence rate in terms of FLOPs U=T^2 instead of iterations, then the convergence rate drops from 1/T to 1/sqrt(U), which undermines the claim in remark 3.4 that this analysis is superior to that of Yan et al. (2018).			RWK
+It looks like neither the experiments nor Theorem 3.2 show any benefit to PowerSGDM over PowerSGD.			EXP
+It would be nice to see some discussion (or at least speculation) on why that is.			NONE
+The biased introduced via this truncation has been studied in great depth in [3] and shown to be harmful.			RWK
+As of now, the greedy nature of the algorithm is hidden across a number of sections (not introduced when presenting the main algorithm).			MET
+3. The structure of the meta-training loop was unclear to me.			MET
+This seems like a limitation of the method if this is the case.			MET
+" I disagree with this statement.			NONE
+The WGAN framework is built upon a loss that can be optimized, and should be optimized, until convergence (the discriminator loss is non-saturating) -- not the reverse (more G steps than D steps) as suggested here.			MET
+It would make more sense if the classification error measured from the data the discriminator selects.			NONE
+(4) For the error-specific attack task, it would be better to provide an ablation experiment.			EXP
+For example, authors could implement pGAN by ignoring the detectability of the discriminator (i.e. \alpha=0) or typical pGAN when they compare with the label-flip operation.			MET
+However, the authors do not provide an in-depth discussion of this phenomena.			MET
+Given that previous works [1,2,3] have successfully addressed this problem using a completely unsupervised approach, it would be necessary to give more insights about: (i) why the proposed method is failing (ii) why this negative result is interesting and (iii) if the method could be useful in other potential scenarios.			MET
+*The experimental section is too limited.			EXP
+First of all, only a small number of qualitative results are reported and, therefore, it is very difficult to assess the proposed method and draw any conclusion.			RES
+The authors could provide a similar evaluation for their method by using the feature representations learned by the siamese networks in order to evaluate how much information they convey about real factors of variation.			MET
+- The authors report only negative results for the fully-unsupervised version of UD-GAN The paper lacks and in-depth discussion about why this negative result is interesting.			RES
+In particular, the qualitative results are too limited and no quantitative evaluations is provided.			RES
+While the motivation is nice, I find the results (especially in the unguided setup) underwhelming.			RES
+This does not seem surprising to me, as in the unguided case, the constrative loss seems not strong enough to encourage the latent partitions to be different.			MET
+Importantly, there are no quantitative metrics.			NONE
+Though promising results have been demonstrated, a drawback of the proposed method is that it introduces more memory overhead compared to GPipe.			MET_RES
+Further, no proper convergence analysis of the proposed approach is provided and is desired due to the likely divergence in the optimization.			MET
+Minor comment: An interesting line of work is that of [3] which could be included in the discussion.			RWK
+1. Can you comment on the quantization time of the suggested method? Repeatedly solving the EM steps can add up to quite an overhead.			MET
+My major concern is whether the results are significant enough to deserve acceptance.			RES
+In particular, if the goal is to use this method to augment the data we use to train NLP systems in order to make them more robust, it seems that the time cost of the process will be prohibitive.			MET_DAT
+If that's the goal, however, a more detailed error analysis would need to be included.			ANA
+* There was some analysis of the augmented IMDB dataset, but none of the SNLI dataset.			DAT
+That's a very simple kind of question; more generally, I'd like to see more analysis of the new dataset.			DAT
+* The BiLSTM they use is very small (embedding and hidden dimension 50).			MET
+* abstract: "with revise" should be "with revising"			NONE
+* first paragraph page 2: some references to causality literature and definition of spuriousness as common cause			RWK
+-I find the experimental studies a bit limited and I would expect larger studies which would have improve the interest of the paper.			EXP
+-Only two influence factors are studied, again the paper would be more interesting with a more general study			NONE
+The paper has an interesting potential but seems a bit limited in its present form.			OAL
+Q1: Has the authors tried more complicated datasets such as CIFAR-10 to evaluate the pGAN method? It would make the paper more convincing to add results on more complex datasets.			DAT
+So I would like to see how would pGAN perform in this case?			NONE
+This would be an effective baseline to compare. (Correct me if I am wrong here.)			RWK
+While it seems ok to estimate these different metrics using only linear models, my concern with this is that the linear models are only given a subset of the **exact** dimensions of the original representations.			MET
+This is very much unlike the learning objectives of most of these representation learning methods and hence is highly biased and dependent on the actual methods and the random seeds used and the rotations it performs. (In many cases the representations are used starting with a fully connected layer bottom layer on top of the representations and hence rotations of the representations do not affect performance)			MET
+Let's take an example: Say there is a single dimension of the representation that is a perfect predictor of a task.			NONE
+Suppose we rotated these representations. Now the signal from the original dimension is split across multiple dimensions and hence the CFS may be deceivingly high.			MET
+To me this is a big concern as different runs of the same representation technique can likely have very different CFS scores based on initializations and random seeds.			MET
+- (W2) Related to the last line: I did not see any experiments / analysis showing how stable these different numbers are across different runs of the representation technique. Nor did I see any error bars in the experiments.			ANA_EXP
+- (W3) Baselines for transfer learning: I felt this was another notable oversight.			RWK
+This latter baseline is a zero-cost baseline as it is not even dependent on the method.			MET_RWK
+- (W5) Multi-task learning: I did not see any mention or experiments of what can be expected when the representations are themselves trained on multiple tasks.			EXP
+(This seems like something that could easily be done in the empirical analysis as well and would provide richer empirical signals as well)			ANA
+(W7) Alternatives to CFS / Computational concerns: A big concern I had was the computational expense of the proposed approach. Unfortunately I did not see any discussion about this in the paper or empirically.			MET
+For example using LASSO / LARS like methods you can perhaps figure out a good reduced dimension set more efficiently.			MET
+(W7b) Likewise I wonder if we could just measure transfer more directly as well and why we need to go via these CFS sets			MET
+For the proposed metric, it is also impossible to solve sup_f V(f, g*) and inf_g V(f*, g) to reasonable accuracy.			NONE
+3) The simulation is not convincing.			EXP
+If the paper cannot compare various architecture, it is more convincing to at least use some standard architecture, like DCGAN. Or at least report the parameter tuning effort made for getting the results.			MET
+- It would be nice to have an experiment that varies the size of the external paired sentence-image dataset and tested the impact on performance.			DAT_EXP
+One of the central motivation is the utility of intra-life curiosity vs inter-life curiosity, yet no comparisons to this effect have been provided.			NONE
+More details should be provided, and when comparisons to past works or inter-life curiosity are made, this should be controlled for.			RWK
+The two ideas (use of grids, and intra-life curiosity vs inter-life curiosity) should be independently investigated and put in context of past work.			PDI_RWK
+3. I will encourage investigation on a more varied set of tasks.			NONE
+Perhaps, also using some MuJoCo environments, or 3D navigation environments.			NONE
+1. As pointed by one public comment, the ablation study should show how much improvement is from BERT vectors.			NONE
+2. I'd like to see another ablation study of whether RE helps NER. If you remove the RE component, does the NER performance suffer?			NONE
+- About setup: the paper reports using ResNets for natural images as in Mescheder et al. (2018).			RWK
+- The baseline scores of Reg-SGAN and Reg-WGAN seem to be worse than those reported in Mescheder et al. (2018), which have inception scores above 6 according to Figure 6 of their paper.			RWK
+My question is a bit philosophical: The only thing which I was concerned about when reading the paper is projection of the embeddings back to the d-dimensional space.			MET
+have you thought about how it would be possible to avoid this step and keep the original variable-size embeddings?			MET
+The mode of language modeling evaluation presented here, without considering an actual language or speech processing task, provides limited insight w.r.t. its utility in actual applications.			MET
+Moreover, the very limited size of the language modeling tasks chosen here is highly advantageous for smoothing/regularization approaches.			MET
+In terms of evaluation, the authors only presented a few qualitative results on simple datasets, which is not comprehensive and convincing.			DAT_RES
+In conclusion, I suggest a reject of this paper due to the lacks of comprehensive study and evaluation.			OAL
+Authors should scope the paper to the specific function family these networks can approximate.			MET
+However, the function of interest is limited to a small family of affine equivariant transformations.			MET
+If these networks can truly solve these problems, authors should report the success rate while varying the threshold, not individual accuracy of the items which can be arbitrarily high by violating constraints.			RES
+Authors claim adding one layer of DeepSet layer to a PointNet becomes PointNetST, but I see this as a special DeepSet with a single transmission layer.			MET
+Lemma 3 is too trivial.			MET
+The paper is not very self contained.			OAL
+It is not clear how the compression ratio in table 1 is obtained.			TNF
+Say for block size d=4, an index is required for each block, and the resulting compression ratio is at most 4 (correct me if I understand it wrong).			RES
+Can the authors provide an example to explain how to compute the compression ratio?			NONE
+However, it is not further discussed how the overall KL-based data similarity measure would help in this case since it seems likely that it would also exhibit the same issue.			MET
+Experiments are on toy domains with very few goals and sub-task dependencies.			EXP
+Weaknesses: The main weakness of the paper is that the performance gains are extremely low compared to the next contender; perhaps they are statistically significant (this cannot be determined), but it's unclear why we wouldn't use GBDT.			RES
+Recommendations for the authors: Would it be possible to provide an analysis of the cases when TabNN is expected to outperform GBDT by a sizable margin? Or, if not, are there other reasons why using a neural network would make more sense than just simply running GBDT?			ANA
+- The analysis has focused on a very simple case of having a linear discriminator which for example in WGAN, forces the first moments to match. How does the analysis extend to more realistic cases?			ANA
+The connections of the proposed approach with existing literature should be better explained.			MET_RWK
+- In the empirical results, the performance of the proposed method and Reg-GAN (from the numerics of GAN paper) are quite similar. Are there instances that the proposed approach significantly improves the stability of practical GAN architectures?			MET
+-Is there any reason not comparing the proposed algorithm with other compression schemes? (e.g., network pruning and low-rank approximation)			MET
+Several constant values should also have been tried.			NONE
+Since the LM-like approach is the main contribution, and the reported experiments do not show an advantage over GN-like approaches (already taken by previous work), this is my main reason for proposing rejection.			MET_EXP
+* CodeSLAM (best paper at CVPR'18) is referenced but there is no comparison with it, while a comparison on the EuRoC dataset should be possible.			RWK
+o feedforward rather than recurrent network;			MET
+o use of the Penn Treebank dataset only;			DAT
+o use of a small n for the n-grams.			NONE
+All or at least some of these decisions would need to be relaxed to make a convincing paper.			NONE
+Unfortunately, the results are quite disappointing in terms of sound quality, and feature many artifacts.			RES
+The instruments are often unrecognisable, although with knowledge of the target domain, some of its characteristics can be identified.			NONE
+The many-to-many results are clearly better than the pairwise results in this regard, but in the context of musical timbre transfer, I don't feel that this model successfully achieves its goal -- the results of Mor et al. (2018), although not perfect either, were better in this regard.			RWK_RES
+This seems like an unnecessary bottleneck in the model, and could partly explain the relatively poor quality of the results.			RES
+Even with the hybrid method, the accuracy still drops.			MET_RES
+Furthermore, there are no experimental results demonstrating the effect of the permutation head and the design choices above — if we could get by with only using the Hungarian algorithm, why bother classifying an exponential number of permutations? Do they help when added as an auxiliary loss?			MET_EXP
+The authors use numerous jargon words to describe the techniques studied (e.g. dragon penalty, gradient penalty, spectral normalization, Gaussian process regression in the bandit setting) but they do not explain them,			MET
+Although the idea is interesting, I would like to see more experimental results showing the scalability of the proposed method and for evaluating defense strategies against different types of adversarial attacks.			MET_RES_EXP
+I cannot understand from that part whether T(v_a, v_b,.) addition to v_a+v_b gives any improvement or not.			RES
+I feel that the idea deserves a broader analysis beyond just a single choice of disentanglement.			ANA
+Those seem to be quite limiting features of these methods, which is not to say that they are not useful in that realm, but only to clarify my understanding of their possible scope of application.			MET
+These classification datasets are often so close, that I do wonder whether even simpler methods would work just as well.			MET_DAT
+- Lack of theoretical analysis. It could have been nice if the authors could show the observed phenomenon analytically on some simple distribution.			ANA
+Although a generic framework that learns to solve online combinatorial optimization problems without domain knowledge is by itself a very motivational goal neither the paper successfully demonstrates that the framework the authors propose achieves this goal nor it explains well enough why one would take the machine learning approach to find good algorithms to such problems.			MET
+This paper should be rejected because proposed method demonstrates that an instance of one class of problems, Fractional Adwords, can be learned to solve without domain expertise, however fails to prove that the approach would be beneficial for any other instances of the same problem.			MET
+In particular there is not any theoretical not experimental evidence that the approach would scale to any instances where a pure optimization approach would be slow to provide any meaningful solutions.			MET
+Authors acknowledge the fact that their experimental setup is rather limited in Appendix C.1, which I agree with and they also claim that there is a representation for a uniform algorithm for any number of advertisers for the AdWords problem, however they leave this as a future work, which I find unfortunate. I would recommend taking this direction rigorously and expand the contribution, which would prove to be a very sound contribution.			EXP
+Can one walk the latent distribution of the algorithm agent and draw insights, which might lead into tailoring some algorithms that would be appropriate for some input distribution although in general inferior in terms of worst case guarantees?			MET
+2. The main technical contribution claim needs to be elaborated.			MET
+I understand how the game theoretic framework is established but how does this manifest itself in the algorithm described in Section 3.1 needs more explanation.			MET
+They need to elaborate how their method overcomes these issues better.			MET
+Yet their approach is only able to solve the fractional version of the AdWords problem.			MET
+Yet the authors stop at only solving this version with a machine learning approach, which does not hit the bar for me.			MET
+I would have expected the authors to at least elaborate on why the current framework is not suitable for the non-relaxed problem.			MET
+However, they state they loosely follow this approach. What does that entail? What kind of theoretical guarantees are given up due to not following this, a better exposition on this topic would help to support the claims.			MET
+However, they retain from providing any intuition about them.			NONE
+What are the significance of these examples? How they help us understand the problem instance generation was actually able to find interesting instances? What kind of dynamics are under covered?			NONE
+These are not directly revealed by only looking at the pictures one needs more explanation to support the claims.			NONE
+- it is not really clear to be what data the graphs show: the boxplots show 5% of what data? does it also include the models obtained by gaussian process regression? and what about the line plots, is it the best model so far as you train more and more models? if so, how are those models chosen and ordered? are they the results of single models or average of multiple ones?			DAT
+- at the start of section 3: what is an "experiment"?			EXP
+- in 3.1 towards the end of the first paragraph, what is a "study", is that the same as experiment or something different?			EXP
+Unlike Arora's original work, the assumptions they make on their subject material are not supported enough, as in their lack of explanation of why linear addition of two word embeddings should be a bad idea for composition of the embedding vectors of two syntactically related words, and why the corrective term produced by their method makes this a good idea.			MET_RWK
+One would at least expect an after-the-fact interpretation for the weighted tensor term and what this implies with regard to their method and syntactic embedding compositions in general.			MET
+Present work, however interesting with regard to its potential implications, strays away from providing such theoretical insights and suffices with demonstrating limited improvements in empirical tasks.			NONE
+- As shown in the ablation study, the main contribution on the obtained results seems to be the use of stronger transformations than in MixMatch.			RES
+- While there seems to be a consistent improvement over TD3, this improvement is in some cases small (e,g. ants).			RES
+For architectures to be a main pillar of the paper, I feel that this area could have been explored in greater detail.			NONE
+I feel that this discussion devolved into a discussion, again, about normalization rather than the architectural differences in performance.			MET
+Unless I am misunderstanding something, it seems that the authors simply tested one more architecture, for the express purpose of testing whether their observations about normalization would hold.			NONE
+- MAAC still requires all observations and actions of all other agents as an input to the value function, which makes this approach not scalable to settings with many agents.			MET
+- The centralized nature is also semantically improbable, as the observations might be high-dimensional in nature, so exchanging these between agents becomes impractical with complex problems.			MET
+- MAAC does not consistently outperform baselines, and it is not clear how the stated explanations about the difference in performance apply to other problems.			MET_RWK
+- Authors do not visualize the attention (as is common in previous work involving attention in e.g., NLP).			RWK
+However, my concern is that the paper focuses only on a very specific application domain,  and an improvement over the niche dataset with much more supervision (from the extension) is not surprising at all. In the mean time, the notion of "Neural Stethoscopes" could be much more  generally applied. Without applications in other domains, it is not immediately clear what the paper's implication is.			DAT
+While the authors provided numerical plots to compare it with the SGD linearization, I personally prefer to see some analytically comparsion between SGD linearization and LPL even on the simplest case.			NONE
+An appendix with more numerical comparisons on other loss functions might also be insightful.			NONE
+One main concern is, how general this approach would be? As it is a good extension for Neural LP, it is not clear that the framework of Neural LP is flexible or powerful enough in general.			MET
+For example, if rules contain quantifiers, how would this be extended?			MET
+I would suggest the authors to either introduce the two problems earlier or to simply say that near-optimal results are achieved, without giving detailed results, because it is very hard to understand them without any introduction of the task being achieved.			RES
+It is hard to support this motivation when no experiments are done in its favor.			EXP
+However, the results are a bit misleading in their reporting of the std error.			RES
+They should try different train/test splits and report the performance.			NONE
+The true distribution of interacting residues is not balanced -- there are several orders of magnitude more non-interacting residues than interacting ones.			NONE
+Can they show performance at various ratios of positive:negative examples?			NONE
+- The experiments show the learning results, but do not provide a peak "under the hood" to understand the way attention evolved and contributed to the results.			EXP
+- The experiments show good results compared to existing algorithms, but not impressively so.			RES_EXP
+It would be nice to see more details on the subnet for depth estimator and output of the net.			NONE
+-	More attention should be given to the evaluation section.			NONE
+The proposed diversity measuring metric is lacking both in terms of experimental proofs and intuitive motivations.			EXP
+While the black-box calibration of a GAN model may be attractive under specific settings, the authors did not consider the restrictions under those situations and their design may be hard to implement as a result.			MET
+1. Please provide experiments and/or citation for using the face identity as a proxy for face image diversity.			EXP
+this is important since all your experiments rely on that assumption.			EXP
+2. Were there experiments that applies your metric to the training datasets like CelebA and FFHQ? In theory your metric should show no gap between N_R_obs and N_R_ref measured on the training dataset since that's the sampled ground truth.			DAT_EXP
+1. If we do not have access to the model parameter, the training data, or the artifacts during training like the discriminator, what are some of the real world situations that fit this description? In those cases, is it too much to assume that we can control the random seed input to G?			DAT
+2. Is it reasonable to assume some constraints on how much data we can get from the blackbox generator?			DAT
+As a minor note, were different feature extractors compared?			MET
+Is that also true in this domain?			MET
+* The architecture of the particular model is described very briefly, and at multiple points there’s an implication that this is an investigation of “deep learning models” more generally, even though those models may vary widely.			MET
+This assertion is not justified, and seems surprising to me; we have very useful natural language processing systems that do not perform in a way that is comparable to humans (the hedge "some degree of" is really neither here nor there).			MET
+I understand why a human who needs to saccade back and forth between the two groups of objects might lose track of the objects that have been paired so far, but I don't understand why that would affect the architecture in question.			MET
+In equation 1, 2 the updates of  \mu_new and \sigma_new uses \lambda_i, however the authors provide common choices for \lambda without any justification or references.			MET
+1. In the experimental study, the authors present the value of their tuning parameters (learning rate, target rate, discount rate…) at the initialisation phase without any justifications. And the experiments are limited to simulated data obtained from MUJOCO physics engine - a very classical benchmark.			EXP

@@ -1,0 +1,1 @@
+I have doubts on applying the proposed method to higher dimensional inputs.

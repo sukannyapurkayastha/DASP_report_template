@@ -1,0 +1,1 @@
+- In Table 2 and 3, how are the degree and block information leveraged into the model?

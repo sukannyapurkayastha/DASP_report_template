@@ -1,0 +1,1 @@
+In particular it is not applicable to learning e.g. sigmoid belief networks [Neal, 92] (with conditional Bernoulli units) and many other problems.

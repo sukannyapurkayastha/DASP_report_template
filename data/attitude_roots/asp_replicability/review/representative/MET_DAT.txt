@@ -1,0 +1,1 @@
+1. What are the key limitations of AutoLoss ? Did we observe some undesirable behavior of the learned optimization schedule, especially when transfer between different datasets or different models ?

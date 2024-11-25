@@ -1,0 +1,1 @@
+If faster training of dictionary learning models was a bottleneck in practical applications, this might be of interest, but it is not.

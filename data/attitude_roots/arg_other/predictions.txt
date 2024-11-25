@@ -1,0 +1,70 @@
+- I question the choice of sections chosen to be in the main paper/appendices.			NONE
+With regard to my first negative point above about the lack of discussions, it seems the analysis of Section 4 is disproportionate compared to other places.			ANA
+[-] The combination of VAEs and GANs, while new for videos, had already been proposed for image generation as indicated in the Related Work section and its formulation for video prediction is relatively straightforward given existing VAE (Denton & Fergus 2018) and GAN models (Tulyakov et al. 2018).			MET_RWK
+Based on the summary, cons, and pros, the current rating I am giving now is weak reject. I would like to discuss the final rating with other reviewers, ACs.			OAL
+To improve the rating, the author should explain the following questions:			NONE
+-- Consider using a standard fonts for the equations.			NONE
+5. lack of related work:  4D Spatio-Temporal ConvNets: Minkowski Convolutional Neural Networks, CVPR 2019.			RWK
+However, you are in a different computational model in which you now have access to an oracle.			MET
+In summary, I'm inclined to reject this paper given the current version.			OAL
+hence, there is no connection between the theoretical results on MDL generalization bound and the proposed method MULANN.			MET_RES
+There are a few grammatical/spelling errors that need ironing out.			OAL
+I believe that the paper should currently be rejected, but I encourage the authors to revise the paper.			OAL
+2. Missed citation: MnasNet [2] also incorporates the cost of architectures in their search process.			RWK
+- offers minimal (but some) evidence that curiosity-based reward works in more realistic settings			MET
+The set of points on the sphere can only be viewed as the quotient SO(3)/S(2).			NONE
+The cited paper 'Learning an adaptive learning rate schedule' does not appear online.			BIB
+As a result, constraining the model will alter the mutual information and I think the effect of this should be remarked on.			MET
+For this reason, I think it is okay but not good enough at this time.			NONE
+Update: After reading the other reviews and the responses by the authors, I lowered my score from 6 to 3.			NONE
+In terms of modeling, since the input into the prior network has finite possible discrete values, we do not need a fully connected network to generate $\hat{\mu}_c$ and $\hat{\sigma}_c$. Instead, we can directly optimize $\hat{\mu}_c$ and $\hat{\sigma}_c$ for each $c$ as parameters.			MET
+The paper also misses relevant citations of similar questions from the field of (probabilistic) matrix factorization and relational learning.			RWK
+There are several weaknesses in this paper.			OAL
+The theory tells the same as in case 2 above but with an additional price of optimizing a different function.			MET
+Nevertheless, I believe that it still has to address some points in order to be better suited for publication:			OAL
+4- Could you please add the found J_h's to the appendix.			NONE
+I vote for rejection for four major weaknesses explained as follows.			OAL
+(3) A large body of graph neural network literature is omitted.			RWK
+Such high-level introductions require more comprehensive literatures to support.			NONE
+This is misleading.			NONE
+For example, the original GNN, ChebNet, etc. that leads to GCN can be mentioned.			MET
+The reviewer recommends the authors to read some literature review of the topic of GCN and re-organize the references, and use search engines to have a better view on the state of the art of (hyperbolic) geometric theories and graph convolutional networks.			RWK
+This is a thriving area that requires a careful literature review.			RWK
+- The notion of divergence D(P|G) is not made concrete in section 3 and 3.1, which makes the notation of rather little use.			MET
+Quantitative evaluation of generative modeling performance is unfortunately missing from this paper, as it is in much of the GAN literature.			NONE
+On the writing part, it would be nice to provide more context for both transformer, Proximal Policy Optimization and Simulated Policy Learning to make the paper more self-complete.			NONE
+The above papers are not cited in this paper.			BIB
+2) Related work, although extensive in terms of the number of references, do not help to place this work in the literature.			RWK
+Listing related work is no the same as describing similarities and differences compared to previous methods.			RWK
+For example, a paper that obviously comes to mind is "FeUdal Networks for Hierarchical Reinforcement Learning".			NONE
+What are the differences to your approach?			MET
+However, I do not think it is justified to go over the 8 page soft limit.			NONE
+4) There are several typos/grammar issues e.g. "believed to occurs", "important parameters sections", "capacity that if efficiently allocated", etc.).			OAL
+The paper misses the key baseline in Bayesian optimisation using tree structure [1] which can perform the prediction under the tree-structure dependencies.			RWK
+The emphasis in this paper is very strange.			NONE
+Meanwhile the actual method used in the paper is hidden in Appendices A.1.1-A.2.			MET
+Some of the experiments (eg. comparisons involving ShakeShake and ScheduledDropPath, Section 5.2) could also be moved to the appendix in order to make room for a description of LEMONADE in the main paper.			EXP
+However, it is difficult to draw conclusions for real-world problems of larger scale.			NONE
+Unfortunately the paper leaves me with the distinct feeling that there are still a lot of work needed to be able to tell the story about the problem under study.			NONE
+I’m also confused by the presentation of the results.			RES
+There are some well-cited works that the authors may have missed. These are ultimately different approaches, but perhaps the authors can obtain some inspiration from these:			RWK
+Finally, could you give a more accurate citation (chapter-page number) for the single-channel version of Theorem 2.?			MET
+The rebuttal does little to clarify open questions:			NONE
+- The paper is over the hard page limit for ICLR so needs to be edit to reduce the length.			OAL
+I vote to reject the paper at this stage, mainly because of the following three points:			OAL
+5, Although there is a notable difference, one may properly mention previous work Yamamoto et al. (2019), which uses GAN as an auxiliary loss within ClariNet and obtains high-fidelity speech ( https://r9y9.github.io/demos/projects/interspeech2019/ ).			RWK
+5. The term "PowerSGD" seems to have been used by other papers.			RWK
+The paper would need to be improved substantially in order to appear at a conference like ICLR.			OAL
+Missing references - authors may want to consider citing https://arxiv.org/abs/1906.06187 as well in Sec. 2 - it seems very related to this work.			BIB
+I do not think this work is ready for publication.			OAL
+I find this striking because I can easily come up with cheaper alternatives to get at this "density".			NONE
+I think the paper does not fit this conference. It is better to be presented in a Demonstration section at a *ACL conference.			OAL
+Also experiment figures are extremely compact. Try using log scale or other lines to make the gaps wider.			TNF
+"For a vector $x \in R^K$ and a multi-index ..." I think it was moved out of the next paragraph			NONE
+Also, try using the consistent dimension for x throughout the paper, it confuses the reader.			MET
+Overall, I feel that this paper falls short of what it promises, so I cannot recommend acceptance at this time.			OAL
+This should probably be cited instead.			NONE
+I am not sure why it was submitted to ICLR and not the Annual Meeting of the Cognitive Science Society, though.			NONE
+Their lack of willingness to ground their claims or decisions is even more apparent in two other cases.			NONE
+3. You may want to consider stating the work as "a pilot study" (sec 6.) earlier in the abstract or in the introduction, so that the reader knows what to expect.			NONE
+* The paper is almost 9 pages long, but the contribution does not appear more substantial than a standard 8-page submission.			OAL

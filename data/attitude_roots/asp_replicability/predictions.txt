@@ -1,0 +1,219 @@
+- The hyperparameter selection regime (and the experiments used to find them) is not described			EXP
+Because, the results are only shown on one dataset, it is harder to see how one might extend this work to other form of questions on slightly harder datasets.			DAT
+How do we take a limit of M -> ∞ ? Does k also go ∞?			MET
+Cons: While doing this leads to better convergence, each update is still very expensive compared to standard SGD, and for instance on vision tasks the algorithm needs to run for almost double the time to get similar accuracies as an SGD, adam solver.			MET
+Since q_rel require one hot vector as input, how to sample the q_rel given the importance score and how backprob the gradient in this case?			MET
+-In the introduction, "it is in general impossible to find an embedding in R^d such that ...", why do we have to make v and v'(and u, and u') far from each other?			INT
+- In Equation (6), the posterior distribution should be P(X|G) since X is the latent variable to be inferred, right			MET
+- In Table 2 and 3, how are the degree and block information leveraged into the model?			TNF
+- Given the small size of the dataset, I would propose experimenting with non-neural approaches as well, which are also quite common in NLG.			DAT_EXP
+- evaluation: only on toy tasks (which includes PTB), no real world tasks			NONE
+- very incremental improvements on PTB over a very simple baseline (far from SotA)			RWK
+How are the lambda and threshold parameters tuned? The authors mention a validation set, are they just exhaustively explored on a 3D grid on the validation set?			MET
+It is also unclear how the calculation of relative entropy "D" was performed in figure 3.			TNF
+How does the proposed method perform in more complicated tasks such as			MET
+Therefore, an appropriate choice of their values need to be given.			NONE
+2. during sampling, either training or testing, how do authors handle temporal overlap or make it overlap?			EXP
+3. can you provide the training memory, inference speed, and total training time?			NONE
+Dual-1 and Dual-5 are introduced without explanation.			MET
+This paper			NONE
+3) The paper only conducts comparison experiments with fixed-alpha baselines.			EXP
+Typhimurium. Could you explain why your MUTAG is now a single graph and is cast as node			NONE
+However, their algorithm--while much less computationally expensive than true full-matrix adaptive preconditioning---is still far more expensive than the usual diagonal version.			MET
+It is unclear whether the data augmentation techniques is applied only at training time or also at test time.			MET
+In other words: at test time, do you present the original images only or transformed images too?			NONE
+While the authors do report some interesting results, they do a poor job of motivating the proposed extensions.			RES
+Since each domain may have different number of classes, it is not clear how the number of classes (L) is set in the classification module (maximum number of classes in all domain?).			MET
+- the problem assumptions are too simplistic and unrealistic (feature distributions of target and auxiliary data are identical), so it is questionable if the proposed algorithm has practical importance			MET
+- experiments are performed using a synthetic setup on a single data set, so it remains unclear if the algorithm would be successful in a real life scenario			DAT_EXP
+- it wasn't clear how the sparsity percentage on page 3 was defined?			MET
+- Architecture choice unclear: Why are $\sigma$ and $\omega$ separate networks.			MET
+- page 4, Sect. 4.4: Architecture of $\alpha$ would be nice (more than a linear layer?)			MET
+The paper used very restricted Gaussian distributions for the formulation.			MET
+The problem of image classification is considered only, while authors claimed the method can be easily applied to other problems as well.			MET
+I also wonder if the video data will be released, which could be important for the following comparisons.			DAT
+Then, there will be another question: how the two networks are trained? Are they trained separately or jointly?			MET
+First of all, the setup for the AE and VAE is not specified.			MET
+3. Scenario discussed in Sec. 4 seems somewhat impractical.			MET
+In addition, the paper would also need to show that such a model does not generalize to a validation set of images.			MET
+Without an empirical example in a realistic setting, it is hard to judge whether the benefits of introducing an ME bias for better classification of new inputs belonging to new classes can outweigh the negatives via a potential increase in misclassification of those belonging to old classes.			EXP
+- in section 2.2, please explain more how gradients w.r.t hyper-parameters are computed.			MET
+- how to tune lambda? it is an important hyper-parameter, but it is set without a good principle, e.g., "For SGD-APO, we used lambda = 0.001, while for SGDm-APO, we used lambda = 0.01", "while for RMSprop-APO, the best lambda was 0.0001			MET
+What are reasons for these?			NONE
+1. Where is L_da in Figure 2? In Figure 2, what’s the unlabelled data from which testing tasks are drawn? Is it from meta-test data training set?			TNF
+- Did the experiments on CIFAR-10 and ImageNet use the cosine learning rate schedule [1]? If or if not, either way, you should specify it in a revised version of this paper, e.g. did you use the cosine schedule in the first 120 steps to train the shared parameters W, did you use it in the retraining from scratch?			MET_EXP
+In Section 3.2.2, the authors only explain how they learn example-based \sigma, but details on how to make graph construction end-to-end trainable are missing.			MET
+The proofs are quite dense and I was unable to verify them carefully.			MET
+1. For the evaluation of DBA, I assume that there are 4 adversarial parties, controlling each of the 4 local triggers. When using centralized attacks, are there still 4 adversarial parties, although they share the same global trigger, or if there is only 1 adversarial party?			MET
+4. Can the authors show concrete examples on how the attacks are generated?			EXP
+The details are especially unclear on LOAN.			NONE
+Specifically, which features are perturbed, what are the values assigned as the trigger, and what is the corresponding target label?			MET
+- for the experiment with Imagenet images, it is not very clear how many pictures are used. Is this number 2500?			EXP
+- for Figure 6, there is not a clear conclusion.			TNF
+While, it supports that " that logarithmic growth of the layer width respect to n is enough to obtain desirable performance."  I don't see a clear conclusion of how to pick the width of hidden layers, maybe a better representation could be used.			NONE
+- in section 4.3 how is the reconstruction built (Figure 3b)?			TNF
+- My main concern is reproducibility: the authors employ a number of large architectures, complex loss functions, and regularizers / "additional improvements".			MET
+In this simple model, can we not calculate the mutual information directly (i.e., without the bottleneck)?			MET
+Specifically, how can mutual information in this context be formally linked to generalization/overfitting?			MET
+First of all, I don’t understand how the main equation of the compound density network in Equation (3) is different from the general case of a Bayesian neural network? Can the authors please comment on that?			MET
+I also find weird the way that the authors arrive to their final objective in Equation (5).			MET
+Then they continue to Equation (5) which they present as the combination of the true likelihood with a KL regularisation term.			MET
+However, what the authors implicitly did was to perform variational inference for maximising their likelihood by introducing a variational distribution q(\theta) = p(\theta | g(x_n; \psi).			MET
+Is there a reason why the authors do not introduce their objective by following the variational framework?			MET
+My biggest concern in the methodology, however, has to do with the selection of the matrix variate normal prior for the weights and the imposition of diagonal covariances (diag(a) and diag(b)).			MET
+What is the purpose then for introducing the matrix variate Gaussian?			MET
+I expect the authors to comment on that.			NONE
+Finally, it is unclear how the authors have picked the best \lambda parameter for their approach? On page 5 they state that they “pick the value that results in a good trade-off between high uncertainty estimates and high prediction accuracy.” Does this mean that you get to observe the performance in the test in order to select the appropriate value for \lambda? If this is the case this is completely undesirable and is considered a bad practice.			MET
+3. The graph neural networks used in the model are not described in the paper, only a reference to Paliwal et al (2019) is given.			RWK
+It would be helpful to have a brief paragraph describing this architecture, for readers not familiar with the referenced paper.			RWK
+4. How large is the training set of (T, P) pairs? I don't think this is mentioned in the paper.			DAT
+You mention that negative mining should improve over this strategy. What does negative mining correspond to in this context? Are there bad rewrites better than others?			MET
+I do not understand why making use of labels is important for solving the catastrophic forgetting problem and how the labels are useful in the generative replay process.			MET
+It is also not clear to me how domain translation is relevant to continual learning.			MET
+I do not understand how the model is trained to solve multiple tasks.			MET
+Do the same model is trained for multiple tasks? Is each of the tasks trained sequentially or simultaneously?			MET
+It is also not clear to me why CIFAR datasets involve two domains and how these domains are relevant in each of the tasks.			DAT
+6. The rationale of the two tower design (why not combine two) is not clearly explained.			MET
+For example, for baseline 1, it is very hard to understand why would we want to use such an unusual baseline, and why it is called a "random baseline".			MET_RWK
+It is necessary to test it on datasets with much more fine classes and much-complicated hierarchy, e.g., ImageNet, MS COCO or their subsets, which have ideal class hierarchy structures.			DAT
+Doesn't the classification loss have a dependency on the input condition?			MET
+--What does a "heavy classifier" imply concretely?			MET
+In contrast, the studied learning rates are asymptotic and there is a big discrepancy.			MET
+These points remain me puzzled regarding either practical or theoretical application of the result. It would be great if authors could elaborate.			RES
+2- Why is a two-stage pre-training (Figure 2) process needed? Why not just a single stage?			MET
+However, it is not obvious that how to move from line 3 to line 4 at Eq 15.			MET
+(4) Are \theta and \phi jointly and simultaneously optimized at Eq 12?			MET
+The authors should clarify this point.			NONE
+(5) Due to the mean policy approximation, does the mean policy depend on \phi?			MET
+The authors should clearly explain how to update \phi when optimizing Eq 12.			MET
+However, the derivations about \phi are missing.			MET
+For example, how to compute the gradient w.r.t. \phi? Since the mean policy is used, it is not apparent that how to compute the gradient w.r.t. \phi.			MET
+I'm not sure I understand the PCA figures. Can you please explain how the first principal component was used to generate them?			TNF
+The experimental settings, e.g. how the train:test datasets are split, and hyperparameter settings, are not clearly given.			DAT_EXP
+Second, the authors claim they are using/motivated by Choquet integral, but do not have any (appendix) sections to explain how this mathematical tool is really integrated into their models.			MET
+How do you guarantee that the representation learned by the neural network still obeys the property of Choquet integral? What is your loss or your algorithm?			MET
+These need to be further clarified.			NONE
+-	Computational budget required is massive.			NONE
+The paper mentions model use from 128-256 TPUs, which severely limits reproducibility of results.			NONE
+It is limited, however, in the sense that it (only) measures auto-encoding capabilities: to what extent can the shape be reproduced given a sample point cloud from the given shape.			MET
+- Limited analysis of model/architecture design choices			ANA
+As previously mentioned in public comments on this forum, some points in the paper are not very clear; specifically regarding the loss function, the definition of "edge-to-edge" convolutions and generally the architectural choice related to the conditional GAN discriminator.			MET
+Clarifications of these points, and more in general the philosophy behind the architectural choices made, would make this paper a much clearer accept.			OAL
+- the general architecture, and specifically the logic behind the edge-to-edge convolution, and generally the different blocks in fig.1 "graph translator".			NONE
+- how exactly do you do a L1 loss on graphs? I'd have to assume the topology of the graph is unchanged between Gy and T(Gx) ~ and then maybe take L1 of weight matrix? But then is this general enough ~ given your stated goal of modeling different topologies? Either ways, more explanation / and perhaps equations to clarify this loss would be very helpful.			MET
+There is not sufficient detail to reproduce the models based on the paper alone.			MET
+Further technical background and detail would drastically improve the paper.			NONE
+Moreover, it seems strange that significant space was used to give equations describing simple embedding lookups (i.e., matrix multiplications with one-hot vectors), but the basic technical foundations of Transformers were not adequately explained.			MET
+In general, the space that was used to explain the Transformer baselines---which are essentially straightforward ways to adapt transformers to this task---could have been used to give more detail on the dataset.			MET_DAT
+For example, one question is how often a single partial tree has multiple possible completions in the data.			MET
+A major issue---mainly due to the lack of technical details and the lack of promise to provide code/data (unless I missed this)---is that the paper does not appear to be reproducible. Given the intent to have this be a new benchmark, ensuring reproducibility seems critical.			NONE
+- Lack of sufficient technical detail on models and dataset			DAT
+- Does not appear to be reproducible			NONE
+Because of this concern, I believe the results in the paper can only really characterize the learning close to convergence, since the network is already able to provide correct classification.			RES
+However, I believe the assumptions needed to show this point force the analysis to only characterize learning close to convergence.			ANA
+Why? If we are learning the distribution, would not it make sense to sample all architectures only after training the supernet at our best?			MET
+Do they here refer to the gradients with respect to the weights ONLY?			MET
+Could we say that the advantage of the Gumbel Softmax technique is two-fold? i) make the loss differentiable with respect to the arch parameters; ii) reduce the variance of the estimate of the loss gradients with respect to the network weights.			MET
+2)	Can the author discuss why the soft sampling procedure in [1] is not enough? I have an intuitive understanding of this, but I think this should be clearly discussed in the manuscript as this is a central aspect of the paper.			MET
+3)	The authors use a certain number of warmup steps to train the network weights without updating the architecture parameters to ensure that “the weights are sufficiently trained”. Can the authors discuss the choice on the number of warmup epochs?			MET
+- It would greatly benefit the reader if eq. 5 were expanded.			MET
+However, the authors only presented per-batch processing times as opposed to overall training time for these models.			NONE
+- The approach also seems to add a lot of complexity and heuristics/hyper-parameters.			MET
+This sort of two-stage generation is also potentially interesting, I was wondering if the authors had ideas to generalize this idea.			PDI
+(c) The authors should present what they mean by a dilated convolution using the notation of the paper.			MET
+(d) In Figure 2, it is unclear to me how the 1/f^2 law is observed in (a) but not in (c) or (e).			TNF
+- the method is not applicable to episodes of different length			MET
+At last, I am pretty sure to not be able to reproduce the model described in the paper (adding a section on that in the supplementary material would help), and many concrete aspects are described too fast (like the way to sample negative pairs).			MET
+Is Harmonic Convolution applicable to complex STFT coefficients as well?			MET
+If so it would be better to define the operator in a more general notation.			MET
+In Section 4.3 and 4.4, is the x_0 (defined in Section 2.1) complex-valued STFT coefficients or something else?			MET
+What is the L1 loss defined in Section 4.4? To obtain the final separated audio waveform, an inverse STFT is applied on what?			MET
+These details can be written in supplementary material if more space is needed.			NONE
+The IDF scores would be stronger if they were computed on a bigger in-domain corpus than the gold test set.			DAT
+The main problem I see with these approaches is that they rely on sufficiently large batch sizes which could be (currently) problematic for many real-world applications.			MET
+Can you explain somewhere exactly what you mean when you say "learning dynamics of deep learning"? Given the specific nature of the results presented in the paper it would be nice to be precise also when it comes to the overall topic under study.			RES
+In Corollary 3.3. you characterize the convergence speed in a nice way, but I am missing the link to the behaviors observed empirically in e.g. Fig. 2. What am I missing?			NONE
+Lastly, if the authors are not planning to release the code, the implementation details section is a bit too high-level and does not contain enough details to reimplement the Author's technique.			MET
+However it's not clear how is this range used in practice ? Do you sample uniformly $\alpha$ in this range to train the linear interpolation ?			EXP
+Also how many steps are required to learn the linear interpolation ? How much the does it influence the quality of the interpolation ?			MET
+It is not clear how the noise is introduced in the graphs.			TNF
+It is also not clear what are the assumptions made on the connectivity of the input graph and the target graph.			MET
+Do we know how does the connectedness of the  input graph affect the translation quality in the case of strongly connected directed graphs? Or what happens if the target graph has a strong connectivity?			MET
+Towards this, how does the computational complexity scale wrt to the connectedness?			MET
+A lot of clarity is required on the choice of evaluation metric; for example choice of distance measure ?			MET
+What is the L1 norm applied on?			MET
+- Trick is specific to LM.			MET
+It seems heavily dependent on GBDT.			MET
+Moreover, I  don't think that the data sets in experiments are good enough to cover the importance and the nature of the problem.			DAT_EXP
+1. I do not get the point of bringing up NCE. Did you actually use NCE loss? Did you only refer to NCE as a weight tying which can be used in a standard XENT loss [3]? The first paragraph of 3.3 did not help clarify this point either.			MET
+3. Shouldn't random indexing produce non-uniform numbers of non-zero entries depending on alpha? Why did you have an exact number of non-zero entries, s, in the experiments?			EXP
+1) I wonder if the proposed method work for most GAN models, more experiments evaluated on more recent GAN-based  models should be added to verify the superiority claimed in this paper, e.g., TP-GAN [Huang et al., ICCV 2017], PIM [Zhao et al., CVPR 2018], DR-GAN [Tran et al., CVPR 2017], DA-GAN [Zhao et al., NIPS 2017], MH-Parser [Li et al., 2017], 3D-PIM [Zhao et al., IJCAI 2018], SimGAN [Shrivastava et al., CVPR 2016], AIM [Zhao et al., AAAI 2019].			RWK
+2) Beware of overstating: the argument that the framework is broadly applicable is not that useful, given that it's a lot of work to derive closed-form marginalized estimators.			MET
+The method presented is interesting; but it is not clear that it is present with enough detail for it's results to be replicated.			MET
+It would be nice if the authors pointed to a git repository with their code an experiments.			EXP
+Was crossvalidation used to select the topology?			MET
+If so, what was the methodology.			MET
+2)	It is not clear what the “replicates” refer to in the experiments.			EXP
+- I felt that while it is valuable to have exact bounds on the risk, the form of the bounds are quite complex and hard to parse (especially in Thm 4, case of training only the second layer).			NONE
+Moreover, these bounds are just in the case where the teacher model is linear and while it is claimed that this could be relaxed to a more general class of functions, the specific bounds might change drastically.			MET
+So any insights on the nature of these bounds will be valuable, especially with some comments on how these bounds change if the teacher model is itself realized as a 2-layer neural network.			MET
+1 The implementation steps of the proposed method (MoVE) are not clear.			MET
+Some details are missing, which is hardly reproduced by the other researchers.			RWK
+In 3/4 of the pairs the author tried, this phenomenon is not there. Whether the findings generalize to other situations where the phenomenon appears is uncertain.			MET
+2. I might have missed it, but I couldn't find any motivation on why tanh is used as nonlinearity. Would the method work with relu?			MET
+To be honest, the theoretical contribution of the paper is limited.			MET
+1. What are the key limitations of AutoLoss ? Did we observe some undesirable behavior of the learned optimization schedule, especially when transfer between different datasets or different models ?			MET_DAT
+More discussions on these questions can be very helpful to further understand the proposed method.			MET
+2. As the problem is formulated as an RL problem, which is well-known for its difficulty in training, did we encounter similar issues? More details in the implementation can be very helpful for reproducibility.			MET
+It should be better motivated why one should use the duality gap as an upper bound for the "F-distance".			MET
+Minimizing the F-distance as is usually done seems like the more direct and simple approach.			MET
+- I have trouble understanding the overall idea behind Algorithm 1 and Eq. (22).			MET
+What is the definition of f^* and g^* in Eq. (22)? Some explanatory text would be valuable.			MET
+3. The authors should provide more detail of the setting in the ablation study.			NONE
+- How do the paper estimate I(Z;Y) and I(Z;X) for plotting these figures? Does the paper use lower bound or some estimators? It should be made clear in the paper since these are non-trivial estimations.			NONE
+1. The authors should provide more details on how the hand-crafted demonstrator agents were made.			MET
+I assume something similar to an a* algorithm was probably used for the passing task, but what about the maze navigation task?			MET
+My concern is, given this is an empirical work,  the number of datasets used in evolution is a bit small.			DAT
+-- While the overall claim of the paper in the introduction seems to be to speed up frequency estimation using machine learned advice, results are only given for the Zipfian distribution.			INT_RES
+- Although the authors discussed the experiment setting in detail in supplements, I believe open-sourcing the code / software used to conduct the experiments would be greatly help with the reproducibility of the proposed method for researchers or practitioners.			MET_EXP
+How do “we choose a specific number of assignments based on prediction probabilities”?			MET
+* \sigma is not given in Figure 3(a)			TNF
+- The CFS metric depends on a hyperparameter (the "retention ratio"), which here is arbitrarily set to 80% without any justification.			MET
+13. Reproducibility seems like it would be hard. There are a few parameters (meta-learning rates, meta-optimizers) that I could not find for example and there is a lot of complexity.			MET
+Negative points: (1) The authors should provide more justification on equation-3.			MET
+Why do the authors directly average different loss for the discriminator and the classifer?			MET
+(2) The function of the discriminator is not very clear, especially for the classification error test.			MET
+Does the discriminator exclude the poisoning data according to certain rule?			MET_DAT
+Why can pGAN lead to the inclination? Is it possible for pGAN to control the specific error tendency?			MET
+However, it is unclear how a similar strategy could be applied if we are interested in learning variables with higher-level semantics such as the expression of a face or its pose.			MET
+Moreover, it is not clear why the authors have limited the evaluation to the case where only two “chunks” are used.			NONE
+- Do you have any explanations as to why the number of images, if too large, actually hurts translation performance? Is it because more images also leads to a higher chance of noisy images?			NONE
+- Please comment on the extra computation required for obtaining image data for MT sentences and for learning image representations.			DAT
+3. how are predicted labels embedded? Do you learn a vector of each tag of BIOES and then take a weighted sum of these vectors with predicted probabilities as weights?			MET
+The main drawback would be the rather incrementality of that paper (basically sample before projecting is a bit better than projecting after sampling) and that this directional setting is quite limited...			MET
+2. The learning procedure is confusing.			MET
+It is highly recommended to provide the pseudocode of the proposed method.			MET
+3.	Are the authors willing to release the code? Overall the model looks complicated and the appendix is not sufficient to reproduce the results in the paper.			RES
+Given this, I wonder why all experiments are conducted on sets of two to five images, even for Kitti where standard evaluation protocols would demand predicting entire sequences.			EXP
+My concern for this paper is reproducibility.			OAL
+Although I really appreciate the authors' efforts on providing implementational details in the appendix, the code and data do not seem to be publicly available, and I'm expecting that the implementation of this technique is relatively hard due to their complex designs of the generator and discriminator.			DAT
+The reasons for the use of the energy-based formulation are not clear to me.			MET
+Is the energy-based model particularly well-suited to the random-projection setup, or are there other reasons for using it, independent of the use of random projections?			MET
+The index over which the sum happens is n, but n is fixed? So this looks like a sum with just one component in it, namely the first n-gram.			MET
+- It is not clear how the initialisation (10) is implemented.			MET
+I think all claims about running time should be corroborated by controlled experiments.			EXP
+But there is no attempt to generalize the findings (e.g. new datasets not from original study, changing other parameters and then evaluating again if these techniques help etc.), not clear			MET_DAT
+I am not sure whether I would be able to implement and reproduce the presented work on the basis of the current manuscript including the appendix.			NONE
+Particularly the "fusion" module remains extremely unclear.			MET
+It is not clear to me that the classifier difference metric is well-defined.			MET
+Equation (4). What is d_{k,l}? A pixel-wise target label? Where does it come from?			MET
+2) How are the rules from in Eq (2)? i.e., how is \beta_i selected for each i?			MET
+- Very little details (apart from the optimization algorithm) are given regarding the architecture used (types of input, output, neural units, activation functions, number of hidden layers, loss function, etc...), which makes it very hard to reproduce this approach.			MET
+It would be interesting to know the evaluation times for the BA-net and more importantly to have some implementation details to ensure reproducibility.			MET
+Overall it would be helpful for reproducibility if authors can visualize all the layers of all the different parts of the network as it is commonly done in the DL papers.			MET
+It is not clear how the depth error is measured and it would be nicer to have the other errors explained exactly as they referred in the tables (e.g. ATE?).			NONE
+-	How the first camera pose is initialized?			MET
+While reviewing this paper I went back and read the EN-DE evaluation data for the last few years trying to see how often I could reason that images would help and I came up severely lacking.			DAT
+It's then hard for me to square that with the +VR gains seen throughout this work on non-grounded datasets.			DAT
+I trust that the authors did in fact achieve these results but I cannot figure out how or why.			RES
+This is all further confused by the semantic topics used for clustering the images which ignores stop words and therefore spatial relations or any grammatical nuances.			MET

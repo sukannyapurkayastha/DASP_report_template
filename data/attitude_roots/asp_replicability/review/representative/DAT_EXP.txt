@@ -1,0 +1,1 @@
+- Given the small size of the dataset, I would propose experimenting with non-neural approaches as well, which are also quite common in NLG.

@@ -1,0 +1,1 @@
+- The claim made in the first line of the abstract (applying RL algorithms to continuous control problems often leads to bang-bang control)

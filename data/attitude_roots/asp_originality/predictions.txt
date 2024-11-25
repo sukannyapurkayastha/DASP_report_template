@@ -1,0 +1,212 @@
+However, the paper contains only little novelty and does not provide sufficiently new scientific insights.			OAL
+Originality: The work is moderately original.			OAL
+The novelty of the algorithm itself is limited, since GAN and adversarial training are both minmax problems, and the original algorithm can be carried over easily.			MET
+A stronger contribution is 1., which however is somewhat incremental compared to similar comparisons made in the past.			RWK
+Comparisons which, while mentioned, should perhaps have been discussed and compared more in detail in this work.			NONE
+1.	Lack of technical novelty.			MET
+It seems to me just a combination of several mature techniques.			MET
+I do not see much insight into the problem.			PDI
+There is nothing strikingly novel in this work, using unlabeled test samples in a transductive way seem to help slightly.			NONE
+3. Technical contribution: While the authors propose the first bounds for LSTMs and MGUs, most of the analysis seems to be a marginal contribution over the work of Bartlett et al. [3]			RWK
+- The technical contribution of the proposed method is not high, because the architecture space of neural network is similar to the prior works.			MET
+The main problem with this paper is that it is difficult to identify its main and novel contributions.			PDI
+This should be made crystal-clear in the paper.			NONE
+Simply because for continuous variables similar experiments have been reported before			EXP
+3. Authors should be much more clear about which is their original contribution to the problems stated in Section 4 and Section 5.			NONE
+This is exactly what authors do in these sections.			NONE
+Although this extension seems to be easily derived using the contributions made at point 2.			MET
+Summarizing, the paper addresses a relevant problem but they do not state which their main contributions are, and reintroduce some ideas previously published in the literature.			PDI
+Therefore, I cannot find any advantage in the proposed method, compared with these existing MAP based image restoration approaches.			MET
+However, this task is an instance of natural language generation: given a meaning representation (quite often a database record), generate the natural language text correspoding to it. And previous work on this topic has proposed very similar ideas to the scratchpad proposed here in order to keep track of what the neural decoder has already generated, here are two of them:			RWK
+Thus the main novelty claim of the paper needs to be hedged appropriately.			NONE
+The negatives are that the paper does not really show this modified DNC can solve a task that the original DNC could not. As the authors also admit, there have been other DNC improvements that have had more dramatic improvements on bAbI.			MET
+3) The novelty of this paper is incremental as the theoretical results are extended from Cortes et al (2019) and Zhao et al (2018).			RWK
+However, as the "selection network" uses exactly the same input as "classification network", it is hard to imagine how it can learn additional information.			MET
+In the current form of evaluation, it is hard to say if there is any benefit of using the "selection network" that is the main novelty of the paper.			MET
+First of all, the proposed SST algorithm alone only performs better than baselines in 1 case, equal to them in 1 case and worse in 1 (table 3).			MET
+The combination of ideas is ok, however, it is unclear how novel or how good is the proposed MF training of the RBMs.			MET
+At the conceptual level, the idea of jointly modeling local video events is not novel, and can date back to at least ten years ago in the paper “Learning realistic human actions from movies”, where the temporal pyramid matching was combined with the bag-of-visual-words framework to capture long-term temporal structure.			PDI
+The idea of having a separate class for out-distribution is a very interesting idea but unfortunately previously explored.			PDI
+In fact, in machine learning and NLP there is the OOV class which sometimes people in computer vision also use.			NONE
+I am reluctant to give a higher score due to its incremental contribution.			NONE
+Specifically, the policy update in Dreamer resembles that of SVG (Heess et al., 2015), which also backpropagates re-parameterized gradients through a value function and a transition model.			MET_RWK
+From this viewpoint, the actor-critic component in Dreamer is an incremental contribution.			MET
+Since the latent models are learned based on existing techniques, the paper presents an incremental contribution.			MET_RWK
+Though, I still think the contribution is incremental, since back-propagating gradients through values and dynamics has been studied in prior works (albeit with less empirical successes compared to Dreamer).			MET_RWK
+- The paper does not have a significant novel contribution, but rather extends GANs (improved-GAN mostly) with a manifold regularization, which has been explored in many other works Kumar et al. (2017) and Qi et al. (2018).			RWK
+The proposed approach is very similar to the CE method by Rubinstein (as stated by the authors in the related work section), limiting the contributions of this paper.			MET_RWK
+It seems that the proposed algorithm is not very original because its two parts, namely prediction (coefficient estimation) and learning (dictionary update) have been widely used in the literature, using respectively a IHT and a gradient descent.			MET
+The authors need to describe in detail the algorithmic novelty of their work.			MET
+Although some promising			RES
+Such a simple			NONE
+Compressability is evaluated, but that was already present in the previous work.			RWK
+Therefore the novel contribution of this paper over Lee 2018 is not clearly outlined.			NONE
+1) Although the ensemble idea is new, the idea of selective self-training is not novel in self-training or co-training of SSL as in the following survey.			PDI
+Even though the proposed approach seems to have significant potential, the experimental			EXP
+Hence, I kindly do not think the outcome is truly a research result.			RES
+It is more system engineering than science.			NONE
+But I'm concerned with the novelty and contributions of this paper.			OAL
+I tend to reject this paper because (1) the first contribution of the paper is not new as it has already been recognized by a few paper that SGD exhibits two different regimes; (2) this paper makes the debate of large-batch training even muddier.			NONE
+For example, the two regimes mentioned in the paper has been identified by a few other works and the contribution of this paper is just to verify them again.			RWK
+Also, I find the experiments done in section 3 and 4 are similar to previous works and even the conclusions are similar.			EXP
+In terms of learning rate scaling, this paper gets similar conclusions as Shallue et al. (2018).			RWK
+In terms of the difference between vanilla SGD and SGD with momentum, Zhang et al. (2019) already argued that the difference depends on specific batch sizes and SGD with momentum only outperforms SGD in the curvature dominated regime.			RWK
+[-] It seems to me the motivation is similar to that of Sparsely-Gated MoE (Shazeer et al. 2017), but it is not clear how the proposed two-hierarchy method is superior to the Sparsely-Gated MoE. It would be helpful the paper discuss more about this.			MET_RWK
+This bound is not so surprising because as long as certain regularity condition holds, the policies being close should lead to the returns being close.			NONE
+However, the novelty is rather limited as similar ideas have been undertaken (e.g., Mescheder et al 2018), but in different contexts.			RWK
+The motivation for the work (avoiding high amplitude/frequency control inputs) is certainly now new; this has always been a concern of control theorists and roboticists (e.g., when considering minimum-time optimal control problems, or control schemes such as sliding mode control).			NONE
+The idea of using a constrained formulation is not novel either (constrained MDPs have been thoroughly studied since Altman (1999)).			PDI_RWK
+The technical approach of using a Lagrangian relaxation is the standard way one goes about handling constrained optimization problems, and thus I do not see any novelty there either.			MET
+Overall, the paper does not make a compelling case for the novelty of the problem or approach.			NONE
+Therefore, the paper cannot be qualified for ``meta domain adaptation’’ and has very limited novelty in terms of its contribution to meta-learning; however, the combination of domain adaptation and few-shot learning is fair.			MET
+However, my criticisms remain that the paper is a simple combination of cycle GAN and prototypical networks, and lacks new insights/novelty.			MET
+- novelty is low: the proposed algorithm is a heuristic similar to previously proposed algorithms in the transfer learning and auxiliary learning space			MET
+The only new result seem to be Theorem 4.7 which is a natural extension to theorem 4.3 to zeroth-order methods.			MET
+As the authors admit, the main result is not especially surprising.			RES
+There exists more principled approaches for selecting out-distribution images that has not considered here like those based on uncertainty estimation or recently proposed direct out-distribution detectors.			MET
+In summary, the quality of the paper is poor and the originality of the work is low.			OAL
+So clarifying the above question will help to judge the paper's novelty.			NONE
+1. The work has limited novelty: the learning of the world model (recurrent state-space model) closely follows the prior work of PlaNet.			MET
+4. The novelty of the model is relatively limited as it is a combination of previous techniques on a new problem.			MET
+I don't think Cakewalk is different enough from the cross-entropy method to warrant acceptance in ICLR.			MET
+The testbeds all existed previously and this is mostly the effort of pulling then together.			RWK
+Beyond the core findings, the other settings are less convincingly supported by seem more like work in progress and this paper is really just a scaling-up of [Pathak, et al., ICML17] without generating any strong results regarding questions around representation, what to do about stochasticity (although the discussion regarding something like ‘curiosity honeypots’ is interesting).			RWK
+All of the testbeds have been used previously.			RWK
+Other than completely relying on curiously-based reward exclusively, there is little here.			NONE
+- little methodological innovation or analytical explanations			ANA
+While the model seems to perform well, the originality and the improvement w.r.t. baselines are somewhat limited.			MET
+The experiments currently demonstrate that optimizing both controller and hardware is better than optimizing just the controller, which is not surprising and is a phenomenon which has been previously studied in the literature.			EXP
+The results are not strong. And, unfortunately, the model contribution currently is too modest.			RES
+In the experiments, both the setting and the experimental results show that the proposed W_s will be very close to W_U. As a result, the improvement caused by the proposed method is incremental compared with its variants.			MET_EXP
+Though the Bayesian inference using GAN is a natural idea, learning algorithms proposed in this paper are simple and are not intensively developed.			MET
+The reviewer votes for rejection as the method has limited novelty.			MET
+Spectrum pooling has been used in the community of computer vision and machine learning.			RWK
+Taking a random example (there are others by simple searching), in the ECCV paper "DFT-based Transformation Invariant Pooling Layer for Visual Classification, Ryu et al., 2018" The DFT magnitude pooling is almost the same as the authors' propositions, where the "Fourier coefficients are cropped by cutting off high-frequency components".			RWK
+The novelty of this method is minimal.			MET
+Overall, this paper is good, but is not novel or important enough for acceptance.			OAL
+The theoretical contribution is very limited.			MET
+The work is rather incremental from current state-of-the-art methods.			RWK
+The main theorem of this paper is an extension of existing methods, so the novelty of theoretical analysis is somewhat limited.			MET
+Overall, I like the approach of the proposed method, especially tuning coefficient during training procedure although novelty in the theoretical analysis is somewhat limited.			MET
+However, the fact that models with less parameters perform better than BERT-based models in the low-resource case is not very surprising.			MET
+The idea that introduces labels in VAE is not novel.			PDI
+For example, Narayanaswamy et al. [1] also propose to utilize labels to VAE.			RWK
+It is also not clear how the loss function proposed differs from that of the CDVAE, etc.			MET
+If the novelty is in applying to continual learning and new datasets, it is not clear that this is sufficient.			DAT
+I find the observations interesting, but the contribution is empirical and not entirely new. It would be nice if there were some theoretical results to back up the observations.			RES
+Given that, the novelty of the paper is fairly incremental as it uses NerveNet to evaluate fitness and ES for the main design search.			MET
+Overall, I think this paper is not good enough for an ICLR paper and the presentation is confusing in both its contributions and its technical novelty.			OAL
+While I find this idea interesting and of potential practical use, I have concerns about novelty and the experimental results and overall I recommend rejection.			NONE
+At a high level, the idea of imposing a mixture of gaussian structure in the feature space of a deep neural network classifier is not new.			PDI
+However, there are a few, though not many, works in the literature trying to combine Choquet integral with deep learning.			RWK
+For example, “Fuzzy Choquet Integration of Deep Convolutional Neural Networks for Remote Sensing” by Derek T. Anderson et al.			BIB
+I believe the primary claim of this paper is neither surprising nor novel.			OAL
+This paper fails to account for a vast amount of literature on modeling natural images that predates the post-AlexNet deep-learning era.			RWK
+The paper should at minimum engage with this extensive history, and, in light of it, explain whether its claims are actually novel.			NONE
+The two regime claim of the paper is not really novel.			NONE
+These regimes are fairly well covered by previous works (e.g. Belkin et al as well as others).			RWK
+When it comes to experiments, constant epoch budget is also fairly well understood and the behavior in Figure 1 is not really surprising (as the eventual training performance gets worse with large batches).			TNF
+The idea to extend the use of VAE-GANs to the video prediction setting is a pretty natural one and not especially novel.			PDI
+- Limited novelty			NONE
+Assessment: Overall, this is a borderline paper, as the task is interesting and novel, but the presentation is lacking in technical detail and there is a lack of novelty on the modeling side.			OAL
+- Incremental modeling contribution			MET
+- Gradient starvation, Kaggle experiment: I'm not too convinced about the novelty/usefulness of this result. In the end, even a decision tree stump would stop growing after learning the dark/light feature as a discriminator.			RES_EXP
+The only issue with this paper is its degree of novelty, which is narrow.			OAL
+The proposed method adapt a previously presented hierarchical clustering method in the "standard space" (Griffiths et al., 2004) to an embedding space defined by a variational autoencoder model.			MET_RWK
+The inference algorithm builds on standard techniques of deep generative models and, also, on previously proposed methods (Wand and Blei, 2003) for dealing with the complex hierarchical priors involved in this kind of models.			MET_RWK
+Without demonstrating any practical advance, this work becomes simply another one of the multitude of V/W-AE-variants that already exist.			NONE
+While I found the derivation of the Cramer-Wold distance interesting, the final form of this distance (Eq. 2), to me, looks very similar to the MMD with a particular kernel.			MET
+However, I believe this is also the case in the MMD, since if one of the distributions is Gaussian or analytically known, then E[k(x,x')] in the MMD can be analytically computed.			MET
+- That learning simple functions and composing them to compute more complex functions would be more data efficient than directly learning the complex functions does not seem very surprising.			MET
+After all, the former approach gets a lot more knowledge about the target function built into it.			MET
+Further the contributions are not clear at all, since a large part of the detailed approach/equations relate to the masking which was taken from previous work.			MET_RWK
+The authors should on the claimed contributions.			NONE
+Is it a combination of DGR and HAT with some capacity expansion?			MET
+Otherwise you are just defining the problem in a way that excludes other simple approaches which work.			NONE
+1) The introduction makes it seem the generative replay is new, without citing approaches such as DGR (which are cited in the related work).			RWK
+The initial narrative mixes prior works' contributions and this paper's contributions; the contributions of the paper itself should be made clear,			NONE
+The proposed model seems like a straightforward extension of the nCRP with a deep model hanging off the end of it.			MET
+The originality is relative low though, since it is mainly an application of  deep InfoMax to language modeling, not inventing a new algorithm and applying to language modeling.			MET
+- The idea is a simple extension of existing work.			PDI
+The remaining components of the proposed method are not very new.			MET
+Hence, I am not very sure whether the novelty of the paper is significant.			OAL
+Overall, I think the novelty of the paper is very limited, as all the weight distortion algorithms in the paper can be formulated as the proximal function in proximal gradient descent.			MET
+See http://www.stat.cmu.edu/~ryantibs/convexopt-S15/scribes/08-prox-grad-scribed.pdf for a reference.			BIB
+In this way, we can easily see that the proposed framework is a stochastic version of proximal gradient descent.			MET
+Although the idea seems to be interesting, the paper seems to be a bit incremental and is a simple application of existing GAN techniques.			PDI
+Overall, the method looks incremental and experimental results are mixed on small datasets so I vote for rejection.			DAT_RES
+In summary, I find there is no novelty involved apart from combining the already existing SOTA model in disentangled feature learning (beta-VAE) and image generation (StackGAN).			MET
+The main reason is that from the narration, I cannot figure out what is the idea or technique of other works and what is the contribution of this paper.			PDI
+The topic is interesting, while I was expecting to learn more from the paper, instead of some well-known conclusions.			NONE
+Originality: Given the existing body of literature, I found the technical novelty of this paper rather weak. However, it seems the experiments are thoroughly conducted.			EXP
+Overall, this appears to be a board-line paper with weak novelty.			OAL
+(1) My main problem with this paper is that the novel objective proposed by the authors in Eq. 7 is equivalent to the objective of WAEs appearing in Eq. 4 of [1] (up to a heuristic of applying logarithm to the divergence measure, which is not justified but meant to "improve the balance between two terms", see footnote 2), where the authors use the newly introduced Cramer-Wold divergence as a choice of the penalty term in Eq. 4 of [1].			MET
+(2) When viewed in this way, CW-distance introduced in Eq (2) closely resembles the unbiased U-statistic estimate of the MMD used in WAE-MMD [1, Algorithm 2].			MET
+If this all is indeed the case, it is not surprising that the numbers the authors get in the experiments are so similar to WAE-MMD, because CWAE would be exactly WAE-MMD with a specific choice of the kernel.			EXP
+ii) Although the idea of generating contrastive explanations is quite interesting, it is not that novel.			PDI
+-The proposed technique does not seem to be original enough, and it does not handle the problem foundationally well.			MET
+The proposed technique is heavily dependent on GBDT (Indeed the algorithm and the learned trees are used at least three times).			MET
+that (except the minor small section of streaming data), the paper is more like a proper verification of how tree-based learning algorithms work very well in tabular data--which is far from the basis of the paper and does not make the paper novel enough for ICLR.			MET_DAT
+This was a fun, albeit incremental paper.			OAL
+Although I personally enjoyed reading the results that from control theory perspective are inline with GAN literature, the paper does not provide novel surprising results.			RES
+However, this limits the novelty of the results relative to existing literature.			RES
+Furthermore, there are several similar ideas already published, so comparison against those (for example by J. Peng, N. Heess or J. Mere) either as argument or even better as experiment, would be helpful to evaluate the quality of the proposed hierarchy.			MET_RWK
+However, I am unable to assess the technical novelty of this work as it seems to heavily rely on prior work which in turn use techniques from random matrix theory.			MET
+to be completely honest, I am not sure I have learnt anything new from the paper.			NONE
+1) the proof techniques are very standard			MET
+2) although there must be some small innovations, I thought that all the results had more or less been proven by Dupuis and co-authors:			RES
+I must probably be missing something, and I encourage the authors to clarify what the main novelties are when compared to the several papers by Dupuis & al.			RWK
+2. I am not convinced this method is sufficiently new, given that there are other methods that try to directly reward visiting new states.			MET
+3. The authors argue in their rebuttal that "the grid" is a novel idea that warrants investigation, but remark in figure 5 that likely it isn't the key aspect of their algorithm.			MET_TNF
+This seems contradictory.			NONE
+A part of the paper's contribution (section 5 conclusion) seem to overlap with others' work.			NONE
+But this is too similar to the cited findings on page 6 (models assign high likelihood to constant images).			RWK
+The paper is overall well written and intuitive but limited in evaluation and novelty (see e.g. [1,2] ) with only limited modifications (sharing low-level controller) for the multi agent case.			OAL
+The limitation to such a special case makes the paper somewhat incremental.			NONE
+From this perspective, the paper seems like an application of existing tools (such as CNN, graph convolutional network and binary classification).			MET
+It is unclear, why one should use the proposed duality gap GAN.			MET
+Last comment is that, although the concept of `deficiency` in a bottleneck setting is novel, the similar idea for tighter bound of log likelihood has already been pursed in the following paper:			PDI
+- Yuri Burda, Roger Grosse, Ruslan Salakhutdinov. Importance Weighted Autoencoders. ICLR 2016			BIB
+It was kind of surprising that the authors did not cite this paper given the results are pretty much the same.			RES
+- Without this ablation study, the contributions of this paper are to show that using BERT representations as input (1) leads to better performances for NER+RE  and (2) makes the model faster to train. This is not really surprising...			NONE
+-- Since CounMin is closely related to Bloom filters the idea of using machine learning to speed it up appears to be noticeably less novel given that for Bloom filters this has already been done by Mitzenmacher’18.			RWK
+- The experiments seem very similar to Wu et al. 2018, which is considered to be prior work under the ICLR guidelines.			RWK
+While this paper is acknowledged in the related work, it would be helpful to expand further on the relationship between these works, so the originality and contribution of this paper can be better evaluated.			RWK
+* the idea of smoothing gradients is not new			PDI
+Therefore, my opinion is rather positive. But, as a non expert in the field, I am not completely convinced by the novelty of the approach.			NONE
+First, the novelty of the approach is limited -- the approach amounts to using a sparse integer layer instead of a floating-point layer within a feed-forward architecture.			MET
+A lot of the times, the result seem to be a derivative of the work by Bietti and Mairal, and looks like the main results in this paper are intertwined with stuff B+M already showed in their paper.			RES
+It's hard to ascertain what exactly the contributions are, and how they might not be a straightforward consequence of prior work (for example, combining results from Bietti and Mairal; and generalization bounds for linear models).			RWK
+It might be nice to carefully delineate the authors' work from the former, and present their contributions.			NONE
+- The first 6 pages set up the general formalism. This is textbook material adapted to the current problem.			NONE
+- Page 7 offers a result (expression for the Dirichlet form), which is hardly more than an exercise for anybody familiar with Markov Chains theory.			RES
+Again, this follows from known results.			RES
+The proposed method PowerSGD is an extension of the method in Yuan et al. (extended to handle stochastic gradient and momentum).			MET_RWK
+I am not sure how novel the convergence analysis for PowerSGD is, and it would be nice if the authors could discuss technical challenges they overcome in the introduction.			NONE
+-The conclusions of the study were suggested by previous papers or are rather expected: adversarial transfer is not symmetric: Deep models less transferable than shallow ones, averaging gradient is better			RWK_RES
+Overall, this paper has many interesting results, but its contribution is			NONE
+1. The regularization techniques in reproducing kernel Hilbert space (RKHS) has			MET
+Many of the results have been already presented in			RES
+2. In experiments, the authors explored many existing methods on improving			RWK_EXP
+My major concern is the lack of novel contributions			NONE
+- the idea is trivial and simple. I don't think there's significant novelty here: all the components are existing and combining them seems very trivial to me.			PDI
+- the good performance seems to be from BERT rather than the model's structure (table 2 suggests that). I thus think the contribution of the paper is pretty not significant.			NONE
+My main concern comes from the novelty of this paper.			OAL
+The two main contributions of the paper:			NONE
+(1) using codes and codebooks to compress weights; and			MET
+(2) minimizing layer reconstruction error instead of weight approximation error			NONE
+are both not new.			NONE
+For instance, using codes and codebooks to compress the weights has already been used in [1,2].			RWK
+A weighted k-means solver is also used in [2], though the "weighted" in [2] comes from second-order information instead of minimizing reconstruction error.			MET_RWK
+In addition, minimizing reconstruction error has already been used in low-rank approximation[3] and network pruning[4].			RWK
+Clarification of the connections/differences, and comparison with these related methods should be made to show the efficacy of the proposed method.			MET
+With lack of clear novel insights, or at least more systematic study on additional datasets of the 'winning' techniques and a sensitivity analysis, the paper does not give a valuable enough contribution to the field to merit publication.			DAT
+First, the technical contribution is lean. Neither the multi-agent learning or the hierarchical learning of the algorithm is novel.			MET
+The combination of these two methods seems straightforward.			MET
+Once a low-level walking controller is trained, the high-level multi-agent navigation control is not much different from simple environments, e.g. point mass control, used in the previous works.			MET_RWK
+The latter model is similar to RAND-WALK, so it is not surprising that statistical functions there are similarly concentrated.			MET
+While I wish there were more such studies -- as I believe reproducing past results experimentally is important, and so is providing practical advice for practitioners -- this work in many parts hard to follow, and it is hard to get lot of new insight from the results, or a better understanding of GANs.			RES
+- The final method is a mixup of many different techniques, thus, not a strong contribution, but many smaller contributions.			MET
+It is thus very hard to know if this new approach brings any improvement to previous work.			RWK
+However the theoretical contribution is poor. And the experiment uses a very classical benchmark providing simulated data.			EXP
+2. Although the experiments are detailed and interesting they support poor theoretical developments and use a very classical benchmark			EXP

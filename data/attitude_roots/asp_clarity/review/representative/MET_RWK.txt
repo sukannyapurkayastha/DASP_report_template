@@ -1,0 +1,1 @@
+* It is unclear to me whether the "efficient method for SN in convolutional nets" is more efficient than the power iteration algorithm employed in previous work, such as Miyato et al. 2018, which also used SN in conv nets with different strides.

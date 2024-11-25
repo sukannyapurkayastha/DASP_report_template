@@ -1,0 +1,981 @@
+reviews	paper_sections	rebuttal_accept-praise	rebuttal_answer	rebuttal_by-cr	rebuttal_concede-criticism	rebuttal_contradict-assertion	rebuttal_done	rebuttal_followup	rebuttal_future	rebuttal_mitigate-criticism	rebuttal_other	rebuttal_refute-question	rebuttal_reject-criticism	rebuttal_social	rebuttal_structuring	rebuttal_summary
+-The conclusions of the study were suggested by previous papers or are rather expected: adversarial transfer is not symmetric: Deep models less transferable than shallow ones, averaging gradient is better	RWK_RES	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"- Indeed there are a huge number of papers on adversarial examples, but specifically only a small fraction  of them are
+.about the  transferability of adversarial examples .
+.Understanding why adversarial examples can transfer from one model to another model is a much harder problem, which is a rather unexplored area.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"In addition, the works Fawzi'15 and Athalye'18 did not talk about the issue of adversarial transferability.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Specifically, the policy update in Dreamer resembles that of SVG (Heess et al., 2015), which also backpropagates re-parameterized gradients through a value function and a transition model.	MET_RWK	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"SVG clearly differs from Dreamer in that it only considers 1-step model predictions in SVG(1) or multi-step predictions without value function in SVG(∞).
+.SVG(0) does not use a dynamics model.
+.In addition, Dreamer propagates gradients through transitions in a learned features, making it effective for high-dimensional control tasks.
+"	NOOOOOONNNNNEEEE	"> I am reluctant to give a higher score due to its incremental contribution.
+.Specifically, the policy update in Dreamer resembles that of SVG (Heess et al., 2015), which also backpropagates re-parameterized gradients through a value function and a transition model.
+"	NOOOOOONNNNNEEEE
+Since the latent models are learned based on existing techniques, the paper presents an incremental contribution.	MET_RWK	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Besides the important technical difference described above, we highlight the empirical performance of Dreamer.
+.A conclusion of the SVG paper was that the model did not yield substantial practical benefits beyond 1-step predictions.
+"	NOOOOOONNNNNEEEE	"> Since the latent models are learned based on existing techniques, the paper presents an incremental contribution.
+.We found it important to revisit this topic in the light of recent substantial improvements to dynamics models (see below).
+"	NOOOOOONNNNNEEEE
+Though, I still think the contribution is incremental, since back-propagating gradients through values and dynamics has been studied in prior works (albeit with less empirical successes compared to Dreamer).	MET_RWK	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+The proposed approach is very similar to the CE method by Rubinstein (as stated by the authors in the related work section), limiting the contributions of this paper.	MET_RWK	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+[-] It seems to me the motivation is similar to that of Sparsely-Gated MoE (Shazeer et al. 2017), but it is not clear how the proposed two-hierarchy method is superior to the Sparsely-Gated MoE. It would be helpful the paper discuss more about this.	MET_RWK	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Just for additional reference, we tested Sparsely-Gated MoE with different experts in PTB dataset; we compared the results to DS-Softmax.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Our work is for softmax inference speedup
+.while Sparse-Gated MoE (MoE) was not designed to do so.
+.It was designed to increase the model expressiveness.
+.It cannot achieve speedup because each expert still contains full softmax space as we mentioned in the background section (page 2 line 21st) and method section (page 2 last 4th line).
+.And since it is slower than the standard softmax by definition, we chose not to compare with it in the paper.
+.Our algorithm addresses speed up in softmax inference.
+.This is fundamentally different from Sparse-gated MoE. We divide the output space into multiple overlapped subsets.
+.To find top-k predictions, we only search a few subsets.
+.While in full softmax or MoE, the complexity is linear with output dimension.
+.Therefore, we did not include a comparison with Sparsely-Gated MoE in our article and only compare with full softmax.
+.As expected, the Sparsely-Gated MoE does not achieve speedup in terms of softmax inference.
+.DS-8       | 0.257 | 0.448 | 0.530 | 2.84x |
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+"The proposed method adapt a previously presented hierarchical clustering method in the ""standard space"" (Griffiths et al., 2004) to an embedding space defined by a variational autoencoder model."	MET_RWK	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"[A1] As the reviewer pointed out, we adopted the partial components with the previously proposed techniques or methodologies.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Also, if we take a naive pipelined approach of iterative training between the hierarchical Gaussian mixture model and representation learning, then this work would be an obviously incremental work.
+.[A2] VAE imposes a single Gaussian prior on embeddings, which leads to 1) the over-regularization, and 2) poor representations [1,2,5].
+.Therefore, the recently published researches can be divided into two branches: 1) designing of an objective function by introducing the additional regularized terms, or 2) constructing of a more flexible prior.
+.Our work attempts to the latter approach, which proposes a new prior called a hierarchical-versioned Gaussian mixture distribution prior to the first trial of hierarchical density estimation in the embedding space.
+.Another work of the latter approach is:
+.- Variational Deep Embedding (VaDE) [3]: VAE+GMM
+.- VAE-nCRP [4]: VAE+(nCRP+GMM)
+.- VAE with a VampPrior [5]: VAE+ a variational mixture of posteriors prior.
+.The contribution of these studies lies on 1) the formalization as a unified model based on the newly proposed prior, though not the original technique proposed by the authors, and 2) demonstrating the superiority of the prior.
+"	NOOOOOONNNNNEEEE	"The proposed method adapt a previously presented hierarchical clustering method in the ""standard space"" (Griffiths et al., 2004) to an embedding space defined by a variational autoencoder model.
+"	"The theoretical contribution of our study can be considered in conjunction with the unified model based on the fully Bayesian approach of the probabilistic graphical model and the neural network.
+.Additionally, we tuned the several detailed heuristic algorithms for operations such as GROW, PRUNE, and MERGE.
+"
+The inference algorithm builds on standard techniques of deep generative models and, also, on previously proposed methods (Wand and Blei, 2003) for dealing with the complex hierarchical priors involved in this kind of models.	MET_RWK	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"[A1] As the reviewer pointed out, we adopted the partial components with the previously proposed techniques or methodologies.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Also, if we take a naive pipelined approach of iterative training between the hierarchical Gaussian mixture model and representation learning, then this work would be an obviously incremental work.
+.[A2] VAE imposes a single Gaussian prior on embeddings, which leads to 1) the over-regularization, and 2) poor representations [1,2,5].
+.Therefore, the recently published researches can be divided into two branches: 1) designing of an objective function by introducing the additional regularized terms, or 2) constructing of a more flexible prior.
+.Our work attempts to the latter approach, which proposes a new prior called a hierarchical-versioned Gaussian mixture distribution prior to the first trial of hierarchical density estimation in the embedding space.
+.Another work of the latter approach is:
+.- Variational Deep Embedding (VaDE) [3]: VAE+GMM
+.- VAE-nCRP [4]: VAE+(nCRP+GMM)
+.- VAE with a VampPrior [5]: VAE+ a variational mixture of posteriors prior.
+.The contribution of these studies lies on 1) the formalization as a unified model based on the newly proposed prior, though not the original technique proposed by the authors, and 2) demonstrating the superiority of the prior.
+"	NOOOOOONNNNNEEEE	"The inference algorithm builds on standard techniques of deep generative models and, also, on previously proposed methods (Wand and Blei, 2003) for dealing with the complex hierarchical priors involved in this kind of models.
+"	"The theoretical contribution of our study can be considered in conjunction with the unified model based on the fully Bayesian approach of the probabilistic graphical model and the neural network.
+.Additionally, we tuned the several detailed heuristic algorithms for operations such as GROW, PRUNE, and MERGE.
+"
+Further the contributions are not clear at all, since a large part of the detailed approach/equations relate to the masking which was taken from previous work.	MET_RWK	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Furthermore, there are several similar ideas already published, so comparison against those (for example by J. Peng, N. Heess or J. Mere) either as argument or even better as experiment, would be helpful to evaluate the quality of the proposed hierarchy.	MET_RWK	NOOOOOONNNNNEEEE	"We propose a method that uses a form of goal-conditioned RL to learn task agnostic low-level policies that can simplify the share control structure across robots.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+The proposed method PowerSGD is an extension of the method in Yuan et al. (extended to handle stochastic gradient and momentum).	MET_RWK	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We have highlighted the technical challenges we overcome in order to obtain these results in the updated version (please see Remark 3.3).
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"[Yan18] Yan, Y., T. Yang, Z. Li, Q. Lin, and Y. Yang. ""A unified analysis of stochastic momentum methods for deep learning."" In IJCAI International Joint Conference on Artificial Intelligence. 2018.
+.*  [Bernstein18] Bernstein, Jeremy, Yu-Xiang Wang, Kamyar Azizzadenesheli, and Animashree Anandkumar. ""SIGNSGD: Compressed Optimisation for Non-Convex Problems."" In International Conference on Machine Learning, pp. 559-568. 2018. (Theorem 3)
+"	NOOOOOONNNNNEEEE	"1) Novelty of the convergence analysis: The paper by Yuan et al. did not present proof of convergence in the discrete-time setting.
+.The authors only provided convergence of the ODE models.
+.On the other hand, convergence analysis of momentum methods in non-convex setting is an important but under-explored area  (Yan et al., 2018).
+.We emphasize that our theoretical analysis leads to significant more concise convergence bounds than those in the above papers.
+.Please take a look at Theorems 1 and 2 in [Yan18] and Theorem 3 in [Bernstein18].
+"	NOOOOOONNNNNEEEE	"More specifically, we would like to draw the reviewer's attention to the following two papers:
+.*
+"	"In the current paper, the convergence results are proved for non-convex objective functions satisfying mild assumptions.
+.Appropriate use of some sharp estimates allowed us to obtain concise bounds on convergence of the entire class of PoweredSGD methods for $\gamma\in[0,1]$ and the bounds continuously depend on parameters $\gamma$ and $\beta$. In the special cases ($\gamma=0,1$, $\beta=0$), these bounds matches the best known bounds for GD/SGD/SGDM in the non-convex setting.
+"
+"A weighted k-means solver is also used in [2], though the ""weighted"" in [2] comes from second-order information instead of minimizing reconstruction error."	MET_RWK	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We will further clarify our positioning in an updated version of the paper.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Once a low-level walking controller is trained, the high-level multi-agent navigation control is not much different from simple environments, e.g. point mass control, used in the previous works.	MET_RWK	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+The novelty of the algorithm itself is limited, since GAN and adversarial training are both minmax problems, and the original algorithm can be carried over easily.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"GAN inference and adversarial training seek different goals.
+.Adversarial training addresses a supervised learning task while GAN inference focuses on an unsupervised learning problem.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Due to the inherent difference between supervised and unsupervised learning problems, the notion of generalization is defined differently between them.
+.Arora et al. (2017) provide the standard definition of generalization error for GANs which is very different from the standard generalization error considered in supervised learning.
+.Furthermore, no work in the literature theoretically guarantees that spectral normalization closes the generalization gap for either adversarial supervised learning or GAN unsupervised learning.
+"	NOOOOOONNNNNEEEE	"1. “The novelty of the algorithm itself is limited, since GAN and adversarial training are both minmax problems, and the original algorithm can be carried over easily”
+"	NOOOOOONNNNNEEEE
+"1.	Lack of technical novelty."	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"1- There are two reasons that concept and problem embedding are performed in this work.
+.Considering concept continuity is an important matter in education.
+.Having concept embedding, concept continuity can be reached as is discussed in the last paragraph on page 7 and some other examples are given in table 2.
+.By just having the most sophisticated concept extractor, the concept continuity cannot be retrieved.
+.Furthermore, problem embedding is used by the recommender system to project the performance of students on the problems they solved onto other problems that they have not solved.
+.This way, we have an idea of what problems should be recommended to them and which problems should not by having an evaluation of their ability to solve unseen problems and recommend problems in the boundary of their capacity, not way beyond, and to recommend problems in a way that covers all concepts necessary for students to learn.
+.We have observed interesting patterns, e.g. similar problems are more likely to be solved correctly at the same time or wrong at the same time.
+.Note that by just having the concepts of problems that are not in numerical form, performance projection may not be feasible and there is a need for using other methods like embedding.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+It seems to me just a combination of several mature techniques.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"1- There are two reasons that concept and problem embedding are performed in this work.
+.Considering concept continuity is an important matter in education.
+.Having concept embedding, concept continuity can be reached as is discussed in the last paragraph on page 7 and some other examples are given in table 2.
+.By just having the most sophisticated concept extractor, the concept continuity cannot be retrieved.
+.Furthermore, problem embedding is used by the recommender system to project the performance of students on the problems they solved onto other problems that they have not solved.
+.This way, we have an idea of what problems should be recommended to them and which problems should not by having an evaluation of their ability to solve unseen problems and recommend problems in the boundary of their capacity, not way beyond, and to recommend problems in a way that covers all concepts necessary for students to learn.
+.We have observed interesting patterns, e.g. similar problems are more likely to be solved correctly at the same time or wrong at the same time.
+.Note that by just having the concepts of problems that are not in numerical form, performance projection may not be feasible and there is a need for using other methods like embedding.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+- The technical contribution of the proposed method is not high, because the architecture space of neural network is similar to the prior works.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"A2: Please refer to Q1.
+.Moreover, we never claim the main contribution of our work lies in augmenting the search space.
+.And in fact, most existing NAS papers share the same architecture search space, the main differences between them is the search strategy.
+.We believe that judging the novelty of a NAS paper solely by its architecture space is unfair.
+"	NOOOOOONNNNNEEEE	"Q2: “The technical contribution of the proposed method is not high, because the architecture space of neural network is similar to the prior works.”
+"	NOOOOOONNNNNEEEE
+Although this extension seems to be easily derived using the contributions made at point 2.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Please note that what’s done in Secs. 4 and 5 is not straight-forward and has not been reported before.
+.Since stochastic back-propagation (Rezende et al., 2014; Fan et al., 2015) focuses mainly on reparameterizable RVs, deterministic chain rule as mentioned in main contribution (ii) can be readily applied.
+.By contrast, we target towards more general situations in Secs. 4 and 5 where deterministic chain rule might not be applicable, such as for non-parameterizable (continuous) RVs.
+.We prove that one can utilize our GO to sequentially back-propagate gradient though non-parameterizable continuous RVs, namely the statistical chain rule mentioned in main contribution (ii).
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"(3) Please refer to our main contributions (ii)-(iii).
+.As stated in our paper, many works tried to solve the problem of stochastic/statistical back-propagation.
+.We consider our contributions in Secs. 4 and 5 as one step toward that final goal.
+"
+Therefore, I cannot find any advantage in the proposed method, compared with these existing MAP based image restoration approaches.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"A2: We think you underestimate the difficulty of those restoration problems.
+.Please check the degraded images in Table 3.
+.These images are damaged so badly that TV cannot recover any meaningful thing.
+.As a handcrafted prior, TV performs much worse than our data-driven baseline method in these tasks.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+The negatives are that the paper does not really show this modified DNC can solve a task that the original DNC could not. As the authors also admit, there have been other DNC improvements that have had more dramatic improvements on bAbI.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+"However, as the ""selection network"" uses exactly the same input as ""classification network"", it is hard to imagine how it can learn additional information."	MET	NOOOOOONNNNNEEEE	"A : It is a module that estimates the confidence of the softmax output according to the inputs of the classification network.
+.The selection network is trained with sigmoid and binary cross-entropy in a supervised manner.
+.And the threshold is not 0.5 but high because selection network is learned with many ’1’ labels with close to 100 % training accuracy.
+.The selection network has advantages in out of class unlabeled data.
+.Since softmax output is a relative value, the softmax output can be high for some out of class unlabeled data.
+.In our original paper (in table 10), there already exist results of softmax output for in or out of class unlabeled data with 0.9999 thresholds.
+.Further, we experimented with the same threshold in table 4 of the new version and the results have shown that out of class unlabeled data are added even with an extremely small threshold such as 0.99999 (epsilon = 10^-5).
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"What is ""Selection Network""?
+"	NOOOOOONNNNNEEEE
+"In the current form of evaluation, it is hard to say if there is any benefit of using the ""selection network"" that is the main novelty of the paper."	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+First of all, the proposed SST algorithm alone only performs better than baselines in 1 case, equal to them in 1 case and worse in 1 (table 3).	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+The combination of ideas is ok, however, it is unclear how novel or how good is the proposed MF training of the RBMs.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Nevertheless, we have added a comparison between our method and the exact solution for a small Boltzmann machine of 16 units in the appendix.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"1. We are not training Restricted Boltzmann Machines (RBMs), but Boltzmann machines where the hidden units can be fully connected.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We have shown in our experiments (see Fig. 3) that using a single RBM as a pre-processor will not result in increased adversarial resistance.
+.A comparison of mean field training vs. constrastive divergence for RBMs has been made by [III,IV].
+.While we don't claim that this explains the performance of the method under all circumstances, it gives an indication of how well it works.
+.We agree that a more thorough study of the training method would be desirable but in this article we are concentrating on reporting the results on increased adversarial resistance.
+.We believe that these results should be interesting to the community even if some doubts about the training procedure remain.
+.Lastly, we want to obtain a differentiable building block that can be used in standard neural nets.
+.The unrolling of the mean field iterations (see Fig. 1) provides a straightforward to achieve this.
+.Propagating a gradient through a sampling based building block, while possible, would be considerably harder.
+"
+From this viewpoint, the actor-critic component in Dreamer is an incremental contribution.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+It seems that the proposed algorithm is not very original because its two parts, namely prediction (coefficient estimation) and learning (dictionary update) have been widely used in the literature, using respectively a IHT and a gradient descent.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+The authors need to describe in detail the algorithmic novelty of their work.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+The technical approach of using a Lagrangian relaxation is the standard way one goes about handling constrained optimization problems, and thus I do not see any novelty there either.	MET	NOOOOOONNNNNEEEE	"a) We introduce pointwise, per-state constraints to learn more consistent behavior compared a single global constraint, and regress the resulting state-dependent Lagrangian multipliers using a neural network to exploit generalization across similar states.
+.b) Instead of recombining the reward and cost directly on the environment side and learning a single value estimate, we train a critic network to output both return and penalty value estimates as well as the Lagrangian multipliers themselves, effectively providing more structure to the critic.
+.We only combine the different terms appropriately for the actor update.
+.c) We show that we can train a single, bound-conditional policy that can optimize penalty across a range of bounds and can be used to dynamically trade off reward and penalty.
+"	NOOOOOONNNNNEEEE	"We are glad that the reviewer agrees that we are tackling a long standing and important problem and acknowledge the fact that neither the definition of constrained MDPs nor the application of Lagrangian relaxation to solve these problems is novel by itself.
+.We should have stated our exact technical contributions more clearly and have adapted the paper to do so.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"For completeness we will list these below:
+"	NOOOOOONNNNNEEEE
+Therefore, the paper cannot be qualified for ``meta domain adaptation’’ and has very limited novelty in terms of its contribution to meta-learning; however, the combination of domain adaptation and few-shot learning is fair.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"It appears that our choice of the title may have resulted in the reviewer qualifying our paper as a form of false advertising.
+.We acknowledge this problem and agree with you about a possible misinterpretation.
+"	NOOOOOONNNNNEEEE	"We have tried to revise the draft with appropriate renaming of the method to avoid potential misunderstandings.
+.In fact, we have mostly changed the name from “Meta Domain Adaptation” to “Meta Learning with Domain Adaptation”, and the rest of the paper is almost identical, which we believe addresses the concerns of false advertising.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"However, we feel this maybe a bit harsh, as in the technical content of the paper (Abstract, Introduction, etc.), we have been very clear about the motivation and the problem setting, and do not think we did any form of false advertising.
+.We also do think that the problem setting we have proposed is an important problem that deserves attention, and has not been studied in the meta-learning paradigm.
+.We are glad that you also agree that setting makes sense (“... the combination … is fair”).
+.Overall, we think that we have made an important contribution to Meta-Learning literature, by identifying its limitation for few-shot learning under domain shift, and proposed a solution to tackle this problem.
+"	NOOOOOONNNNNEEEE	"Concern 1: Concerns with title “Meta Domain Adaptation”
+.“…unlike as advertised, the paper does not address
+.… “
+"	NOOOOOONNNNNEEEE
+However, my criticisms remain that the paper is a simple combination of cycle GAN and prototypical networks, and lacks new insights/novelty.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We appreciate the concern in the updated comments, but would like to point out that the novelty in our work should be viewed from two angles: the need to study this problem (i.e., the problem setting), and the proposed solution.
+.We have identified a novel problem setting, which is closer to the real world setting, than what has been studied so far under the meta-learning paradigm.
+.Existing solutions are not effective in this setting, restricting their use in the real world.
+.Addressing this setting in our framework gives us a direction to improve the practical utility of meta-learning solutions for few-shot learning.
+.Specifically, we identify that the principle of image-to-image translation is very suitable for this setting, and apply those concepts to boost the performance of few-shot learning under domain shift.
+.As a combination of problem setting and proposed solution, we do believe we have addressed an important problem, and made a novel contribution.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+- novelty is low: the proposed algorithm is a heuristic similar to previously proposed algorithms in the transfer learning and auxiliary learning space	MET	NOOOOOONNNNNEEEE	"The method is not a heuristic; it is theoretically motivated by use of the double gradient, and inspired by the success of this in meta learning (e.g. MAML [1]).
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"1. Novelty: To the best of our knowledge, this is the first paper presenting a simple solution to generating useful auxiliary tasks in a self-supervised manner.
+.The idea indeed was inspired by other works in auxiliary learning, but only to the extent that we also use auxiliary tasks to improve performance of a principal task.
+.If the reviewer thinks our method is an incremental contribution or similar to previous algorithms, please list the specific references.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+The only new result seem to be Theorem 4.7 which is a natural extension to theorem 4.3 to zeroth-order methods.	MET	NOOOOOONNNNNEEEE	"6. While Theorem 4.7 is new and may be of independent interest in the optimization community,  it is not the main contribution in this paper.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+There exists more principled approaches for selecting out-distribution images that has not considered here like those based on uncertainty estimation or recently proposed direct out-distribution detectors.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"By mentioning this statement, if the reviewer means the missing of some principled approaches like ODIN in our comparisons, we would like to inform the inclusion of ODIN results in the revised version of the paper.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"While there are the approaches that aim to detect out-distribution sets, they have not been designed for the selection purposes as we do.
+"	NOOOOOONNNNNEEEE	"The reviewer stated ""There exists more principled approaches for *selecting* out-distribution images that has not considered here like those based on uncertainty estimation or recently proposed direct out-distribution detectors"":
+"	NOOOOOONNNNNEEEE
+1. The work has limited novelty: the learning of the world model (recurrent state-space model) closely follows the prior work of PlaNet.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Dreamer is a novel algorithm that belongs to the family of actor critic methods.
+.At a high level, previous approaches can be grouped into those using Reinforce gradients with V baselines (A3C, PPO, ACER) and those using deterministic or reparameterization gradients of learned Q functions (DDPG, SAC, MVE, STEVE).
+.In comparison, Dreamer uses reparameterization gradients of V functions by backpropagating the value estimates through the latent dynamics.
+.Specifically, while Reinforce estimators typically learn V functions, these are only used to reduce the variance of the gradient estimate rather than directly maximizing them with respect to the actor.
+.Actor-critic algorithms that use analytic gradients of Q critics differ from Dreamer in two ways.
+.First, they learn a Q function rather than just a V function.
+.Second, the actor only maximizes the Q value predicted for the current time step rather than maximizing multi-step value estimates.
+.While MVE and STEVE learn dynamics models (from proprioceptive inputs), the dynamics are not directly used to update the policy.
+.Instead, they only serve for computing multi-step Q targets for learning the Q critic.
+.Thus, no gradients are backpropagated through the dynamics model for learning the actor or critic.
+"	NOOOOOONNNNNEEEE	"> 1.
+.The work has limited novelty: the learning of the world model (recurrent state-space model) closely follows the prior work of PlaNet.
+.In contrast to PlaNet, the difference is that this work learns an actor-critic model in place of online planning with the cross entropy method.
+.However, I found the contribution of the actor-critic model is insufficient and requires additional experimental validation (see below).
+"	"Please also see the comparison in the last paragraph of Section 3, which we will extend with the present discussion.
+"
+4. The novelty of the model is relatively limited as it is a combination of previous techniques on a new problem.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+I don't think Cakewalk is different enough from the cross-entropy method to warrant acceptance in ICLR.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+While the model seems to perform well, the originality and the improvement w.r.t. baselines are somewhat limited.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We updated Section 4.4 to indicate that it is to be expected that although our SAVP model improves on diversity and realism, it also performs worse in accuracy compared to pure VAE models (both our own ablation and SVG from Denton & Fergus (2018)).
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Though the Bayesian inference using GAN is a natural idea, learning algorithms proposed in this paper are simple and are not intensively developed.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"""Though the Bayesian inference using GAN is a natural idea, learning algorithms proposed in this paper are simple and are not intensively developed.
+.In numerical experiments, there is no comparison with major competitors besides random sampling in the active learning setup.
+.Hence, the effectiveness and advantage of the proposed methods are not clear.""
+.We have addressed this by responding to the specific questions below.
+"	NOOOOOONNNNNEEEE
+The reviewer votes for rejection as the method has limited novelty.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We admit that the computation process of F-pooling and the ECCV method is the same.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"However, we defend the novelty of our work.
+.The values of our work are not how the output of F-pooling is computed.
+.Instead, the values are the strict definition of shift-equivalence and the theoretical properties of F-pooling.
+.In previous works, they even don’t give an operable definition shift-equivalence when down sampling involved.
+.Please refer to our general response for more of F-pooling’s values.
+.Moreover, we discuss some practical problems of F-pooling.
+.Such as how to deal with the imaginary part and the zero-padding of convolutions.
+.With suitable settings, the shift consistency of F-pooling is much better.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+The novelty of this method is minimal.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"As for the novelty of this method, although it seems more like an engineering solution, we believe that it makes a significant contribution in the field of deep active learning.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+The theoretical contribution is very limited.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"R: - Theoretical contribution
+.A:
+"	NOOOOOONNNNNEEEE
+The main theorem of this paper is an extension of existing methods, so the novelty of theoretical analysis is somewhat limited.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Overall, I like the approach of the proposed method, especially tuning coefficient during training procedure although novelty in the theoretical analysis is somewhat limited.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+However, the fact that models with less parameters perform better than BERT-based models in the low-resource case is not very surprising.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"While this result may not look surprising, to the best of our knowledge it was not addressed before for the specific case of BERT.
+.In [1], the authors claim that a large pre-trained model can be very helpful in transfer learning scenarios, and they also suggest how to best fine-tune BERT.
+.We followed their guidelines and included the results to provide convincing evidence that, in this extreme scenario, our model can perform better (even without the use of rationales).
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"BERT-based models in the low-resource case is not very surprising
+.**ANSWER**
+"	NOOOOOONNNNNEEEE
+It is also not clear how the loss function proposed differs from that of the CDVAE, etc.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"(Difference with CDVAE) To clarify the difference our DiVA with CDVAE, we write derivations for both models here.
+"	"CDVAE: $\mathbb{E}_{q_{\theta}\mathrm{(z|x)}}[\mathrm{log}\ p_{\theta '}(\mathrm{x|z)}] - D_{KL}[q_{\theta}\mathrm{(z|x)} || p\mathrm{(z)]} + \lambda \mathbb{E}_{q_{\theta}\mathrm{(z|x)}}[\mathrm{log}\hat{p}_{\phi '}\mathrm{(c|z)}]$
+.DiVA: $\mathbb{E}_{q_{\theta}\mathrm{(z|x)}}[\mathrm{log}\ p_{\theta '}(\mathrm{x|z)}] - D_{KL}[q_{\theta}\mathrm{(z|x)} || \hat{q}_{\phi}\mathrm{(z|c)]} + \lambda \mathbb{E}_{q_{\theta}\mathrm{(z|x)}}[\mathrm{log}\ \hat{p}_{\phi '}\mathrm{(c|z)}]$
+.As we discussed in section 4.1, below the table for Algorithm 1, the key difference is that we consider class-conditional Gaussian distributions as priors for variational posteriors.
+.Since CDVAE assumes the prior as unit Gaussian for all classes and optimizes classification loss simultaneously with the KL divergence, the latent space does not follow the prior exactly.
+.As a result, CDVAE sometimes generates ambiguous samples (Figure 2 (c)).
+.Interestingly, RtF [1] also does not consider the class-conditional priors even though they consider a classifier integrated VAE similar to CDVAE.
+.In contrast, we assume class-wise specific Gaussian for each class.
+.As a result, we can stably generate more realistic samples than CDVAE.
+"
+Given that, the novelty of the paper is fairly incremental as it uses NerveNet to evaluate fitness and ES for the main design search.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We respectfully disagree and believe our contributions are significant.
+.We note that only NGE among all the baselines has the ability to optimize both the graph G and the controller parameters.
+.Graph neural network formulation is KEY here, enabling it to perform this efficient policy transfer.
+.To the best of our knowledge, the traditional methods (such as (Sims, 1994)) require re-optimizing parameters of the controllers from scratch for each different topologies, which is computationally demanding and breaks the joint-optimization.
+.To further showcase our work with respect to prior art, we added (Sims, 1994) as an additional baseline in the latest revision.
+.Moreover, we argue the videos of (Sims, 1994) might be confusing as it mixes the results of policy evolution from human-designed robots and structure evolution.
+"	NOOOOOONNNNNEEEE	"Q1: Robot design were explored in (Sims, 1994) etc. The novelty of the paper is fairly incremental.
+.We refer the reviewer to the general response for details.
+"	"NGE has about 2x performance of (Sims, 1994) in both fish and walker environments.
+"
+- Incremental modeling contribution	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We developed our approach based on Transformer models.
+.We agree with the reviewer that the model novelty is relatively incremental.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"However, the focus of the paper is to contribute a new prediction problem and adapts and applies the Transformer model for this problem to establish a benchmark for future exploration, which we believe has values.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+While I found the derivation of the Cramer-Wold distance interesting, the final form of this distance (Eq. 2), to me, looks very similar to the MMD with a particular kernel.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+However, I believe this is also the case in the MMD, since if one of the distributions is Gaussian or analytically known, then E[k(x,x')] in the MMD can be analytically computed.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"According to the best knowledge of the authors, the Cramer-Wold kernel (which defines the Cramer-Wold metric), except for the classical RBF kernel, is the only known characteristic kernel which has closed form for radial gaussians, and we believe the respective computations in other cases (like the inverse quadratic kernel used in WAE-MMD), would be highly nontrivial.
+"	NOOOOOONNNNNEEEE	"that  “in the MMD, since if one of the distributions is Gaussian or analytically known, then E[k(x,x')] in the MMD can be analytically computed”.
+"	NOOOOOONNNNNEEEE
+- That learning simple functions and composing them to compute more complex functions would be more data efficient than directly learning the complex functions does not seem very surprising.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We agree that this method of composing simple functions to compute more complex ones is intuitive, and may not be very surprising, but we think that this helps data and model efficiency in a different manner than presented in previous papers.
+.As far as scaling up the tasks and problem sizes, we are showing a method of combination here, and are scaling up the problem sizes continuously.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We believe this combination method could be used for other things, and have presented it here as a proof of concept rather than a definitive survey with all possible uses.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"R3: That learning simple functions and composing them to compute more complex functions would be more data efficient than directly learning the complex functions does not seem very surprising.
+"	NOOOOOONNNNNEEEE
+After all, the former approach gets a lot more knowledge about the target function built into it.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Is it a combination of DGR and HAT with some capacity expansion?	MET	NOOOOOONNNNNEEEE	"2. We further we would like to clarify a possible confusion of the proposed method to be a combination of Deep Generative Replay (DGR)[6] and HAT[2].
+.As pointed out in the Sec. 2 of our work, Deep Generative Replay (DGR) tries to prevent forgetting in the generator by retraining it from scratch every time a new data chunk becomes available.
+.Thus, in DGR the generator would lose information at each replay step since the quality of generated samples highly depends on the quality of samples generated by the prior generator causing ""semantic drift"".
+.This contrasts our method, which effectively retains the knowledge in the generator using HAT like neuron masking and only loses information through “natural” forgetting.
+.This allows us to use “complete” learned representation during learning and inference of the subsequent tasks as well as speed up the training (no replay of G is involved).
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+The proposed model seems like a straightforward extension of the nCRP with a deep model hanging off the end of it.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"The proposed model seems like a straightforward extension of the nCRP with a deep model hanging off the end of it.
+"	NOOOOOONNNNNEEEE
+The originality is relative low though, since it is mainly an application of  deep InfoMax to language modeling, not inventing a new algorithm and applying to language modeling.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Regarding your comment about increasing bias and reducing variance, we did observe that the quality of the InfoWord representations is relatively stable across different runs in our experiments (as evaluated by performance on downstream tasks). Could you please clarify a bit more whether this is what you are asking?
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+The remaining components of the proposed method are not very new.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Overall, I think the novelty of the paper is very limited, as all the weight distortion algorithms in the paper can be formulated as the proximal function in proximal gradient descent.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"While formulating a proximal function for model compression might be an interesting idea (if search space is highly limited) as the reviewer suggested, we believe that our proposed method is fundamentally different from proximal gradient descent approaches due to the following reasons:
+.1) Proximal gradient descent is meant to solve a convex optimization problem while our aim is to solve a non-convex problem in which each local minimum exhibits vastly different test accuracy after compression.
+.Jumping to another local minimum from a certain minimum would not be easily achieved by convex optimization methods.
+.2) Finding a particular flat minimum is the key to obtaining good model compression (and good generalization as well).
+.Such an exploration, however, cannot be obtained by a proximal function since we need to investigate lots of different local minima with different amount of flatness in loss surface.
+.3) While proximal gradient descent can be useful to find a certain local minimum close to the starting point given a convex constraint, wide exploration (associated with possibly transient accuracy loss in the initial training as shown in Figure 2.(b)) is necessary to escape from a point with sharp loss surface.
+.Investigating many different local minima would be only available with large learning rate (as we have chosen for our experiments) and/or large amount of weight distortion.
+.4) Our effort to introduce optimal distortion step size and learning rate for a given compression problems is connected to exploration, not exploitation (which potentially supported by proximal functions where convergence matters).
+.Even though proximal gradient descent selects step size only considering convergence, Figure 1 can lead to the results such as Figure 2(b) which cannot be obtained if only local exploitation is employed.
+.Finding a flat minimum has been known to be a difficult work as shown in the paper “On large-batch training for deep learning: generalization gap and sharp minima”, ICLR 2016.
+.We firmly believe that our search space exploration method based on optimal distortion step size and amount of weight distortion enable us to produce better local minima well-suited to various model compression techniques.
+.In short, unfortunately, we have failed to understand how you could connect our technique to proximal functions and proximal gradient descent.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+In this way, we can easily see that the proposed framework is a stochastic version of proximal gradient descent.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+In summary, I find there is no novelty involved apart from combining the already existing SOTA model in disentangled feature learning (beta-VAE) and image generation (StackGAN).	MET	NOOOOOONNNNNEEEE	"Novelty: Our method aims to solve the fundamental issue of d-separation in disentangled representation learning.
+.It allows for a theoretically consistent way of obtaining factorisation in the posterior without any information-theoretic penalties.
+.But this description mischaracterizes the fundamental problem that we have identified and proposed a solution for.
+"	NOOOOOONNNNNEEEE	"It is true, that one can describe the method as a (non-trivial) combination of beta-vae + GAN.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+"(1) My main problem with this paper is that the novel objective proposed by the authors in Eq. 7 is equivalent to the objective of WAEs appearing in Eq. 4 of [1] (up to a heuristic of applying logarithm to the divergence measure, which is not justified but meant to ""improve the balance between two terms"", see footnote 2), where the authors use the newly introduced Cramer-Wold divergence as a choice of the penalty term in Eq. 4 of [1]."	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We fully agree with the reviewer, that CWAE is a model based on the kernel as the divergence measure for distributions, and consequently can be seen as a modified variant of WAE-MMD (we have added the respective comments in the paper, see the extended introduction, and added a section B in the appendix, which discusses the comparison in more details).
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Due to the properties of the constructed Cramer-Wold kernel, we are able to substitute in the distance the sample estimation d(X,Y) of d(X,N(0,I)) given by its exact formula.
+.Consequently, the CWAE has, while being trained, potentially less stochastic perturbation then WAE-MMD.
+.CWAE, as compared to WAE-MMD, has no parameters (while WAE-MMD has two).
+.We observed that in many cases (like log-likelihood), the logarithm of the probability function works better, since it increases the role of examples with low-probability.
+.Thus, instead of using an additional weighting parameter lambda (as in WAE-MMD) whose aim is to balance the MSE and divergence terms, we decided to automatically (independently of dimension) balance the two terms of the loss function, by taking the logarithm of the divergence.
+.Moreover, since our kernel is naturally introduced with the sliced approach and kernel smoothing, the choice of regularization parameter is given by the Silverman's rule of thumb, and depends on the sample size
+.(contrary to WAE-MMD, where the parameters are chosen by hand, and in general do not depend on the sample size)
+..
+"	NOOOOOONNNNNEEEE	"POINTS 1 AND 2 OF THE REVIEW
+.The reviewer has noticed that the cw-distance resembles that of a U-statistic MMD estimate, and thus the proposed model very much resembles MMD itself.
+.However, there are some important, in our opinion, differences between those two models, which also result in an improved training speed and stability of CWAE compared to WAE-MMD (see refined experiments in section 5, as well as figures in the appendix showing comparisons between proposed CWAE and WAE and SWAE models in the Appendix).
+.The differences are:
+.The appropriate clarifications are given in the appendix B.
+"	"Summarizing, in the proposed CWAE model, contrary to WAE-MMD, we do not have to choose parameters.
+.Additionally, since we do not have the noise in the learning process given by the random choice of the sample from normal density
+.,  CWAE in generally learns faster than WAE-MMD, and has smaller dispersion of the cost-function during the learning process (see Figures 7 and 8, Appendix F).
+"
+(2) When viewed in this way, CW-distance introduced in Eq (2) closely resembles the unbiased U-statistic estimate of the MMD used in WAE-MMD [1, Algorithm 2].	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We fully agree with the reviewer, that CWAE is a model based on the kernel as the divergence measure for distributions, and consequently can be seen as a modified variant of WAE-MMD (we have added the respective comments in the paper, see the extended introduction, and added a section B in the appendix, which discusses the comparison in more details).
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Due to the properties of the constructed Cramer-Wold kernel, we are able to substitute in the distance the sample estimation d(X,Y) of d(X,N(0,I)) given by its exact formula.
+.Consequently, the CWAE has, while being trained, potentially less stochastic perturbation then WAE-MMD.
+.CWAE, as compared to WAE-MMD, has no parameters (while WAE-MMD has two).
+.We observed that in many cases (like log-likelihood), the logarithm of the probability function works better, since it increases the role of examples with low-probability.
+.Thus, instead of using an additional weighting parameter lambda (as in WAE-MMD) whose aim is to balance the MSE and divergence terms, we decided to automatically (independently of dimension) balance the two terms of the loss function, by taking the logarithm of the divergence.
+.Moreover, since our kernel is naturally introduced with the sliced approach and kernel smoothing, the choice of regularization parameter is given by the Silverman's rule of thumb, and depends on the sample size
+.(contrary to WAE-MMD, where the parameters are chosen by hand, and in general do not depend on the sample size)
+..
+"	NOOOOOONNNNNEEEE	"POINTS 1 AND 2 OF THE REVIEW
+.The reviewer has noticed that the cw-distance resembles that of a U-statistic MMD estimate, and thus the proposed model very much resembles MMD itself.
+.However, there are some important, in our opinion, differences between those two models, which also result in an improved training speed and stability of CWAE compared to WAE-MMD (see refined experiments in section 5, as well as figures in the appendix showing comparisons between proposed CWAE and WAE and SWAE models in the Appendix).
+.The differences are:
+.The appropriate clarifications are given in the appendix B.
+"	"Summarizing, in the proposed CWAE model, contrary to WAE-MMD, we do not have to choose parameters.
+.Additionally, since we do not have the noise in the learning process given by the random choice of the sample from normal density
+.,  CWAE in generally learns faster than WAE-MMD, and has smaller dispersion of the cost-function during the learning process (see Figures 7 and 8, Appendix F).
+"
+-The proposed technique does not seem to be original enough, and it does not handle the problem foundationally well.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We can definitively replace GBDT with other methods, such as feature correlations, as long as they can achieve better performance then GBDT.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"As we emphasized many times in our paper, the success of DNN in domains such as image, speech and text, is built on the comprehensive exploration of the locality-based patterns, which motivates us to first find such patterns of features in tabular data automatically and then build up NN architecture based on these discovered patterns.
+.This is the core idea of this paper.
+.Thus, GBDT is just a tool we adopt to mine the patterns and do feature grouping since GBDT is an efficient and convenient method for these pre-processing tasks: 1) GBDT is very fast.
+.In most experiments, the total time cost of GBDT part in TabNN is about several minutes, while the NN part often needs several hours for training.
+.2) the learning of GBDT is just based on statistical information over full dataset.
+.Thus, GBDT can learn the stable and robust feature combinations.
+"	NOOOOOONNNNNEEEE	"1. Comments about the contributions and novelty
+"	NOOOOOONNNNNEEEE
+The proposed technique is heavily dependent on GBDT (Indeed the algorithm and the learned trees are used at least three times).	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We can definitively replace GBDT with other methods, such as feature correlations, as long as they can achieve better performance then GBDT.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"As we emphasized many times in our paper, the success of DNN in domains such as image, speech and text, is built on the comprehensive exploration of the locality-based patterns, which motivates us to first find such patterns of features in tabular data automatically and then build up NN architecture based on these discovered patterns.
+.This is the core idea of this paper.
+.Thus, GBDT is just a tool we adopt to mine the patterns and do feature grouping since GBDT is an efficient and convenient method for these pre-processing tasks: 1) GBDT is very fast.
+.In most experiments, the total time cost of GBDT part in TabNN is about several minutes, while the NN part often needs several hours for training.
+.2) the learning of GBDT is just based on statistical information over full dataset.
+.Thus, GBDT can learn the stable and robust feature combinations.
+"	NOOOOOONNNNNEEEE	"1. Comments about the contributions and novelty
+"	NOOOOOONNNNNEEEE
+However, I am unable to assess the technical novelty of this work as it seems to heavily rely on prior work which in turn use techniques from random matrix theory.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Extending result to other target functions:
+.We agree that the problem might be significantly more difficult for different target functions, and would like to make the following remarks:
+.1.
+"	"Note that in our bias-variance decomposition, only the bias term depends on the target function.
+.In other words, our result on the variance (including Theorem 4) would still be valid for other targets, such as two-layer neural network.
+.One caveat is that for general target function, the output needs to be properly scaled since our current analysis in Section 5 relies on linearizing the network.
+.2. When the target function is a multiple-neuron neural network, deriving the bias term can be challenging.
+.However, we note that under the same setup, the bias may be obtained when the teacher is a slightly more general single-index model, i.e. $y=\psi(\beta^\top x)$ with Lipschitz link function $\psi$, equivalent to a single-neuron network.
+.For instance, the bias under vanishing initialization is the same as that of least squares regression on the input, which can be solved under isotropic prior on $\beta$ via decomposing the activation function similar to Appendix C.5.
+"
+1) the proof techniques are very standard	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+2. I am not convinced this method is sufficiently new, given that there are other methods that try to directly reward visiting new states.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+From this perspective, the paper seems like an application of existing tools (such as CNN, graph convolutional network and binary classification).	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+It is unclear, why one should use the proposed duality gap GAN.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"3)For the experiment: we will spend some time to train GANs with more iteration and modify it.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+First, the novelty of the approach is limited -- the approach amounts to using a sparse integer layer instead of a floating-point layer within a feed-forward architecture.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+1. The regularization techniques in reproducing kernel Hilbert space (RKHS) has	MET	NOOOOOONNNNNEEEE	"We address the comments about novelty in our general response ( https://openreview.net/forum?id=HkMlGnC9KQ&noteId=S1eid00WaQ ), for instance concerning the relationship to previous work, and the regularization penalty ||f||_M we propose.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"More detailed comments are addressed below.
+"	NOOOOOONNNNNEEEE
+(1) using codes and codebooks to compress weights; and	MET	NOOOOOONNNNNEEEE	"As we state in our introduction, using codebooks to compress networks is not new, as well as using a weighted k-means technique.
+.However, as we state in the paper: “The closest work we are aware of is the one by Choi et al. (2016), but the authors use a different objective (their weighted term is derived from second-order information) along with a different quantization technique (scalar quantization).
+.Our method targets a better in-domain reconstruction, as depicted by Figure 1”.
+.Note that we already cite two of the suggested references by Reviewer 4, namely “Towards the limit of network quantization” and “ThiNet: A filter level pruning method for deep neural network compression” in our work.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We will further clarify our positioning in an updated version of the paper.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Clarification of the connections/differences, and comparison with these related methods should be made to show the efficacy of the proposed method.	MET	NOOOOOONNNNNEEEE	"We provide clarification for the two main questions of the Reviewer below.
+.Compression ratio
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+First, the technical contribution is lean. Neither the multi-agent learning or the hierarchical learning of the algorithm is novel.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+The combination of these two methods seems straightforward.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+The latter model is similar to RAND-WALK, so it is not surprising that statistical functions there are similarly concentrated.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+- The final method is a mixup of many different techniques, thus, not a strong contribution, but many smaller contributions.	MET	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"A: While ReMixMatch comprises many components (some of which are new), we believe our ablation study justifies the reason why each component exists. If there are additional ablation experiments that you think would be helpful for us to run, please let us know.
+"	NOOOOOONNNNNEEEE	"1. The final method is a mixup of many different techniques, thus, not a strong contribution, but many smaller contributions.
+"	NOOOOOONNNNNEEEE
+2. In experiments, the authors explored many existing methods on improving	RWK_EXP	NOOOOOONNNNNEEEE	"We address the comments about novelty in our general response ( https://openreview.net/forum?id=HkMlGnC9KQ&noteId=S1eid00WaQ ), for instance concerning the relationship to previous work, and the regularization penalty ||f||_M we propose.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"More detailed comments are addressed below.
+"	NOOOOOONNNNNEEEE
+A stronger contribution is 1., which however is somewhat incremental compared to similar comparisons made in the past.	RWK	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Can you please provide respective references?
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"You mention that our work is incremental to the work on benchmarking of optimizers.
+"	NOOOOOONNNNNEEEE
+3. Technical contribution: While the authors propose the first bounds for LSTMs and MGUs, most of the analysis seems to be a marginal contribution over the work of Bartlett et al. [3]	RWK	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Technical contribution: marginal.
+.3. Response:
+"	"We provide new understandings of RNNs by connecting their generalization properties to their empirical success.
+.We establish generalization bounds using the PAC-learning framework by instilling our simple but new complexity analysis for RNNs.
+.In particular, we characterize the Lipschitz property of the output of RNNs with respect to weight matrices (Lemma 2).
+.This key step allows us to construct a covering on RNNs from simple coverings of weight matrices, which results in a complexity bound of RNNs polynomial in d and t.
+.We further extend our analysis to establish the first generalization bounds for MGU and LSTM RNNs.
+.The proposed analysis is quite different from [6], which adopts a layer-wise evaluation for neural networks and constructs the overall covering via a complicated matrix covering argument.
+.Moreover, as compared in Section 4 Table 1, our generalization bound is much tighter when \beta > 1.
+.To sum up, the main contributions are listed as follows (see paragraphs 2 - 5 on page 3):
+.1) We develop new techniques for effectively characterizing the model class of RNNs, which allows us to establish tight generalization bounds.
+.2) We establish generalization bounds for both MGU and LSTM RNNs, and demonstrate their advantages over vanilla RNNs in generalization (under Theorems 4 and 5).
+.Given very limited literature on RNNs and their variants (not even mentioning that most of existing theoretical results are negative, e.g., exponential complexities), we believe this paper has its novel contributions.
+"
+However, this task is an instance of natural language generation: given a meaning representation (quite often a database record), generate the natural language text correspoding to it. And previous work on this topic has proposed very similar ideas to the scratchpad proposed here in order to keep track of what the neural decoder has already generated, here are two of them:	RWK	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We are aware of the related work you mention.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+3) The novelty of this paper is incremental as the theoretical results are extended from Cortes et al (2019) and Zhao et al (2018).	RWK	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+- The paper does not have a significant novel contribution, but rather extends GANs (improved-GAN mostly) with a manifold regularization, which has been explored in many other works Kumar et al. (2017) and Qi et al. (2018).	RWK	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"First, while manifold regularization has been explored in (Kumar et al 2017) and (Qi et al 2018), we proposed an efficient and effective approximation of manifold regularization that is far easier to compute than the involved method in (Kumar et al 2017).
+.Moreover, we point out issues with the standard finite difference approximation to the Jacobian regularization and propose a solution to this problem by ignoring the magnitude of the gradient and using only the direction information.
+.Moreover, we showed manifold regularization provides significant improvements to image quality and linked it to gradient penalties used for stabilizing GAN training, which were not shown by (Qi et al 2018).
+"	NOOOOOONNNNNEEEE	"Second, with respect to novelty, we would like to re-iterate our contributions since they may not have been clear.
+"	NOOOOOONNNNNEEEE
+Compressability is evaluated, but that was already present in the previous work.	RWK	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We conducted additional simulations to evaluate the runtime benefit of the proposed method compared to that of the method in [1].
+.The assumptions used for the simulation and analysis data have been updated in Figure 6c of the revised manuscript.
+.Therefore, we updated Figure 7 in original manuscript to Figure 6c in the updated manuscript according to the new data.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Compressability is evaluated, but that was already present in the previous work.
+"	"We generated random 512-by-512 matrices with pruning rate ranging from 70 % to 95 % and simulated the number of parameters fed to PEs in 10000 cycles.
+.We could observe that proposed parallel weight decoding based on the second Viterbi decompressor allowed 10 % to 40 % more parameters to be fed to PEs than the previous design [1].
+.The proposed method outperformed both baseline method and [1] in all simulation results.
+.Please note that the data described in Figure 6c has been updated from Figure 7, and our method shows better performance in new data compared to the data shown in the original manuscript.
+.While preparing for the rebuttal, we realized that our simulation model did not fully exploit the parallelized weight and index decoding process of the proposed method.
+.After further optimization, we could observe that the parameter feeding rate of the proposed method increased compared to the reported data in original manuscript.
+"
+For example, the two regimes mentioned in the paper has been identified by a few other works and the contribution of this paper is just to verify them again.	RWK	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Our paper is the first to relate the two regimes of SGD to the popular analogy between SGD and stochastic differential equations (SDEs).
+.As we show in sections 4 and 5, this perspective is crucial to understanding the influence of batch size and learning rate on test accuracy.
+.A common criticism of this analogy is that SGD noise is not Gaussian when the batch size is small.
+.To our knowledge, we are the first to show that the analogy between SGD and SDEs holds for non-Gaussian short-tailed noise (appendix B).
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+In terms of learning rate scaling, this paper gets similar conclusions as Shallue et al. (2018).	RWK	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"3. Our empirical results in section 3 are similar to Shallue et al., however their work argues that there is no reliable relationship between learning rate and batch size.
+.We draw a very different conclusion: the learning rate usually obeys linear scaling, but linear scaling only holds theoretically when the assumptions we specify are satisfied.
+.Linear scaling may not hold in cases where these assumptions break down (e.g., language modelling).
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+In terms of the difference between vanilla SGD and SGD with momentum, Zhang et al. (2019) already argued that the difference depends on specific batch sizes and SGD with momentum only outperforms SGD in the curvature dominated regime.	RWK	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"2. Zhang et al. argued that Momentum only helps in the large batch limit.
+.However, their analysis is based on the noisy quadratic model, which cannot explain the results we observed on the test set in sections 4 and 5.
+.These experiments clearly demonstrate that, unlike the SDE perspective, the noisy quadratic model is not an appropriate model for predicting test set performance in deep learning.
+.Their work also does not clarify the assumptions under which linear scaling of the learning rate should arise.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+However, the novelty is rather limited as similar ideas have been undertaken (e.g., Mescheder et al 2018), but in different contexts.	RWK	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"First, with regards to (Mescheder et al 2018), our method is not simply the application of existing gradient penalties (GPs) in the context of semi-supervised learning.
+.Our approach is conceptually different since the regularizer proposed by (Mescheder et al 2018) is an (isotropic) ambient regularizer in the input space, whereas the regularizer we used performs (anisotropic) smoothing on the manifold parametrized by the latent generative model.
+.We believe we are the first to show the benefits of anisotropic Jacobian regularizers in the context of semi-supervised learning.
+.Moreover, an important contribution of our work is the efficient computation of such gradient penalties in the context of semi-supervised learning.
+.Current application of such penalties uses the exact Jacobian which is especially computationally expensive in the case of semi-supervised learning as it is now a tensor (one matrix per class in the case of Improved GAN), which quickly becomes intractable with large numbers of classes.
+.We proposed and demonstrated the effectiveness of an efficient (non-obvious) approximation of the Jacobian-based regularizer which significantly accelerates training.
+"	NOOOOOONNNNNEEEE	"In response to your comment that ""similar ideas have been undertaken (e.g., Mescheder et al 2018), but in different contexts"" we would like to take this opportunity to clarify the novelty of our approach.
+"	NOOOOOONNNNNEEEE
+The testbeds all existed previously and this is mostly the effort of pulling then together.	RWK	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Beyond the core findings, the other settings are less convincingly supported by seem more like work in progress and this paper is really just a scaling-up of [Pathak, et al., ICML17] without generating any strong results regarding questions around representation, what to do about stochasticity (although the discussion regarding something like ‘curiosity honeypots’ is interesting).	RWK	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+All of the testbeds have been used previously.	RWK	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Spectrum pooling has been used in the community of computer vision and machine learning.	RWK	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We admit that the computation process of F-pooling and the ECCV method is the same.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"However, we defend the novelty of our work.
+.The values of our work are not how the output of F-pooling is computed.
+.Instead, the values are the strict definition of shift-equivalence and the theoretical properties of F-pooling.
+.In previous works, they even don’t give an operable definition shift-equivalence when down sampling involved.
+.Please refer to our general response for more of F-pooling’s values.
+.Moreover, we discuss some practical problems of F-pooling.
+.Such as how to deal with the imaginary part and the zero-padding of convolutions.
+.With suitable settings, the shift consistency of F-pooling is much better.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+"Taking a random example (there are others by simple searching), in the ECCV paper ""DFT-based Transformation Invariant Pooling Layer for Visual Classification, Ryu et al., 2018"" The DFT magnitude pooling is almost the same as the authors' propositions, where the ""Fourier coefficients are cropped by cutting off high-frequency components""."	RWK	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+The work is rather incremental from current state-of-the-art methods.	RWK	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"-- It is worth noting that VCL has achieved very good results on most of these benchmarks, so it is very hard to outperform it with a large margin.
+.Nevertheless, although the experimental increases might not seem dramatic, they are statistically significant (we have added the statistical significance results to the appendix in the revised version).
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+For example, Narayanaswamy et al. [1] also propose to utilize labels to VAE.	RWK	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"(Use of labels and novelty) In GR-based approaches, the quality of generated samples is crucial to keep the performance of previous tasks.
+.If we use labels, we can construct a conditional generative model.
+.Generally, conditioning on a generative model yields higher quality samples than unconditional one and makes it possible to generate class-balanced samples [4]; the importance of conditional generation is also described in section 6.1 in our paper.
+.In this paper, we showed that discriminative regularization could make VAE possible to conduct both class conditional generation and classification with one integrated model.
+.Thus, we do not need to train an additional classifier, e.g., deep CNN, which is necessary for other works, including Narayanaswamy et al. There is also classifier integrated VAE such as [6].
+.The difference with [6] is the use of class-conditional priors; more details are explained at the response (Difference with CDVAE) for reviewer 3 and section 4.1 in our paper.
+"
+However, there are a few, though not many, works in the literature trying to combine Choquet integral with deep learning.	RWK	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"The referenced paper mimics the Choquet integral to fuse different neural networks such as CaffeNet, GoogLeNet, and ResNet50 that have been pre-trained for classification problems and can be viewed as ensemble method for multiple noisy classifiers.
+.Contrary, we are interested in regression problems that have inherent non-additive effect such as automatic summarization.
+.Furthermore, the referenced paper is much closer to the Choquet as we intent to be.
+.As we describe in the paper, the proposed architectures are only inspired by the Choquet integral.
+.This idea can be found in both of our architectures.
+.In Figure 1c, u_i and in Figure 1d g_i * u_i model these meaningful intermediate values.
+.We do not claim that we obtain any theoretical guarantees or properties of the Choquet integral.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+This paper fails to account for a vast amount of literature on modeling natural images that predates the post-AlexNet deep-learning era.	RWK	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+These regimes are fairly well covered by previous works (e.g. Belkin et al as well as others).	RWK	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We agree that some of the observations in sections 2 and 3 have already been made in previous work, however there are also several important differences:
+.Two reviewers complained that it was difficult to tell from the text which contributions are novel and which also appear in previous works.
+.We apologise for this.
+"	NOOOOOONNNNNEEEE	"It was not our intention and we will edit sections 1 and 2 to ensure that this is resolved and that the above points are reflected in the text.
+.Turning to our generalization experiments in sections 4 and 5.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"1. Ma, Bassily and Belkin also introduced the notion of two regimes, however their theory holds for convex losses in the interpolating regime.
+.We will discuss their contribution explicitly in the updated text.
+.Our discussion in section 2 clarifies why the two regimes arise in practical deep learning models for which these conditions may not hold.
+.2.
+.Our paper is the first to relate the two regimes of SGD to the popular analogy between SGD and stochastic differential equations (SDEs).
+.As we show in later sections, this perspective is crucial to understanding the influence of batch size and learning rate on test accuracy.
+.A common criticism of this analogy is that SGD noise is not Gaussian when the batch size is small.
+.To our knowledge, we are the first to show that the analogy between SGD and SDEs holds for non-Gaussian short-tailed noise (appendix B).
+.3. We clarify the differences to some other recent papers in our reply to reviewer 1.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+1) The introduction makes it seem the generative replay is new, without citing approaches such as DGR (which are cited in the related work).	RWK	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+I must probably be missing something, and I encourage the authors to clarify what the main novelties are when compared to the several papers by Dupuis & al.	RWK	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+But this is too similar to the cited findings on page 6 (models assign high likelihood to constant images).	RWK	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"While we do also analyze constant images, we believe that our results for multiple data set pairs (FashionMNIST-MNIST, CIFAR10-SVHN, CelebA-SVHN, ImageNet-CIFAR10/CIFAR100/SVHN) and for multiple deep generative models (flow-based models, VAE, PixelCNN) is novel.
+.Our conclusions are arrived at through focused experimentation and a novel analytical expression applied to CV-Glow.
+"	NOOOOOONNNNNEEEE	"The section concludes that if the second dataset has small variances, it will get higher likelihood. But this is too similar to the cited findings on page 6 (models assign high likelihood to constant images).”
+"	NOOOOOONNNNNEEEE
+-- Since CounMin is closely related to Bloom filters the idea of using machine learning to speed it up appears to be noticeably less novel given that for Bloom filters this has already been done by Mitzenmacher’18.	RWK	NOOOOOONNNNNEEEE	"Our paper, as well as the works of Kraska et al ’18, Mitzenmacher ’18,  Lykouris &
+.Vassilvitskii ’18, Purohit et al, NIPS’18, belong to a growing class of studies that use a machine learning oracle to improve the performance of algorithms.
+.All such papers use a learned oracle of some form.
+.The key differences are in what the oracle does, how it is used, and what can be proved about it.
+.In Kraska’18 and Mitzenmacher’18, the oracle tries to directly solve the main problem, which is: “is the element in the set?” An analogous approach in our case would be to train an oracle that directly outputs the frequency of each element.
+.However, instead of trying to directly solve the main problem (estimate the frequency of each element), our oracle is a subroutine that tries to predict the best resource allocation --i.e., it tries to answer the question of which elements should be given their own buckets and which should share with others.
+.There are other differences.
+.For example, the main goal of our algorithm is to reduce collisions between heavy items, as such collisions greatly increase errors.
+.This motivates our design to split heavy and light items using the learned model, and apply separate algorithms for each type.
+.In contrast, in existence indices, all collisions count equally.
+.Finally, our theoretical analysis is different from M'18 due to the intrinsic differences between the two problems, as outlined in the previous paragraph.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"[Novelty compared to Mitzenmacher’ 18]
+"	NOOOOOONNNNNEEEE
+- The experiments seem very similar to Wu et al. 2018, which is considered to be prior work under the ICLR guidelines.	RWK	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+While this paper is acknowledged in the related work, it would be helpful to expand further on the relationship between these works, so the originality and contribution of this paper can be better evaluated.	RWK	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+It's hard to ascertain what exactly the contributions are, and how they might not be a straightforward consequence of prior work (for example, combining results from Bietti and Mairal; and generalization bounds for linear models).	RWK	NOOOOOONNNNNEEEE	"We discuss the novelty aspects in our general response ( https://openreview.net/forum?id=HkMlGnC9KQ&noteId=S1eid00WaQ ) and will be happy to clarify this in the paper.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+For instance, using codes and codebooks to compress the weights has already been used in [1,2].	RWK	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We will further clarify our positioning in an updated version of the paper.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+In addition, minimizing reconstruction error has already been used in low-rank approximation[3] and network pruning[4].	RWK	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We will further clarify our positioning in an updated version of the paper.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+It is thus very hard to know if this new approach brings any improvement to previous work.	RWK	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We believe there is some misunderstanding here as to the contribution.
+.As such, there are no previous approaches to “learn algorithms” (besides Kong et al.).
+.To be more explicit (in case we didn’t understand the comment)
+., previous work for algorithmic problems could fall into a few buckets:
+.(2) One may imagine there could be some kind of optimization (IP / LP) technique or some ML technique to solve specific instances of the problem (a specific instance of Adwords e.g.).
+.But this is in fact not a feasible possibility, for two reasons: (a) Our problems are online problems where the full instance itself is not known in advance, and (b) we are looking for worst case competitive algorithms, i.e., a policy that does well no matter how the instance unfolds in the future.
+.Thus there can not be previous work to compare in such a bucket.
+.(3) Kong et al., 2018 is the closest previous work since it shows how to learn algorithms in the online setting.
+.As mentioned above, the critical difference is that our paper learns the algorithms without any prior knowledge of the worst input distribution, but evolves both the distribution and the algorithm jointly (with some parallels to GANs, AlphaZero, self-play, etc. as we have stated).
+.Quantitatively, the CR results are equally good; our main objective is to see if the learned algorithm is close in policy to the theoretical algorithm, and whether we are reasonably close to the optimal CR.
+"	"Thus the difference of 0.01 CR is a direct comparison to that work.
+"	NOOOOOONNNNNEEEE	"-- “No comparison has been made between their approach and other previous approaches.
+.We only know that the proposed approach finds near-optimal solutions with a difference of 0.01 competitive ratio.
+.It is thus very hard to know if this new approach brings any improvement to previous work.”
+"	"(1) The original algorithms papers which found optimal worst case algorithms [Karlin et al. 1986, Mehta et al. 2007].
+.These give the analytical benchmarks.
+.E.g., [Mehta et al. 2007] proposes the algorithm to solve Adwords, and proves that it achieves the optimal CR of 1-1/e ~ 0.63 (i.e., no matter what the online input sequence is, you get >= 1-1/e of the optimal solution in hindsight if you knew the instance offline).
+"
+When it comes to experiments, constant epoch budget is also fairly well understood and the behavior in Figure 1 is not really surprising (as the eventual training performance gets worse with large batches).	TNF	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We agree that some of the observations in sections 2 and 3 have already been made in previous work, however there are also several important differences:
+.Two reviewers complained that it was difficult to tell from the text which contributions are novel and which also appear in previous works.
+.We apologise for this.
+"	NOOOOOONNNNNEEEE	"It was not our intention and we will edit sections 1 and 2 to ensure that this is resolved and that the above points are reflected in the text.
+.Turning to our generalization experiments in sections 4 and 5.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"1. Ma, Bassily and Belkin also introduced the notion of two regimes, however their theory holds for convex losses in the interpolating regime.
+.We will discuss their contribution explicitly in the updated text.
+.Our discussion in section 2 clarifies why the two regimes arise in practical deep learning models for which these conditions may not hold.
+.2.
+.Our paper is the first to relate the two regimes of SGD to the popular analogy between SGD and stochastic differential equations (SDEs).
+.As we show in later sections, this perspective is crucial to understanding the influence of batch size and learning rate on test accuracy.
+.A common criticism of this analogy is that SGD noise is not Gaussian when the batch size is small.
+.To our knowledge, we are the first to show that the analogy between SGD and SDEs holds for non-Gaussian short-tailed noise (appendix B).
+.3. We clarify the differences to some other recent papers in our reply to reviewer 1.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+that (except the minor small section of streaming data), the paper is more like a proper verification of how tree-based learning algorithms work very well in tabular data--which is far from the basis of the paper and does not make the paper novel enough for ICLR.	MET_DAT	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"This point has also been emphasized in our paper.
+"	NOOOOOONNNNNEEEE	"We can definitively replace GBDT with other methods, such as feature correlations, as long as they can achieve better performance then GBDT.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"In most experiments, the total time cost of GBDT part in TabNN is about several minutes, while the NN part often needs several hours for training.
+.2) the learning of GBDT is just based on statistical information over full dataset.
+.Thus, GBDT can learn the stable and robust feature combinations.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Overall, the method looks incremental and experimental results are mixed on small datasets so I vote for rejection.	DAT_RES	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+- Gradient starvation, Kaggle experiment: I'm not too convinced about the novelty/usefulness of this result. In the end, even a decision tree stump would stop growing after learning the dark/light feature as a discriminator.	RES_EXP	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"- We agree that the observed phenomenon can appear in other machine learning methods and is not specific to gradient descent.
+.However, in the case of deep neural networks, it is the prevalence of certain gradient directions that determine the final classifier.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Although some promising	RES	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Hence, I kindly do not think the outcome is truly a research result.	RES	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"As we explained at the common response, we started our research from clear open questions.
+.Our first open question was that why other GR-based algorithms [1, 2] assume unit Gaussian priors even though they integrate classification loss into their VAE formulation.
+.Since they do not consider the conflict between the unit Gaussian prior and discriminative loss for the latent variable z, their models generate ambiguous samples that negatively affect the performance of incremental learning, which is discussed in section 4.1 in our paper.
+.This leads us to a more theoretical formulation for classification-regularized VAE.
+.By introducing class conditional priors induced by the mutual information maximization, DiVA yields class-wise discriminative one mode Gaussians for latent variable z.
+.Naturally, DiVA can conduct both class prediction and class conditional sample generation with one integrated model.
+.The second open question was that why GR-based algorithms suffer from serious catastrophic forgetting in natural image datasets, even though generated samples are not completely noisy.
+.We assumed that this is due to the vulnerability of neural networks [3] triggered by different distributions of pixel values between real and generated images.
+.Thus, we defined the two domains: real domain and sample domain.
+.To narrowing the distribution gap, we needed a solution that satisfies two conditions (also described in section 5):
+.1. We should translate only the style (a global pattern of a specific domain) as keeping outline patterns of given images.
+.2. We should consider an unpaired domain translation between real and generated images because the generated images are sampled randomly.
+.Fortunately, we were able to find an existing solution that satisfies the requirements: CycleGAN. Any other domain translators that satisfy the conditions can be used or newly studied.
+.With the solution, we could make a breakthrough for GR-based methods.
+.To the best of our knowledge, this is the first successful approach for a GR-based algorithm to start to resist the catastrophic forgetting problem with a natural image dataset.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"[Response for 1]
+"	NOOOOOONNNNNEEEE
+As the authors admit, the main result is not especially surprising.	RES	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+The results are not strong. And, unfortunately, the model contribution currently is too modest.	RES	NOOOOOONNNNNEEEE	"Indeed, the model is a minor contribution and, especially in light of a more thorough evaluation of RGCN, the sum attention RGAT results do not improve on those in Schlichtkrull et al. (2017).
+"	"We plan to make our implementation public to aid future research in the area.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"However, we would like to highlight that despite being a simple modification, the implementation of such a model that is trainable in a reasonable time frame is non-trivial.
+.To generalise the model, following the recommendations in one of the comments, we have investigated applying the Transformer-style dot product attention that was presented in GaAN: Gated Attention Networks for Learning on Large and Spatiotemporal Graphs
+.(Zhang et al. 2018)
+..
+.We believe that this additional investigation, accompanied by marginally improved results on Tox21 for dot product attention (Mean test AUCs: WIRGAT 0.838 +/- 0.007, ARGAT 0.837 +/- 0.007) enhance model contributions of the paper.
+.We also consider the poor results on MUTAG to be significant and informative for the rest of the community in developing more powerful models that can be applied to relational graphs.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"> “The results are not strong. And, unfortunately, the model contribution currently is too modest.”
+"	NOOOOOONNNNNEEEE
+I find the observations interesting, but the contribution is empirical and not entirely new. It would be nice if there were some theoretical results to back up the observations.	RES	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Although our primary contributions are empirical, we also provided a detailed theoretical discussion in section 2, where we give a clear and simple account of why the two regimes arise.
+.Although previous authors have also discussed some of these results, there are differences between our conclusions, as we discussed in our responses to the other two reviewers.
+.We would also like to emphasize that we make a significant contribution to the debate regarding SGD and generalization.
+.While many papers have proposed that small batches may generalize better than large minibatches, it was recently pointed out by Shallue et al. that none of these experiments provide convincing evidence for this claim, because no experiment to date has compared small and large batch training under a constant step budget with a realistic learning rate decay schedule while independently tuning the learning rate at each batch size.
+.We are the first to run this experiment and conclusively establish that SGD noise does enhance generalization in popular models/datasets.
+.We believe this is an important contribution.
+.We also provide intriguing results as we vary the epoch budget, which demonstrate that the optimal learning rate which maximizes the test accuracy does not decrease as the epoch budget rises.
+.This supports the notion that SGD has an optimal “temperature” which biases it towards solutions that generalize well.
+.Additional experiments in the appendix G go further and study how the optimal learning rate schedule changes as we increase the epoch budget.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Although I personally enjoyed reading the results that from control theory perspective are inline with GAN literature, the paper does not provide novel surprising results.	RES	"A1: As for novelty, we first thank you for acknowledging that understanding GANs from the control theory perspective is promising and enjoyable to read.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Finally, we added new results in Table 1 in the revision, which shows that the same technique of negative feedback can further improve the state-of-the-art method of SN-GAN [*5].
+.Specifically, we apply NF-GAN to SN-GAN [*5] and NF-GAN provides a significant improvement on the state-of-the-art inception score on CIFAR-10 (from 8.22 to 8.45).
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Indeed, as agreed by R#2, this is a major novel contribution that provides a unified and promising framework to model the stability of GANs, which includes some recent developments (e.g., Negative Momentum and Reg-GAN, See Sec. 4.1 and Appendix A&C) and also provides us a possibility to explore advanced tools in control theory (e.g., nonlinear control and modern control theory [*3]) to improve both the stability and convergence speed of GANs.
+.Then, as some useful examples, in this paper, we particularly showed that the technique of negative feedback can be leveraged to stabilize GANs and developed NF-GAN, which was proven to be effective in our experiments.
+"	NOOOOOONNNNNEEEE	"Q1: About the main concern on “novelty, improvement relative to the current state of the art implementations,  and non-linearity of G and D”:
+"	"Such results indicate that our technique of NF-GAN can still benefit the state-of-the-art variants of GANs (e.g., SN-GAN).
+"
+However, this limits the novelty of the results relative to existing literature.	RES	"A1: As for novelty, we first thank you for acknowledging that understanding GANs from the control theory perspective is promising and enjoyable to read.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Finally, we added new results in Table 1 in the revision, which shows that the same technique of negative feedback can further improve the state-of-the-art method of SN-GAN [*5].
+.Specifically, we apply NF-GAN to SN-GAN [*5] and NF-GAN provides a significant improvement on the state-of-the-art inception score on CIFAR-10 (from 8.22 to 8.45).
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Indeed, as agreed by R#2, this is a major novel contribution that provides a unified and promising framework to model the stability of GANs, which includes some recent developments (e.g., Negative Momentum and Reg-GAN, See Sec. 4.1 and Appendix A&C) and also provides us a possibility to explore advanced tools in control theory (e.g., nonlinear control and modern control theory [*3]) to improve both the stability and convergence speed of GANs.
+.Then, as some useful examples, in this paper, we particularly showed that the technique of negative feedback can be leveraged to stabilize GANs and developed NF-GAN, which was proven to be effective in our experiments.
+"	NOOOOOONNNNNEEEE	"Q1: About the main concern on “novelty, improvement relative to the current state of the art implementations,  and non-linearity of G and D”:
+"	"Such results indicate that our technique of NF-GAN can still benefit the state-of-the-art variants of GANs (e.g., SN-GAN).
+"
+2) although there must be some small innovations, I thought that all the results had more or less been proven by Dupuis and co-authors:	RES	NOOOOOONNNNNEEEE	"One of our contribution is applying standard mathematical tools to a specific machine learning problem.
+.Finally, another contribution is that we propose a discretized algorithm.
+.Although Dupuis& et.al's work establishes beautiful and complicated mathematical theory for replica exchange Langevin diffusions, they does not consider the discretization at all.
+.In practice, we can only use the discretized one instead of the ideal continuous process to solve problems.
+.Our theory quantifies the discretization error and convergence rate and hence, ensures the validity to use the discretized algorithm.
+"	NOOOOOONNNNNEEEE	"We acknowledge that our analysis tools is standard and not fancy in mathematics.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"However, this is not a mathematics conference after all.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Although this work is inspired from Dupuis's work, their setting is MCMC and they only investigate by large deviation.
+.We quantify the acceleration effect by both large deviation and chi^2 divergence.
+.Besides, the large deviation rate function in our paper is different with that of Dupuis's since we use an alternative approach.
+.We choose such a form of rate function because it is connected to the Dirichlet form, and hence, the convergence of chi^2 divergence.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+It was kind of surprising that the authors did not cite this paper given the results are pretty much the same.	RES	NOOOOOONNNNNEEEE	"The method is different from ours, except in the limiting case where M = 1 and beta =1, in which case it coincides with the beta-VAE and also with our method.
+.After taking a close look, we make the following observations:
+.For M > 1, the IWAE bound does not admit a decomposition like the standard ELBO (see equation 29 and 36) into a reconstruction loss term and a regularization term.
+.In particular, this implies we cannot trade-off reconstruction fidelity for learning more meaningful representations by incorporating bottleneck constraints.
+.See ensuing discussion in p.18 following equation 36.
+.The IWAE bound is known to be equivalent to the ELBO in expectation with a more complex approximate posterior qIW (see p.17, equation 34 and 35 and references therein in Appendix E.1).
+.For beta values other than 1, a naive trick would be to plant qIW in liue of qphi in equation 37 (p. 18) to get a beta-IWAE of sorts.
+.It is not entirely clear however, why we would want to do so when modulating beta already suffices to tune the VAE towards autoencoding (low beta) or autodecoding behavior (high beta) depending on the requirement at hand.
+.A similar argument goes in the direction of an ""Importance weighted Variational Information Bottleneck"".
+.We have not explored if and how using more expressive posteriors such as the qIW (p. 17, equation 35) can help the supervised bottleneck formulations in VDB or VIB.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We are now also citing the paper Yuri Burda, Roger Grosse, Ruslan Salakhutdinov. Importance Weighted Autoencoders. ICLR 2016.
+"	NOOOOOONNNNNEEEE	"This remains a scope for future study.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"In contrast, our method has a tuning parameter beta.
+"
+A lot of the times, the result seem to be a derivative of the work by Bietti and Mairal, and looks like the main results in this paper are intertwined with stuff B+M already showed in their paper.	RES	NOOOOOONNNNNEEEE	"We discuss the novelty aspects in our general response ( https://openreview.net/forum?id=HkMlGnC9KQ&noteId=S1eid00WaQ ) and will be happy to clarify this in the paper.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+- Page 7 offers a result (expression for the Dirichlet form), which is hardly more than an exercise for anybody familiar with Markov Chains theory.	RES	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Again, this follows from known results.	RES	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Many of the results have been already presented in	RES	NOOOOOONNNNNEEEE	"We address the comments about novelty in our general response ( https://openreview.net/forum?id=HkMlGnC9KQ&noteId=S1eid00WaQ ), for instance concerning the relationship to previous work, and the regularization penalty ||f||_M we propose.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"More detailed comments are addressed below.
+"	NOOOOOONNNNNEEEE
+While I wish there were more such studies -- as I believe reproducing past results experimentally is important, and so is providing practical advice for practitioners -- this work in many parts hard to follow, and it is hard to get lot of new insight from the results, or a better understanding of GANs.	RES	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"[A] Our paper presents many useful insights, namely: NS-GAN performs well, spectral norm is a good default normalization technique, gradient penalty should also be considered, even in combination with spectral norm but will cost substantially more in terms of computational resources, popular metrics such as KID and FID result in the same relative ordering of the models so there is no point in computing both, most Resnet tricks do not matter, etc.
+.All of these insights are supported by a fair and unbiased rigorous experimental process.
+.On top of that, our experiments are reproducible (as already reported by other works), we shared the resulting code and the pre-trained models.
+"	NOOOOOONNNNNEEEE	"[Q] Limited amount of new insight.
+"	NOOOOOONNNNNEEEE
+For example, “Fuzzy Choquet Integration of Deep Convolutional Neural Networks for Remote Sensing” by Derek T. Anderson et al.	BIB	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"The referenced paper mimics the Choquet integral to fuse different neural networks such as CaffeNet, GoogLeNet, and ResNet50 that have been pre-trained for classification problems and can be viewed as ensemble method for multiple noisy classifiers.
+.Contrary, we are interested in regression problems that have inherent non-additive effect such as automatic summarization.
+.Furthermore, the referenced paper is much closer to the Choquet as we intent to be.
+.As we describe in the paper, the proposed architectures are only inspired by the Choquet integral.
+.This idea can be found in both of our architectures.
+.In Figure 1c, u_i and in Figure 1d g_i * u_i model these meaningful intermediate values.
+.We do not claim that we obtain any theoretical guarantees or properties of the Choquet integral.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+See http://www.stat.cmu.edu/~ryantibs/convexopt-S15/scribes/08-prox-grad-scribed.pdf for a reference.	BIB	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+- Yuri Burda, Roger Grosse, Ruslan Salakhutdinov. Importance Weighted Autoencoders. ICLR 2016	BIB	NOOOOOONNNNNEEEE	"The method is different from ours, except in the limiting case where M = 1 and beta =1, in which case it coincides with the beta-VAE and also with our method.
+.After taking a close look, we make the following observations:
+.For M > 1, the IWAE bound does not admit a decomposition like the standard ELBO (see equation 29 and 36) into a reconstruction loss term and a regularization term.
+.In particular, this implies we cannot trade-off reconstruction fidelity for learning more meaningful representations by incorporating bottleneck constraints.
+.See ensuing discussion in p.18 following equation 36.
+.The IWAE bound is known to be equivalent to the ELBO in expectation with a more complex approximate posterior qIW (see p.17, equation 34 and 35 and references therein in Appendix E.1).
+.For beta values other than 1, a naive trick would be to plant qIW in liue of qphi in equation 37 (p. 18) to get a beta-IWAE of sorts.
+.It is not entirely clear however, why we would want to do so when modulating beta already suffices to tune the VAE towards autoencoding (low beta) or autodecoding behavior (high beta) depending on the requirement at hand.
+.A similar argument goes in the direction of an ""Importance weighted Variational Information Bottleneck"".
+.We have not explored if and how using more expressive posteriors such as the qIW (p. 17, equation 35) can help the supervised bottleneck formulations in VDB or VIB.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"* In relation to the connection to IWAE, we have included a detailed discussion in Appendix E.1.
+.We are now also citing the paper Yuri Burda, Roger Grosse, Ruslan Salakhutdinov. Importance Weighted Autoencoders. ICLR 2016.
+"	NOOOOOONNNNNEEEE	"This remains a scope for future study.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"In contrast, our method has a tuning parameter beta.
+"
+I do not see much insight into the problem.	PDI	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"1- There are two reasons that concept and problem embedding are performed in this work.
+.Considering concept continuity is an important matter in education.
+.Having concept embedding, concept continuity can be reached as is discussed in the last paragraph on page 7 and some other examples are given in table 2.
+.By just having the most sophisticated concept extractor, the concept continuity cannot be retrieved.
+.Furthermore, problem embedding is used by the recommender system to project the performance of students on the problems they solved onto other problems that they have not solved.
+.This way, we have an idea of what problems should be recommended to them and which problems should not by having an evaluation of their ability to solve unseen problems and recommend problems in the boundary of their capacity, not way beyond, and to recommend problems in a way that covers all concepts necessary for students to learn.
+.We have observed interesting patterns, e.g. similar problems are more likely to be solved correctly at the same time or wrong at the same time.
+.Note that by just having the concepts of problems that are not in numerical form, performance projection may not be feasible and there is a need for using other methods like embedding.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+The main problem with this paper is that it is difficult to identify its main and novel contributions.	PDI	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"(i) For single-layer random variables (RVs), we propose a unified gradient named GO by exploiting the integration-by-parts idea, which is applicable to continuous/discrete RVs.
+.In the special case of single-layer continuous RVs where GO recovers Implicit Rep or pathwise gradients, we consider it’s our contribution to provide a principled explanation (via integration-by-parts) why Implicit Rep and pathwise gradients have low Monte Carlo variance; or in other words, we prove that their implicit differentiation originates from integration-by-parts.
+.(ii) For multi-layer RVs, our main contribution is the discovery that with GO (or in other words, the introduced variable-nabla), one can back-propagate gradient information through a nested combination of nonlinear functions and general RVs (including non-reparameterizable continuous RVs, back-propagating through which is challenging).
+.Another interpretation of this contribution is that GO enables generalizing the deterministic chain rule to a statistical version.
+.Here, we refer to deterministic chain rule as back-propagating gradient through deterministic functions (like neural networks) or reparameterizable RVs (like Gaussian).
+.By contrast, statistical chain rule is referred to as back-propagating gradient through more general RVs (including non-reparameterizable ones).
+.Of course, statistical chain rule recovers deterministic chain rule for deterministic functions and reparameterizable RVs, because GO recovers the standard Rep.
+.(iii) Another 2 minor contributions include Lemma 1 and Corollary 1.
+.In Lemma 1, we explicitly prove that our deep GO gradient contains the standard Rep as a special case, in general beyond Gaussian.
+.Note neither Implicit Rep nor pathwise gradients can recover Rep in general, because a neural-network-parameterized reparameterization usually leads to a nontrivial CDF.
+.In Corollary 1, we reveal the fact that the proposed method degrades into the classical back-propagation algorithm under specific settings.
+.Finally, we believe it is interesting to create a consistent architecture, which unifies (a) a GO gradient which contains many popular gradients as special cases, and (b) a more general statistical chain rule developed based on GO which recovers the well-known deterministic chain rule under specific cases.
+"
+Summarizing, the paper addresses a relevant problem but they do not state which their main contributions are, and reintroduce some ideas previously published in the literature.	PDI	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+At the conceptual level, the idea of jointly modeling local video events is not novel, and can date back to at least ten years ago in the paper “Learning realistic human actions from movies”, where the temporal pyramid matching was combined with the bag-of-visual-words framework to capture long-term temporal structure.	PDI	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We now have added related work about video compositional methods in section 2.3 in the second version of the paper.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"1.	Thank you for the insightful suggestion.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+The idea of having a separate class for out-distribution is a very interesting idea but unfortunately previously explored.	PDI	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+1) Although the ensemble idea is new, the idea of selective self-training is not novel in self-training or co-training of SSL as in the following survey.	PDI	NOOOOOONNNNNEEEE	"The formulae of the softmax and sigmoid are as follows.
+.The softmax function : exp(f_j(z)) / sigma(exp(f_k(z))
+.= 1 / ( 1 + exp(-f_j(z)) × (exp(f_1(z)) + ... + exp(f_j-1(z)) + exp(f_j+1(z)) + ... exp(f_n(z)))
+.The sigmoid function : 1 / (1 + exp(-g(z)))
+.where z, f(z), and g(z) represent the final layer of the backbone network, classification network, and selection network respectively.
+.As you said, if f_j(z) is very high and the other f(z)s are moderate, it can work like sigmoid.
+.However, even if f_j(z) is not much high, the softmax output can be close to 1 with extremely smaller values for other f(z)s
+.because:
+.The softmax output : 1 / ( 1 + exp(-f_j(z)) × 0) = 1
+.We experimented with a high softmax output threshold (epsilon = 10^(−4)).
+.Although epsilon was 10^(−4) (threshold = 0.9999), an average of about 800 unlabeled data was added for the case of 100% of the non-animal data.
+.Even at 0% of the non-animal data, performance is lower than the fixed mode of the sigmoid.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"A: We do not agree with your opinion.
+.This shows the limitation of thresholding with softmax.
+.The result of new SSL problems on the CIFAR-10 dataset with 5 runs are as follows:
+.————————————————————————————
+.activation function / softmax (error/added data) / sigmoid (error/added data)
+.————————————————————————————
+.supervised
+./
+.( 22.27 / 0 )
+.————————————————————————————
+.0%
+./
+.(18.27 / 4,306.8)
+./
+.(17.84/2,338.8 )
+.25%
+./
+.(18.35 / 3,350.4 )
+./
+.(18.38 / 1470.0 )
+.50%
+./
+.( 18.72 / 2580.0 )
+./
+.(19.04 / 811.2 )
+.75%
+./
+.(20.33 / 1,711.2 )
+./
+.( 20.07 / 315.6 )
+.100%
+./
+.(20.71 / 864.0 )
+./
+.( 20.24 / 1.2 )
+.————————————————————————————
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+The idea that introduces labels in VAE is not novel.	PDI	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"(Use of labels and novelty) In GR-based approaches, the quality of generated samples is crucial to keep the performance of previous tasks.
+.If we use labels, we can construct a conditional generative model.
+.Generally, conditioning on a generative model yields higher quality samples than unconditional one and makes it possible to generate class-balanced samples [4]; the importance of conditional generation is also described in section 6.1 in our paper.
+.In this paper, we showed that discriminative regularization could make VAE possible to conduct both class conditional generation and classification with one integrated model.
+.Thus, we do not need to train an additional classifier, e.g., deep CNN, which is necessary for other works, including Narayanaswamy et al. There is also classifier integrated VAE such as [6].
+.The difference with [6] is the use of class-conditional priors; more details are explained at the response (Difference with CDVAE) for reviewer 3 and section 4.1 in our paper.
+"
+At a high level, the idea of imposing a mixture of gaussian structure in the feature space of a deep neural network classifier is not new.	PDI	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We clarified this in Section 2.1 of the revised draft.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"The main difference between our method and [1, 2] is that we do not directly train the Gaussian mixture model, i.e., generative classifier but we post-process it on hidden feature spaces of pre-trained deep models.
+.In addition, we study a robust inference method to handle noisy labels in training samples, while they did not.
+.Next, [3,4] also assume clean training labels, and aim for detecting abnormal test samples after ’clean’ training.
+.Therefore, a comparison with [1, 2, 3, 4] is not straightforward as our goal is different.
+"	NOOOOOONNNNNEEEE	"Q1. Comparison with [1, 2, 3, 4].
+"	NOOOOOONNNNNEEEE
+The idea to extend the use of VAE-GANs to the video prediction setting is a pretty natural one and not especially novel.	PDI	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+- The idea is a simple extension of existing work.	PDI	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"While the weight formats after model compression follow well known ones, our model compression method is significantly different from the existing ones.
+.- Training models after compression in order to recover accuracy is as important (if not more) as compressing weights.
+.We have found that occasional distortions (not compressing weights for every mini-batch like previous techniques), relatively large learning rate, and training batches in full-precision (unlike previous ones which store compressed weights during entire training) would be the key to recovering or even increasing the accuracy.
+.- Exploring large search space in much wider area is suggested in this paper through large distortion step and large learning rate (note that many compression-aware techniques perform compression at every batch has distortion step of “1” while much smaller learning rate for retraining that normal training is chosen).
+.As we discussed in the paper, investigating various local minima is crucial for good model compression.
+.- Our pruning method is fundamentally different from the previous ones because we do not incorporate a masking layer.
+.While previous pruning ideas keep zero weights during training, we do not have any zero weights at any moment except at the weight distortion step.
+.- Our low-rank approximation is also unique one since 1) we do not alter the structure for training even after performing SVD, 2) very high learning rate associated with transient accuracy loss is allowed for DeepTwist, and 3) we change SV spectrum continuously while the previous ones perform SVD only once (in practice, retraining low-rank approximated model has been considered to be very difficult, if not impossible).
+.- Even though our pruning method is even simpler compared to the previous ones, compression rate is significantly better or very close to the one based on sophisticated Bayesian inference model.
+.- Low-rank approximation results on PTB (Figure 2) shows even higher compression rate compared with weight pruning (Table 3), which is surprising to us because pruning has been known to show much higher compression ratio compared with SVD (fine-grain vs. coarse-grain or structured).
+.- Quantization is performed also in a very different way.
+.Unlike previous ones, we do not consider quatization during
+.training. “Do not perform quantization at every batch, but instead recover accuracy through full-precision training, high learning rate, and occasional quantization” is the key message.
+.- Overall, our occasional compression is a significant one since we can greatly reduce amount of computation overhead from compression.
+.If our technique is a simple extension from the previous ones, we could not obtain such impressive results with high compression rate and improved accuracy.
+.We believe that our paper suggests a wide view on how model compression should be performed.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Although the idea seems to be interesting, the paper seems to be a bit incremental and is a simple application of existing GAN techniques.	PDI	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+The main reason is that from the narration, I cannot figure out what is the idea or technique of other works and what is the contribution of this paper.	PDI	NOOOOOONNNNNEEEE	"First, we address the catastrophic forgetting problem in continual learning.
+.Thereby we introduce Dynamic Generative Memory (DGM) - an adversarially trainable generative network endowed with neuronal plasticity through efficient learning of sparse attention mask for layer activations.
+.Hereby we extend the idea of [2] to generative networks.
+.We highlight the differences to DGR [3] in the Sec. 2 of our work.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"1. We first want to point out the main contributions of the paper.
+"	NOOOOOONNNNNEEEE
+ii) Although the idea of generating contrastive explanations is quite interesting, it is not that novel.	PDI	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Response: Dhurandhar et al. does use the term constrastive explanation.
+.However, they look at the question of ""why A?""  Contrastive in their case
+.refers to whether something is or is not present that drives the
+.classification of ""A.""  This is a different constrast than ours
+.that
+.contrasts ""A"" to ""B"" (rather than ""present for A"" to ""absent for A"").
+.We think this is also an interesting form of explanation, but a different
+.one.
+.Kim et al. also has a different form of model criticism; they look at the
+.dataset as a whole for examples that help explain.
+.We look at a different
+.problem: for a given example (perhaps not even from the training set),
+.why is it not class B?
+"	NOOOOOONNNNNEEEE	"Comment: Although the idea of generating contrastive explanations is
+.quite interesting, it is not that novel. See Kim et al., NIPS’16,
+.Dhurandhar et al., arXiv:1802.07623.
+"	NOOOOOONNNNNEEEE
+Last comment is that, although the concept of `deficiency` in a bottleneck setting is novel, the similar idea for tighter bound of log likelihood has already been pursed in the following paper:	PDI	NOOOOOONNNNNEEEE	"The method is different from ours, except in the limiting case where M = 1 and beta =1, in which case it coincides with the beta-VAE and also with our method.
+.After taking a close look, we make the following observations:
+.For M > 1, the IWAE bound does not admit a decomposition like the standard ELBO (see equation 29 and 36) into a reconstruction loss term and a regularization term.
+.In particular, this implies we cannot trade-off reconstruction fidelity for learning more meaningful representations by incorporating bottleneck constraints.
+.See ensuing discussion in p.18 following equation 36.
+.The IWAE bound is known to be equivalent to the ELBO in expectation with a more complex approximate posterior qIW (see p.17, equation 34 and 35 and references therein in Appendix E.1).
+.For beta values other than 1, a naive trick would be to plant qIW in liue of qphi in equation 37 (p. 18) to get a beta-IWAE of sorts.
+.It is not entirely clear however, why we would want to do so when modulating beta already suffices to tune the VAE towards autoencoding (low beta) or autodecoding behavior (high beta) depending on the requirement at hand.
+.A similar argument goes in the direction of an ""Importance weighted Variational Information Bottleneck"".
+.We have not explored if and how using more expressive posteriors such as the qIW (p. 17, equation 35) can help the supervised bottleneck formulations in VDB or VIB.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"* In relation to the connection to IWAE, we have included a detailed discussion in Appendix E.1.
+.We are now also citing the paper Yuri Burda, Roger Grosse, Ruslan Salakhutdinov. Importance Weighted Autoencoders. ICLR 2016.
+"	NOOOOOONNNNNEEEE	"This remains a scope for future study.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"In contrast, our method has a tuning parameter beta.
+"
+* the idea of smoothing gradients is not new	PDI	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We agree with that the smoothing gradient idea, especially the Gaussian smoothing technique, is not new, since the smoothing strategy could be used in many different scenarios.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"However, we motivate and derive the idea of smoothing the gradient based on our novel understanding on the transferability of adversarial examples between two models.
+.To the best of knowledge, we are the first to derive and apply this technique to enhance the transferability of adversarial examples, whose significant improvement is also confirmed by our intensive experiments.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+- the idea is trivial and simple. I don't think there's significant novelty here: all the components are existing and combining them seems very trivial to me.	PDI	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We undertook an extensive initial phase of experiments where we discovered non-trivial contributions for achieving SOTA performance and fast convergence.
+.- To the best of our knowledge, our specific implementation of entity pre-training is novel.
+.Our technique can be ported to other neural, multi-task setups with a strong dependence between tasks (e.g. where a model must learn to perform some task before attempting to learn one or more dependent tasks jointly).
+.For example, we have already begun porting this scheme to a neural cross-lingual summarization project of ours.
+.Entity pre-training accounted for a 0.63% increase in our ablation experiment.
+.On the CoNLL04 test set, it accounts for a 1.26% boost in performance, which is large relative to historic improvement on this corpus [1].
+.- As opposed to previous models (e.g. [2], [3]) we were able to drop all recurrent architectures, which reduced training times substantially.
+.Our work is one of the first architectures for joint NER and RE to do this.
+.Because previous papers do not report their training times, we contacted the authors of a comparable method [4] for their training times and found that our method converged between 3-35X times faster for the ACE04, ADE, and CoNLL04 corpora (keeping in mind that we did not train on the same hardware).
+.The large range in our estimate is because [4] trained for a wide range (60-200) of epochs.
+.Our model serves as a strong baseline for future studies on joint NER and RE architectures and provides guidance on how to best integrate a pre-trained language model into such an architecture.
+.For the ADE corpus in particular, we advance SOTA RE performance by >10%, which is substantially larger than improvements have been historically [5].
+.It is also complementary to [6] (published in ACL this year), by demonstrating similar performance without the need for templated queries, which, as pointed out in our introduction, may become a limiting factor where domain expertise is required to craft such questions (e.g., for biomedical or clinical corpora).
+"	NOOOOOONNNNNEEEE	"Regarding your comments about the triviality of our paper,
+.In particular:
+"	NOOOOOONNNNNEEEE
+However, the paper contains only little novelty and does not provide sufficiently new scientific insights.	OAL	NOOOOOONNNNNEEEE	"And as Beluch et al. (2018) showed, this can be valuable in an active learning setting.
+.We thank the reviewer for pointing us to the work of Huand et al. Indeed this is an interesting method that would allow us to most likely achieve similar or better results with less computational overhead.
+.Taking into account more advanced ensemble methods is definitely of interest.
+"	NOOOOOONNNNNEEEE	"The work of Lakshminarayanan et al. indeed showed that deterministic ensembles can improve on the performance of MC-dropout techniques and provides a foundation for ours.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"This is definitely something we will consider for future work, but it is somehow out of the main scope of the paper, which was to show the power of combining MC-dropout with ensembles in the active learning setting.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"However, our work differs in two major ways:
+.i) We focus on showing the uncertainty representation in these methods suffer from overconfident predictions and that combining the two methods into a stochastic ensemble can be of great benefit and improve on the quality of the uncertainty.
+.ii) We believe the true novelty to be in applying them in an active learning setting, and in particular on a small dataset problem (i.e. the size of the final dataset acquired during AL is only a small fraction of the entire available unlabelled dataset).
+.As you mentioned, data is notoriously scarce and deep learning methods rarely work on small dataset problems.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Originality: The work is moderately original.	OAL	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+But I'm concerned with the novelty and contributions of this paper.	OAL	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We agree that some of our observations under constant epoch budgets in sections 2 and 3 have been made in previous work.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"However there are also several important differences:
+"	NOOOOOONNNNNEEEE
+In summary, the quality of the paper is poor and the originality of the work is low.	OAL	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Overall, this paper is good, but is not novel or important enough for acceptance.	OAL	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"As for the novelty of this method, although it seems more like an engineering solution, we believe that it makes a significant contribution in the field of deep active learning.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Overall, I think this paper is not good enough for an ICLR paper and the presentation is confusing in both its contributions and its technical novelty.	OAL	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We don’t claim to be the first to generate questions from logical form, but the experiments within show that our approach is superior to standard approaches in the literature.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+I believe the primary claim of this paper is neither surprising nor novel.	OAL	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Assessment: Overall, this is a borderline paper, as the task is interesting and novel, but the presentation is lacking in technical detail and there is a lack of novelty on the modeling side.	OAL	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+The only issue with this paper is its degree of novelty, which is narrow.	OAL	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"[A1] As the reviewer pointed out, we adopted the partial components with the previously proposed techniques or methodologies.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Also, if we take a naive pipelined approach of iterative training between the hierarchical Gaussian mixture model and representation learning, then this work would be an obviously incremental work.
+.[A2] VAE imposes a single Gaussian prior on embeddings, which leads to 1) the over-regularization, and 2) poor representations [1,2,5].
+.Therefore, the recently published researches can be divided into two branches: 1) designing of an objective function by introducing the additional regularized terms, or 2) constructing of a more flexible prior.
+.Our work attempts to the latter approach, which proposes a new prior called a hierarchical-versioned Gaussian mixture distribution prior to the first trial of hierarchical density estimation in the embedding space.
+.Another work of the latter approach is:
+.- Variational Deep Embedding (VaDE) [3]: VAE+GMM
+.- VAE-nCRP [4]: VAE+(nCRP+GMM)
+.- VAE with a VampPrior [5]: VAE+ a variational mixture of posteriors prior.
+.The contribution of these studies lies on 1) the formalization as a unified model based on the newly proposed prior, though not the original technique proposed by the authors, and 2) demonstrating the superiority of the prior.
+"	NOOOOOONNNNNEEEE	"[Q] The only issue with this paper is its degree of novelty, which is narrow.
+"	"The theoretical contribution of our study can be considered in conjunction with the unified model based on the fully Bayesian approach of the probabilistic graphical model and the neural network.
+.Additionally, we tuned the several detailed heuristic algorithms for operations such as GROW, PRUNE, and MERGE.
+"
+Hence, I am not very sure whether the novelty of the paper is significant.	OAL	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Overall, this appears to be a board-line paper with weak novelty.	OAL	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+This was a fun, albeit incremental paper.	OAL	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+The paper is overall well written and intuitive but limited in evaluation and novelty (see e.g. [1,2] ) with only limited modifications (sharing low-level controller) for the multi agent case.	OAL	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+My main concern comes from the novelty of this paper.	OAL	NOOOOOONNNNNEEEE	"We provide clarification for the two main questions of the Reviewer below.
+.Novelty of the paper
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+If the novelty is in applying to continual learning and new datasets, it is not clear that this is sufficient.	DAT	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"(Difference with CDVAE) To clarify the difference our DiVA with CDVAE, we write derivations for both models here.
+"	"CDVAE: $\mathbb{E}_{q_{\theta}\mathrm{(z|x)}}[\mathrm{log}\ p_{\theta '}(\mathrm{x|z)}] - D_{KL}[q_{\theta}\mathrm{(z|x)} || p\mathrm{(z)]} + \lambda \mathbb{E}_{q_{\theta}\mathrm{(z|x)}}[\mathrm{log}\hat{p}_{\phi '}\mathrm{(c|z)}]$
+.DiVA: $\mathbb{E}_{q_{\theta}\mathrm{(z|x)}}[\mathrm{log}\ p_{\theta '}(\mathrm{x|z)}] - D_{KL}[q_{\theta}\mathrm{(z|x)} || \hat{q}_{\phi}\mathrm{(z|c)]} + \lambda \mathbb{E}_{q_{\theta}\mathrm{(z|x)}}[\mathrm{log}\ \hat{p}_{\phi '}\mathrm{(c|z)}]$
+.As we discussed in section 4.1, below the table for Algorithm 1, the key difference is that we consider class-conditional Gaussian distributions as priors for variational posteriors.
+.Since CDVAE assumes the prior as unit Gaussian for all classes and optimizes classification loss simultaneously with the KL divergence, the latent space does not follow the prior exactly.
+.As a result, CDVAE sometimes generates ambiguous samples (Figure 2 (c)).
+.Interestingly, RtF [1] also does not consider the class-conditional priors even though they consider a classifier integrated VAE similar to CDVAE.
+.In contrast, we assume class-wise specific Gaussian for each class.
+.As a result, we can stably generate more realistic samples than CDVAE.
+"
+With lack of clear novel insights, or at least more systematic study on additional datasets of the 'winning' techniques and a sensitivity analysis, the paper does not give a valuable enough contribution to the field to merit publication.	DAT	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"[A] We respectfully disagree: we believe that for GAN practitioners our paper presents many useful insights, namely: NS-GAN performs well, spectral norm is a good default normalization technique, gradient penalty should also be considered, even in combination with spectral norm but will cost substantially more in terms of computational resources, popular metrics such as KID and FID result in the same relative ordering of the models so there is no point in computing both, most resnet tricks do not matter, etc.
+.All of these insights are supported by a fair and unbiased rigorous experimental process.
+.On top of that, our experiments are reproducible (as already reported by other works), we shared the resulting code and the pre-trained models.
+"	NOOOOOONNNNNEEEE	"[Q] With lack of clear novel insights, or at least more systematic study on additional datasets of the 'winning' techniques and a sensitivity analysis, the paper does not give a valuable enough contribution to the field to merit publication.
+"	NOOOOOONNNNNEEEE
+"3. The authors argue in their rebuttal that ""the grid"" is a novel idea that warrants investigation, but remark in figure 5 that likely it isn't the key aspect of their algorithm."	MET_TNF	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+The idea of using a constrained formulation is not novel either (constrained MDPs have been thoroughly studied since Altman (1999)).	PDI_RWK	NOOOOOONNNNNEEEE	"a) We introduce pointwise, per-state constraints to learn more consistent behavior compared a single global constraint, and regress the resulting state-dependent Lagrangian multipliers using a neural network to exploit generalization across similar states.
+.b) Instead of recombining the reward and cost directly on the environment side and learning a single value estimate, we train a critic network to output both return and penalty value estimates as well as the Lagrangian multipliers themselves, effectively providing more structure to the critic.
+.We only combine the different terms appropriately for the actor update.
+.c) We show that we can train a single, bound-conditional policy that can optimize penalty across a range of bounds and can be used to dynamically trade off reward and penalty.
+"	NOOOOOONNNNNEEEE	"We are glad that the reviewer agrees that we are tackling a long standing and important problem and acknowledge the fact that neither the definition of constrained MDPs nor the application of Lagrangian relaxation to solve these problems is novel by itself.
+.We should have stated our exact technical contributions more clearly and have adapted the paper to do so.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"For completeness we will list these below:
+"	NOOOOOONNNNNEEEE
+Simply because for continuous variables similar experiments have been reported before	EXP	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Even though the proposed approach seems to have significant potential, the experimental	EXP	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+Also, I find the experiments done in section 3 and 4 are similar to previous works and even the conclusions are similar.	EXP	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"It is true that a number of papers in recent years have claimed that SGD noise enhances generalization.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Our paper is the first to relate the two regimes of SGD to the popular analogy between SGD and stochastic differential equations (SDEs).
+.As we show in sections 4 and 5, this perspective is crucial to understanding the influence of batch size and learning rate on test accuracy.
+.A common criticism of this analogy is that SGD noise is not Gaussian when the batch size is small.
+.To our knowledge, we are the first to show that the analogy between SGD and SDEs holds for non-Gaussian short-tailed noise (appendix B).
+.However Shallue et al. recently argued no previous work had provided convincing empirical evidence for this claim.
+.Indeed in their abstract, they state ‘We find no evidence that larger batch sizes degrade out-of-sample performance’.
+.In another recent paper, Zhang et al. argued that optimization in deep learning is well described by a noisy quadratic model which predicts that increasing the batch size should always enhance performance under constant step budgets.
+.Crucially, to establish that SGD noise enhances generalization, one must show that small batch sizes generalize better than large batch sizes under constant step budgets, with realistic learning rate decay schedules, and one must independently tune the learning rate at each batch size.
+.In section 4, we are the first authors to perform this experiment and confirm that the final test accuracy of SGD does degrade for very large batch sizes under both constant epoch and constant step budgets, contradicting the claims of both Shallue et al and Zhang et al.
+.Furthermore, we show in section 5 that the optimal SGD temperature which maximizes the test accuracy is almost independent of the epoch budget.
+.These results provide the first convincing empirical evidence that SGD noise does enhance generalization in well-tuned networks with learning rate decay schedules.
+.We believe this is an important contribution.
+"	NOOOOOONNNNNEEEE	"Turning to our generalization experiments in sections 4 and 5.
+"	NOOOOOONNNNNEEEE
+The experiments currently demonstrate that optimizing both controller and hardware is better than optimizing just the controller, which is not surprising and is a phenomenon which has been previously studied in the literature.	EXP	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"By “optimizing both G and theta”, we meant to indicate that the learned controllers can be transferred to the next generation even if the topologies are changed (instead of throwing away old controllers).
+.We note that only NGE among all the baselines has the ability to do that.
+.Graph neural network formulation is KEY here, enabling it to perform this efficient policy transfer.
+.To the best of our knowledge, the traditional methods require re-optimizing theta from scratch for each different topology, which is computationally demanding and breaks the joint-optimization.
+.NGE approximately doubles the performance of previous approach (Sims, 1994) as shown in Q1.
+"	NOOOOOONNNNNEEEE	"Q2: a) Optimizing both the controller and the hardware has been previously studied in the literature.
+.Is it worth using a neural graph?
+.b) All algorithms should optimize both G and theta for a fair comparison.
+.Please refer to Section 3.1 and Section 3.4 for more details.
+"	NOOOOOONNNNNEEEE
+Originality: Given the existing body of literature, I found the technical novelty of this paper rather weak. However, it seems the experiments are thoroughly conducted.	EXP	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We would like to reiterate that the novelty of the paper is <i>twofold.</i>
+.First and foremost, we propose the use of a novel variational approximate posterior that shares the nonlinear dynamics with the generative model.
+.This feature is powerful because it uses known information about the true posterior in the design of the approximate one.
+.Naively, the feature also seems to be a curse because the variational approximation is rendered intractable for the case of nonlinear dynamics.
+.This is the reason why such approximate posteriors have not been proposed before.
+.We have added a sentence in the introduction emphasizing this crucial point.
+.The second novelty is a method to deal with this intractability, via the Laplace approximation and the fixed-point iteration method.
+.We showed that the resulting algorithm, which intercalates a gradient step and a FPI step yields very good results in well-known, difficult tasks such as dimensionality expansion in the single cell data or the WFOM task.
+"	NOOOOOONNNNNEEEE	"3. ""Given the existing body of literature, I found the technical novelty of this paper rather weak""
+"	NOOOOOONNNNNEEEE
+If this all is indeed the case, it is not surprising that the numbers the authors get in the experiments are so similar to WAE-MMD, because CWAE would be exactly WAE-MMD with a specific choice of the kernel.	EXP	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We fully agree with the reviewer, that CWAE is a model based on the kernel as the divergence measure for distributions, and consequently can be seen as a modified variant of WAE-MMD (we have added the respective comments in the paper, see the extended introduction, and added a section B in the appendix, which discusses the comparison in more details).
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"Due to the properties of the constructed Cramer-Wold kernel, we are able to substitute in the distance the sample estimation d(X,Y) of d(X,N(0,I)) given by its exact formula.
+.Consequently, the CWAE has, while being trained, potentially less stochastic perturbation then WAE-MMD.
+.CWAE, as compared to WAE-MMD, has no parameters (while WAE-MMD has two).
+.We observed that in many cases (like log-likelihood), the logarithm of the probability function works better, since it increases the role of examples with low-probability.
+.Thus, instead of using an additional weighting parameter lambda (as in WAE-MMD) whose aim is to balance the MSE and divergence terms, we decided to automatically (independently of dimension) balance the two terms of the loss function, by taking the logarithm of the divergence.
+.Moreover, since our kernel is naturally introduced with the sliced approach and kernel smoothing, the choice of regularization parameter is given by the Silverman's rule of thumb, and depends on the sample size
+.(contrary to WAE-MMD, where the parameters are chosen by hand, and in general do not depend on the sample size)
+..
+"	NOOOOOONNNNNEEEE	"POINTS 1 AND 2 OF THE REVIEW
+.The reviewer has noticed that the cw-distance resembles that of a U-statistic MMD estimate, and thus the proposed model very much resembles MMD itself.
+.However, there are some important, in our opinion, differences between those two models, which also result in an improved training speed and stability of CWAE compared to WAE-MMD (see refined experiments in section 5, as well as figures in the appendix showing comparisons between proposed CWAE and WAE and SWAE models in the Appendix).
+.The differences are:
+.The appropriate clarifications are given in the appendix B.
+"	"Summarizing, in the proposed CWAE model, contrary to WAE-MMD, we do not have to choose parameters.
+.Additionally, since we do not have the noise in the learning process given by the random choice of the sample from normal density
+.,  CWAE in generally learns faster than WAE-MMD, and has smaller dispersion of the cost-function during the learning process (see Figures 7 and 8, Appendix F).
+"
+However the theoretical contribution is poor. And the experiment uses a very classical benchmark providing simulated data.	EXP	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"We agree with the reviewer that our paper is not theoretically oriented, nor does it address any real world application like robotics or other challenging domain.
+.Our point is rather to provide a practical method performing well with respect to the state of the art, which is most often evaluated with the same widely used benchmarks.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+2. Although the experiments are detailed and interesting they support poor theoretical developments and use a very classical benchmark	EXP	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+- little methodological innovation or analytical explanations	ANA	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
+In the experiments, both the setting and the experimental results show that the proposed W_s will be very close to W_U. As a result, the improvement caused by the proposed method is incremental compared with its variants.	MET_EXP	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	"4. We do not consider W_s to be very close from W_U. As can be seen from Figure 6, for the aeroplane examples, W_U fails to capture aeroplane tires while W_s can.
+.Similarly for Chair example, W_s recovers better legs than W_U. Quantitatively, we highlight that W_s outperforms W_U consistently as shown in Table 1.
+.Thus, we consider both W_U and W_L is needed to generate good quality point clouds.
+"	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE	NOOOOOONNNNNEEEE
