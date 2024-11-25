@@ -1,0 +1,29 @@
+Even though the authors answer positively to each of their four questions in the experiments section
+However, I don’t know how effective this is in practice.
+Also, the title of the paper is about problem retrieval but the experiments are about similarity comparison, there seems a gap.
+The negation example is nice but this doesn't seem to display the potential power of the method to understand a neural network.
+3) The overall performance of the proposed SST in the experiments is not convincing and not promising.
+However, all experiments only show results in the MCAR setting, so the claim is not experimentally validated.
+* The experiments do not demonstrate that the model learns a meaningful *conditional* distribution for the missing modalities, since the provided figures show just one sample per conditioning image.
+7. ``Our experiments show that our networks can remember a large number of images and distinguish them from unseen images’’ -- this does not seem to be true, since the model is trained on both n as well as N -n ``unseen’’ images which it labels as the negative class, thus the negative class is also seen by the memorization model.
+3. In the experiments, there are large discrepancies between different optimizers on Cakewalk (e.g. SGA vs AdaGrad, Table 4).
+2. Though seemingly very important to the architecture, the purpose of constructing the super-graph g^{sup} in the training of C^{CAT} seems to be unclear to me.
+B. You don't schedule learning rates for your baseline methods except for a single experiment for some initial learning rate.
+I do not see these experimental settings mentioned anywhere in the paper, and this is very concerning.
+Overall, this is a reasonable paper but experimental section needs much more attention.
+Regarding the experiments on adversarial examples, I am not convinced of their relevance at all.
+4. [Experiments.] The author presented a multimodal representation learning framework for partially-observable multimodal data, while the experiments cannot corraborrate the claim.
+These synthetic setting can be used for sanity check, but cannot be the main part of the experiments.
+From the experimental perspective, the experimental evidence on "invertible boolean logic" does not seem to be very convincing for validating the approach.
+The experiments are not very convincing or illustrative of the theoretical results in my opinion.
+If that's true, then this distribution would be very bad for training a value function, which is supposed to involve an expectation over "nature"'s choices in the MDP.
+Second, the experiments are (as I understand it, but I may be wrong) in deterministic domains, which definitely does not constitute a general test of a proposed RL  method.
+On the other hand, it is hard to say what the _main_ contribution is, which in turn makes it difficult to evaluate whether the experimental evaluation is sufficient:
+Given the fact that it applies the same MLP independently to individual set members, it is obvious that it is not universal equivariant (for example, consider a function that performs a fixed permutation to its input), and I fail to see why the paper goes into the trouble of having theorems and experiments just to demonstrate this point. If there were any other objectives beyond this in the experiments could you please clarify?
+3) In the experiments, the accuracy values are too low for me.
+Actually in the experiments the authors never use an increasing batch size.
+Therefore,  the faster convergence demonstrated in the experiments can not be explained by Theorem 3.1 or Theorem 3.2.
+Viewing it as a “duality gap” seems to be far from the practical training.
+I’m not sure whether it is due to parameter choice or due to weak D/G networks used in the simulation.
+* The claim that training a separate decoder for each domain necessarily leads to prohibitive training times is dubious -- a single conditional decoder would arguably need more capacity than each individual separate decoder model.
+Another unjustified choice by the authors is their choice of weighing the Tensor term (when it is being added to two base embedding vectors) in the phrase similarity experiment.

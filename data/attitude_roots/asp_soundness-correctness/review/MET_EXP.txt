@@ -1,0 +1,4 @@
+I also have concerns about the independence assumption in their sampling distribution (Section 3.2), and the fact that their experiments use the same set of (untuned) hyperparameters for each method.
+- Providing the same computational budget seem rather arbitrary at the moment, and it heavily depends from implementation. How many evaluations do you perform for each method? why not having the same budget of experiments?
+The two things that make me more skeptical, is the convergence of the proposed algorithm and the experiments.
+However, the experimental comparison is not fair, the description of the model (e.g. how Choquet is integrated into the model and help to learn “intermediate meaningful results”) is not clear, some claims are not true.

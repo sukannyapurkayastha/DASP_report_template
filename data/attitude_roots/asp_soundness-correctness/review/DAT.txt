@@ -1,0 +1,23 @@
+If the test set is not shuffled (by emphasis on first I assume not) these images are from training NIST (cleaner) set and may not include samples of all digits.
+One observation from the submission is that the token set may need to very large (from tens of thousands to millions) for the system to work well, making the BERT training computationally expensive (I noticed that the BERT model is trained on 128 GPUs)
+3. One concern I have with discrete representation is how robust they are wrt different dataset.
+1. The dataset is adversarially filtered using BERT and GPT, which gives deep learning model a huge disadvantage. After all, the paper says BERT scores 88% before the dataset is attacked.
+Why does it go to nearly zero around x = 0, while being higher in surrounding regions with more data?
+Note: after reading the comments updated by authors, I remain my opinions: even though exact meta-testing data is unseen during training, the domain is seen during training, and therefore it cannot be qualified for being "meta domain adaptation".
+- in section 4.3, there is no guarantee that the intersection between the training set and test set is empty.
+Optimizing compression rates should be done on the training set with a separate development set.
+The test set should not used before the best compression scheme is selected.
+1. [The claim] One of my concerns for this paper is the assumption of the factorized latent variables from multimodal data.
+First, I consider the tabular features as multi-feature data and less to be the multimodal data.
+Also, the fact that the accuracy on the Kaggle non-doctored test set is low is simply because the test set is not coming from the same distribution of the training set.
+The setup where labeled data (c) also seems a bit unnatural (this also seems to be confirmed by the fact that the authors had to build datasets for the problem).
+A bigger source of uncertainty is likely due to there being a limited amount of data to fit the coefficients to.
+5. One of the anonymous comments on OpenReview is very interesting: samples from a CIFAR model look nothing like SVHN.
+7.	The study is only performed on symbols which a very large training set (given the difficulty of the problem) and it not clear how well this generalizes to real images or scenarios with less training data.
+Unfortunately, there is a bit of an identity crisis happening in this paper. There are several choices that do not follow based on the data the paper considers.
+The way the permutation, or the order of the data, accounts in the likelihood (2) does not make sense.
+For example, ADP and ADP-T runtimes were very close on WikiText-103 dataset but very different on Billion Word corpus (Table 3 and 4).
+Considering the small size of the corpus for the evaluation of a regularization method, the results even seem optimistic - it remains unclear, if this approach would readily scale to larger datasets.
+3. Since there are many tasks and each task has a large-scale data, I'm afraid that the running time will explode. How to deal with this issue?
+In this case, A: PointNet, B: DeepSet
+It looks like all the results are given on the test set. Did you not do any tuning on the validation data?

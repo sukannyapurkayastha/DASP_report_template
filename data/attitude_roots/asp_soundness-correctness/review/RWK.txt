@@ -1,0 +1,22 @@
+Also, a "1x" label seems to be missing in for the full softmax, so that the reference is clearly specified.
+In a related note, using MF for training BMs have been proposed previously and found to not work due to various reasons:
+- The paper makes use of a result from the David MacKay textbook
+- It is not clear why authors did not follow the evaluation protocol of [Achlioptas’17] or [Wu’16] more closely.
+You probably have to limit the operation to a half-sphere (there's some ideas for this in Gu et al).
+* The paper states multiple times that VAEAC [Ivanov et al., 2019] cannot handle partially missing data, but I don’t think this is true, since their missing features imputation experiment uses the setup of 50% truly missing features.
+What is the point that you are trying to make? Also, note that some of the algorithms that you are citing there have indeed applied beyond architecture search, eg. Bayesian optimization is used for gait optimization in robotics, and Genetic algorithms have been used for automatic robot design.
+#3 is so generic that a large part of the previous literature on the topic fall under this category -- not new.
+The cited Berrett and Samworth MI test uses a permutation approach to obtaining the test threshold, not an asymptotic approach  (see the results of Section 4 of that paper).
+8. The itemized part in 5.3, "...carefully selected baselines: 1.xxx, 2.xxx, 3. xxx, 4. xxx". However, both 3 and 4 are not baselines!
+Lee et al. seem to make similar mistakes, and it is likely that their experimental design is also flawed.
+Specifically, prior work considered non-missing data during training, while we can't always guarantee that all the modalities are available.
+Specifically, the author mentioned Tsai et al. assumed factorized latent variables from the multimodal data, while Tsai et al. actually assumed the generation of multimodal data consists of disentangled modality-specific and multimodal factors.
+It is not even clear that the final compression of the baselines would not be better.
+Finally yet importantly, though a large number of works have been proposed to try to solve this problem especially the catastrophic forgetting, most of these works are heuristic and lack mathematical proof, and thus have no guarantee on new tasks or scenarios.
+Other recent works which have demonstrated effective regularization of LSTM LMs have proposed methods that can be used in any LSTM model, but that is not the case here.
+There has been a large body of work which shows that weaker attacks like membership attacks can be equally damaging, ii) Privacy is a worst-case guarantee.
+The reported FID for CIFAR10 using WGAN-GP is 54.4, which seems to be a bit high.
+Also, the authors should compare with few more graphnet + transmission layer (GraphNetST) baselines with the graph layers: $P(X)_i = Ax_i + \sum_{j \in N(x_i, X)} Bx_j + c$ and the same single transmission layer $\mathbf{1}\mathbf{1}^TXB$ in PointNetST.
+PointNet is a specialization of graphnets and GraphNetST should be added as a baseline with reasonable adjacency.
+* Mor et al. (2018) do actually make use of an adversarial training criterion (referred to as a "domain confusion loss"), contrary to what is claimed in the introduction.
+For example, "The old system of private arbitration courts is off the table" from DE-EN 2016 Dev doesn't seem like it should benefit from this architecture.

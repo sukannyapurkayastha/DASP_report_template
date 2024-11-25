@@ -1,0 +1,1 @@
+2.	What is the reason for using rule-based agents in all the experiments? It would have been more useful if all the analysis are done with RL agents rather than rule-based agents.

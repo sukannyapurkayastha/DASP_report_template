@@ -1,0 +1,1 @@
+Furthermore, in the beginning of Section 3.1 the authors present their idea on probabilistic hypernetoworks which “maps x to a distribution over parameters instead of specific value \theta.” How is this different from the case that we were considering so far? If we had a point estimate for \theta we would not require to take an expectation in Equation (3) in the first place.

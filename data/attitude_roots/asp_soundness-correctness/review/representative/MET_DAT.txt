@@ -1,0 +1,1 @@
+They start from Equation (4) which is incorrectly denoted as the log-marginal distribution while it is the same conditional distribution introduced in Equation (3) with the extra summation for all the available data points.

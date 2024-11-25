@@ -1,0 +1,24 @@
+While this is a reasonable assumption, it does not necessarily seem to be the case that a larger, more disconnected saliency map indicates worse classification performance.
+-- solving Eq 3 by matrix inversion does not scale. Would be best to also show results using iterative optimization
+Only some heuristic results are obtained for them without rigorous theory.
+While the use of a GAN in general will make the results less blurry and visually appealing, it does not necessarily mean that the samples it generates are going to be plausible or better.
+This claim is simply not true, and more care is needed in reporting the results here in the wider context of the literature.
+However, I have a few concerns about the results.
+The column "FLOPS" in the result seems to measure the speedup, whereas the actual FLOPS should be less when the speed increases.
+Indeed, the manuscript introduces sample complexity results to justify the benefits of the out-of-sample procedure (th 1), but it seems to me that these give an incomplete picture.
+The proposed sampling distributions assumes independence between the random variables over which the authors optimize — I find it surprising that this leads to good empirical results
+It is unclear how important this particular objective is to the results.
+- In 5.1, imagenet results are normally top-5 error rate not top-1 acc, would be better to report that more familiar number.
+e.g: REINFORCE has lower best-sample to total-sample ratio but its solutions are worse)
+The authors claim that some amount of noise can be tolerated, but do not quantify how much.
+Having this in mind note that the theoretical results on stochastic variant presented in the paper are wrong.
+The authors either need to remove these results or restate them in a different way in order to satisfy the assumed conditions.
+The paper also lacks experimental results, and the main conclusion from these results seems to be "MNIST is not suitable for benchmarking of adversarial attacks".
+"Table 4 shows that our first results are promising, even though they are not as good as the state of the art." The state of the art on LibriSpeech is not Mohamed at al. 2019. See e.g. Irie et al. Interspeech 2019 for better result
+Overall, I feel that the result is interesting but it depends on a strong assumption and doesn't capture all interesting cases.
+It is also not clear how this theoretical result can shed insight on the empirical study of neural networks.
+- Is there actionable consequences one could draw from your papers? The way the results are presented seem like they are only useful inspection after training; are your results able to derive methods to enforce conditions on the pre-images for example?
+have no idea how confident the sampling based result is.
+While I understand that quantifying performance in this application is difficult, I do find the results difficult to interpret.
+The ResNet on Cifar-10 results are not convincing.
+Perhaps the authors had no salient observations for loss, but explicitly stating such would be useful to the reader.

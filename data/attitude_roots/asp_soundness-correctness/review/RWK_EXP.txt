@@ -1,0 +1,1 @@
+I would have liked to see results for both trivial baselines like random ranking as well as more informed baselines where we can estimate transfer potential using say k representation techniques, and then use that to help us understand how well it would do on the other representations.
