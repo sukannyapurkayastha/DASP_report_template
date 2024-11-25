@@ -48,12 +48,12 @@
   - collect reviews using OpenReview API
   - experiment with building website
 
-### Week [n-1]
+### Week [2]
 
 - **Update 1**: 
 - **Update 2**: 
 - **Update 3**: 
-- **Challenges**: 
+- **Challenges**: libs install for jitsupeer repo not successful, it causes error even with requirements.txt
 - **Next Steps**: 
 
 ### Week [n-2]

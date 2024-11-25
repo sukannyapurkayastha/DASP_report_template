@@ -1,0 +1,467 @@
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Experimental study not strong enough
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+generalizability of results is questionable
+Incomplete details on perfromance of the method
+Incorrect citation
+Experimental study not strong enough
+Unclear description of method
+Correctness of algorithm proposed
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+Experimental study not strong enough
+Incomplete details on perfromance of the method
+Correctness of algorithm proposed
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Overall not original enough (primary claim, limited evaluation, limited novelty)
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Correctness of algorithm proposed
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Unclear connection of method with related work (description of the related work it is based on, why earlier methods fail, etc)
+Experimental study not strong enough
+Unclear description of method
+Incomplete details on perfromance of the method
+Correctness of algorithm proposed
+generalizability of results is questionable
+Correctness of algorithm proposed
+Lack of analysis
+Experimental study not strong enough
+Correctness of algorithm proposed
+Incomplete details on perfromance of the method
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Unclear description of method
+Correctness of algorithm proposed
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+The tasks are explicitly designed to exploit these additional parameters - so framing the synthetic experiments as, "here are some simple functions for which we would need the additional parameters that we define" makes sense; but arguing that Hartford et al. "fail approximating rather simple functions" (page 7) is misleading because the functions are precisely the functions on which you would expect Hartford et al. to fail (because it's designed for a different setting).
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+generalizability of results is questionable
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Incomprehensible tables and figures (what is the point of the plot, no decription of figure in main text, etc)
+Experimental study not strong enough
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Correctness of algorithm proposed
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Less datasets used
+generalizability of results is questionable
+The cited Berrett and Samworth MI test uses a permutation approach to obtaining the test threshold, not an asymptotic approach (see the results of Section 4 of that paper).
+Experimental study not strong enough
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Correctness of algorithm proposed
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Incomplete details on perfromance of the method
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Correctness of algorithm proposed
+Incomplete details on perfromance of the method
+Incomplete details on perfromance of the method
+Unclear description of method
+Correctness of algorithm proposed
+Correctness of algorithm proposed
+Unclear description of method
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+3. The paper is not nicely written or rather easy to follow.
+Lack of realistic datasets used in experiments (small siz, synthetic)
+Incorrect assumptions as compared to related work
+Unclear description of method
+Correctness of algorithm proposed
+Incomplete details on perfromance of the method
+Incomplete details on perfromance of the method
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Correctness of algorithm proposed
+3. The paper is not nicely written or rather easy to follow.
+Experimental study not strong enough
+Correctness of algorithm proposed
+Unclear description of method
+Unclear description of method
+Lack of realistic datasets used in experiments (small siz, synthetic)
+Incomplete details on perfromance of the method
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+generalizability of results is questionable
+Improper writing of realted work section (as in 1 paragraph rather than multiple for related work, explanation of somepapers, etc)
+Less datasets used
+Missing literature review (some literature not included, misses baseline citations, etc)
+Limited novelty in theoretical contribution
+Incomprehensible tables and figures (what is the point of the plot, no decription of figure in main text, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Lack of comparison with related works
+Lack of realistic datasets used in experiments (small siz, synthetic)
+Missing citations in the paper
+generalizability of results is questionable
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Lack of analysis
+Overall, I like the approach of the proposed method, especially tuning coefficient during training procedure although novelty in the theoretical analysis is somewhat limited.
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing baselines
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Lack of realistic datasets used in experiments (small siz, synthetic)
+Correctness of algorithm proposed
+Incomplete ablation in terms of tables and figures
+3. The paper is not nicely written or rather easy to follow.
+generalizability of results is questionable
+Correctness of algorithm proposed
+Incomplete ablation in terms of tables and figures
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+generalizability of results is questionable
+Limited improvement over baselines
+Correctness of algorithm proposed
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+generalizability of results is questionable
+Unclear description of method
+Incomplete details on perfromance of the method
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Unclear description of method
+Incomplete details on perfromance of the method
+Correctness of algorithm proposed
+Incomplete details on perfromance of the method
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Unclear description of method
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+Correctness of algorithm proposed
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+3. The paper is not nicely written or rather easy to follow.
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Correctness of algorithm proposed
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+More variations of experiments needs to be added
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+generalizability of results is questionable
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Experimental study not strong enough
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Correctness of algorithm proposed
+Missing theoretical comparisons
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Generalizability of results in terms of method parameters (only applies for some number of parameters, only for these type of matrices, etc)
+Incomplete details on perfromance of the method
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Lacking clarity overall (needs better presentation)
+Limited novelty in theoretical contribution
+Correctness of algorithm proposed
+Missing baselines
+Unclear description of method
+Incorrect assumptions as compared to related work
+Correctness of algorithm proposed
+Missing baselines
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+3. The paper is not nicely written or rather easy to follow.
+Incomplete details on perfromance of the method
+Incomplete details on perfromance of the method
+generalizability of results is questionable
+Lack of comparison with related works
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing theoretical comparisons
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Unclear description of method
+Though the Bayesian inference using GAN is a natural idea, learning algorithms proposed in this paper are simple and not intensively developed.
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+generalizability of results is questionable
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing theoretical comparisons
+Improper comparison of related work in terms of implementation
+generalizability of results is questionable
+Although the paper proposes an interesting framework I would argue that it is a “green apple” in the sense that authors need to motivate the approach better.
+Incomplete details on perfromance of the method
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing baselines
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Incomplete details on perfromance of the method
+Lack of realistic datasets used in experiments (small siz, synthetic)
+Less datasets used
+Incomprehensible tables and figures (what is the point of the plot, no decription of figure in main text, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Incomplete details on perfromance of the method
+Missing literature review (some literature not included, misses baseline citations, etc)
+Correctness of algorithm proposed
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+The main reason is that from the narration, I cannot figure out what is the idea or technique of other works and what is the contribution of this paper.
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Incomprehensible tables and figures (what is the point of the plot, no decription of figure in main text, etc)
+Experimental study not strong enough
+Unclear description of method
+Incomplete details on perfromance of the method
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Unclear description of method
+The proposed method adapt a previously presented hierarchical clustering method in the "standard space" (Griffiths et al., 2004) to an embedding space defined by a variational autoencoder model.
+Improper comparison of related work in terms of implementation
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+3. The paper is not nicely written or rather easy to follow.
+Incomplete details on perfromance of the method
+Improper writing of realted work section (as in 1 paragraph rather than multiple for related work, explanation of somepapers, etc)
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Unclear description of method
+Correctness of algorithm proposed
+Correctness of algorithm proposed
+More variations of experiments needs to be added
+Correctness of algorithm proposed
+More variations of experiments needs to be added
+Unclear description of method
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Missing theoretical comparisons
+Experimental study not strong enough
+Lack of realistic datasets used in experiments (small siz, synthetic)
+Correctness of algorithm proposed
+Incomplete details on perfromance of the method
+Correctness of algorithm proposed
+Experimental study not strong enough
+Incomplete details on perfromance of the method
+Lack of analysis
+Limited novelty in theoretical contribution
+Correctness of algorithm proposed
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Incomplete details on perfromance of the method
+Lack of discussion of performance of method on different datasets
+3. The paper is not nicely written or rather easy to follow.
+Incomplete details on perfromance of the method
+Lacking clarity overall (needs better presentation)
+Improper writing of realted work section (as in 1 paragraph rather than multiple for related work, explanation of somepapers, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomprehensible tables and figures (what is the point of the plot, no decription of figure in main text, etc)
+Unclear description of method
+Incomplete details on perfromance of the method
+Reasons for rejection (not fit for conference, contains several weaknesses, etc.)
+Incomplete details on perfromance of the method
+While better than most of the baseline methods, the N2 memory/computational complexity is not bad, but still too high to scale to very large graphs.
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Incomplete details on perfromance of the method
+Unclear intro (eg. contributions)
+generalizability of results is questionable
+generalizability of results is questionable
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Lacking clarity overall (needs better presentation)
+Unclear description of method
+Correctness of algorithm proposed
+Lack of analysis
+Lack of experimental details (no of images, sampling criteria, etc)
+Lack of realistic datasets used in experiments (small siz, synthetic)
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Experimental study not strong enough
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Unclear description of method
+3. The paper is not nicely written or rather easy to follow.
+Lack of realistic datasets used in experiments (small siz, synthetic)
+Limited insights based on design choices
+Incomplete details on perfromance of the method
+Unclear description of method
+-- The algorithm proposed in the paper is very straightforward and just removes heavy hitters using oracle advice and then hashes everything using the standard CountMin sketch.
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Unclear description of method
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Unclear description of method
+Incomplete details on perfromance of the method
+Less datasets used
+Less datasets used
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+Correctness of algorithm proposed
+generalizability of results is questionable
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Lacking clarity overall (needs better presentation)
+Experimental study not strong enough
+Incomplete details on perfromance of the method
+Experimental study not strong enough
+More variations of experiments needs to be added
+Correctness of algorithm proposed
+Incomplete details on perfromance of the method
+Incomplete details on perfromance of the method
+Correctness of algorithm proposed
+Correctness of algorithm proposed
+generalizability of results is questionable
+Overall not original enough (primary claim, limited evaluation, limited novelty)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Correctness of algorithm proposed
+Experimental study not strong enough
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+Unclear description of method
+Correctness of algorithm proposed
+Lack of experimental details (no of images, sampling criteria, etc)
+generalizability of results is questionable
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Experimental study not strong enough
+Incomplete details on perfromance of the method
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Correctness of algorithm proposed
+Unclear description of method
+3. The paper is not nicely written or rather easy to follow.
+Correctness of algorithm proposed
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Correctness of algorithm proposed
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Correctness of algorithm proposed
+Unclear description of method
+Correctness of algorithm proposed
+Unclear description of method
+Incomplete details on perfromance of the method
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Improper writing of realted work section (as in 1 paragraph rather than multiple for related work, explanation of somepapers, etc)
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Unclear description of method
+Overall not original enough (primary claim, limited evaluation, limited novelty)
+Not enough originality in experiments (not surprising)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Unclear description of method
+Incomplete details on perfromance of the method
+Experimental study not strong enough
+generalizability of results is questionable
+Incomplete details on perfromance of the method
+Missing citations in the paper
+Improper writing of realted work section (as in 1 paragraph rather than multiple for related work, explanation of somepapers, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+Unclear description of method
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Correctness of algorithm proposed
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Correctness of algorithm proposed
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Missing literature review (some literature not included, misses baseline citations, etc)
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Unclear description of method
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+Correctness of algorithm proposed
+generalizability of results is questionable
+Correctness of algorithm proposed
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+3. The paper is not nicely written or rather easy to follow.
+Experimental study not strong enough
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Correctness of algorithm proposed
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Experimental study not strong enough
+Limited insights based on design choices
+Incomplete details on perfromance of the method
+Limited insights based on design choices
+Correctness of algorithm proposed
+3. The paper is not nicely written or rather easy to follow.
+Correctness of algorithm proposed
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Experimental study not strong enough
+Experimental study not strong enough
+Incorrect explanation of resuts
+Experimental study not strong enough
+Correctness of algorithm proposed
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+The main reason is that from the narration, I cannot figure out what is the idea or technique of other works and what is the contribution of this paper.
+Correctness of algorithm proposed
+Lack of realistic datasets used in experiments (small siz, synthetic)
+Lack of discussion of datasets (size, motivation for use, etc)
+generalizability of results is questionable
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Correctness of algorithm proposed
+Missing baselines
+Incomplete details on perfromance of the method
+Correctness of algorithm proposed
+Correctness of algorithm proposed
+Experimental study not strong enough
+Lacking clarity overall (needs better presentation)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+With this dataset, it's a bit of a stretch to say there was "only a 1 point drop in BLEU score". That's a significant drop, and in fact the DynamicConv paper goes to significant lengths to make a smaller 0.8 point improvement.
+Limited novelty in theoretical contribution
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Limited novelty in theoretical contribution
+Experimental study not strong enough
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Unclear description of method
+Unclear description of method
+Lack of realistic datasets used in experiments (small siz, synthetic)
+Limited novelty in theoretical contribution
+Incomplete details on perfromance of the method
+Missing literature review (some literature not included, misses baseline citations, etc)
+Experimental study not strong enough
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Incomplete details on perfromance of the method
+Lack of experimental details (no of images, sampling criteria, etc)
+Correctness of algorithm proposed
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Incomplete details on perfromance of the method
+3. The paper is not nicely written or rather easy to follow.
+Limited novelty in theoretical contribution
+Unclear description of method
+Unclear description of method
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Correctness of algorithm proposed
+Experimental study not strong enough
+Correctness of algorithm proposed
+Correctness of algorithm proposed
+Less datasets used
+Correctness of algorithm proposed
+Missing baselines
+Unclear description of method
+Unclear intro (eg. contributions)
+3. The paper is not nicely written or rather easy to follow.
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Although the idea seems to be interesting, the paper seems to be a bit incremental and is a simple application of existing GAN techniques.
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Correctness of algorithm proposed
+Lack of analysis
+generalizability of results is questionable
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Experimental study not strong enough
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Limited improvement over baselines
+Missing baselines
+Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)
+Limited novelty in theoretical contribution
+While the presentation is clear and the evaluation of the model is thorough, I am unsure of the significance of the proposed method.
+Correctness of algorithm proposed
+Incomplete details on perfromance of the method
+generalizability of results is questionable
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Correctness of algorithm proposed
+Unclear description of method
+Missing theoretical comparisons
+Incomplete details on perfromance of the method
+Incomplete details on perfromance of the method
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Correctness of algorithm proposed
+Incomprehensible tables and figures (what is the point of the plot, no decription of figure in main text, etc)
+Incorrect presentation of tables and figures (plots, typos in tables and figs. description of plot)
+Incomprehensible tables and figures (what is the point of the plot, no decription of figure in main text, etc)
+Incomprehensible tables and figures (what is the point of the plot, no decription of figure in main text, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Missing details on methodology (eg., use of notation, use on tasks, etc)
+Correctness of algorithm proposed
