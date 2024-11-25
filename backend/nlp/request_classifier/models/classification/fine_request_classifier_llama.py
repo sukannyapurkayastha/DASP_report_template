@@ -1,85 +1,104 @@
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM
+from transformers import T5Tokenizer, T5ForConditionalGeneration
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score
 import pandas as pd
 from tqdm import tqdm
-
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
+import matplotlib.pyplot as plt
 
 few_shot_examples = {
     "Request for Improvement": [
-        "I would recommend that the authors perhaps shorten section 3 or remove figure 9 to fit it into 8 pages.",
-        "I found that the core technical description was quite brief and would have benefited from simply more detail and space.",
-        "The contributions of the method could also be underlined more clearly in the abstract and introduction.",
+        "Most of my comments are improvements which can be easily included.",
+        "These changes are minor and should be simple to implement.",
+        "I believe the suggested enhancements can be quickly added.",
+        "My comments are straightforward improvements that can be easily made.",
+        "The improvements I suggest can be easily incorporated.",
     ],
     "Request for Explanation": [
-        "Can you elaborate more on why BatchNorm statistics are computed across all devices as opposed to per-device? Was this crucial for best performance?",
-        "Why not use continuous actions with a parameterized policy (e.g., Gaussian)?",
-        "I wonder why the authors didn’t compare or mention optimizers such as ADAM and ADAGRAD which adapt their parameters on-the-fly as well.",
+        "Is there any explanation for this?",
+        "Could you provide more details on how the loss function is derived?",
+        "Please explain why we need to add MC-Dropout to the ensemble.",
+        "What is the benefit of your method over existing approaches?",
+        "However, I do not understand how the discrete output y is handled.",
     ],
     "Request for Experiment": [
-        "It would be nice if more network architectures were analysed (such as VGG and DenseNets).",
-        "I would strongly recommend including the computational cost of each method in the evaluation section.",
-        "I would like to see how these curves vary with different parameters.",
+        "It would be nice if more network architectures were analyzed (such as VGG and DenseNets).",
+        "Also, this work would benefit significantly from a better experimental evaluation.",
+        "For example, in Sections 4 and 5 I was hoping to see comparisons to methods like MAML.",
+        "I would suggest including empirical evidence in the experiments to show convergence.",
+        "Another possible extension is to test this larger set of words on a non-behavioral NLP task to show possible improvements.",
     ],
     "Request for Typo Fix": [
-        "- 'data tripets' on page 2",
-        "- The word in the title should be 'Convolutional', right?",
         "- 'principle curvatures' should be 'principal curvatures'.",
+        "- Page 2: 'network's type to be class' should be 'to be a class'.",
+        "- The end of the 2nd line of Lemma 1: P, G should be \\( \\mathbb{P}, \\mathbb{G} \\).",
+        "- The 3rd line of Lemma 1: epsilon1 should be epsilon\_1.",
+        "- Page 14, Eq(14), \( \lambda \) should be s.",
     ],
     "Request for Clarification": [
-        "Why was this policy used as the baseline? It seems extremely basic and unlikely to truly lead to optimal performance.",
-        "- What implementation of the other algorithms did you use?",
-        "Can you explain the sentence 'To prevent data being added suddenly, no data was added until 5 iterations'?",
+        "Can you clarify how you view the relationship between the approaches mentioned above?",
+        "Also, how do you select the number of factors of each type?",
+        "These numbers correspond to several images, or to a unique image?",
+        "I don’t get the details of the batch normalization used: with respect to which axis are the mean and variance computed?",
+        "This parameter Omega is estimated individually for each degraded image?",
     ],
     "Request for Result": [
-        "Most importantly, I would like to see a measure of variance/uncertainty like confidence intervals included in the results.",
-        "Providing such analysis would be also helpful for the community.",
-        "Limitations and where the proposed method brings improvement should be highlighted.",
+        "Most importantly, I would like to see a measure of variance or uncertainty like confidence intervals included in the results.",
+        "I would have been interested in 'false detection' experiments: comparing estimators where the mutual information is zero.",
+        "It would be helpful to present the confusion matrix in your results.",
+        "Additional results on the performance under varying conditions would be useful.",
+        "Please report the standard deviations along with the mean values in Table 2.",
     ],
 }
 
+
 def create_few_shot_prompt(query, few_shot_examples):
-    """
-    Create a few-shot prompt with examples and a query.
-    """
     prompt = (
-        "You are an assistant that classifies sentences into one of the following categories:\n"
-        "1. Request for Improvement\n"
-        "2. Request for Explanation\n"
-        "3. Request for Experiment\n"
-        "4. Request for Typo Fix\n"
-        "5. Request for Clarification\n"
-        "6. Request for Result\n\n"
-        "For each example, provide only the category name from the list above.\n\n"
+        "As an assistant, analyze the sentence and determine its category based on the reasoning.\n"
+        "Select the the area which is the subject or the type of request.\n\n"
+        "Categories:\n"
+        "Request for Improvement\n"
+        "Request for Explanation\n"
+        "Request for Experiment\n"
+        "Request for Typo Fix\n"
+        "Request for Clarification\n"
+        "Request for Result\n\n"
     )
 
-
     for label, sentences in few_shot_examples.items():
-        for sentence in sentences:
-            prompt += f"Sentence: \"{sentence}\"\nCategory: {label}\n\n"
+        number = label_map[label] + 1
+        reasoning = "Reasoning: " + " ".join(sentences[0].split()[:10]) + "..."  
+        prompt += f"Sentence: \"{sentences[0]}\"\n{reasoning}\nCategory Number: {number}\n\n"
 
-    # Add the query sentence
-    prompt += f"Now classify this sentence:\n\"{query}\"\nCategory:"
+    prompt += f"Sentence: \"{query}\"\nReasoning:"
     return prompt
+
+
 
 
 def map_prediction_to_label(pred, label_map):
     pred = pred.strip().lower()
-   
+
+    pred = pred.strip('."\'<>/ ').lower()
+
+
     for label in label_map:
         if pred == label.lower():
             return label_map[label]
-    # Partial match
+
+    # Partial match with label names
     for label in label_map:
         if label.lower() in pred:
             return label_map[label]
+
    
-    if pred.isdigit():
-        number = int(pred)
-        if 1 <= number <= len(label_map):
-            label_list = list(label_map.keys())
-            return label_map[label_list[number - 1]]
+    for idx, label in enumerate(label_map.keys(), 1):
+        if pred == str(idx) or pred == f"{idx}.":
+            return label_map[label]
+
     return -1  
+
 
 
 def generate_predictions_from_dataset(dataset, few_shot_examples, tokenizer, model, max_new_tokens=50, temperature=0.3):
@@ -91,54 +110,77 @@ def generate_predictions_from_dataset(dataset, few_shot_examples, tokenizer, mod
        
         few_shot_prompt = create_few_shot_prompt(query, few_shot_examples)
         
-      
-        inputs = tokenizer(few_shot_prompt, return_tensors="pt", padding=True, truncation=True, max_length=512)
-        input_ids = inputs["input_ids"]
-        attention_mask = inputs["attention_mask"]
-        input_length = input_ids.shape[-1]
+        inputs = tokenizer(
+            few_shot_prompt,
+            return_tensors="pt",
+            padding=True,
+            truncation=True,
+            max_length=512,
+        )
+        input_ids = inputs["input_ids"].to(model.device)
+        attention_mask = inputs["attention_mask"].to(model.device)
 
         outputs = model.generate(
-            input_ids=input_ids.to(model.device),
-            attention_mask=attention_mask.to(model.device),
+            input_ids=inputs["input_ids"],
+            attention_mask=inputs["attention_mask"],
             max_new_tokens=max_new_tokens,
-            temperature=temperature,
+            temperature=0.8,
             top_p=0.9,
             do_sample=True,
-            pad_token_id=tokenizer.eos_token_id,
+            pad_token_id=tokenizer.pad_token_id,   
+            eos_token_id=tokenizer.eos_token_id,   
         )
-        
-        
-        generated_tokens = outputs[0][input_length:]
-        generated_text = tokenizer.decode(generated_tokens, skip_special_tokens=True)
+
+
+
+        generated_text = tokenizer.decode(outputs[0], skip_special_tokens=True)
         predictions.append(generated_text.strip())
     return predictions
+
 
 # Evaluate the model
 def evaluate_model(dataset, predictions, label_map):
     """
-    Evaluate the model predictions against true labels.
+    Evaluate the model predictions against true labels and display a confusion matrix.
     """
-    true_labels = dataset["target"].tolist()  
+    # Map true labels to numerical labels using label_map
+    true_labels = dataset['fine_review_action'].map(lambda x: label_map[fine_to_category_map[x]]).tolist()
+    
+    # Map predicted labels to numerical labels
     predicted_labels = [map_prediction_to_label(pred, label_map) for pred in predictions]
-
+    
     # Calculate metrics
     accuracy = accuracy_score(true_labels, predicted_labels)
     f1 = f1_score(true_labels, predicted_labels, average="weighted", zero_division=0)
     precision = precision_score(true_labels, predicted_labels, average="weighted", zero_division=0)
     recall = recall_score(true_labels, predicted_labels, average="weighted", zero_division=0)
-
+    
     print("\n--- Evaluation Results ---")
     print(f"Accuracy: {accuracy:.4f}")
     print(f"F1 Score: {f1:.4f}")
     print(f"Precision: {precision:.4f}")
     print(f"Recall: {recall:.4f}")
+    
+
+    cm = confusion_matrix(true_labels, predicted_labels, labels=list(label_map.values()))
+    
+
+    display_labels = list(label_map.keys())
+    
+
+    disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=display_labels)
+    disp.plot(xticks_rotation='vertical', cmap='Blues')
+    plt.title('Confusion Matrix')
+    plt.show()
+
 
 
 if __name__ == "__main__":
    
-    model_name = "meta-llama/Llama-2-7b-chat-hf"  
-    tokenizer = AutoTokenizer.from_pretrained(model_name)
-    model = AutoModelForCausalLM.from_pretrained(model_name)
+    model_name = "google/flan-t5-xl"  
+    
+    tokenizer = T5Tokenizer.from_pretrained(model_name, legacy=False)
+    model = T5ForConditionalGeneration.from_pretrained(model_name)
     model.eval()
     model.to("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -146,7 +188,7 @@ if __name__ == "__main__":
     tokenizer.pad_token_id = tokenizer.eos_token_id
 
    
-    test_file = "backend/nlp/request_classifier/DISAPERE/final_dataset/fine_request/test_short.csv"  
+    test_file = "backend/nlp/request_classifier/DISAPERE/final_dataset/fine_request/test_long.csv"  
     test_data = pd.read_csv(test_file) 
 
     # Define label map
@@ -159,12 +201,21 @@ if __name__ == "__main__":
         "Request for Result": 5,
     }
 
+    fine_to_category_map = {
+    "arg-request_edit": "Request for Improvement",
+    "arg-request_explanation": "Request for Explanation",
+    "arg-request_experiment": "Request for Experiment",
+    "arg-request_typo": "Request for Typo Fix",
+    "arg-request_clarification": "Request for Clarification",
+    "arg-request_result": "Request for Result",
+}
+
 
     print("\n--- Generating Predictions for Test Dataset ---")
     predictions = generate_predictions_from_dataset(test_data, few_shot_examples, tokenizer, model)
 
 
-    for i, pred in enumerate(predictions[:10]):  # Print first 10 predictions
+    for i, pred in enumerate(predictions[:10]):  
         print(f"Input: {test_data['text'][i]}")
         print(f"Predicted Output: {pred}")
         print("---")
