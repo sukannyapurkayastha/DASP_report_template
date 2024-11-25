@@ -53,6 +53,10 @@ custom_css = """
     [data-testid="stHeaderActionElements"] {
         display: none !important;
     }
+    /* Hide the fullscreen button next to pie charts */
+    [data-testid="StyledFullScreenButton"] {
+        display: none !important;
+    }
     </style>
     """
 

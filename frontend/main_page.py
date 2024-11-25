@@ -63,19 +63,30 @@ def main_page(custom_css):
         elif fraction <= 1:
             return red
     
-    def draw_progress_bar(color, percentage):
-        # Custom progress bar with percentage text centered
-        progress_html = f"""
-        <div style="position: relative; height: 24px; width: 100%; background-color: {grey}; border-radius: 5px;">
-            <div style="width: {percentage}%; background-color: {color}; height: 100%; border-radius: 5px;">
+    def draw_progress_bar(color, percentage, complain_o_meter):
+        if complain_o_meter:
+            progress_html = f"""
+            <div style="position: relative; height: 24px; width: 100%; background-color: {grey}; border-radius: 5px;">
+                <div style="width: {percentage}%; background-color: {color}; height: 100%; border-radius: 5px;">
+                </div>
             </div>
-            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); 
-                         font-weight: bold; color: black; z-index: 1;">
-                {percentage}%
+            """
+            st.markdown(progress_html, unsafe_allow_html=True)
+            st.markdown(f"<h4 style='font-size:12px; margin: 0px; padding: 0px; text-align: right;'>{'Complain-o-meter'}</h4>", unsafe_allow_html=True)
+
+        else:
+            # Custom progress bar with percentage text centered and a border matching the bar color
+            progress_html = f"""
+            <div style="position: relative; height: 24px; width: 100%; background-color: {grey}; border-radius: 5px;">
+                <div style="width: {percentage}%; background-color: {color}; height: 100%; border-radius: 5px;">
+                </div>
+                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); 
+                             font-weight: bold; color: black; z-index: 1;">
+                    {percentage}%
+                </div>
             </div>
-        </div>
-        """
-        st.markdown(progress_html, unsafe_allow_html=True)
+            """
+            st.markdown(progress_html, unsafe_allow_html=True)
     
     def write_attitude_root_or_request_heading(heading_text):
         st.markdown(f"<h4 style='font-size:18px; margin: 0px; padding: 0px;'>{heading_text}</h4>", unsafe_allow_html=True)
@@ -114,26 +125,28 @@ def main_page(custom_css):
             color, score_text = select_color_and_text_overview(score_percent)
             st.markdown(f"<h4 style='font-size:18px; margin: 0px; padding: 0px; text-align: left;'>{get_score_text_overall_rating(score_percent)}</h4>", unsafe_allow_html=True)
             st.markdown('<div class="invisbible-line-minor">  </div>', unsafe_allow_html=True)
-            draw_progress_bar(color, score_percent)
+            draw_progress_bar(color, score_percent, False)
             st.markdown('<div class="invisbible-line-small">  </div>', unsafe_allow_html=True)
             
     
         else:
             score_percent = (overview[column_name].loc[0]/4)*100
             color, score_text = select_color_and_text_overview(score_percent)
-            draw_progress_bar(color, score_percent)
+            draw_progress_bar(color, score_percent, False)
             st.markdown(f"<h4 style='font-size:16px; margin: 0px; padding: 0px; text-align: right;'>{score_text}</h4>", unsafe_allow_html=True)
         
     
     #%%%%% Attitude Root methods
     
+    # TODO: reverse barchart logic
+    
     def show_attitude_root_header(row):
         fraction = eval(row[1])
-        percentage = int(fraction * 100)  # Convert fraction to percentage
+        percentage = int(fraction*100)  # Convert fraction to percentage
         color = select_color_attitude_or_request(fraction)
         write_attitude_root_or_request_heading(row[0]) # writes attitude root heading
         
-        draw_progress_bar(color, percentage) # draws the progressbar
+        draw_progress_bar(color, percentage, True) # draws the progressbar
     
         st.write(row[2]) #Writes the description
      
@@ -170,7 +183,7 @@ def main_page(custom_css):
         
         ax.text(
         0, 0,  # Coordinates for the center
-        str(int(eval(row[1]) * 100)) + '%',  # The text to display
+        row[1].split("/")[0] + '\n requests',  # The text to display
         ha='center',  # Horizontal alignment
         va='center',  # Vertical alignment
         fontsize=26,  # Font size
@@ -260,7 +273,7 @@ def main_page(custom_css):
     
             with col1:
                 # Vertical heading on the left
-                st.markdown('<div class="section-header">ATTITUDE ROOT</div>', unsafe_allow_html=True)
+                st.markdown('<div class="section-header">ATTITUDE ROOTS</div>', unsafe_allow_html=True)
                 
     
             with col2:
