@@ -19,10 +19,10 @@ green_very_good = '#00b500'
 # Import data
 
 try:
-    overview = pd.read_csv(os.path.join("dummy_data", "dummy_overview.csv"), sep=";", encoding="utf-8")
-    attitude_roots = pd.read_csv(os.path.join("dummy_data", "dummy_attitude_roots.csv"), sep=";", encoding="utf-8")
-    request_information = pd.read_csv(os.path.join("dummy_data", "dummy_request_information.csv"), sep=";", encoding="utf-8")
-    summary = pd.read_csv(os.path.join("dummy_data", "dummy_summary.csv"), sep=";", encoding="utf-8")
+    overview = pd.read_csv(os.path.join("frontend/dummy_data", "dummy_overview.csv"), sep=";", encoding="utf-8")
+    attitude_roots = pd.read_csv(os.path.join("frontend/dummy_data", "dummy_attitude_roots.csv"), sep=";", encoding="utf-8")
+    request_information = pd.read_csv(os.path.join("frontend/dummy_data", "dummy_request_information.csv"), sep=";", encoding="utf-8")
+    summary = pd.read_csv(os.path.join("frontend/dummy_data", "dummy_summary.csv"), sep=";", encoding="utf-8")
 except:
     FileNotFoundError("Some files have not been found.")
 
