@@ -10,6 +10,8 @@ from spacy.tokens.doc import Doc
 
 from dataclasses import dataclass
 
+from tqdm import tqdm
+
 
 # SpaCy pipeline to protect lists and citations
 # Component 1: Prevent splitting at enumerations like "1.", "2.", "1.1."
@@ -21,6 +23,7 @@ def prevent_splitting_on_list_numbers(doc: Doc) -> Doc:
             if i + 2 < len(doc):
                 doc[i + 2].is_sent_start = False
     return doc
+
 
 # Component 2: Prevent splitting after citations like "[2]."
 @Language.component("prevent_splitting_on_citations")
@@ -45,6 +48,7 @@ def prevent_splitting_on_citations(doc: Doc) -> Doc:
                 if i + 2 < len(doc):
                     doc[i + 2].is_sent_start = False
     return doc
+
 
 @dataclass
 class Review:
@@ -94,7 +98,6 @@ class OpenReviewLoader(object):
         self.nlp.add_pipe("prevent_splitting_on_list_numbers", before="sentencizer")
         self.nlp.add_pipe("prevent_splitting_on_citations", before="sentencizer")
 
-
         self.abbreviations = [
             "e.g.", "i.e.", "Dr.", "Mr.", "Mrs.", "Prof.", "etc.", "Fig.", "Tab.", "al.", "et al.", "vol.", "no.",
             "pp.", "Ch.", "Eq.", "Sec.", "Ref.", "Inc.", "Corp.", "Ltd.", "Co.", "Vs.", "approx.", "esp.", "incl.",
@@ -104,12 +107,16 @@ class OpenReviewLoader(object):
         logger.info("OpenReview client initialized.")
 
     @staticmethod
-    def _review_by_author(signatures: list) -> bool:
+    def _is_comment_by_author(signatures: list) -> bool:
         return any("Authors" in signature for signature in signatures)
 
     @staticmethod
     def _is_meta_review(signatures: list) -> bool:
         return any("Senior_Area_Chairs" in signature or "Area_Chair" in signature for signature in signatures)
+
+    @staticmethod
+    def _is_review(invitations: list) -> bool:
+        return any("Official_Review" in invitation for invitation in invitations)
 
     @staticmethod
     def _is_paper_decision(note: dict) -> bool:
@@ -128,20 +135,20 @@ class OpenReviewLoader(object):
         return text
 
     def load_all_submissions(self, venue: str, year: int, type: str = "Conference",
-                             detail: Literal["replies", "directReplies"] = "directReplies") -> list[openreview.Note]:
+                             details: Literal["replies", "directReplies"] = "directReplies") -> list[openreview.Note]:
         """
         Load all submissions from a specific venue.
         :param venue: The venue name (e.g. "ICLR.cc")
-        :param year: The year of the venue (e.g. "2024")
+        :param year: The year of the venue (e.g. 2024)
         :param type: The type of venue (e.g. "Conference", "TinyPapers)
-        :param detail: The detail of retrieved information (e.g. "replies", "directReplies")
+        :param details: The detail of retrieved information (e.g. "replies", "directReplies")
         :return: A list of submissions
         """
         invitation = f"{venue}/{year}/{type}/-/Submission"
         logger.info(f"Fetching submissions with invitation: {invitation}")
 
         try:
-            submissions = self.client.get_all_notes(invitation=invitation, detail=detail)
+            submissions = self.client.get_all_notes(invitation=invitation, details=details)
             logger.info(f"Fetched {len(submissions)} submissions")
             return submissions
         except Exception as e:
@@ -226,19 +233,20 @@ class OpenReviewLoader(object):
 
         return review
 
-    def _get_reviews(self, id: str) -> list[Review]:
+    def _get_reviews(self, paper: openreview.Note) -> list[Review]:
         """
         Load all reviews from a specific paper.
-        :param id: The id of the paper.
-        :return: All reviews for a paper.
+        :param paper: The paper.
+        :return: All official reviews for a paper.
         """
 
-        logger.info(f"Fetching reviews for paper with id: {id}")
+        logger.info(f"Getting reviews for paper: {paper.content['title']['value']}")
 
         try:
-            paper = self.get_paper(id=id)
             replies = paper.details["directReplies"].copy()
-            _ = [replies.pop(idx) for idx, reply in enumerate(replies) if self._review_by_author(reply["writers"])]
+            replies = [reply for reply in replies if self._is_review(reply["invitations"])]
+            # The following tests are actually no longer needed as far as I can judge
+            _ = [replies.pop(idx) for idx, reply in enumerate(replies) if self._is_comment_by_author(reply["writers"])]
             _ = [replies.pop(idx) for idx, reply in enumerate(replies) if self._is_meta_review(reply["writers"])]
             _ = [replies.pop(idx) for idx, reply in enumerate(replies) if self._is_paper_decision(reply)]
             prepared_reviews = self.prepare_reviews(replies)
@@ -258,7 +266,8 @@ class OpenReviewLoader(object):
 
         reviews = []
         for id in ids:
-            single_paper_reviews = self._get_reviews(id)
+            paper = self.get_paper(id)
+            single_paper_reviews = self._get_reviews(paper)
             reviews.extend(single_paper_reviews)
 
         return reviews
@@ -303,14 +312,22 @@ class OpenReviewLoader(object):
 
         sents = []
 
-        for review in reviews:
-            text = review.content
-            doc = self.nlp(text)
+        texts = (r.content for r in reviews)
 
+        for review, doc in zip(tqdm(reviews), self.nlp.pipe(texts, n_process=10, batch_size=2000)):
             sentences = [sent.text.replace("<DOT>", ".") for sent in doc.sents]
 
             review.sentences = sentences
             sents.extend(sentences)
+
+        # for review in tqdm(reviews):
+        #     text = review.content
+        #     doc = self.nlp(text)
+        #
+        #     sentences = [sent.text.replace("<DOT>", ".") for sent in doc.sents]
+        #
+        #     review.sentences = sentences
+        #     sents.extend(sentences)
 
         return reviews, sents
 
@@ -335,9 +352,33 @@ class OpenReviewLoader(object):
         """
 
         if isinstance(id, str):
-            reviews = self._get_reviews(id)
+            paper = self.get_paper(id)
+            reviews = self._get_reviews(paper)
         else:
             reviews = self._get_reviews_from_multiple_papers(ids=id)
+        processed_reviews = self._preprocess_text(reviews)
+        final_reviews, sentences = self._segment_content(processed_reviews)
+
+        return final_reviews
+
+    def get_all_submission_reviews(self, venue: str, year: int, type: str = "Conference",
+                                   details: Literal["replies", "directReplies"] = "directReplies") -> list[Review]:
+        """
+        Load all submissions from a specific venue.
+        :param venue: The venue name (e.g. "ICLR.cc")
+        :param year: The year of the venue (e.g. 2024)
+        :param type: The type of venue (e.g. "Conference", "TinyPapers)
+        :param details: The detail of retrieved information (e.g. "replies", "directReplies")
+        :return: A list of submissions
+        """
+
+        submission = self.load_all_submissions(venue=venue, year=year, type=type)
+
+        reviews = []
+        for paper in submission:
+            single_paper_reviews = self._get_reviews(paper)
+            reviews.extend(single_paper_reviews)
+
         processed_reviews = self._preprocess_text(reviews)
         final_reviews, sentences = self._segment_content(processed_reviews)
 
