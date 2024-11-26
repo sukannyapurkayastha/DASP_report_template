@@ -32,8 +32,7 @@
 | [19.11.2024]  | [19.11.2024]  | [Front-end]           | [Page Layout (CSS)]                                                       | [4]           | [Completed]   | 
 | [19.11.2024]  | [20.11.2024]  | [Models]              | [Finetuned Sentence Similarity for Attitude Roots&Themes]                 | [4]           | [Completed]   | 
 | [21.11.2024]  | [21.11.2024]  | [Models]              | [Tried dataset Sukannya sent me]                                          | [4]           | [Completed]   | 
-| [15.11.2024]  | [16.11.2024]  | [Data Science]        | [Developing a fine-tuning approach to classify Attitude Roots]            | [8]           | [In Progress] |
-| [25.11.2024]  | [26.11.2024]  | [Frontend]            | [Redesigned Overview & Attitude Roots]                                    | [12]         | [Done] |
+| [20.11.2024]  | [26.11.2024]  | [Frontend]            | [Redesigned Overview & Attitude Roots]                                    | [12]         | [Done] |
 | [25.11.2024]  | [26.11.2024]  | [Data Science]        | [Developing a fine-tuning approach to classify Attitude Roots]            | [3]           | [In Progress] |
 ---
 
