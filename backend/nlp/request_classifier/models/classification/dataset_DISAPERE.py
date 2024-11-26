@@ -3,14 +3,14 @@ import json
 from collections import defaultdict
 import pandas as pd
 
-folder_path = "backend/request_classifier/DISAPERE/final_dataset/train"  
-output_folder = "backend/request_classifier/DISAPERE/final_dataset/"    
-input_file = "backend/request_classifier/DISAPERE/final_dataset/merged_output.json"    
-target_index = "backend/request_classifier/DISAPERE/final_dataset/merged_output_index.json"   
-only_review_sentences = "backend/request_classifier/DISAPERE/final_dataset/only_review_sentences.json"   
-filtered_file = "backend/request_classifier/DISAPERE/final_dataset/filtered_arg_request.json"    
-request_file = "backend/request_classifier/DISAPERE/final_dataset/filtered_arg_request.jsonl"    
-request_i__file = "backend/request_classifier/DISAPERE/final_dataset/filtered_arg_request_index.jsonl"   
+folder_path = "backend/nlp/request_classifier/DISAPERE/final_dataset/train"  
+output_folder = "backend/nlp/request_classifier/DISAPERE/final_dataset/"    
+input_file = "backend/nlp/request_classifier/DISAPERE/final_dataset/merged_output.json"    
+target_index = "backend/nlp/request_classifier/DISAPERE/final_dataset/merged_output_index.json"   
+only_review_sentences = "backend/nlp/request_classifier/DISAPERE/final_dataset/only_review_sentences.json"   
+filtered_file = "backend/nlp/request_classifier/DISAPERE/final_dataset/filtered_arg_request.json"    
+request_file = "backend/nlp/request_classifier/DISAPERE/final_dataset/filtered_arg_request.jsonl"    
+request_i__file = "backend/nlp/request_classifier/DISAPERE/final_dataset/filtered_arg_request_index.jsonl"   
 
 def merge_json_files(folder_path, output_file):
 
@@ -136,14 +136,14 @@ add_unique_target_index_to_nested_list(input_file, target_index)
 filter_review_sentences(target_index, only_review_sentences)
 filter_instances_by_review_action(input_file, output_folder,"arg_request")
 convert_json_to_jsonl(only_review_sentences, output_folder,"train")
-add_index_to_jsonl("backend/request_classifier/DISAPERE/final_dataset/filtered_train.jsonl", request_i__file)
+add_index_to_jsonl("backend/nlp/request_classifier/DISAPERE/final_dataset/filtered_train.jsonl", request_i__file)
 
 
 data = []
 filtered_data = []
 
 # JSONL-Datei öffnen und nur die gewünschten Felder extrahieren
-with open("backend/request_classifier/DISAPERE/final_dataset/filtered_train.jsonl", 'r', encoding='utf-8') as file:
+with open("backend/nlp/request_classifier/DISAPERE/final_dataset/filtered_train.jsonl", 'r', encoding='utf-8') as file:
     for line in file:
         entry = json.loads(line.strip())  # JSON-Objekt laden
         # Nur die gewünschten Felder extrahieren
@@ -151,7 +151,8 @@ with open("backend/request_classifier/DISAPERE/final_dataset/filtered_train.json
             "text": entry.get("text"),
             "index": entry.get("index"),
             "review_action": entry.get("review_action"),
-            "fine_review_action": entry.get("fine_review_action")
+            "fine_review_action": entry.get("fine_review_action"),
+            "aspect": entry.get("aspect")
         }
         filtered_data.append(filtered_entry)
 
@@ -160,16 +161,16 @@ df = pd.DataFrame(filtered_data)
 
 #df.to_csv("backend/request_classifier/DISAPERE/final_dataset/Request/test.csv", index=False)
 
-df = df[df["review_action"] == "arg_request"]
-unique_labels = df["fine_review_action"].unique()
+#df = df[df["review_action"] == "arg_request"]
+unique_labels = df["aspect"].unique()
 
 # Ein Mapping für jedes Label erstellen
 label_to_value = {label: idx for idx, label in enumerate(unique_labels)}
 
 # Neue Spalte mit den zugewiesenen Werten hinzufügen
-df["target"] = df["fine_review_action"].map(label_to_value)
+df["target"] = df["aspect"].map(label_to_value)
 
 unique_labels = df["target"].unique()
 print("Einzigartige Labels:", unique_labels)
-#df.to_csv("backend/request_classifier/DISAPERE/final_dataset/fine_request/train.csv", index=False)
+df.to_csv("backend/nlp/request_classifier/DISAPERE/final_dataset/fine_request/train_attitude.csv", index=False)
 
