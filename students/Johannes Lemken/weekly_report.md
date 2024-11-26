@@ -26,12 +26,12 @@
 - **Challenges**: 
 - **Next Steps**: building an own model
 
-### Week [n-2]
+### Week [3]
 
-- **Update 1**: 
-- **Update 2**: 
-- **Update 3**: 
+- **Update 1**: Build a model for request classification (91% F1)
+- **Update 2**: Build a model for fine request classification (54% F1)
+- **Update 3**: Mockup Landingpage
 - **Challenges**: 
-- **Next Steps**: 
+- **Next Steps**: Implementing the landingpage via Stramlit
 
 ---

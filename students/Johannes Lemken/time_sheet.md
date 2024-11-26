@@ -22,15 +22,18 @@
 | [11/13/2024] | [11/13/2024] | [Meeting]            | [Internal developer meeting]               | [0.5]              | [Completed] |
 | [11/13/2024] | [11/13/2024] | [Coding]             | [Exploration and setup classification model]    | [2]                | [Completed] | 
 | [11/14/2024] | [11/14/2024] | [Coding]             | [DISAPERE model]    | [4]                | [In Progess] |
-| [11/15/2024] | [11/14/2024] | [Coding]             | [DISAPERE model]    | [4]                | [In Progess] |
-| [11/16/2024] | [11/14/2024] | [Coding]             | [Exploration and setup classification model]    | [3]                | [Completed] |
-| [11/17/2024] | [11/14/2024] | [Coding]             | [Own model request classification]    | [3]                | [In Progess] |
-| [11/19/2024] | [11/14/2024] | [Coding]             | [Own model request classification]    | [3]                | [In Progress] |
-| [11/19/2024] | [11/13/2024] | [Meeting]            | [Weekly meeting]                           | [1]                | [Completed] |
-| [11/19/2024] | [11/14/2024] | [Coding]             | [Own model request classification]    | [1]                | [Completed] |
-| [11/19/2024] | [11/14/2024] | [Coding]             | [Own model fine quest classification/Finetuning]    | [4]                | [In Progress] |
-| [11/19/2024] | [11/13/2024] | [Meeting]            | [Own Model fine request / Promting]                           | [3]                | [In Progress] |
-| [11/20/2024] | [11/13/2024] | [Meeting]            | [Own Model fine request / Promting]                           | [1]                | [In Progress] |
+| [11/15/2024] | [11/15/2024] | [Coding]             | [DISAPERE model]    | [4]                | [In Progess] |
+| [11/16/2024] | [11/16/2024] | [Coding]             | [Exploration and setup classification model]    | [3]                | [Completed] |
+| [11/17/2024] | [11/17/2024] | [Coding]             | [Own model request classification]    | [3]                | [In Progess] |
+| [11/18/2024] | [11/18/2024] | [Coding]             | [Own model request classification]    | [3]                | [In Progress] |
+| [11/19/2024] | [11/19/2024] | [Meeting]            | [Weekly meeting]                           | [1]                | [Completed] |
+| [11/19/2024] | [11/19/2024] | [Coding]             | [Own model request classification]    | [1]                | [Completed] |
+| [11/19/2024] | [11/19/2024] | [Coding]             | [Own model fine quest classification/Finetuning]    | [4]                | [In Progress] |
+| [11/19/2024] | [11/19/2024] | [Coding]            | [Own Model fine request / Promting]                           | [3]                | [In Progress] |
+| [11/20/2024] | [11/20/2024] | [Coding]            | [Own Model fine request / Promting]                           | [1]                | [In Progress] |
+| [11/21/2024] | [11/21/2024] | [Coding]            | [Own Model fine request / Promting]                           | [3]                | [Completed] |
+| [11/25/2024] | [11/25/2024] | [Coding]            | [AR Model / Promting]                           | [3]                | [In Progress] |
+| [11/26/2024] | [11/26/2024] | [Frontend]            | [Info landingpape / Building a mockup for landingpage]                           | [2]                | [In Progress] |
 
 
 
