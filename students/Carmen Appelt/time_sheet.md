@@ -25,10 +25,16 @@
 | [15.11.2024]  | [15.11.2024]  | [Mockup Update]       | [Updating Mockup based on internal Feedback]                             | [2]           | [In Progress] |
 | [13.11.2024]  | [15.11.2024]  | [Exploring Dataset]   | [Downloading, Understanding and Exploring JiuJitsu Dataset]               | [2]           | [In Progress] |
 | [13.11.2024]  | [15.11.2024]  | [Learning]            | [Exploring Streamlit, Making Streamlit run on my Laptop]                  | [4]           | [Completed]   |
-| [16.11.24] | [16.11.24] | [Setup]              | [Setting up slurm]                                         | [4]                | [In Progess] |
-| [15.11.2024]  | [16.11.2024]  | [Data Science]        | [Developing a fine-tuning approach to classify Attitude Roots]            | [8]         | [In Progress] |
-| [25.11.2024]  | [26.11.2024]  | [Frontend]        | [Redesigned Overview & Attitude Roots]                    | [8]         | [Done] |
-| [25.11.2024]  | [26.11.2024]  | [Data Science]        | [Developing a fine-tuning approach to classify Attitude Roots]            | [3]         | [In Progress] |
+| [16.11.24] | [16.11.24] | [Setup]                     | [Setting up slurm]                                                               | [4]                                 | [In Progess] |
+| [15.11.2024]  | [16.11.2024]  | [Data Science]        | [Developing a fine-tuning approach to classify Attitude Roots]            | [8]           | [In Progress] |
+| [17.11.2024]  | [17.11.2024]  | [Front-end]           | [Progress Bar]                                                            | [3]           | [Completed]   | 
+| [19.11.2024]  | [19.11.2024]  | [Front-end]           | [Sections for Attitude Roots, Requests, Summary]                          | [5]           | [Completed]   | 
+| [19.11.2024]  | [19.11.2024]  | [Front-end]           | [Page Layout (CSS)]                                                       | [4]           | [Completed]   | 
+| [19.11.2024]  | [20.11.2024]  | [Models]              | [Finetuned Sentence Similarity for Attitude Roots&Themes]                 | [4]           | [Completed]   | 
+| [21.11.2024]  | [21.11.2024]  | [Models]              | [Tried dataset Sukannya sent me]                                          | [4]           | [Completed]   | 
+| [15.11.2024]  | [16.11.2024]  | [Data Science]        | [Developing a fine-tuning approach to classify Attitude Roots]            | [8]           | [In Progress] |
+| [25.11.2024]  | [26.11.2024]  | [Frontend]            | [Redesigned Overview & Attitude Roots]                                    | [12]         | [Done] |
+| [25.11.2024]  | [26.11.2024]  | [Data Science]        | [Developing a fine-tuning approach to classify Attitude Roots]            | [3]           | [In Progress] |
 ---
 
 > **Status Options**: "In Progress," "Completed," or "Pending."

@@ -13,7 +13,7 @@ import pickle
 red = '#ef2000'
 orange = '#ff8220'
 yellow = '#ffdc00'
-grey = '#e0e0e0'
+grey = '#e0e0e0' 
 green_good = '#5aca00'
 green_very_good = '#00b500'
 
