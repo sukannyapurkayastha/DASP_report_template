@@ -27,7 +27,8 @@
 | [13.11.2024]  | [15.11.2024]  | [Learning]            | [Exploring Streamlit, Making Streamlit run on my Laptop]                  | [4]           | [Completed]   |
 | [16.11.24] | [16.11.24] | [Setup]              | [Setting up slurm]                                         | [4]                | [In Progess] |
 | [15.11.2024]  | [16.11.2024]  | [Data Science]        | [Developing a fine-tuning approach to classify Attitude Roots]            | [8]         | [In Progress] |
-
+| [25.11.2024]  | [26.11.2024]  | [Frontend]        | [Redesigned Overview & Attitude Roots]                    | [8]         | [Done] |
+| [25.11.2024]  | [26.11.2024]  | [Data Science]        | [Developing a fine-tuning approach to classify Attitude Roots]            | [3]         | [In Progress] |
 ---
 
 > **Status Options**: "In Progress," "Completed," or "Pending."

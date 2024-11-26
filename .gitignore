@@ -149,3 +149,4 @@ misc.xml
 
 # Ignoriere alle optimizer.pt Dateien
 *.pt
+frontend/main_page.py
