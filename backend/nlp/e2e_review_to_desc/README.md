@@ -89,3 +89,8 @@ python main.py \
 
 We run the same finetuning codes as in Step 2.
 
+## Q&A
+1. how are descriptions created?
+   1. human-writen summary: summarized by human for each root-theme cluster
+   2. automatic summary: extract the most representative review sentence for each cluster.
+
