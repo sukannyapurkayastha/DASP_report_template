@@ -1,0 +1,100 @@
+text,index,review_action,fine_review_action,aspect,target
+The submission proposes a new method for agent design to learn about the behaviour of other fixed agents inhabiting the same environment.,,arg_structuring,arg-structuring_summary,none,0
+The method builds on imitation learning (behavioural cloning) to model the agent’s behaviour and reinforcement learning to learn a probing policy to more broadly explore different target agent behaviours.,,arg_structuring,arg-structuring_summary,none,0
+"Overall, the approach falls into the field of intrinsic motivation / curiosity-like reward generation procedures but with respect to target agent behaviour instead of the agent’s environment.",,arg_structuring,arg-structuring_summary,none,0
+"While learning to model the target agent’s inner state, the RL reward is generated based on the difference of the target agent’s inner state between consecutive time steps.",,arg_structuring,arg-structuring_summary,none,0
+The approach is evaluated against a small set of baselines in various toy grid-world scenarios and a sorting task and overall performs commensurate or better than the investigated baselines.,,arg_structuring,arg-structuring_summary,none,0
+"Given its limitation to small and low-dimensional environments, it cannot be said how well the approach will scale with respect to these factors and the resulting, more complex agent behaviours.",,arg_evaluative,none,asp_soundness-correctness,1
+It would be highly beneficial to evaluate these aspects.,,arg_request,arg-request_experiment,asp_soundness-correctness,1
+"Furthermore, it would be beneficial to provide more information about the baselines; in particular the type of count-based exploration.",,arg_request,arg-request_clarification,asp_substance,2
+"For the generated figures, it would be beneficial to include standard deviation and mean over multiple runs to not only evaluate performance but also robustness.",,arg_request,arg-request_edit,asp_substance,2
+"Overall, while the agent behaviour modelling focused on a type of inner state (based on past trajectories) provides benefits in the evaluated examples, it is unsure how well the approach scales to more complex domains based on strong similarity and simplicity of the tested toy scenarios (evaluation on sorting problems is an interesting step towards to address this shortcoming).",,arg_evaluative,none,asp_soundness-correctness,1
+"One additional aspect pointing towards the necessity of further evaluation is the strong dependence of performance on the dimensionality of the latent, internal state (Fig.4).",,arg_evaluative,none,asp_soundness-correctness,1
+Minor issues:,,arg_structuring,arg-structuring_heading,none,0
+- Reward formulations for the baselines as part of the appendix.,,arg_request,arg-request_edit,asp_replicability,3
+- Same scale for the y-axes across figures,,arg_request,arg-request_edit,asp_clarity,4
+Problem and contribution:,,arg_structuring,arg-structuring_heading,none,0
+The paper studies if the Visual Question answering model “FILM” from Perez et al (2018) is able to decide if “most” of the objects have a certain attribute or color.,,arg_structuring,arg-structuring_summary,none,0
+For this it tries to mimic the setup used to test human abilities in the study by Pietroski et al. (2009).,,arg_structuring,arg-structuring_summary,none,0
+The main contribution of this is work is a discussion of how a model could solve the problem of deciding “most” and the study which shows that the studied model has some ability to do this.,,arg_structuring,arg-structuring_summary,none,0
+From this the paper concludes that the model is likely to have some approximate number system.,,arg_structuring,arg-structuring_summary,none,0
+Strengths:,,arg_structuring,arg-structuring_heading,none,0
+"1.	The paper looks at a new angle to study and characterize CNN models in general, and VQA models in particular by looking into the psycholinguistic literature experimental setup studied with human subjects.",,arg_evaluative,none,asp_originality,5
+"2.	The paper studies different variants of controlling for different factors (e.g. pairing data points, area used, different training data and pre-trained vs. trained from scratch CNN models)",,arg_evaluative,none,asp_substance,2
+3.	It is interesting to see that the models performance reasonably aligns with the curve predicted by “Weber’s law”.,,arg_evaluative,none,asp_substance,2
+Weaknesses:,,arg_structuring,arg-structuring_heading,none,0
+"4.	Number of objects vs. ratios is not disentangled: While the paper clarifies that not only a smaller number of objects are used, it would be interesting to understand if similar conclusions hold if only the same number or about the same number of total objects are used but the ratios change (at least for more extreme ratios, 1:2, this seems to be the case as they achieve 100% accuracy).",,arg_request,arg-request_experiment,asp_substance,2
+5.,,arg_structuring,arg-structuring_heading,none,0
+"The paper only focusses on a single VQA model (FILM) which limits the understanding if this observation is specific to this model; what about other models such as the one from Hudson & Manning (2018), or Relation Networks (Santoro et al) or even simpler baselines: A system which two attention mechanisms (without normalizations) which are sum pooled and then compared would sort of explicitly encode the idea of the APN system.",,arg_fact,none,none,0
+It would be valuable to compare them to see how different systems (can) solve this task.,,arg_request,arg-request_experiment,asp_substance,2
+I would expect that the architecture favors certain capabilities; e.g. Relation Networks might lead more to a paring-based strategy. Or Zhang et al. (2018) might be able to exploit explicit counting to solve the task.,,arg_fact,none,none,0
+6.	The “most” ability or APN ability seems to be highly related to accumulation in neural networks.,,arg_fact,none,none,0
+The paper FiLM uses global max-pooling and I am wondering if this affect this ability.,,arg_request,arg-request_clarification,asp_substance,2
+7.	The study is only performed on symbols which a very large training set (given the difficulty of the problem) and it not clear how well this generalizes to real images or scenarios with less training data.,,arg_evaluative,none,asp_soundness-correctness,1
+7.1.,,arg_structuring,arg-structuring_heading,none,0
+"Maybe beyond the scope of this work, but it would be interesting to understand how much training data different models need to obtain this capability.",,arg_request,arg-request_experiment,asp_substance,2
+"8.	For evaluation: Are there distractors, i.e. elements which don’t belong to set A or B? If not, how would distractors affect it.",,arg_request,arg-request_clarification,asp_substance,2
+9.	Clarity:,,arg_structuring,arg-structuring_heading,none,0
+9.1.,,arg_request,arg-request_typo,asp_clarity,4
+The equation between equation (1) and (2) misses a number [I will call it 1.5 for now],,none,none,none,0
+9.2.	In formula (1.5) “<=>” seems to be used at different levels (?) it would be good to use brackets to make clear which level “<=>” refers to.,,arg_request,arg-request_edit,asp_clarity,4
+Minor:,,arg_structuring,arg-structuring_heading,none,0
+10.	The title suggests that the paper studies multiple VQA models but only a single model is studied.,,arg_request,arg-request_edit,asp_clarity,4
+Conclusion:,,arg_structuring,arg-structuring_heading,none,0
+"The paper looks into an interesting direction to study CNN models but has some limitations including studying only a single VQA model type, limited to artificially generated images.",,arg_evaluative,none,asp_substance,2
+This paper addresses the problem of building models for NLP tasks that are robust against spurious correlations in the data by introducing a human-in-the-loop method: annotators are asked to modify data-points minimally in order to change the label.,,arg_structuring,arg-structuring_summary,none,0
+They refer to this process as counterfactual augmentation.,,arg_structuring,arg-structuring_summary,none,0
+The authors apply this method to the IMDB sentiment dataset and to SNLI and show (among other things) that many models cannot generalize from the original dataset to the counterfactually-augmented one.,,arg_evaluative,none,asp_motivation-impact,6
+This contribution is timely and addresses a very important problem that needs to be addressed in order to build more robust NLP systems.,,arg_evaluative,none,asp_motivation-impact,6
+"Because, however, of a few limitations, I recommend weak acceptance.",,arg_evaluative,none,asp_soundness-correctness,1
+My main hesitation comes from a lack of clarity about the main lesson we have learned.,,arg_evaluative,none,asp_clarity,4
+"In particular, if the goal is to use this method to augment the data we use to train NLP systems in order to make them more robust, it seems that the time cost of the process will be prohibitive.",,arg_evaluative,none,asp_substance,2
+"On the other hand, perhaps these methods could be used to identify the kind of spurious correlations that models tend to rely on, which could then be used in a more automated data augmentation process.",,arg_request,arg-request_experiment,asp_clarity,4
+"If that's the goal, however, a more detailed error analysis would need to be included.",,arg_request,arg-request_experiment,asp_substance,2
+A few small comments:,,arg_structuring,arg-structuring_heading,none,0
+"* There was some analysis of the augmented IMDB dataset, but none of the SNLI dataset.",,arg_request,arg-request_clarification,asp_substance,2
+I would love to see a more detailed investigation of what annotators usually did.,,arg_request,arg-request_clarification,asp_clarity,4
+"For instance, a reason that hypothesis-only models do well is that certain words are very predictive of certain labels (e.g. ""not"" and contradiction).",,arg_fact,none,none,0
+"Do people leave the negations in when modifying such examples for entailment or neutrality, thus breaking the simple correspondence?",,arg_request,arg-request_clarification,asp_soundness-correctness,1
+"That's a very simple kind of question; more generally, I'd like to see more analysis of the new dataset.",,arg_request,arg-request_experiment,asp_substance,2
+* The BiLSTM they use is very small (embedding and hidden dimension 50).,,arg_request,arg-request_edit,asp_substance,2
+"Given that BERT is most robust against their manipulation, it would be good to see a more powerful recurrent model for comparison.",,arg_request,arg-request_edit,asp_meaningful-comparison,7
+"It would be easy to use ELMo here, if the main question is about Transformers vs recurrent models.",,arg_request,arg-request_clarification,asp_soundness-correctness,1
+Some very minor / typographic comments:,,arg_structuring,arg-structuring_heading,none,0
+"* abstract: ""with revise"" should be ""with revising""",,arg_request,arg-request_typo,asp_substance,2
+* first paragraph page 2: some references to causality literature and definition of spuriousness as common cause,,arg_request,arg-request_edit,asp_substance,2
+"* page 2, ""We show that..."" I'd break this into two sentences to make it easier to parse.",,arg_request,arg-request_typo,asp_clarity,4
+* Table 3: I would make two columns for each model with accuracy on original versus revised.,,arg_request,arg-request_clarification,asp_clarity,4
+"With the current table, one has to compare cells in the top half of the table to those in the bottom half of the table, which is quite difficult to do.",,arg_evaluative,none,asp_clarity,4
+"In the paper, the authors propose a pipelined backpropagation algorithm faster than the traditional backpropagation algorithm.",,arg_structuring,arg-structuring_summary,none,0
+The proposed method allows computing gradients using stale weights such that computations in different layers can be executed in parallel.,,arg_structuring,arg-structuring_summary,none,0
+They also conduct experiments to evaluate the effect of staleness and show that the proposed method is faster than compared methods.,,arg_structuring,arg-structuring_summary,none,0
+I have the following concerns:,,arg_structuring,arg-structuring_heading,none,0
+"1) There are several important works on model-parallelism and convergence guarantee of pipeline-based methods missing in this paper, for example [1][2].",,arg_evaluative,none,asp_substance,2
+2) Does the proposed method store immediate activations or recompute the activations in the backward pass?,,arg_request,arg-request_explanation,asp_substance,2
+"3) In the experiments, the accuracy values are too low for me.",,arg_evaluative,none,asp_soundness-correctness,1
+"For example, resnet110 on cifar10 is 91.99% only, it should be around 93%, an example online",,none,none,none,0
+https://github.com/akamaster/pytorch_resnet_cifar10.,,arg_other,none,none,0
+"4) In the experiments, more comparisons with methods in [1] or [2] should be conducted given they are all parallelizing the backpropagation algorithm and achieve speedup in the training.",,arg_evaluative,none,asp_meaningful-comparison,7
+"5) Last but not least, convergence analysis of the proposed method should be provided given that asynchrony may lead to divergence in the optimization.",,arg_evaluative,none,asp_substance,2
+"[1] Huo, Zhouyuan, et al. ""Decoupled parallel backpropagation with convergence guarantee."" arXiv preprint arXiv:1804.10574 (2018).",,arg_other,none,none,0
+"[2] Huo, Zhouyuan, Bin Gu, and Heng Huang. ""Training neural networks using features replay."" Advances in Neural Information Processing Systems. 2018.",,arg_other,none,none,0
+Quality/clarity:,,arg_structuring,arg-structuring_heading,none,0
+- The problem setting description is neither formal nor intuitive which made it very hard for me to understand exactly the problem you are trying to solve.,,arg_evaluative,none,asp_clarity,4
+Starting with S and i: I guess S and i are both simply varying-length sequences in U.,,arg_fact,none,none,0
+"- In general the intro should focus more on an intuitive (and/or formal) explanation of the problem setting, with some equations that explain the problem you want to work on. Right now it is too heavy on 'related work' (this is just my opinion).",,arg_evaluative,none,asp_substance,2
+Originality/Significance:,,arg_structuring,arg-structuring_heading,none,0
+I have certainly never seen a ML-based paper on this topic.,,arg_fact,none,none,0
+The idea of 'learning' prior information about the heavy hitters seems original.,,arg_evaluative,none,asp_originality,5
+Pros:,,arg_structuring,arg-structuring_heading,none,0
+It seems like a creative and interesting place to use machine learning.,,arg_evaluative,none,asp_motivation-impact,6
+the plots in Figure 5.2 seem promising.,,arg_evaluative,none,asp_substance,2
+Cons:,,arg_structuring,arg-structuring_heading,none,0
+- The formalization in Paragraph 3 of the Intro is not very formal. I guess S and i are both simply varying-length sequences in U.,,arg_evaluative,none,asp_clarity,4
+"- In general the intro should focus more on an intuitive (and/or formal) explanation of the problem setting, with some equations that explain the problem you want to work on. Right now it is too heavy on 'related work' (this is just my opinion).",,arg_evaluative,none,asp_substance,2
+"-In describing Eqn 3 there are some weird remarks, e.g. ""N is the sum of all frequencies"". Do you mean that N is the total number of available frequencies? i.e.",,arg_request,arg-request_clarification,asp_clarity,4
+should it be |D|? It's not clear to me that the sum of frequencies would be bounded if D is not discrete.,,none,none,none,0
+- Your F and \tilde{f} are introduced as infinite series.,,arg_evaluative,none,asp_clarity,4
+"Maybe they should be {f1, f2,..., fN}, i.e. N queries, each of which you are trying to be estimate.",,none,none,none,0
+"- In general, you have to introduce the notation much more carefully.",,arg_evaluative,none,asp_clarity,4
+Your audience should not be expected to be experts in hashing for this venue!,,none,none,none,0

@@ -43,49 +43,54 @@ few_shot_examples = {
         "The work seems preliminary and needs more substantial results.",
     ],
     "Other": [
-        "Overall, this is a well-written paper with interesting insights.",
-        "I appreciate the authors' efforts in addressing this complex problem.",
-        "The paper could benefit from minor stylistic improvements.",
+    "The paper uses standard methodologies without introducing new ideas.",
+    "General comments about the paper’s overall quality or readability.",
+    "The authors make minor contributions that are unrelated to the main discussion."
     ],
 }
 
 def create_few_shot_prompt(query, few_shot_examples):
     prompt = (
         "As an assistant, analyze the sentence and determine its category based on the reasoning.\n"
-        "Select the appropriate Attitude Root.\n\n"
-        "Categories:\n"
+        "Select the best category from the following options. Use 'Other' only if none of the other categories apply.\n"
     )
-    for idx, label in enumerate(label_map.keys()):
-        prompt += f"{idx}: {label}\n"
+    for label in label_map:
+        prompt += f"- {label}\n"
     prompt += "\n"
 
     for label, sentences in few_shot_examples.items():
-        number = label_map[label]
-        reasoning = "Reasoning: " + " ".join(sentences[0].split()[:10]) + "..."  
-        prompt += f"Sentence: \"{sentences[0]}\"\n{reasoning}\nCategory Number: {number}\n\n"
+        reasoning = "Reasoning: " + " ".join(sentences[0].split()[:10]) + "..."
+        prompt += f"Sentence: \"{sentences[0]}\"\n{reasoning}\nCategory: {label}\n\n"
     prompt += f"Sentence: \"{query}\"\nReasoning:"
     return prompt
 
+
+
 def map_prediction_to_label(pred, label_map):
-    pred = pred.strip().lower()
-    pred = pred.strip('."\'<>/ ').lower()
-
-    # Check if prediction matches label names
-    for label in label_map:
-        if pred == label.lower():
-            return label_map[label]
-
-    # Partial match with label names
+    # Clean the prediction text
+    pred = pred.replace('<pad>', '').strip().lower()
+    
+    # Try to extract the category from the prediction
+    import re
+    match = re.search(r'category[:\- ]*(.*)', pred, re.IGNORECASE)
+    if match:
+        pred_label = match.group(1).strip()
+        # Direct match
+        for label in label_map:
+            if pred_label.lower() == label.lower():
+                return label_map[label]
+        # Partial match
+        for label in label_map:
+            if label.lower() in pred_label.lower():
+                return label_map[label]
+    
+    # Fallback to check the entire prediction
     for label in label_map:
         if label.lower() in pred:
             return label_map[label]
-
-    # Check if prediction is a number
-    for idx, label in enumerate(label_map.keys()):
-        if pred == str(idx) or pred == f"{idx}.":
-            return label_map[label]
-
+    
     return -1  # Return -1 if no match found
+
 
 def generate_predictions_from_dataset(dataset, few_shot_examples, tokenizer, model, max_new_tokens=50, temperature=0.3):
     predictions = []
@@ -117,7 +122,7 @@ def generate_predictions_from_dataset(dataset, few_shot_examples, tokenizer, mod
 def evaluate_model(dataset, predictions, label_map):
     # Map true labels to numerical labels using label_map
     print(dataset)
-    true_labels = dataset['fine_review_action'].map(lambda x: label_map[fine_to_category_map[x]]).tolist()
+    true_labels = dataset['aspect'].map(lambda x: label_map[fine_to_category_map[x]]).tolist()
     # Map predicted labels to numerical labels
     predicted_labels = [map_prediction_to_label(pred, label_map) for pred in predictions]
     # Calculate metrics
@@ -145,8 +150,11 @@ if __name__ == "__main__":
     model.to("cuda" if torch.cuda.is_available() else "cpu")
     tokenizer.pad_token_id = tokenizer.eos_token_id
 
-    test_file = "backend/nlp/request_classifier/DISAPERE/final_dataset/fine_request/test_long.csv"  # Update with your test dataset path
+    test_file = "backend/nlp/request_classifier/DISAPERE/final_dataset/fine_request/test_attitude.csv"  # Update with your test dataset path
     test_data = pd.read_csv(test_file)
+    test_data = test_data[test_data["aspect"] != "none"]
+    test_data = test_data.reset_index(drop=True)
+
 
     # Define label map
     label_map = {
@@ -154,22 +162,25 @@ if __name__ == "__main__":
         "Clarity": 1,
         "Meaningful-comparison": 2,
         "Motivation-impact": 3,
-        "Orginality": 4,
+        "Originality": 4,  # Fixed typo from "Orginality"
         "Replicability": 5,
         "Soundness-correctness": 6,
         "Substance": 7,
     }
 
+
     fine_to_category_map = {
-        "arg-other": "Other",
-        "arg-clarity": "Clarity",
-        "arg-meaningful-comparison": "Meaningful-comparison",
-        "arg-motivation-impact": "Motivation-impact",
-        "arg-orginality": "Orginality",
-        "arg-replicability": "Replicability",
-        "arg-soundness-correctness": "Soundness-correctness",
-        "arg-substance": "Substance",
+    "arg_other": "Other",
+    "asp_clarity": "Clarity",
+    "asp_meaningful-comparison": "Meaningful-comparison",
+    "asp_motivation-impact": "Motivation-impact",
+    "asp_originality": "Originality",  # Fixed typo from "asp_orginality"
+    "asp_replicability": "Replicability",
+    "asp_soundness-correctness": "Soundness-correctness",
+    "asp_substance": "Substance",
     }
+
+
 
     print("\n--- Generating Predictions for Test Dataset ---")
     predictions = generate_predictions_from_dataset(test_data, few_shot_examples, tokenizer, model)
