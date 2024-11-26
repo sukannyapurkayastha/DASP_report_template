@@ -65,7 +65,7 @@ custom_css = """
 
 # Initialize session state
 if "current_page" not in st.session_state:
-    st.session_state["current_page"] = "landing_page"
+    st.session_state["current_page"] = "main_page"
 
 # Page routing
 if st.session_state["current_page"] == "landing_page":
