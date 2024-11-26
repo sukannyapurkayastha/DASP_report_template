@@ -16,6 +16,10 @@ st.set_page_config(page_title="Paper Review Summary")
 # CSS styles
 st.markdown("""
     <style>
+    .header_carmen {
+        font-size: 108px;
+        font-weight: bold;
+    }
     body {
         background-color: #F2F2F2;
     }
@@ -25,6 +29,13 @@ st.markdown("""
         border-radius: 5px;
         background-color: #E8E8E8;
         margin-bottom: 2px;
+    }
+    .text-box {
+        padding-left: 2px;
+        margin-bottom: 0px;
+        border-radius: 5px;
+        background-color: #E8E8E8;
+        margin-bottom: 0px;
     }
     .invisbible-line {
         height: 60px;
