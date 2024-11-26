@@ -10,6 +10,22 @@
 
 ## Reports
 
+### Week [2]
+
+- **Update 1**: Frontend 
+- **Update 2**: Developing Finetuning Approach Ongoing
+- **Update 3**: 
+- **Challenges**: Increasing Accuracy for Attitude Classifier above 60%
+- **Next Steps**: Starting Backend
+
+### Week [2]
+
+- **Update 1**: Mockup 
+- **Update 2**: Started with Finetuning Approach
+- **Update 3**: 
+- **Challenges**: Quality of Datasets, Using other Git Repos
+- **Next Steps**: Starting Frontend
+
 ### Week [1]
 
 - **Update 1**: No coding updates 
