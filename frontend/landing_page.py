@@ -1,4 +1,5 @@
 import streamlit as st
+from modules.shared_methods import use_default_container 
 
 #%% Backend Logic
 
@@ -48,9 +49,7 @@ body {
     background-color: white; 
     display: flex;
     flex-direction: column;
-    gap: 20px; 
-
-                
+    gap: 20px;   
 }
 
 /* Description text styling */
@@ -66,7 +65,6 @@ body {
 .stTextInput input {
     color: #333 !important;
     font-size: 16px;
-    border: 2px solid #007bff !important; /* Blue border */
     border-radius: 5px;
     width: 100%; /* Ensure input takes up full width */
     padding: 10px;
@@ -77,7 +75,7 @@ body {
 
 /* Button styling */
 .stButton button {
-    background-color: #007bff !important;
+    background-color: #3a60b2 !important;
     color: white !important;
     border: none;
     border-radius: 5px;
@@ -88,44 +86,61 @@ body {
 .stButton button:hover {
     background-color: #0056b3 !important;
 }
+/* Target only sidebar button */
+section[data-testid="stSidebar"] div.stButton > button[data-testid="stBaseButton-secondary"] {
+    background-color: transparent; /* Make button background invisible */
+    border: none; /* Remove border */
+    color: black; /* Button text color black */
+    font-size: 18px; /* Font size for better visibility */
+    cursor: pointer; /* Change cursor to pointer for clickable effect */
+    width: 100%; /* Make button take full width of sidebar */
+    text-align: left; /* Align text to the left */
+    padding: 10px 0; /* Add some padding */
+}
+
+/* Target hover effect for sidebar button */
+section[data-testid="stSidebar"] div.stButton > button[data-testid="stBaseButton-secondary"]:hover {
+    background-color: #ccc; /* Grey background on hover */
+}
+
 </style>
 """
 #%% Landing Page Function
 def landing_page(custom_css):
-    st.set_page_config(
-        page_title="Paper Review Generator",
-        page_icon="📄",
-        layout="centered"
-    )
     
-    # Apply custom CSS
-    st.markdown(landing_page_css, unsafe_allow_html=True)
-
-    st.title("Paper Review Summary")
+    def content():
+        # Apply custom CSS
+        st.markdown(landing_page_css, unsafe_allow_html=True)
     
-    st.markdown(
-        '<p class="description-text">'
-        "Lorem ipsum dolor sit amet, <strong>consectetur adipiscing elit</strong>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
-        "At vero eos et accusam et justo duo dolores et ea rebum."
-        "</p>",
-        unsafe_allow_html=True,
-    )
+        st.title("Paper Review Generator")
+        
+        st.markdown(
+            '<p class="description-text">'
+            "Lorem ipsum dolor sit amet, <strong>consectetur adipiscing elit</strong>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+            "At vero eos et accusam et justo duo dolores et ea rebum."
+            "</p>",
+            unsafe_allow_html=True,
+        )
+        
+        # Create tabs
+        tab1, tab2 = st.tabs(["Enter URL", "Upload file"])
+        
+        # Web API
+        with tab1:
+            st.text_input("Enter URL to Paper Reviews", key="entered_url")
+        
+        # File Uploader
+        with tab2:
+            uploaded_file = st.file_uploader("Select a file or drop it here", type=["txt", "pdf"])
+            if uploaded_file:
+                st.session_state["uploaded_file"] = uploaded_file
+                st.success(f"Uploaded: {uploaded_file.name}")
+        
     
-    # File uploader
-    uploaded_file = st.file_uploader("Select a file or drop it here", type=["txt", "pdf"])
-    if uploaded_file:
-        st.session_state["uploaded_file"] = uploaded_file
-        st.success(f"Uploaded: {uploaded_file.name}")
     
-
-    st.text_input("Enter URL to Paper Reviews", key="entered_url")
+        if st.button("Show Analysis"):
+            st.write("TODO implement") #switch_to_main_page()
     
+        st.button("Go to analysis", on_click=lambda: switch_to_main_page(skip_validation=True))
 
-    if st.button("Show Analysis"):
-        switch_to_main_page()
-
-    st.button("Go to analysis", on_click=lambda: switch_to_main_page(skip_validation=True))
-
-
-if __name__ == "__main__":
-    landing_page(landing_page_css)
+    use_default_container(content)

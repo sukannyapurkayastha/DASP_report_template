@@ -8,15 +8,10 @@ def show_request_information_data(request_information_data):
     
     #%% Helper methods
     
-    def show_reviewers_attitude_comments(row):
-        i = 3
-        while i < len(row) and isinstance(row[i], str):
-            st.markdown(f'<div class="content-box">{row[i]}</div>', unsafe_allow_html=True)
-            st.markdown('<div class="content-box"> </div>', unsafe_allow_html=True)
-            i += 1
             
     def show_header_with_progress(row, desc):
         try: 
+
             fraction = eval(row[1])  # todo: the fraction should be a number --> remove eval
         except:
             fraction = row[1]

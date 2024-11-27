@@ -48,6 +48,10 @@ st.markdown("""
         margin-top: 25%;
         margin-bottom: 25%;
     }
+    .header-button {
+        display: block;
+        margin: 0 auto;
+    }
     </style>
     """, unsafe_allow_html=True)
 

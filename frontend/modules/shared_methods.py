@@ -13,16 +13,40 @@ grey = '#e0e0e0'
 green_good = '#5aca00'
 green_very_good = '#00b500'
 
+def get_colour_palette(): 
+    return {
+        'bad_m4': '#e6550d',
+        'bad_m3': '#fd8d3c',
+        'bad_m2': '#fdae6b',
+        'bad_m1': '#fdd0a2',
+        'good_1': '#dadaeb',
+        'good_2': '#bcbddc',
+        'good_3': '#9e9ac8',
+        'good_4': '#756cb2',
+    }
+
 
 def select_color_attitude_or_request(fraction):
-    if fraction < 0.2:
-        return green_good
-    if fraction < 0.34:
-        return yellow
-    elif fraction < 0.67:
-        return orange
-    elif fraction <= 1:
-        return red
+    palette = get_colour_palette()
+    if fraction < 0.125:
+        return palette['good_4']
+    elif fraction < 0.25:
+        return palette['good_3']
+    elif fraction < 0.375:
+        return palette['good_2']
+    elif fraction < 0.5:
+        return palette['good_1']
+    elif fraction < 0.625:
+        return palette['bad_m1']
+    elif fraction < 0.75:
+        return palette['bad_m2']
+    elif fraction < 0.875:
+        return palette['bad_m3']
+    else:
+        return palette['bad_m4']
+
+
+
 
 
 def show_header_with_progress(row, desc):
@@ -61,9 +85,7 @@ def show_comments(row):
     for author_comments in comments:
         author = author_comments[0]
         comment_list = author_comments[1]
-        
-       # st.markdown(f'### Kommentare von {author}')
-       
+
         with stylable_container(
             key="container_without_border",
             css_styles="""
@@ -79,7 +101,6 @@ def show_comments(row):
                 """,
         ):
             with st.container():
-
                 st.markdown(f'<div class="content-text">{author}</div>', unsafe_allow_html=True)
                 st.markdown('\n'.join(f'- {comment}' for comment in comment_list))
 

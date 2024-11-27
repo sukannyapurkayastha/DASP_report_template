@@ -1,18 +1,13 @@
 import streamlit as st
 import pandas as pd
 from modules.shared_methods import select_color_attitude_or_request, draw_progress_bar
+from modules.shared_methods import select_color_attitude_or_request, draw_progress_bar, show_comments
 
 
 def show_attitude_roots_data(attitude_roots_data):
     
     #%% Helper methods
     
-    def show_reviewers_attitude_comments(row):
-        i = 3
-        while i < len(row) and isinstance(row[i], str):
-            st.markdown(f'<div class="content-box">{row[i]}</div>', unsafe_allow_html=True)
-            st.markdown('<div class="content-box"> </div>', unsafe_allow_html=True)
-            i += 1
             
     def show_header_with_progress(row, desc):
         try: 
@@ -42,7 +37,7 @@ def show_attitude_roots_data(attitude_roots_data):
                 with col2:
                     show_header_with_progress(row, True)
                 with st.expander("Comments"):
-                    show_reviewers_attitude_comments(row)
+                    show_comments(row)
                 st.markdown('<div class="invisbible-line-minor">  </div>', unsafe_allow_html=True)
                 
         

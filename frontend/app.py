@@ -1,6 +1,10 @@
 import streamlit as st
-from landing_page import landing_page
-from main_page import main_page
+import base64
+from pathlib import Path
+import main_page
+import landing_page
+import os
+import contact
 
 st.set_page_config(
     page_title="Paper Review Generator",
@@ -71,7 +75,16 @@ custom_css = """
         color: #3a60b2
     }
 
-    
+    .popover-open {
+    width: 200px;
+    height: 100px;
+    position: absolute;
+    inset: unset;
+    bottom: 5px;
+    right: 5px;
+    margin: 0;
+    }
+
     
     /* Target only sidebar button */
     section[data-testid="stSidebar"] div.stButton > button[data-testid="stBaseButton-secondary"] {
@@ -140,17 +153,17 @@ def show_navigation_bar_and_content():
     # Sidebar buttons for navigation
     st.sidebar.title("Welcome")
     
-    if st.sidebar.button("Home"):
+    if st.sidebar.button("Upload File"):
         st.session_state.page = "Home"
     if st.sidebar.button("Services"):
-        st.session_state.page = "About"
+        st.session_state.page = "Meta Reviewer Dashboard"
     if st.sidebar.button("Contact"):
         st.session_state.page = "Contact"
     
     # Display content based on the current page
-    if st.session_state.page == "Home":
+    if st.session_state.page == "Upload File":
         landing_page.landing_page(custom_css)
-    elif st.session_state.page == "About":
+    elif st.session_state.page == "Meta Reviewer Dashboard":
         main_page.main_page(custom_css)
     elif st.session_state.page == "Contact":
         contact.show_contact_info(custom_css)

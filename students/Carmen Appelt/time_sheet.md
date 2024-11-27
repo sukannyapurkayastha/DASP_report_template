@@ -34,6 +34,7 @@
 | [21.11.2024]  | [21.11.2024]  | [Models]              | [Tried dataset Sukannya sent me]                                          | [4]           | [Completed]   | 
 | [20.11.2024]  | [26.11.2024]  | [Frontend]            | [Redesigned Overview & Attitude Roots]                                    | [12]         | [Done] |
 | [25.11.2024]  | [26.11.2024]  | [Data Science]        | [Developing a fine-tuning approach to classify Attitude Roots]            | [3]           | [In Progress] |
+| [27.11.2024]  | [27.11.2024]  | [Frontend]            | [Adapted Methods for changed data structure, added colour sceme, added logic to show the scores of the authors individually]            | [9]           | [In Progress] |
 ---
 
 > **Status Options**: "In Progress," "Completed," or "Pending."

@@ -5,7 +5,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import plotly.graph_objects as go
 import pickle
-import modules.overview
+import modules.overview 
 import modules.attitude_roots
 import modules.request_information
 import modules.summary
@@ -42,7 +42,6 @@ def main_page(custom_css):
     st.title("Paper Review Summary")
     
     use_default_container(modules.overview.show_overview, overview)
-    
     
     attitude_root_container = lambda: modules.attitude_roots.show_attitude_roots_data(attitude_roots)
     request_information_container = lambda: modules.request_information.show_request_information_data(request_information)
