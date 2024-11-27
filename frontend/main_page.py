@@ -48,7 +48,7 @@ def main_page(custom_css):
     #%%% Set the page configuration
     st.set_page_config(
         page_title="Paper Review Summary",
-        page_icon=os.path.join("logo.png")
+        page_icon=os.path.join("frontend/images" ,"logo.png")
         )
     
     # Apply custom CSS Styles
@@ -111,7 +111,7 @@ def main_page(custom_css):
             Exception("Unexpected score!")
     
     def draw_attribute(column_name):
-        if column == 'Overall':
+        if column_name == 'Overall':
             score_percent = overview[column_name].loc[0]*10
             color, score_text = select_color_and_text_overview(score_percent)
             st.markdown(f"<h4 style='font-size:18px; margin: 0px; padding: 0px; text-align: left;'>{get_score_text_overall_rating(score_percent)}</h4>", unsafe_allow_html=True)
@@ -301,7 +301,7 @@ def main_page(custom_css):
 
     
     #%%% Request Information
-    st.markdown('<div class="header">ATTITUDE ROOTS</div>', unsafe_allow_html=True)
+    st.markdown('<div class="header">REQEUST INFORMATION</div>', unsafe_allow_html=True)
     with stylable_container(
         key="container_with_border",
         css_styles="""
