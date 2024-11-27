@@ -1,3 +1,4 @@
 [theme]
-primaryColor = "#F63366"
-backgroundColor = "#F2F2F2"
+base = "custom"
+primaryColor = "#3a60b2"
+backgroundColor = "#f2f2f2"
