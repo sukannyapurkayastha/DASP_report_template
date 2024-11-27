@@ -5,357 +5,52 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import plotly.graph_objects as go
 import pickle
+import modules.overview
+import modules.attitude_roots
+import modules.request_information
+import modules.summary
+import modules.contact_info
+import modules.slideshow as ss
+from modules.shared_methods import use_default_container 
 
 #%% global variables
-
-# Colors
-
-red = '#ef2000'
-orange = '#ff8220'
-yellow = '#ffdc00'
-grey = '#e0e0e0' 
-green_good = '#5aca00'
-green_very_good = '#00b500'
 
 
 # Import data
 
 try:
-    overview = pd.read_csv(os.path.join("frontend/dummy_data", "dummy_overview.csv"), sep=";", encoding="utf-8")
-    attitude_roots = pd.read_csv(os.path.join("frontend/dummy_data", "dummy_attitude_roots.csv"), sep=";", encoding="utf-8")
-    #request_information = pd.read_csv(os.path.join("frontend/dummy_data", "dummy_request_information_list.csv"), sep=";", encoding="utf-8")
-    with open(os.path.join('frontend', 'dummy_data', 'dummy_request_information.pkl'), 'rb') as file:
+    with open(os.path.join('frontend', 'dummy_data', 'dummy_overview.pkl'), 'rb') as file:
+        overview = pickle.load(file)
+    with open(os.path.join('frontend', 'dummy_data', 'dummy_attitude_roots.pkl'), 'rb') as file:
+        attitude_roots = pickle.load(file)
+    with open(os.path.join('frontend', 'dummy_data', 'dummy_requests.pkl'), 'rb') as file:
         request_information = pickle.load(file)
 
     summary = pd.read_csv(os.path.join("frontend/dummy_data", "dummy_summary.csv"), sep=";", encoding="utf-8")
 except:
     FileNotFoundError("Some files have not been found.")
+ 
 
-#%% Return to upload page logic
-    
-def switch_to_landing_page():
-    st.session_state["current_page"] = "landing_page"
-    
-#TODO: we may want to allow the insertion of new URL immediatly without return to landing page.
-def open_submenu_for_further_analysis():
-    return None
-
-
-#%% Create Mainpage
+   
+#%%% Set the page configuration
 
 def main_page(custom_css):
-
-    #%%% Set the page configuration
-    st.set_page_config(
-        page_title="Paper Review Summary",
-        page_icon=os.path.join("frontend/images" ,"logo.png")
-        )
     
     # Apply custom CSS Styles
     st.markdown(custom_css, unsafe_allow_html=True)
     
-    
-    #%%% Special methods
-    
-    #%%%%% Shared methods
-    
-    def select_color_attitude_or_request(fraction):
-        if fraction < 0.2:
-            return green_good
-        if fraction < 0.34:
-            return yellow
-        elif fraction < 0.67:
-            return orange
-        elif fraction <= 1:
-            return red
-    
-    def draw_progress_bar(color, percentage):
-        progress_html = f"""
-        <div style="position: relative; height: 24px; width: 100%; background-color: {grey}; border-radius: 5px;">
-            <div style="width: {percentage}%; background-color: {color}; height: 100%; border-radius: 5px;">
-            </div>
-        </div>
-        """
-        st.markdown(progress_html, unsafe_allow_html=True)
-
-
-    def write_attitude_root_or_request_heading(heading_text):
-        st.markdown(f"<h4 style='font-size:16px; margin: 0px; padding: 0px;'>{heading_text}</h4>", unsafe_allow_html=True)
-    
-    #%%%%%Overview methods
-    
-    def select_color_and_text_overview(fraction):
-        if fraction < 25:
-            return red, 'poor'
-        elif fraction < 50:
-            return yellow, 'fair'
-        elif fraction < 75:
-            return green_good, 'good'
-        elif fraction <= 100:
-            return green_very_good, 'excellent'
-        
-    def get_score_text_overall_rating(score_percent):
-        if score_percent > 9:
-            return 'Strong accept, should be highlighted at the conference.'
-        elif score_percent > 7:
-            return 'Accept, good paper.'
-        elif score_percent > 5:
-            return 'Marginally above the acceptance threshold.'
-        elif score_percent > 4:
-            return 'Marginally below the acceptance threshold.'
-        elif score_percent > 2:
-            return 'Reject, not good enough.'
-        elif score_percent > 0:
-            return 'Strong reject.'
-        else:
-            Exception("Unexpected score!")
-    
-    def draw_attribute(column_name):
-        if column_name == 'Overall':
-            score_percent = overview[column_name].loc[0]*10
-            color, score_text = select_color_and_text_overview(score_percent)
-            st.markdown(f"<h4 style='font-size:18px; margin: 0px; padding: 0px; text-align: left;'>{get_score_text_overall_rating(score_percent)}</h4>", unsafe_allow_html=True)
-            st.markdown('<div class="invisbible-line-minor">  </div>', unsafe_allow_html=True)
-            draw_progress_bar(color, score_percent)
-            st.markdown('<div class="invisbible-line-small">  </div>', unsafe_allow_html=True)
-            
-    
-        else:
-            score_percent = (overview[column_name].loc[0]/4)*100
-            color, score_text = select_color_and_text_overview(score_percent)
-            draw_progress_bar(color, score_percent)
-            st.markdown(f"<h4 style='font-size:12px; margin: 0px; padding: 0px; text-align: right;'> </h4>", unsafe_allow_html=True)  
-
-        #    st.markdown(f"<h4 style='font-size:16px; margin: 0px; padding: 0px; text-align: right;'>{score_text}</h4>", unsafe_allow_html=True)
-        
-    
-    #%%%%% Attitude Root methods
-    
-    # TODO: reverse barchart logic
-    
-    def show_header_with_progress(row, desc):
-        try: 
-            fraction = eval(row[1])  # todo: the fraction should be a number --> remove eval
-        except:
-            fraction = row[1]
-        percentage = int(fraction*100)  # Convert fraction to percentage
-        color = select_color_attitude_or_request(fraction)
-        draw_progress_bar(color, percentage) # draws the progressbar
-        if desc: 
-            st.markdown(f"<h4 style='font-size:12px; margin: 0px; padding: 0px; text-align: right;'>{row[2]}</h4>", unsafe_allow_html=True)
-        else:
-            st.markdown('<div class="invisbible-line-minor">  </div>', unsafe_allow_html=True)
-
-    def show_reviewers_attitude_comments(row):
-        i = 3
-        while i < len(row) and isinstance(row[i], str):
-            st.markdown(f'<div class="content-box">{row[i]}</div>', unsafe_allow_html=True)
-            st.markdown('<div class="content-box"> </div>', unsafe_allow_html=True)
-            i += 1  
-    
-    def show_comments(row):
-        comments = row['Comments']
-        for author_comments in comments:
-            author = author_comments[0]
-            comment_list = author_comments[1]
-            
-           # st.markdown(f'### Kommentare von {author}')
-           
-            with stylable_container(
-                key="container_without_border",
-                css_styles="""
-                    {
-                        border-radius: 0.5rem;
-                        padding: calc(1em - 1px);
-                        display: flex;
-                        height: 100%;
-                        background-color: #F2F2F2;
-                        padding-bottom: 8px;
-                        background-color: #E8E8E8;
-                    }
-                    """,
-            ):
-                with st.container():
-
-                    st.markdown(f'<div class="content-text">{author}</div>', unsafe_allow_html=True)
-                    st.markdown('\n'.join(f'- {comment}' for comment in comment_list))
-                
-    
-    #%%%%% Request methods
-   
-
-
-    def draw_circle(row):
-        #name = (overview[column_name].loc[:])
-        #st.markdown(column_name)
-        fraction = (overview[column_name].loc[0])
-        sizes = [1 - fraction, fraction]  # Percentages or values
-        
-        colors = [grey, select_color_attitude_or_request(fraction)] #grey + selected color (red/orange/yellow)
-            
-        # Create the pie chart
-        fig, ax = plt.subplots()
-        ax.pie(
-            sizes,
-            #explode = (0, 0.1),  
-            colors=colors, 
-            #autopct='%1.1f%%', 
-            startangle=90,  # Rotate so the first slice starts at 12 o'clock
-            wedgeprops={'width': 0.4, 'edgecolor': 'w'}  # Create the "donut" effect
-        )
-        
-        # Add a white circle in the center
-        center_circle = plt.Circle((0, 0), 0.75, color='white', fc='white', linewidth=0)
-        ax.add_artist(center_circle)
-        
-        ax.text(
-        0, 0,  # Coordinates for the center
-        column_name, #row[1].split("/")[0] + '\n requests',  # The text to display
-        ha='center',  # Horizontal alignment
-        va='center',  # Vertical alignment
-        fontsize=25,  # Font size
-        weight = 'bold',
-        color='black'  # Font color
-        )
-        
-        # Equal aspect ratio ensures the pie is drawn as a circle
-        ax.axis('equal')
-        
-        # Show the plot
-        st.pyplot(fig)
-            
-    def show_reviewers_request_comments(row):
-        i = 2
-        while i < len(row) and isinstance(row[i], str):
-            st.markdown(f'<div class="content-box">{row[i]}</div>', unsafe_allow_html=True)
-            st.markdown('<div class="content-box"> </div>', unsafe_allow_html=True)
-            i += 1
-    
-    
-    #%%% Page-Header
     st.title("Paper Review Summary")
-
-    # Create returnbutton
-    st.button("Return to upload page", on_click=switch_to_landing_page)
+    
+    use_default_container(modules.overview.show_overview, overview)
     
     
-   
-
-    ### Overview
-    st.markdown('<div class="header">OVERVIEW</div>', unsafe_allow_html=True)
-    with stylable_container(
-        key="container_with_border",
-        css_styles="""
-            {
-                border-radius: 0.5rem;
-                padding: calc(1em - 1px);
-                background-color: white;
-                display: flex;
-                height: 100%;
-            }
-            """,
-    ):
-        with st.container():
-            if overview.empty:
-                write_attitude_root_or_request_heading("No general Information was found.")
-            else:
-                # Create a column for each categorie
-                columns = list(overview)
-                num_columns = len(columns)
-                # Create Streamlit columns dynamically based on the number of attributes
-                st_columns = st.columns(num_columns)
-                for idx, (column_name, st_col) in enumerate(zip(columns, st_columns)):
-                    with st_col:
-                        draw_circle(column_name)
-                        
-                        
-
-    #%%% Attitude Roots new
-    st.markdown('<div class="header">ATTITUDE ROOTS</div>', unsafe_allow_html=True)
-    with stylable_container(
-        key="container_with_border",
-        css_styles="""
-            {
-                border-radius: 0.5rem;
-                padding: calc(1em - 1px);
-                background-color: white;
-                display: flex;
-                height: 100%;
-            }
-            """,
-    ):
-        with st.container():
-            st.markdown('<div class="invisbible-line-minor">  </div>', unsafe_allow_html=True)
-            if attitude_roots.empty:
-                write_attitude_root_or_request_heading("No Attitude Roots were found.")
-            else:
-                for index, row in attitude_roots.iterrows():
-                    col1, col2 = st.columns([2.1,8])
-                    with col1:
-                        write_attitude_root_or_request_heading(row[0])
-                    with col2:
-                        show_header_with_progress(row, True)
-                    with st.expander("Comments"):
-                        show_reviewers_attitude_comments(row)
-                    st.markdown('<div class="invisbible-line-minor">  </div>', unsafe_allow_html=True)
-
+    attitude_root_container = lambda: modules.attitude_roots.show_attitude_roots_data(attitude_roots)
+    request_information_container = lambda: modules.request_information.show_request_information_data(request_information)
+    summary_container = lambda: modules.summary.show_summary_data(summary)
     
-    #%%% Request Information
-    st.markdown('<div class="header">REQEUST INFORMATION</div>', unsafe_allow_html=True)
-    with stylable_container(
-        key="container_with_border",
-        css_styles="""
-            {
-                border-radius: 0.5rem;
-                padding: calc(1em - 1px);
-                background-color: white;
-                display: flex;
-                height: 100%;
-            }
-            """,
-    ):
-        with st.container():
-            st.markdown('<div class="invisbible-line-minor">  </div>', unsafe_allow_html=True)
-            if request_information.empty:
-                write_attitude_root_or_request_heading("No Attitude Roots were found.")
-            else:
-                for index, row in request_information.iterrows():
-                    col1, col2 = st.columns([2.1,8])
-                    with col1:
-                        write_attitude_root_or_request_heading(row[0])
-                    with col2:
-                        show_header_with_progress(row, False)
-                    with st.expander("Comments"):
-                        show_comments(row)
-                    st.markdown('<div class="invisbible-line-minor">  </div>', unsafe_allow_html=True)
-
-
-    
-    #%%% Summary
-    
-    with stylable_container(
-        key="container_with_border",
-        css_styles="""
-            {
-                border-radius: 0.5rem;
-                padding: calc(1em - 1px);
-                background-color: white;
-                display: flex;
-                height: 100%;
-            }
-            """,
-    ):                    
-        with st.container():
-            # Create a two-column layout
-            col1, col2 = st.columns([1, 9])
-    
-            with col1:
-                # Vertical heading on the left
-                st.markdown('<div class="section-header">SUMMARY</div>', unsafe_allow_html=True)
-    
-            with col2:
-                if summary.empty:
-                    write_attitude_root_or_request_heading("No summary was found.")
-                else:
-                    for index, row in summary.iterrows():
-                        st.write(row[0]) # write summary
+    slideshow = ss.StreamlitSlideshow([attitude_root_container, request_information_container, summary_container], ["Attitude Roots", "Request Information", "Summary"])
+    use_default_container(slideshow.show)
+        
+        
+            
+    use_default_container(modules.contact_info.show_contact_info)
