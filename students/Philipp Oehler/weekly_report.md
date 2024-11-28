@@ -34,25 +34,26 @@
 - **Challenges**: 
 - **Next Steps**: 
 
+
 ### Week [5]
 
-- **Update 1**: 
-- **Update 2**: 
+- **Update 1**: Visible Frontend: Added sidebar for app, added slidehsow for results, introduced tabs at upload
+- **Update 2**: Invisible Frontend: Revamped filestructure of frontend entirely, fixed uploadpage bug
 - **Update 3**: 
 - **Challenges**: 
-- **Next Steps**: 
+- **Next Steps**: good question. i will update this file.
 
 ### Week [4]
 
-- **Update 1**: 
+- **Update 1**: update for main_page (added overview container, added expand/collaps boxes, adjusted coloring of bars/pies, considered empty return / files / df, adjusted coding style (more Methods and unit global variables for colors), created logo, added logo to page, created page logic (app.py), created dummy landing page (landing_page.py))
 - **Update 2**: 
 - **Update 3**: 
 - **Challenges**: 
-- **Next Steps**: 
+- **Next Steps**: add sidebar, add slideshow for attitude roots, request information and summary conainer.
 
 ### Week [3]
 
-- **Update 1**: Massive mainpage Progress (main_page.py)
+- **Update 1**: Massive mainpage Progress (main_page.py) (added request container, added summary container, added piechart graphic method,added barchart graphic method)
 - **Update 2**: Massive pagelogic progress (app.py)
 - **Update 3**: Created landigpage dummy (landing_page.py)
 - **Challenges**: What file format is the landingpage supposed to support?, integrate backend
