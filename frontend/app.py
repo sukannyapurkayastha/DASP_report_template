@@ -3,6 +3,7 @@ import base64
 from pathlib import Path
 import main_page
 import landing_page
+import home_page
 import os
 import contact
 
@@ -153,15 +154,19 @@ def show_navigation_bar_and_content():
     # Sidebar buttons for navigation
     st.sidebar.title("Welcome")
     
-    if st.sidebar.button("Upload File"):
-        st.session_state.page = "Home"
+    if st.sidebar.button("Home"):
+        st.session_state.page = "Home" 
+    if st.sidebar.button("File Upload"):
+        st.session_state.page = "File Upload"
     if st.sidebar.button("Services"):
         st.session_state.page = "Meta Reviewer Dashboard"
     if st.sidebar.button("Contact"):
         st.session_state.page = "Contact"
     
     # Display content based on the current page
-    if st.session_state.page == "Upload File":
+    if st.session_state.page == "Home":
+        st.session_state.page = home_page.home_page(custom_css)         
+    elif st.session_state.page == "File Upload":
         landing_page.landing_page(custom_css)
     elif st.session_state.page == "Meta Reviewer Dashboard":
         main_page.main_page(custom_css)
@@ -169,4 +174,5 @@ def show_navigation_bar_and_content():
         contact.show_contact_info(custom_css)
 
 show_navigation_bar_and_content()
+
 

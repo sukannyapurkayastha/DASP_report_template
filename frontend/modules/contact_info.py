@@ -22,7 +22,7 @@ def show_contact_info():
     office_logo_base64 = load_logo(base_path / "images/office.png")
 
     # Section Title
-    st.markdown("## Get in touch with us today!")
+    st.markdown("## Any issues? Get in touch with us!")
     st.markdown("### Contact Us")
     st.markdown("Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
 

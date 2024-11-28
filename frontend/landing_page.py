@@ -1,5 +1,6 @@
 import streamlit as st
 from modules.shared_methods import use_default_container 
+import modules.contact_info
 
 #%% Backend Logic
 
@@ -112,7 +113,7 @@ def landing_page(custom_css):
         # Apply custom CSS
         st.markdown(landing_page_css, unsafe_allow_html=True)
     
-        st.title("Paper Review Generator")
+        st.title("Paper Review Aggregator")
         
         st.markdown(
             '<p class="description-text">'
@@ -139,8 +140,10 @@ def landing_page(custom_css):
     
     
         if st.button("Show Analysis"):
-            st.write("TODO implement") #switch_to_main_page()
+            switch_to_main_page()
     
-        st.button("Go to analysis", on_click=lambda: switch_to_main_page(skip_validation=True))
+        #st.button("Go to analysis", on_click=lambda: switch_to_main_page(skip_validation=True))
 
     use_default_container(content)
+    
+    use_default_container(modules.contact_info.show_contact_info)
