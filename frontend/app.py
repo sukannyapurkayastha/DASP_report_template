@@ -103,7 +103,26 @@ custom_css = """
     section[data-testid="stSidebar"] div.stButton > button[data-testid="stBaseButton-secondary"]:hover {
         background-color: #ccc; /* Grey background on hover */
     }
+    /* Style the popover container */
+    .stPopover {
+        width: 100%;
+        background-color: transparent; /* Transparent background */
+        text-align: center; /* Center the content */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+    }
     
+    /* Style popover button */
+    .stPopover button {
+        background-color: transparent; /* Transparent background */
+        text-align: center; /* Center the content */
+        border: none;
+    }
+    [data-testid="stPopover"] button:active {
+        background-color: transparent;
+        }
     </style>
     """
 

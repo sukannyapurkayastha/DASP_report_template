@@ -109,7 +109,6 @@ def show_overview(overview_data):
             st_columns = st.columns(num_rows)
             for idx, (index, row_data), st_col in zip(range(num_rows), overview_data.iterrows(), st_columns):
                 with st_col:
+                    draw_circle(row_data)
                     with st.popover(f"{row_data['Category']}"):
                         show_overview_individual(row_data)
-                    
-                    draw_circle(row_data)
