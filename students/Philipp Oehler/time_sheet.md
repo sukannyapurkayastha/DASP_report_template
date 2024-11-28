@@ -15,7 +15,7 @@
 | [xx/11/24] | [xx/11/24] | [Dummy]                     | []                                                                        | [0.0]              | [Pending]     | 
 | [xx/11/24] | [xx/11/24] | [Dummy]                     | []                                                                        | [0.0]              | [Completed]   |
 | [xx/11/24] | [xx/11/24] | [Dummy]                     | []                                                                        | [0.0]              | [In Progress] | 
-| [19/11/24] | [19/11/24] | [Frontend 5]                | [Redesigned contact logos, introduced homepage, adjusted overview detail button]  | [5]              | [Completed]   |
+| [28/11/24] | [28/11/24] | [Frontend 5]                | [Redesigned contact logos, introduced homepage, adjusted overview detail button]  | [5]              | [Completed]   |
 | [26/11/24] | [28/11/24] | [Front End 4]               | [Revamped entire file structure, introduced tabs for upload, added slideshow for mainpage, introduced sidebar, fixed uploadpage bug]   | [20]              | [Completed]   |
 | [27/11/24] | [27/11/24] | [Weekly]                    | [Preperation + Meeting itself + Internal team meeting]                    | [1.5]              | [Completed]   |
 | [20/11/24] | [21/11/24] | [Front End 3]               | [added overview container, added expand/collaps boxes, adjusted coloring of bars/pies, considered empty return / files / df, adjusted coding style (more Methods and unit global variables for colors), created logo, added logo to page, created page logic (app.py), created dummy landing page (landing_page.py)]| [16] | [Completed] |
