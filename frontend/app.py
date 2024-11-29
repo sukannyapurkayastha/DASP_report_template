@@ -201,7 +201,7 @@ def show_navigation_bar_and_content():
     """, unsafe_allow_html=True)
     
     # Sidebar buttons for navigation
-    st.sidebar.title("Welcome")
+    st.sidebar.title("Paper Review Aggregator")
     
     if st.sidebar.button("Home"):
         st.session_state.page = "Home" 
