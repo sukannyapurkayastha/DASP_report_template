@@ -50,6 +50,19 @@ def prevent_splitting_on_citations(doc: Doc) -> Doc:
     return doc
 
 
+# Component to prevent splitting on all other punctuation except line breaks
+@Language.component("split_only_at_linebreaks")
+def split_only_at_linebreaks(doc: Doc) -> Doc:
+    for token in doc:
+        token.is_sent_start = False
+
+    for i, token in enumerate(doc[:-1]):
+        if token.text == "\n" or token.text == "\n ":
+            if i + 1 < len(doc):
+                doc[i + 1].is_sent_start = True
+    return doc
+
+
 @dataclass
 class Review:
     forum: str
@@ -92,11 +105,12 @@ class OpenReviewLoader(object):
             username=username,
             password=password,
         )
-
+        self.config = {"punct_chars": ['\n']}
         self.nlp = spacy.load("en_core_web_sm", exclude=["parser"])
         self.nlp.add_pipe("sentencizer")
-        self.nlp.add_pipe("prevent_splitting_on_list_numbers", before="sentencizer")
-        self.nlp.add_pipe("prevent_splitting_on_citations", before="sentencizer")
+        self.nlp.add_pipe("split_only_at_linebreaks", before="sentencizer")
+        # self.nlp.add_pipe("prevent_splitting_on_list_numbers", before="sentencizer")
+        # self.nlp.add_pipe("prevent_splitting_on_citations", before="sentencizer")
 
         self.abbreviations = [
             "e.g.", "i.e.", "Dr.", "Mr.", "Mrs.", "Prof.", "etc.", "Fig.", "Tab.", "al.", "et al.", "vol.", "no.",
@@ -289,12 +303,13 @@ class OpenReviewLoader(object):
             for key in keys_to_extract:
                 text = getattr(review, key)
                 text = text.strip()  # Remove leading and trailing whitespaces
-                text = " ".join(text.split())  # Whitespaces in the string
+                text = "\n".join(" ".join(line.split()) for line in text.splitlines())  # Whitespaces in the string
                 text = text.encode("utf-8", "ignore").decode("utf-8")  # Handle special characters
                 text = re.sub(r"http\S+", "", text)  # Remove URLs
                 text = re.sub(r"\S+@\S+", "", text)  # Remove email addresses
                 text = text.replace(";", ".")  # Replace non-standard sentence delimiters
                 text = text.replace("*", "")  # Remove asterisk (are used for bullet list tokens)
+                text = re.sub(r"(?<![.!?])\n", " ", text)
                 text = self._protect_abbrevation(self.abbreviations, text)
 
                 text = text.strip()
@@ -314,20 +329,22 @@ class OpenReviewLoader(object):
 
         texts = (r.content for r in reviews)
 
-        for review, doc in zip(tqdm(reviews), self.nlp.pipe(texts, n_process=10, batch_size=2000)):
-            sentences = [sent.text.replace("<DOT>", ".") for sent in doc.sents]
-
-            review.sentences = sentences
-            sents.extend(sentences)
-
-        # for review in tqdm(reviews):
-        #     text = review.content
-        #     doc = self.nlp(text)
-        #
+        # for review, doc in zip(tqdm(reviews), self.nlp.pipe(texts, n_process=10, batch_size=2000)):
         #     sentences = [sent.text.replace("<DOT>", ".") for sent in doc.sents]
         #
         #     review.sentences = sentences
         #     sents.extend(sentences)
+
+        for review in tqdm(reviews):
+            text = review.content
+            doc = self.nlp(text)
+
+            sentences = [sent.text.replace("<DOT>", ".") for sent in doc.sents]
+            sentences = [" ".join(sent.split()) for sent in sentences]
+            sentences = [sent.lstrip("-").strip() for sent in sentences]
+
+            review.sentences = sentences
+            sents.extend(sentences)
 
         return reviews, sents
 
