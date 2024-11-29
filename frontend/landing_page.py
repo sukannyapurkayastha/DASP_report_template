@@ -1,6 +1,7 @@
 import streamlit as st
 from modules.shared_methods import use_default_container 
 import modules.contact_info
+from pathlib import Path
 
 #%% Backend Logic
 
@@ -32,86 +33,37 @@ def get_input():
     entered_url = st.session_state.get("entered_url")
     return uploaded_file if uploaded_file else entered_url
 
-#%% CSS Styling
-landing_page_css = """
-<style>
-/* General page background */
-body {
-    background-color: #f0f0f0; /* Light grey background */
-}
+    
 
-/* Main content area (Streamlit's block container) */
-.block-container {
-    border-radius: 0.5rem;
-    padding: calc(1em - 1px);
-    width: 95%; 
-    max-width: 800px; 
-    margin: 20px auto; 
-    background-color: white; 
-    display: flex;
-    flex-direction: column;
-    gap: 20px;   
-}
 
-/* Description text styling */
-.description-text {
-    color: #555;
-    font-size: 16px;
-}
-
-/* File uploader and URL input */
-.stFileUploader {
-    margin-bottom: 20px;
-}
-.stTextInput input {
-    color: #333 !important;
-    font-size: 16px;
-    border-radius: 5px;
-    width: 100%; /* Ensure input takes up full width */
-    padding: 10px;
-}
-.stTextInput {
-    margin-bottom: 20px;
-}
-
-/* Button styling */
-.stButton button {
-    background-color: #3a60b2 !important;
-    color: white !important;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-}
-.stButton button:hover {
-    background-color: #0056b3 !important;
-}
-/* Target only sidebar button */
-section[data-testid="stSidebar"] div.stButton > button[data-testid="stBaseButton-secondary"] {
-    background-color: transparent; /* Make button background invisible */
-    border: none; /* Remove border */
-    color: black; /* Button text color black */
-    font-size: 18px; /* Font size for better visibility */
-    cursor: pointer; /* Change cursor to pointer for clickable effect */
-    width: 100%; /* Make button take full width of sidebar */
-    text-align: left; /* Align text to the left */
-    padding: 10px 0; /* Add some padding */
-}
-
-/* Target hover effect for sidebar button */
-section[data-testid="stSidebar"] div.stButton > button[data-testid="stBaseButton-secondary"]:hover {
-    background-color: #ccc; /* Grey background on hover */
-}
-
-</style>
-"""
 #%% Landing Page Function
 def landing_page(custom_css):
     
+    def provide_sample_download():
+        
+        # Base path for images
+        base_path = Path(__file__).parent
+
+        # Path to your .docx file
+        file_path = Path(base_path / "dummy_data/sample_reviews.docx")
+        
+        # Load the .docx file into memory
+        with open(file_path, "rb") as file:
+            docx_file = file.read()
+        
+        # Provide a download button
+        col1, col2 = st.columns([2.4,1])
+        with col2:
+            st.download_button(
+                label="Download Sample DOCX File",
+                data=docx_file,
+                file_name="sample_reviews.docx",
+                mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+            )
+    
     def content():
         # Apply custom CSS
-        st.markdown(landing_page_css, unsafe_allow_html=True)
+        st.markdown(custom_css, unsafe_allow_html=True)
     
         st.title("Paper Review Aggregator")
         
@@ -128,19 +80,38 @@ def landing_page(custom_css):
         
         # Web API
         with tab1:
-            st.text_input("Enter URL to Paper Reviews", key="entered_url")
+            col1, col2 = st.columns([1,2])
+            with col1:
+                # Create the username field
+                username = st.text_input("Username")
+                
+                # Create the password field
+                password = st.text_input("Password", type="password")
+            
+            with col2:
+                st.markdown('<div class="invisbible-line-small">  </div>', unsafe_allow_html=True)
+                # Button to submit the credentials
+                if st.button("Login"):
+                    if username == "admin" and password == "1234":  # Example credentials
+                        st.success("Login successful!")
+                    else:
+                        st.error("Invalid username or password.")
+            st.text_input("Enter URL to Paper Reviews", key="entered_url", placeholder="https://openreview.net/forum?id=XXXXXXXXX")
         
         # File Uploader
         with tab2:
-            uploaded_file = st.file_uploader("Select a file or drop it here", type=["txt", "pdf"])
+            st.write("In case you cannot provide a URL you can also uplaod a docx file containing all reviews. To do so please download a sample file and provide your data in this format.")
+            provide_sample_download()
+            uploaded_file = st.file_uploader("Select a file or drop it here to upload it.", type=["docx"])
             if uploaded_file:
                 st.session_state["uploaded_file"] = uploaded_file
                 st.success(f"Uploaded: {uploaded_file.name}")
         
-    
-    
-        if st.button("Show Analysis"):
-            switch_to_main_page()
+        
+        col1, col2 = st.columns([4.5,1])
+        with col2:
+            if st.button("Show Analysis"):
+                switch_to_main_page()
     
         #st.button("Go to analysis", on_click=lambda: switch_to_main_page(skip_validation=True))
 

@@ -14,8 +14,14 @@ st.set_page_config(
 
 custom_css = """
     <style>
+    .block-container {
+        width: 95%; 
+        max-width: 900px; 
+        display: flex;
+        flex-direction: column; 
+    }
     .content-box {
-        padding-left: 2px;
+        padding-left: 2px; 
         margin-bottom: 0px;
         border-radius: 5px;
         background-color: #E8E8E8;
@@ -58,23 +64,47 @@ custom_css = """
     [data-testid="StyledFullScreenButton"] {
         display: none !important;
     }
-    
-    /* Target only regular button */
+    /* Regular Button styling */
     .stButton button {
-        background-color: transparent; /* Make button background invisible */
-        border: none; /* Remove border */
-        color: black; /* Button text color black */
-        font-size: 18px; /* Font size for better visibility */
-        cursor: pointer; /* Change cursor to pointer for clickable effect */
-        width: 100%; /* Make button take full width of sidebar */
-        text-align: left; /* Align text to the left */
-        padding: 10px 0; /* Add some padding */
+        background-color: #3a60b2 !important;
+        color: white !important;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
     }
-    /* Target only regular button on hover*/
     .stButton button:hover {
-        background-color: #ccc; /* Grey background on hover */
-        color: #3a60b2
+        background-color: #0056b3 !important;
     }
+    
+    /* Download Button styling */
+    .stDownloadButton button {
+        background-color: #3a60b2 !important;
+        color: white !important;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    .stDownloadButton button:hover {
+        background-color: #0056b3 !important;
+    }
+    /* Adjust Uplaod button */
+    [data-testid="stBaseButton-secondary"] {
+        background-color: #3a60b2;
+        color: white !important;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        }
+    [data-testid="stBaseButton-secondary"]:hover {
+        ackground-color: #0056b3;
+    }
+    
 
     .popover-open {
     width: 200px;
@@ -175,8 +205,8 @@ def show_navigation_bar_and_content():
     
     if st.sidebar.button("Home"):
         st.session_state.page = "Home" 
-    if st.sidebar.button("File Upload"):
-        st.session_state.page = "File Upload"
+    if st.sidebar.button("Upload"):
+        st.session_state.page = "Upload"
     if st.sidebar.button("Services"):
         st.session_state.page = "Meta Reviewer Dashboard"
     if st.sidebar.button("Contact"):
@@ -185,7 +215,7 @@ def show_navigation_bar_and_content():
     # Display content based on the current page
     if st.session_state.page == "Home":
         st.session_state.page = home_page.home_page(custom_css)         
-    elif st.session_state.page == "File Upload":
+    elif st.session_state.page == "Upload":
         landing_page.landing_page(custom_css)
     elif st.session_state.page == "Meta Reviewer Dashboard":
         main_page.main_page(custom_css)
