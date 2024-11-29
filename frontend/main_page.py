@@ -162,6 +162,12 @@ main_page_css = """
     [data-testid="stPopover"] button:active {
         background-color: transparent;
         }
+    [data-testid="stPopoverBody"] {
+        background-color: white;
+    }
+    [data-testid="stVerticalBlock"] {
+        background-color: white;
+    }
     </style>
     """
    

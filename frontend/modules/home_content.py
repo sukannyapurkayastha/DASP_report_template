@@ -45,14 +45,14 @@ def show_home_teaser():
     
     # Navigation buttons
     def change_to_upload():
-        st.session_state.page = "Upload"
+        st.session_state.page = "Review Aggregation"
     
     def change_to_preview():
         st.session_state.page = "Meta Reviewer Dashboard"
     
     col0, col1, col2, col3 = st.columns([2,2,2,2])
     with col1:
-        st.button("Upload Reviews", on_click=change_to_upload)
+        st.button("Review Aggregation ", on_click=change_to_upload)
     with col2:
         st.button("Show Example", on_click=change_to_preview)
         

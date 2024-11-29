@@ -67,32 +67,28 @@ def landing_page(custom_css):
     
         st.title("Paper Review Aggregator")
         
-        st.markdown(
-            '<p class="description-text">'
-            "Lorem ipsum dolor sit amet, <strong>consectetur adipiscing elit</strong>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
-            "At vero eos et accusam et justo duo dolores et ea rebum."
-            "</p>",
-            unsafe_allow_html=True,
-        )
+        st.write("You can either provide a link of a openreview thread for the desired paper review aggregation (account of openreview login credentials required) or you provide us a file containing all reviews to aggregate. In this case you must use our template format.")
         
         # Create tabs
         tab1, tab2 = st.tabs(["Enter URL", "Upload file"])
         
         # Web API
         with tab1:
+            st.write("To provide the aggregation of your desired paper we need your openreview login creditals and a valid link to the desired reviews that will be aggregated.")
+            st.write("In case you don't have an openreview account you can either create one at openreview.com or upload a file instead (use tab above).")
             col1, col2 = st.columns([1,2])
             with col1:
                 # Create the username field
-                username = st.text_input("Username")
+                username = st.text_input("Openreview Username")
                 
                 # Create the password field
-                password = st.text_input("Password", type="password")
+                password = st.text_input("Openreview Password", type="password")
             
             with col2:
                 st.markdown('<div class="invisbible-line-small">  </div>', unsafe_allow_html=True)
                 # Button to submit the credentials
                 if st.button("Login"):
-                    if username == "admin" and password == "1234":  # Example credentials
+                    if username == "admin" and password == "1234":  # TODO: create function that validates login credentials
                         st.success("Login successful!")
                     else:
                         st.error("Invalid username or password.")

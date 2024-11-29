@@ -114,6 +114,7 @@ custom_css = """
     bottom: 5px;
     right: 5px;
     margin: 0;
+    background-color: white !important;
     }
 
     
@@ -205,8 +206,8 @@ def show_navigation_bar_and_content():
     
     if st.sidebar.button("Home"):
         st.session_state.page = "Home" 
-    if st.sidebar.button("Upload"):
-        st.session_state.page = "Upload"
+    if st.sidebar.button("Review Aggregation"):
+        st.session_state.page = "Review Aggregation"
     if st.sidebar.button("Services"):
         st.session_state.page = "Meta Reviewer Dashboard"
     if st.sidebar.button("Contact"):
@@ -215,7 +216,7 @@ def show_navigation_bar_and_content():
     # Display content based on the current page
     if st.session_state.page == "Home":
         st.session_state.page = home_page.home_page(custom_css)         
-    elif st.session_state.page == "Upload":
+    elif st.session_state.page == "Review Aggregation":
         landing_page.landing_page(custom_css)
     elif st.session_state.page == "Meta Reviewer Dashboard":
         main_page.main_page(custom_css)
