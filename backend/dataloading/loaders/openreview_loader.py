@@ -85,6 +85,22 @@ class Review:
     content: str | None = None  # All the text in a single string
     sentences: list[str] | None = None  # Output of spacy sentencizer
 
+@dataclass
+class Paper:
+    title: str
+    authors: list[str]
+    keywords: list[str]
+    abstract: str
+    primary_area: str
+    venue: str
+    cdate: int
+    domain: str
+    forum: str
+    id: str
+    directReplies: list[dict]
+    reviews: list[Review] | None = None
+    sentences: list[str] | None = None
+
 
 class OpenReviewLoader(object):
     def __init__(
@@ -170,7 +186,7 @@ class OpenReviewLoader(object):
             logger.error(e)
             return []
 
-    def get_paper(self, id: str) -> openreview.Note:
+    def get_paper(self, id: str) -> Paper:
         """
         Load an individual paper.
         :param id: The id of the paper.
@@ -180,8 +196,21 @@ class OpenReviewLoader(object):
 
         try:
             papers = self.client.get_all_notes(forum=id, details="directReplies")
-            paper = next((papers.pop(idx) for idx, reply in enumerate(papers) if self._is_paper(reply)), None)
-            logger.info(f"Fetched paper: {paper.content['title']['value']}")
+            _paper = next((papers.pop(idx) for idx, reply in enumerate(papers) if self._is_paper(reply)), None)
+            paper = Paper(
+                title=_paper.content["title"]["value"],
+                authors=_paper.content["authors"]["value"],
+                keywords=_paper.content["keywords"]["value"],
+                abstract=_paper.content["abstract"]["value"],
+                primary_area=_paper.content["primary_area"]["value"],
+                venue=_paper.content["venue"]["value"],
+                cdate=_paper.cdate,
+                domain=_paper.domain,
+                forum=_paper.forum,
+                id=_paper.id,
+                directReplies=_paper.details["directReplies"],
+            )
+            logger.info(f"Fetched paper: {paper.title}")
             return paper
         except Exception as e:
             logger.error("Failed to fetch paper from OpenReview.")
@@ -247,17 +276,17 @@ class OpenReviewLoader(object):
 
         return review
 
-    def _get_reviews(self, paper: openreview.Note) -> list[Review]:
+    def _get_reviews(self, paper: Paper) -> list[Review]:
         """
         Load all reviews from a specific paper.
         :param paper: The paper.
         :return: All official reviews for a paper.
         """
 
-        logger.info(f"Getting reviews for paper: {paper.content['title']['value']}")
+        logger.info(f"Getting reviews for paper: {paper.title}")
 
         try:
-            replies = paper.details["directReplies"].copy()
+            replies = paper.directReplies
             replies = [reply for reply in replies if self._is_review(reply["invitations"])]
             # The following tests are actually no longer needed as far as I can judge
             _ = [replies.pop(idx) for idx, reply in enumerate(replies) if self._is_comment_by_author(reply["writers"])]
@@ -377,6 +406,19 @@ class OpenReviewLoader(object):
         final_reviews, sentences = self._segment_content(processed_reviews)
 
         return final_reviews
+
+    def get_paper_reviews(self, id: str) -> Paper:
+        """
+        Load all reviews from a specific paper.
+        :param id: The id of the paper
+        :return: Paper object
+        """
+        paper = self.get_paper(id)
+        reviews = self._get_reviews(paper)
+        processed_reviews = self._preprocess_text(reviews)
+        paper.reviews, paper.sentences = self._segment_content(processed_reviews)
+
+        return paper
 
     def get_all_submission_reviews(self, venue: str, year: int, type: str = "Conference",
                                    details: Literal["replies", "directReplies"] = "directReplies") -> list[Review]:
