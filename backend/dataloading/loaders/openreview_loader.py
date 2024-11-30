@@ -356,14 +356,6 @@ class OpenReviewLoader(object):
 
         sents = []
 
-        texts = (r.content for r in reviews)
-
-        # for review, doc in zip(tqdm(reviews), self.nlp.pipe(texts, n_process=10, batch_size=2000)):
-        #     sentences = [sent.text.replace("<DOT>", ".") for sent in doc.sents]
-        #
-        #     review.sentences = sentences
-        #     sents.extend(sentences)
-
         for review in tqdm(reviews):
             text = review.content
             doc = self.nlp(text)
