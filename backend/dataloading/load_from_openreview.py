@@ -11,7 +11,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     try:
-        client = OpenReviewLoader(username=args.username, password="1")
+        client = OpenReviewLoader(username=args.username, password=args.password)
     except Exception as e:
         print(f"{e.args[0]["status"]}: {str(e.args[0]["message"])}")
         print(e)
