@@ -3,6 +3,13 @@ from modules.shared_methods import use_default_container
 import modules.contact_info
 from pathlib import Path
 
+# Import from backend because we are importing from another module from root and have to go up a directory level
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from backend.dataloading.loaders import OpenReviewLoader
+
 #%% Backend Logic
 
 def switch_to_main_page(skip_validation=False):
@@ -88,11 +95,17 @@ def landing_page(custom_css):
                 st.markdown('<div class="invisbible-line-small">  </div>', unsafe_allow_html=True)
                 # Button to submit the credentials
                 if st.button("Login"):
-                    if username == "admin" and password == "1234":  # TODO: create function that validates login credentials
+                    try:
+                        client = OpenReviewLoader(username=username, password=password)
                         st.success("Login successful!")
-                    else:
-                        st.error("Invalid username or password.")
-            st.text_input("Enter URL to Paper Reviews", key="entered_url", placeholder="https://openreview.net/forum?id=XXXXXXXXX")
+                    except Exception as e:
+                        st.error(f"{e.args[0]["status"]}: {str(e.args[0]["message"])}")
+                    # if username == "admin" and password == "1234":  # TODO: create function that validates login credentials
+                    #     st.success("Login successful!")
+                    # else:
+                    #     st.error("Invalid username or password.")
+            input = st.text_input("Enter URL to Paper Reviews", key="entered_url", placeholder="https://openreview.net/forum?id=XXXXXXXXX")
+            # TODO: create a function which checks if the provided link is valid and if it's valid extract the ID
         
         # File Uploader
         with tab2:
