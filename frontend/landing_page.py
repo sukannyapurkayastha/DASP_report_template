@@ -151,7 +151,7 @@ def landing_page(custom_css):
                             # Rerun the app to update the UI
                             st.rerun()
                         except Exception as e:
-                            st.error(f"{e.args[0]["status"]}: {str(e.args[0]["message"])}")
+                            st.error(f"{e.args[0]['status']}: {str(e.args[0]['message'])}")
 
         # File Uploader
         with tab2:

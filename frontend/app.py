@@ -184,6 +184,7 @@ def show_navigation_bar_and_content():
     # Custom CSS to style buttons in the sidebar
     st.sidebar.markdown("""
         <style>
+        /* Button styling */
         section[data-testid="stSidebar"] div.stButton > button {
         background-color: #3a60b2 !important;
         color: white !important;
@@ -196,7 +197,10 @@ def show_navigation_bar_and_content():
         section[data-testid="stSidebar"] div.stButton > button:hover {
             background-color: #0056b3 !important;
         }
-        /* Button styling */
+        /* Change sidebar background to white */
+        section[data-testid="stSidebar"] {
+            background-color: white !important;
+        }
 
         </style>
     """, unsafe_allow_html=True)
