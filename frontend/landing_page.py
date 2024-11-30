@@ -134,10 +134,10 @@ def landing_page(custom_css):
                 col1, col2 = st.columns([1, 2])
                 with col1:
                     # Create the username field
-                    username = st.text_input("Openreview Username")
+                    username = st.text_input("Username (Openreview)")
 
                     # Create the password field
-                    password = st.text_input("Openreview Password", type="password")
+                    password = st.text_input("Password (Openreview)", type="password")
 
                 with col2:
                     st.markdown('<div class="invisbible-line-small">  </div>', unsafe_allow_html=True)

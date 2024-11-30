@@ -50,6 +50,7 @@ def show_home_teaser():
     def change_to_preview():
         st.session_state.page = "Meta Reviewer Dashboard"
     
+    st.markdown('<div class="invisbible-line-small">  </div>', unsafe_allow_html=True)
     col0, col1, col2, col3 = st.columns([2,2,2,2])
     with col1:
         st.button("Review Aggregation ", on_click=change_to_upload)

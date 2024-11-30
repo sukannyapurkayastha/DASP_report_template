@@ -165,7 +165,7 @@ main_page_css = """
     [data-testid="stPopoverBody"] {
         background-color: white;
     }
-    [data-testid="stVerticalBlock"] {
+    [data-testid="stHorizontalBlock"] {
         background-color: white;
     }
     </style>
