@@ -1,4 +1,5 @@
 import json
+import logging
 from io import StringIO
 
 import streamlit as st
@@ -101,10 +102,30 @@ def landing_page(custom_css):
             "You can either provide a link of a openreview thread for the desired paper review aggregation (account of openreview login credentials required) or you provide us a file containing all reviews to aggregate. In this case you must use our template format.")
 
         # Create tabs
-        tab1, tab2 = st.tabs(["Enter URL", "Upload file"])
+        # tab1, tab2 = st.tabs(["Enter URL", "Upload file"])
+
+        tabs = ["Enter URL", "Upload file"]
+        tab1, tab2 = st.tabs(tabs)
+
+        # Function to display the "Show Analysis" button
+        def display_show_analysis_button(key):
+            col1, col2 = st.columns([4.5, 1])
+            with col2:
+                if st.button("Show Analysis", key=key):
+                    switch_to_main_page()
+
+        # Function to update the active tab in session state
+        def set_active_tab(tab_name):
+            st.session_state['active_tab'] = tab_name
+
+        # Initialize session state for active tab
+        if 'active_tab' not in st.session_state:
+            st.session_state['active_tab'] = tabs[0]
 
         # Web API
         with tab1:
+            set_active_tab("Enter URL")
+
             st.write(
                 "To provide the aggregation of your desired paper we need your openreview login creditals and a valid link to the desired reviews that will be aggregated.")
             st.write(
@@ -132,8 +153,8 @@ def landing_page(custom_css):
                         try:
                             client = OpenReviewLoader(username=username, password=password)
                             st.success("Login successful!")
-                            st.session_state['logged_in'] = True
-                            st.session_state['client'] = client
+                            st.session_state["logged_in"] = True
+                            st.session_state["client"] = client
                             # Rerun the app to update the UI
                             st.rerun()
                         except Exception as e:
@@ -156,14 +177,23 @@ def landing_page(custom_css):
                             st.success(f'Reviews extracted from paper: "{paper.title}"')
                         except Exception as e:
                             st.error(e)
+                    else:
+                        st.error("Invalid OpenReview URL.")
+                else:
+                    st.info("Please enter a valid OpenReview URL to proceed.")
 
-
+            # Check conditions to display the "Show Analysis" button
+            if ('reviews' in st.session_state and st.session_state['reviews'] and st.session_state[
+                'active_tab'] == "Enter URL"):
+                display_show_analysis_button(key="show_analysis_button_tab1")
 
         # File Uploader
         with tab2:
+            set_active_tab("Upload file")
+
             st.write(
                 "In case you cannot provide a URL you can also uplaod a docx file containing all reviews. To do so please download a sample file and provide your data in this format.")
-            provide_sample_download()
+            provide_sample_download()  # template download
             uploaded_files = st.file_uploader("Select a file or drop it here to upload it.", type=["docx"],
                                               accept_multiple_files=True)
             if uploaded_files:
@@ -172,7 +202,6 @@ def landing_page(custom_css):
                 file_word = "file" if num_files == 1 else "files"
                 st.success(f"Uploaded {num_files} {file_word}.")
                 print(type(uploaded_files[0]))
-                # Todo: rewrite the following block in the backend and return list[Review]
                 upload_processor = UploadedFileProcessor(uploaded_files)
                 reviews = upload_processor.process()
                 st.session_state["reviews"] = reviews
@@ -180,15 +209,17 @@ def landing_page(custom_css):
                 # reviews_str = json.dumps((reviews[0].__dict__), default=lambda o: o.__dict__, sort_keys=True, indent=4)
                 # df = pd.read_json(reviews_str)
                 # df.to_excel("Reviews.xlsx", index=False)
+            else:
+                st.info("Please upload at least one DOCX file to proceed.")
 
-        # Show the "Show Analysis" button only if a URL is provided (and reviews are extracted) or a file is uploaded
-        if ('reviews' in st.session_state and st.session_state['reviews']) or 'uploaded_file' in st.session_state:
-            col1, col2 = st.columns([4.5, 1])
-            with col2:
-                if st.button("Show Analysis"):
-                    switch_to_main_page()
-        else:
-            st.info("Please provide a valid URL or upload a file to proceed to the analysis.")
+            # Check conditions to display the "Show Analysis" button
+            if ('reviews' in st.session_state and st.session_state['reviews'] and
+                    st.session_state['active_tab'] == "Upload file"):
+                display_show_analysis_button("show_analysis_button_tab2")
+
+        # Optionally, provide an informational message when no reviews are available
+        # if not ('reviews' in st.session_state and st.session_state['reviews']):
+        #     st.info("Please provide a valid URL or upload a file to proceed to the analysis.")
 
         # st.button("Go to analysis", on_click=lambda: switch_to_main_page(skip_validation=True))
 
