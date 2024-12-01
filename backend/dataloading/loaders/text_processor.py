@@ -1,4 +1,6 @@
 import re
+
+import pandas as pd
 import spacy
 from tqdm import tqdm
 from spacy.language import Language
@@ -101,8 +103,8 @@ class TextProcessor:
             review.content = " ".join(content_list)
         return reviews
 
-    def _segment_content(self, reviews: list[Review]) -> (list[Review], list[str]):
-        sents = []
+    def _segment_content(self, reviews: list[Review]) -> (list[Review], pd.DataFrame):
+        sent_df = []
         for review in tqdm(reviews, desc="Segmenting content"):
             text = review.content
             doc = self.nlp(text)
@@ -110,5 +112,8 @@ class TextProcessor:
             sentences = [" ".join(sent.split()) for sent in sentences]
             sentences = [sent.lstrip("-").strip() for sent in sentences]
             review.sentences = sentences
-            sents.extend(sentences)
-        return reviews, sents
+            tmp = pd.DataFrame({"author": review.reviewer, "sentence": sentences})
+            sent_df.append(tmp)
+
+        df = pd.concat(sent_df, ignore_index=True)
+        return reviews, df

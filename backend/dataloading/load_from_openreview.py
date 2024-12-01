@@ -30,7 +30,7 @@ if __name__ == '__main__':
     # the review are stored
     # To get all the sentences from the list of reviews we could also use something like:
     # [print(sent) for review in reviews for sent in review.sentences]
-    # test_set = client.create_testset(ids=ids)
+    test_set = client.create_testset(ids=["zzv4Bf50RW"])
     paper = client.get_paper_reviews(id="zzv4Bf50RW")
 
     # test_set = pd.DataFrame(test_set, columns=["sentences"])

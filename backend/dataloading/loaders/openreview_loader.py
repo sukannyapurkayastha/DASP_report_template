@@ -1,4 +1,5 @@
 import openreview
+import pandas as pd
 from loguru import logger
 from typing import Literal
 
@@ -184,7 +185,7 @@ class OpenReviewLoader(TextProcessor):
 
         return reviews
 
-    def create_testset(self, ids: list[str]) -> list[str]:
+    def create_testset(self, ids: list[str]) -> pd.DataFrame:
         """
         Create a test set from multiple paper reviews.
         :param ids: The ids of the papers.
