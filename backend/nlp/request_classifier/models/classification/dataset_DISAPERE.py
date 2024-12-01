@@ -3,7 +3,7 @@ import json
 from collections import defaultdict
 import pandas as pd
 
-folder_path = "backend/nlp/request_classifier/DISAPERE/final_dataset/train"  
+folder_path = "backend/nlp/request_classifier/DISAPERE/final_dataset/dev"  
 output_folder = "backend/nlp/request_classifier/DISAPERE/final_dataset/"    
 input_file = "backend/nlp/request_classifier/DISAPERE/final_dataset/merged_output.json"    
 target_index = "backend/nlp/request_classifier/DISAPERE/final_dataset/merged_output_index.json"   
@@ -172,5 +172,5 @@ df["target"] = df["aspect"].map(label_to_value)
 
 unique_labels = df["target"].unique()
 print("Einzigartige Labels:", unique_labels)
-df.to_csv("backend/nlp/request_classifier/DISAPERE/final_dataset/fine_request/train_attitude.csv", index=False)
+df.to_csv("backend/nlp/request_classifier/DISAPERE/final_dataset/fine_request/dev_attitude.csv", index=False)
 

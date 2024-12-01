@@ -1,6 +1,7 @@
 import json
 import logging
 from io import StringIO
+import openreview
 
 import streamlit as st
 
@@ -157,8 +158,18 @@ def landing_page(custom_css):
                             st.session_state["client"] = client
                             # Rerun the app to update the UI
                             st.rerun()
+                        except openreview.OpenReviewException as ore:
+                            error_response = ore.args[0] if ore.args else "An error occurred with OpenReview."
+                            if "Invalid username or password" in error_response.get('message', ''):
+                                st.error("Invalid username or password. Please try again.")
+                            else:
+                                st.error(f"An unexpected error occurred: {error_response.get('message', 'No details available')}")
+                        except ConnectionError:
+                            st.error("Connection error: Unable to connect to OpenReview. Please check your internet connection.")
                         except Exception as e:
-                            st.error(f"{e.args[0]['status']}: {str(e.args[0]['message'])}")
+                            st.error("An unexpected error occurred. Please try again later.")
+                            st.error(e)
+                            
 
             else:
                 client = st.session_state['client']
@@ -188,29 +199,59 @@ def landing_page(custom_css):
                 display_show_analysis_button(key="show_analysis_button_tab1")
 
         # File Uploader
+        # File Uploader
         with tab2:
             set_active_tab("Upload file")
 
             st.write(
-                "In case you cannot provide a URL you can also uplaod a docx file containing all reviews. To do so please download a sample file and provide your data in this format.")
+                "In case you cannot provide a URL you can also upload a docx file containing all reviews. "
+                "To do so, please download a sample file and provide your data in this format."
+            )
             provide_sample_download()  # template download
-            uploaded_files = st.file_uploader("Select a file or drop it here to upload it.", type=["docx"],
-                                              accept_multiple_files=True)
-            if uploaded_files:
-                st.session_state["uploaded_files"] = uploaded_files
-                num_files = len(uploaded_files)
-                file_word = "file" if num_files == 1 else "files"
-                st.success(f"Uploaded {num_files} {file_word}.")
-                print(type(uploaded_files[0]))
-                upload_processor = UploadedFileProcessor(uploaded_files)
-                reviews = upload_processor.process()
-                st.session_state["reviews"] = reviews
-                # checking the reviews
-                # reviews_str = json.dumps((reviews[0].__dict__), default=lambda o: o.__dict__, sort_keys=True, indent=4)
-                # df = pd.read_json(reviews_str)
-                # df.to_excel("Reviews.xlsx", index=False)
-            else:
-                st.info("Please upload at least one DOCX file to proceed.")
+
+            try:
+                uploaded_files = st.file_uploader(
+                    "Select a file or drop it here to upload it.",
+                    type=["docx"],
+                    accept_multiple_files=True
+                )
+
+                if uploaded_files:
+                    st.session_state["uploaded_files"] = uploaded_files
+                    num_files = len(uploaded_files)
+                    file_word = "file" if num_files == 1 else "files"
+                    st.success(f"Uploaded {num_files} {file_word} successfully.")
+
+                    # checking the reviews
+                    # reviews_str = json.dumps((reviews[0].__dict__), default=lambda o: o.__dict__, sort_keys=True, indent=4)
+                    # df = pd.read_json(reviews_str)
+                    # df.to_excel("Reviews.xlsx", index=False)
+
+                    for uploaded_file in uploaded_files:
+                        try:
+                            # Process each uploaded file
+                            upload_processor = UploadedFileProcessor([uploaded_file])
+                            reviews = upload_processor.process()
+                            st.session_state["reviews"] = reviews
+
+                            # Additional success feedback
+                            st.info(f"Processed {uploaded_file.name} successfully.")
+
+                        except ValueError as ve:
+                            st.error(f"File {uploaded_file.name} has invalid content: {ve}")
+                        except FileNotFoundError:
+                            st.error(f"File {uploaded_file.name} could not be found.")
+                        except Exception as e:
+                            st.error(f"An unexpected error occurred while processing {uploaded_file.name}.")
+                            logger.error(f"Error processing file {uploaded_file.name}: {e}")
+
+                else:
+                    st.info("Please upload at least one DOCX file to proceed.")
+
+            except Exception as e:
+                st.error("An error occurred while uploading files. Please try again.")
+                logger.error(f"Error during file upload: {e}")
+
 
             # Check conditions to display the "Show Analysis" button
             if ('reviews' in st.session_state and st.session_state['reviews'] and

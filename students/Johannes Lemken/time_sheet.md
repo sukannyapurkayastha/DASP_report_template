@@ -37,6 +37,7 @@
 | [11/25/2024] | [11/25/2024] | [Coding]            | [AR Model / Promting]                           | [4]                | [In Progress] |
 | [11/26/2024] | [11/26/2024] | [Researching / Frontend]   | [Info landingpape / Building a mockup for landingpage]                           | [2,5]                | [Completed] |
 | [11/26/2024] | [11/26/2024] | [Frontend]            | [Building the frontpage]                           | [4]                | [In Progress] |
+| [11/27/2024] | [11/27/2024] | [Meeting]            | [Catch up team meeting]                           | [2]                | [In Progress] |
 
 
 
