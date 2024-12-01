@@ -5,7 +5,7 @@ import requests
 API_URL = "http://127.0.0.1:8000/predict/"
 
 # Set the title of the app
-st.title("Hugging Face Model Prediction")
+st.title("Model Prediction")
 
 # Create a text input field for the user to input a sentence
 sentence = st.text_input("Enter a sentence to predict the description:")
@@ -21,9 +21,8 @@ if sentence:
     # Handle the response
     if response.status_code == 200:
         result = response.json()
-        st.write("Prediction Result:")
-        st.write(f"Text: {result['text']}")
-        st.write(f"Predicted Class: {result['predicted_label']}")
-        st.write(f"Confidence Scores: {result['confidence_scores']}")
+        st.write("Summary Result:")
+        st.write(f"Original Text: {result['text']}")
+        st.write(f"Summary: {result['summary']}")
     else:
         st.write(f"Error: {response.status_code}, Could not retrieve prediction.")
