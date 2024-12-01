@@ -32,9 +32,11 @@
 | [19.11.2024]  | [19.11.2024]  | [Front-end]           | [Page Layout (CSS)]                                                       | [4]           | [Completed]   | 
 | [19.11.2024]  | [20.11.2024]  | [Models]              | [Finetuned Sentence Similarity for Attitude Roots&Themes]                 | [4]           | [Completed]   | 
 | [21.11.2024]  | [21.11.2024]  | [Models]              | [Tried dataset Sukannya sent me]                                          | [4]           | [Completed]   | 
-| [20.11.2024]  | [26.11.2024]  | [Frontend]            | [Redesigned Overview & Attitude Roots]                                    | [12]         | [Done] |
+| [20.11.2024]  | [26.11.2024]  | [Frontend]            | [Redesigned Overview & Attitude Roots]                                    | [12]         | [Completed] |
 | [25.11.2024]  | [26.11.2024]  | [Data Science]        | [Developing a fine-tuning approach to classify Attitude Roots]            | [3]           | [In Progress] |
 | [27.11.2024]  | [27.11.2024]  | [Frontend]            | [Adapted Methods for changed data structure, added colour sceme, added logic to show the scores of the authors individually]            | [9]           | [In Progress] |
+| [30.11.2024]  | [01.12.2024]  | [Libaries]            | [Installing necessary libaries after connecting the data loader to the frontend]            | [1]           | [Completed] |
+| [30.11.2024]  | [01.12.2024]  | [Finetuning]            | [Resamling (+ Reformulating) Reviewer Tests for rare attitude roots]            | [10]           | [Completed] |
 ---
 
 > **Status Options**: "In Progress," "Completed," or "Pending."
