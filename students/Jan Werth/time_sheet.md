@@ -30,8 +30,8 @@
 | [26/11/24] | [26/11/24] | [Coding]             | [Loading all reviews from a conference with OpenReviewLoader]     | [1.5]              | [Completed]   |
 | [26/11/24] | [29/11/24] | [Coding]             | [Trying to optimize spacy (takes long time for a lot of reviews)] | [7]                | [Completed]   |
 | [27/11/24] | [27/11/24] | [Meeting]            | [Weekly meeting + internal meeting)]                              | [3]                | [Completed]   |
-| [27/11/24] | [30/11/24] | [Coding]             | [Backend]                                                         | [6]                | [In progress] |
-| [29/11/24] | [30/11/24] | [Coding]             | [Frontend (login functionality and upload file]                   | [8]                | [In progress] |
+| [27/11/24] | [01/12/24] | [Coding]             | [Backend]                                                         | [9]                | [In progress] |
+| [29/11/24] | [01/12/24] | [Coding]             | [Frontend (login functionality and upload file]                   | [15]               | [In progress] |
 
 ---
 
