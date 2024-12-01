@@ -1,13 +1,13 @@
+import json
 from io import StringIO
 
 import streamlit as st
+
 from modules.shared_methods import use_default_container
 import modules.contact_info
 from pathlib import Path
 from urllib.parse import urlparse, parse_qs
-from docx import Document
-from lxml import etree
-
+import pandas as pd
 
 # Import from backend because we are importing from another module from root and have to go up a directory level
 import sys
@@ -15,7 +15,7 @@ import os
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from backend.dataloading.loaders import OpenReviewLoader
+from backend.dataloading.loaders import OpenReviewLoader, UploadedFileProcessor
 
 
 # %% Backend Logic
@@ -116,26 +116,7 @@ def landing_page(custom_css):
             if 'client' not in st.session_state:
                 st.session_state['client'] = None
 
-            if st.session_state['logged_in']:
-                client = st.session_state['client']
-                st.success(f"Welcome {client.client.user['user']['profile']['fullname']}!")
-                input_url = st.text_input("Enter URL to Paper Reviews", key="entered_url",
-                                          placeholder="https://openreview.net/forum?id=XXXXXXXXX")
-
-                if input_url:
-                    paper_id = extract_paper_id(input_url)
-                    if paper_id:
-                        st.session_state["paper_id"] = paper_id
-                        # st.success(f"Paper ID extracted: {paper_id}")
-
-                        try:
-                            paper = client.get_paper_reviews(paper_id)
-                            st.session_state["reviews"] = paper.reviews
-                            st.success(f'Reviews extracted from paper: "{paper.title}"')
-                        except Exception as e:
-                            st.error(e)
-
-            else:
+            if not st.session_state['logged_in']:
                 col1, col2 = st.columns([1, 2])
                 with col1:
                     # Create the username field
@@ -158,53 +139,47 @@ def landing_page(custom_css):
                         except Exception as e:
                             st.error(f"{e.args[0]['status']}: {str(e.args[0]['message'])}")
 
+            else:
+                client = st.session_state['client']
+                st.success(f"Welcome {client.client.user['user']['profile']['fullname']}!")
+                input_url = st.text_input("Enter URL to Paper Reviews", key="entered_url",
+                                          placeholder="https://openreview.net/forum?id=XXXXXXXXX")
+
+                if input_url:
+                    paper_id = extract_paper_id(input_url)
+                    if paper_id:
+                        st.session_state["paper_id"] = paper_id
+
+                        try:
+                            paper = client.get_paper_reviews(paper_id)
+                            st.session_state["reviews"] = paper.reviews
+                            st.success(f'Reviews extracted from paper: "{paper.title}"')
+                        except Exception as e:
+                            st.error(e)
+
+
+
         # File Uploader
         with tab2:
             st.write(
                 "In case you cannot provide a URL you can also uplaod a docx file containing all reviews. To do so please download a sample file and provide your data in this format.")
             provide_sample_download()
-            uploaded_files = st.file_uploader("Select a file or drop it here to upload it.", type=["docx"], accept_multiple_files=True)
+            uploaded_files = st.file_uploader("Select a file or drop it here to upload it.", type=["docx"],
+                                              accept_multiple_files=True)
             if uploaded_files:
                 st.session_state["uploaded_files"] = uploaded_files
                 num_files = len(uploaded_files)
                 file_word = "file" if num_files == 1 else "files"
                 st.success(f"Uploaded {num_files} {file_word}.")
+                print(type(uploaded_files[0]))
                 # Todo: rewrite the following block in the backend and return list[Review]
-                for file in uploaded_files:
-                    try:
-                        # doc = Document(file)
-                        doc = Document(file)
-                        doc_tree = doc.element
-                        # Define the namespaces
-                        namespaces = {'w': 'http://schemas.openxmlformats.org/wordprocessingml/2006/main'}
-
-                        # Convert the element tree to a string
-                        xml_str = etree.tostring(doc_tree)
-
-                        # Parse the XML string using lxml
-                        root = etree.fromstring(xml_str)
-
-                        form_fields = root.xpath('.//w:sdt', namespaces=namespaces)
-
-                        if form_fields:
-                            st.success(f"Found {len(form_fields)} form field(s):")
-                            for sdt in form_fields:
-                                # Extract the alias (name) of the form field
-                                alias = sdt.xpath('.//w:alias/@w:val', namespaces=namespaces)
-                                field_name = alias[0] if alias else 'N/A'
-
-                                # Extract the value of the form field
-                                texts = sdt.xpath('.//w:sdtContent//w:t/text()', namespaces=namespaces)
-                                field_value = ''.join(texts)
-
-                                st.write(f"**Field Name**: {field_name}")
-                                st.write(f"**Field Value**: {field_value}")
-                                st.write("---")
-                        else:
-                            st.warning("No form fields found in the document.")
-
-                    except Exception as e:
-                        st.error(f"An error occurred: {e}")
+                upload_processor = UploadedFileProcessor(uploaded_files)
+                reviews = upload_processor.process()
+                st.session_state["reviews"] = reviews
+                # checking the reviews
+                # reviews_str = json.dumps((reviews[0].__dict__), default=lambda o: o.__dict__, sort_keys=True, indent=4)
+                # df = pd.read_json(reviews_str)
+                # df.to_excel("Reviews.xlsx", index=False)
 
         # Show the "Show Analysis" button only if a URL is provided (and reviews are extracted) or a file is uploaded
         if ('reviews' in st.session_state and st.session_state['reviews']) or 'uploaded_file' in st.session_state:
