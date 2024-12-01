@@ -8,7 +8,7 @@ def show_home_content():
     
 def show_home_teaser():
     # Main container with default Streamlit styling
-    st.title("Discover the Power Today!")
+    st.title("Discover the Power of AI Today!")
     st.subheader("Get an aggregation of your reviews to speed up meta review drastically!")
     
     # Add general CSS for the step-box styling
@@ -45,10 +45,16 @@ def show_home_teaser():
     
     # Navigation buttons
     def change_to_upload():
-        st.session_state.page = "File Upload"
+        st.session_state.page = "Review Aggregation"
     
     def change_to_preview():
         st.session_state.page = "Meta Reviewer Dashboard"
     
-    st.button("Go to File Upload", on_click=change_to_upload)
-    st.button("Go to Preview", on_click=change_to_preview)
+    st.markdown('<div class="invisbible-line-small">  </div>', unsafe_allow_html=True)
+    col0, col1, col2, col3 = st.columns([2,2,2,2])
+    with col1:
+        st.button("Review Aggregation ", on_click=change_to_upload)
+    with col2:
+        st.button("Show Example", on_click=change_to_preview)
+        
+    st.markdown('<div class="invisbible-line-small">  </div>', unsafe_allow_html=True)

@@ -31,7 +31,7 @@ def show_attitude_roots_data(attitude_roots_data):
             st.markdown("<h4 style='font-size:16px; margin: 0px; padding: 0px;'>No Attitude Roots were found.</h4>", unsafe_allow_html=True)
         else:
             for index, row in attitude_roots_data.iterrows():
-                col1, col2 = st.columns([2.1,8])
+                col1, col2, col3 = st.columns([2,7, 0.2])
                 with col1:
                     st.markdown(f"<h4 style='font-size:16px; margin: 0px; padding: 0px;'>{row[0]}</h4>", unsafe_allow_html=True)
                 with col2:

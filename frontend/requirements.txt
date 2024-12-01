@@ -1,1 +1,7 @@
-streamlit = 1.40.1
+python = 3.10.15
+streamlit = 1.38.0
+streamlit-extras = 0.5.0
+openreview-py = 1.45.0
+spacy = 3.8.2
+python-docx = 1.1.2
+lxml = 5.3.0
