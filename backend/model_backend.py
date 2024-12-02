@@ -3,7 +3,7 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import pandas as pd
 import tensorflow as tf
-from transformers import BertTokenizer, TFBertForSequenceClassification
+from transformers import DistilBertTokenizer, TFDistilBertForSequenceClassification
 import pandas as pd
 import uvicorn
 
@@ -27,10 +27,10 @@ class SentenceData(BaseModel):
 
 def predict_category(text):
     # Load the tokenizer
-    tokenizer = BertTokenizer.from_pretrained('models/attitude_root/')
+    tokenizer = DistilBertTokenizer.from_pretrained('models/attitude_root/')
 
     # Load the model
-    model = TFBertForSequenceClassification.from_pretrained('models/attitude_root/')
+    model = TFDistilBertForSequenceClassification.from_pretrained('models/attitude_root/')
     predict_input = tokenizer.encode(text,
                                     truncation=True,
                                     padding=True,
@@ -41,8 +41,9 @@ def predict_category(text):
 
 @app.post("/roots_themes")
 async def classify_paper(data: SentenceData):
+    # right now async not necessary
     try:
-        review_sents = data.data
+        review_sents = pd.DataFrame(data.data)
         review_sents['attitude_root_number'] = review_sents['sentence'].apply(predict_category)
         total_rows = len(review_sents)
         # Step 1: Group by 'attitude_root_number' and 'author', then aggregate the sentences
@@ -53,8 +54,16 @@ async def classify_paper(data: SentenceData):
                     comments=('comments', lambda x: [[author, comments] for author, comments in zip(agg_df['author'], x)]),
                     count=('count', 'sum')
                 ).reset_index()
-        final_df = final_df['attitude_root_number'].map(label_mapping)
-        final_df['description'] = 'none'
+        
+        # match dataframe schema
+        final_df['Attitude_roots'] = final_df['attitude_root_number'].map(label_mapping)
+        final_df['Descriptions'] = 'none'
+        final_df.drop(columns=['attitude_root_number'], inplace=True)
+        final_df = final_df.rename(columns={'comments': 'Comments'})
+        final_df['Frequency'] = final_df['count'] / total_rows
+        final_df.drop(columns=['count'], inplace=True)
+        final_df = final_df[['Attitude_roots', 'Frequency', 'Descriptions', 'Comments']]
+
         # Convert DataFrame to a list of dictionaries
         results = final_df.to_dict(orient='records')
         # Return the tabular data as a JSON response
@@ -62,3 +71,5 @@ async def classify_paper(data: SentenceData):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error processing paper: {str(e)}")
 
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)
