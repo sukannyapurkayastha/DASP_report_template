@@ -12,24 +12,9 @@ import modules.summary
 import modules.contact_info
 import modules.slideshow as ss
 from modules.shared_methods import use_default_container 
+import requests
 
 #%% global variables
-
-
-# Import data
-
-try:
-    with open(os.path.join('frontend', 'dummy_data', 'dummy_overview.pkl'), 'rb') as file:
-        overview = pickle.load(file)
-    with open(os.path.join('frontend', 'dummy_data', 'dummy_attitude_roots.pkl'), 'rb') as file:
-        attitude_roots = pickle.load(file)
-    with open(os.path.join('frontend', 'dummy_data', 'dummy_requests.pkl'), 'rb') as file:
-        request_information = pickle.load(file)
-
-    summary = pd.read_csv(os.path.join("frontend/dummy_data", "dummy_summary.csv"), sep=";", encoding="utf-8")
-except:
-    FileNotFoundError("Some files have not been found.")
- 
     
 #custom CSS for main_page
 main_page_css = """
@@ -172,18 +157,51 @@ main_page_css = """
     """
    
 #%%% Set the page configuration
+def get_classification_with_url():
+    paper_id = st.session_state["paper_id"]
+    if paper_id:
+        try:
+            client = st.session_state["client"]
+            paper = client.get_paper_reviews(paper_id)
+            sentences_json = paper.sentences.to_dict(orient="records")
+        except Exception as e:
+            st.error(e)
+    else:
+        st.error("Invalid OpenReview URL.")
+    
+    response = requests.post(
+        "http://localhost:8000/roots_themes",
+        json={"data": sentences_json}
+    )
+    if response.status_code == 200:
+        attitude_roots = response.json()
+        attitude_roots = pd.DataFrame(attitude_roots)
+        # st.session_state.roots_themes = response.json()
+        # st.session_state.page = "Meta Reviewer Dashboard"  # Display the classification result
+        # st.rerun()
+    else:
+        st.error(f"Error: {response.text}")
+    return attitude_roots
 
 def main_page(custom_css):
-    
+    base_path = os.getcwd()
     # Apply custom CSS Styles
     #st.markdown(custom_css, unsafe_allow_html=True)
     st.markdown(main_page_css, unsafe_allow_html=True)
     
     
     st.title("Paper Review Summary")
+
+    attitude_roots = get_classification_with_url()
+    
+    with open(os.path.join(base_path, 'dummy_data', 'dummy_overview.pkl'), 'rb') as file:
+        overview = pickle.load(file)
+    with open(os.path.join(base_path, 'dummy_data', 'dummy_requests.pkl'), 'rb') as file:
+        request_information = pickle.load(file)
+
+    summary = pd.read_csv(os.path.join(base_path,"dummy_data", "dummy_summary.csv"), sep=";", encoding="utf-8")
     
     use_default_container(modules.overview.show_overview, overview)
-    
     attitude_root_container = lambda: modules.attitude_roots.show_attitude_roots_data(attitude_roots)
     request_information_container = lambda: modules.request_information.show_request_information_data(request_information)
     summary_container = lambda: modules.summary.show_summary_data(summary)

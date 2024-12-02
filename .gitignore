@@ -149,4 +149,13 @@ misc.xml
 
 # Ignoriere alle optimizer.pt Dateien
 *.pt
-frontend/main_page.py
+
+# vscode launch file
+.vscode/launch.json
+
+# model files
+backend/models/attitude_root/config.json
+backend/models/attitude_root/special_tokens_map.json
+backend/models/attitude_root/tf_model.h5
+backend/models/attitude_root/tokenizer_config.json
+backend/models/attitude_root/vocab.txt
