@@ -2,7 +2,8 @@ import json
 import logging
 from io import StringIO
 import openreview
-
+import requests
+from requests.exceptions import ConnectionError, RequestException
 import streamlit as st
 
 from modules.shared_methods import use_default_container
@@ -166,6 +167,11 @@ def landing_page(custom_css):
                                 st.error(f"An unexpected error occurred: {error_response.get('message', 'No details available')}")
                         except ConnectionError:
                             st.error("Connection error: Unable to connect to OpenReview. Please check your internet connection.")
+                        except requests.exceptions.RequestException as e:
+                            if "Max retries exceeded" in str(e) or "Failed to establish a new connection" in str(e):
+                                st.error("Connection error: Unable to connect to OpenReview. Please check your internet connection.")
+                            else:
+                                st.error(f"An unexpected error occurred: {str(e)}")
                         except Exception as e:
                             st.error("An unexpected error occurred. Please try again later.")
                             st.error(e)
@@ -243,14 +249,14 @@ def landing_page(custom_css):
                             st.error(f"File {uploaded_file.name} could not be found.")
                         except Exception as e:
                             st.error(f"An unexpected error occurred while processing {uploaded_file.name}.")
-                            logger.error(f"Error processing file {uploaded_file.name}: {e}")
+                            
 
                 else:
                     st.info("Please upload at least one DOCX file to proceed.")
 
             except Exception as e:
                 st.error("An error occurred while uploading files. Please try again.")
-                logger.error(f"Error during file upload: {e}")
+                
 
 
             # Check conditions to display the "Show Analysis" button
