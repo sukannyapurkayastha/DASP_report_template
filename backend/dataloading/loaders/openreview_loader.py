@@ -36,7 +36,7 @@ class OpenReviewLoader(TextProcessor):
 
     @staticmethod
     def _is_paper(note: openreview.Note) -> bool:
-        return ("title" in note.content) & ("authors" in note.content)
+        return ("title" in note.content) & ("abstract" in note.content)
 
     def load_all_submissions(self, venue: str, year: int, type: str = "Conference",
                              details: Literal["replies", "directReplies"] = "directReplies") -> list[openreview.Note]:
@@ -73,7 +73,7 @@ class OpenReviewLoader(TextProcessor):
             _paper = next((papers.pop(idx) for idx, reply in enumerate(papers) if self._is_paper(reply)), None)
             paper = Paper(
                 title=_paper.content["title"]["value"],
-                authors=_paper.content["authors"]["value"],
+                # authors=_paper.content["authors"]["value"],
                 keywords=_paper.content["keywords"]["value"],
                 abstract=_paper.content["abstract"]["value"],
                 primary_area=_paper.content["primary_area"]["value"],
