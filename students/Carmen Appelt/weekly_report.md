@@ -10,7 +10,15 @@
 
 ## Reports
 
-### Week [2]
+### Week [3]
+
+- **Update 1**: Frontend 
+- **Update 2**: Developing Finetuning Approach Ongoing
+- **Update 3**: 
+- **Challenges**: Teamwork: It takes a lot time to execute code of teammates the first time
+- **Next Steps**: 
+
+### Week [3]
 
 - **Update 1**: Frontend 
 - **Update 2**: Developing Finetuning Approach Ongoing

@@ -37,6 +37,10 @@
 | [27.11.2024]  | [27.11.2024]  | [Frontend]            | [Adapted Methods for changed data structure, added colour sceme, added logic to show the scores of the authors individually]            | [9]           | [In Progress] |
 | [30.11.2024]  | [01.12.2024]  | [Libaries]            | [Installing necessary libaries after connecting the data loader to the frontend]            | [1]           | [Completed] |
 | [30.11.2024]  | [01.12.2024]  | [Finetuning]            | [Resamling (+ Reformulating) Reviewer Tests for rare attitude roots]            | [10]           | [Completed] |
+| [02.12.2024]  | [03.12.2024]  | [Teamwork]            | [Trying to make Zhijingshui Yang code runnable]            | [3]           | [Completed] |
+| [02.12.2024]  | [02.12.2024]  | [Teamwork]            | [Making Jans code runnable + creating openreview Account]            | [1]           | [Completed] |
+| [02.11.2024]  | [03.12.2024]  | [Finetuning]            | [Trying to classify only attitude roots != None]            | [8]           | [Completed] |
+| [02.11.2024]  | [03.12.2024]  | [Testing and Creating Tasks]            | [Testing application and creating Bugfixing Tasks]            | [3]           | [Completed] |
 ---
 
 > **Status Options**: "In Progress," "Completed," or "Pending."
