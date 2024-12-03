@@ -3,7 +3,7 @@ import json
 from collections import defaultdict
 import pandas as pd
 
-folder_path = "backend/nlp/request_classifier/DISAPERE/final_dataset/dev"  
+folder_path = "backend/nlp/request_classifier/DISAPERE/final_dataset/test"  
 output_folder = "backend/nlp/request_classifier/DISAPERE/final_dataset/"    
 input_file = "backend/nlp/request_classifier/DISAPERE/final_dataset/merged_output.json"    
 target_index = "backend/nlp/request_classifier/DISAPERE/final_dataset/merged_output_index.json"   
@@ -157,20 +157,31 @@ with open("backend/nlp/request_classifier/DISAPERE/final_dataset/filtered_train.
         filtered_data.append(filtered_entry)
 
 df = pd.DataFrame(filtered_data)
-#df['target'] = df['review_action'].apply(lambda x: 1 if x == 'arg_request' else 0)
+df['target'] = df['review_action'].apply(lambda x: 1 if x == 'arg_request' else 0)
 
 #df.to_csv("backend/request_classifier/DISAPERE/final_dataset/Request/test.csv", index=False)
 
 #df = df[df["review_action"] == "arg_request"]
-unique_labels = df["aspect"].unique()
+#unique_labels = df["fine_review_action"].unique()
 
 # Ein Mapping für jedes Label erstellen
-label_to_value = {label: idx for idx, label in enumerate(unique_labels)}
+#label_to_value = {label: idx for idx, label in enumerate(unique_labels)}
 
 # Neue Spalte mit den zugewiesenen Werten hinzufügen
-df["target"] = df["aspect"].map(label_to_value)
+#df["target"] = df["fine_review_action"].map(label_to_value)
+#mapping = {
+#    0: "2",
+#    1: "4",
+#    2: "1",
+#    3: "3",
+#    4: "0",
+#    5: "5"
+#}
+
+# Map the target column using the mapping dictionary
+#df['target'] = df['target'].map(mapping)
 
 unique_labels = df["target"].unique()
 print("Einzigartige Labels:", unique_labels)
-df.to_csv("backend/nlp/request_classifier/DISAPERE/final_dataset/fine_request/dev_attitude.csv", index=False)
+df.to_csv("backend/nlp/request_classifier/DISAPERE/final_dataset/Request/test.csv", index=False)
 
