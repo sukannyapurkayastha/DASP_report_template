@@ -17,8 +17,8 @@ label_mapping = {
 }
 
 # **Tokenizer und Modell einmalig laden**
-tokenizer = DistilBertTokenizer.from_pretrained('distilbert-base-uncased')
-model = TFDistilBertForSequenceClassification.from_pretrained('distilbert-base-uncased', num_labels=9)
+tokenizer = DistilBertTokenizer.from_pretrained(r"models\attitude_classifier")
+model = TFDistilBertForSequenceClassification.from_pretrained(r"models\attitude_classifier", num_labels=9)
 
 def predict_category(text):
     # Verwenden des bereits geladenen Tokenizers und Modells
