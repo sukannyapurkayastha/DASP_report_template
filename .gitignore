@@ -149,6 +149,8 @@ misc.xml
 
 # Ignoriere alle optimizer.pt Dateien
 *.pt
+*.json
+*.jsonl
 
 # vscode launch file
 .vscode/launch.json
