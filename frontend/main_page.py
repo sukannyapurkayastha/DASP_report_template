@@ -13,6 +13,15 @@ import modules.contact_info
 import modules.slideshow as ss
 from modules.shared_methods import use_default_container 
 import requests
+import sys
+# Fügen Sie den übergeordneten Pfad hinzu
+current_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir = os.path.abspath(os.path.join(current_dir, '..'))
+if parent_dir not in sys.path:
+    sys.path.append(parent_dir)
+
+# Jetzt können Sie importieren
+
 from backend.model_backend import classify_paper
 
 #%% global variables

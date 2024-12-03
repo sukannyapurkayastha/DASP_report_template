@@ -1,8 +1,24 @@
 # model_backend.py
 
+import os
 import pandas as pd
 import tensorflow as tf
 from transformers import DistilBertTokenizer, TFDistilBertForSequenceClassification
+
+# Aktuelles Arbeitsverzeichnis ermitteln
+current_dir = os.getcwd()
+
+# Pfad zum Modell relativ zum aktuellen Verzeichnis bestimmen
+# Passen Sie diesen Pfad entsprechend Ihrer Verzeichnisstruktur an
+model_relative_path = os.path.join(current_dir, 'backend/models', 'attitude_classifier')
+
+# Prüfen, ob der Pfad existiert
+if not os.path.exists(model_relative_path):
+    raise FileNotFoundError(f"Modellpfad nicht gefunden: {model_relative_path}")
+
+# Tokenizer und Modell laden
+tokenizer = DistilBertTokenizer.from_pretrained(model_relative_path)
+model = TFDistilBertForSequenceClassification.from_pretrained(model_relative_path, num_labels=9)
 
 label_mapping = {
     0: 'Other',
@@ -16,9 +32,6 @@ label_mapping = {
     8: 'None'
 }
 
-# **Tokenizer und Modell einmalig laden**
-tokenizer = DistilBertTokenizer.from_pretrained(r"models\attitude_classifier")
-model = TFDistilBertForSequenceClassification.from_pretrained(r"models\attitude_classifier", num_labels=9)
 
 def predict_category(text):
     # Verwenden des bereits geladenen Tokenizers und Modells
