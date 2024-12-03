@@ -41,6 +41,7 @@
 | [02.12.2024]  | [02.12.2024]  | [Teamwork]            | [Making Jans code runnable + creating openreview Account]            | [1]           | [Completed] |
 | [02.11.2024]  | [03.12.2024]  | [Finetuning]            | [Trying to classify only attitude roots != None]            | [8]           | [Completed] |
 | [02.11.2024]  | [03.12.2024]  | [Testing and Creating Tasks]            | [Testing application and creating Bugfixing Tasks]            | [3]           | [Completed] |
+| [03.11.2024]  | [03.12.2024]  | [Fixing Zhijingshui Yang Code]            | [Connecting backend and frontend]            | [5]           | [Completed] |
 ---
 
 > **Status Options**: "In Progress," "Completed," or "Pending."
