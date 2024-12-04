@@ -4,7 +4,7 @@ import torch
 from sklearn.metrics import f1_score, accuracy_score
 
 # Load the pretrained MLM model
-model = BertForSequenceClassification.from_pretrained("../../JitsuPEER_data_and_models_v1/models/bert-base-uncased_neg", num_labels=num_themes, problem_type="multi_label_classification")
+model = BertForSequenceClassification.from_pretrained("../../JitsuPEER_data_and_models_v1/models/bert-base-uncased_neg", num_labels=11, problem_type="multi_label_classification")
 # Initialize the tokenizer
 tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
 # Tokenize your dataset
