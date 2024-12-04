@@ -45,23 +45,26 @@
   Neurips 2024
 - **Update 2**:
 - **Update 3**:
-- **Challenges**: 
-  - Handling text data (it's no fun) and sentence segmentation. Even though you can do a lot with spacy
-    there are so many special cases you have to account for.
+- **Challenges**:
+    - Handling text data (it's no fun) and sentence segmentation. Even though you can do a lot with spacy
+      there are so many special cases you have to account for.
 - **Next Steps**:
-  - Reading reviews from files/manual upload (how to handle that if they are not in the same format as the api response?)
+    - Reading reviews from files/manual upload (how to handle that if they are not in the same format as the api
+      response?)
 
 ### Week [4]
 
-- **Update 1**: Refactoring of TextProcessor to split sentences at linebreak
+- **Update 1**: Refactoring of OpenReviewLoader into parent class TextProcessor. New class UploadedFileProcessor to
+  handle uploaded files (also child of TexProcessor class). Refactoring to split sentences at linebreak
 - **Update 2**: Template and read from template
-- **Update 3**: Login and provide url functionality to frontend. Provide template, upload template and read from word file
+- **Update 3**: Login and provide url functionality to frontend. Provide template, upload template and read from word
+  file
 - **Challenges**:
-  - Reading from word files is really complicated
-  - Backend and frontend connection
+    - Reading from word files is really complicated
+    - Backend and frontend connection
 - **Next Steps**:
-  - Better connection between backend and frontend
-  - Expanding the review functionality for other venues/conferences
+    - Better connection between backend and frontend
+    - Expanding the review functionality for other venues/conferences
 
 ### Week [n-2]
 
