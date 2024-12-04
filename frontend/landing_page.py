@@ -48,9 +48,11 @@ def valid_url_or_file(url_or_file):
 
 
 def get_input():
-    uploaded_file = st.session_state.get("uploaded_file")
-    entered_url = st.session_state.get("entered_url")
-    return uploaded_file if uploaded_file else entered_url
+    reviews = st.session_state.get("reviews")
+    return reviews
+    # uploaded_file = st.session_state.get("uploaded_file")
+    # entered_url = st.session_state.get("entered_url")
+    # return uploaded_file if uploaded_file else entered_url
 
 
 def extract_paper_id(url):
@@ -243,7 +245,6 @@ def landing_page(custom_css):
 
                             # Additional success feedback
                             st.info(f"Processed {uploaded_file.name} successfully.")
-
                         except ValueError as ve:
                             st.error(f"File {uploaded_file.name} has invalid content: {ve}")
                         except FileNotFoundError:

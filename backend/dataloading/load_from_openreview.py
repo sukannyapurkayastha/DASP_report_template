@@ -1,5 +1,6 @@
 import argparse
 import pandas as pd
+import json
 
 from loaders.openreview_loader import OpenReviewLoader
 
@@ -30,8 +31,16 @@ if __name__ == '__main__':
     # the review are stored
     # To get all the sentences from the list of reviews we could also use something like:
     # [print(sent) for review in reviews for sent in review.sentences]
-    test_set = client.create_testset(ids=["zzv4Bf50RW"])
+    test_set = client.create_testset(ids=["yGv5GzlBwr"])
     paper = client.get_paper_reviews(id="zzv4Bf50RW")
+    reviews = paper.reviews
+    review = reviews[0]
+
+    json_string = json.dumps(reviews[0].__dict__, indent=4)
+
+    filename = 'review.json'
+    with open(filename, 'w') as f:
+        f.write(json_string)
 
     # test_set = pd.DataFrame(test_set, columns=["sentences"])
     # test_set.to_csv("data/test_set.csv", index=False, encoding="utf-8")
