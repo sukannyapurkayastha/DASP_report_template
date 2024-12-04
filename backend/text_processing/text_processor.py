@@ -7,7 +7,7 @@ from spacy.language import Language
 from spacy.tokens.doc import Doc
 from loguru import logger
 
-from backend.text_processing.models import Review
+from .models import Review
 
 
 # SpaCy components to split only at linebreaks and to protect lists and citations

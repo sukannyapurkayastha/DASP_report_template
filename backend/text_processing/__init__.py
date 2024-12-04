@@ -1,2 +1,2 @@
-from backend.text_processing.models import Review
-from backend.text_processing.text_processor import TextProcessor
+from .models import Review
+from .text_processor import TextProcessor

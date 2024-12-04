@@ -1,3 +1,5 @@
+import json
+
 import openreview
 from requests.exceptions import ConnectionError
 import streamlit as st
@@ -12,7 +14,6 @@ import sys
 import os
 import requests
 
-
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from frontend.clients import OpenReviewClient, UploadedFileProcessor
@@ -25,24 +26,27 @@ def switch_to_main_page(skip_validation=False):
     if skip_validation:
         # Directly switch to the main page without validation
         # TODO: should we redirect it to main_page?
-        st.write(st.session_state.review)
-        response = requests.post("http://localhost:8080/process", json={"reviews": st.session_state.reviews})
-        if response.status_code == 200:
-            st.write(response.json())
-        else:
-            st.write(response.status_code)
-            st.write(response.text)
+
         url_or_file = get_input()
         # apply_backend_logic(url_or_file)
         st.session_state.page = "Meta Reviewer Dashboard"
         st.session_state["backend_result"] = "Skipped validation and switched to main page."
     else:
-        url_or_file = get_input()
-        if valid_url_or_file(url_or_file):
-            st.session_state.page = "Meta Reviewer Dashboard"
-            st.rerun()
+        st.write(st.session_state.reviews)
+        payload = [review.__dict__ for review in st.session_state.reviews]
+
+        response = requests.post("http://localhost:8080/process", json={"reviews": payload})
+        if response.status_code == 200:
+            st.write(response.json())
         else:
-            st.error("Invalid input! Please upload a file or provide a valid URL.")
+            print("Error:", response.status_code)
+            # print("Response:", response.text)
+        # url_or_file = get_input()
+        # if valid_url_or_file(url_or_file):
+        #     st.session_state.page = "Meta Reviewer Dashboard"
+        #     st.rerun()
+        # else:
+        #     st.error("Invalid input! Please upload a file or provide a valid URL.")
 
 
 def valid_url_or_file(url_or_file):
@@ -115,6 +119,7 @@ def landing_page(custom_css):
             col1, col2 = st.columns([4.5, 1])
             with col2:
                 if st.button("Show Analysis", key=key):
+                    print("pressed show analysis button")
                     switch_to_main_page()
 
         # Function to update the active tab in session state
@@ -165,18 +170,21 @@ def landing_page(custom_css):
                             if "Invalid username or password" in error_response.get('message', ''):
                                 st.error("Invalid username or password. Please try again.")
                             else:
-                                st.error(f"An unexpected error occurred: {error_response.get('message', 'No details available')}")
+                                st.error(
+                                    f"An unexpected error occurred: {error_response.get('message', 'No details available')}")
                         except ConnectionError:
-                            st.error("Connection error: Unable to connect to OpenReview. Please check your internet connection.")
+                            st.error(
+                                "Connection error: Unable to connect to OpenReview. Please check your internet connection.")
                         except requests.exceptions.RequestException as e:
                             if "Max retries exceeded" in str(e) or "Failed to establish a new connection" in str(e):
-                                st.error("Connection error: Unable to connect to OpenReview. Please check your internet connection.")
+                                st.error(
+                                    "Connection error: Unable to connect to OpenReview. Please check your internet connection.")
                             else:
                                 st.error(f"An unexpected error occurred: {str(e)}")
                         except Exception as e:
                             st.error("An unexpected error occurred. Please try again later.")
                             st.error(e)
-                            
+
 
             else:
                 client = st.session_state['client']
@@ -249,15 +257,13 @@ def landing_page(custom_css):
                             st.error(f"File {uploaded_file.name} could not be found.")
                         except Exception as e:
                             st.error(f"An unexpected error occurred while processing {uploaded_file.name}.")
-                            
+
 
                 else:
                     st.info("Please upload at least one DOCX file to proceed.")
 
             except Exception as e:
                 st.error("An error occurred while uploading files. Please try again.")
-                
-
 
             # Check conditions to display the "Show Analysis" button
             if ('reviews' in st.session_state and st.session_state['reviews'] and
