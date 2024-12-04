@@ -51,13 +51,17 @@
 - **Next Steps**:
   - Reading reviews from files/manual upload (how to handle that if they are not in the same format as the api response?)
 
-### Week [n-2]
+### Week [4]
 
-- **Update 1**:
-- **Update 2**:
-- **Update 3**:
+- **Update 1**: Refactoring of TextProcessor to split sentences at linebreak
+- **Update 2**: Template and read from template
+- **Update 3**: Login and provide url functionality to frontend. Provide template, upload template and read from word file
 - **Challenges**:
+  - Reading from word files is really complicated
+  - Backend and frontend connection
 - **Next Steps**:
+  - Better connection between backend and frontend
+  - Expanding the review functionality for other venues/conferences
 
 ### Week [n-2]
 
