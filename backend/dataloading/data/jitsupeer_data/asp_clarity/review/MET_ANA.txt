@@ -1,1 +1,0 @@
-- My main concern about the analysis is that it shows why several methods (e.g., momentum, multiple update steps) are *not* helpful for stabilising GANs, but does not tell why training with these methods, as well as others such as gradient penalty, *do converge* in practice with properly chosen hyper-parameters?

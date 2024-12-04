@@ -5,9 +5,9 @@ import pandas as pd
 import os
 
 
-attitude_roots = pd.read_csv(os.path.join("dummy_data", "dummy_attitude_roots.csv"), sep=";", encoding="utf-8")
-request_information = pd.read_csv(os.path.join("dummy_data", "dummy_request_information.csv"), sep=";", encoding="utf-8")
-summary = pd.read_csv(os.path.join("dummy_data", "dummy_summary.csv"), sep=";", encoding="utf-8")
+attitude_roots = pd.read_csv(os.path.join("frontend/dummy_data", "dummy_attitude_roots.csv"), sep=";", encoding="utf-8")
+request_information = pd.read_csv(os.path.join("frontend/dummy_data", "dummy_request_information.csv"), sep=";", encoding="utf-8")
+summary = pd.read_csv(os.path.join("frontend/dummy_data", "dummy_summary.csv"), sep=";", encoding="utf-8")
 
 
 # Page configuration

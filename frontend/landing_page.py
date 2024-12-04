@@ -1,16 +1,11 @@
-import json
-import logging
-from io import StringIO
 import openreview
-import requests
-from requests.exceptions import ConnectionError, RequestException
+from requests.exceptions import ConnectionError
 import streamlit as st
 
 from modules.shared_methods import use_default_container
 import modules.contact_info
 from pathlib import Path
 from urllib.parse import urlparse, parse_qs
-import pandas as pd
 
 # Import from backend because we are importing from another module from root and have to go up a directory level
 import sys
@@ -20,7 +15,7 @@ import requests
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from backend.dataloading.loaders import OpenReviewLoader, UploadedFileProcessor
+from frontend.clients import OpenReviewClient, UploadedFileProcessor
 
 
 # %% Backend Logic
@@ -30,6 +25,13 @@ def switch_to_main_page(skip_validation=False):
     if skip_validation:
         # Directly switch to the main page without validation
         # TODO: should we redirect it to main_page?
+        st.write(st.session_state.review)
+        response = requests.post("http://localhost:8080/process", json={"reviews": st.session_state.reviews})
+        if response.status_code == 200:
+            st.write(response.json())
+        else:
+            st.write(response.status_code)
+            st.write(response.text)
         url_or_file = get_input()
         # apply_backend_logic(url_or_file)
         st.session_state.page = "Meta Reviewer Dashboard"
@@ -50,9 +52,6 @@ def valid_url_or_file(url_or_file):
 def get_input():
     reviews = st.session_state.get("reviews")
     return reviews
-    # uploaded_file = st.session_state.get("uploaded_file")
-    # entered_url = st.session_state.get("entered_url")
-    # return uploaded_file if uploaded_file else entered_url
 
 
 def extract_paper_id(url):
@@ -155,7 +154,7 @@ def landing_page(custom_css):
                     # Button to submit the credentials
                     if st.button("Login"):
                         try:
-                            client = OpenReviewLoader(username=username, password=password)
+                            client = OpenReviewClient(username=username, password=password)
                             st.success("Login successful!")
                             st.session_state["logged_in"] = True
                             st.session_state["client"] = client
@@ -191,7 +190,7 @@ def landing_page(custom_css):
                         st.session_state["paper_id"] = paper_id
 
                         try:
-                            paper = client.get_paper_reviews(paper_id)
+                            paper = client.get_reviews_from_id(paper_id)
                             # TODO: if we pass url or file later in show_analysis, then we don't need to get reviews right now.
                             st.session_state["reviews"] = paper.reviews
                             st.success(f'Reviews extracted from paper: "{paper.title}"')
@@ -234,7 +233,6 @@ def landing_page(custom_css):
                     # checking the reviews
                     # reviews_str = json.dumps((reviews[0].__dict__), default=lambda o: o.__dict__, sort_keys=True, indent=4)
                     # df = pd.read_json(reviews_str)
-                    # df.to_excel("Reviews.xlsx", index=False)
 
                     for uploaded_file in uploaded_files:
                         try:

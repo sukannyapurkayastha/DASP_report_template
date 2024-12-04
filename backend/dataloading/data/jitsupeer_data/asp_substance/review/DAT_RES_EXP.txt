@@ -1,1 +1,0 @@
-The MNIST+SVHN dataset setup is described in detail, yet there is no summary of the experimental results, which are presented in the appendix.

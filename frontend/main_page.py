@@ -22,7 +22,7 @@ if parent_dir not in sys.path:
 
 # Jetzt können Sie importieren
 
-from backend.model_backend import classify_paper
+# from backend.model_backend import classify_paper
 
 #%% global variables
     
@@ -186,7 +186,7 @@ def get_classification_with_url():
         sentences_json = paper.sentences.to_dict(orient="records")
 
         # **Direktes Aufrufen der Funktion anstelle eines API-Calls**
-        attitude_roots = classify_paper(sentences_json)
+        # attitude_roots = classify_paper(sentences_json)
 
         if attitude_roots is not None:
             return attitude_roots  # Rückgabe des Ergebnisses

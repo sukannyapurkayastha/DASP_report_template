@@ -1,1 +1,0 @@
-The real data experiments (sections 4.2 and 4.3) are not very convincing, not only because of the very small size of N, but also because there is no comparison with the other approaches.
