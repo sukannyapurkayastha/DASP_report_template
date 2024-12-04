@@ -1,0 +1,7 @@
+In particular, it is unclear what the assumption on the size of the unlabelled test set is.
+* The issue of possible false positives due to sample dependence in fMRI data has again been ignored in the rebuttal.
+For example, I don't understand what does it mean in "However, if training data is complete, ..... handle during missing data during test." Another example would be the last few paragraphs on page 4; they are very unclear.
+For example, I have trouble understanding the sentence "So the existed algorithms should be heuristic or it can get a bad result even we train the neural networks with lots of datasets." in the introduction.
+6. Validation data / test sets: Throughout this work, it is unclear what / how validation is performed.
+You have 3 datasets worth of data for the regression task (it is still unclear, however, what is being used for evaluation), but it doesn't look like this is addressed in the larger scale experiments at all.
+The gain of using a sufficiently more complicated approach to assess the overall distance between the test and training dataset is not clear, comparing it to the very insightful histograms.

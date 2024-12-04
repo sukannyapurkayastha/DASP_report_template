@@ -1,0 +1,1 @@
+3. In the introduction, the Authors point that prior methods have trouble dealing with textureless, reflective or transparent approaches, but it's not clear form the paper where it addresses these cases, and if yes, what is the mechanism for that.

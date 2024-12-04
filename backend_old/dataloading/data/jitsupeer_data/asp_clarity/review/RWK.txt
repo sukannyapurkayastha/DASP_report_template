@@ -1,0 +1,14 @@
+This paper is very well written, although very dense and not easy to follows, as many methods are referenced and assume that the reviewer is highly familiar with the related works.
+Hence it is unclear how large the running time improvement is compared to a well-tuned baseline.
+This is not to say that this way of doing things is wrong, but rather that it is misleading in the context of prior work.
+I find the background on ELBO and GANs unnecessary occluding the clarity at this point.
+11. Baseline 2 is actually referred to as "usage baseline" but this name is not introduced in the itemized part.
+The paper is not very self-contained, and I have to constantly go back to Lee et al. and Xu et al. in order to read through the paper.
+Indeed, without referencing the original Pointer Network and (and especially the) Transformer papers, it would not be possible to understand this paper at all.
+Also, please place the related work earlier on in the paper.
+For example, there are two "the" in the end of the third paragraph in Related Work.
+In the last paragraph in Related Work, "provide" should be "provides".
+The related work section looks incomplete with some missing related references as mentioned above, and copy of a segment that appears in the introduction.
+2. First paragraph in related work is very unrelated to the current subject, please remove.
+While it’s great that so much prior work was acknowledged, mentioning a paper once per paragraph is (usually) sufficient and increases readability.
+For example, the related works paper would read better if it wasn't one long block (i.e. break it into several paragraphs)

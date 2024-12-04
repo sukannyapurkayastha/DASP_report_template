@@ -1,0 +1,14 @@
+However, the paper contains only little novelty and does not provide sufficiently new scientific insights.
+Originality: The work is moderately original.
+But I'm concerned with the novelty and contributions of this paper.
+In summary, the quality of the paper is poor and the originality of the work is low.
+Overall, this paper is good, but is not novel or important enough for acceptance.
+Overall, I think this paper is not good enough for an ICLR paper and the presentation is confusing in both its contributions and its technical novelty.
+I believe the primary claim of this paper is neither surprising nor novel.
+Assessment: Overall, this is a borderline paper, as the task is interesting and novel, but the presentation is lacking in technical detail and there is a lack of novelty on the modeling side.
+The only issue with this paper is its degree of novelty, which is narrow.
+Hence, I am not very sure whether the novelty of the paper is significant.
+Overall, this appears to be a board-line paper with weak novelty.
+This was a fun, albeit incremental paper.
+The paper is overall well written and intuitive but limited in evaluation and novelty (see e.g. [1,2] ) with only limited modifications (sharing low-level controller) for the multi agent case.
+My main concern comes from the novelty of this paper.

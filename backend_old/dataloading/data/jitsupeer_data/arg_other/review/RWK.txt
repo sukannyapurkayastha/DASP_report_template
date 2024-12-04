@@ -1,0 +1,12 @@
+5. lack of related work:  4D Spatio-Temporal ConvNets: Minkowski Convolutional Neural Networks, CVPR 2019.
+2. Missed citation: MnasNet [2] also incorporates the cost of architectures in their search process.
+The paper also misses relevant citations of similar questions from the field of (probabilistic) matrix factorization and relational learning.
+(3) A large body of graph neural network literature is omitted.
+The reviewer recommends the authors to read some literature review of the topic of GCN and re-organize the references, and use search engines to have a better view on the state of the art of (hyperbolic) geometric theories and graph convolutional networks.
+This is a thriving area that requires a careful literature review.
+2) Related work, although extensive in terms of the number of references, do not help to place this work in the literature.
+Listing related work is no the same as describing similarities and differences compared to previous methods.
+The paper misses the key baseline in Bayesian optimisation using tree structure [1] which can perform the prediction under the tree-structure dependencies.
+There are some well-cited works that the authors may have missed. These are ultimately different approaches, but perhaps the authors can obtain some inspiration from these:
+5, Although there is a notable difference, one may properly mention previous work Yamamoto et al. (2019), which uses GAN as an auxiliary loss within ClariNet and obtains high-fidelity speech ( https://r9y9.github.io/demos/projects/interspeech2019/ ).
+5. The term "PowerSGD" seems to have been used by other papers.
