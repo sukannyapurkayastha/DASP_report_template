@@ -149,3 +149,4 @@ misc.xml
 
 # Ignoriere alle optimizer.pt Dateien
 *.pt
+backend/models/

@@ -1,4 +1,4 @@
-reviews	descs	new_column
+reviews	descs	pred
 They start from Equation (4) which is incorrectly denoted as the log-marginal distribution while it is the same conditional distribution introduced in Equation (3) with the extra summation for all the available data points.	generalizability of method on datasets created from different distributions is questionable	Missing details on methodology (eg., use of notation, use on tasks, etc)
 It seems there is no conclusion to take away from the experiments in section 5 (convolutions).	Lack of discussion of experimental setup (conclusion from experiments, poor experimental details, etc)	Experimental study not strong enough
 The authors do not explicitly define continual learning, incremental learning, and catastrophic forgetting problem.	Unclear description of method	Missing details on methodology (eg., use of notation, use on tasks, etc)
