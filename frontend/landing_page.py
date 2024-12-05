@@ -25,28 +25,17 @@ from frontend.clients import OpenReviewClient, UploadedFileProcessor
 def switch_to_main_page(skip_validation=False):
     if skip_validation:
         # Directly switch to the main page without validation
-        # TODO: should we redirect it to main_page?
-
         url_or_file = get_input()
         # apply_backend_logic(url_or_file)
         st.session_state.page = "Meta Reviewer Dashboard"
         st.session_state["backend_result"] = "Skipped validation and switched to main page."
     else:
-        st.write(st.session_state.reviews)
-        payload = [review.__dict__ for review in st.session_state.reviews]
-
-        response = requests.post("http://localhost:8080/process", json={"reviews": payload})
-        if response.status_code == 200:
-            st.write(response.json())
+        url_or_file = get_input()
+        if valid_url_or_file(url_or_file):
+            st.session_state.page = "Meta Reviewer Dashboard"
+            st.rerun()
         else:
-            print("Error:", response.status_code)
-            # print("Response:", response.text)
-        # url_or_file = get_input()
-        # if valid_url_or_file(url_or_file):
-        #     st.session_state.page = "Meta Reviewer Dashboard"
-        #     st.rerun()
-        # else:
-        #     st.error("Invalid input! Please upload a file or provide a valid URL.")
+            st.error("Invalid input! Please upload a file or provide a valid URL.")
 
 
 def valid_url_or_file(url_or_file):

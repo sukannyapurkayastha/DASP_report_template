@@ -47,9 +47,7 @@ class TextProcessor:
             text = text.replace(abbr, protected)
         return text
 
-    def _preprocess_text(self, reviews: list[Review],
-                         ) -> list[
-        Review]:
+    def _preprocess_text(self, reviews: list[Review]) -> list[Review]:
         for review in reviews:
             for key in self.keys_to_extract:
                 text = getattr(review, key, "")
@@ -70,7 +68,7 @@ class TextProcessor:
     def _segment_content(self, reviews: list[Review]) -> (list[Review], pd.DataFrame):
         sent_df = []
         for review in tqdm(reviews, desc="Segmenting content"):
-            for key in self:
+            for key in self.keys_to_extract:
                 text = getattr(review, key, "")
                 doc = self.nlp(text)
                 sentences = [sent.text.replace("<DOT>", ".") for sent in doc.sents]
@@ -108,6 +106,7 @@ class TextProcessor:
         """
         logger.info(f"Processing reviews")
         preprocessed_reviews = self._preprocess_text(self.reviews)
+        logger.info("Segmenting content")
         reviews, df_sentences = self._segment_content(preprocessed_reviews)
         df_overview = self._get_overview(preprocessed_reviews)
 

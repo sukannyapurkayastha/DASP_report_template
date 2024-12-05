@@ -181,18 +181,25 @@ def get_classification_with_url():
             st.error("Client is not initialized.")
             return pd.DataFrame()  # Rückgabe eines leeren DataFrame
 
-        # Hole die Daten vom Client
-        paper = client.get_paper_reviews(paper_id)
-        sentences_json = paper.sentences.to_dict(orient="records")
+        if "reviews" not in st.session_state:
+            st.error("No reviews to analyze")
 
-        # **Direktes Aufrufen der Funktion anstelle eines API-Calls**
-        # attitude_roots = classify_paper(sentences_json)
+        payload = [review.__dict__ for review in st.session_state.reviews]
 
-        if attitude_roots is not None:
-            return attitude_roots  # Rückgabe des Ergebnisses
+        response = requests.post(
+            "http://localhost:8080/process",
+            json={"data": payload}
+        )
+
+        if response.status_code == 200:
+            data = response.json()
+            df_sentences = pd.DataFrame(data["df_sentences"])
+            df_overview = pd.DataFrame(data["df_overview"])
         else:
-            st.error("Error in classification.")
-            return pd.DataFrame()  # Rückgabe eines leeren DataFrame
+            st.error(f"Error: {response.text}")
+
+        # Return all the dataframes
+        return df_overview
 
     except Exception as e:
         st.error(f"An error occurred: {e}")

@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, List, Generator
 
 from fastapi import FastAPI
 import pandas as pd
@@ -10,12 +10,13 @@ from text_processing import Review, TextProcessor
 
 app = FastAPI()
 
+
 class ReviewData(BaseModel):
-    data: list[dict[str, Any]]
+    data: list[dict]
 
 
-@app.post("/process/")
-async def process_file(reviews: ReviewData) -> dict:  # change amount of df to 4 (or 5)
+@app.post("/process")
+async def process_file(reviews_json: ReviewData) -> dict:  # change amount of df to 4 (or 5)
     """
     Processes a list of reviews. This means that each review will be first sentencized and then be given to nlp models to classify the sentences.
     :param reviews: list of reviews (from frontend)
@@ -23,10 +24,18 @@ async def process_file(reviews: ReviewData) -> dict:  # change amount of df to 4
     """
     logger.info("Backend :)")
     try:
-        data = reviews.data
-        print(data)
-        text_processer = TextProcessor(reviews=reviews.data)
+        data = reviews_json.data
+
+        for idx, x in enumerate(data):
+            print(f"idx {idx}: Type {type(x)}")
+
+        reviews = [Review.from_dict(review_dict) for review_dict in data]
+        text_processer = TextProcessor(reviews=reviews)
+        print("Establish TextProcessor")
         df_sentences, df_overview = text_processer.process()  # df_sentences is the input for the models, df_overview is to be directly sent to the frontend
+
+        # Todo: Write functions in which each model is loaded and df_sentences is given as input, return the model output
+        # Todo: The model output (dataframe) should then be cheanged to a dict and added to the return dict
 
         # Convert DataFrames to JSON-serializable formats
         df_sentences_json = df_sentences.to_dict(orient='records')
@@ -36,6 +45,7 @@ async def process_file(reviews: ReviewData) -> dict:  # change amount of df to 4
             "df_sentences": df_sentences_json,
             "df_overview": df_overview_json
         }
+        # return None
     except Exception as e:
         logger.error(e)
 
