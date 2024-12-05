@@ -33,6 +33,9 @@
 | [27/11/24] | [01/12/24] | [Coding]             | [Backend]                                                         | [9]                | [In progress] |
 | [29/11/24] | [03/12/24] | [Coding]             | [Frontend (login functionality and upload file]                   | [17]               | [In progress] |
 | [04/12/24] | [04/12/24] | [Meeting]            | [Weekly meeting]                                                  | [1]                | [Completed]   |
+| [04/12/24] | [04/12/24] | [Meeting]            | [Internal meeting]                                                | [4]                | [Completed]   |
+| [04/12/24] | [05/12/24] | [Coding]             | [Restructuring of Project (on branch)]                            | [7]                | [In Progress] |
+
 
 ---
 
