@@ -3,13 +3,31 @@ channels:
   - conda-forge
   - defaults
 dependencies:
+  - aiohappyeyeballs=2.4.4=pyhd8ed1ab_1
+  - aiohttp=3.11.9=py312h31fea79_0
+  - aiosignal=1.3.1=pyhd8ed1ab_1
   - annotated-types=0.7.0=pyhd8ed1ab_1
   - anyio=4.6.2.post1=pyhd8ed1ab_0
+  - attrs=24.2.0=pyh71513ae_0
+  - aws-c-auth=0.8.0=h6c5491b_10
+  - aws-c-cal=0.8.0=hb414858_2
+  - aws-c-common=0.10.3=h2466b09_0
+  - aws-c-compression=0.3.0=hb414858_2
+  - aws-c-event-stream=0.5.0=hab6af6e_7
+  - aws-c-http=0.9.1=hab0f966_2
+  - aws-c-io=0.15.2=hef77f12_2
+  - aws-c-mqtt=0.11.0=hbfeb708_8
+  - aws-c-s3=0.7.4=h6108ab3_0
+  - aws-c-sdkutils=0.2.1=hb414858_1
+  - aws-checksums=0.2.2=hb414858_1
+  - aws-crt-cpp=0.29.6=h505e3f6_2
+  - aws-sdk-cpp=1.11.458=h0ed5b37_0
   - brotli-python=1.0.9=py312hd77b12b_8
   - bzip2=1.0.8=h2bbff1b_6
+  - c-ares=1.34.3=h2466b09_1
   - ca-certificates=2024.11.26=haa95532_0
   - catalogue=2.0.10=py312haa95532_0
-  - certifi=2024.8.30=py312haa95532_0
+  - certifi=2024.8.30=pyhd8ed1ab_0
   - charset-normalizer=3.3.2=pyhd3eb1b0_0
   - click=8.1.7=win_pyh7428d3b_1
   - cloudpathlib=0.16.0=py312haa95532_1
@@ -17,6 +35,8 @@ dependencies:
   - confection=0.1.4=py312hfc267ef_0
   - cymem=2.0.6=py312hd77b12b_0
   - cython-blis=1.0.1=py312h827c3e9_0
+  - datasets=3.1.0=pyhff2d567_0
+  - dill=0.3.8=pyhd8ed1ab_0
   - dnspython=2.7.0=pyhff2d567_1
   - email-validator=2.2.0=pyhd8ed1ab_1
   - email_validator=2.2.0=hd8ed1ab_1
@@ -24,40 +44,71 @@ dependencies:
   - expat=2.6.3=h5da7b33_0
   - fastapi=0.115.5=pyhff2d567_0
   - fastapi-cli=0.0.5=pyhd8ed1ab_1
+  - filelock=3.16.1=pyhd8ed1ab_1
+  - frozenlist=1.5.0=py312h4389bb4_0
+  - fsspec=2024.9.0=pyhff2d567_0
   - h11=0.14.0=pyhd8ed1ab_0
   - h2=4.1.0=pyhd8ed1ab_1
   - hpack=4.0.0=pyhd8ed1ab_1
   - httpcore=1.0.7=pyh29332c3_1
   - httptools=0.6.4=py312h827c3e9_0
   - httpx=0.28.0=pyhd8ed1ab_0
+  - huggingface_hub=0.26.3=pyhd8ed1ab_0
   - hyperframe=6.0.1=pyhd8ed1ab_1
   - idna=3.10=pyhd8ed1ab_1
   - intel-openmp=2024.2.1=h57928b3_1083
   - jinja2=3.1.4=pyhd8ed1ab_1
+  - krb5=1.21.3=hdf4eb48_0
   - langcodes=3.3.0=pyhd3eb1b0_0
+  - libabseil=20240722.0=cxx17_he0c23c2_1
+  - libarrow=18.1.0=h57b47f8_3_cuda
+  - libarrow-acero=18.1.0=hb6457b2_3_cuda
+  - libarrow-dataset=18.1.0=hb6457b2_3_cuda
+  - libarrow-substrait=18.1.0=h30d554c_3_cuda
   - libblas=3.9.0=25_win64_mkl
+  - libbrotlicommon=1.1.0=h2466b09_2
+  - libbrotlidec=1.1.0=h2466b09_2
+  - libbrotlienc=1.1.0=h2466b09_2
   - libcblas=3.9.0=25_win64_mkl
+  - libcrc32c=1.1.2=h0e60522_0
+  - libcurl=8.10.1=h1ee3ff0_0
+  - libevent=2.1.12=h3671451_1
   - libexpat=2.6.3=he0c23c2_0
   - libffi=3.4.4=hd77b12b_1
+  - libgoogle-cloud=2.31.0=h07d40e7_0
+  - libgoogle-cloud-storage=2.31.0=he5eb982_0
+  - libgrpc=1.67.1=h7aa3b8a_0
   - libhwloc=2.11.2=default_ha69328c_1001
   - libiconv=1.17=hcfcfb64_2
   - liblapack=3.9.0=25_win64_mkl
+  - libparquet=18.1.0=he61daf8_3_cuda
+  - libprotobuf=5.28.2=hcaed137_0
+  - libre2-11=2024.07.02=h4eb7d71_1
   - libsqlite=3.47.0=h2466b09_1
+  - libssh2=1.11.1=he619c9f_0
+  - libthrift=0.21.0=hbe90ef8_0
+  - libutf8proc=2.9.0=h2466b09_1
   - libwinpthread=12.0.0.r4.gg4f2fc60ca=h57928b3_8
   - libxml2=2.13.5=h442d1da_0
   - libzlib=1.3.1=h2466b09_2
   - loguru=0.7.2=py312haa95532_1
+  - lz4-c=1.9.4=hcfcfb64_0
   - markdown-it-py=3.0.0=pyhd8ed1ab_1
   - markupsafe=3.0.2=pyhe1237c8_1
   - mdurl=0.1.2=pyhd8ed1ab_1
   - mkl=2024.2.2=h66d3029_14
+  - multidict=6.1.0=py312h31fea79_1
+  - multiprocess=0.70.16=py312h4389bb4_1
   - murmurhash=1.0.7=py312hd77b12b_0
-  - numpy=2.1.3=py312h49bc9c5_0
   - openssl=3.4.0=h2466b09_0
+  - orc=2.0.3=h34659fe_0
   - packaging=24.1=py312haa95532_0
   - pandas=2.2.3=py312h72972c8_1
   - pip=24.2=py312haa95532_0
   - preshed=3.0.6=py312h6c2663c_0
+  - propcache=0.2.1=py312h4389bb4_0
+  - pyarrow=18.1.0=py312h2e8e312_0
+  - pyarrow-core=18.1.0=py312h607bf26_0_cuda
   - pydantic=2.8.2=pyhd8ed1ab_0
   - pydantic-core=2.20.1=py312hefb1915_0
   - pygments=2.18.0=pyhd8ed1ab_1
@@ -67,16 +118,21 @@ dependencies:
   - python-dotenv=1.0.1=pyhd8ed1ab_1
   - python-multipart=0.0.19=pyhff2d567_1
   - python-tzdata=2024.2=pyhd8ed1ab_1
+  - python-xxhash=3.5.0=py312h4389bb4_1
   - python_abi=3.12=5_cp312
   - pytz=2024.1=pyhd8ed1ab_0
   - pyyaml=6.0.2=py312h827c3e9_0
+  - re2=2024.07.02=hd3b24a8_1
+  - regex=2024.11.6=py312h4389bb4_0
   - requests=2.32.3=py312haa95532_1
   - rich=13.9.4=pyhd8ed1ab_0
+  - safetensors=0.4.5=py312h2615798_0
   - setuptools=75.1.0=py312haa95532_0
   - shellingham=1.5.4=pyhd8ed1ab_1
   - six=1.16.0=pyhd8ed1ab_1
   - smart-open=7.0.5=hd8ed1ab_1
   - smart_open=7.0.5=pyhd8ed1ab_1
+  - snappy=1.2.1=h500f7fa_1
   - sniffio=1.3.1=pyhd8ed1ab_1
   - spacy=3.8.2=py312hbaa7e33_0
   - spacy-legacy=3.0.12=py312haa95532_0
@@ -87,7 +143,9 @@ dependencies:
   - tbb=2021.13.0=h62715c5_1
   - thinc=8.3.2=py312hbaa7e33_1
   - tk=8.6.13=h5226925_1
+  - tokenizers=0.20.4=py312h21dd274_0
   - tqdm=4.66.5=py312hfc267ef_0
+  - transformers=4.46.3=pyhd8ed1ab_0
   - typer=0.15.0=pyhd8ed1ab_0
   - typer-slim=0.15.0=pyhd8ed1ab_0
   - typer-slim-standard=0.15.0=hd8ed1ab_0
@@ -109,6 +167,38 @@ dependencies:
   - win32_setctime=1.1.0=pyhd3eb1b0_0
   - win_inet_pton=1.1.0=py312haa95532_0
   - wrapt=1.14.1=py312h2bbff1b_0
+  - xxhash=0.8.2=hcfcfb64_0
   - xz=5.4.6=h8cc25b3_1
   - yaml=0.2.5=h8ffe710_2
+  - yarl=1.18.3=py312h4389bb4_0
   - zlib=1.3.1=h2466b09_2
+  - zstd=1.5.6=h0ea2cb4_0
+  - pip:
+      - absl-py==2.1.0
+      - astunparse==1.6.3
+      - en-core-web-sm==3.8.0
+      - flatbuffers==24.3.25
+      - gast==0.6.0
+      - google-pasta==0.2.0
+      - grpcio==1.68.1
+      - h5py==3.12.1
+      - keras==3.7.0
+      - keras-nightly==3.7.0.dev2024120603
+      - libclang==18.1.1
+      - markdown==3.7
+      - ml-dtypes==0.4.1
+      - namex==0.0.8
+      - numpy==2.0.2
+      - opt-einsum==3.4.0
+      - optree==0.13.1
+      - protobuf==5.29.1
+      - tb-nightly==2.19.0a20241206
+      - tensorboard==2.18.0
+      - tensorboard-data-server==0.7.2
+      - tensorflow==2.18.0
+      - tensorflow-intel==2.18.0
+      - termcolor==2.5.0
+      - tf-keras==2.18.0
+      - tf-nightly==2.19.0.dev20241204
+      - tf-nightly-intel==2.19.0.dev20241204
+      - werkzeug==3.1.3
