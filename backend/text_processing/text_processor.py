@@ -95,7 +95,7 @@ class TextProcessor:
                 list = [reviewer, score]
                 score_list.append(list)
             avg = total / len(score_list)
-            df_list.append({"Category": key.title(), "Avg_Score": avg, "Individual_Score": score_list})
+            df_list.append({"Category": key.title(), "Avg_Score": avg, "Individual_scores": score_list})
 
         return pd.DataFrame(df_list)
 

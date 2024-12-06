@@ -89,7 +89,6 @@ class UploadedFileProcessor:
                 form_fields = root.xpath('.//w:sdt', namespaces=namespaces)
 
                 if form_fields:
-                    logger.success(f"Found {len(form_fields)} form field(s):")
 
                     tmp = {}
 

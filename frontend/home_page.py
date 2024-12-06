@@ -7,7 +7,7 @@ import streamlit as st
 def home_page(custom_css):
     
     # Apply custom CSS Styles
-    st.markdown(custom_css, unsafe_allow_html=True)
+    # st.markdown(custom_css, unsafe_allow_html=True)
     
     #show home details
     use_default_container(modules.home_content.show_home_content)

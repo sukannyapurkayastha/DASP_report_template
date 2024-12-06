@@ -167,19 +167,16 @@ main_page_css = """
     """
    
 #%%% Set the page configuration
-def get_classification_with_url():
+def get_classification_with_api():
     try:
         # Überprüfen, ob die benötigten Variablen existieren
-        if "paper_id" not in st.session_state or not st.session_state["paper_id"]:
-            st.error("Invalid OpenReview URL.")
-            return pd.DataFrame()  # Rückgabe eines leeren DataFrame
+        # if "paper_id" not in st.session_state or not st.session_state["paper_id"]:
+        #     st.error("Invalid OpenReview URL.")
+        #     return pd.DataFrame()  # Rückgabe eines leeren DataFrame
 
-        paper_id = st.session_state["paper_id"]
-        client = st.session_state.get("client")
-
-        if not client:
-            st.error("Client is not initialized.")
-            return pd.DataFrame()  # Rückgabe eines leeren DataFrame
+        # if not client:
+        #     st.error("Client is not initialized.")
+        #     return pd.DataFrame()  # Rückgabe eines leeren DataFrame
 
         if "reviews" not in st.session_state:
             st.error("No reviews to analyze")
@@ -188,17 +185,18 @@ def get_classification_with_url():
 
         response = requests.post(
             "http://localhost:8080/process",
-            json={"data": payload}
+            json={"data": payload},
         )
 
         if response.status_code == 200:
             data = response.json()
             df_sentences = pd.DataFrame(data["df_sentences"])
             df_overview = pd.DataFrame(data["df_overview"])
+            st.session_state["overview"] = df_overview
         else:
             st.error(f"Error: {response.text}")
 
-        # Return all the dataframes
+        # Todo: Return all the dataframes (once we returned them from the api)
         return df_overview
 
     except Exception as e:
@@ -212,15 +210,16 @@ def main_page(custom_css):
 
     st.title("Paper Review Summary")
 
-    attitude_roots = get_classification_with_url()
+    overview = get_classification_with_api()
 
-    if attitude_roots.empty:
+    if overview.empty:
         st.warning("No data available for classification.")
     
-    # with open(os.path.join(base_path, 'frontend/dummy_data', 'dummy_attitude_roots.pkl'), 'rb') as file:
-    #     attitude_roots = pickle.load(file)
-    with open(os.path.join(base_path, 'dummy_data', 'dummy_overview.pkl'), 'rb') as file:
-        overview = pickle.load(file)
+    with open(os.path.join(base_path, 'dummy_data', 'dummy_attitude_roots.pkl'), 'rb') as file:
+        attitude_roots = pickle.load(file)
+    # with open(os.path.join(base_path, 'dummy_data', 'dummy_overview.pkl'), 'rb') as file:
+        # overview = pickle.load(file)
+    # overview = st.session_state.get["overview"]
     with open(os.path.join(base_path, 'dummy_data', 'dummy_requests.pkl'), 'rb') as file:
         request_information = pickle.load(file)
 

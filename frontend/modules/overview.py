@@ -1,8 +1,8 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
-from modules.shared_methods import get_colour_palette, grey
-from modules.shared_methods import use_default_container
+from .shared_methods import get_colour_palette, grey
+from .shared_methods import use_default_container
 from streamlit_extras.stylable_container import stylable_container
 
 def show_overview(overview_data):

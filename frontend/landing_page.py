@@ -90,7 +90,7 @@ def landing_page(custom_css):
 
     def content():
         # Apply custom CSS
-        st.markdown(custom_css, unsafe_allow_html=True)
+        # st.markdown(custom_css, unsafe_allow_html=True)
 
         st.title("Paper Review Aggregator")
 
@@ -204,7 +204,6 @@ def landing_page(custom_css):
                 display_show_analysis_button(key="show_analysis_button_tab1")
 
         # File Uploader
-        # File Uploader
         with tab2:
             set_active_tab("Upload file")
 
@@ -226,10 +225,6 @@ def landing_page(custom_css):
                     num_files = len(uploaded_files)
                     file_word = "file" if num_files == 1 else "files"
                     st.success(f"Uploaded {num_files} {file_word} successfully.")
-
-                    # checking the reviews
-                    # reviews_str = json.dumps((reviews[0].__dict__), default=lambda o: o.__dict__, sort_keys=True, indent=4)
-                    # df = pd.read_json(reviews_str)
 
                     for uploaded_file in uploaded_files:
                         try:

@@ -14,6 +14,16 @@ app = FastAPI()
 class ReviewData(BaseModel):
     data: list[dict]
 
+#     class Config:
+#         arbitrary_types_allowed = True
+#
+# class ProcessesOutput(BaseModel):
+#     df_sentences: pd.DataFrame
+#     df_overview: pd.DataFrame
+#
+#     class Config:
+#         arbitrary_types_allowed = True
+
 
 @app.post("/process")
 async def process_file(reviews_json: ReviewData) -> dict:  # change amount of df to 4 (or 5)
@@ -26,9 +36,6 @@ async def process_file(reviews_json: ReviewData) -> dict:  # change amount of df
     try:
         data = reviews_json.data
 
-        for idx, x in enumerate(data):
-            print(f"idx {idx}: Type {type(x)}")
-
         reviews = [Review.from_dict(review_dict) for review_dict in data]
         text_processer = TextProcessor(reviews=reviews)
         print("Establish TextProcessor")
@@ -36,11 +43,15 @@ async def process_file(reviews_json: ReviewData) -> dict:  # change amount of df
 
         # Todo: Write functions in which each model is loaded and df_sentences is given as input, return the model output
         # Todo: The model output (dataframe) should then be cheanged to a dict and added to the return dict
+        # df_classifier_request = request_classifier(df_sentences)
 
         # Convert DataFrames to JSON-serializable formats
         df_sentences_json = df_sentences.to_dict(orient='records')
         df_overview_json = df_overview.to_dict(orient='records')
 
+        # return ProcessesOutput(df_sentences=df_sentences, df_overview=df_overview)
+
+        # Todo: Remove df_senteces, it's just to test multiple dataframes
         return {
             "df_sentences": df_sentences_json,
             "df_overview": df_overview_json
