@@ -64,8 +64,20 @@ async def classify_paper(data: SentenceData):
         final_df.drop(columns=['count'], inplace=True)
         final_df = final_df[['Attitude_roots', 'Frequency', 'Descriptions', 'Comments']]
 
+
+
+        desc = pd.read_csv(r"..\..\data\attitude_roots\attitudes_desc.csv")
+
+
+        merged_df = pd.merge(final_df,desc, on=['Attitude_roots'], how='inner')
+        merged_df.rename(columns={'Descriptions_y': 'Descriptions'}, inplace=True)
+
+        # Drop Descriptions_x column
+        merged_df.drop(columns=['Descriptions_x'], inplace=True)
+        merged_df = merged_df[['Attitude_roots', 'Frequency', 'Descriptions', 'Comments']]
+
         # Convert DataFrame to a list of dictionaries
-        results = final_df.to_dict(orient='records')
+        results = merged_df.to_dict(orient='records')
         # Return the tabular data as a JSON response
         return results
     except Exception as e:
