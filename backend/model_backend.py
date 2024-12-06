@@ -63,13 +63,12 @@ async def classify_paper(data: SentenceData):
         final_df['Frequency'] = final_df['count'] / total_rows
         final_df.drop(columns=['count'], inplace=True)
         final_df = final_df[['Attitude_roots', 'Frequency', 'Descriptions', 'Comments']]
-
+        final_df = final_df.sort_values(by='Frequency', ascending=False)
 
 
         desc = pd.read_csv(r"..\..\data\attitude_roots\attitudes_desc.csv")
 
-
-        merged_df = pd.merge(final_df,desc, on=['Attitude_roots'], how='inner')
+        merged_df = pd.merge(final_df , desc, on=['Attitude_roots'], how='left') # todo:what happens if attitude + theme combi is not known
         merged_df.rename(columns={'Descriptions_y': 'Descriptions'}, inplace=True)
 
         # Drop Descriptions_x column
