@@ -41,7 +41,7 @@
 - **Update 2**: Invisible Frontend: Revamped filestructure of frontend entirely, fixed uploadpage bug
 - **Update 3**: 
 - **Challenges**: 
-- **Next Steps**: good question. i will update this file.
+- **Next Steps**: MVP runs. make presentation for midterm!, the week after: find new todo in backend as frontend almost finished?
 
 ### Week [4]
 

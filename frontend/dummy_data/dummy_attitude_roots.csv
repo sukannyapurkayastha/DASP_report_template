@@ -1,4 +1,0 @@
-Attitude root + Theme;Frequency;Description;Comment 1;Comment 2;Comment 3;Comment 4;Comment 5
-Clarity (Overall);3/3;The paper is not nicely written or rather easy to follow;Reviewer 1: Please proofread that paper.;Reviewer 2: The paper can benefit from proofreading.;Reviewer 3: I think this is a very interesting direction, but the present paper is somewhat unclear
-Clarity (Method);2/3;Unclear description of method;Reviewer 1: What is dt in Algorithm 1 description ?; Reviewer 3: The method is very confusingly presented and requires both knowledge of HAT as well as more than one reading to understand.
-Originality(Experiments);1/3; Not enough novelty in experiments (seems similar to previous work);Reviewer 2: Simply because for continuous variables similar experiments have been reported before.

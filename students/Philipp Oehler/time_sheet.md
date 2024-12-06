@@ -14,7 +14,9 @@
 |------------|------------|-----------------------------|---------------------------------------------------------------------------|--------------------|---------------|
 | [xx/11/24] | [xx/11/24] | [Dummy]                     | []                                                                        | [0.0]              | [Pending]     | 
 | [xx/11/24] | [xx/11/24] | [Dummy]                     | []                                                                        | [0.0]              | [Completed]   |
-| [xx/11/24] | [xx/11/24] | [Dummy]                     | []                                                                        | [0.0]              | [In Progress] | 
+| [xx/11/24] | [xx/11/24] | [Dummy]                     | []                                                                        | [0.0]              | [In Progress] |
+| [04/12/24] | [04/12/24] | [Weekly]                    | [Preperation + Meeting itself + Internal team meeting]                    | [1.5]              | [Completed]   |
+| [29/11/24] | [01/12/24] | [Frontend 6]                | [added download template, added text into url placeholder, added login field to url-entry, updated many css styles, adjusted sidebar style, created requirements.txt]  | [3]| [Completed]   |
 | [28/11/24] | [28/11/24] | [Frontend 5]                | [Redesigned contact logos, introduced homepage, adjusted overview detail button]  | [5]              | [Completed]   |
 | [26/11/24] | [28/11/24] | [Front End 4]               | [Revamped entire file structure, introduced tabs for upload, added slideshow for mainpage, introduced sidebar, fixed uploadpage bug]   | [20]              | [Completed]   |
 | [27/11/24] | [27/11/24] | [Weekly]                    | [Preperation + Meeting itself + Internal team meeting]                    | [1.5]              | [Completed]   |
