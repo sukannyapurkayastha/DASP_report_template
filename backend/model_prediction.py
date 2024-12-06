@@ -2,22 +2,12 @@ from typing import Dict
 from pydantic import BaseModel
 import pandas as pd
 import tensorflow as tf
-from transformers import DistilBertTokenizer, TFDistilBertForSequenceClassification
+from transformers import DistilBertTokenizer, TFDistilBertForSequenceClassification, BertForSequenceClassification, BertTokenizer
 import pandas as pd
 import uvicorn
 from transformers import BertForSequenceClassification, BertTokenizer
-
-label_mapping = {
-    0: 'Other',
-    1: 'Clarity',
-    2: 'Meaningful-comparison',
-    3: 'Motivation-impact',
-    4: 'Originality',
-    5: 'Replicability',
-    6: 'Soundness-correctness',
-    7: 'Substance',
-    8: 'None'
-}
+import torch
+from torch.nn import Sigmoid
 
 # # Create a Pydantic model to handle the input data
 # class SentenceData(BaseModel):
@@ -25,10 +15,10 @@ label_mapping = {
 
 def predict_root_category(text):
     # Load the tokenizer
-    tokenizer = DistilBertTokenizer.from_pretrained('models/attitude_root/')
+    tokenizer = DistilBertTokenizer.from_pretrained('/home/nana/DASP_report_template/backend/models/attitude_root/')
 
     # Load the model
-    model = TFDistilBertForSequenceClassification.from_pretrained('models/attitude_root/')
+    model = TFDistilBertForSequenceClassification.from_pretrained('/home/nana/DASP_report_template/backend/models/attitude_root/', num_labels=9)
     predict_input = tokenizer.encode(text,
                                     truncation=True,
                                     padding=True,
@@ -38,41 +28,104 @@ def predict_root_category(text):
     return prediction_value
 
 def attitude_roots_prediction(data):
-    review_sents = data
-    review_sents['attitude_root_number'] = review_sents['sentence'].apply(predict_root_category)
-    total_rows = len(review_sents)
-    # Step 1: Group by 'attitude_root_number' and 'author', then aggregate the sentences
-    agg_df = review_sents.groupby(['attitude_root_number', 'author']).agg(
-                comments=('sentence', list), count=('sentence', 'size')
-            ).reset_index()
-    final_df = agg_df.groupby('attitude_root_number').agg(
-                comments=('comments', lambda x: [[author, comments] for author, comments in zip(agg_df['author'], x)]),
-                count=('count', 'sum')
-            ).reset_index()
+    data['attitude_root_number'] = data['sentence'].apply(predict_root_category)
+    label_mapping = {
+        0: 'Other',
+        1: 'Clarity',
+        2: 'Meaningful-comparison',
+        3: 'Motivation-impact',
+        4: 'Originality',
+        5: 'Replicability',
+        6: 'Soundness-correctness',
+        7: 'Substance',
+        8: 'None'
+    }
+    data['attitude_root'] = data['attitude_root_number'].map(label_mapping)
+    data = data[data['attitude_root']!= 'None']
     
-    # match dataframe schema
-    final_df['Attitude_roots'] = final_df['attitude_root_number'].map(label_mapping)
-    final_df['Descriptions'] = 'none'
-    final_df.drop(columns=['attitude_root_number'], inplace=True)
-    final_df = final_df.rename(columns={'comments': 'Comments'})
-    final_df['Frequency'] = final_df['count'] / total_rows
-    final_df.drop(columns=['count'], inplace=True)
-    final_df = final_df[['Attitude_roots', 'Frequency', 'Descriptions', 'Comments']]
+    return data
 
-    # # Convert DataFrame to a list of dictionaries
-    # results = final_df.to_dict(orient='records')
-    # Return the tabular data as a JSON response
-    return final_df
-
-def predict_root_category(text):
+def predict_theme_category(text):
     # Load the pretrained model and tokenizer
-    model = BertForSequenceClassification.from_pretrained("bert-base-uncased", num_labels=11, problem_type="multi_label_classification")
-    tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
-
-    # Make sure the model is in evaluation mode
+    model = BertForSequenceClassification.from_pretrained("/home/nana/DASP_report_template/model_training/nlp/review_to_theme/results/final_model", num_labels=11, problem_type="multi_label_classification")
+    tokenizer = BertTokenizer.from_pretrained("/home/nana/DASP_report_template/model_training/nlp/review_to_theme/results/final_model")
     model.eval()
+    threshold = 0.5
+    # Tokenize the input text using tokenizer (handles padding, truncation, etc.)
+    inputs = tokenizer(text, truncation=True, padding="max_length", max_length=128, return_tensors="pt")
+
+    # Run the model for prediction
+    with torch.no_grad():  # Disable gradient calculation during inference
+        outputs = model(**inputs)
+        logits = outputs.logits
+
+    # Apply sigmoid to logits (since it's multi-label classification)
+    sigmoid = Sigmoid()
+    probabilities = sigmoid(logits)
+
+    # Apply threshold to get binary predictions (0 or 1)
+    predictions = (probabilities > threshold).int()
+    predictions = predictions.squeeze().tolist()
+
+    labels = ['ANA', 'BIB', 'DAT', 'EXP', 'INT', 'MET', 'OAL', 'PDI', 'RES', 'RWK', 'TNF']
+    # Find all indices of 1
+    indices = [i for i, value in enumerate(predictions) if value == 1]
+    true_labels = [labels[i] for i in indices]
+
+    # Return the binary predictions (as a list)
+    return true_labels
+
 
 
 def attitude_themes_prediction(data):
-    review_sents = data
-    review_sents['attitude_theme_numbers'] = review_sents['sentence'].apply(predict_theme_category)
+    data['attitude_themes'] = data['sentence'].apply(predict_theme_category)
+    return data
+
+def create_clusters(row):
+    # Extract root and themes
+    root = row["attitude_root"]
+    themes = row["attitude_themes"]
+    
+    # Combine root with each theme
+    clusters = [f"{root}({theme})" for theme in themes]
+    return clusters
+
+def combine_roots_and_themes(preprocessed_data):
+    df = attitude_roots_prediction(preprocessed_data)
+    df = attitude_themes_prediction(df)
+    # Apply the function to create clusters
+    df.loc[:, "clusters"] = df.apply(create_clusters, axis=1)
+    df = df.explode("clusters", ignore_index=True)
+    # Count distinct authors
+    distinct_authors_count = df['author'].nunique()
+    # Group by 'author' and 'clusters', and aggregate the sentences into a list
+    aggregated_df = df.groupby(['clusters', 'author'])['sentence'].apply(list).reset_index()
+    final_df = aggregated_df.groupby('clusters').agg(
+            comments=('sentence', lambda x: [[author, sentences] for author, sentences in zip(aggregated_df['author'], x)])
+        ).reset_index()
+    final_df['Frequency'] = final_df['comments'].apply(len) / distinct_authors_count
+    final_df['Descriptions'] = 'none'
+    final_df = final_df.rename(columns={'comments': 'Comments', 'clusters': 'Attitude_roots'})
+    final_df = final_df[['Attitude_roots', 'Frequency', 'Descriptions', 'Comments']]
+    return final_df
+    
+    # label_mapping = {
+    #     0: 'Other',
+    #     1: 'Clarity',
+    #     2: 'Meaningful-comparison',
+    #     3: 'Motivation-impact',
+    #     4: 'Originality',
+    #     5: 'Replicability',
+    #     6: 'Soundness-correctness',
+    #     7: 'Substance',
+    #     8: 'None'
+    # }
+    
+    # # match dataframe schema
+    # final_df['Attitude_roots'] = final_df['attitude_root_number'].map(label_mapping)
+    # final_df['Descriptions'] = 'none'
+    # final_df.drop(columns=['attitude_root_number'], inplace=True)
+    # final_df = final_df.rename(columns={'comments': 'Comments'})
+    # final_df['Frequency'] = final_df['count'] / total_rows
+    # final_df.drop(columns=['count'], inplace=True)
+    # final_df = final_df[['Attitude_roots', 'Frequency', 'Descriptions', 'Comments']]

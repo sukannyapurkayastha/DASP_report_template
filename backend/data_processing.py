@@ -15,7 +15,7 @@ def process_file(reviews_json: ReviewData):  # change amount of df to 4 (or 5)
     :return: 4 different pandas dataframes (1 from the review content directly, and 3 dataframes from the model output)
     """
     # logger.info("Backend :)")
-    data = reviews_json.data
+    data = reviews_json
 
     for idx, x in enumerate(data):
         print(f"idx {idx}: Type {type(x)}")

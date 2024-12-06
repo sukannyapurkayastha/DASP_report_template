@@ -169,17 +169,17 @@ main_page_css = """
 #%%% Set the page configuration
 def get_classification_with_url():
     try:
-        # Überprüfen, ob die benötigten Variablen existieren
-        if "paper_id" not in st.session_state or not st.session_state["paper_id"]:
-            st.error("Invalid OpenReview URL.")
-            return pd.DataFrame()  # Rückgabe eines leeren DataFrame
+        # # Überprüfen, ob die benötigten Variablen existieren
+        # if "paper_id" not in st.session_state or not st.session_state["paper_id"]:
+        #     st.error("Invalid OpenReview URL.")
+        #     return pd.DataFrame()  # Rückgabe eines leeren DataFrame
 
-        paper_id = st.session_state["paper_id"]
-        client = st.session_state.get("client")
+        # paper_id = st.session_state["paper_id"]
+        # client = st.session_state.get("client")
 
-        if not client:
-            st.error("Client is not initialized.")
-            return pd.DataFrame()  # Rückgabe eines leeren DataFrame
+        # if not client:
+        #     st.error("Client is not initialized.")
+        #     return pd.DataFrame()  # Rückgabe eines leeren DataFrame
 
         if "reviews" not in st.session_state:
             st.error("No reviews to analyze")
@@ -193,13 +193,12 @@ def get_classification_with_url():
 
         if response.status_code == 200:
             data = response.json()
-            df_sentences = pd.DataFrame(data["df_sentences"])
-            df_overview = pd.DataFrame(data["df_overview"])
+            attitude_roots_themes = pd.DataFrame(data)
         else:
             st.error(f"Error: {response.text}")
 
         # Return all the dataframes
-        return df_overview
+        return attitude_roots_themes
 
     except Exception as e:
         st.error(f"An error occurred: {e}")
@@ -219,12 +218,12 @@ def main_page(custom_css):
     
     # with open(os.path.join(base_path, 'frontend/dummy_data', 'dummy_attitude_roots.pkl'), 'rb') as file:
     #     attitude_roots = pickle.load(file)
-    with open(os.path.join(base_path, 'frontend/dummy_data', 'dummy_overview.pkl'), 'rb') as file:
+    with open(os.path.join(base_path, 'dummy_data', 'dummy_overview.pkl'), 'rb') as file:
         overview = pickle.load(file)
-    with open(os.path.join(base_path, 'frontend/dummy_data', 'dummy_requests.pkl'), 'rb') as file:
+    with open(os.path.join(base_path, 'dummy_data', 'dummy_requests.pkl'), 'rb') as file:
         request_information = pickle.load(file)
 
-    summary = pd.read_csv(os.path.join(base_path,"frontend/dummy_data", "dummy_summary.csv"), sep=";", encoding="utf-8")
+    summary = pd.read_csv(os.path.join(base_path,"dummy_data", "dummy_summary.csv"), sep=";", encoding="utf-8")
     
     
     use_default_container(modules.overview.show_overview, overview)
