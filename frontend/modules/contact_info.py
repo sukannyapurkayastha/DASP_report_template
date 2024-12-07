@@ -22,9 +22,9 @@ def show_contact_info():
     office_logo_base64 = load_logo(base_path / "images/office.png")
 
     # Section Title
-    st.markdown("## Any issues? Get in touch with us!")
-    st.markdown("### Contact Us")
-    st.markdown("Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
+    st.title("Any issues? Get in touch with us!")
+    st.subheader("Contact Us")
+    st.write("Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
 
     # Create columns for contact information
     col1, col2 = st.columns(2)
@@ -36,7 +36,7 @@ def show_contact_info():
                 <img src="data:image/png;base64,{email_logo_base64}" alt="Email" style="width:100px;" />
                 <h3>Email</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.</p>
-                <strong>info@paperreviewsummary.com</strong>
+                <strong>info@paperreviewaggregator.com</strong>
             </div>
             """,
             unsafe_allow_html=True,

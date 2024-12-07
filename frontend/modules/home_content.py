@@ -2,34 +2,28 @@ import streamlit as st
 
 def show_home_content():
     st.title("Welcome to Paper Review Aggregator")
-    st.write("Great that you are here. Unfortunatly your the only one around here.")
-    st.write("You may explore our File Upload or some Preview,")
 
+    st.markdown('<div class="invisbible-line-minor">  </div>', unsafe_allow_html=True)    
+    st.subheader("How meta reviews used to be")
+    st.write("An essential part of the work of meta reviewers is to screen reviews from several reviewers and make a decision on the acceptance of the paper for the journal. This process can be very demanding. Well, it used to be, but not anymore. ")
     
+    st.markdown('<div class="invisbible-line-minor">  </div>', unsafe_allow_html=True)
+    st.subheader("What is this page about?")
+    st.write('The aim of this project is to simplify the life of “meta-reviewers” drastically by summarizing all the reviews a paper has received so far. To do this, you simply need to follow the three simple steps below.')
+    st.markdown('<div class="invisbible-line-small">  </div>', unsafe_allow_html=True)
+
+
 def show_home_teaser():
     # Main container with default Streamlit styling
     st.title("Discover the Power of AI Today!")
-    st.subheader("Get an aggregation of your reviews to speed up meta review drastically!")
+    st.subheader("Get an aggregation of your reviews to speed up meta reviews drastically!")
     
-    # Add general CSS for the step-box styling
-    st.markdown("""
-    <style>
-        .step-box {
-            background-color: #bcd7f2;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 30px auto; /* Center horizontally */
-            width: 80%; /* Adjust width as needed */
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        }
-    </style>
-    """, unsafe_allow_html=True)
     
     # Render each step with unique inline rotation
     steps = [
-        ("01", "Upload File or Enter Link", "Choose a file from your device or enter an OpenReview link to the thread you want to analyze.", "rotate(1deg)"),
-        ("02", "Start Analysis", "Click the submit button to trigger an AI pipeline starting the aggregation process for your paper.", "rotate(-1deg)"),
-        ("03", "Review Summary", "Receive a detailed summary of the paper's reviews and key points after the analysis is complete.", "rotate(1deg)"),
+        ("01", "Upload a File or Enter a Link", "Choose a file from your device or enter an OpenReview link to the thread you want to analyze.", "rotate(0.5deg)"),
+        ("02", "Start Aggregation", "Click the submit button to trigger an AI pipeline starting the aggregation process for your paper.", "rotate(-0.5deg)"),
+        ("03", "Receive a powerful Summary", "Receive a detailed summary of the paper's reviews and key points after the analysis is complete.", "rotate(0.5deg)"),
     ]
     
     for number, title, description, rotation in steps:
