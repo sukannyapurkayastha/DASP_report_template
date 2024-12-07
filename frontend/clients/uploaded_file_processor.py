@@ -70,9 +70,7 @@ class UploadedFileProcessor:
 
         for idx, file in enumerate(self.uploaded_files):
             try:
-                doc = Document(file)
-
-                # Read the numbering.xml from the docx file
+                # Read the numbering.xml from the docm file
                 with zipfile.ZipFile(file, 'r') as docx_zip:
                     # Read 'word/numbering.xml'
                     numbering_xml = docx_zip.read('word/numbering.xml')
@@ -154,6 +152,7 @@ class UploadedFileProcessor:
 
                     review = Review(
                         reviewer=f"Reviewer {idx + 1}",
+                        venue=tmp['Venue'],
                         summary=tmp['Summary'],
                         soundness=tmp['Soundness'],
                         presentation=tmp['Presentation'],

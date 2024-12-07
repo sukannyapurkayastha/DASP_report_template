@@ -72,7 +72,7 @@ def landing_page(custom_css):
         base_path = Path(__file__).parent
 
         # Path to your .docx file
-        file_path = Path(base_path / "data/review_template.docx")
+        file_path = Path(base_path / "data/review_template.docm")
 
         # Load the .docx file into memory
         with open(file_path, "rb") as file:
@@ -82,9 +82,9 @@ def landing_page(custom_css):
         col1, col2 = st.columns([2.4, 1])
         with col2:
             st.download_button(
-                label="Download Sample DOCX File",
+                label="Download Sample DOCM File",
                 data=docx_file,
-                file_name="review.docx",
+                file_name="review.docm",
                 mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
             )
 
@@ -216,7 +216,7 @@ def landing_page(custom_css):
             try:
                 uploaded_files = st.file_uploader(
                     "Select a file or drop it here to upload it.",
-                    type=["docx"],
+                    type=["docm"],
                     accept_multiple_files=True
                 )
 
