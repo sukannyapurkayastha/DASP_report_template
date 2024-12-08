@@ -8,7 +8,7 @@ def show_home_content():
     st.write("An essential part of the work of meta reviewers is to screen reviews from several reviewers and make a decision on the acceptance of the paper for the journal. This process can be very demanding. Well, it used to be, but not anymore. ")
     
     st.markdown('<div class="invisbible-line-minor">  </div>', unsafe_allow_html=True)
-    st.subheader("What is this page about?")
+    st.subheader("How we want to change that")
     st.write('The aim of this project is to simplify the life of “meta-reviewers” drastically by summarizing all the reviews a paper has received so far. To do this, you simply need to follow the three simple steps below.')
     st.markdown('<div class="invisbible-line-small">  </div>', unsafe_allow_html=True)
 

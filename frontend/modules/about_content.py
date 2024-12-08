@@ -56,7 +56,7 @@ def show_about_content():
     st.subheader("The Team")
     st.write("""
                 This project was developed by a team of Master’s students from TU Darmstadt, combining their expertise 
-                in business econmics, cognitive science and computer science. Their shared goal was to create a 
+                in business informatics, cognitive science and computer science. Their shared goal was to create a 
                 functional, user-friendly application that addresses a significant challenge in academia.
              """)
     st.write("""
