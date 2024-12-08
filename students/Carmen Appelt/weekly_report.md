@@ -10,18 +10,27 @@
 
 ## Reports
 
-### Week [3]
+### Week [5]
 
-- **Update 1**: Frontend 
-- **Update 2**: Developing Finetuning Approach Ongoing
+- **Update 1**: Backend: Integrated lookup for desc for each attitude root + theme
+- **Update 2**: Finetuning: Adjusting Resampling size to increase accuracy
+- **Update 3**: Presentation: Discussion how to structure presentation: Problem definition, Motivation, Model Card, System Architecture
+- **Challenges**: Teamwork: It takes a lot time to execute code of teammates the first time
+- **Next Steps**: Improving Model Performance, Bugfixing
+
+
+### Week [4]
+
+- **Update 1**: Frontend: Updated File Structure, Updated Colour Schema, Updated Progress Bar and Overview, 
+- **Update 2**: Developing Finetuning Approach Ongoing: Resampling with changed sentences is hard, as it is difficult to produce similar sentences
 - **Update 3**: 
 - **Challenges**: Teamwork: It takes a lot time to execute code of teammates the first time
-- **Next Steps**: 
+- **Next Steps**: Getting a MVP to show
 
 ### Week [3]
 
-- **Update 1**: Frontend 
-- **Update 2**: Developing Finetuning Approach Ongoing
+- **Update 1**: Frontend: Basic Structure of the page, Creating a container for each attitude root/request with a container for each rewier
+- **Update 2**: Developing Finetuning Approach Ongoing: Sentence Similarity for Sentence to Desc isn't a good approach, Trying Resampling
 - **Update 3**: 
 - **Challenges**: Increasing Accuracy for Attitude Classifier above 60%
 - **Next Steps**: Starting Backend
