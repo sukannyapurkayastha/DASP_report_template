@@ -68,6 +68,7 @@ def classify_paper(data):
         final_df['Frequency'] = final_df['count'] / total_rows
         final_df.drop(columns=['count'], inplace=True)
         final_df = final_df[['Attitude_roots', 'Frequency', 'Descriptions', 'Comments']]
+        final_df = final_df.sort_values(by='Frequency', ascending=False)
 
         # Optional: DataFrame als Pickle speichern
         # final_df.to_pickle('data.pkl')
