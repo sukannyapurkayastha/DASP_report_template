@@ -1,8 +1,9 @@
 import torch
 from transformers import BertTokenizer, BertForSequenceClassification, Trainer, TrainingArguments
-from datasets import load_dataset, DatasetDict
+from datasets import load_dataset, DatasetDict, Dataset
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score
 from transformers import TrainerCallback, TrainerState, TrainerControl
+import pandas as pd
 import os
 
 def compute_metrics(eval_pred):
@@ -15,11 +16,9 @@ def compute_metrics(eval_pred):
         "recall": recall_score(labels, predictions, average="weighted"),
     }
 
-
 class MetricsLogger(TrainerCallback):
     def on_evaluate(self, args, state: TrainerState, control: TrainerControl, metrics, **kwargs):
         print(f"Metrics after epoch {state.epoch}: {metrics}")
-
 
 def load_data():
     data_files = {
@@ -30,6 +29,31 @@ def load_data():
     data = load_dataset("csv", data_files=data_files)
     return data
 
+def undersample_majority_class(dataset, label_col="target"):
+    # Convert dataset to a pandas DataFrame
+    df = dataset.to_pandas()
+    # Get class counts
+    class_counts = df[label_col].value_counts()
+    # Identify the smallest class and its count
+    minority_class = class_counts.idxmin()
+    minority_count = class_counts.min()
+
+    # Resample each class to the minority_count
+    balanced_dfs = []
+    for cls in class_counts.index:
+        df_cls = df[df[label_col] == cls]
+        if cls == minority_class:
+            balanced_dfs.append(df_cls)
+        else:
+            # Undersample
+            balanced_dfs.append(df_cls.sample(minority_count, random_state=42))
+
+    # Concatenate and shuffle
+    balanced_df = pd.concat(balanced_dfs).sample(frac=1.0, random_state=42).reset_index(drop=True)
+
+    # Convert back to a Dataset
+    balanced_dataset = Dataset.from_pandas(balanced_df, preserve_index=False)
+    return balanced_dataset
 
 def tokenize_function(example, tokenizer):
     return tokenizer(
@@ -40,17 +64,27 @@ def tokenize_function(example, tokenizer):
         return_attention_mask=True,
     )
 
-
 def prepare_datasets(tokenizer):
     data = load_data()
-    tokenized_data = data.map(lambda x: tokenize_function(x, tokenizer), batched=True)
-    tokenized_data = tokenized_data.rename_column("target", "labels")
-    tokenized_data.set_format("torch", columns=["input_ids", "attention_mask", "labels"])
-    train_dataset = tokenized_data["train"]
-    validation_dataset = tokenized_data["validation"]
-    test_dataset = tokenized_data["test"]
-    return train_dataset, validation_dataset, test_dataset
+    # Undersample the training set
+    train_dataset = undersample_majority_class(data["train"], label_col="target")
+    # Keep validation and test as is
+    validation_dataset = data["validation"]
+    test_dataset = data["test"]
 
+    tokenized_train = train_dataset.map(lambda x: tokenize_function(x, tokenizer), batched=True)
+    tokenized_validation = validation_dataset.map(lambda x: tokenize_function(x, tokenizer), batched=True)
+    tokenized_test = test_dataset.map(lambda x: tokenize_function(x, tokenizer), batched=True)
+
+    tokenized_train = tokenized_train.rename_column("target", "labels")
+    tokenized_validation = tokenized_validation.rename_column("target", "labels")
+    tokenized_test = tokenized_test.rename_column("target", "labels")
+
+    tokenized_train.set_format("torch", columns=["input_ids", "attention_mask", "labels"])
+    tokenized_validation.set_format("torch", columns=["input_ids", "attention_mask", "labels"])
+    tokenized_test.set_format("torch", columns=["input_ids", "attention_mask", "labels"])
+
+    return tokenized_train, tokenized_validation, tokenized_test
 
 def train_model():
     model_name = "bert-base-uncased"
@@ -67,7 +101,7 @@ def train_model():
         learning_rate=2e-5,
         per_device_train_batch_size=16,
         per_device_eval_batch_size=16,
-        num_train_epochs=1,
+        num_train_epochs=4,
         weight_decay=0.01,
         logging_steps=50,
         load_best_model_at_end=True,
@@ -79,7 +113,7 @@ def train_model():
         train_dataset=train_dataset,
         eval_dataset=validation_dataset,
         compute_metrics=compute_metrics,
-        callbacks=[MetricsLogger],
+        callbacks=[MetricsLogger()],
     )
 
     trainer.train()
@@ -97,8 +131,6 @@ def train_model():
     trainer.save_model(save_directory)
     # Save the tokenizer
     tokenizer.save_pretrained(save_directory)
-
-
 
 def predict(texts, model_path="./bert_request_classifier_model"):
     tokenizer = BertTokenizer.from_pretrained(model_path)
@@ -121,7 +153,6 @@ def predict(texts, model_path="./bert_request_classifier_model"):
     logits = outputs.logits
     predictions = torch.argmax(logits, dim=-1)
     return predictions.cpu().numpy()
-
 
 if __name__ == "__main__":
     train_model()
