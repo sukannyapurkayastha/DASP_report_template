@@ -20,7 +20,7 @@ from fine_request_classifier_llama import (
     label_map,
 )
 
-def process_dataframe(df: pd.DataFrame) -> pd.DataFrame:
+def process_dataframe_request(df: pd.DataFrame) -> pd.DataFrame:
     
     if 'sentence' not in df.columns:
         raise ValueError("Dataframe has to include sentences.")

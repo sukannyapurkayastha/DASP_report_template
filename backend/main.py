@@ -7,6 +7,7 @@ from loguru import logger
 from pydantic import BaseModel
 
 from text_processing import Review, TextProcessor
+from models.request_classifier.request_classifier_pipeline import process_dataframe_request
 
 app = FastAPI()
 
@@ -40,12 +41,14 @@ async def process_file(reviews_json: ReviewData) -> dict:  # change amount of df
         text_processer = TextProcessor(reviews=reviews)
         print("Establish TextProcessor")
         df_sentences, df_overview = text_processer.process()  # df_sentences is the input for the models, df_overview is to be directly sent to the frontend
+        df_request = process_dataframe_request(df_sentences)
 
         # Todo: Write functions in which each model is loaded and df_sentences is given as input, return the model output
         # Todo: The model output (dataframe) should then be cheanged to a dict and added to the return dict
         # df_classifier_request = request_classifier(df_sentences)
 
         # Convert DataFrames to JSON-serializable formats
+        df_request_json = df_sentences.to_dict(orient='records')
         df_sentences_json = df_sentences.to_dict(orient='records')
         df_overview_json = df_overview.to_dict(orient='records')
 
@@ -53,6 +56,7 @@ async def process_file(reviews_json: ReviewData) -> dict:  # change amount of df
 
         # Todo: Remove df_senteces, it's just to test multiple dataframes
         return {
+            "df_request": df_sentences_json,
             "df_sentences": df_sentences_json,
             "df_overview": df_overview_json
         }
