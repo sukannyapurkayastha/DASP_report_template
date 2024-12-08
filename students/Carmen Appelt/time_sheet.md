@@ -42,6 +42,9 @@
 | [02.11.2024]  | [03.12.2024]  | [Finetuning]            | [Trying to classify only attitude roots != None]            | [8]           | [Completed] |
 | [02.11.2024]  | [03.12.2024]  | [Testing and Creating Tasks]            | [Testing application and creating Bugfixing Tasks]            | [3]           | [Completed] |
 | [03.11.2024]  | [03.12.2024]  | [Connecting backend and frontend]            | [Changes to Connecting backend and frontend]            | [7]           | [Completed] |
+| [05.11.2024]  | [06.12.2024]  | [Adding Descriptions to Attitude Roots + Themes]            | [Adapted to the changes of git, created csv containing Attitude Root, Theme and Description, Implemented Logic to Show correct description]            | [6]           | [Completed] |
+| [05.11.2024]  | [06.12.2024]  | [Presentation]            | [Discussion how to structure Midterm presentation, started with problem description]            | [4]           | [In Progress] |
+| [08.11.2024]  | [08.12.2024]  | [Presentation]            | [Title Page, Problem Description, System Architecture, Model Card, Thank you slide]            | [9]           | [Completed] |
 ---
 
 > **Status Options**: "In Progress," "Completed," or "Pending."
