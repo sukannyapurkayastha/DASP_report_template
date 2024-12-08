@@ -60,6 +60,7 @@ label_map = {
     "Request for Typo Fix": 3,
     "Request for Clarification": 4,
     "Request for Result": 5,
+    "Request unclear": -1,
 }
 
 fine_to_category_map = {
@@ -116,7 +117,7 @@ def map_prediction_to_label(pred, label_map):
 
 def generate_predictions_from_dataset(dataset, few_shot_examples, tokenizer, model, max_new_tokens=50):
     predictions = []
-    for query in tqdm(dataset["text"], desc="Generating predictions"):
+    for query in tqdm(dataset["sentence"], desc="Generating predictions"):
         few_shot_prompt = create_few_shot_prompt(query, few_shot_examples)
         inputs = tokenizer(
             few_shot_prompt,
@@ -189,7 +190,7 @@ def load_model_and_tokenizer(save_directory):
 
 if __name__ == "__main__":
   
-    model_name = "google/flan-t5-large"
+    model_name = "google/flan-t5-xl"
     script_directory = os.path.dirname(os.path.abspath(__file__))
     save_directory = os.path.join(script_directory, "../../../../../backend/models/request_classifier/fine_request_classifier")
     
