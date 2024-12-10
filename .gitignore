@@ -164,3 +164,5 @@ backend/models/attitude_root/vocab.txt
 backend_old/models/attitude_root/tf_model.h5
 
 model_training/nlp/review_to_theme/results/
+backend/models/attitude_classifier/tf_model.h5
+*.h5
