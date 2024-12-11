@@ -23,7 +23,7 @@ def show_home_teaser():
     steps = [
         ("01", "Upload a File or Enter a Link", "Choose a file from your device or enter an OpenReview link to the thread you want to analyze.", "rotate(0.5deg)"),
         ("02", "Start Aggregation", "Click the submit button to trigger an AI pipeline starting the aggregation process for your paper.", "rotate(-0.5deg)"),
-        ("03", "Receive a powerful Summary", "Receive a detailed summary of the paper's reviews and key points after the analysis is complete.", "rotate(0.5deg)"),
+        ("03", "Receive a powerful Aggregation", "Receive a detailed summary of the paper's reviews and key points after the analysis is complete.", "rotate(0.5deg)"),
     ]
     
     for number, title, description, rotation in steps:

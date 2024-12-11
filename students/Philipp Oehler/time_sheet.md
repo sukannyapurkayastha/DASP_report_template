@@ -12,9 +12,12 @@
 
 | Start      | End        | Task Name                   | Task Description                                                          | Time Spent (hours) | Status        |
 |------------|------------|-----------------------------|---------------------------------------------------------------------------|--------------------|---------------|
-| [xx/11/24] | [xx/11/24] | [Dummy]                     | []                                                                        | [0.0]              | [Pending]     | 
-| [xx/11/24] | [xx/11/24] | [Dummy]                     | []                                                                        | [0.0]              | [Completed]   |
-| [xx/11/24] | [xx/11/24] | [Dummy]                     | []                                                                        | [0.0]              | [In Progress] |
+| [xx/12/24] | [xx/12/24] | [Dummy]                     | []                                                                        | [0.0]              | [Pending]     | 
+| [xx/12/24] | [xx/12/24] | [Dummy]                     | []                                                                        | [0.0]              | [Completed]   |
+| [xx/12/24] | [xx/12/24] | [Dummy]                     | []                                                                        | [0.0]              | [In Progress] |
+| [08/12/24] | [08/12/24] | [Presentation]              | [Working at presentation for midterm]                                     | [2.0]              | [In Progress]   |
+| [05/12/24] | [07/12/24] | [Frontend 7]                  | [Home Page Content adjusted, Fixed issue with text crossing boundaries, Fixed circles Looking weird when less then 3 authors reviewed. (set 4 columns as Minimum to implicitly achieve max size.), removed unneccesary css styles, created about page, connected about page to framework] | [12]              | [Completed]   |
+| [04/12/24] | [04/12/24] | [Group Meeting]             | [Explain Frontend data required to jan and zhishing to allow them development with containers and API] | [4]              | [Completed]   |
 | [04/12/24] | [04/12/24] | [Weekly]                    | [Preperation + Meeting itself + Internal team meeting]                    | [1.5]              | [Completed]   |
 | [29/11/24] | [01/12/24] | [Frontend 6]                | [added download template, added text into url placeholder, added login field to url-entry, updated many css styles, adjusted sidebar style, created requirements.txt]  | [3]| [Completed]   |
 | [28/11/24] | [28/11/24] | [Frontend 5]                | [Redesigned contact logos, introduced homepage, adjusted overview detail button]  | [5]              | [Completed]   |
