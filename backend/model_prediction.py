@@ -8,6 +8,7 @@ import uvicorn
 from transformers import BertForSequenceClassification, BertTokenizer
 import torch
 from torch.nn import Sigmoid
+import os
 
 # # Create a Pydantic model to handle the input data
 # class SentenceData(BaseModel):
@@ -107,7 +108,17 @@ def combine_roots_and_themes(preprocessed_data):
     final_df['Descriptions'] = 'none'
     final_df = final_df.rename(columns={'comments': 'Comments', 'clusters': 'Attitude_roots'})
     final_df = final_df[['Attitude_roots', 'Frequency', 'Descriptions', 'Comments']]
-    return final_df
+    final_df = final_df.sort_values(by='Frequency', ascending=False)
+
+    desc = pd.read_csv(os.path.join("..", "data", "attitude_roots", "attitudes_desc.csv"))
+
+    merged_df = pd.merge(final_df , desc, on=['Attitude_roots'], how='left') # todo:what happens if attitude + theme combi is not known
+    merged_df.rename(columns={'Descriptions_y': 'Descriptions'}, inplace=True)
+
+    # Drop Descriptions_x column
+    merged_df.drop(columns=['Descriptions_x'], inplace=True)
+    merged_df = merged_df[['Attitude_roots', 'Frequency', 'Descriptions', 'Comments']]
+    return merged_df
     
     # label_mapping = {
     #     0: 'Other',
