@@ -5,12 +5,12 @@ from transformers import T5Tokenizer, T5ForConditionalGeneration, BertTokenizer,
 from loguru import logger
 
 #Import helper functions from the fine-grained request classifier module
-from classification.fine_request_classifier_llama import (
-    map_prediction_to_label,
-    generate_predictions_from_dataset,
-    few_shot_examples,
-    label_map,
-)
+# from classification.fine_request_classifier_llama import (
+#     map_prediction_to_label,
+#     generate_predictions_from_dataset,
+#     few_shot_examples,
+#     label_map,
+# )
 def summarize_requests_by_authors(df_requests: pd.DataFrame) -> pd.DataFrame:
     """
     Aggregates fine-grained labels and summarizes them by the number of unique authors 
@@ -33,7 +33,7 @@ def summarize_requests_by_authors(df_requests: pd.DataFrame) -> pd.DataFrame:
             Frequency=('author', lambda x: x.nunique() / num_authors),  # Relative frequency of unique authors
         )
         .reset_index()
-        .rename(columns={'fine_grained_label_name': 'Category'})  # Rename columns for clarity
+        .rename(columns={'fine_grained_label_name': 'Request Information'})  # Rename columns for clarity
         .sort_values(by='Frequency', ascending=False)  # Sort by proportion
     )
 
@@ -60,8 +60,8 @@ def summarize_requests_by_authors(df_requests: pd.DataFrame) -> pd.DataFrame:
     sentences_by_label = group_sentences_by_label(df_requests)
 
     # Add grouped sentences for each category to the summary
-    summary['Comments'] = summary['Category'].map(sentences_by_label)
-    summary['Category'] = summary['Category'].str.replace("Request for ", "", regex=False)
+    summary['Comments'] = summary['Request Information'].map(sentences_by_label)
+    summary['Request Information'] = summary['Request Information'].str.replace("Request for ", "", regex=False)
 
     return summary
 
@@ -167,74 +167,74 @@ def process_dataframe_request(df: pd.DataFrame, local_dir: str, local_dir_fine_r
     return df_requests_summarized
  
 
-# if __name__ == "__main__":
+if __name__ == "__main__":
     
-#     data = {
+    data = {
 
-#     "author": ["Reviewer e53u", "Reviewer jp4i", "Reviewer jp4i", "Reviewer wi9j", "Reviewer wi9j",
+    "author": ["Reviewer e53u", "Reviewer jp4i", "Reviewer jp4i", "Reviewer wi9j", "Reviewer wi9j",
 
-#                "Reviewer wi9j", "Reviewer wi9j", "Reviewer a6Ps", "Reviewer a6Ps", "Reviewer a6Ps",
+               "Reviewer wi9j", "Reviewer wi9j", "Reviewer a6Ps", "Reviewer a6Ps", "Reviewer a6Ps",
 
-#                "Reviewer a6Ps", "Reviewer F7em", "Reviewer F7em"],
+               "Reviewer a6Ps", "Reviewer F7em", "Reviewer F7em"],
 
-#     "tag": ["questions", "weaknesses", "weaknesses", "weaknesses", "weaknesses", 
+    "tag": ["questions", "weaknesses", "weaknesses", "weaknesses", "weaknesses", 
 
-#             "weaknesses", "weaknesses", "questions", "questions", "questions",
+            "weaknesses", "weaknesses", "questions", "questions", "questions",
 
-#             "weaknesses", "weaknesses", "weaknesses"],
+            "weaknesses", "weaknesses", "weaknesses"],
 
-#     "sentence": [
+    "sentence": [
 
-#         "The reason why other methods are much better is unclear.",
+        "The reason why other methods are much better is unclear.",
 
-#         "The main weakness of this paper is...",
+        "The main weakness of this paper is...",
 
-#         "Since the proposed method can enhance performance, why does it lack robustness?",
+        "Since the proposed method can enhance performance, why does it lack robustness?",
 
-#         "Please compare the proposed method with existing benchmarks.",
+        "Please compare the proposed method with existing benchmarks.",
 
-#         "Why are the features of the proposed model less explainable?",
+        "Why are the features of the proposed model less explainable?",
 
-#         "This paper also targets on clarity, but there are missing evaluations.",
+        "This paper also targets on clarity, but there are missing evaluations.",
 
-#         "In Tab.1, only CPAE proposed in...",
+        "In Tab.1, only CPAE proposed in...",
 
-#         "Would SO(3) invariance be sufficient for the method?",
+        "Would SO(3) invariance be sufficient for the method?",
 
-#         "Will it work out of the 16-category data?",
+        "Will it work out of the 16-category data?",
 
-#         "Would non-gt and/or biased key points be more impactful?",
+        "Would non-gt and/or biased key points be more impactful?",
 
-#         "The main issue of the proposed method seems to be lack of...",
+        "The main issue of the proposed method seems to be lack of...",
 
-#         "From Fig. 6 in the supplementary, ...",
+        "From Fig. 6 in the supplementary, ...",
 
-#         "How about the performance of other benchmarks?"
+        "How about the performance of other benchmarks?"
 
-#     ],
+    ],
 
-#     "coarse_label_pred": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    "coarse_label_pred": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 
-#     "fine_grained_label": [1, 1, 2, 1, 0, 2, 0, 2, 2, 2, 1, 1, 2],
+    "fine_grained_label": [1, 1, 2, 1, 0, 2, 0, 2, 2, 2, 1, 1, 2],
 
-#     "fine_grained_label_name": [
+    "fine_grained_label_name": [
 
-#         "Request for Explanation", "Request for Improvement", "Request for Experiment",
+        "Request for Explanation", "Request for Improvement", "Request for Experiment",
 
-#         "Request for Improvement", "Request for Explanation", "Request for Experiment",
+        "Request for Improvement", "Request for Explanation", "Request for Experiment",
 
-#         "Request for Explanation", "Request for Experiment", "Request for Experiment",
+        "Request for Explanation", "Request for Experiment", "Request for Experiment",
 
-#         "Request for Experiment", "Request for Improvement", "Request for Improvement",
+        "Request for Experiment", "Request for Improvement", "Request for Improvement",
 
-#         "Request for Experiment"
+        "Request for Experiment"
 
-#     ]
+    ]
 
-# }
+}
 
 
 
-# df_example = pd.DataFrame(data)
-# df = summarize_requests_by_authors(df_example)
-# print(df)
+df_example = pd.DataFrame(data)
+df = summarize_requests_by_authors(df_example)
+print(df)
