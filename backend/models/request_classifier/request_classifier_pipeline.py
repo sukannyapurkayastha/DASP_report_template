@@ -2,17 +2,11 @@ import torch
 import pandas as pd
 from tqdm import tqdm
 from transformers import T5Tokenizer, T5ForConditionalGeneration, BertTokenizer, BertForSequenceClassification
-import sys
 import os
 from huggingface_hub import hf_hub_download, list_repo_files
 
-# module_path = os.path.abspath("model_training/nlp/request_classifier/models/classification")
-# sys.path.append(module_path)
-
-
-# from model_training.nlp.request_classifier.models.classification.request_classifier import predict as predict_request
+# Import helper functions from the fine-grained request classifier module
 from models.request_classifier.request_classifier.fine_request_classifier_llama import (
-    # create_few_shot_prompt,
     map_prediction_to_label,
     generate_predictions_from_dataset,
     few_shot_examples,
@@ -20,55 +14,69 @@ from models.request_classifier.request_classifier.fine_request_classifier_llama 
 )
 
 def process_dataframe_request(df: pd.DataFrame) -> pd.DataFrame:
-    
+    """
+    Processes a DataFrame containing sentences for coarse and fine-grained classification.
+
+    Parameters:
+    df (pd.DataFrame): Input DataFrame with a column `sentence` containing text to classify.
+
+    Returns:
+    pd.DataFrame: DataFrame with added columns for coarse and fine-grained labels.
+    """
     if 'sentence' not in df.columns:
-        raise ValueError("Dataframe has to include sentences.")
-    
+        raise ValueError("DataFrame must include a 'sentence' column.")
+
     texts = df['sentence'].tolist()
 
+    # Repository ID for the model files
     repo_id = "JohannesLemken/DASP_models"
 
     # List all files in the repository
     all_files = list_repo_files(repo_id=repo_id, repo_type="model")
 
-    # Filter the files to only those in the "Request_Classifier/RequestClassifier" directory
+    # Filter files for the specific subdirectory
     subdir = "Request_Classifier/RequestClassifier/"
     files_to_download = [f for f in all_files if f.startswith(subdir)]
 
-    # Create a local directory to store these files, if desired
+    # Define local directory to store model files
     local_dir = "backend/models/request_classifier/request_classifier/"
     os.makedirs(local_dir, exist_ok=True)
 
-    # Download each file
+    # Download and organize files locally
     for filename in files_to_download:
         local_file_path = hf_hub_download(
             repo_id=repo_id,
             filename=filename,
             repo_type="model",
-            revision="main"  # or a specific branch/tag/commit if needed
+            revision="main"
         )
 
-        # Optionally move it into our local directory to preserve structure
-        # Extract the relative file path after `subdir`
+        # Preserve folder structure locally
         relative_path = filename[len(subdir):]
         local_subpath = os.path.join(local_dir, relative_path)
-
-        # Create any necessary nested directories
         os.makedirs(os.path.dirname(local_subpath), exist_ok=True)
-
-        # Move/rename the downloaded file into our target structure
         os.replace(local_file_path, local_subpath)
 
         print(f"Downloaded and saved {filename} to {local_subpath}")
 
-    model_path_request_classifier = "backend/models/request_classifier/request_classifier/"
+    # Load the coarse-grained request classifier
     tokenizer_bert = BertTokenizer.from_pretrained(local_dir)
     model_bert = BertForSequenceClassification.from_pretrained(local_dir)
     model_bert.eval()
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model_bert.to(device)
 
+    # Define a prediction function for the coarse-grained classifier
     def predict_request(texts):
+        """
+        Predicts coarse-grained labels for a batch of texts.
+
+        Parameters:
+        texts (list): List of input sentences.
+
+        Returns:
+        np.ndarray: Array of predicted labels.
+        """
         inputs = tokenizer_bert(
             texts,
             return_tensors="pt",
@@ -82,24 +90,26 @@ def process_dataframe_request(df: pd.DataFrame) -> pd.DataFrame:
         logits = outputs.logits
         predictions = torch.argmax(logits, dim=-1)
         return predictions.cpu().numpy()
-    
-    print("Classifying requests...")
+
+    # Perform coarse-grained classification
+    print("Classifying requests (coarse-grained)...")
     predictions_bert = []
     batch_size = 16
     try:
-        for i in tqdm(range(0, len(texts), batch_size)):
+        for i in tqdm(range(0, len(texts), batch_size), desc="Processing batches"):
             batch_texts = texts[i:i+batch_size]
             preds = predict_request(batch_texts)
             predictions_bert.extend(preds)
     except Exception as e:
-        print(e)
+        print(f"Error during prediction: {e}")
 
     df['coarse_label_pred'] = predictions_bert
 
-    
+    # Filter rows where coarse-grained prediction indicates a request
     df_requests = df[df['coarse_label_pred'] == 1].copy()
 
-    print("Loading T5 model...")
+    # Load the fine-grained request classifier
+    print("Loading fine-grained T5 model...")
     model_path_fine_request_classifier = "backend/models/request_classifier/fine_request_classifier/" 
     tokenizer_t5 = T5Tokenizer.from_pretrained(model_path_fine_request_classifier)
     model_t5 = T5ForConditionalGeneration.from_pretrained(model_path_fine_request_classifier)
@@ -108,26 +118,40 @@ def process_dataframe_request(df: pd.DataFrame) -> pd.DataFrame:
     model_t5.to(device_t5)
     tokenizer_t5.pad_token_id = tokenizer_t5.eos_token_id
 
+    # Perform fine-grained classification
     if not df_requests.empty:
-        print("Fine-grained classification...")
+        print("Performing fine-grained classification...")
         predictions_t5 = generate_predictions_from_dataset(
             df_requests[['sentence']], few_shot_examples, tokenizer_t5, model_t5
         )
 
+        # Map predictions to fine-grained labels
         mapped_predictions = [map_prediction_to_label(pred, label_map) for pred in predictions_t5]
-        
         df_requests['fine_grained_label'] = mapped_predictions
+
+        # Map numeric labels to their corresponding category names
         reverse_label_map = {v: k for k, v in label_map.items()}
         df_requests['fine_grained_label_name'] = df_requests['fine_grained_label'].map(reverse_label_map)
     else:
+        # If no requests are detected, set fine-grained labels to default values
         df_requests['fine_grained_label'] = -1
         df_requests['fine_grained_label_name'] = None
 
     return df_requests
 
+# Example usage
 if __name__ == "__main__":
+    # Path to the input CSV file
     csv_file_path = "C:/Users/Johannes/Downloads/test.csv"
+
+    # Read the input CSV file
     df_input = pd.read_csv(csv_file_path)
+
+    # Drop rows with missing sentences
     df_input = df_input.dropna(subset=['sentence'])
+
+    # Process the DataFrame
     df_result = process_dataframe_request(df_input)
+
+    # Print the resulting DataFrame
     print(df_result)
