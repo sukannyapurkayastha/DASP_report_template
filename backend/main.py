@@ -43,6 +43,7 @@ async def process_file(reviews_json: ReviewData) -> dict:  # change amount of df
         df_sentences, df_overview = text_processer.process()  # df_sentences is the input for the models, df_overview is to be directly sent to the frontend
         df_request = process_dataframe_request(df_sentences)
 
+        df_sentences.to_csv("backend/df_sentences.csv", index=False)
         # Todo: Write functions in which each model is loaded and df_sentences is given as input, return the model output
         # Todo: The model output (dataframe) should then be cheanged to a dict and added to the return dict
         # df_classifier_request = request_classifier(df_sentences)
