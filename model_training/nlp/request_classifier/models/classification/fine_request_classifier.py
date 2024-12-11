@@ -24,6 +24,15 @@ model_name = "microsoft/deberta-xlarge"
 tokenizer = DebertaTokenizer.from_pretrained(model_name)
 
 def tokenize_function(example):
+    """
+    Tokenizes input text for DeBERTa model.
+    
+    Parameters:
+    example (dict): Dictionary containing text data.
+
+    Returns:
+    dict: Tokenized data with padding, truncation, and attention masks.
+    """
     return tokenizer(
         example["text"],
         padding="max_length",
@@ -55,7 +64,7 @@ test_dataset = Dataset.from_pandas(pd.DataFrame({
     "target": [example["target"] for example in data["test"]]
 }))
 
-# Combine the datasets
+# Combine the datasets into a DatasetDict
 resampled_data = DatasetDict({
     "train": resampled_train_dataset,
     "validation": validation_dataset,
@@ -72,7 +81,7 @@ train_dataset = tokenized_resampled_data["train"]
 val_dataset = tokenized_resampled_data["validation"]
 test_dataset = tokenized_resampled_data["test"]
 
-# Compute class weights
+# Compute class weights for imbalanced classes
 class_weights = compute_class_weight(
     class_weight="balanced",
     classes=np.unique(y_resampled),
@@ -81,7 +90,7 @@ class_weights = compute_class_weight(
 class_weights = torch.tensor(class_weights, dtype=torch.float)
 print("Class Weights:", class_weights)
 
-# Define penalty matrix
+# Define penalty matrix for penalizing certain misclassifications
 penalty_matrix = torch.tensor([
     [1.0, 1.0, 1.0, 1.0, 1.5, 1.5],  # Class 0
     [1.0, 1.0, 1.5, 1.0, 1.5, 1.5],  # Class 1
@@ -91,8 +100,14 @@ penalty_matrix = torch.tensor([
     [1.0, 1.0, 1.0, 1.0, 1.0, 1.0],  # Class 5
 ], dtype=torch.float)
 
-# Custom loss function
 class CustomLossWithPenalties(torch.nn.Module):
+    """
+    Custom loss function combining cross-entropy with a penalty matrix.
+    
+    Parameters:
+    penalty_matrix (torch.Tensor): Matrix to penalize specific misclassifications.
+    class_weights (torch.Tensor): Weights to handle class imbalance.
+    """
     def __init__(self, penalty_matrix, class_weights):
         super().__init__()
         self.penalty_matrix = penalty_matrix
@@ -104,8 +119,10 @@ class CustomLossWithPenalties(torch.nn.Module):
         loss = ce_loss * penalties
         return loss.mean()
 
-# Penalized model
 class PenalizedDebertaForSequenceClassification(DebertaForSequenceClassification):
+    """
+    Custom DeBERTa model integrating a penalty matrix into the loss calculation.
+    """
     def __init__(self, config, penalty_matrix, class_weights):
         super().__init__(config)
         self.penalty_matrix = penalty_matrix
@@ -120,7 +137,7 @@ class PenalizedDebertaForSequenceClassification(DebertaForSequenceClassification
             outputs = (loss, logits) + outputs[2:]
         return outputs
 
-# Initialize model
+# Initialize the model
 model = PenalizedDebertaForSequenceClassification.from_pretrained(
     model_name,
     num_labels=6,
@@ -128,7 +145,7 @@ model = PenalizedDebertaForSequenceClassification.from_pretrained(
     class_weights=class_weights
 )
 
-# Training arguments
+# Define training arguments
 training_args = TrainingArguments(
     output_dir="./results",
     evaluation_strategy="epoch",
@@ -143,8 +160,16 @@ training_args = TrainingArguments(
     load_best_model_at_end=True,
 )
 
-# Define metrics
 def compute_metrics(eval_pred):
+    """
+    Computes evaluation metrics for the model.
+
+    Parameters:
+    eval_pred (tuple): A tuple containing logits and labels.
+
+    Returns:
+    dict: Dictionary with accuracy, F1 score, precision, and recall.
+    """
     logits, labels = eval_pred
     predictions = np.argmax(logits, axis=-1)
     return {
@@ -163,7 +188,7 @@ trainer = Trainer(
     compute_metrics=compute_metrics,
 )
 
-# Train model
+# Train the model
 trainer.train()
 
 # Evaluate on validation set
@@ -179,17 +204,27 @@ predictions = trainer.predict(test_dataset)
 pred_logits = predictions.predictions
 true_labels = predictions.label_ids
 
-# Define thresholds
+# Define thresholds for predictions
 class_thresholds = {0: 0.35, 1: 0.35, 2: 0.25, 3: 0.2, 4: 0.25, 5: 0.35}
 
 def apply_thresholds(logits, class_thresholds):
+    """
+    Applies class-specific thresholds to predictions.
+    
+    Parameters:
+    logits (numpy.ndarray): Model output logits.
+    class_thresholds (dict): Thresholds for each class.
+
+    Returns:
+    list: Predicted labels after applying thresholds.
+    """
     probabilities = torch.softmax(torch.tensor(logits), dim=-1)
     predictions = []
 
     for prob in probabilities:
         valid_classes = []
         for class_idx, p in enumerate(prob):
-            if p >= class_thresholds.get(class_idx, 0.5):  
+            if p >= class_thresholds.get(class_idx, 0.5):
                 valid_classes.append((class_idx, p))
 
         if valid_classes:
