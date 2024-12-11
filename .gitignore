@@ -165,5 +165,5 @@ backend_old/models/attitude_root/tf_model.h5
 .h5
 
 model_training/nlp/review_to_theme/results/
-*.h5
 backend/models/attitude_classifier/tf_model.h5
+*.h5

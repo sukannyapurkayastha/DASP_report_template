@@ -185,7 +185,7 @@ def get_classification_with_api():
 
         response = requests.post(
             "http://localhost:8080/process",
-            json={"data": payload},
+            json={"data": payload}
         )
 
         if response.status_code == 200:
@@ -193,11 +193,12 @@ def get_classification_with_api():
             df_sentences = pd.DataFrame(data["df_sentences"])
             df_overview = pd.DataFrame(data["df_overview"])
             st.session_state["overview"] = df_overview
+            attitude_roots_themes = pd.DataFrame(data)
         else:
             st.error(f"Error: {response.text}")
 
         # Todo: Return all the dataframes (once we returned them from the api)
-        return df_overview
+        return df_overview, attitude_roots_themes
 
     except Exception as e:
         st.error(f"An error occurred: {e}")
@@ -210,20 +211,19 @@ def main_page(custom_css):
 
     st.title("Paper Review Summary")
 
-    overview = get_classification_with_api()
+    overview, attitude_roots = get_classification_with_api()
 
     if overview.empty:
         st.warning("No data available for classification.")
     
-    with open(os.path.join(base_path, 'dummy_data', 'dummy_attitude_roots.pkl'), 'rb') as file:
-        attitude_roots = pickle.load(file)
-    # with open(os.path.join(base_path, 'dummy_data', 'dummy_overview.pkl'), 'rb') as file:
-        # overview = pickle.load(file)
-    # overview = st.session_state.get["overview"]
+    # with open(os.path.join(base_path, 'frontend/dummy_data', 'dummy_attitude_roots.pkl'), 'rb') as file:
+    #     attitude_roots = pickle.load(file)
+    with open(os.path.join(base_path, 'dummy_data', 'dummy_overview.pkl'), 'rb') as file:
+        overview = pickle.load(file)
     with open(os.path.join(base_path, 'dummy_data', 'dummy_requests.pkl'), 'rb') as file:
         request_information = pickle.load(file)
 
-    summary = pd.read_csv(os.path.join("dummy_data", "dummy_summary.csv"), sep=";", encoding="utf-8")
+    summary = pd.read_csv(os.path.join(base_path,"dummy_data", "dummy_summary.csv"), sep=";", encoding="utf-8")
     
     
     use_default_container(modules.overview.show_overview, overview)
