@@ -1,1 +1,0 @@
-E.g., in Table 1 and 2,  the best result of VAT (Miyato et al., 2017) is VAT+Ent, 13.15 for CIFAR-10 (4000 labels) and 4.28 for SVHN (1000 labels).

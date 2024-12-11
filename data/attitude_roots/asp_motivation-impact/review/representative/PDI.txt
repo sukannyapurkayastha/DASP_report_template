@@ -1,1 +1,0 @@
-2. The paper never clearly demonstrates the problem they are trying to solve (nor well differentiates it from the compressed sensing problem  or sample selection problem)

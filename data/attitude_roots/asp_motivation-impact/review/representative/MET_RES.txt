@@ -1,1 +1,0 @@
-1: The authors show no benefit of this scheme except perhaps faster convergence.

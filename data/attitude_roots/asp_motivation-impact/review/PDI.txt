@@ -1,5 +1,0 @@
-The authors do not thoroughly explain the motivation of this paper.
-It is also not clear to me why these problems are important.
--	While this is a new and interesting task, the contribution (as discussed above in “pros” above) is somewhat limited.
-2. The paper never clearly demonstrates the problem they are trying to solve (nor well differentiates it from the compressed sensing problem  or sample selection problem)
-The idea is an interesting one, but

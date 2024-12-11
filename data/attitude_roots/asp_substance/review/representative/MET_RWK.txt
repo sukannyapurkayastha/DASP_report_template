@@ -1,1 +1,0 @@
-All in all, the results show that the proposed method provides a significant speedup with respect to Shim et al., but it lacks comparison with other methods in the literature.

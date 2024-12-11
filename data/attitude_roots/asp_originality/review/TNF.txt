@@ -1,1 +1,0 @@
-When it comes to experiments, constant epoch budget is also fairly well understood and the behavior in Figure 1 is not really surprising (as the eventual training performance gets worse with large batches).

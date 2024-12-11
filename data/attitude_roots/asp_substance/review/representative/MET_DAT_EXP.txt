@@ -1,1 +1,0 @@
-3- Is the key that you used only 679 patches containing 98% of occurrences in the dataset as the first stage? What if we vary this percentage? How sensitive are the results? Such experiments could be useful to understand better why your method appears to work well.

@@ -1,0 +1,1 @@
+Container for Johannes model for request classifier (binary) and fine request classifier (multilabel)

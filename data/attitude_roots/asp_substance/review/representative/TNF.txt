@@ -1,1 +1,0 @@
-Similarly, figure 3 as well as figures 5-7 and 8 in the appendix provide very good information about the tunability of the various optimizers without using the introduced metrics.

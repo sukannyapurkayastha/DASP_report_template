@@ -1,3 +1,0 @@
-This is discussed on p4, but it's unclear to me how keeping $\sigma$ separate is benefitial for the analysis, and this is not picked up again explicitly again?
-this analysis is not currently included in the main body of the manuscript, but rather in the appendix, which I find rather annoying.
-The paper offers some analysis, suggesting when each of the conditions occurs, upper bounds the smallest singular value of D A (where the example dependent diagonal matrix D incorporates the ReLU activation (shouldn’t this be more clearly introduced and notated?).

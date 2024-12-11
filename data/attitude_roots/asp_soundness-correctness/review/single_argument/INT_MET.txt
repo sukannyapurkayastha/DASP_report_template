@@ -1,1 +1,0 @@
-and rendering the third claim from the introduction ("We propose an new algorithm with the new metric which demonstrates better results than state-of-the-art algorithms.") completely untrue.

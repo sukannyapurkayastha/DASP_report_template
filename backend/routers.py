@@ -4,12 +4,12 @@ from model_prediction import (
     combine_roots_and_themes
 )
 from pydantic import BaseModel
-from typing import List, Dict, Any
 
 router = APIRouter()
 
+
 class RawInput(BaseModel):
-    data: list[dict] # Raw input data in JSON format
+    data: list[dict]  # Raw input data in JSON format
 
 
 @router.post("/process")

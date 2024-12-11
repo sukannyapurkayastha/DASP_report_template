@@ -1,1 +1,0 @@
-In addition, I observe that in Table 1, the proposed method does not outperform the Joint Training in SVHN with A_10.

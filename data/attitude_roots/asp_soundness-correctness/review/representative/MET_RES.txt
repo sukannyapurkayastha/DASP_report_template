@@ -1,1 +1,0 @@
-As mentioned earlier, the actual conclusion in Section 4.2 is that minimizing the KL-divergence between the parametric policy and the optimal policy by SGD will converge to the optimal policy, which is straightforward and is not what AlphaGo Zero does.

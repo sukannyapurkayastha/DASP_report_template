@@ -1,1 +1,0 @@
-However, the more pressing issue is that evaluation is done either sample-wise within-domain (reconstruction), or distribution-wise across domains (transfer).

@@ -1,1 +1,0 @@
-- Yuri Burda, Roger Grosse, Ruslan Salakhutdinov. Importance Weighted Autoencoders. ICLR 2016
