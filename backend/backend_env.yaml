@@ -4,10 +4,10 @@ channels:
   - defaults
 dependencies:
   - aiohappyeyeballs
-  - aiohttp=3.11.9=py312h31fea79_0
-  - aiosignal=1.3.1=pyhd8ed1ab_1
-  - annotated-types=0.7.0=pyhd8ed1ab_1
-  - anyio=4.6.2.post1=pyhd8ed1ab_0
+  - aiohttp
+  - aiosignal
+  - annotated-types
+  - anyio
   - attrs=24.2.0=pyh71513ae_0
   - aws-c-auth=0.8.0=h6c5491b_10
   - aws-c-cal=0.8.0=hb414858_2
@@ -46,15 +46,15 @@ dependencies:
   - fastapi-cli=0.0.5=pyhd8ed1ab_1
   - filelock=3.16.1=pyhd8ed1ab_1
   - frozenlist=1.5.0=py312h4389bb4_0
-  - fsspec=2024.9.0=pyhff2d567_0
-  - h11=0.14.0=pyhd8ed1ab_0
-  - h2=4.1.0=pyhd8ed1ab_1
-  - hpack=4.0.0=pyhd8ed1ab_1
-  - httpcore=1.0.7=pyh29332c3_1
-  - httptools=0.6.4=py312h827c3e9_0
-  - httpx=0.28.0=pyhd8ed1ab_0
-  - huggingface_hub=0.26.3=pyhd8ed1ab_0
-  - hyperframe=6.0.1=pyhd8ed1ab_1
+  - fsspec
+  - h11
+  - h2
+  - hpack
+  - httpcore
+  - httptools
+  - httpx
+  - huggingface_hub
+  - hyperframe
   - idna=3.10=pyhd8ed1ab_1
   - intel-openmp=2024.2.1=h57928b3_1083
   - jinja2=3.1.4=pyhd8ed1ab_1

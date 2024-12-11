@@ -49,7 +49,7 @@ async def process_file(reviews_json: ReviewData) -> dict:  # change amount of df
         # df_classifier_request = request_classifier(df_sentences)
 
         # Convert DataFrames to JSON-serializable formats
-        df_request_json = df_sentences.to_dict(orient='records')
+        df_request_json = df_request.to_dict(orient='records')
         df_sentences_json = df_sentences.to_dict(orient='records')
         df_overview_json = df_overview.to_dict(orient='records')
 
@@ -57,7 +57,7 @@ async def process_file(reviews_json: ReviewData) -> dict:  # change amount of df
 
         # Todo: Remove df_senteces, it's just to test multiple dataframes
         return {
-            "df_request": df_sentences_json,
+            "df_request": df_request_json,
             "df_sentences": df_sentences_json,
             "df_overview": df_overview_json
         }

@@ -4,16 +4,15 @@ from tqdm import tqdm
 from transformers import T5Tokenizer, T5ForConditionalGeneration, BertTokenizer, BertForSequenceClassification
 import sys
 import os
+from huggingface_hub import hf_hub_download, list_repo_files
+
+# module_path = os.path.abspath("model_training/nlp/request_classifier/models/classification")
+# sys.path.append(module_path)
 
 
-
-module_path = os.path.abspath("model_training/nlp/request_classifier/models/classification")
-sys.path.append(module_path)
-
-
-from request_classifier import predict as predict_request
-from fine_request_classifier_llama import (
-    create_few_shot_prompt,
+# from model_training.nlp.request_classifier.models.classification.request_classifier import predict as predict_request
+from models.request_classifier.request_classifier.fine_request_classifier_llama import (
+    # create_few_shot_prompt,
     map_prediction_to_label,
     generate_predictions_from_dataset,
     few_shot_examples,
@@ -27,10 +26,44 @@ def process_dataframe_request(df: pd.DataFrame) -> pd.DataFrame:
     
     texts = df['sentence'].tolist()
 
-   
+    repo_id = "JohannesLemken/DASP_models"
+
+    # List all files in the repository
+    all_files = list_repo_files(repo_id=repo_id, repo_type="model")
+
+    # Filter the files to only those in the "Request_Classifier/RequestClassifier" directory
+    subdir = "Request_Classifier/RequestClassifier/"
+    files_to_download = [f for f in all_files if f.startswith(subdir)]
+
+    # Create a local directory to store these files, if desired
+    local_dir = "backend/models/request_classifier/request_classifier/"
+    os.makedirs(local_dir, exist_ok=True)
+
+    # Download each file
+    for filename in files_to_download:
+        local_file_path = hf_hub_download(
+            repo_id=repo_id,
+            filename=filename,
+            repo_type="model",
+            revision="main"  # or a specific branch/tag/commit if needed
+        )
+
+        # Optionally move it into our local directory to preserve structure
+        # Extract the relative file path after `subdir`
+        relative_path = filename[len(subdir):]
+        local_subpath = os.path.join(local_dir, relative_path)
+
+        # Create any necessary nested directories
+        os.makedirs(os.path.dirname(local_subpath), exist_ok=True)
+
+        # Move/rename the downloaded file into our target structure
+        os.replace(local_file_path, local_subpath)
+
+        print(f"Downloaded and saved {filename} to {local_subpath}")
+
     model_path_request_classifier = "backend/models/request_classifier/request_classifier/"
-    tokenizer_bert = BertTokenizer.from_pretrained(model_path_request_classifier)
-    model_bert = BertForSequenceClassification.from_pretrained(model_path_request_classifier)
+    tokenizer_bert = BertTokenizer.from_pretrained(local_dir)
+    model_bert = BertForSequenceClassification.from_pretrained(local_dir)
     model_bert.eval()
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model_bert.to(device)
@@ -53,10 +86,13 @@ def process_dataframe_request(df: pd.DataFrame) -> pd.DataFrame:
     print("Classifying requests...")
     predictions_bert = []
     batch_size = 16
-    for i in tqdm(range(0, len(texts), batch_size)):
-        batch_texts = texts[i:i+batch_size]
-        preds = predict_request(batch_texts)  
-        predictions_bert.extend(preds)
+    try:
+        for i in tqdm(range(0, len(texts), batch_size)):
+            batch_texts = texts[i:i+batch_size]
+            preds = predict_request(batch_texts)
+            predictions_bert.extend(preds)
+    except Exception as e:
+        print(e)
 
     df['coarse_label_pred'] = predictions_bert
 
@@ -93,5 +129,5 @@ if __name__ == "__main__":
     csv_file_path = "C:/Users/Johannes/Downloads/test.csv"
     df_input = pd.read_csv(csv_file_path)
     df_input = df_input.dropna(subset=['sentence'])
-    df_result = process_dataframe(df_input)
+    df_result = process_dataframe_request(df_input)
     print(df_result)
