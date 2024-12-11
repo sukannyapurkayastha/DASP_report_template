@@ -1,4 +1,3 @@
-
 import torch
 from transformers import T5Tokenizer, T5ForConditionalGeneration
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score
@@ -7,6 +6,7 @@ from tqdm import tqdm
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 import matplotlib.pyplot as plt
 import os
+
 # Define few-shot examples and label maps
 few_shot_examples = {
     "Request for Improvement": [
@@ -107,12 +107,11 @@ def map_prediction_to_label(pred, label_map):
         if label.lower() in pred:
             return label_map[label]
 
-
     for idx, label in enumerate(label_map.keys(), 1):
         if pred == str(idx) or pred == f"{idx}.":
             return label_map[label]
 
-    return -1  
+    return -1
 
 
 def generate_predictions_from_dataset(dataset, few_shot_examples, tokenizer, model, max_new_tokens=50):
@@ -149,20 +148,19 @@ def evaluate_model(dataset, predictions, label_map):
     true_labels = dataset['fine_review_action'].map(lambda x: label_map[fine_to_category_map[x]]).tolist()
 
     predicted_labels = [map_prediction_to_label(pred, label_map) for pred in predictions]
-    
+
     # Calculate metrics
     accuracy = accuracy_score(true_labels, predicted_labels)
     f1 = f1_score(true_labels, predicted_labels, average="weighted", zero_division=0)
     precision = precision_score(true_labels, predicted_labels, average="weighted", zero_division=0)
     recall = recall_score(true_labels, predicted_labels, average="weighted", zero_division=0)
-    
+
     print("\n--- Evaluation Results ---")
     print(f"Accuracy: {accuracy:.4f}")
     print(f"F1 Score: {f1:.4f}")
     print(f"Precision: {precision:.4f}")
     print(f"Recall: {recall:.4f}")
-    
-   
+
     cm = confusion_matrix(true_labels, predicted_labels, labels=list(label_map.values()))
     display_labels = list(label_map.keys())
     disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=display_labels)
@@ -171,16 +169,14 @@ def evaluate_model(dataset, predictions, label_map):
     plt.show()
 
 
-
 def save_model_and_tokenizer(model, tokenizer, save_directory):
-    
     print(f"Safe model and tokenizer in {save_directory}...")
     model.save_pretrained(save_directory)
     tokenizer.save_pretrained(save_directory)
     print(f"Model and tokenizer saved.")
 
+
 def load_model_and_tokenizer(save_directory):
-    
     print(f"Load model and tokenizer from {save_directory}...")
     tokenizer = T5Tokenizer.from_pretrained(save_directory)
     model = T5ForConditionalGeneration.from_pretrained(save_directory)
@@ -189,13 +185,12 @@ def load_model_and_tokenizer(save_directory):
 
 
 if __name__ == "__main__":
-  
+
     model_name = "google/flan-t5-xl"
     script_directory = os.path.dirname(os.path.abspath(__file__))
-    save_directory = os.path.join(script_directory, "../../../../../backend/models/request_classifier/fine_request_classifier")
-    
+    save_directory = os.path.join(script_directory,
+                                  "../../../../../backend/models/request_classifier/fine_request_classifier")
 
-    
     try:
         model, tokenizer = load_model_and_tokenizer(save_directory)
     except Exception as e:
@@ -207,6 +202,3 @@ if __name__ == "__main__":
     model.eval()
     model.to("cuda" if torch.cuda.is_available() else "cpu")
     tokenizer.pad_token_id = tokenizer.eos_token_id
-
-
-   
