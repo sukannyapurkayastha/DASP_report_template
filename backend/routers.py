@@ -20,39 +20,38 @@ async def process_data(input_data: RawInput) -> dict:
         overview = df_overview.to_dict(orient='records')
         sentences = df_sentences.to_dict(orient='records')
 
-        # Step 2: Run predictions
+        # Step 2: Run request classifier
         try:
-            response = requests.post(
+            response_request = requests.post(
                 "http://localhost:8081/classify_request",
                 json={"data": sentences}
             )
 
-            if response.status_code == 200:
-                request_data = response.json()
+            if response_request.status_code == 200:
+                request_data = response_request.json()
                 # request_response = pd.DataFrame(data)
 
             else:
-                logger.error(f"API Error: {response.text}")
+                logger.error(f"Model Request Classifier API Error: {response_request.text}")
         except Exception as e:
-            logger.error(f"Error: {e}")
-
-        # Todo: Call api to other containers here
-        # dataframe_a = combine_roots_and_themes(processed_data)
-        # dataframe_1 = model_prediction_1(processed_data)
-        # dataframe_2 = model_prediction_2(processed_data)
-        # dataframe_3 = model_prediction_3(processed_data)
-        # dataframe_4 = model_prediction_4(processed_data)
-
-        # # Step 3: Combine predictions into dataframes for charts
-        # dataframe_a = combine_for_a(dataframe_1, dataframe_2)
-        # dataframe_b = combine_for_b(dataframe_3, dataframe_4)
-
-        # Step 4: Convert dataframes to JSON for response
-        # result = dataframe_a.to_dict(orient="records")
+            logger.error(f"Error communicating with Model Request Classifier: {e}")
+        
+        try: 
+            response_attitude = requests.post(
+                "http://localhost:8082/classify_request",
+                json={"data": sentences}
+            )
+            if response_attitude.status_code ==200:
+                attitude_data = response_attitude.json()
+            else:
+                logger.error(f"Model Attitude Classifier API Error: {response_attitude.text}")
+        except Exception as e:
+            logger.error(f"Error communicating with Model Attitude Classifier: {e}")
 
         return {
             "overview": overview,
-            "request_response": request_data
+            "request_response": request_data,
+            "attitude_response":attitude_data
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error processing data: {str(e)}")
