@@ -87,7 +87,7 @@ def show_overview(overview_data):
         if not individual_scores_list or individual_scores_list == 'None':
             st.markdown(f"No individual scores available for {category}")
         else:
-            num_scores = len(individual_scores_list)
+            num_scores = max(len(individual_scores_list),4)
             st_columns = st.columns(num_scores)
             for idx, (author_score, st_col) in enumerate(zip(individual_scores_list, st_columns)):
                 author, score_value = author_score
