@@ -99,6 +99,9 @@ def show_overview(overview_data):
 
     # Actual overview generation
     with st.container():
+        st.title("Paper Review Aggregation")
+        st.markdown('<div class="invisbible-line-minor">  </div>', unsafe_allow_html=True)
+
         if overview_data.empty:
             st.markdown(
                 "<h4 style='font-size:16px; margin: 0px; padding: 0px;'>No general information was found.</h4>",
