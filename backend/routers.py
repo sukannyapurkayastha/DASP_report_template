@@ -33,27 +33,27 @@ async def process_data(input_data: RawInput) -> dict:
         except Exception as e:
             logger.error(f"Error communicating with Model Attitude Classifier: {e}")
             
-        # # Run request classifier
-        # try:
-        #     response_request = requests.post(
-        #         "http://localhost:8081/classify_request",
-        #         json={"data": sentences}
-        #     )
+        # Run request classifier
+        try:
+            response_request = requests.post(
+                "http://localhost:8081/classify_request",
+                json={"data": sentences}
+            )
 
-        #     if response_request.status_code == 200:
-        #         request_data = response_request.json()
-        #         # request_response = pd.DataFrame(data)
+            if response_request.status_code == 200:
+                request_data = response_request.json()
+                # request_response = pd.DataFrame(data)
 
-        #     else:
-        #         logger.error(f"Model Request Classifier API Error: {response_request.text}")
-        # except Exception as e:
-        #     logger.error(f"Error communicating with Model Request Classifier: {e}")
+            else:
+                logger.error(f"Model Request Classifier API Error: {response_request.text}")
+        except Exception as e:
+            logger.error(f"Error communicating with Model Request Classifier: {e}")
         
         
 
         return {
             "overview": overview,
-            "request_response": pd.DataFrame({'A': []}).to_dict(orient="records"),
+            "request_response": request_data,
             "attitude_response": attitude_data
         }
     except Exception as e:

@@ -88,7 +88,8 @@ def process_dataframe_request(df: pd.DataFrame, local_dir: str, local_dir_fine_r
     tokenizer_bert = BertTokenizer.from_pretrained(local_dir)
     model_bert = BertForSequenceClassification.from_pretrained(local_dir)
     model_bert.eval()
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    # device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    device = "cpu"
     model_bert.to(device)
 
     # Define a prediction function for the coarse-grained classifier
@@ -139,7 +140,8 @@ def process_dataframe_request(df: pd.DataFrame, local_dir: str, local_dir_fine_r
     tokenizer_t5 = T5Tokenizer.from_pretrained(local_dir_fine_request)
     model_t5 = T5ForConditionalGeneration.from_pretrained(local_dir_fine_request)
     model_t5.eval()
-    device_t5 = "cuda" if torch.cuda.is_available() else "cpu"
+    # device_t5 = "cuda" if torch.cuda.is_available() else "cpu"
+    device_t5 = "cpu"
     model_t5.to(device_t5)
     tokenizer_t5.pad_token_id = tokenizer_t5.eos_token_id
 
