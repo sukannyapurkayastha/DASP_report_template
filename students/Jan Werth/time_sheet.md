@@ -34,8 +34,11 @@
 | [29/11/24] | [07/12/24] | [Coding]             | [Frontend (login functionality and upload file (now docm with venue rating)] | [24]               | [Completed]   |
 | [04/12/24] | [04/12/24] | [Meeting]            | [Weekly meeting]                                                             | [1]                | [Completed]   |
 | [04/12/24] | [04/12/24] | [Meeting]            | [Internal meeting]                                                           | [4]                | [Completed]   |
-| [04/12/24] | [07/12/24] | [Coding]             | [Restructuring of Project (on branch)]                                       | [7]                | [In Progress] |
-
+| [04/12/24] | [12/12/24] | [Coding]             | [Restructuring of Project (on branch)]                                       | [20]               | [In Progress] |
+| [11/12/24] | [11/12/24] | [Meeting]            | [Weekly meeting]                                                             | [1]                | [Completed]   |
+| [11/12/24] | [11/12/24] | [Meeting]            | [Internal meeting]                                                           | [2]                | [Completed]   |
+| [9/12/24]  | [11/12/24] | [Meeting]            | [Midterm presentation preparation]                                           | [4]                | [Completed]   |
+| [12/12/24] | [12/12/24] | [Meeting]            | [Writing test]                                                               | [1]                | [In Progress] |
 
 ---
 
