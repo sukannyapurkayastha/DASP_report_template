@@ -66,12 +66,15 @@
     - Better connection between backend and frontend
     - Expanding the review functionality for other venues/conferences
 
-### Week [n-2]
+### Week [5]
 
-- **Update 1**:
-- **Update 2**:
-- **Update 3**:
-- **Challenges**:
-- **Next Steps**:
+- **Update 1**: Restructuring of project in preparation for deployment with docker containers
+- **Update 2**: API between frontend and backend, and backend and models
+- **Update 3**: Tests
+- **Challenges**: Writing test, dependency issues between us students
+- **Next Steps**: 
+  - Further tests for backend
+  - Help Philipp with frontend tests
+  - Documentation? At the moment only in the code
 
 ---
