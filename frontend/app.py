@@ -9,7 +9,7 @@ import contact
 
 st.set_page_config(
     page_title="Paper Review Generator",
-    page_icon=os.path.join("frontend/images", "logo.png")
+    page_icon=os.path.join("images", "logo.png")
 )
 
 custom_css = """
@@ -158,6 +158,14 @@ custom_css = """
     """
 
 
+def safe_delete_session_state(key):
+    '''
+    Deletes Session state to ensure variables are deleted after user leaves a page
+    '''
+    if key in st.session_state:
+        del st.session_state[key]
+
+
 def show_navigation_bar_and_content():
     def load_logo(filepath):
         with open(filepath, "rb") as logo_file:
@@ -219,12 +227,15 @@ def show_navigation_bar_and_content():
 
     # Display content based on the current page
     if st.session_state.page == "Home":
+        safe_delete_session_state("main_page_variables")
         st.session_state.page = home_page.home_page(custom_css)
     elif st.session_state.page == "Review Aggregation":
+        safe_delete_session_state("main_page_variables")
         landing_page.landing_page(custom_css)
     elif st.session_state.page == "Meta Reviewer Dashboard":
         main_page.main_page(custom_css)
     elif st.session_state.page == "Contact":
+        safe_delete_session_state("main_page_variables")
         contact.show_contact_info(custom_css)
 
 

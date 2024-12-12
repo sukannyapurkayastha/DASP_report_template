@@ -212,9 +212,21 @@ def main_page(custom_css):
 
     st.title("Paper Review Summary")
 
-    overview, request_information, attitude_roots = get_classification_with_api()
+    if "main_page_variables" not in st.session_state:
+        # Fetch data and store it in session state
+        overview, request_information, attitude_roots = get_classification_with_api()
+        st.session_state.main_page_variables = {
+            "overview": overview,
+            "request_information": request_information,
+            "attitude_roots": attitude_roots,
+        }
 
-    if overview.empty:
+    # Access data from session state
+    overview = st.session_state.main_page_variables["overview"]
+    attitude_roots = st.session_state.main_page_variables["attitude_roots"]
+    request_information = st.session_state.main_page_variables["request_information"]
+
+    if st.session_state.main_page_variables["overview"].empty:
         st.warning("No data available for classification.")
     
     with open(os.path.join('dummy_data', 'dummy_attitude_roots.pkl'), 'rb') as file:
