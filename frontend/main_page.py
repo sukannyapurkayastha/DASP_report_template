@@ -226,7 +226,7 @@ def main_page(custom_css):
     attitude_roots = st.session_state.main_page_variables["attitude_roots"]
     request_information = st.session_state.main_page_variables["request_information"]
 
-    if st.session_state.main_page_variables["overview"].empty:
+    if overview.empty:
         st.warning("No data available for classification.")
     
     with open(os.path.join('dummy_data', 'dummy_attitude_roots.pkl'), 'rb') as file:
