@@ -26,7 +26,7 @@ async def process_data(input_data: RawInput) -> dict:
                 "http://localhost:8082/classify_attitudes",
                 json={"data": sentences}
             )
-            if response_attitude.status_code ==200:
+            if response_attitude.status_code == 200:
                 attitude_data = response_attitude.json()
             else:
                 logger.error(f"Model Attitude Classifier API Error: {response_attitude.text}")
@@ -53,7 +53,7 @@ async def process_data(input_data: RawInput) -> dict:
 
         return {
             "overview": overview,
-            "request_response": pd.DataFrame({'A' : []}),
+            "request_response": pd.DataFrame({'A': []}).to_dict(orient="records"),
             "attitude_response": attitude_data
         }
     except Exception as e:
