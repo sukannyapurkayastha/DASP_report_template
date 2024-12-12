@@ -193,12 +193,13 @@ def get_classification_with_api():
             # df_sentences = pd.DataFrame(data["df_sentences"])
             df_overview = pd.DataFrame(data["overview"])
             df_requests = pd.DataFrame(data["request_response"])
+            df_attitude = pd.DataFrame(data["attitude_response"])
             # Todo: add other returned data
         else:
             st.error(f"Error: {response.text}")
 
         # Todo: Return all the dataframes (once we returned them from the api)
-        return df_overview, df_requests
+        return df_overview, df_requests, df_attitude
 
     except Exception as e:
         st.error(f"An error occurred: {e}")
@@ -211,15 +212,15 @@ def main_page(custom_css):
 
     st.title("Paper Review Summary")
 
-    overview, request_information = get_classification_with_api()
+    overview, request_information, attitude_roots = get_classification_with_api()
 
     if overview.empty:
         st.warning("No data available for classification.")
     
     with open(os.path.join('dummy_data', 'dummy_attitude_roots.pkl'), 'rb') as file:
         attitude_roots = pickle.load(file)
-    with open(os.path.join('dummy_data', 'dummy_overview.pkl'), 'rb') as file:
-        overview = pickle.load(file)
+    #with open(os.path.join('dummy_data', 'dummy_overview.pkl'), 'rb') as file:
+    #    overview = pickle.load(file)
     # with open(os.path.join(base_path, 'dummy_data', 'dummy_requests.pkl'), 'rb') as file:
     #     request_information = pickle.load(file)
 

@@ -36,6 +36,7 @@ async def process_data(input_data: RawInput) -> dict:
         except Exception as e:
             logger.error(f"Error communicating with Model Request Classifier: {e}")
         
+        """
         try: 
             response_attitude = requests.post(
                 "http://localhost:8082/classify_request",
@@ -47,11 +48,12 @@ async def process_data(input_data: RawInput) -> dict:
                 logger.error(f"Model Attitude Classifier API Error: {response_attitude.text}")
         except Exception as e:
             logger.error(f"Error communicating with Model Attitude Classifier: {e}")
+        """
 
         return {
             "overview": overview,
             "request_response": request_data,
-            "attitude_response":attitude_data
+            "attitude_response": request_data # as soon as the attitude roots are called correctly replace with "attitude_response": attitude_data
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error processing data: {str(e)}")

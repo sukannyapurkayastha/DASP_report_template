@@ -90,7 +90,7 @@ def landing_page(custom_css):
 
     def content():
         # Apply custom CSS
-        # st.markdown(custom_css, unsafe_allow_html=True)
+        st.markdown(custom_css, unsafe_allow_html=True)
 
         st.title("Paper Review Aggregator")
 
