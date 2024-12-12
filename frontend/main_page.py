@@ -29,18 +29,16 @@ if parent_dir not in sys.path:
 #custom CSS for main_page
 main_page_css = """
     <style>
+    h1, h2, h3, p, div, span {
+        max-width: 100%;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
     .block-container {
-        width: 95%; 
-        max-width: 900px; 
+        width: 100%; 
+        max-width: 920px; 
         display: flex;
         flex-direction: column; 
-    }
-    .content-box {
-        padding-left: 2px; 
-        margin-bottom: 0px;
-        border-radius: 5px;
-        background-color: #E8E8E8;
-        margin-bottom: 2px;
     }
     .invisbible-line-big {
         height: 60px;
@@ -50,26 +48,6 @@ main_page_css = """
     }
     .invisbible-line-minor {
         height: 5px;
-    }
-    .section-header {
-        writing-mode: vertical-rl;
-        transform: rotate(180deg);
-        font-size: 24px;
-        margin-right: 20px;
-        margin-top: 25%;
-        margin-bottom: 25%;  
-    }
-    /* Style for the expander header when collapsed */
-    [data-testid="stExpander"] summary {
-        font-size: 30px;
-        color: black;
-        font-weight: bold;
-    }
-    /* Style for the expander header when expanded */
-    [data-testid="stExpander"] details[open] > summary {
-        font-size: 24px;
-        color: green;
-        font-weight: bold;
     }
     /* Hide the icon next to headers */
     [data-testid="stHeaderActionElements"] {
@@ -84,11 +62,6 @@ main_page_css = """
         background-color: transparent; /* Make button background invisible */
         border: none; /* Remove border */
         color: black; /* Button text color black */
-        font-size: 18px; /* Font size for better visibility */
-        cursor: pointer; /* Change cursor to pointer for clickable effect */
-        width: 100%; /* Make button take full width of sidebar */
-        text-align: left; /* Align text to the left */
-        padding: 10px 0; /* Add some padding */
     }
     /* Target only regular button on hover*/
     .stButton button:hover {
@@ -119,24 +92,7 @@ main_page_css = """
     right: 5px;
     margin: 0;
     }
-
-    
-    /* Target only sidebar button */
-    section[data-testid="stSidebar"] div.stButton > button[data-testid="stBaseButton-secondary"] {
-        background-color: transparent; /* Make button background invisible */
-        border: none; /* Remove border */
-        color: black; /* Button text color black */
-        font-size: 18px; /* Font size for better visibility */
-        cursor: pointer; /* Change cursor to pointer for clickable effect */
-        width: 100%; /* Make button take full width of sidebar */
-        text-align: left; /* Align text to the left */
-        padding: 10px 0; /* Add some padding */
-    }
-    
-    /* Target hover effect for sidebar button */
-    section[data-testid="stSidebar"] div.stButton > button[data-testid="stBaseButton-secondary"]:hover {
-        background-color: #ccc; /* Grey background on hover */
-    }
+ 
     /* Style the popover container */
     .stPopover {
         width: 100%;
@@ -165,7 +121,7 @@ main_page_css = """
     }
     </style>
     """
-   
+     
 #%%% Set the page configuration
 def get_classification_with_api():
     try:
@@ -210,9 +166,19 @@ def main_page(custom_css):
     # Apply custom CSS Styles
     st.markdown(main_page_css, unsafe_allow_html=True)
 
-    st.title("Paper Review Summary")
+    if "main_page_variables" not in st.session_state:
+        # Fetch data and store it in session state
+        overview, request_information, attitude_roots = get_classification_with_api()
+        st.session_state.main_page_variables = {
+            "overview": overview,
+            "request_information": request_information,
+            "attitude_roots": attitude_roots,
+        }
 
-    overview, request_information, attitude_roots = get_classification_with_api()
+    # Access data from session state
+    overview = st.session_state.main_page_variables["overview"]
+    attitude_roots = st.session_state.main_page_variables["attitude_roots"]
+    request_information = st.session_state.main_page_variables["request_information"]
 
     if overview.empty:
         st.warning("No data available for classification.")
