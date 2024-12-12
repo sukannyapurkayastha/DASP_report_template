@@ -39,12 +39,15 @@
 | [30.11.2024]  | [01.12.2024]  | [Finetuning]            | [Resamling (+ Reformulating) Reviewer Tests for rare attitude roots]            | [10]           | [Completed] |
 | [02.12.2024]  | [03.12.2024]  | [Teamwork]            | [Trying to make Zhijingshui Yang code runnable]            | [3]           | [Completed] |
 | [02.12.2024]  | [02.12.2024]  | [Teamwork]            | [Making Jans code runnable + creating openreview Account]            | [1]           | [Completed] |
-| [02.11.2024]  | [03.12.2024]  | [Finetuning]            | [Trying to classify only attitude roots != None]            | [8]           | [Completed] |
-| [02.11.2024]  | [03.12.2024]  | [Testing and Creating Tasks]            | [Testing application and creating Bugfixing Tasks]            | [3]           | [Completed] |
-| [03.11.2024]  | [03.12.2024]  | [Connecting backend and frontend]            | [Changes to Connecting backend and frontend]            | [7]           | [Completed] |
-| [05.11.2024]  | [06.12.2024]  | [Adding Descriptions to Attitude Roots + Themes]            | [Adapted to the changes of git, created csv containing Attitude Root, Theme and Description, Implemented Logic to Show correct description]            | [6]           | [Completed] |
-| [05.11.2024]  | [06.12.2024]  | [Presentation]            | [Discussion how to structure Midterm presentation, started with problem description]            | [4]           | [In Progress] |
-| [08.11.2024]  | [08.12.2024]  | [Presentation]            | [Title Page, Problem Description, System Architecture, Model Card, Thank you slide]            | [9]           | [Completed] |
+| [02.12.2024]  | [03.12.2024]  | [Finetuning]            | [Trying to classify only attitude roots != None]            | [8]           | [Completed] |
+| [02.12.2024]  | [03.12.2024]  | [Testing and Creating Tasks]            | [Testing application and creating Bugfixing Tasks]            | [3]           | [Completed] |
+| [03.12.2024]  | [03.12.2024]  | [Connecting backend and frontend]            | [Changes to Connecting backend and frontend]            | [7]           | [Completed] |
+| [05.12.2024]  | [06.12.2024]  | [Adding Descriptions to Attitude Roots + Themes]            | [Adapted to the changes of git, created csv containing Attitude Root, Theme and Description, Implemented Logic to Show correct description]            | [6]           | [Completed] |
+| [05.12.2024]  | [06.12.2024]  | [Presentation]            | [Discussion how to structure Midterm presentation, started with problem description]            | [4]           | [In Progress] |
+| [08.12.2024]  | [08.12.2024]  | [Presentation]            | [Title Page, Problem Description, System Architecture, Model Card, Thank you slide]            | [9]           | [Completed] |
+| [11.12.2024]  | [11.12.2024]  | [Teammeeting]            | [Teammeeting with Sukannya]            | [1]           | [Completed] |
+| [11.12.2024]  | [11.12.2024]  | [Internal Teammeeting]            | [Teammeeting]            | [2]           | [Completed] |
+| [12.12.2024]  | [12.12.2024]  | [Preparing & practicing midtermpresentation ]            | [Teammeeting]            | [10]           | [Completed] |
 ---
 
 > **Status Options**: "In Progress," "Completed," or "Pending."

@@ -162,3 +162,4 @@ backend/models/attitude_root/tf_model.h5
 backend/models/attitude_classifier/
 backend/models/attitude_root/tokenizer_config.json
 backend/models/attitude_root/vocab.txt
+/model_training/nlp/attitude_classifier/logs
