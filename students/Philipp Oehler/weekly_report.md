@@ -28,11 +28,11 @@
 
 ### Week [6]
 
-- **Update 1**: 
+- **Update 1**: Home Page Content adjusted, Fixed issue with text crossing boundaries, Fixed circles Looking weird when less then 3 authors reviewed. (set 4 columns as Minimum to implicitly achieve max size.), removed unneccesary css styles, created about page, connected about page to framework.
 - **Update 2**: 
 - **Update 3**: 
 - **Challenges**: 
-- **Next Steps**: 
+- **Next Steps**: Merge "containers and API" branch into main branch and connect models. + Rock midterm.
 
 
 ### Week [5]
