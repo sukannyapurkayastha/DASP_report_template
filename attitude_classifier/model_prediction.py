@@ -110,7 +110,8 @@ def combine_roots_and_themes(preprocessed_data):
     final_df = final_df[['Attitude_roots', 'Frequency', 'Descriptions', 'Comments']]
     final_df = final_df.sort_values(by='Frequency', ascending=False)
 
-    desc = pd.read_csv(os.path.join("..", "data", "attitude_roots", "attitudes_desc.csv"))
+    current_path = os.path.dirname(os.path.abspath(__file__))
+    desc = pd.read_csv(os.path.join(current_path, 'attitudes_desc.csv'))
 
     merged_df = pd.merge(final_df , desc, on=['Attitude_roots'], how='left') # todo:what happens if attitude + theme combi is not known
     merged_df.rename(columns={'Descriptions_y': 'Descriptions'}, inplace=True)
