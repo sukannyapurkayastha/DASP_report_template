@@ -20,11 +20,11 @@
 
 ### Week [7]
 
-- **Update 1**: 
-- **Update 2**: 
+- **Update 1**: Frontend: made dev-refactoring brnach run with dummy attitude_roots.pkl as attitude root prediction didnt work yet, fixed reload bug as user uses Slideshow, transfered frontend from main to dev-refactoring for presentation
+- **Update 2**: midterm is over (yay)
 - **Update 3**: 
 - **Challenges**: 
-- **Next Steps**: 
+- **Next Steps**: look up adequate summary model, and implement
 
 ### Week [6]
 
@@ -32,7 +32,7 @@
 - **Update 2**: 
 - **Update 3**: 
 - **Challenges**: 
-- **Next Steps**: Merge "containers and API" branch into main branch and connect models. + Rock midterm.
+- **Next Steps**: Merge "API" branch into main branch and connect models. + Rock midterm.
 
 
 ### Week [5]
