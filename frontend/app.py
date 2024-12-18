@@ -170,7 +170,7 @@ def show_navigation_bar_and_content():
         st.session_state.page = "Home"
     if st.sidebar.button("Review Aggregation"):
         st.session_state.page = "Review Aggregation"
-    #if st.sidebar.button("Services"):
+    #if st.sidebar.button("Meta Reviewer Dashboard"):
     #    st.session_state.page = "Meta Reviewer Dashboard"
     if st.sidebar.button("Contact"):
         st.session_state.page = "Contact"
@@ -179,18 +179,18 @@ def show_navigation_bar_and_content():
 
     # Display content based on the current page
     if st.session_state.page == "Home":
-        # leave out for midterm safe_delete_session_state("main_page_variables")
+        safe_delete_session_state("main_page_variables")
         st.session_state.page = home_page.home_page(custom_css)
     elif st.session_state.page == "Review Aggregation":
-        # leave out for midterm safe_delete_session_state("main_page_variables")
+        safe_delete_session_state("main_page_variables")
         landing_page.landing_page(custom_css)
     elif st.session_state.page == "Meta Reviewer Dashboard":
         main_page.main_page(custom_css)
     elif st.session_state.page == "Contact":
-        # leave out for midterm safe_delete_session_state("main_page_variables")
+        safe_delete_session_state("main_page_variables")
         contact.show_contact_info(custom_css)
     elif st.session_state.page == "About":
-        # leave out for midterm safe_delete_session_state("main_page_variables")
+        safe_delete_session_state("main_page_variables")
         about.about_page(custom_css)
 
 
