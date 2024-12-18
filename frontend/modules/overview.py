@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 from .shared_methods import get_colour_palette, grey
 from .shared_methods import use_default_container
 from streamlit_extras.stylable_container import stylable_container
+import math
 
 def show_overview(overview_data):
     # Helper methods
@@ -88,14 +89,20 @@ def show_overview(overview_data):
             st.markdown(f"No individual scores available for {category}")
         else:
             num_scores = len(individual_scores_list)
-            st_columns = st.columns(num_scores)
-            for idx, (author_score, st_col) in enumerate(zip(individual_scores_list, st_columns)):
-                author, score_value = author_score
-                with st_col:
-                    if score_value is None or score_value == 'None':
-                        st.markdown(f"No data available for {author}")
-                    else:
-                        draw_individual_circle(score_value, category, author)
+            num_columns = 4
+            num_rows = math.ceil(num_scores / num_columns)
+            
+            for row in range(num_rows):
+                st_columns = st.columns(num_columns)
+                for idx in range(num_columns):
+                    index = row * num_columns + idx
+                    if index < num_scores:
+                        author, score_value = individual_scores_list[index]
+                        with st_columns[idx]:
+                            if score_value is None or score_value == 'None':
+                                st.markdown(f"No data available for {author}")
+                            else:
+                                draw_individual_circle(score_value, category, author)
 
     # Actual overview generation
     with st.container():

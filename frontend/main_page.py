@@ -165,7 +165,7 @@ def main_page(custom_css):
     base_path = os.getcwd()
     # Apply custom CSS Styles
     st.markdown(main_page_css, unsafe_allow_html=True)
-
+    
     if "main_page_variables" not in st.session_state:
         # Fetch data and store it in session state
         overview, request_information, attitude_roots = get_classification_with_api()
@@ -187,8 +187,8 @@ def main_page(custom_css):
         attitude_roots = pickle.load(file)
     #with open(os.path.join('dummy_data', 'dummy_overview.pkl'), 'rb') as file:
     #    overview = pickle.load(file)
-    # with open(os.path.join(base_path, 'dummy_data', 'dummy_requests.pkl'), 'rb') as file:
-    #     request_information = pickle.load(file)
+    #with open(os.path.join(base_path, 'dummy_data', 'dummy_requests.pkl'), 'rb') as file:
+    #    request_information = pickle.load(file)
 
     summary = pd.read_csv(os.path.join(base_path,"dummy_data", "dummy_summary.csv"), sep=";", encoding="utf-8")
     
