@@ -246,7 +246,8 @@ def predict(texts, model_path="./bert_request_classifier_model"):
     tokenizer = BertTokenizer.from_pretrained(model_path)
     model = BertForSequenceClassification.from_pretrained(model_path)
     model.eval()
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    # device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    device = "cpu"
     model.to(device)
 
     inputs = tokenizer(
