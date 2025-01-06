@@ -10,8 +10,7 @@ from loguru import logger
 from .models import Review
 
 
-# SpaCy components to split only at linebreaks and to protect lists and citations
-# Component 1: only split at line breaks
+# SpaCy component to split only at linebreaks
 @Language.component("split_only_at_linebreaks")
 def split_only_at_linebreaks(doc: Doc) -> Doc:
     for token in doc:

@@ -1,6 +1,5 @@
 import zipfile
 
-from docx import Document
 from lxml import etree
 from loguru import logger
 
