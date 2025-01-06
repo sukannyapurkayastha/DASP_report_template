@@ -72,9 +72,19 @@
 - **Update 2**: API between frontend and backend, and backend and models
 - **Update 3**: Tests
 - **Challenges**: Writing test, dependency issues between us students
-- **Next Steps**: 
-  - Further tests for backend
-  - Help Philipp with frontend tests
-  - Documentation? At the moment only in the code
+- **Next Steps**:
+    - Further tests for backend
+    - Help Philipp with frontend tests
+    - Documentation? At the moment only in the code
+
+### Week [6, 7, 8]
+
+- **Update 1**: Writing tests for backend finished
+- **Update 2**: Writing tests for frontend (data loaders only, so UploadedFileProcessor and OpenreviewClient)
+- **Update 3**:
+- **Challenges**: Writing test for data loaders, I had to specify a lot of sample information to create tests,
+  especially for xml it was really confusing.
+- **Next Steps**:
+    - Frontend/Streamlit tests (but how do you test frontend?)
 
 ---
