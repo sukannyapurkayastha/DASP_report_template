@@ -1,10 +1,11 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from loguru import logger
 import pandas as pd
+import uvicorn
 from model_prediction import (
     combine_roots_and_themes
 )
+
 app = FastAPI()
 
 # Define schema for incoming preprocessed data
@@ -30,6 +31,5 @@ async def predict(request: RawInput):
     
 # Run the application on port 8082
 if __name__ == "__main__":
-    import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8082)
 

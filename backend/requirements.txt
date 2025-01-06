@@ -1,0 +1,7 @@
+fastapi
+pydantic
+loguru
+pandas
+uvicorn
+spacy
+tqdm
