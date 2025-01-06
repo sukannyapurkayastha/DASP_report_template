@@ -22,15 +22,15 @@
 | [13/11/24] | [13/11/24] | [Meeting]            | [Weekly meeting]                                                             | [1]                | [Completed]   |
 | [13/11/24] | [13/11/24] | [Meeting]            | [Internal developer meeting]                                                 | [1]                | [Completed]   |
 | [13/11/24] | [13/11/24] | [Coding]             | [Project setup & unseen test dataset creation (from ICLR)]                   | [6]                | [Completed]   |
-| [16/11/24] | [30/11/24] | [Setup]              | [Setting up slurm]                                                           | [6]                | [In Progess]  |
+| [16/11/24] | [30/11/24] | [Setup]              | [Setting up slurm]                                                           | [6]                | [Completed]   |
 | [16/11/24] | [16/11/24] | [Coding]             | [Test set from Jitsupeer with splits]                                        | [1]                | [Completed]   |
 | [19/11/24] | [19/11/24] | [Meeting]            | [Weekly meeting]                                                             | [1]                | [Completed]   |
 | [19/11/24] | [20/11/24] | [Coding]             | [Refactoring of OpenReviewLoader]                                            | [9.5]              | [Completed]   |
-| [20/11/24] | [20/11/24] | [Coding]             | [Refactoring of JitsupeerLoader]                                             | [1.5]              | [Pending]     | 
+| [20/11/24] | [20/11/24] | [Coding]             | [Refactoring of JitsupeerLoader]                                             | [1.5]              | [Completed]   | 
 | [26/11/24] | [26/11/24] | [Coding]             | [Loading all reviews from a conference with OpenReviewLoader]                | [1.5]              | [Completed]   |
 | [26/11/24] | [29/11/24] | [Coding]             | [Trying to optimize spacy (takes long time for a lot of reviews)]            | [7]                | [Completed]   |
 | [27/11/24] | [27/11/24] | [Meeting]            | [Weekly meeting + internal meeting)]                                         | [3]                | [Completed]   |
-| [27/11/24] | [01/12/24] | [Coding]             | [Backend]                                                                    | [9]                | [In progress] |
+| [27/11/24] | [01/12/24] | [Coding]             | [Backend]                                                                    | [9]                | [Completed]   |
 | [29/11/24] | [07/12/24] | [Coding]             | [Frontend (login functionality and upload file (now docm with venue rating)] | [24]               | [Completed]   |
 | [04/12/24] | [04/12/24] | [Meeting]            | [Weekly meeting]                                                             | [1]                | [Completed]   |
 | [04/12/24] | [04/12/24] | [Meeting]            | [Internal meeting]                                                           | [4]                | [Completed]   |
@@ -38,7 +38,7 @@
 | [11/12/24] | [11/12/24] | [Meeting]            | [Weekly meeting]                                                             | [1]                | [Completed]   |
 | [11/12/24] | [11/12/24] | [Meeting]            | [Internal meeting]                                                           | [2]                | [Completed]   |
 | [9/12/24]  | [11/12/24] | [Meeting]            | [Midterm presentation preparation]                                           | [4]                | [Completed]   |
-| [12/12/24] | [12/12/24] | [Meeting]            | [Writing test]                                                               | [18]               | [In Progress] |
+| [12/12/24] | [06/01/25] | [Meeting]            | [Writing test]                                                               | [18]               | [In Progress] |
 
 ---
 
