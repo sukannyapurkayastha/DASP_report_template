@@ -40,6 +40,18 @@
 | [12/10/24] | [12/10/24] | [attitude themes]   | [slurm script writing]  | [2]       | [Completed]     |
 | [12/10/24] | [12/10/24] | [slides update]   | [slides update for weekly meeting]  | [0.5]       | [Completed]     |
 | [12/4/24] | [12/11/24] | [communication]   | [general internal communication with teammates]  | [2]       | [Completed]     |
+| [12/11/24] | [12/11/24] | [communication]   | [meeting with supervisor]  | [1]       | [Completed]     |
+| [12/4/24] | [12/4/24] | [communication]   | [meeting with teammates, clarify and solve problems]  | [4]       | [Completed]     |
+| [12/11/24] | [12/11/24] | [mid-term presentation]   | [listening to pres on Wed]  | [2]       | [Completed]     |
+| [12/11/24] | [12/12/24] | [mid-term presentation]   | [slides preparation]  | [1]       | [Completed]     |
+| [12/11/24] | [12/12/24] | [backend]   | [fix backend, because backend structure is changed]  | [5]       | [Completed]     |
+| [12/12/24] | [12/12/24] | [mid-term presentation]   | [prepare]  | [2]       | [Completed]     |
+| [12/13/24] | [12/13/24] | [mid-term presentation]   | [listening to pres on Fri]  | [2]       | [Completed]     |
+| [12/20/24] | [12/20/24] | [communication]   | [meeting with supervisor]  | [1]       | [Completed]     |
+| [12/4/24] | [12/20/24] | [communication]   | [general internal communication with teammates]  | [1]       | [Completed]     |
+| [12/21/24] | [1/7/24] | [communication]   | [general internal communication with teammates, answering questions and help other teammates solve slurm issues]  | [0.5]       | [Completed]     |
+| [1/6/24] | [1/6/24] | [vm usage research]   | [investigate vm usage requirements]  | [1.5]       | [Completed]     |
+| [1/7/24] | [1/7/24] | [build docker]   | [build docker for frontend and backend]  | [3]       | [Completed]     |
 ---
 
 > **Status Options**: "In Progress," "Completed," or "Pending."
