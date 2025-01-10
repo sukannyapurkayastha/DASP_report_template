@@ -20,7 +20,20 @@ async def process_data(input_data: RawInput) -> dict:
         overview = df_overview.to_dict(orient='records')
         sentences = df_sentences.to_dict(orient='records')
 
-        # Step 2: Run request classifier
+        # Run attitude classifer
+        try: 
+            response_attitude = requests.post(
+                "http://localhost:8082/classify_attitudes",
+                json={"data": sentences}
+            )
+            if response_attitude.status_code == 200:
+                attitude_data = response_attitude.json()
+            else:
+                logger.error(f"Model Attitude Classifier API Error: {response_attitude.text}")
+        except Exception as e:
+            logger.error(f"Error communicating with Model Attitude Classifier: {e}")
+            
+        # Run request classifier
         try:
             response_request = requests.post(
                 "http://localhost:8081/classify_request",
@@ -36,24 +49,12 @@ async def process_data(input_data: RawInput) -> dict:
         except Exception as e:
             logger.error(f"Error communicating with Model Request Classifier: {e}")
         
-        """
-        try: 
-            response_attitude = requests.post(
-                "http://localhost:8082/classify_request",
-                json={"data": sentences}
-            )
-            if response_attitude.status_code ==200:
-                attitude_data = response_attitude.json()
-            else:
-                logger.error(f"Model Attitude Classifier API Error: {response_attitude.text}")
-        except Exception as e:
-            logger.error(f"Error communicating with Model Attitude Classifier: {e}")
-        """
+        
 
         return {
             "overview": overview,
             "request_response": request_data,
-            "attitude_response": request_data # as soon as the attitude roots are called correctly replace with "attitude_response": attitude_data
+            "attitude_response": attitude_data
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error processing data: {str(e)}")

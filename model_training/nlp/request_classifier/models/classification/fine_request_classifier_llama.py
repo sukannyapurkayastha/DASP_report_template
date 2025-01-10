@@ -267,5 +267,6 @@ if __name__ == "__main__":
         save_model_and_tokenizer(model, tokenizer, save_directory)
 
     model.eval()
-    model.to("cuda" if torch.cuda.is_available() else "cpu")
+    # model.to("cuda" if torch.cuda.is_available() else "cpu")
+    model.to("cpu")
     tokenizer.pad_token_id = tokenizer.eos_token_id

@@ -1,5 +1,6 @@
 import streamlit as st
 
+
 # Define the Slideshow class
 class StreamlitSlideshow:
     def __init__(self, containers, slide_titles):

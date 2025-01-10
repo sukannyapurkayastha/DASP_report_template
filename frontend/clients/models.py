@@ -28,7 +28,6 @@ class Review:
 @dataclass
 class Paper:
     title: str
-    # authors: list[str]
     keywords: list[str]
     abstract: str
     primary_area: str
