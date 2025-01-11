@@ -1,7 +1,5 @@
 import openreview
-import pandas as pd
 from loguru import logger
-from typing import Literal
 
 from frontend.clients.models import Paper, Review
 

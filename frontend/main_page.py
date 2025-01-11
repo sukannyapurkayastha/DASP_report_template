@@ -5,15 +5,16 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import plotly.graph_objects as go
 import pickle
-import modules.overview 
+import modules.overview
 import modules.attitude_roots
 import modules.request_information
 import modules.summary
 import modules.contact_info
 import modules.slideshow as ss
-from modules.shared_methods import use_default_container 
+from modules.shared_methods import use_default_container
 import requests
 import sys
+
 # Fügen Sie den übergeordneten Pfad hinzu
 current_dir = os.path.dirname(os.path.abspath(__file__))
 parent_dir = os.path.abspath(os.path.join(current_dir, '..'))
@@ -24,9 +25,9 @@ if parent_dir not in sys.path:
 
 # from backend.model_backend import classify_paper
 
-#%% global variables
-    
-#custom CSS for main_page
+# %% global variables
+
+# custom CSS for main_page
 main_page_css = """
     <style>
     h1, h2, h3, p, div, span {
@@ -121,8 +122,9 @@ main_page_css = """
     }
     </style>
     """
-     
-#%%% Set the page configuration
+
+
+# %%% Set the page configuration
 def get_classification_with_api():
     try:
         # Überprüfen, ob die benötigten Variablen existieren
@@ -161,11 +163,12 @@ def get_classification_with_api():
         st.error(f"An error occurred: {e}")
         return pd.DataFrame()  # Rückgabe eines leeren DataFrame
 
+
 def main_page(custom_css):
     base_path = os.getcwd()
     # Apply custom CSS Styles
     st.markdown(main_page_css, unsafe_allow_html=True)
-    
+
     if "main_page_variables" not in st.session_state:
         # Fetch data and store it in session state
         overview, request_information, attitude_roots = get_classification_with_api()
@@ -193,17 +196,16 @@ def main_page(custom_css):
         with open(os.path.join(base_path, 'dummy_data', 'dummy_requests.pkl'), 'rb') as file:
             request_information = pickle.load(file)
 
-    summary = pd.read_csv(os.path.join(base_path,"dummy_data", "dummy_summary.csv"), sep=";", encoding="utf-8")
-    
-    
+    summary = pd.read_csv(os.path.join(base_path, "dummy_data", "dummy_summary.csv"), sep=";", encoding="utf-8")
+
     use_default_container(modules.overview.show_overview, overview)
     attitude_root_container = lambda: modules.attitude_roots.show_attitude_roots_data(attitude_roots)
-    request_information_container = lambda: modules.request_information.show_request_information_data(request_information)
+    request_information_container = lambda: modules.request_information.show_request_information_data(
+        request_information)
     summary_container = lambda: modules.summary.show_summary_data(summary)
-    
-    slideshow = ss.StreamlitSlideshow([attitude_root_container, request_information_container, summary_container], ["Attitude Roots", "Request Information", "Summary"])
+
+    slideshow = ss.StreamlitSlideshow([attitude_root_container, request_information_container, summary_container],
+                                      ["Attitude Roots", "Request Information", "Summary"])
     use_default_container(slideshow.show)
-        
-        
-            
+
     use_default_container(modules.contact_info.show_contact_info)

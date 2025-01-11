@@ -1,6 +1,4 @@
 import streamlit as st
-import pandas as pd
-from modules.shared_methods import select_color_attitude_or_request, draw_progress_bar
 from modules.shared_methods import select_color_attitude_or_request, draw_progress_bar, show_comments
 
 

@@ -10,28 +10,29 @@ def mock_reviews():
     return [
         Review(
             reviewer="Reviewer 1",
-            summary="This is a summary.\nIt has two lines.",
-            strengths="Strong points:\n* Clarity\n* Relevance",
-            weaknesses="Weak points:\n* Formatting\n* Length",
-            questions="Could you clarify?\nWhat is the main contribution?",
+            summary="This work proposes LSTNet, a self-supervised method to establish reliable 3D dense correspondences irrespective of the input point clouds’ rotational orientation.\n\nSpecifically, LSTNet learns to formulate SO(3)-invariant local shape transform for each point in a dynamic, input-dependent manner. Each point-wise local shape transform can map the SO(3)-equivariant global shape descriptor of the input shape to a local shape descriptor, which is passed to the decoder to reconstruct the shape and pose of the input point cloud. \n\nThe proposed self-supervised training pipeline encourages semantically corresponding points from different shape instances to be mapped to similar local shape descriptors, enabling LSTNet to establish dense point-wise correspondences via nearest point pairs between cross-reconstructed point clouds.",
+            strengths="The self- and cross-reconstruction training strategy is simple yet effective. \n\nLSTNet demonstrates state-of-the-art performance on 3D semantic matching when evaluated on the KeypointNet dataset and part segmentation label transfer when evaluated on the ShapeNet dataset..",
+            weaknesses="The performance of aligned shape pairs under the setting of I/I shows that other methods, such as CPAE, are much better than LSTNet.",
+            questions="The reason why other methods are much better than LSTNet under the setting of I/I should be clarified.\n\nLack of limitations.?",
+            rating="6 marginally above the acceptance threshold",
+            soundness="3 good",
+            presentation="2 fair",
+            contribution="3 good",
+            confidence="2: You are willing to defend your assessment, but it is quite likely that you did not understand the central parts of the submission or that you are unfamiliar with some pieces of related work. Math/other details were not carefully checked."
+        ),
+        Review(
+            reviewer="Reviewer 2",
+            summary="1) This paper proposes a self-supervised method to find semantically corresponding points for a point cloud pair;\n\n2）The main idea is to decouple a point cloud feature learning process into a SO(3)-equivariant global shape descriptor and dynamic SO(3)-invariant point-wise local shape transforms;\n\n3) Experiments on the KeypointNet dataset show the effectiveness of the proposed method.",
+            strengths="1) This paper is generally well-written;\n\n2) The idea of factorizing point cloud descriptors into SO(3)-equivariant global shape descriptor and dynamic SO(3)-invariant\npoint-wise local shape transforms seems to be novel;\n\n3) Experimental results are good.",
+            weaknesses="1) The main weakness of this paper could be all experiments are performed on synthetic datasets, with simple point cloud. It's good for authors' to show some examples/experiments on real-world datasets. For example, the 3Dmatch dataset. \n\n2) Since the proposed method can estimate dense correspondences, I wonder whether the proposed method can be used to estimate the relative rotation/translation for a point cloud pair. For example, the estimated dense correspondences can be fed to an ICP method to estimate the relative rotation/translation. \n\n3) The running time and GPU memory cost is blurry for me;\n\n4) Please compare the proposed method with more recent papers, e.g., [SC3K: Self-supervised and Coherent 3D Keypoints Estimation\nfrom Rotated, Noisy, and Decimated Point Cloud Data].",
+            questions="Please refer to the weaknesses.",
             rating="5: marginally below the acceptance threshold",
             soundness="3 good",
             presentation="3 good",
             contribution="2 fair",
             confidence="4: You are confident in your assessment, but not absolutely certain. It is unlikely, but not impossible, that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work."
         ),
-        Review(
-            reviewer="Reviewer 2",
-            summary="Another summary.\nWith multiple lines.",
-            strengths="Strength:\n* Methodology\n* Results",
-            weaknesses="Weakness:\n* Limited examples",
-            questions="Any future directions?\nWhat about scalability?",
-            rating="6: marginally above the acceptance threshold",
-            soundness="2 fair",
-            presentation="2 fair",
-            contribution="2 fair",
-            confidence="2: You are willing to defend your assessment, but it is quite likely that you did not understand the central parts of the submission or that you are unfamiliar with some pieces of related work. Math/other details were not carefully checked."
-        )
+
     ]
 
 
