@@ -1,5 +1,6 @@
-<p  align="center">
-  <img src='logo.png' width='200'>
+<p align="center">
+  <img src="logo.png" width="200" alt="Logo 1" style="margin-right: 20px;">
+  <img src="logo_header.png" width="200" alt="Logo 2">
 </p>
 
 # **Review Overview Generation**
