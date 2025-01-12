@@ -142,7 +142,7 @@ The model training folder includes the scripts and data which which the models w
   - `review_to_theme`: includes scripts for mapping review sentences to themes
 ---
 
-## **5 `Contact`**
+## **5 Contact**
 
 If you have any questions or suggestions regarding this project, feel free to reach out:
 
@@ -152,6 +152,6 @@ If you have any questions or suggestions regarding this project, feel free to re
 
 Thank you for your interest in this project!
 
-## **6 `Contributions`**
+## **6 Contributions**
 
 in this project participated ... and our supervisor ....
