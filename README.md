@@ -47,7 +47,7 @@ This guide helps you set up and run the project, which consists of three main pa
 
       streamlit app.py
 
-Architecture and Design Notes
+
 ## **3. Architecture and Design Notes**
 #### **3.1 Architecture**
 

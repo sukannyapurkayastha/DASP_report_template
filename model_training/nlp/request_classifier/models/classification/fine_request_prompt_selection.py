@@ -1,15 +1,14 @@
 import torch
 from transformers import T5Tokenizer, T5ForConditionalGeneration
-from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, confusion_matrix, ConfusionMatrixDisplay
+from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score
 import pandas as pd
 from tqdm import tqdm
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 import matplotlib.pyplot as plt
-import os
-import sys
 
-# --------------------------------------------------------------------------------
-# Define multiple sets of few-shot examples (Version 1 and Version 2 as an example)
-# --------------------------------------------------------------------------------
+# -----------------------------
+# BEISPIEL: Verschiedene Few-Shot-Versionen
+# -----------------------------
 few_shot_examples_v1 = {
     "Request for Improvement": [
         "Most of my comments are improvements which can be easily included.",
@@ -37,7 +36,7 @@ few_shot_examples_v1 = {
         "- Page 2: 'network's type to be class' should be 'to be a class'.",
         "- The end of the 2nd line of Lemma 1: P, G should be \\( \\mathbb{P}, \\mathbb{G} \\).",
         "- The 3rd line of Lemma 1: epsilon1 should be epsilon\\_1.",
-        "- Page 14, Eq(14), \\( \\lambda \\) should be s.",
+        "- Page 14, Eq(14), \( \\lambda \) should be s.",
     ],
     "Request for Clarification": [
         "Can you clarify how you view the relationship between the approaches mentioned above?",
@@ -55,9 +54,9 @@ few_shot_examples_v1 = {
     ],
 }
 
-# Example of a second version (you can modify it however you like)
+
 few_shot_examples_v2 = {
-     "Request for Improvement": [
+    "Request for Improvement": [
         "I believe that the presentation of the proposed method can be significantly improved.",
         "Most of my comments are improvements which can be easily included.",
         "I would replace these values with N/A or something similar.",
@@ -101,9 +100,8 @@ few_shot_examples_v2 = {
     ],
 }
 
-
 few_shot_examples_v3 = {
-     "Request for Improvement": [
+    "Request for Improvement": [
         "I suggest reorganizing the second section to highlight the main contributions more clearly.",
         "Could you refine the notation in your proof so that it’s easier to follow?",
         "It might help to restructure the experiment section into distinct subsections for clarity and flow.",
@@ -146,18 +144,16 @@ few_shot_examples_v3 = {
         "Could you provide a clearer breakdown of precision and recall scores for each sub-category?",
     ],
 }
+# Du kannst weitere Versionen hier anlegen, z. B. few_shot_examples_v2, few_shot_examples_v3, usw.
+# Für das Beispiel bleibt es bei einer Version. Du kannst sie selbst erweitern.
+
+# Diese Variable wählst du später aus, um die "Version" der Few-Shot-Beispiele zu bestimmen.
 
 
-# Put them in a dictionary for easy switching
-few_shot_examples_dict = {
-    "v1": few_shot_examples_v1,
-    "v2": few_shot_examples_v2,
-    "v3": few_shot_examples_v3
-}
 
-# --------------------------------
-# Original label maps (unchanged)
-# --------------------------------
+# -----------------------------
+# Label- und Kategorie-Mappings
+# -----------------------------
 label_map = {
     "Request for Improvement": 0,
     "Request for Explanation": 1,
@@ -165,7 +161,6 @@ label_map = {
     "Request for Typo Fix": 3,
     "Request for Clarification": 4,
     "Request for Result": 5,
-    "Request unclear": -1,
 }
 
 fine_to_category_map = {
@@ -180,14 +175,8 @@ fine_to_category_map = {
 
 def create_few_shot_prompt(query, few_shot_examples):
     """
-    Creates a few-shot learning prompt for the T5 model.
-
-    Parameters:
-    query (str): The input sentence to classify.
-    few_shot_examples (dict): Dictionary containing few-shot examples for each category.
-
-    Returns:
-    str: The generated few-shot learning prompt.
+    Erzeugt den Prompt auf Basis der übergebenen few_shot_examples 
+    (die bei Bedarf aus v1, v2, v3 ... stammen können).
     """
     prompt = (
         "As an assistant, analyze the sentence and determine its category based on the reasoning.\n"
@@ -201,65 +190,49 @@ def create_few_shot_prompt(query, few_shot_examples):
         "Request for Result\n\n"
     )
 
-    # Add examples to the prompt
+    # Beispielhafter Aufbau: Nimm aus jeder Kategorie den ersten Satz und ergänze ihn um "Reasoning: ..."
     for label, sentences in few_shot_examples.items():
         number = label_map[label] + 1
         reasoning = "Reasoning: " + " ".join(sentences[0].split()[:10]) + "..."
         prompt += f"Sentence: \"{sentences[0]}\"\n{reasoning}\nCategory Number: {number}\n\n"
 
-    # Add the query sentence
+    # Nun folgt die eigentliche Anfrage
     prompt += f"Sentence: \"{query}\"\nReasoning:"
     return prompt
 
 
 def map_prediction_to_label(pred, label_map):
     """
-    Maps model prediction to a corresponding label in the label map.
-
-    Parameters:
-    pred (str): The prediction text generated by the model.
-    label_map (dict): Dictionary mapping categories to their label indices.
-
-    Returns:
-    int: Mapped label index or -1 if not found.
+    Versucht den generierten Text (pred) mit einem Eintrag im label_map zu matchen.
     """
     pred = pred.strip().lower()
     pred = pred.strip('."\'<>/ ').lower()
 
-    # Exact match with label
+    # Direkter Vergleich mit Labelnamen
     for label in label_map:
         if pred == label.lower():
             return label_map[label]
 
-    # Partial match
+    # Falls der generierte Text das Label als Substring enthält
     for label in label_map:
         if label.lower() in pred:
             return label_map[label]
 
-    # Match with numeric category
+    # Falls der generierte Text nur die Nummer enthält
     for idx, label in enumerate(label_map.keys(), 1):
         if pred == str(idx) or pred == f"{idx}.":
             return label_map[label]
 
-    return -1  # Default for unmatched predictions
+    # Falls keines gepasst hat, gib -1 zurück
+    return -1  
 
 
 def generate_predictions_from_dataset(dataset, few_shot_examples, tokenizer, model, max_new_tokens=50):
     """
-    Generates predictions for each sentence in the dataset using few-shot prompts.
-
-    Parameters:
-    dataset (Dataset): Dataset containing sentences to classify.
-    few_shot_examples (dict): Dictionary of few-shot examples.
-    tokenizer (T5Tokenizer): Tokenizer for the T5 model.
-    model (T5ForConditionalGeneration): Pretrained T5 model.
-    max_new_tokens (int): Maximum tokens to generate for each prediction.
-
-    Returns:
-    list: List of generated predictions.
+    Erzeugt die Modellvorhersagen auf Basis der in few_shot_examples hinterlegten Beispiele.
     """
     predictions = []
-    for query in tqdm(dataset["sentence"], desc="Generating predictions"):
+    for query in tqdm(dataset["text"], desc="Generating predictions"):
         few_shot_prompt = create_few_shot_prompt(query, few_shot_examples)
         inputs = tokenizer(
             few_shot_prompt,
@@ -287,59 +260,6 @@ def generate_predictions_from_dataset(dataset, few_shot_examples, tokenizer, mod
     return predictions
 
 
-def evaluate_model(dataset, predictions, label_map):
-    """
-    Evaluates the model's predictions against true labels and displays results.
-
-    Parameters:
-    dataset (Dataset): Dataset containing true labels.
-    predictions (list): List of predicted labels.
-    label_map (dict): Mapping of categories to label indices.
-
-    Returns:
-    None
-    """
-    true_labels = dataset['fine_review_action'].map(lambda x: label_map[fine_to_category_map[x]]).tolist()
-    predicted_labels = [map_prediction_to_label(pred, label_map) for pred in predictions]
-
-    # Calculate metrics
-    accuracy = accuracy_score(true_labels, predicted_labels)
-    f1 = f1_score(true_labels, predicted_labels, average="weighted", zero_division=0)
-    precision = precision_score(true_labels, predicted_labels, average="weighted", zero_division=0)
-    recall = recall_score(true_labels, predicted_labels, average="weighted", zero_division=0)
-
-    print("\n--- Evaluation Results ---")
-    print(f"Accuracy: {accuracy:.4f}")
-    print(f"F1 Score: {f1:.4f}")
-    print(f"Precision: {precision:.4f}")
-    print(f"Recall: {recall:.4f}")
-
-    # Display confusion matrix
-    cm = confusion_matrix(true_labels, predicted_labels, labels=list(label_map.values()))
-    display_labels = list(label_map.keys())
-    disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=display_labels)
-    disp.plot(xticks_rotation='vertical', cmap='Blues')
-    plt.title('Confusion Matrix')
-    plt.show()
-
-
-def save_model_and_tokenizer(model, tokenizer, save_directory):
-    """
-    Saves the model and tokenizer to the specified directory.
-
-    Parameters:
-    model (T5ForConditionalGeneration): Trained T5 model.
-    tokenizer (T5Tokenizer): Tokenizer for the T5 model.
-    save_directory (str): Directory to save the model and tokenizer.
-
-    Returns:
-    None
-    """
-    print(f"Saving model and tokenizer in {save_directory}...")
-    model.save_pretrained(save_directory)
-    tokenizer.save_pretrained(save_directory)
-    print("Model and tokenizer saved.")
-
 
 def load_model_and_tokenizer(save_directory):
     """
@@ -358,23 +278,36 @@ def load_model_and_tokenizer(save_directory):
     return model, tokenizer
 
 
+def evaluate_model(dataset, predictions, label_map):
+    """
+    Berechnet Accuracy, F1, Precision, Recall und zeigt die Confusion Matrix.
+    """
+    true_labels = dataset['fine_review_action'].map(lambda x: label_map[fine_to_category_map[x]]).tolist()
+    predicted_labels = [map_prediction_to_label(pred, label_map) for pred in predictions]
+    
+    # Calculate metrics
+    accuracy = accuracy_score(true_labels, predicted_labels)
+    f1 = f1_score(true_labels, predicted_labels, average="weighted", zero_division=0)
+    precision = precision_score(true_labels, predicted_labels, average="weighted", zero_division=0)
+    recall = recall_score(true_labels, predicted_labels, average="weighted", zero_division=0)
+    
+    # Confusion Matrix
+    cm = confusion_matrix(true_labels, predicted_labels, labels=list(label_map.values()))
+
+    return accuracy, f1, precision, recall, cm
+    
+
+
 if __name__ == "__main__":
-    # -------------------------------------------------------------------------
-    # Allow user to select a version of the few-shot examples (v1 or v2, etc.)
-    # Usage: python script_name.py v2
-    # If no argument is provided, default to "v1".
-    # -------------------------------------------------------------------------
-    if len(sys.argv) > 1:
-        version = sys.argv[1]
-    else:
-        version = "v1"
 
-    if version not in few_shot_examples_dict:
-        print(f"[Warning] Version '{version}' not recognized. Falling back to 'v1'.")
-        version = "v1"
-
-    chosen_few_shot_examples = few_shot_examples_dict[version]
-    print(f"Using few-shot examples: {version}")
+    # -------------------------------------------------------------------------
+    # Few-shot example versions
+    # -------------------------------------------------------------------------
+    few_shot_examples_dict = {
+        "v1": few_shot_examples_v1,
+        "v2": few_shot_examples_v2,
+        "v3": few_shot_examples_v3,
+    }
 
     model_name = "google/flan-t5-xl"
     script_directory = os.path.dirname(os.path.abspath(__file__))
@@ -387,10 +320,46 @@ if __name__ == "__main__":
         print(f"Downloading model {model_name}...")
         tokenizer = T5Tokenizer.from_pretrained(model_name, legacy=False)
         model = T5ForConditionalGeneration.from_pretrained(model_name)
-        save_model_and_tokenizer(model, tokenizer, save_directory)
+        #save_model_and_tokenizer(model, tokenizer, save_directory)
 
     model.eval()
     model.to("cuda" if torch.cuda.is_available() else "cpu")
     tokenizer.pad_token_id = tokenizer.eos_token_id
+    # -----------------------------
+    # 1) Modell und Tokenizer laden
+    # -----------------------------
+    model_name = "google/flan-t5-xl"
+    tokenizer = T5Tokenizer.from_pretrained(model_name, legacy=False)
+    model = T5ForConditionalGeneration.from_pretrained(model_name)
+    model.eval()
+    model.to("cuda" if torch.cuda.is_available() else "cpu")
+    tokenizer.pad_token_id = tokenizer.eos_token_id
 
-
+    # --------------------------------------
+    # 2) Testdaten laden (Pfad ggf. anpassen)
+    # --------------------------------------
+    test_file = "backend/nlp/request_classifier/DISAPERE/final_dataset/fine_request/dev.csv"
+    test_data = pd.read_csv(test_file)
+    output_file = "evaluation_metrics.txt"
+    # -------------------------------------
+    # 3) Vorhersagen generieren (Few-Shot)
+    # -------------------------------------
+    print("\n--- Generating Predictions for Test Dataset ---")
+    # Hier kannst du auswählen, welche Few-Shot-Version genutzt werden soll:
+    for version, few_shot_examples in few_shot_examples_dict.items():
+        predictions = generate_predictions_from_dataset(test_data, few_shot_examples, tokenizer, model)
+        metrics = evaluate_model(test_data, predictions, label_map)
+       
+        with open(output_file, "a", encoding="utf-8") as f:  # Use "a" to append instead of overwriting
+            f.write(f"Results for version: {version}\n")
+            f.write(f"Accuracy: {metrics['accuracy']:.4f}\n")
+            f.write(f"F1 Score: {metrics['f1_score']:.4f}\n")
+            f.write(f"Precision: {metrics['precision']:.4f}\n")
+            f.write(f"Recall: {metrics['recall']:.4f}\n")
+            f.write("Confusion Matrix:\n")
+            for row in metrics['confusion_matrix']:
+                f.write("\t".join(map(str, row)) + "\n")
+            f.write("\n\n")
+        
+    
+    
