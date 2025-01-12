@@ -27,21 +27,21 @@ This guide helps you set up and run the project, which consists of three main pa
 - **conda**  for managing Python environments.
 
 ---
-1. **Clone the Repository** :
-   git clone https://github.com/sukannyapurkayastha/DASP_report_template.git
-   cd your-project
+1. **Clone the Repository** 
+    git clone https://github.com/sukannyapurkayastha/DASP_report_template.git
+    cd your-project
 
 2. **Set Up the Model Environment**:
-  conda env create -f model_env.yaml
-  conda activate your-model-env
-  conda env create -f backend_env.yaml
-  conda activate your-backend-env
-  conda env create -f frontend_env.yaml
-  conda activate your-frontend-env
+    conda env create -f model_env.yaml
+    conda activate your-model-env
+    conda env create -f backend_env.yaml
+    conda activate your-backend-env
+    conda env create -f frontend_env.yaml
+    conda activate your-frontend-env
 
 3. **Start the application**
-  Run the application with:
-  streamlit app.py
+Run the application with:
+    streamlit app.py
 
 Architecture and Design Notes
 ##### **3. Architecture and Design Notes**
@@ -61,19 +61,19 @@ Once the Frontend submits data (whether uploaded files or URLs), the Backend sta
 As part of our framework, there is the model training. Initially we trained the models used in the Backend to perform the neccesary classification tasks. This training process results in Model Artifacts, such as updated model parameters, which the Backend uses during its prediction steps. If necessary, the existing model and code files can be used to update and improve existing models with new data or better models.
 
 ##### **3.2.3 Communication Flow**
-    Frontend → Backend
+Frontend → Backend
 
-    The Frontend issues secure API calls to the Backend when users log in, provide URLs, or upload filled templates.
-    The Backend processes these incoming requests—formatting and segmenting the data—and routes them to the appropriate prediction modules.
+The Frontend issues secure API calls to the Backend when users log in, provide URLs, or upload filled templates.
+The Backend processes these incoming requests—formatting and segmenting the data—and routes them to the appropriate prediction modules.
 
-  Backend → Frontend
+Backend → Frontend
 
-    Once the predictions are complete, the Backend responds via API calls back to the Frontend, delivering classified sentences, sentiment results, or other structured outputs.
-    The Frontend then displays these results to the user in a clear, readable format.
-    
-  Model Training and Backend:
+Once the predictions are complete, the Backend responds via API calls back to the Frontend, delivering classified sentences, sentiment results, or other structured outputs.
+The Frontend then displays these results to the user in a clear, readable format.
 
-    The models trained in the Backend are stored in the designated containers with are activated when the Backend is called.
+Model Training and Backend:
+
+The models trained in the Backend are stored in the designated containers with are activated when the Backend is called.
 
 
 ##### **4. Detailed description of the files**
