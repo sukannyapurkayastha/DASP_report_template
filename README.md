@@ -28,20 +28,22 @@ This guide helps you set up and run the project, which consists of three main pa
 
 ---
 1. **Clone the Repository** 
-    git clone https://github.com/sukannyapurkayastha/DASP_report_template.git
-    cd your-project
 
-2. **Set Up the Model Environment**:
-    conda env create -f model_env.yaml
-    conda activate your-model-env
-    conda env create -f backend_env.yaml
-    conda activate your-backend-env
-    conda env create -f frontend_env.yaml
-    conda activate your-frontend-env
+      git clone https://github.com/sukannyapurkayastha/DASP_report_template.git
+      cd your-project
+
+2. **Set Up the Model Environment**
+
+      conda env create -f model_env.yaml
+      conda activate your-model-env
+      conda env create -f backend_env.yaml
+      conda activate your-backend-env
+      conda env create -f frontend_env.yaml
+      conda activate your-frontend-env
 
 3. **Start the application**
-Run the application with:
-    streamlit app.py
+
+      streamlit app.py
 
 Architecture and Design Notes
 ##### **3. Architecture and Design Notes**
