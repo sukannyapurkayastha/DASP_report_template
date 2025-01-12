@@ -11,28 +11,30 @@ At **Paper Review Aggregator**, our mission is to simplify the work of meta-revi
 This application was developed as part of the **"Data Analysis Software Project"** course at **Technische Universität Darmstadt, Germany**. The project allowed Master’s students to apply their data analysis, software engineering, and machine learning skills to solve real-world problems.
 
 ---
-### **2. Installation and Setup Instructions**
+## **2. Installation and Setup Instructions**
 
 This guide helps you set up and run the project, which consists of three main parts:
 - **Model Training (NLP models environment)**
-- **Backend (APIs connecting frontend and models )**
+- **Backend (APIs connecting frontend and models)**
 - **Frontend (UI environment via streamlit)**
 
 ---
 
-**Prerequisites**
+#### **Prerequisites**
 
 - **Git** for cloning the repository.
 - **Python 3.12.7+** installed on your system.
 - **conda**  for managing Python environments.
 
 ---
-1. **Clone the Repository** 
+#### **1. Clone the Repository** 
 
       git clone https://github.com/sukannyapurkayastha/DASP_report_template.git
       cd your-project
 
-2. **Set Up the Model Environment**
+**2. Set Up the Model Environment**
+
+      pip install requirements.txt
 
       conda env create -f model_env.yaml
       conda activate your-model-env
@@ -41,17 +43,17 @@ This guide helps you set up and run the project, which consists of three main pa
       conda env create -f frontend_env.yaml
       conda activate your-frontend-env
 
-3. **Start the application**
+**3. Start the application**
 
       streamlit app.py
 
 Architecture and Design Notes
-##### **3. Architecture and Design Notes**
-##### **3.1 Architecture**
+## **3. Architecture and Design Notes**
+#### **3.1 Architecture**
 
 ![alt text](image.png)
 
-##### **3.2 Design Notes**
+#### **3.2 Design Notes**
 
 ##### **3.2.1 Frontend**
 The Frontend is the user interface of the system where individuals log in, provide a URL to OpenReview, and optionally download and then upload the filled out templates. The Frontend handles interactions, collects the user’s input (including files and URLs), and displays the resulting classification output once the Backend has processed everything.
@@ -78,9 +80,9 @@ Model Training and Backend:
 The models trained in the Backend are stored in the designated containers with are activated when the Backend is called.
 
 
-##### **4. Detailed description of the files**
+## **4. Detailed description of the files**
 
-##### **4.1 `backend`**
+#### **4.1 `backend`**
 
 The backend is responsible for data collection from OpenReview, preprocessing the data, and managing the workflow between the models and the frontend. It sends preprocessed data to the models for processing, retrieves the results, and communicates the processed data to the frontend for further use.
 
@@ -99,7 +101,7 @@ The backend is responsible for data collection from OpenReview, preprocessing th
 
 ---
 
-##### **4.2 `frontend`**
+#### **4.2 `frontend`**
 
 Thies front end of this application is the user-facing interface built with Streamlit and related UI components. It is responsible for displaying the overview over the given reviews, receive the data in form of URL or file, and providing an interactive experience within the application. It is connected via API calls to the backend and includes several features of displaying the data for the user.
 
@@ -127,20 +129,20 @@ Thies front end of this application is the user-facing interface built with Stre
 
 ---
 
-##### **4.3 `model_training`**
+#### **4.3 `model_training`**
 
 The model training folder includes the scripts and data which which the models where trained.
 
 - **Subdirectories**:
   - `attitude_classifier`: includes the scripts for fine tuning the a model for multi class classification for attitude roots
-  - `e2e_review_to_desc`:  includes the scripts and the data for fine tuning the a model for multi class classification for#
+  - `e2e_review_to_desc`:  includes the scripts and the data for fine tuning the a model for multi class classification for
                            attitude themes and matches them to a description 
   - `request_classifier`: includes the data (DISAPERE) and the scripts for binary classication for Review_Action Request vs. All 
                           and a multi class classification for the fine review actions 
   - `review_to_theme`: includes scripts for mapping review sentences to themes
 ---
 
-###### **5 `Contact`**
+## **5 `Contact`**
 
 If you have any questions or suggestions regarding this project, feel free to reach out:
 
@@ -150,6 +152,6 @@ If you have any questions or suggestions regarding this project, feel free to re
 
 Thank you for your interest in this project!
 
-####### **6 `Contributions`**
+## **6 `Contributions`**
 
 in this project participated ... and our supervisor ....
