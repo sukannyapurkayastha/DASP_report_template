@@ -48,6 +48,9 @@
 | [11.12.2024]  | [11.12.2024]  | [Teammeeting]            | [Teammeeting with Sukannya]            | [1]           | [Completed] |
 | [11.12.2024]  | [11.12.2024]  | [Internal Teammeeting]            | [Teammeeting]            | [2]           | [Completed] |
 | [12.12.2024]  | [12.12.2024]  | [Preparing & practicing midtermpresentation ]            | [Teammeeting]            | [10]           | [Completed] |
+| [03.01.2025]  | [03.01.2025]  | [Teammeeting]            | [Shared Model evaluation, Deployment, Poster]            | [1]           | [Completed] |
+| [12.12.2024]  | [10.01.2025]  | [Rerun Models]            | [Reading paper to choose additional models, reconfigure fine-tuning, rerun all models]            | [15]           | [Completed] |
+| [10.12.2024]  | [15.01.2025]  | [Started Poster]            | [Started with the design für the final poster]            | [8]           | [In Progress] |
 ---
 
 > **Status Options**: "In Progress," "Completed," or "Pending."

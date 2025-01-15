@@ -10,6 +10,42 @@
 
 ## Reports
 
+### Week [7]
+
+- **Update 1**: Bugfixing
+- **Update 2**: Poster Presentation
+- **Update 3**: Tests
+- **Update 4**: Documentation
+- **Challenges**: 
+- **Next Steps**: Deployment
+
+
+### Week [6]
+
+- **Update 1**: Bugfixing
+- **Update 2**: Rerun Models for final report
+- **Update 3**: 
+- **Challenges**: 
+- **Next Steps**: Deployment
+
+
+### Week [7]
+
+- **Update 1**: Midterm presentation
+- **Update 2**: Winter-break
+- **Update 3**: 
+- **Challenges**: Different environments needed due to dependencies 
+- **Next Steps**: Summary Model, Deployment
+
+### Week [6]
+
+- **Update 1**: Home Page Content adjusted
+- **Update 2**: Trying pretrained models for attitude classification
+- **Update 3**: Preparing Midterm presentation
+- **Challenges**: Different environments needed due to dependencies 
+- **Next Steps**: Merge "API" branch into main branch and connect models. 
+
+
 ### Week [5]
 
 - **Update 1**: Backend: Integrated lookup for desc for each attitude root + theme
