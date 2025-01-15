@@ -89,7 +89,10 @@ class TextProcessor:
             for review in reviews:
                 reviewer = review.reviewer
                 tmp = getattr(review, key, "")
-                score = float(tmp.split(" ")[0].replace(":", ""))
+                if isinstance(tmp, str):
+                    score = float(tmp.split(" ")[0].replace(":", ""))
+                else:
+                    score = float(tmp)
                 total += score
                 list = [reviewer, score]
                 score_list.append(list)
@@ -107,6 +110,7 @@ class TextProcessor:
         preprocessed_reviews = self._preprocess_text(self.reviews)
         logger.info("Segmenting content")
         reviews, df_sentences = self._segment_content(preprocessed_reviews)
+        logger.info("Got reviews and df_sentences. Creating overview.")
         df_overview = self._get_overview(preprocessed_reviews)
 
         logger.success(f"Processing reviews done")
