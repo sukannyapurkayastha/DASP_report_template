@@ -1,1 +1,0 @@
-The introduction contains a few statements that may paint an incomplete or confusing picture of the current literature in adversarial attacks on neural networks:

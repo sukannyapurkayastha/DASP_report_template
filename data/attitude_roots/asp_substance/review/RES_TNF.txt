@@ -1,2 +1,0 @@
-ii) In table 2, I don’t really see any promising results compared to baselines. There are
-One thing that puts me off is that, in Table 2, AnyBurl (the single one baseline authors considered other than the original NeuralLP) yields better Hits@10 values than Neural-LP-N, but the corresponding bold in the results is conveniently omitted.

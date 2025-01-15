@@ -1,26 +1,22 @@
 import json
-import logging
-from io import StringIO
+
 import openreview
-import requests
-from requests.exceptions import ConnectionError, RequestException
+from requests.exceptions import ConnectionError
 import streamlit as st
 
 from modules.shared_methods import use_default_container
 import modules.contact_info
 from pathlib import Path
 from urllib.parse import urlparse, parse_qs
-import pandas as pd
 
 # Import from backend because we are importing from another module from root and have to go up a directory level
 import sys
 import os
 import requests
 
-
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from backend.dataloading.loaders import OpenReviewLoader, UploadedFileProcessor
+from frontend.clients import OpenReviewClient, UploadedFileProcessor
 
 
 # %% Backend Logic
@@ -29,7 +25,6 @@ from backend.dataloading.loaders import OpenReviewLoader, UploadedFileProcessor
 def switch_to_main_page(skip_validation=False):
     if skip_validation:
         # Directly switch to the main page without validation
-        # TODO: should we redirect it to main_page?
         url_or_file = get_input()
         # apply_backend_logic(url_or_file)
         st.session_state.page = "Meta Reviewer Dashboard"
@@ -48,9 +43,8 @@ def valid_url_or_file(url_or_file):
 
 
 def get_input():
-    uploaded_file = st.session_state.get("uploaded_file")
-    entered_url = st.session_state.get("entered_url")
-    return uploaded_file if uploaded_file else entered_url
+    reviews = st.session_state.get("reviews")
+    return reviews
 
 
 def extract_paper_id(url):
@@ -78,7 +72,7 @@ def landing_page(custom_css):
         base_path = Path(__file__).parent
 
         # Path to your .docx file
-        file_path = Path(base_path / "data/review_template.docx")
+        file_path = Path(base_path / "data/review_template.docm")
 
         # Load the .docx file into memory
         with open(file_path, "rb") as file:
@@ -88,9 +82,9 @@ def landing_page(custom_css):
         col1, col2 = st.columns([2.4, 1])
         with col2:
             st.download_button(
-                label="Download Sample DOCX File",
+                label="Download Sample DOCM File",
                 data=docx_file,
-                file_name="review.docx",
+                file_name="review.docm",
                 mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
             )
 
@@ -114,6 +108,7 @@ def landing_page(custom_css):
             col1, col2 = st.columns([4.5, 1])
             with col2:
                 if st.button("Show Analysis", key=key):
+                    print("pressed show analysis button")
                     switch_to_main_page()
 
         # Function to update the active tab in session state
@@ -153,7 +148,7 @@ def landing_page(custom_css):
                     # Button to submit the credentials
                     if st.button("Login"):
                         try:
-                            client = OpenReviewLoader(username=username, password=password)
+                            client = OpenReviewClient(username=username, password=password)
                             st.success("Login successful!")
                             st.session_state["logged_in"] = True
                             st.session_state["client"] = client
@@ -164,18 +159,21 @@ def landing_page(custom_css):
                             if "Invalid username or password" in error_response.get('message', ''):
                                 st.error("Invalid username or password. Please try again.")
                             else:
-                                st.error(f"An unexpected error occurred: {error_response.get('message', 'No details available')}")
+                                st.error(
+                                    f"An unexpected error occurred: {error_response.get('message', 'No details available')}")
                         except ConnectionError:
-                            st.error("Connection error: Unable to connect to OpenReview. Please check your internet connection.")
+                            st.error(
+                                "Connection error: Unable to connect to OpenReview. Please check your internet connection.")
                         except requests.exceptions.RequestException as e:
                             if "Max retries exceeded" in str(e) or "Failed to establish a new connection" in str(e):
-                                st.error("Connection error: Unable to connect to OpenReview. Please check your internet connection.")
+                                st.error(
+                                    "Connection error: Unable to connect to OpenReview. Please check your internet connection.")
                             else:
                                 st.error(f"An unexpected error occurred: {str(e)}")
                         except Exception as e:
                             st.error("An unexpected error occurred. Please try again later.")
                             st.error(e)
-                            
+
 
             else:
                 client = st.session_state['client']
@@ -189,7 +187,7 @@ def landing_page(custom_css):
                         st.session_state["paper_id"] = paper_id
 
                         try:
-                            paper = client.get_paper_reviews(paper_id)
+                            paper = client.get_reviews_from_id(paper_id)
                             # TODO: if we pass url or file later in show_analysis, then we don't need to get reviews right now.
                             st.session_state["reviews"] = paper.reviews
                             st.success(f'Reviews extracted from paper: "{paper.title}"')
@@ -206,7 +204,6 @@ def landing_page(custom_css):
                 display_show_analysis_button(key="show_analysis_button_tab1")
 
         # File Uploader
-        # File Uploader
         with tab2:
             set_active_tab("Upload file")
 
@@ -219,7 +216,7 @@ def landing_page(custom_css):
             try:
                 uploaded_files = st.file_uploader(
                     "Select a file or drop it here to upload it.",
-                    type=["docx"],
+                    type=["docm"],
                     accept_multiple_files=True
                 )
 
@@ -228,11 +225,6 @@ def landing_page(custom_css):
                     num_files = len(uploaded_files)
                     file_word = "file" if num_files == 1 else "files"
                     st.success(f"Uploaded {num_files} {file_word} successfully.")
-
-                    # checking the reviews
-                    # reviews_str = json.dumps((reviews[0].__dict__), default=lambda o: o.__dict__, sort_keys=True, indent=4)
-                    # df = pd.read_json(reviews_str)
-                    # df.to_excel("Reviews.xlsx", index=False)
 
                     for uploaded_file in uploaded_files:
                         try:
@@ -243,22 +235,19 @@ def landing_page(custom_css):
 
                             # Additional success feedback
                             st.info(f"Processed {uploaded_file.name} successfully.")
-
                         except ValueError as ve:
                             st.error(f"File {uploaded_file.name} has invalid content: {ve}")
                         except FileNotFoundError:
                             st.error(f"File {uploaded_file.name} could not be found.")
                         except Exception as e:
                             st.error(f"An unexpected error occurred while processing {uploaded_file.name}.")
-                            
+
 
                 else:
                     st.info("Please upload at least one DOCX file to proceed.")
 
             except Exception as e:
                 st.error("An error occurred while uploading files. Please try again.")
-                
-
 
             # Check conditions to display the "Show Analysis" button
             if ('reviews' in st.session_state and st.session_state['reviews'] and

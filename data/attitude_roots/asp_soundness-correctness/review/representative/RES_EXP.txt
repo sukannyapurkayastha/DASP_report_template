@@ -1,1 +1,0 @@
-- There is no motivations for the use of $\lambda >1$ neither practical or theoretical since the results are only proven for $\lambda =1$ whereas the experiments are done with \lambda = 5,20 or 30.

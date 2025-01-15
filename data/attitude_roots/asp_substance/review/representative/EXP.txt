@@ -1,1 +1,0 @@
-The weight sharing was also needed further investigation and experimental data on sharing different parts.

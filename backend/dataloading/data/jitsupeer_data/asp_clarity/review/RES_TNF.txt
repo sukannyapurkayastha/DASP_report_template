@@ -1,3 +1,0 @@
-It is also not clear why Table. 3 does not report the Bayes baseline results.
-Additionally, in section 6.4, the results in Figure 2 also does not look very
-It would be useful to have a table, like the one on the last page, which clearly shows the baseline vs. the random-projection model, with some description of the results in the main body of the text.

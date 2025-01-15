@@ -1,1 +1,0 @@
-In terms of method, the guidance for learning Siamese networks are designed heuristically (e.g. edges, colors, etc.) which limits its applicability over various datasets; I think that designing more principled approach to build such guidances from data should be one of the key contributions of the paper.

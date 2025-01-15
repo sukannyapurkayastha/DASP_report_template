@@ -1,2 +1,0 @@
-More rigorous experiments and analysis is needed to make this a good ICLR paper.
-- (W2) Related to the last line: I did not see any experiments / analysis showing how stable these different numbers are across different runs of the representation technique. Nor did I see any error bars in the experiments.

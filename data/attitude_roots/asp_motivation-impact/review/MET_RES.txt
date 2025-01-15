@@ -1,2 +1,0 @@
-1: The authors show no benefit of this scheme except perhaps faster convergence.
-The method provides impressive compression ratios (in the order of x20-30) but at the cost of a lower performance.

@@ -1,3 +1,0 @@
-- There is no motivations for the use of $\lambda >1$ neither practical or theoretical since the results are only proven for $\lambda =1$ whereas the experiments are done with \lambda = 5,20 or 30.
-Furthermore, in experiments, the paper does not provide any quantitatively convincing results to suggest the generator in use is a good one.
-- I'm not sure we can conclude much from the results on fetchSlide (and it would make sense not to use the last set of parameters but the best one encountered during training)

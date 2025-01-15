@@ -1,1 +1,0 @@
-Although the idea is interesting, I would like to see more experimental results showing the scalability of the proposed method and for evaluating defense strategies against different types of adversarial attacks.

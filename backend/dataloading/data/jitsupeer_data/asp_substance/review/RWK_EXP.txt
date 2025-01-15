@@ -1,3 +1,0 @@
-4. Missing experiments to validate nature of bounds: Bartlett et al. [3] performed extensive experiments to exhibit the correct scaling of the generalization bounds with the "model complexity" introduced upto numerical constants.
-2. How is the performance of a simpler baseline such as combining a subset of new domain as training set to train MAML or PN (probably in 5-shot, 5-class case)?
-My main concern about the paper is that, currently, the experiments do not include any strong baseline (the ES currently is not a strong baseline, see comments below).

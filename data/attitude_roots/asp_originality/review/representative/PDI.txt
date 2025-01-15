@@ -1,1 +1,0 @@
-Although the idea seems to be interesting, the paper seems to be a bit incremental and is a simple application of existing GAN techniques.

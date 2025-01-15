@@ -1,3 +1,0 @@
-For example, “Fuzzy Choquet Integration of Deep Convolutional Neural Networks for Remote Sensing” by Derek T. Anderson et al.
-See http://www.stat.cmu.edu/~ryantibs/convexopt-S15/scribes/08-prox-grad-scribed.pdf for a reference.
-- Yuri Burda, Roger Grosse, Ruslan Salakhutdinov. Importance Weighted Autoencoders. ICLR 2016
