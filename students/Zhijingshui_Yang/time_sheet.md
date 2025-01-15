@@ -56,6 +56,7 @@
 | [12/3/24] | [12/3/24] | [attitude themes]   | [refine attitude themes trainer]  | [6]       | [Completed]     |
 | [1/6/24] | [1/6/24] | [vm usage research]   | [investigate vm usage requirements]  | [2]       | [Completed]     |
 | [1/7/24] | [1/7/24] | [build docker]   | [build docker for frontend and backend]  | [4]       | [Completed]     |
+| [1/14/24] | [1/15/24] | [attitude themes]   | [automate pipeline in slurm: send training with diff models at same time, evaluate results and save]  | [5]       | [Completed]     |
 ---
 
 > **Status Options**: "In Progress," "Completed," or "Pending."
