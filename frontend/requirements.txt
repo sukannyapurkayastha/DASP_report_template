@@ -1,0 +1,8 @@
+streamlit
+streamlit-extras
+pandas
+matplotlib
+plotly
+requests
+openreview-py
+loguru

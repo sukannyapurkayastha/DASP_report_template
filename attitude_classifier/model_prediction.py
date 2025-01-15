@@ -1,11 +1,12 @@
-from typing import Dict
-from pydantic import BaseModel
 import pandas as pd
 import tensorflow as tf
-from transformers import DistilBertTokenizer, TFDistilBertForSequenceClassification, BertForSequenceClassification, BertTokenizer
+from transformers import (
+    DistilBertTokenizer, 
+    TFDistilBertForSequenceClassification,
+    BertForSequenceClassification,
+    BertTokenizer
+)
 import pandas as pd
-import uvicorn
-from transformers import BertForSequenceClassification, BertTokenizer
 import torch
 from torch.nn import Sigmoid
 import os
