@@ -9,6 +9,17 @@
 ---
 
 ## Reports
+
+### Week [7]
+
+- **Update 1**: Bugfixing
+- **Update 2**: Poster Presentation
+- **Update 3**: Tests
+- **Update 4**: Documentation
+- **Challenges**: 
+- **Next Steps**: Deployment
+
+
 ### Week [6]
 
 - **Update 1**: Bugfixing
