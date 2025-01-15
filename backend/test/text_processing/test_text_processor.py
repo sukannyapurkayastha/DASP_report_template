@@ -6,7 +6,9 @@ from backend.text_processing import Review, TextProcessor
 
 @pytest.fixture
 def mock_reviews():
-    # Provide a list of mock Review objects
+    """
+    Provide a list of mock Review objects
+    """
     return [
         Review(
             reviewer="Reviewer 1",
@@ -37,6 +39,15 @@ def mock_reviews():
 
 
 def test_preprocess_text(mock_reviews):
+    """
+    Tests the `_preprocess_text` method of the `TextProcessor` class.
+
+    This test verifies that:
+      1. Trailing spaces are removed.
+      2. Line breaks are handled properly.
+      3. HTTP links are eliminated.
+      4. Special characters (e.g., semicolons, asterisks) are replaced or removed.
+    """
     processor = TextProcessor(mock_reviews)
     preprocessed = processor._preprocess_text(mock_reviews)
 
@@ -51,6 +62,14 @@ def test_preprocess_text(mock_reviews):
 
 
 def test_segment_content(mock_reviews):
+    """
+    Tests the `_segment_content` method of the `TextProcessor` class.
+
+    This test verifies that:
+      1. A pandas DataFrame (`df_sentences`) is produced with the correct columns.
+      2. Each `Review` object is augmented with a `sentences` attribute containing a list of segmented sentences.
+      3. The DataFrame is not empty and contains one or more sentences for each review.
+    """
     processor = TextProcessor(mock_reviews)
     preprocessed = processor._preprocess_text(mock_reviews)
     reviews, df_sentences = processor._segment_content(preprocessed)
@@ -75,6 +94,12 @@ def test_segment_content(mock_reviews):
 
 
 def test_get_overview(mock_reviews):
+    """
+    Tests the `_get_overview` method of the `TextProcessor` class.
+
+    This test verifies that the generated overview DataFrame has the expected
+    columns and that the average scores are calculated correctly.
+    """
     processor = TextProcessor(mock_reviews)
     preprocessed = processor._preprocess_text(mock_reviews)
     df_overview = processor._get_overview(preprocessed)
@@ -93,6 +118,16 @@ def test_get_overview(mock_reviews):
 
 
 def test_process_method(mock_reviews):
+    """
+    Tests the `process` method of the `TextProcessor` class.
+
+    This test verifies that:
+      1. The method returns two pandas DataFrames (`df_sentences` and `df_overview`).
+      2. Sentence segmentation is correctly performed.
+      3. The overview DataFrame `df_overview` is not empty and contains the
+         expected columns.
+      4. The average rating is correctly computed.
+    """
     processor = TextProcessor(mock_reviews)
     df_sentences, df_overview = processor.process()
 
@@ -109,9 +144,7 @@ def test_process_method(mock_reviews):
     for col in ["Category", "Avg_Score", "Individual_scores"]:
         assert col in df_overview.columns
 
-    # Spot check a known average
     rating_row = df_overview[df_overview["Category"] == "Rating"]
     assert not rating_row.empty
     avg_rating = rating_row["Avg_Score"].values[0]
-    # With the given mock data, the average rating should still be 3.5 (4 and 3)
     assert avg_rating == pytest.approx(5.5, 0.001)

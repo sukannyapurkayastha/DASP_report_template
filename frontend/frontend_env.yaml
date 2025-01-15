@@ -27,9 +27,9 @@ dependencies:
   - brotli-python=1.0.9=py312hd77b12b_8
   - bzip2=1.0.8=h2bbff1b_6
   - c-ares=1.34.3=h2466b09_1
-  - ca-certificates=2024.11.26=haa95532_0
+  - ca-certificates=2024.12.14=h56e8100_0
   - cachetools=5.5.0=pyhd8ed1ab_0
-  - certifi=2024.8.30=py312haa95532_0
+  - certifi=2024.12.14=pyhd8ed1ab_0
   - cffi=1.17.1=py312h827c3e9_0
   - charset-normalizer=3.4.0=pyhd8ed1ab_1
   - click=8.1.7=win_pyh7428d3b_1
@@ -51,6 +51,7 @@ dependencies:
   - idna=3.10=pyhd8ed1ab_1
   - importlib-metadata=7.2.1=pyha770c72_0
   - importlib_resources=6.4.5=pyhd8ed1ab_1
+  - iniconfig=2.0.0=pyhd8ed1ab_1
   - intel-openmp=2023.2.0=h57928b3_50497
   - ipykernel=6.29.5=pyh4bbf305_0
   - ipython=8.30.0=pyh7428d3b_0
@@ -106,7 +107,7 @@ dependencies:
   - numpy=1.26.4=py312hfd52020_0
   - numpy-base=1.26.4=py312h4dde369_0
   - openjpeg=2.5.2=hae555c5_0
-  - openssl=3.4.0=h2466b09_0
+  - openssl=3.4.0=ha4e3fda_1
   - orc=2.0.1=hd8d391b_0
   - packaging=24.2=pyhd8ed1ab_2
   - pandas=2.2.3=py312h5da7b33_0
@@ -116,6 +117,7 @@ dependencies:
   - pip=24.2=py312haa95532_0
   - pkgutil-resolve-name=1.3.10=pyhd8ed1ab_1
   - platformdirs=4.3.6=pyhd8ed1ab_1
+  - pluggy=1.5.0=pyhd8ed1ab_1
   - prompt-toolkit=3.0.48=pyha770c72_1
   - protobuf=4.25.3=py312h958608f_0
   - psutil=5.9.0=py312h2bbff1b_0
@@ -125,9 +127,11 @@ dependencies:
   - pydeck=0.8.0=pyhd8ed1ab_0
   - pygments=2.18.0=pyhd8ed1ab_1
   - pysocks=1.7.1=pyh09c184e_7
+  - pytest=8.3.4=pyhd8ed1ab_1
+  - pytest-mock=3.14.0=pyhd8ed1ab_1
   - python=3.12.3=h2628c8c_0_cpython
   - python-dateutil=2.9.0.post0=pyhff2d567_1
-  - python-docx=1.1.2=pyhd8ed1ab_0
+  - python-docx=1.1.2=pyhff2d567_1
   - python-tzdata=2024.2=pyhd8ed1ab_1
   - python_abi=3.12=5_cp312
   - pytz=2024.2=pyhd8ed1ab_1
@@ -149,6 +153,7 @@ dependencies:
   - tenacity=9.0.0=pyhd8ed1ab_0
   - tk=8.6.14=h0416ee5_0
   - toml=0.10.2=pyhd8ed1ab_0
+  - tomli=2.2.1=pyhd8ed1ab_1
   - tornado=6.4.1=py312h827c3e9_0
   - traitlets=5.14.3=pyhd8ed1ab_0
   - typing-extensions=4.12.2=hd8ed1ab_1

@@ -2,7 +2,6 @@ import pytest
 from unittest.mock import MagicMock, patch
 from lxml import etree
 
-from frontend.clients.models import Review
 from frontend.clients.uploaded_file_processor import UploadedFileProcessor
 
 

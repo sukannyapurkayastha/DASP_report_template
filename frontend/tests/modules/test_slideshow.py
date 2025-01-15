@@ -1,9 +1,7 @@
 import pytest
-from unittest.mock import patch, MagicMock
+from unittest.mock import MagicMock
 import streamlit as st
 
-# Suppose your code is in a file named `my_app.py`. Adjust if needed:
-# from my_app import StreamlitSlideshow
 from frontend.modules.slideshow import StreamlitSlideshow
 
 import logging
