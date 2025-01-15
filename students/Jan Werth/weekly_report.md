@@ -80,11 +80,12 @@
 ### Week [6, 7, 8]
 
 - **Update 1**: Writing tests for backend finished
-- **Update 2**: Writing tests for frontend (data loaders only, so UploadedFileProcessor and OpenreviewClient)
+- **Update 2**: Writing tests for frontend (data loaders and streamlit to some degree)
 - **Update 3**:
 - **Challenges**: Writing test for data loaders, I had to specify a lot of sample information to create tests,
   especially for xml it was really confusing.
 - **Next Steps**:
-    - Frontend/Streamlit tests (but how do you test frontend?)
+    - Frontend/Streamlit tests (How do you test the frontend? I wrote tests for our functions that we need in streamlit, but I don't know how to test the successfull generation of streamlit components.)
+    - Integration tests 
 
 ---
