@@ -22,6 +22,8 @@ async def predict(request: RawInput):
     #     df_sentences = pd.read_csv("sentences_author.csv")
     
         result = combine_roots_and_themes(df_sentences)
+        # TODO: description
+        result = result.fillna('none')
         # Convert dataframes to JSON for response
         result = result.to_dict(orient="records")
 

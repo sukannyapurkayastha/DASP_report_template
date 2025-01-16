@@ -1,0 +1,5 @@
+Category,Avg_Score,Individual_scores
+Rating,7.0,"[['Reviewer DtE5', 8], ['Reviewer V9KM', 7], ['Reviewer FBYZ', 6]]"
+Soundness,3.3333333333333335,"[['Reviewer DtE5', 4], ['Reviewer V9KM', 3], ['Reviewer FBYZ', 3]]"
+Presentation,3.3333333333333335,"[['Reviewer DtE5', 4], ['Reviewer V9KM', 3], ['Reviewer FBYZ', 3]]"
+Contribution,3.0,"[['Reviewer DtE5', 4], ['Reviewer V9KM', 2], ['Reviewer FBYZ', 3]]"

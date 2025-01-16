@@ -1,0 +1,5 @@
+Category,Avg_Score,Individual_scores
+Rating,7.25,"[['Reviewer rwBm', 7], ['Reviewer PjEW', 8], ['Reviewer Jerg', 7], ['Reviewer CrUb', 7]]"
+Soundness,3.25,"[['Reviewer rwBm', 3], ['Reviewer PjEW', 4], ['Reviewer Jerg', 3], ['Reviewer CrUb', 3]]"
+Presentation,3.5,"[['Reviewer rwBm', 4], ['Reviewer PjEW', 4], ['Reviewer Jerg', 3], ['Reviewer CrUb', 3]]"
+Contribution,3.25,"[['Reviewer rwBm', 3], ['Reviewer PjEW', 4], ['Reviewer Jerg', 3], ['Reviewer CrUb', 3]]"

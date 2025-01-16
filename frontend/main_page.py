@@ -183,6 +183,11 @@ def main_page(custom_css):
     attitude_roots = st.session_state.main_page_variables["attitude_roots"]
     request_information = st.session_state.main_page_variables["request_information"]
 
+    # save results table for overview summary analysis
+    # overview.to_csv('results/overview.csv', index=False)
+    # request_information.to_csv('results/request_information.csv', index=False)
+    # attitude_roots.to_csv('results/attitude_roots.csv', index=False)
+
     if overview.empty:
         st.warning("No data available for overview.")
         with open(os.path.join('dummy_data', 'dummy_overview.pkl'), 'rb') as file:

@@ -17,5 +17,3 @@ EXPOSE 8080
 
 # Step 7: Set the entry point to run the FastAPI app with Uvicorn
 ENTRYPOINT ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
-
-
