@@ -1,1 +1,0 @@
-The details of the approach is not entirely clear and no theoritcal results are provided to support the approach.

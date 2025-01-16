@@ -1,1 +1,0 @@
-The results on real datasets are similar to the regular GCN.

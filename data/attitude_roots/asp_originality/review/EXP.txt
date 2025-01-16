@@ -1,8 +1,0 @@
-Simply because for continuous variables similar experiments have been reported before
-Even though the proposed approach seems to have significant potential, the experimental
-Also, I find the experiments done in section 3 and 4 are similar to previous works and even the conclusions are similar.
-The experiments currently demonstrate that optimizing both controller and hardware is better than optimizing just the controller, which is not surprising and is a phenomenon which has been previously studied in the literature.
-Originality: Given the existing body of literature, I found the technical novelty of this paper rather weak. However, it seems the experiments are thoroughly conducted.
-If this all is indeed the case, it is not surprising that the numbers the authors get in the experiments are so similar to WAE-MMD, because CWAE would be exactly WAE-MMD with a specific choice of the kernel.
-However the theoretical contribution is poor. And the experiment uses a very classical benchmark providing simulated data.
-2. Although the experiments are detailed and interesting they support poor theoretical developments and use a very classical benchmark

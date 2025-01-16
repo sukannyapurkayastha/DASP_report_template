@@ -1,8 +1,0 @@
-Although experiments show that learning such representations are beneficial for low-shot setting of SVHN, it is not clear whether such improvement generalizes to more realistic datasets such as ImageNet.
-Do you agree that for this reason, all the experiments on the synthetic dataset is flawed?
-In the real world, one would not have access to OOD data during training, how is one to pick \lambda in such cases?
-The experiments were only done on simple image datasets.
-This also becomes apparent in the experiments section, where rotational data augmentation is found to be necessary.
-This is also lacking from the description of the experimental protocol, which does not address the data-splits (how many classes were used for each) and size of the unlabelled test set.
-- How many samples did you use from p(theta|x) during training?
-1. Experimental settings are clear, however, what makes me confused is that the construction for p_{\bar{d}} is straightforward for simple distribution like 2D points dataset, however, it might be intractable for complex high dimensional data such as images.

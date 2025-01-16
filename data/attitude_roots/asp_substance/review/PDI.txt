@@ -1,9 +1,0 @@
-The main problem is that directly predicting the context is intractable because of combinatorial explosion.
-- the more interesting problem, RL + auxiliary loss isn’t evaluated in detail
-But the problem settings are not clear to me.
-The paper not only claims 'large scale representation learning' but also utilizing the described idea to use neural networks to "directly, approximately solve non-convex NP-hard optimization problems that arise naturally in unsupervised learning problems." Both claims are not really shown in the paper: (i) The experiments are not large scale and (ii)  it becomes not clear how any substantiate insight with respect to NP-hard problems can be gained here apart from the fact that it tackles a ML problem, which many seem to be computationally hard problems.
-The paper motivates the problem that we need to pick out an exploration sequence that optimizes learning progress, but then approximates it as simply measuring the return.
-It would be nice to position the ideas from the paper w.r.t. this line of research too.
-The basic idea is very interesting, but I would have expect more interesting use cases as teased by the first sentence of the abstract "find algorithms with strong worst-case guarantees for online combinatorial optimization problems".
-So at the end, I am a bit puzzled. I really like the idea, but I have the feeling that this technique should have been developed for more complicated setting. Or maybe it is actually not working on more difficult combinatorial problem (and this is hidden in the paper).
-The idea in this paper is novel but experiments do not seem to be enough.

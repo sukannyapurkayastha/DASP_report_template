@@ -1,1 +1,0 @@
-This is discussed on p4, but it's unclear to me how keeping $\sigma$ separate is benefitial for the analysis, and this is not picked up again explicitly again?

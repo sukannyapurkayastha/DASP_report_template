@@ -1,4 +1,0 @@
-In general, recent work has found that the raw number of parameters has little to do with the size of the model class or the capacity of a model for deep models, and thus work like [A] has been trying to come up with better complexity measures for models to explain generalization.
-In particular it is not applicable to learning e.g. sigmoid belief networks [Neal, 92] (with conditional Bernoulli units) and many other problems.
-I believe that this paper is not the first one to study question generation from logical form (cf. Guo et al, 2018 as cited), so it is unclear what is the contribution of this paper in that respect.
-No baseline comparison with GraphNets.

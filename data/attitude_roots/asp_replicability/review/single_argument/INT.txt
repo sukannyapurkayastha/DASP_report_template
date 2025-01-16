@@ -1,1 +1,0 @@
--In the introduction, "it is in general impossible to find an embedding in R^d such that ...", why do we have to make v and v'(and u, and u') far from each other?

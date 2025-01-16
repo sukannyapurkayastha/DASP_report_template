@@ -1,1 +1,0 @@
-- Authors do not visualize the attention (as is common in previous work involving attention in e.g., NLP).

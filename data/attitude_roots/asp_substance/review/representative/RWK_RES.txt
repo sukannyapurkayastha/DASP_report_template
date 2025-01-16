@@ -1,1 +1,0 @@
-The many-to-many results are clearly better than the pairwise results in this regard, but in the context of musical timbre transfer, I don't feel that this model successfully achieves its goal -- the results of Mor et al. (2018), although not perfect either, were better in this regard.

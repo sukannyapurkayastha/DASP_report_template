@@ -1,3 +1,0 @@
-- It is extremely hard to follow what exactly is going on; I believe a few illustrative examples would help make the paper much clearer; in fact the idea is not that abstract.
-Although the idea behind this paper is fairly simple, the paper is very difficult to understand.
-- The problem setting description is neither formal nor intuitive which made it very hard for me to understand exactly the problem you are trying to solve.

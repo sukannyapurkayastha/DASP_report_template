@@ -1,1 +1,0 @@
-There should be some kind of comparison with test set results from other state-of-the-art work on these datasets.

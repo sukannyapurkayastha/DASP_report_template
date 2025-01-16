@@ -1,2 +1,0 @@
-However, the experiments conducted generally show that SAVP offers only a trade-off between the visual quality of GANs and the coverage of VAEs, and does not show a clear advantage over current VAE models (Denton & Fergus, 2018) that with simpler architectures obtain similar results.
-With regards to the fMRI experiments, good baselines are missing: DEMINE is compared to Pearson correlation.

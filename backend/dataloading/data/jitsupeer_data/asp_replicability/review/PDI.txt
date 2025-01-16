@@ -1,1 +1,0 @@
-This sort of two-stage generation is also potentially interesting, I was wondering if the authors had ideas to generalize this idea.

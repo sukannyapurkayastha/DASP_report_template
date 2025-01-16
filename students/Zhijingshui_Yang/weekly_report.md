@@ -56,12 +56,27 @@
 - **Challenges**: libs install for jitsupeer repo not successful, it causes error even with requirements.txt
 - **Next Steps**: 
 
-### Week [n-2]
+### Week [3]
 
-- **Update 1**: 
-- **Update 2**: 
+- **Update 1**: review-to-description model runs successfully on slurm server with rouge score
+- **Update 2**: experiment attitute theme classifier
 - **Update 3**: 
 - **Challenges**: 
-- **Next Steps**: 
+- **Next Steps**: finish attitute theme classifier; start to connect model to frontend
 
+### Week [4]
+
+- **Update 1**: connect attitude roots to frontend with fastapi
+- **Update 2**: build up attitute theme classifier
+- **Update 3**: evaluation review-to-description model with embedding similarity and edit similarity
+- **Challenges**: decide which infrastructure to use: 1. frontend backend mix up style; 2. connect model with api call
+- **Next Steps**: improve attitute theme classifier; connect attitue theme to frontend
+
+### Week [5]
+
+- **Update 1**: connect attitude themes to frontend with fastapi
+- **Update 2**: check data leakage of attitude themes classifier, analyse dataset and results of attitude themes classifier
+- **Update 3**: 
+- **Challenges**: train-test-val data split for multilabel scenario
+- **Next Steps**: improve attitute theme classifier; merge branches
 ---

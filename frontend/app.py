@@ -6,26 +6,25 @@ import landing_page
 import home_page
 import os
 import contact
+import about
 
 st.set_page_config(
     page_title="Paper Review Generator",
-    page_icon=os.path.join("frontend/images" ,"logo.png")
-    )
+    page_icon=os.path.join("images", "logo.png")
+)
 
 custom_css = """
     <style>
+    h1, h2, h3, p, div, span {
+        max-width: 100%;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
     .block-container {
-        width: 95%; 
-        max-width: 900px; 
+        width: 100%; 
+        max-width: 920px; 
         display: flex;
         flex-direction: column; 
-    }
-    .content-box {
-        padding-left: 2px; 
-        margin-bottom: 0px;
-        border-radius: 5px;
-        background-color: #E8E8E8;
-        margin-bottom: 2px;
     }
     .invisbible-line-big {
         height: 60px;
@@ -35,26 +34,6 @@ custom_css = """
     }
     .invisbible-line-minor {
         height: 5px;
-    }
-    .section-header {
-        writing-mode: vertical-rl;
-        transform: rotate(180deg);
-        font-size: 24px;
-        margin-right: 20px;
-        margin-top: 25%;
-        margin-bottom: 25%;  
-    }
-    /* Style for the expander header when collapsed */
-    [data-testid="stExpander"] summary {
-        font-size: 30px;
-        color: black;
-        font-weight: bold;
-    }
-    /* Style for the expander header when expanded */
-    [data-testid="stExpander"] details[open] > summary {
-        font-size: 24px;
-        color: green;
-        font-weight: bold;
     }
     /* Hide the icon next to headers */
     [data-testid="stHeaderActionElements"] {
@@ -78,7 +57,7 @@ custom_css = """
         background-color: #0056b3 !important;
     }
     
-    /* Download Button styling */
+    /* Download Button styling (at upload tab) */
     .stDownloadButton button {
         background-color: #3a60b2 !important;
         color: white !important;
@@ -91,21 +70,7 @@ custom_css = """
     .stDownloadButton button:hover {
         background-color: #0056b3 !important;
     }
-    /* Adjust Uplaod button */
-    [data-testid="stBaseButton-secondary"] {
-        background-color: #3a60b2;
-        color: white !important;
-        border: none;
-        border-radius: 5px;
-        padding: 10px 20px;
-        font-size: 16px;
-        cursor: pointer;
-        }
-    [data-testid="stBaseButton-secondary"]:hover {
-        ackground-color: #0056b3;
-    }
-    
-
+     /* Style the popover container at overview */
     .popover-open {
     width: 200px;
     height: 100px;
@@ -116,49 +81,36 @@ custom_css = """
     margin: 0;
     background-color: white !important;
     }
-
-    
-    /* Target only sidebar button */
-    section[data-testid="stSidebar"] div.stButton > button[data-testid="stBaseButton-secondary"] {
-        background-color: transparent; /* Make button background invisible */
-        border: none; /* Remove border */
-        color: black; /* Button text color black */
-        font-size: 18px; /* Font size for better visibility */
-        cursor: pointer; /* Change cursor to pointer for clickable effect */
-        width: 100%; /* Make button take full width of sidebar */
-        text-align: left; /* Align text to the left */
-        padding: 10px 0; /* Add some padding */
-    }
-    
-    /* Target hover effect for sidebar button */
-    section[data-testid="stSidebar"] div.stButton > button[data-testid="stBaseButton-secondary"]:hover {
-        background-color: #ccc; /* Grey background on hover */
-    }
-    /* Style the popover container */
     .stPopover {
         width: 100%;
         background-color: transparent; /* Transparent background */
         text-align: center; /* Center the content */
         display: flex;
         justify-content: center;
-        align-items: center;
-        
-    }
-    
-    /* Style popover button */
-    .stPopover button {
-        background-color: transparent; /* Transparent background */
-        text-align: center; /* Center the content */
-        border: none;
-    }
-    [data-testid="stPopover"] button:active {
-        background-color: transparent;
-        }
+        align-items: center;       
+    }   
+    /* Style Step boxes on home screen */
+    .step-box {
+    background-color: #bcd7f2;
+    padding: 20px;
+    border-radius: 5px;
+    margin: 15px auto; /* Center horizontally */
+    width: 85%; /* Adjust width as needed */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
     </style>
     """
 
-def show_navigation_bar_and_content():
 
+def safe_delete_session_state(key):
+    '''
+    Deletes Session state to ensure variables are deleted after user leaves a page
+    '''
+    if key in st.session_state:
+        del st.session_state[key]
+
+
+def show_navigation_bar_and_content():
     def load_logo(filepath):
         with open(filepath, "rb") as logo_file:
             return base64.b64encode(logo_file.read()).decode("utf-8")
@@ -166,7 +118,7 @@ def show_navigation_bar_and_content():
     # Path to your local logo file
     base_path = Path(__file__).parent
     logo_base64 = load_logo(base_path / "images/logo_header.png")
-    
+
     # Sidebar Logo and Navigation
     st.sidebar.markdown(
         f"""
@@ -176,11 +128,11 @@ def show_navigation_bar_and_content():
         """,
         unsafe_allow_html=True,
     )
-    
+
     # Initialize session state for page tracking
     if 'page' not in st.session_state:
         st.session_state.page = 'Home'
-    
+
     # Custom CSS to style buttons in the sidebar
     st.sidebar.markdown("""
         <style>
@@ -188,11 +140,11 @@ def show_navigation_bar_and_content():
         section[data-testid="stSidebar"] div.stButton > button {
         background-color: #3a60b2 !important;
         color: white !important;
+        width: 100%; /* Make button take full width of sidebar */
         border: none;
         border-radius: 5px;
         padding: 10px 20px;
-        font-size: 16px;
-        cursor: pointer;       
+        font-size: 16px;      
         }
         section[data-testid="stSidebar"] div.stButton > button:hover {
             background-color: #0056b3 !important;
@@ -201,32 +153,45 @@ def show_navigation_bar_and_content():
         section[data-testid="stSidebar"] {
             background-color: white !important;
         }
+        [data-testid="stSidebarCollapseButton"] button {
+            color: #3a60b2 !important;
+            }
+        [data-testid="stSidebarCollapsedControl"] button {
+            color: #3a60b2 !important;
+            }
 
         </style>
     """, unsafe_allow_html=True)
-    
+
     # Sidebar buttons for navigation
     st.sidebar.title("Paper Review Aggregator")
-    
+
     if st.sidebar.button("Home"):
-        st.session_state.page = "Home" 
+        st.session_state.page = "Home"
     if st.sidebar.button("Review Aggregation"):
         st.session_state.page = "Review Aggregation"
-    if st.sidebar.button("Services"):
-        st.session_state.page = "Meta Reviewer Dashboard"
+    #if st.sidebar.button("Meta Reviewer Dashboard"):
+    #    st.session_state.page = "Meta Reviewer Dashboard"
     if st.sidebar.button("Contact"):
         st.session_state.page = "Contact"
-    
+    if st.sidebar.button("About"):
+        st.session_state.page = "About"
+
     # Display content based on the current page
     if st.session_state.page == "Home":
-        st.session_state.page = home_page.home_page(custom_css)         
+        safe_delete_session_state("main_page_variables")
+        st.session_state.page = home_page.home_page(custom_css)
     elif st.session_state.page == "Review Aggregation":
+        safe_delete_session_state("main_page_variables")
         landing_page.landing_page(custom_css)
     elif st.session_state.page == "Meta Reviewer Dashboard":
         main_page.main_page(custom_css)
     elif st.session_state.page == "Contact":
+        safe_delete_session_state("main_page_variables")
         contact.show_contact_info(custom_css)
+    elif st.session_state.page == "About":
+        safe_delete_session_state("main_page_variables")
+        about.about_page(custom_css)
+
 
 show_navigation_bar_and_content()
-
-

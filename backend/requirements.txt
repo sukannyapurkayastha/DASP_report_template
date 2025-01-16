@@ -1,0 +1,11 @@
+fastapi
+pydantic
+loguru
+pandas
+uvicorn
+spacy
+tqdm
+tensorflow = 2.18
+transformers = 4.46.3
+tf-nightly = 2.19.0
+tf-keras = 2.18.0

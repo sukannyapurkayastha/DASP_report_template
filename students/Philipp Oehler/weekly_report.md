@@ -20,19 +20,19 @@
 
 ### Week [7]
 
-- **Update 1**: 
-- **Update 2**: 
+- **Update 1**: Frontend: made dev-refactoring brnach run with dummy attitude_roots.pkl as attitude root prediction didnt work yet, fixed reload bug as user uses Slideshow, transfered frontend from main to dev-refactoring for presentation
+- **Update 2**: midterm is over (yay)
 - **Update 3**: 
 - **Challenges**: 
-- **Next Steps**: 
+- **Next Steps**: look up adequate summary model, and implement
 
 ### Week [6]
 
-- **Update 1**: 
+- **Update 1**: Home Page Content adjusted, Fixed issue with text crossing boundaries, Fixed circles Looking weird when less then 3 authors reviewed. (set 4 columns as Minimum to implicitly achieve max size.), removed unneccesary css styles, created about page, connected about page to framework.
 - **Update 2**: 
 - **Update 3**: 
 - **Challenges**: 
-- **Next Steps**: 
+- **Next Steps**: Merge "API" branch into main branch and connect models. + Rock midterm.
 
 
 ### Week [5]
@@ -41,7 +41,7 @@
 - **Update 2**: Invisible Frontend: Revamped filestructure of frontend entirely, fixed uploadpage bug
 - **Update 3**: 
 - **Challenges**: 
-- **Next Steps**: good question. i will update this file.
+- **Next Steps**: MVP runs. make presentation for midterm!, the week after: find new todo in backend as frontend almost finished?
 
 ### Week [4]
 

@@ -1,1 +1,0 @@
-For example, for baseline 1, it is very hard to understand why would we want to use such an unusual baseline, and why it is called a "random baseline".

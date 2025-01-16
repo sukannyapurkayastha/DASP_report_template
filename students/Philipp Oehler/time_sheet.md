@@ -12,9 +12,17 @@
 
 | Start      | End        | Task Name                   | Task Description                                                          | Time Spent (hours) | Status        |
 |------------|------------|-----------------------------|---------------------------------------------------------------------------|--------------------|---------------|
-| [xx/11/24] | [xx/11/24] | [Dummy]                     | []                                                                        | [0.0]              | [Pending]     | 
-| [xx/11/24] | [xx/11/24] | [Dummy]                     | []                                                                        | [0.0]              | [Completed]   |
-| [xx/11/24] | [xx/11/24] | [Dummy]                     | []                                                                        | [0.0]              | [In Progress] | 
+| [xx/12/24] | [xx/12/24] | [Dummy]                     | []                                                                        | [0.0]              | [Pending]     | 
+| [xx/12/24] | [xx/12/24] | [Dummy]                     | []                                                                        | [0.0]              | [Completed]   |
+| [xx/12/24] | [xx/12/24] | [Dummy]                     | []                                                                        | [0.0]              | [In Progress] |
+| [13/12/24] | [13/12/24] | [midterm presentation]      | [midterm]                                                                 | [1.5]              | [Completed]   |
+| [11/12/24] | [12/12/24] | [Frontend 8]                | [made dev-refactoring brnach run with dummy attitude_roots.pkl as attitude root prediction didnt work yet, fixed reload bug as user uses Slideshow, transfered frontend from main to dev-refactoring for presentation] | [10]              | [Completed]   |
+| [04/12/24] | [04/12/24] | [Weekly]                    | [Preperation + Meeting itself + Internal team meeting]                    | [4.0]              | [Completed]   |
+| [08/12/24] | [08/12/24] | [Presentation]              | [Working at presentation for midterm]                                     | [9.0]              | [Completed]   |
+| [05/12/24] | [07/12/24] | [Frontend 7]                | [Home Page Content adjusted, Fixed issue with text crossing boundaries, Fixed circles Looking weird when less then 3 authors reviewed. (set 4 columns as Minimum to implicitly achieve max size.), removed unneccesary css styles, created about page, connected about page to framework] | [12]              | [Completed]   |
+| [04/12/24] | [04/12/24] | [Group Meeting]             | [Explain Frontend data required to jan and zhishing to allow them development with containers and API] | [4]              | [Completed]   |
+| [04/12/24] | [04/12/24] | [Weekly]                    | [Preperation + Meeting itself + Internal team meeting]                    | [1.5]              | [Completed]   |
+| [29/11/24] | [01/12/24] | [Frontend 6]                | [added download template, added text into url placeholder, added login field to url-entry, updated many css styles, adjusted sidebar style, created requirements.txt]  | [3]| [Completed]   |
 | [28/11/24] | [28/11/24] | [Frontend 5]                | [Redesigned contact logos, introduced homepage, adjusted overview detail button]  | [5]              | [Completed]   |
 | [26/11/24] | [28/11/24] | [Front End 4]               | [Revamped entire file structure, introduced tabs for upload, added slideshow for mainpage, introduced sidebar, fixed uploadpage bug]   | [20]              | [Completed]   |
 | [27/11/24] | [27/11/24] | [Weekly]                    | [Preperation + Meeting itself + Internal team meeting]                    | [1.5]              | [Completed]   |

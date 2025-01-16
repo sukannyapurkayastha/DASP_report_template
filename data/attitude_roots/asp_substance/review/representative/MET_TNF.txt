@@ -1,1 +1,0 @@
--  From the plots of learning curves in appendix, the proposed methods doesn’t seem to show a huge boost of performance comparing to the uniform bandit. Could you show aggregated comparison between the proposed method and uniform bandit similarly to what is done in Figure 4 ?

@@ -1,1 +1,0 @@
-However, the selected experiments on the cubic regression toy data (Section 5.1) and the out-of-distribution classification (Section 5.2) are clear examples of system’s noise, i.e. epistemic uncertainty.

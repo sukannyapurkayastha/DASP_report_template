@@ -1,1 +1,0 @@
--The conclusions of the study were suggested by previous papers or are rather expected: adversarial transfer is not symmetric: Deep models less transferable than shallow ones, averaging gradient is better
