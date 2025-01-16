@@ -17,10 +17,10 @@ import os
 
 def predict_root_category(text):
     # Load the tokenizer
-    tokenizer = DistilBertTokenizer.from_pretrained('/home/nana/DASP_report_template/backend/models/attitude_root/')
+    tokenizer = DistilBertTokenizer.from_pretrained('models/attitude_root/')
 
     # Load the model
-    model = TFDistilBertForSequenceClassification.from_pretrained('/home/nana/DASP_report_template/backend/models/attitude_root/', num_labels=9)
+    model = TFDistilBertForSequenceClassification.from_pretrained('models/attitude_root/', num_labels=9)
     predict_input = tokenizer.encode(text,
                                     truncation=True,
                                     padding=True,
@@ -49,8 +49,8 @@ def attitude_roots_prediction(data):
 
 def predict_theme_category(text):
     # Load the pretrained model and tokenizer
-    model = BertForSequenceClassification.from_pretrained("/home/nana/DASP_report_template/model_training/nlp/review_to_theme/results/final_model", num_labels=11, problem_type="multi_label_classification")
-    tokenizer = BertTokenizer.from_pretrained("/home/nana/DASP_report_template/model_training/nlp/review_to_theme/results/final_model")
+    model = BertForSequenceClassification.from_pretrained("models/attitude_theme/", num_labels=11, problem_type="multi_label_classification")
+    tokenizer = BertTokenizer.from_pretrained("models/attitude_theme/")
     model.eval()
     threshold = 0.5
     # Tokenize the input text using tokenizer (handles padding, truncation, etc.)
