@@ -1,1 +1,0 @@
-- I’d also like to see more extensive comparisons between FICM and ICM across different datasets, for example, Super Mario Bros. and the Atari games, instead of only comparing FICM against ICM on ViZDoom.

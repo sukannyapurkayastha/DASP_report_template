@@ -1,4 +1,0 @@
-Why is the random seed being used to compare the performance of different arms? Do you instead mean that s and s’ are two values of the arm in Figure 4?
-- Judging from Table 1, the proposed method does not seem to provide a large contribution.
--  From the plots of learning curves in appendix, the proposed methods doesn’t seem to show a huge boost of performance comparing to the uniform bandit. Could you show aggregated comparison between the proposed method and uniform bandit similarly to what is done in Figure 4 ?
-In Fig. 3 the author claim that the proposed method dominates the other methods in terms of privacy and utility but this is not correct.

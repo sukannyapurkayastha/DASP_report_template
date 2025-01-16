@@ -1,6 +1,0 @@
-The introduction contains a few statements that may paint an incomplete or confusing picture of the current literature in adversarial attacks on neural networks:
-1. The title of the paper is "visual reasoning by progressive module networks." The title may be a little overstated since the major task is focused on visual question answering (VQA).
-The authors spend two paragraphs in the introduction trying to draw a distinction but I am still not convinced.
-The title claims way more than what is actually delivered in the paper, despite the fact that the authors have put in an "On" in the beginning of the title.
-So, the motivating assertion “[...] state-of-the-art solvers do not yet scale to large, difficult formulas, such as ones with hundreds of variables and thousands of clauses” in the introduction of the paper, is not totally correct.
-* Also in the introduction, it is implied that style transfer constitutes an advance in generative models, but style transfer does not make use of / does not equate to any generative model.

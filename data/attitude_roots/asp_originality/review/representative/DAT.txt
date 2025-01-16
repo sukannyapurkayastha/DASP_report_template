@@ -1,1 +1,0 @@
-If the novelty is in applying to continual learning and new datasets, it is not clear that this is sufficient.

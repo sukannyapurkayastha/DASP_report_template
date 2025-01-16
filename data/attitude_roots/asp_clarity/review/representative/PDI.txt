@@ -1,1 +1,0 @@
-- It is extremely hard to follow what exactly is going on; I believe a few illustrative examples would help make the paper much clearer; in fact the idea is not that abstract.

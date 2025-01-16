@@ -1,1 +1,0 @@
-The proposed approach should compared to other stronger methods such as graph convolution neural network/message passing neural networks/structure2vec.

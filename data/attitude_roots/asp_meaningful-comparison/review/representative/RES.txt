@@ -1,1 +1,0 @@
-The authors also rely mostly on the FID metric, but do not show if and how there is improvement upon visual inspection of the generated images (i.e. is resolution improved, is fraction of images that look clearly 'unnatural' reduced etc.)

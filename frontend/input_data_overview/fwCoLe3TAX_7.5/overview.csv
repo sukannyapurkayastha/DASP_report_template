@@ -1,0 +1,5 @@
+Category,Avg_Score,Individual_scores
+Rating,7.5,"[['Reviewer cSKU', 8.0], ['Reviewer 7D9U', 10.0], ['Reviewer bjuC', 6.0], ['Reviewer cgwB', 6.0]]"
+Soundness,3.0,"[['Reviewer cSKU', 3.0], ['Reviewer 7D9U', 4.0], ['Reviewer bjuC', 2.0], ['Reviewer cgwB', 3.0]]"
+Presentation,3.25,"[['Reviewer cSKU', 3.0], ['Reviewer 7D9U', 4.0], ['Reviewer bjuC', 3.0], ['Reviewer cgwB', 3.0]]"
+Contribution,3.0,"[['Reviewer cSKU', 2.0], ['Reviewer 7D9U', 4.0], ['Reviewer bjuC', 3.0], ['Reviewer cgwB', 3.0]]"

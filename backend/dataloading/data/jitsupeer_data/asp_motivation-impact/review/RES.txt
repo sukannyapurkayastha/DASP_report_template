@@ -1,6 +1,0 @@
-The results  are overall not very impressive.
-The result does not at all apply to all of them.
-Then to state to which of these cases the results of the paper are applicable, allow for an improvement of the variance and at what additional computational cost (considering the cost of evaluating the discrete derivatives).
-Generally speaking it seems like a lot of technicalities for a relatively simple result:
-The results of the paper do not give major insights into what are the preferred techniques for training GANs, and certainly not why and under what circumstances they'll work.
-This is not so interesting, even though results are impressive.

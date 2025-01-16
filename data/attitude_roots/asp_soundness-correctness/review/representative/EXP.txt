@@ -1,1 +1,0 @@
-Second, the experiments are (as I understand it, but I may be wrong) in deterministic domains, which definitely does not constitute a general test of a proposed RL  method.

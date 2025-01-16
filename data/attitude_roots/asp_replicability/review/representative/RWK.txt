@@ -1,1 +1,0 @@
-It would be helpful to have a brief paragraph describing this architecture, for readers not familiar with the referenced paper.

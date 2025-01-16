@@ -1,3 +1,0 @@
--3 For image-to-image translation experiments, no quantitative analysis whatsoever is offered so the reader can't really conclude anything about the effect of the proposed method in this domain.
-That said, I would like to see more analysis on the behavior of the proposed method under various interesting cases not tested yet.
-5) Last but not least, convergence analysis of the proposed method should be provided given that asynchrony may lead to divergence in the optimization.

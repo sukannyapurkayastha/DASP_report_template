@@ -1,7 +1,0 @@
-The contributions of the method could also be underlined more clearly in the abstract and introduction.
-- The digression at the bottom of the first page about neural architecture search seem out of context and interrupts the flow of the introduction.
-First, it is somewhat misleading about its contributions: it's not obvious from abstract/introduction that the whole model is the same as DIP except for the proposed architecture.
-The introduction can start at a lower level (such as flat/hyperbolic neural networks).
-10.	The title suggests that the paper studies multiple VQA models but only a single model is studied.
-I do not understand the "deep integration of MARL and HRL" that is claimed in the Introduction.
-* In the introduction, "the classical approach" is mentioned but to be the latter is

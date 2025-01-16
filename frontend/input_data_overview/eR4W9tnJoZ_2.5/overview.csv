@@ -1,0 +1,5 @@
+Category,Avg_Score,Individual_scores
+Rating,2.5,"[['Reviewer Bg7M', 3.0], ['Reviewer DN2b', 3.0], ['Reviewer 1HkZ', 1.0], ['Reviewer ZAnW', 3.0]]"
+Soundness,1.75,"[['Reviewer Bg7M', 1.0], ['Reviewer DN2b', 3.0], ['Reviewer 1HkZ', 1.0], ['Reviewer ZAnW', 2.0]]"
+Presentation,2.5,"[['Reviewer Bg7M', 2.0], ['Reviewer DN2b', 3.0], ['Reviewer 1HkZ', 3.0], ['Reviewer ZAnW', 2.0]]"
+Contribution,1.75,"[['Reviewer Bg7M', 1.0], ['Reviewer DN2b', 2.0], ['Reviewer 1HkZ', 2.0], ['Reviewer ZAnW', 2.0]]"

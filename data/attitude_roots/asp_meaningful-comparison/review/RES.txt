@@ -1,3 +1,0 @@
-2. The human score of 91.4% is based on majority vote, which should be compared with an ensemble of deep learning prediction.
-I don't think this is really a fair comparison; I would have liked to have seen results for the unmodified reward function.
-The authors also rely mostly on the FID metric, but do not show if and how there is improvement upon visual inspection of the generated images (i.e. is resolution improved, is fraction of images that look clearly 'unnatural' reduced etc.)

@@ -1,19 +1,15 @@
 import streamlit as st
 from streamlit_extras.stylable_container import stylable_container
-import os
-import pandas as pd
-import matplotlib.pyplot as plt
-import plotly.graph_objects as go
-import pickle
 
 red = '#ef2000'
 orange = '#ff8220'
 yellow = '#ffdc00'
-grey = '#e0e0e0' 
+grey = '#e0e0e0'
 green_good = '#5aca00'
 green_very_good = '#00b500'
 
-def get_colour_palette(): 
+
+def get_colour_palette():
     return {
         'bad_m4': '#e6550d',
         'bad_m3': '#fd8d3c',
@@ -46,30 +42,29 @@ def select_color_attitude_or_request(fraction):
         return palette['bad_m4']
 
 
-
-
-
 def show_header_with_progress(row, desc):
-    try: 
+    try:
         fraction = eval(row[1])  # todo: the fraction should be a number --> remove eval
     except:
         fraction = row[1]
-    percentage = int(fraction*100)  # Convert fraction to percentage
+    percentage = int(fraction * 100)  # Convert fraction to percentage
     color = select_color_attitude_or_request(fraction)
-    draw_progress_bar(color, percentage) # draws the progressbar
-    if desc: 
-        st.markdown(f"<h4 style='font-size:12px; margin: 0px; padding: 0px; text-align: right;'>{row[2]}</h4>", unsafe_allow_html=True)
+    draw_progress_bar(color, percentage)  # draws the progressbar
+    if desc:
+        st.markdown(f"<h4 style='font-size:12px; margin: 0px; padding: 0px; text-align: right;'>{row[2]}</h4>",
+                    unsafe_allow_html=True)
     else:
         st.markdown('<div class="invisbible-line-minor">  </div>', unsafe_allow_html=True)
+
 
 def show_reviewers_attitude_comments(row):
     i = 3
     while i < len(row) and isinstance(row[i], str):
         st.markdown(f'<div class="content-box">{row[i]}</div>', unsafe_allow_html=True)
         st.markdown('<div class="content-box"> </div>', unsafe_allow_html=True)
-        i += 1  
-                    
-                    
+        i += 1
+
+
 def draw_progress_bar(color, percentage):
     progress_html = f"""
     <div style="position: relative; height: 24px; width: 100%; background-color: {grey}; border-radius: 5px;">
@@ -77,7 +72,7 @@ def draw_progress_bar(color, percentage):
         </div>
     </div>
     """
-    st.markdown(progress_html, unsafe_allow_html=True)           
+    st.markdown(progress_html, unsafe_allow_html=True)
 
 
 def show_comments(row):
@@ -87,8 +82,8 @@ def show_comments(row):
         comment_list = author_comments[1]
 
         with stylable_container(
-            key="container_without_border",
-            css_styles="""
+                key="container_without_border",
+                css_styles="""
                 {
                     border-radius: 0.5rem;
                     padding: calc(1em - 1px);
@@ -105,11 +100,10 @@ def show_comments(row):
                 st.markdown('\n'.join(f'- {comment}' for comment in comment_list))
 
 
-
 def use_default_container(inside_container, argument=None):
     with stylable_container(
-        key="container_with_border",
-        css_styles="""
+            key="container_with_border",
+            css_styles="""
             {
                 border-radius: 0.5rem;
                 padding: calc(1em - 1px);
@@ -125,4 +119,3 @@ def use_default_container(inside_container, argument=None):
         else:
             # Argument was provided
             inside_container(argument)
-        

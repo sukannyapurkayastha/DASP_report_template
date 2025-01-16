@@ -10,8 +10,8 @@ import about
 
 st.set_page_config(
     page_title="Paper Review Generator",
-    page_icon=os.path.join("frontend/images" ,"logo.png")
-    )
+    page_icon=os.path.join("images", "logo.png")
+)
 
 custom_css = """
     <style>
@@ -101,8 +101,16 @@ custom_css = """
     </style>
     """
 
-def show_navigation_bar_and_content():
 
+def safe_delete_session_state(key):
+    '''
+    Deletes Session state to ensure variables are deleted after user leaves a page
+    '''
+    if key in st.session_state:
+        del st.session_state[key]
+
+
+def show_navigation_bar_and_content():
     def load_logo(filepath):
         with open(filepath, "rb") as logo_file:
             return base64.b64encode(logo_file.read()).decode("utf-8")
@@ -110,7 +118,7 @@ def show_navigation_bar_and_content():
     # Path to your local logo file
     base_path = Path(__file__).parent
     logo_base64 = load_logo(base_path / "images/logo_header.png")
-    
+
     # Sidebar Logo and Navigation
     st.sidebar.markdown(
         f"""
@@ -120,11 +128,11 @@ def show_navigation_bar_and_content():
         """,
         unsafe_allow_html=True,
     )
-    
+
     # Initialize session state for page tracking
     if 'page' not in st.session_state:
         st.session_state.page = 'Home'
-    
+
     # Custom CSS to style buttons in the sidebar
     st.sidebar.markdown("""
         <style>
@@ -154,34 +162,36 @@ def show_navigation_bar_and_content():
 
         </style>
     """, unsafe_allow_html=True)
-    
+
     # Sidebar buttons for navigation
     st.sidebar.title("Paper Review Aggregator")
-    
+
     if st.sidebar.button("Home"):
-        st.session_state.page = "Home" 
+        st.session_state.page = "Home"
     if st.sidebar.button("Review Aggregation"):
         st.session_state.page = "Review Aggregation"
-    if st.sidebar.button("Services"):
-        st.session_state.page = "Meta Reviewer Dashboard"
+    #if st.sidebar.button("Meta Reviewer Dashboard"):
+    #    st.session_state.page = "Meta Reviewer Dashboard"
     if st.sidebar.button("Contact"):
         st.session_state.page = "Contact"
     if st.sidebar.button("About"):
         st.session_state.page = "About"
-    
+
     # Display content based on the current page
     if st.session_state.page == "Home":
-        home_page.home_page(custom_css)         
+        safe_delete_session_state("main_page_variables")
+        st.session_state.page = home_page.home_page(custom_css)
     elif st.session_state.page == "Review Aggregation":
+        safe_delete_session_state("main_page_variables")
         landing_page.landing_page(custom_css)
     elif st.session_state.page == "Meta Reviewer Dashboard":
         main_page.main_page(custom_css)
     elif st.session_state.page == "Contact":
+        safe_delete_session_state("main_page_variables")
         contact.show_contact_info(custom_css)
     elif st.session_state.page == "About":
+        safe_delete_session_state("main_page_variables")
         about.about_page(custom_css)
-        
+
 
 show_navigation_bar_and_content()
-
-

@@ -1,4 +1,0 @@
-- Given the small size of the dataset, I would propose experimenting with non-neural approaches as well, which are also quite common in NLG.
-- experiments are performed using a synthetic setup on a single data set, so it remains unclear if the algorithm would be successful in a real life scenario
-The experimental settings, e.g. how the train:test datasets are split, and hyperparameter settings, are not clearly given.
-Moreover, I  don't think that the data sets in experiments are good enough to cover the importance and the nature of the problem.

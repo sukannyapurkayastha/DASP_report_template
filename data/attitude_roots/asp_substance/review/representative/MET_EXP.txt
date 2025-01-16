@@ -1,1 +1,0 @@
-#9) I think that MNIST is almost a toy experiment, since the crucial component of the proposed method is the prior modeling with the GAN.

@@ -1,2 +1,0 @@
-4. Most importantly, for table4, authors are comparing to the ResNet18 ARNet instead of ResNet50? which is better than the proposed method.
-In addition, I observe that in Table 1, the proposed method does not outperform the Joint Training in SVHN with A_10.

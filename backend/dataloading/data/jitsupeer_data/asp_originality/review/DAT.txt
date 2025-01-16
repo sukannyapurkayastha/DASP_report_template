@@ -1,2 +1,0 @@
-If the novelty is in applying to continual learning and new datasets, it is not clear that this is sufficient.
-With lack of clear novel insights, or at least more systematic study on additional datasets of the 'winning' techniques and a sensitivity analysis, the paper does not give a valuable enough contribution to the field to merit publication.

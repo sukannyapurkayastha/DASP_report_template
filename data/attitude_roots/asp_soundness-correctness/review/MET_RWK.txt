@@ -1,9 +1,0 @@
-The results only compare with Shim et al. Why only this method? Why would it be expected to be faster than all the other alternatives? Wouldn't similar alternatives like the sparsely gated MoE, D-softmax and adaptive-softmax have chances of being faster?
-The performance of the proposed method is worse than the previous work but they claimed "state-of-the-art" results.
-- In the appendix, the statement "Sarkar (2011) show that a similar statement as in Theorem 2 holds for a very general class of trees" is confusing to me. The "general class", as far as I know, is actually *all* trees, weighted or unweighted.
-I wonder the motivation of analyzing generalization of RNNs by the techniques established by Bartlett.
-You should use an existing ES implementation (e.g., from some well-known package) instead of a naive implementation, and as additional baseline also CMA-ES.
-Therefore, I don’t find interesting to report how DDGC improve upon “no baseline”, because known methods do even better.
-While better than most of the baseline methods, the N^2 memory/computational complexity is not bad, but still too high to scale to very large graphs.
-As the approach uses NF is derived specifically for unstable dynamics, it is not clear to me how adding it would affect the training if the dynamics *is stable*. In this context, I consider that for example, the work by Balduzzi et al. 2018 may be relevant as it describes that the dynamics of games (the Jacobian) has two components, one of which describes the oscillating behavior (Hamiltonian game); whereas most games are a mix of oscillating and non-oscillating dynamics.
-The justification that the method of Khadka & Tumer (2018) cannot be extended to use CEM, since the RL policies do not comply with the covariance matrix is unclear to me.

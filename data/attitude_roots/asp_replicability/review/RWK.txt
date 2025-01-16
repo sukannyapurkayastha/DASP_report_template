@@ -1,5 +1,0 @@
-- very incremental improvements on PTB over a very simple baseline (far from SotA)
-3. The graph neural networks used in the model are not described in the paper, only a reference to Paliwal et al (2019) is given.
-It would be helpful to have a brief paragraph describing this architecture, for readers not familiar with the referenced paper.
-1) I wonder if the proposed method work for most GAN models, more experiments evaluated on more recent GAN-based  models should be added to verify the superiority claimed in this paper, e.g., TP-GAN [Huang et al., ICCV 2017], PIM [Zhao et al., CVPR 2018], DR-GAN [Tran et al., CVPR 2017], DA-GAN [Zhao et al., NIPS 2017], MH-Parser [Li et al., 2017], 3D-PIM [Zhao et al., IJCAI 2018], SimGAN [Shrivastava et al., CVPR 2016], AIM [Zhao et al., AAAI 2019].
-Some details are missing, which is hardly reproduced by the other researchers.

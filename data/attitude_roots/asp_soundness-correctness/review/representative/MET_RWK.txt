@@ -1,1 +1,0 @@
-The justification that the method of Khadka & Tumer (2018) cannot be extended to use CEM, since the RL policies do not comply with the covariance matrix is unclear to me.

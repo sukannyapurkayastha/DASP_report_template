@@ -1,1 +1,0 @@
-Finally, the experimental results do not show any significant advantage over PGD, either in running time (they are slower) or norm perturbation.
