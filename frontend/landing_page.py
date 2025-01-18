@@ -97,9 +97,6 @@ def landing_page(custom_css):
         st.write(
             "You can either provide a link of a openreview thread for the desired paper review aggregation (account of openreview login credentials required) or you provide us a file containing all reviews to aggregate. In this case you must use our template format.")
 
-        # Create tabs
-        # tab1, tab2 = st.tabs(["Enter URL", "Upload file"])
-
         tabs = ["Enter URL", "Upload file"]
         tab1, tab2 = st.tabs(tabs)
 
@@ -188,7 +185,6 @@ def landing_page(custom_css):
 
                         try:
                             paper = client.get_reviews_from_id(paper_id)
-                            # TODO: if we pass url or file later in show_analysis, then we don't need to get reviews right now.
                             st.session_state["reviews"] = paper.reviews
                             st.success(f'Reviews extracted from paper: "{paper.title}"')
                         except Exception as e:
