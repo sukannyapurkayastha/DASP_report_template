@@ -1,16 +1,16 @@
 import torch
 from transformers import (
-    BertTokenizer, 
-    BertForSequenceClassification, 
-    Trainer, 
+    BertTokenizer,
+    BertForSequenceClassification,
+    Trainer,
     TrainingArguments
 )
-from datasets import load_dataset, Dataset, DatasetDict
+from datasets import load_dataset, Dataset
 from sklearn.metrics import (
-    accuracy_score, 
-    f1_score, 
-    precision_score, 
-    recall_score, 
+    accuracy_score,
+    f1_score,
+    precision_score,
+    recall_score,
     confusion_matrix
 )
 from transformers import TrainerCallback, TrainerState, TrainerControl
@@ -19,13 +19,9 @@ import os
 import numpy as np
 import datetime
 
-#########################
-# 1) Datacleaning-Funktionen
-#########################
-
 def clean_special_characters(dataset, column="sentence"):
     """
-    Removes special characters like leading/trailing quotes from the specified column in the dataset.
+    Removes special characters such as leading/trailing quotes from the specified column.
     """
     def clean_example(example):
         if isinstance(example[column], str):
@@ -37,8 +33,8 @@ def clean_special_characters(dataset, column="sentence"):
 def clean_dataset(dataset):
     """
     Cleans and filters a Hugging Face Dataset:
-    - Removes sentences shorter than 10 characters or with fewer than 1 whitespace.
-    - Converts all text to lowercase.
+      - Removes sentences shorter than 10 characters or with fewer than 1 whitespace.
+      - Converts text to lowercase.
     """
     def clean_sentence(example):
         sentence = example['sentence']
@@ -48,19 +44,13 @@ def clean_dataset(dataset):
                 return sentence
         return None
 
-    # Filter out invalid sentences
     dataset = dataset.filter(lambda example: clean_sentence(example) is not None)
     dataset = dataset.map(lambda example: {"sentence": clean_sentence(example)})
     return dataset
 
-
-#########################
-# 2) Metrik-Funktionen und Callback
-#########################
-
 def compute_metrics(eval_pred):
     """
-    Computes evaluation metrics for a classification model.
+    Computes classification metrics (accuracy, precision, recall, F1).
     """
     logits, labels = eval_pred
     predictions = torch.argmax(torch.tensor(logits), dim=-1)
@@ -73,26 +63,20 @@ def compute_metrics(eval_pred):
 
 class MetricsLogger(TrainerCallback):
     """
-    Custom callback to log evaluation metrics after each epoch.
+    Logs evaluation metrics after each epoch.
     """
     def on_evaluate(self, args, state: TrainerState, control: TrainerControl, metrics, **kwargs):
         print(f"Metrics after epoch {state.epoch}: {metrics}")
 
-
-#########################
-# 3) Laden und Vorverarbeiten der Daten
-#########################
-
 def load_data(do_cleaning=True):
     """
-    Loads the dataset from CSV files and optionally cleans each split.
+    Loads train/validation/test splits from CSV files and optionally cleans them.
     """
     data_files = {
         "train": "model_training/nlp/request_classifier/DISAPERE/final_dataset/Request/train.csv",
         "validation": "model_training/nlp/request_classifier/DISAPERE/final_dataset/Request/dev.csv",
         "test": "model_training/nlp/request_classifier/DISAPERE/final_dataset/Request/test.csv",
     }
-
     data = load_dataset("csv", data_files=data_files)
 
     if do_cleaning:
@@ -104,7 +88,7 @@ def load_data(do_cleaning=True):
 
 def oversample_minority_class(dataset, label_col="target"):
     """
-    Oversamples the minority classes in the dataset to balance the class distribution.
+    Oversamples minority classes to balance class distribution.
     """
     df = dataset.to_pandas()
     class_counts = df[label_col].value_counts()
@@ -122,7 +106,7 @@ def oversample_minority_class(dataset, label_col="target"):
 
 def tokenize_function(example, tokenizer):
     """
-    Tokenizes text data for BERT input.
+    Tokenizes text data for BERT.
     """
     return tokenizer(
         example["sentence"],
@@ -134,14 +118,11 @@ def tokenize_function(example, tokenizer):
 
 def prepare_datasets(tokenizer, do_cleaning=True, do_oversampling=True):
     """
-    Loads, optionally cleans, optionally oversamples, then tokenizes the train, validation, test datasets.
-
-    Returns: (train_ds, val_ds, test_ds) - each with columns ["input_ids","attention_mask","labels"].
+    Loads and optionally cleans/oversamples data, then tokenizes train, validation, and test sets.
+    Returns (train_ds, val_ds, test_ds) with "input_ids","attention_mask","labels".
     """
-    # 1) Daten laden
     data = load_data(do_cleaning=do_cleaning)
 
-    # 2) Oversampling nur auf Training
     if do_oversampling:
         train_dataset = oversample_minority_class(data["train"], label_col="target")
     else:
@@ -150,13 +131,13 @@ def prepare_datasets(tokenizer, do_cleaning=True, do_oversampling=True):
     val_dataset = data["validation"]
     test_dataset = data["test"]
 
-    # 3) Tokenisieren
-    def map_fn(x): return tokenize_function(x, tokenizer)
+    def map_fn(x):
+        return tokenize_function(x, tokenizer)
+
     tokenized_train = train_dataset.map(map_fn, batched=True)
     tokenized_val = val_dataset.map(map_fn, batched=True)
     tokenized_test = test_dataset.map(map_fn, batched=True)
 
-    # 4) Labels-Spalte umbenennen
     tokenized_train = tokenized_train.rename_column("target", "labels")
     tokenized_train.set_format("torch", columns=["input_ids", "attention_mask", "labels"])
 
@@ -166,13 +147,7 @@ def prepare_datasets(tokenizer, do_cleaning=True, do_oversampling=True):
     tokenized_test = tokenized_test.rename_column("target", "labels")
     tokenized_test.set_format("torch", columns=["input_ids", "attention_mask", "labels"])
 
-
     return tokenized_train, tokenized_val, tokenized_test
-
-
-#########################
-# 4) Haupt-Training & Vorhersage
-#########################
 
 def train_and_evaluate_model(
     model_name,
@@ -183,14 +158,8 @@ def train_and_evaluate_model(
     results_file_path="metrics_results.txt"
 ):
     """
-    Trains a BERT-based model for sequence classification:
-    - model_name can be a HF Hub model (e.g. "bert-base-uncased") or a local path (e.g. "classification/custom_model").
-    - do_cleaning/do_oversampling toggles for data cleaning and oversampling.
-
-    Writes metrics (Acc, Prec, Recall, F1) and confusion matrix to a txt file.
+    Trains a BERT model for binary classification and writes performance metrics to a file.
     """
-    # 1) Tokenizer/Model laden
-    # Unterscheidung: Lokaler Pfad vs. Hugging-Face-Hub
     if model_name.startswith("model_training/"):
         tokenizer = BertTokenizer.from_pretrained(model_name, local_files_only=True)
         model = BertForSequenceClassification.from_pretrained(model_name, local_files_only=True, num_labels=2)
@@ -198,14 +167,12 @@ def train_and_evaluate_model(
         tokenizer = BertTokenizer.from_pretrained(model_name)
         model = BertForSequenceClassification.from_pretrained(model_name, num_labels=2)
 
-    # 2) Datensätze vorbereiten
     train_ds, val_ds, test_ds = prepare_datasets(
         tokenizer,
         do_cleaning=do_cleaning,
         do_oversampling=do_oversampling
     )
 
-    # 3) TrainingArguments
     training_args = TrainingArguments(
         output_dir="./results",
         evaluation_strategy="epoch",
@@ -220,7 +187,6 @@ def train_and_evaluate_model(
         load_best_model_at_end=True,
     )
 
-    # 4) Trainer
     trainer = Trainer(
         model=model,
         args=training_args,
@@ -230,19 +196,15 @@ def train_and_evaluate_model(
         callbacks=[MetricsLogger()],
     )
 
-    # 5) Training
     trainer.train()
 
-    # 6) Evaluate on Validation & Test
     val_metrics = trainer.evaluate(eval_dataset=val_ds)
     test_metrics = trainer.evaluate(eval_dataset=test_ds)
 
-    # 7) Confusion Matrix
     test_output = trainer.predict(test_ds)
     test_preds = np.argmax(test_output.predictions, axis=1)
     cm = confusion_matrix(test_output.label_ids, test_preds)
 
-    # 8) Ergebnisse in Datei schreiben
     with open(results_file_path, "a", encoding="utf-8") as f:
         f.write("==============================================\n")
         f.write(f"Model Name: {model_name}\n")
@@ -254,7 +216,6 @@ def train_and_evaluate_model(
         f.write(f"  Precision: {val_metrics['eval_precision']:.4f}\n")
         f.write(f"  Recall:    {val_metrics['eval_recall']:.4f}\n")
         f.write(f"  F1-Score:  {val_metrics['eval_f1']:.4f}\n")
-
         f.write("Test Metrics:\n")
         f.write(f"  Accuracy:  {test_metrics['eval_accuracy']:.4f}\n")
         f.write(f"  Precision: {test_metrics['eval_precision']:.4f}\n")
@@ -263,7 +224,6 @@ def train_and_evaluate_model(
         f.write("Confusion Matrix (Test):\n")
         f.write(str(cm) + "\n")
         f.write("==============================================\n\n")
-
 
 def predict(texts, model_path="./bert_request_classifier_model"):
     """
@@ -290,28 +250,19 @@ def predict(texts, model_path="./bert_request_classifier_model"):
     logits = outputs.logits
     return torch.argmax(logits, dim=-1).cpu().numpy()
 
-
-#########################
-# 5) Hauptprogramm (main)
-#########################
 def main():
     """
-    Führt 16 Trainingsläufe durch:
-      - 4 Modelle
-      - 2 Einstellungen (do_cleaning: True/False)
-      - 2 Einstellungen (do_oversampling: True/False)
-    => 4 x 2 x 2 = 16
+    Runs multiple training sessions for different settings:
+      - Varies model name, data cleaning, and oversampling parameters.
     """
     results_file_path = "metrics_results.txt"
-    # Neue (leere) Datei anlegen oder überschreiben:
     with open(results_file_path, "w", encoding="utf-8") as f:
         current_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        f.write(f"Ergebnis-Log gestartet am {current_time}\n\n")
+        f.write(f"Metrics log started at {current_time}\n\n")
 
-    # Unsere 4 Modelle:
-    model_names = [                     # 2) BERT-Large
-        "allenai/scibert_scivocab_uncased",       # 3) SciBERT
-        "model_training/nlp/request_classifier/models/classification/sciBERT_neg"             # 4) Lokales Modell (Beispiel)
+    model_names = [
+        "allenai/scibert_scivocab_uncased",
+        "model_training/nlp/request_classifier/models/classification/sciBERT_neg"
     ]
 
     for model_name in model_names:
@@ -325,7 +276,6 @@ def main():
                     batch_size=16,
                     results_file_path=results_file_path
                 )
-
 
 if __name__ == "__main__":
     main()

@@ -5,7 +5,7 @@ from transformers import (
     Trainer, 
     TrainingArguments
 )
-from datasets import load_dataset, Dataset, DatasetDict
+from datasets import load_dataset, Dataset
 from sklearn.metrics import (
     accuracy_score, 
     f1_score, 
@@ -19,13 +19,18 @@ import os
 import numpy as np
 import datetime
 
-#########################
-# 1) Datacleaning-Funktionen
-#########################
+
 
 def clean_special_characters(dataset, column="sentence"):
     """
-    Removes special characters like leading/trailing quotes from the specified column in the dataset.
+    Removes special characters (e.g., leading/trailing quotes) from the specified column in the dataset.
+
+    Args:
+        dataset (Dataset): A Hugging Face Dataset object.
+        column (str, optional): The column name to clean. Defaults to "sentence".
+
+    Returns:
+        Dataset: A new dataset with cleaned values in the specified column.
     """
     def clean_example(example):
         if isinstance(example[column], str):
@@ -37,8 +42,14 @@ def clean_special_characters(dataset, column="sentence"):
 def clean_dataset(dataset):
     """
     Cleans and filters a Hugging Face Dataset:
-    - Removes sentences shorter than 10 characters or with fewer than 1 whitespace.
-    - Converts all text to lowercase.
+      - Removes sentences shorter than 10 characters or with fewer than 1 whitespace.
+      - Converts all text to lowercase.
+
+    Args:
+        dataset (Dataset): A Hugging Face Dataset object.
+
+    Returns:
+        Dataset: A new dataset with cleaned sentences.
     """
     def clean_sentence(example):
         sentence = example['sentence']
@@ -54,13 +65,17 @@ def clean_dataset(dataset):
     return dataset
 
 
-#########################
-# 2) Metrik-Funktionen und Callback
-#########################
+
 
 def compute_metrics(eval_pred):
     """
     Computes evaluation metrics for a classification model.
+
+    Args:
+        eval_pred (tuple): A tuple containing (logits, labels).
+
+    Returns:
+        dict: Dictionary of metric names mapped to their scores.
     """
     logits, labels = eval_pred
     predictions = torch.argmax(torch.tensor(logits), dim=-1)
@@ -79,13 +94,18 @@ class MetricsLogger(TrainerCallback):
         print(f"Metrics after epoch {state.epoch}: {metrics}")
 
 
-#########################
-# 3) Laden und Vorverarbeiten der Daten
-#########################
+
 
 def load_data(do_cleaning=True):
     """
-    Loads the dataset from CSV files and optionally cleans each split.
+    Loads the dataset from CSV files for train, validation, and test splits,
+    and optionally cleans each split.
+
+    Args:
+        do_cleaning (bool, optional): Whether to apply data cleaning. Defaults to True.
+
+    Returns:
+        DatasetDict: A Hugging Face DatasetDict with train, validation, and test splits.
     """
     data_files = {
         "train": "model_training/nlp/request_classifier/DISAPERE/final_dataset/fine_request/train.csv",
@@ -104,7 +124,14 @@ def load_data(do_cleaning=True):
 
 def oversample_minority_class(dataset, label_col="target"):
     """
-    Oversamples the minority classes in the dataset to balance the class distribution.
+    Oversamples minority classes in the dataset to balance class distribution.
+
+    Args:
+        dataset (Dataset): A Hugging Face Dataset.
+        label_col (str, optional): The column name containing labels. Defaults to "target".
+
+    Returns:
+        Dataset: A new Hugging Face Dataset with balanced class distribution.
     """
     df = dataset.to_pandas()
     class_counts = df[label_col].value_counts()
@@ -123,6 +150,13 @@ def oversample_minority_class(dataset, label_col="target"):
 def tokenize_function(example, tokenizer):
     """
     Tokenizes text data for BERT input.
+
+    Args:
+        example (dict): A dictionary with key "sentence" for the text to be tokenized.
+        tokenizer (BertTokenizer): A Hugging Face tokenizer instance.
+
+    Returns:
+        dict: A dictionary containing input_ids, attention_mask, etc.
     """
     return tokenizer(
         example["sentence"],
@@ -134,14 +168,21 @@ def tokenize_function(example, tokenizer):
 
 def prepare_datasets(tokenizer, do_cleaning=True, do_oversampling=True):
     """
-    Loads, optionally cleans, optionally oversamples, then tokenizes the train, validation, test datasets.
+    Loads, optionally cleans, optionally oversamples, then tokenizes
+    the train, validation, and test datasets.
 
-    Returns: (train_ds, val_ds, test_ds) - each with columns ["input_ids","attention_mask","labels"].
+    Args:
+        tokenizer (BertTokenizer): A Hugging Face tokenizer.
+        do_cleaning (bool, optional): Apply data cleaning if True. Defaults to True.
+        do_oversampling (bool, optional): Oversample minority classes if True. Defaults to True.
+
+    Returns:
+        tuple: tokenized_train, tokenized_val, tokenized_test (Dataset objects)
     """
-    # 1) Daten laden
+    # 1) Load data
     data = load_data(do_cleaning=do_cleaning)
 
-    # 2) Oversampling nur auf Training
+    # 2) Oversampling only on training split
     if do_oversampling:
         train_dataset = oversample_minority_class(data["train"], label_col="target")
     else:
@@ -150,7 +191,7 @@ def prepare_datasets(tokenizer, do_cleaning=True, do_oversampling=True):
     val_dataset = data["validation"]
     test_dataset = data["test"]
 
-    # 3) Tokenisieren
+    # 3) Tokenize
     def map_fn(x): 
         return tokenize_function(x, tokenizer)
     
@@ -158,7 +199,7 @@ def prepare_datasets(tokenizer, do_cleaning=True, do_oversampling=True):
     tokenized_val = val_dataset.map(map_fn, batched=True)
     tokenized_test = test_dataset.map(map_fn, batched=True)
 
-    # 4) Labels-Spalte umbenennen
+    # 4) Rename the label column to "labels" and set the format to PyTorch
     tokenized_train = tokenized_train.rename_column("target", "labels")
     tokenized_train.set_format("torch", columns=["input_ids", "attention_mask", "labels"])
 
@@ -171,19 +212,22 @@ def prepare_datasets(tokenizer, do_cleaning=True, do_oversampling=True):
     return tokenized_train, tokenized_val, tokenized_test
 
 
-#########################
-# 4) Thresholding Logic from Second Snippet
-#########################
-### NEW/UPDATED ###
+
+
 def apply_thresholds(logits, class_thresholds):
     """
-    Applies class-specific thresholds to predictions.
-    For each example:
+    Applies class-specific thresholds to predictions. For each example:
       1) Convert logits -> softmax probabilities.
       2) For each class, check if p >= class_thresholds[class_idx].
-         Collect all "valid" classes.
-      3) If none are valid, pick the argmax class.
-      4) If >=1 is valid, pick the one with the highest prob among the valid ones.
+      3) If multiple classes meet their threshold, pick the highest-probability one.
+      4) If none meet their threshold, pick the argmax class.
+
+    Args:
+        logits (torch.Tensor): Model output logits.
+        class_thresholds (dict): A dictionary mapping class_idx -> threshold (e.g. {0: 0.5, 1:0.4, ...}).
+
+    Returns:
+        list: A list of predicted class indices.
     """
     probabilities = torch.softmax(torch.tensor(logits), dim=-1)
     predictions = []
@@ -191,7 +235,7 @@ def apply_thresholds(logits, class_thresholds):
     for prob in probabilities:
         valid_classes = []
         for class_idx, p in enumerate(prob):
-            # Default threshold is 0.5 if not in dictionary
+            # Default threshold is 0.5 if not provided
             if p >= class_thresholds.get(class_idx, 0.5):
                 valid_classes.append((class_idx, p))
 
@@ -204,11 +248,6 @@ def apply_thresholds(logits, class_thresholds):
     return predictions
 
 
-#########################
-# 5) Haupt-Training & Vorhersage
-#########################
-
-### NEW/UPDATED ###
 def train_and_evaluate_model(
     model_name,
     do_cleaning=False,
@@ -216,20 +255,26 @@ def train_and_evaluate_model(
     num_epochs=5,
     batch_size=16,
     results_file_path="metrics_results.txt",
-    do_thresholding=False,              # <--- new param
-    class_thresholds=None,              # <--- new param
-    num_labels=6                        # <--- changed default from 2 to 6
+    do_thresholding=False,
+    class_thresholds=None,
+    num_labels=6
 ):
     """
-    Trains a BERT-based model for sequence classification:
-    - model_name can be a HF Hub model (e.g. "bert-base-uncased") or a local path (e.g. "classification/custom_model").
-    - do_cleaning/do_oversampling toggles for data cleaning and oversampling.
-    - do_thresholding applies class-specific thresholds if True.
-    - class_thresholds is a dict like {0: 0.35, 1: 0.35, 2: 0.25, 3: 0.20, ...}
-    - num_labels: number of output classes (defaults to 6).
+    Trains a BERT-based model for sequence classification.
+
+    Args:
+        model_name (str): Model identifier, either on Hugging Face Hub (e.g., "bert-base-uncased")
+                          or a local path (e.g., "classification/custom_model").
+        do_cleaning (bool, optional): Whether to clean the data. Defaults to False.
+        do_oversampling (bool, optional): Whether to oversample minority classes. Defaults to False.
+        num_epochs (int, optional): Number of training epochs. Defaults to 5.
+        batch_size (int, optional): Training/evaluation batch size. Defaults to 16.
+        results_file_path (str, optional): Path to write evaluation metrics. Defaults to "metrics_results.txt".
+        do_thresholding (bool, optional): Whether to apply class-specific thresholds. Defaults to False.
+        class_thresholds (dict, optional): Threshold values per class index. Defaults to None.
+        num_labels (int, optional): Number of output classes. Defaults to 6.
     """
-    # 1) Tokenizer/Model laden
-    # Unterscheidung: Lokaler Pfad vs. Hugging-Face-Hub
+    # 1) Load tokenizer and model (distinguish local path vs. HF Hub)
     if model_name.startswith("model_training/"):
         tokenizer = BertTokenizer.from_pretrained(model_name, local_files_only=True)
         model = BertForSequenceClassification.from_pretrained(model_name, local_files_only=True, num_labels=num_labels)
@@ -237,14 +282,14 @@ def train_and_evaluate_model(
         tokenizer = BertTokenizer.from_pretrained(model_name)
         model = BertForSequenceClassification.from_pretrained(model_name, num_labels=num_labels)
 
-    # 2) Datensätze vorbereiten
+    # 2) Prepare datasets
     train_ds, val_ds, test_ds = prepare_datasets(
         tokenizer,
         do_cleaning=do_cleaning,
         do_oversampling=do_oversampling
     )
 
-    # 3) TrainingArguments
+    # 3) Training Arguments
     training_args = TrainingArguments(
         output_dir="./results",
         evaluation_strategy="epoch",
@@ -259,7 +304,7 @@ def train_and_evaluate_model(
         load_best_model_at_end=True,
     )
 
-    # 4) Trainer
+    # 4) Instantiate the Trainer
     trainer = Trainer(
         model=model,
         args=training_args,
@@ -269,32 +314,27 @@ def train_and_evaluate_model(
         callbacks=[MetricsLogger()],
     )
 
-    # 5) Training
+    # 5) Train the model
     trainer.train()
 
-    # 6) Evaluate on Validation & Test
+    # 6) Evaluate on validation and test sets
     val_metrics = trainer.evaluate(eval_dataset=val_ds)
     test_metrics = trainer.evaluate(eval_dataset=test_ds)
 
-    # 7) Confusion Matrix (with or without thresholding)
+    # 7) Generate Predictions and Confusion Matrix
     test_output = trainer.predict(test_ds)
     pred_logits = test_output.predictions
     true_labels = test_output.label_ids
 
-    ### NEW/UPDATED ###
     if do_thresholding and class_thresholds is not None:
-        # Use apply_thresholds from above
+        # Use custom thresholding
         pred_labels = apply_thresholds(pred_logits, class_thresholds)
-        # If you want a confusion matrix over ONLY the keys in class_thresholds, do:
-        # cm = confusion_matrix(true_labels, pred_labels, labels=list(class_thresholds.keys()))
-        # But usually you'd do:
         cm = confusion_matrix(true_labels, pred_labels)
     else:
-        # No thresholding => standard argmax
         pred_labels = np.argmax(pred_logits, axis=-1)
         cm = confusion_matrix(true_labels, pred_labels)
 
-    # 8) Ergebnisse in Datei schreiben
+    # 8) Write results to file
     with open(results_file_path, "a", encoding="utf-8") as f:
         f.write("==============================================\n")
         f.write(f"Model Name: {model_name}\n")
@@ -323,6 +363,13 @@ def train_and_evaluate_model(
 def predict(texts, model_path="./bert_request_classifier_model"):
     """
     Predicts labels for a list of texts using a trained BERT model.
+
+    Args:
+        texts (list): A list of text inputs to classify.
+        model_path (str, optional): Path or name of the model checkpoint. Defaults to "./bert_request_classifier_model".
+
+    Returns:
+        np.ndarray: An array of predicted label indices.
     """
     tokenizer = BertTokenizer.from_pretrained(model_path)
     model = BertForSequenceClassification.from_pretrained(model_path)
@@ -346,31 +393,25 @@ def predict(texts, model_path="./bert_request_classifier_model"):
     return torch.argmax(logits, dim=-1).cpu().numpy()
 
 
-#########################
-# 6) Hauptprogramm (main)
-#########################
+
 def main():
     """
-    Example: trains the model on 2 model variants, with/without cleaning, with/without oversampling, 
-    with/without thresholding => multiple runs.
-    Adjust as needed.
+    Main function to orchestrate training over multiple configurations.
+    Writes results (metrics and confusion matrices) to a specified file.
     """
     results_file_path = "metrics_results.txt"
-    # Start fresh results file:
+    
+    # Start fresh results file
     with open(results_file_path, "w", encoding="utf-8") as f:
         current_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        f.write(f"Ergebnis-Log gestartet am {current_time}\n\n")
+        f.write(f"Metrics log started at {current_time}\n\n")
 
-    # Example: Two model names
+    # List of model names or paths to evaluate
     model_names = [
-        "bert-base-uncased",
-        "allenai/scibert_scivocab_uncased",
-        "model_training/nlp/request_classifier/models/classification/sciBERT_neg"
+        "model_training/nlp/request_classifier/models/classification/sciBERT_neg/"
     ]
 
-    ### NEW/UPDATED ###
-    # Example class thresholds for 6 classes
-    # Adjust the threshold values to your liking
+    # Example thresholds for 6 classes
     class_thresholds = {
         0: 0.35,
         1: 0.35,
@@ -380,29 +421,33 @@ def main():
         5: 0.35
     }
 
-    # 2 (cleaning) x 2 (oversampling) x 2 (thresholding) x 2 (models) = 16 runs
-    for model_name in model_names:
-        for cleaning in [False, True]:
-            for oversampling in [False, True]:
-                for thresholding in [False, True]:
-                    print("=" * 60)
-                    print(f"Running {model_name}")
-                    print(f"  Cleaning:     {cleaning}")
-                    print(f"  Oversampling: {oversampling}")
-                    print(f"  Thresholding: {thresholding}")
-                    print("=" * 60)
+    # Define different parameter combinations to test
+    missing_combos = [
+        (True, False, True),   # cleaning=True, oversampling=False, thresholding=True
+        (True, True, False),   # cleaning=True, oversampling=True,  thresholding=False
+        (True, True, True)     # cleaning=True, oversampling=True,  thresholding=True
+    ]
 
-                    train_and_evaluate_model(
-                        model_name=model_name,
-                        do_cleaning=cleaning,
-                        do_oversampling=oversampling,
-                        num_epochs=5,
-                        batch_size=16,
-                        results_file_path=results_file_path,
-                        do_thresholding=thresholding,       # <--- use thresholding?
-                        class_thresholds=class_thresholds,   # <--- pass thresholds
-                        num_labels=6                         # <--- for 6-class problem
-                    )
+    for model_name in model_names:
+        for (cleaning, oversampling, thresholding) in missing_combos:
+            print("=" * 60)
+            print(f"Running {model_name}")
+            print(f"  Cleaning:     {cleaning}")
+            print(f"  Oversampling: {oversampling}")
+            print(f"  Thresholding: {thresholding}")
+            print("=" * 60)
+
+            train_and_evaluate_model(
+                model_name=model_name,
+                do_cleaning=cleaning,
+                do_oversampling=oversampling,
+                num_epochs=5,
+                batch_size=16,
+                results_file_path=results_file_path,
+                do_thresholding=thresholding,
+                class_thresholds=class_thresholds,
+                num_labels=6
+            )
 
 
 if __name__ == "__main__":

@@ -359,11 +359,7 @@ def load_model_and_tokenizer(save_directory):
 
 
 if __name__ == "__main__":
-    # -------------------------------------------------------------------------
-    # Allow user to select a version of the few-shot examples (v1 or v2, etc.)
-    # Usage: python script_name.py v2
-    # If no argument is provided, default to "v1".
-    # -------------------------------------------------------------------------
+
     if len(sys.argv) > 1:
         version = sys.argv[1]
     else:

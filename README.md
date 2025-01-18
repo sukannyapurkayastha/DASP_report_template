@@ -80,6 +80,8 @@ Model Training and Backend:
 The models trained in the Backend are stored in the designated containers with are activated when the Backend is called.
 
 
+
+
 ## **4. Detailed description of the files**
 
 #### **4.1 `backend`**
@@ -141,6 +143,35 @@ The model training folder includes the scripts and data which which the models w
                           and a multi class classification for the fine review actions 
   - `review_to_theme`: includes scripts for mapping review sentences to themes
 ---
+
+## **5 Data**
+
+For this project, we utilized two primary datasets:
+
+    JiujitsuPeer Dataset
+        Used for developing the attitude and theme prediction models.
+        The dataset comes pre-labeled by its original creators, providing ground truth annotations for sentiment or stance (attitude) and thematic categories (theme).
+        We selectively extracted and subdivided only those sections most relevant for our model objectives, ensuring training data remained highly focused on the classification tasks at hand.
+
+    DISAPERE Dataset
+        Used for building and refining our request prediction models.
+        Like the JiujitsuPeer Dataset, DISAPERE was pre-labeled with relevant review actions and requests, allowing us to apply segmentation and filtering specific to the request-classification requirements.
+        We further tailored the dataset by removing or restructuring fields not pertinent to predicting review actions, simplifying integration with our overall pipeline.
+
+By leveraging these pre-labeled datasets—and performing only minimal pre-processing to isolate the pertinent fields—we streamlined the model training phase while retaining high-quality annotations for the core prediction tasks.
+
+## **5 Testing**
+
+We adopted a multi-level testing strategy to ensure both reliability and maintainability across our application:
+
+    Unit Tests
+        Implemented extensively for backend modules and individual model components.
+        Validate each function's correctness, focusing on data loading, preprocessing methods, and core inference logic in isolation.
+
+    Integration Tests
+        Primarily target the frontend and its interactions with the backend APIs.
+        Assess end-to-end functionality—verifying that data flows correctly from the user interface, through the backend services, and back again with the expected responses and outputs.
+
 
 ## **5 Contact**
 
