@@ -1,0 +1,5 @@
+Category,Avg_Score,Individual_scores
+Rating,3.75,"[['Reviewer B8PQ', 3], ['Reviewer y95k', 4], ['Reviewer q9Lv', 4], ['Reviewer xju7', 4]]"
+Soundness,2.5,"[['Reviewer B8PQ', 2], ['Reviewer y95k', 3], ['Reviewer q9Lv', 2], ['Reviewer xju7', 3]]"
+Presentation,2.0,"[['Reviewer B8PQ', 2], ['Reviewer y95k', 1], ['Reviewer q9Lv', 3], ['Reviewer xju7', 2]]"
+Contribution,1.75,"[['Reviewer B8PQ', 2], ['Reviewer y95k', 2], ['Reviewer q9Lv', 2], ['Reviewer xju7', 1]]"

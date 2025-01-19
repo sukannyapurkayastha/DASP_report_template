@@ -164,6 +164,12 @@ backend/models/attitude_root/vocab.txt
 backend_old/models/attitude_root/tf_model.h5
 .h5
 
+#unpublished developer training files of summary generator
+summary_generator/approach_A
+summary_generator/approach_B
+summary_generator/refactoring
+summary_generator/final
+
 model_training/nlp/review_to_theme/results/
 request_classifier/models/attitude_classifier/tf_model.h5
 *.h5
