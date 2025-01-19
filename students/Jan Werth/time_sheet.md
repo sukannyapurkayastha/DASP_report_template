@@ -38,7 +38,7 @@
 | [11/12/24] | [11/12/24] | [Meeting]            | [Weekly meeting]                                                             | [1]                | [Completed]   |
 | [11/12/24] | [11/12/24] | [Meeting]            | [Internal meeting]                                                           | [2]                | [Completed]   |
 | [9/12/24]  | [11/12/24] | [Meeting]            | [Midterm presentation preparation]                                           | [4]                | [Completed]   |
-| [12/12/24] | [06/01/25] | [Meeting]            | [Writing test]                                                               | [40]               | [In Progress] |
+| [12/12/24] | [06/01/25] | [Meeting]            | [Writing test]                                                               | [44]               | [In Progress] |
 | [13/01/25] | [13/01/25] | [Meeting]            | [Weekly meeting]                                                             | [1]                | [Completed]   |
 | [13/01/25] | [13/01/25] | [Meeting]            | [Internal meeting]                                                           | [0.5]              | [Completed]   |
 ---

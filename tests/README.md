@@ -20,4 +20,10 @@ password.
 Please run this from the root folder of the project to ensure correct module imports.
 
     pytest .\tests\test_openreview_textprocessor_integration.py --username="YOUR_USERNAME" --password="YOUR_PASSWORD"
+    pytest .\tests\test_uploadedfileprocessor_textprocessor_integration.py
+
+For the following test, first start the attitude_classify model on port 8002:
+
+    pytest .\tests\test_textprocessor_classify_attitude_integration.py --username="YOUR_USERNAME" --password="YOUR_PASSWORD"
+
 
