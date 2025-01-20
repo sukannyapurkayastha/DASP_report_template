@@ -12,7 +12,7 @@ class RawInput(BaseModel):
     data: list[dict]
 
 @app.post("/generate_summary")
-async def predict(overview_df: RawInput, attitude_df: RawInput, request_df: RawInput):
+async def predict(overview_df: RawInput, attitude_df: RawInput, request_df: RawInput) -> list[dict]:
     try:
         # 1) Transform json files into dfs
         overview = overview_df.data
@@ -55,15 +55,20 @@ async def predict(overview_df: RawInput, attitude_df: RawInput, request_df: RawI
         requests, comments = request_list
         
         # case of no return what means that there arent any attitude roots
-        if attitude_roots == [] and comments == []:
+        if requests == [] and comments == []:
             summary += "No request information were found during analysis."
             
         # case of return what means we can predict!
         for request, comment in zip(requests, comments):
             pred = predict_LLAMA2.predict(comment, model=model, tokenizer=tokenizer)
             summary += f"{request} \nAI aggregated comments: {pred} \n\n"
-
-        return summary
+        
+        # turn string into a pandas df
+        summary_df = pd.DataFrame([[summary]])
+        
+        summary_df_dict = summary_df.to_dict(orient="records")
+        
+        return summary_df_dict
     
     
     except Exception as e:

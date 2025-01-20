@@ -169,6 +169,7 @@ summary_generator/approach_A
 summary_generator/approach_B
 summary_generator/refactoring
 summary_generator/final
+summary_generator/models/llama2
 
 model_training/nlp/review_to_theme/results/
 request_classifier/models/attitude_classifier/tf_model.h5

@@ -24,7 +24,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
-def load_LLAMA2_model(model_dir: str = "/models/llama2"):
+def load_LLAMA2_model(model_dir: str = "./models/llama2"):
     """
     Load a LLaMA 2 model from Hugging Face that is supposed to be stored locally at the given path.
     For a real-world scenario, ensure you have:
@@ -43,6 +43,8 @@ def load_LLAMA2_model(model_dir: str = "/models/llama2"):
     model = LlamaForCausalLM.from_pretrained(
         model_dir,
         device_map="auto",
+        offload_folder="./models/llama2/offload_folder",  # Replace with your desired path
+        offload_state_dict=True  # Ensure the state dict is offloaded
     )
 
     # Set pad_token to eos_token

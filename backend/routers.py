@@ -51,12 +51,17 @@ async def process_data(input_data: RawInput) -> dict:
         
         
         # run summary generator
+        
+        
+        
         try: 
             response_summary = requests.post(
                 "http://localhost:8083/generate_summary",
-                json={"overview_df": overview, "attitude_df": attitude_data, "request_df": request_data}
+                json={"overview_df": {"data": overview}, 
+                      "attitude_df": {"data": pd.DataFrame(attitude_data).to_dict(orient='records')}, 
+                      "request_df": {"data": pd.DataFrame(request_data).to_dict(orient='records')}}
             )
-            if response_attitude.status_code == 200:
+            if response_summary.status_code == 200:
                 summary_data = response_summary.json()
             else:
                 logger.error(f"Model Summary Generator API Error: {response_summary.text}")
