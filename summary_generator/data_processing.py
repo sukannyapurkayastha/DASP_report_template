@@ -1,9 +1,24 @@
 import os
 import pandas as pd
 import ast
-#from dfs_to_input_converter import generate_input_text
+# from dfs_to_input_converter import generate_input_text
 
 def process_csv_files(base_path="data/real_sample_data"):
+    """
+    Processes CSV files within each subdirectory of the specified base path.
+
+    This function iterates through each folder in the base directory, reads specific CSV files
+    in a defined order, parses certain columns, rounds numerical values, and stores the resulting
+    DataFrames in a dictionary keyed by folder name.
+
+    Parameters:
+        base_path (str): The path to the base directory containing subfolders with CSV files.
+                         Defaults to "data/real_sample_data".
+
+    Returns:
+        dict: A dictionary where each key is a folder name and each value is a list of DataFrames
+              corresponding to the CSV files in that folder.
+    """
     # Dictionary to hold dataframes for each folder, with each folder containing a list of DataFrames
     folder_dataframes = {}
 
@@ -45,6 +60,20 @@ def process_csv_files(base_path="data/real_sample_data"):
 
 
 def convert_dataframes_to_input(folder_dataframes):
+    """
+    Converts a dictionary of folder DataFrames into input strings for each folder.
+
+    This function takes the processed DataFrames for each folder and generates input text
+    using the `generate_input_text` function. It ensures that each folder has exactly three
+    DataFrames before processing.
+
+    Parameters:
+        folder_dataframes (dict): A dictionary where each key is a folder name and each value
+                                  is a list of three DataFrames (overview, attitude_roots, request_information).
+
+    Returns:
+        dict: A dictionary where each key is a folder name and each value is the generated input text.
+    """
     # Dictionary to store input strings for each folder
     folder_inputs = {}
 
@@ -63,7 +92,18 @@ def convert_dataframes_to_input(folder_dataframes):
 
 def generate_overview_prompts(overview_df):
     """
-    Build lines summarizing rating, soundness, etc.
+    Builds summary lines for each category based on average scores and identifies outliers.
+
+    This function processes the overview DataFrame to generate descriptive sentences
+    summarizing the average scores for each category. It also identifies and notes any
+    outlier scores that deviate significantly from the average.
+
+    Parameters:
+        overview_df (pd.DataFrame): DataFrame containing overview information with columns
+                                     like 'Category', 'Avg_Score', and 'Individual_scores'.
+
+    Returns:
+        str: A concatenated string of summary sentences for each category.
     """
     max_scores = {'Rating': 10, 'Soundness': 4, 'Presentation': 4, 'Contribution': 4}
     threshold = 1.5
@@ -94,7 +134,20 @@ def generate_overview_prompts(overview_df):
 
 def generate_attitude_roots_prompts(attitude_df):
     """
-    Summarize the attitude roots, frequencies, and comments.
+    Summarizes attitude roots by frequency and aggregates related comments.
+
+    This function processes the attitude roots DataFrame to generate descriptive lines
+    indicating how often each attitude root appears and includes any associated descriptions.
+    It also aggregates comments related to each attitude root.
+
+    Parameters:
+        attitude_df (pd.DataFrame): DataFrame containing attitude roots information with columns
+                                    like 'Attitude_roots', 'Frequency', 'Descriptions', and 'Comments'.
+
+    Returns:
+        list: A list containing two elements:
+              1. A list of summary lines for each attitude root.
+              2. A list of aggregated comments for each attitude root.
     """
     attitude_df['Frequency_Percent'] = attitude_df['Frequency'] * 100
     lines = []
@@ -115,13 +168,24 @@ def generate_attitude_roots_prompts(attitude_df):
         lines.append(line)
         comments.append(all_comments)
 
-    
-
     return [lines, comments]
 
 def generate_request_information_prompts(request_df):
     """
-    Summarize requests (like "Typo" or "Clarification"), freq, and comments.
+    Summarizes request information by type, frequency, and aggregates related comments.
+
+    This function processes the request information DataFrame to generate descriptive lines
+    indicating how often each type of request was made. It also aggregates comments related
+    to each request type.
+
+    Parameters:
+        request_df (pd.DataFrame): DataFrame containing request information with columns
+                                   like 'Request Information', 'Frequency', and 'Comments'.
+
+    Returns:
+        list: A list containing two elements:
+              1. A list of summary lines for each request type.
+              2. A list of aggregated comments for each request type.
     """
     request_df['Frequency_Percent'] = request_df['Frequency'] * 100
     lines = []
@@ -145,7 +209,24 @@ def generate_request_information_prompts(request_df):
 
 
 def generate_input_text(overview_df, attitude_df, request_df):
-    
+    """
+    Generates structured input text from overview, attitude, and request DataFrames.
+
+    This function combines the outputs from generating overview prompts, attitude roots prompts,
+    and request information prompts into a single structured input. It organizes the data
+    with clear section headings for further processing or model input.
+
+    Parameters:
+        overview_df (pd.DataFrame): DataFrame containing overview information.
+        attitude_df (pd.DataFrame): DataFrame containing attitude roots information.
+        request_df (pd.DataFrame): DataFrame containing request information.
+
+    Returns:
+        tuple: A tuple containing three elements:
+               1. Overview summary string.
+               2. List containing attitude roots summary lines and aggregated comments.
+               3. List containing request information summary lines and aggregated comments.
+    """
     # Collect all prompts from the three scripts
     overview_output = generate_overview_prompts(overview_df)
     attitude_list = generate_attitude_roots_prompts(attitude_df)
@@ -161,8 +242,18 @@ def generate_input_text(overview_df, attitude_df, request_df):
 ###############################################################################
 
 def export_unlabeled_data():
+    """
+    Exports aggregated comments from all folders into a JSON Lines file.
+
+    This function processes CSV files from each folder, generates input text,
+    extracts comments from attitude roots and request information, and writes them
+    as JSON objects to a `.jsonl` file. Each line in the file represents a JSON object
+    with an "input" key containing the comment text.
+
+    The exported file is named "real_world_data_unlabeled.jsonl".
+    """
     complete_export = ""
-    folder_dataframes = process_csv_files() # return a list [overview_df, attitude_df. request_df]
+    folder_dataframes = process_csv_files()  # return a list [overview_df, attitude_df, request_df]
     # dfs = [overview_df, attitude_df, request_df]
     for folder, dfs in folder_dataframes.items():
         overview_df, attitude_df, request_df = dfs
@@ -187,11 +278,26 @@ def export_unlabeled_data():
     
 if __name__ == "__main__":
     export_unlabeled_data()
-    
 
+# unused function!
 def predict_data(model, tokenizer, overview_df, attitude_df, request_df):
-    
-    from data.convert_csv_to_unlabeled_jsonl import generate_input_text
+    """
+    Generates predictions by aggregating summaries using a machine learning model.
+
+    This function processes the overview, attitude roots, and request information DataFrames
+    to generate summaries. It utilizes the provided model and tokenizer to generate AI-aggregated
+    comments for attitude roots and request information sections.
+
+    Parameters:
+        model: The machine learning model used to generate predictions.
+        tokenizer: The tokenizer associated with the model for processing input text.
+        overview_df (pd.DataFrame): DataFrame containing overview information.
+        attitude_df (pd.DataFrame): DataFrame containing attitude roots information.
+        request_df (pd.DataFrame): DataFrame containing request information.
+
+    Returns:
+        str: The aggregated summary containing both original and AI-generated sections.
+    """
     
     overview_output, attitude_list, request_list = generate_input_text(overview_df, attitude_df, request_df)
     
@@ -199,17 +305,18 @@ def predict_data(model, tokenizer, overview_df, attitude_df, request_df):
     summary = "Overview: \n"
     summary += overview_output
     
-    # 2) add AI generated summary of Attitue Roots
+    # 2) add AI generated summary of Attitude Roots
     summary += "\n Attitude Roots: \n"
     attitude_roots, comments = attitude_list
-    for attitude, comment in attitude_roots, comments:
-        pred = model.predict(comment, tokenizer) #TODO:
+    for attitude, comment in zip(attitude_roots, comments):
+        pred = model.predict(comment, tokenizer)  # TODO: Implement model prediction
         summary += f"{attitude} AI aggregated Comments: {pred} \n"
     
     # 3) add AI generated summary of Request Information
     summary += "\n Request Information: \n"
     requests, comments = request_list
-    for request, comment in requests, comments:
-        pred = model.predict(comment) #TODO:
+    for request, comment in zip(requests, comments):
+        pred = model.predict(comment)  # TODO: Implement model prediction
         summary += f"{request} AI aggregated Comments: {pred} \n"
-        
+
+    return summary

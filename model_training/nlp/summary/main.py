@@ -13,9 +13,8 @@ import train_T5, train_BART, train_BLOOM
 import predict_compare
 import predict_T5, predict_BART, predict_BLOOM, predict_LLAMA2
 import dfs_to_input_converter, input_to_prompt_converter
-from data.convert_csv_to_unlabeled_jsonl import generate_input_text
+from data.data_processing import generate_input_text
 import dummy_data
-from data.convert_csv_to_unlabeled_jsonl import generate_input_text
 
 
 
@@ -24,9 +23,9 @@ from data.convert_csv_to_unlabeled_jsonl import generate_input_text
 verify_cuda.main()
 
 # 2) Train models (if not already done)
-#train_T5.main()
-#train_BART.main()
-#train_BLOOM.main()
+train_T5.main()
+train_BART.main()
+train_BLOOM.main()
 # llama2 is not trained as it is already very good.
 
 
