@@ -24,7 +24,7 @@ async def predict(overview_df: RawInput, attitude_df: RawInput, request_df: RawI
         request = request_df.data
         request_df = pd.DataFrame(request)
 
-        
+        """
         # 2) Transform overview into its final text and extract lists with attributes and comments of attitude and request 
         overview_output, attitude_list, request_list = generate_input_text(overview_df, attitude_df, request_df)
         
@@ -62,7 +62,8 @@ async def predict(overview_df: RawInput, attitude_df: RawInput, request_df: RawI
         for request, comment in zip(requests, comments):
             pred = predict_LLAMA2.predict(comment, model=model, tokenizer=tokenizer)
             summary += f"{request} \nAI aggregated comments: {pred} \n\n"
-        
+        """
+        summary = "We currently commented out AI summary generation. Go to DASP_report_template/summary_generator/main.py to use it again." # TODO: remove this line when we use the model for prediction
         # turn string into a pandas df
         summary_df = pd.DataFrame([[summary]])
         
