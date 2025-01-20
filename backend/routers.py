@@ -51,7 +51,6 @@ async def process_data(input_data: RawInput) -> dict:
         
         
         # run summary generator
-        """
         try: 
             response_summary = requests.post(
                 "http://localhost:8083/generate_summary",
@@ -64,13 +63,12 @@ async def process_data(input_data: RawInput) -> dict:
         except Exception as e:
             logger.error(f"Error communicating with model Summary Generator: {e}")
         
-        """
         
         return {
             "overview": overview,
             "request_response": request_data,
-            "attitude_response": attitude_data
-            # "summary_response": summary_data
+            "attitude_response": attitude_data,
+            "summary_response": summary_data
         }
         
         

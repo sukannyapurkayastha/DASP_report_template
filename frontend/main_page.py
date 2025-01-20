@@ -152,12 +152,13 @@ def get_classification_with_api():
             df_overview = pd.DataFrame(data["overview"])
             df_requests = pd.DataFrame(data["request_response"])
             df_attitudes = pd.DataFrame(data["attitude_response"])
+            df_summary = pd.DataFrame(data["summary_response"])
             # Todo: add other returned data
         else:
             st.error(f"Error: {response.text}")
 
         # Todo: Return all the dataframes (once we returned them from the api)
-        return df_overview, df_requests, df_attitudes
+        return df_overview, df_requests, df_attitudes, df_summary
 
     except Exception as e:
         st.error(f"An error occurred: {e}")
@@ -171,17 +172,19 @@ def main_page(custom_css):
 
     if "main_page_variables" not in st.session_state:
         # Fetch data and store it in session state
-        overview, request_information, attitude_roots = get_classification_with_api()
+        overview, request_information, attitude_roots, summary = get_classification_with_api()
         st.session_state.main_page_variables = {
             "overview": overview,
             "request_information": request_information,
             "attitude_roots": attitude_roots,
+            "summary": summary
         }
 
     # Access data from session state
     overview = st.session_state.main_page_variables["overview"]
     attitude_roots = st.session_state.main_page_variables["attitude_roots"]
     request_information = st.session_state.main_page_variables["request_information"]
+    summary = st.session_state.main_page_variables["summary"]
 
     if overview.empty:
         st.warning("No data available for overview.")
@@ -195,17 +198,21 @@ def main_page(custom_css):
         st.warning("No data available for request classification.")
         with open(os.path.join(base_path, 'dummy_data', 'dummy_requests.pkl'), 'rb') as file:
             request_information = pickle.load(file)
+    if summary.empty:
+        st.warning("No data available for summary - display dummy data instead!") 
+        summary = pd.read_csv(os.path.join(base_path, "dummy_data", "dummy_summary.csv"), sep=";", encoding="utf-8")
 
-    summary = pd.read_csv(os.path.join(base_path, "dummy_data", "dummy_summary.csv"), sep=";", encoding="utf-8")
-
+    # Show overview container
     use_default_container(modules.overview.show_overview, overview)
+    
+    # Show slideshow containing attitude roots, request information and summary
     attitude_root_container = lambda: modules.attitude_roots.show_attitude_roots_data(attitude_roots)
-    request_information_container = lambda: modules.request_information.show_request_information_data(
-        request_information)
+    request_information_container = lambda: modules.request_information.show_request_information_data(request_information)
     summary_container = lambda: modules.summary.show_summary_data(summary)
 
     slideshow = ss.StreamlitSlideshow([attitude_root_container, request_information_container, summary_container],
                                       ["Attitude Roots", "Request Information", "Summary"])
     use_default_container(slideshow.show)
 
+    # Show contact info
     use_default_container(modules.contact_info.show_contact_info)
