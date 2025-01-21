@@ -21,6 +21,7 @@ async def process_data(input_data: RawInput) -> dict:
         sentences = df_sentences.to_dict(orient='records')
         logger.success("Got overview and sentences df.")
 
+        """
         # Run attitude classifer
         try:
             logger.info(f"Tyring to post: {'http://localhost:8082/classify_attitudes'}")
@@ -37,7 +38,7 @@ async def process_data(input_data: RawInput) -> dict:
                 logger.error(f"Model Attitude Classifier API Error: {response_attitude.text}")
         except Exception as e:
             logger.error(f"Error communicating with Model Attitude Classifier: {e}")
-
+        """
         # Run request classifier
         try:
             logger.info(f"Tyring to post: {'http://localhost:8081/classify_request'}")
@@ -57,31 +58,29 @@ async def process_data(input_data: RawInput) -> dict:
             logger.error(f"Error communicating with Model Request Classifier: {e}")
         
         
-        # run summary generator
-        
-        
-        """
+        # Run summary generator
         try: 
             logger.info(f"Tyring to post: {'http://localhost:8083/generate_summary'}")
             response_summary = requests.post(
                 "http://localhost:8083/generate_summary",
                 json={"overview_df": {"data": overview}, 
-                      "attitude_df": {"data": pd.DataFrame(attitude_data).to_dict(orient='records')}, 
+                      "attitude_df": {"data": pd.DataFrame(request_data).to_dict(orient='records')}, 
                       "request_df": {"data": pd.DataFrame(request_data).to_dict(orient='records')}}
             )
             if response_summary.status_code == 200:
                 summary_data = response_summary.json()
+                logger.success("Summary generation successful.")
             else:
                 logger.error(f"Model Summary Generator API Error: {response_summary.text}")
         except Exception as e:
             logger.error(f"Error communicating with model Summary Generator: {e}")
         
-        """
+        
         return {
             "overview": overview,
             "request_response": request_data,
-            "attitude_response": attitude_data,
-            #"summary_response": summary_data
+            "attitude_response": request_data,
+            "summary_response": summary_data
         }
         
         
