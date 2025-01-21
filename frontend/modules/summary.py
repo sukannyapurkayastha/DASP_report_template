@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 
 
 def show_summary_data(summary_data):
@@ -9,4 +10,5 @@ def show_summary_data(summary_data):
                         unsafe_allow_html=True)
         else:
             for index, row in summary_data.iterrows():
-                st.write(row[0])  # write summary
+                st.markdown(row[0])  # write summary
+                st.markdown("")

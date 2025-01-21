@@ -31,43 +31,49 @@ async def predict(overview_df: RawInput, attitude_df: RawInput, request_df: RawI
         # 3) load model for prediction 
         model, tokenizer = predict_LLAMA2.load_LLAMA2_model()
         
-        # 4) just use the finalized overview data
-        summary = "Overview: \n"
-        summary += overview_output
+        # 4) just reuse the finalized overview data
+        summary = []
+        summary.append("#### Overview")
+        for attribute in overview_df.iterrows():
+            summary.append(overview_output)
 
 
         # 5) add given Attitude Roots and their AI generated summary of comments
-        summary += "\n Attitude Roots: \n"
+        summary.append("")
+        summary.append ("#### Attitude Roots")
         attitude_roots, comments = attitude_list
         
         # case of no return what means that there arent any attitude roots
         if attitude_roots == [] and comments == []:
-            summary += "No attitude roots were found during analysis."
+            summary.append("No attitude roots were found during analysis.")
         
         # case of return what means we can predict!
         for attitude, comment in zip(attitude_roots, comments):
             pred = predict_LLAMA2.predict(comment, model=model, tokenizer=tokenizer)
-            summary += f"{attitude} \nAI aggregated comments: {pred} \n\n"
+            summary.append(f"- {attitude}  \n **AI aggregated comments**: {pred}")
 
 
         # 6) add given Reqest Information and their AI generated summary of comments
-        summary += "\n Request Information: \n"
+        summary.append("")
+        summary.append("#### Request Information")
         requests, comments = request_list
         
         # case of no return what means that there arent any attitude roots
         if requests == [] and comments == []:
-            summary += "No request information were found during analysis."
+            summary.append("No request information were found during analysis.")
             
         # case of return what means we can predict!
         for request, comment in zip(requests, comments):
             pred = predict_LLAMA2.predict(comment, model=model, tokenizer=tokenizer)
-            summary += f"{request} \nAI aggregated comments: {pred} \n\n"
-        """
-        summary = "We currently commented out AI summary generation. Go to DASP_report_template/summary_generator/main.py to use it again." # TODO: remove this line when we use the model for prediction
-        # turn string into a pandas df
-        summary_df = pd.DataFrame([[summary]])
+            summary.append(f"- {request}  \n **AI aggregated comments**: {pred}")
         
-        summary_df_dict = summary_df.to_dict(orient="records")
+        summary_df = pd.DataFrame(summary)
+        """ 
+        
+        # TODO: remove this line when we use the model for prediction
+        summary_df = pd.DataFrame(["## Temporary dummy", "We currently commented out AI summary generation. Go to DASP_report_template/summary_generator/main.py to use it again."])
+        
+        summary_df_dict = summary_df.to_dict(orient="list")
         
         return summary_df_dict
     
