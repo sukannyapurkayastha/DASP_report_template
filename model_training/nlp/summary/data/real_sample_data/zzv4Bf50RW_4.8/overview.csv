@@ -1,0 +1,5 @@
+Category,Avg_Score,Individual_scores
+Rating,4.8,"[['Reviewer eS3u', 6.0], ['Reviewer jP4i', 5.0], ['Reviewer wiS9', 3.0], ['Reviewer a6Ps', 5.0], ['Reviewer Frem', 5.0]]"
+Soundness,2.8,"[['Reviewer eS3u', 3.0], ['Reviewer jP4i', 3.0], ['Reviewer wiS9', 2.0], ['Reviewer a6Ps', 3.0], ['Reviewer Frem', 3.0]]"
+Presentation,2.6,"[['Reviewer eS3u', 2.0], ['Reviewer jP4i', 3.0], ['Reviewer wiS9', 2.0], ['Reviewer a6Ps', 3.0], ['Reviewer Frem', 3.0]]"
+Contribution,2.4,"[['Reviewer eS3u', 3.0], ['Reviewer jP4i', 2.0], ['Reviewer wiS9', 2.0], ['Reviewer a6Ps', 3.0], ['Reviewer Frem', 2.0]]"
