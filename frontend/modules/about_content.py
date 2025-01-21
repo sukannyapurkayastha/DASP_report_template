@@ -1,21 +1,39 @@
+# about_content.py
+
+"""
+About Content Module
+
+This module provides functions to display the main content of the About page
+in the Paper Review Aggregator application. It utilizes Streamlit to render
+titles, subtitles, and descriptive text that explain the project's mission,
+vision, and team.
+"""
+
 import streamlit as st
 
+
 def show_about_content():
+    """
+    Display the main content section on the About page.
+    
+    This function renders the About Us title, mission statement, project details,
+    vision, importance of academic research, and information about the development
+    team. It uses Streamlit's markdown and write functions to present the content
+    in a structured and visually appealing manner.
+    """
     st.title("About Us")
     st.write("Discover the inspiration and purpose behind **Paper Review Aggregator**, a project developed by students at **TU Darmstadt, Germany**.")
-    st.markdown('<div class="invisbible-line-minor">  </div>', unsafe_allow_html=True)
-
+    st.markdown('<div class="invisbible-line-minor">  </div>', unsafe_allow_html=True)    
     
-
+    
     st.subheader("Our Mission")
     st.write(""" At **Paper Review Aggregator**, our mission is to simplify the work of meta-reviewers by
             providing an AI-driven platform that aggregates and summarizes paper reviews.
             By reducing manual effort and enhancing decision-making, we aim to streamline the peer-review process 
             for academic research.
                 """)             
-    st.markdown('<div class="invisbible-line-minor">  </div>', unsafe_allow_html=True)
-
-
+    st.markdown('<div class="invisbible-line-minor">  </div>', unsafe_allow_html=True)    
+    
     
     st.subheader("About the Project")
     st.write("""
@@ -27,17 +45,16 @@ def show_about_content():
                  The platform demonstrates the effective use of AI in summarizing research reviews, helping 
                  researchers and decision-makers save time and effort during the academic peer-review process.
              """)
-    st.markdown('<div class="invisbible-line-minor">  </div>', unsafe_allow_html=True)
-
-
+    st.markdown('<div class="invisbible-line-minor">  </div>', unsafe_allow_html=True)    
+    
     
     st.subheader("Our Vision")
     st.write(""" We envision a future where AI assists academic communities globally, making scholarly 
                 publishing more efficient and accessible. By bridging the gap between reviewers and 
                 decision-makers, we strive to create a transparent, unbiased, and seamless review process.
             """)
-    st.markdown('<div class="invisbible-line-minor">  </div>', unsafe_allow_html=True)
-  
+    st.markdown('<div class="invisbible-line-minor">  </div>', unsafe_allow_html=True)      
+    
     
   
     st.subheader("Importance of Academic Research")
@@ -49,10 +66,9 @@ def show_about_content():
              Whether it's a groundbreaking study or a meta-analysis of existing work, every piece of research deserves careful consideration
              and timely dissemination. Our platform is one small step toward a brighter, more informed future for humanity.
              """)
-    st.markdown('<div class="invisbible-line-small">  </div>', unsafe_allow_html=True)
-
+    st.markdown('<div class="invisbible-line-small">  </div>', unsafe_allow_html=True)    
     
-
+    
     st.subheader("The Team")
     st.write("""
                 This project was developed by a team of Master’s students from TU Darmstadt, combining their expertise 
