@@ -63,6 +63,9 @@
 | [1/15/24] | [1/16/24] | [overview generation]   | [assist overview generation by providing input data]  | [2]       | [Completed]     |
 | [1/15/24] | [1/16/24] | [debug]   | [find bugs while generating input data]  | [2.5]       | [Completed]     |
 | [1/15/24] | [1/16/24] | [codes cleaning]   | [fix small bugs]  | [1.5]       | [Completed]     |
+| [1/22/24] | [1/22/24] | [docker]   | [dockerfile for attitude classifier]  | [1]       | [Completed]     |
+| [1/22/24] | [1/22/24] | [docker compose]   | [set up docker compose file, docker network, learning by doing]  | [2]       | [Completed]     |
+| [1/22/24] | [1/22/24] | [commucation]   | [verify environment for reproducibility and docker, so that teammate can run the project. Conda env including linux packages leads to error]  | [1.5]       | [Pending]     |
 
 ---
 
