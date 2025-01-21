@@ -73,7 +73,7 @@ def valid_url_or_file(url_or_file):
     Returns:
         bool: Returns True if the input is valid, False otherwise.
     """
-    return bool(url_or_file)
+    return bool(url_or_file) # TODO: add actual checking for validiy of URL
 
 
 def get_input():
