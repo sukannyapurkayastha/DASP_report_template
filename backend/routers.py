@@ -55,11 +55,36 @@ async def process_data(input_data: RawInput) -> dict:
                 logger.error(f"Model Request Classifier API Error: {response_request.text}")
         except Exception as e:
             logger.error(f"Error communicating with Model Request Classifier: {e}")
-
+        
+        
+        # run summary generator
+        
+        
+        """
+        try: 
+            logger.info(f"Tyring to post: {'http://localhost:8083/generate_summary'}")
+            response_summary = requests.post(
+                "http://localhost:8083/generate_summary",
+                json={"overview_df": {"data": overview}, 
+                      "attitude_df": {"data": pd.DataFrame(attitude_data).to_dict(orient='records')}, 
+                      "request_df": {"data": pd.DataFrame(request_data).to_dict(orient='records')}}
+            )
+            if response_summary.status_code == 200:
+                summary_data = response_summary.json()
+            else:
+                logger.error(f"Model Summary Generator API Error: {response_summary.text}")
+        except Exception as e:
+            logger.error(f"Error communicating with model Summary Generator: {e}")
+        
+        """
         return {
             "overview": overview,
             "request_response": request_data,
-            "attitude_response": attitude_data
+            "attitude_response": attitude_data,
+            #"summary_response": summary_data
         }
+        
+        
+    
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error processing data: {str(e)}")
