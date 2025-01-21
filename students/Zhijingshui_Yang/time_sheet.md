@@ -57,6 +57,13 @@
 | [1/6/24] | [1/6/24] | [vm usage research]   | [investigate vm usage requirements]  | [2]       | [Completed]     |
 | [1/7/24] | [1/7/24] | [build docker]   | [build docker for frontend and backend]  | [4]       | [Completed]     |
 | [1/14/24] | [1/15/24] | [attitude themes]   | [automate pipeline in slurm: send training with diff models at same time, evaluate results and save]  | [5]       | [Completed]     |
+| [1/15/24] | [1/15/24] | [communication]   | [meeting with supervisor]  | [1]       | [Completed]     |
+| [1/15/24] | [1/15/24] | [communication]   | [meeting with teammates]  | [1]       | [Completed]     |
+| [1/8/24] | [1/15/24] | [communication]   | [general internal communication with teammates, answering questions and help other teammates solve slurm issues]  | [1]       | [Completed]     |
+| [1/15/24] | [1/16/24] | [overview generation]   | [assist overview generation by providing input data]  | [2]       | [Completed]     |
+| [1/15/24] | [1/16/24] | [debug]   | [find bugs while generating input data]  | [2.5]       | [Completed]     |
+| [1/15/24] | [1/16/24] | [codes cleaning]   | [fix small bugs]  | [1.5]       | [Completed]     |
+
 ---
 
 > **Status Options**: "In Progress," "Completed," or "Pending."

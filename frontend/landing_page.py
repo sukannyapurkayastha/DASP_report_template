@@ -1,3 +1,15 @@
+# landing_page.py
+
+"""
+Landing Page Module
+
+This module defines the `landing_page` function, which renders the Landing page of the
+Paper Review Aggregator application. It handles user input for providing either a URL
+or uploading a file containing paper reviews. The module manages user authentication
+with OpenReview, processes uploaded files, and facilitates navigation to the main
+dashboard for review aggregation.
+"""
+
 import json
 
 import openreview
@@ -23,6 +35,17 @@ from frontend.clients import OpenReviewClient, UploadedFileProcessor
 
 
 def switch_to_main_page(skip_validation=False):
+    """
+    Switches the application to the main dashboard page.
+
+    Depending on the `skip_validation` flag, this function either directly navigates
+    the user to the main dashboard without validation or validates the input before
+    navigation.
+
+    Parameters:
+        skip_validation (bool): If set to True, bypasses input validation and switches
+                                to the main page. Defaults to False.
+    """
     if skip_validation:
         # Directly switch to the main page without validation
         url_or_file = get_input()
@@ -39,15 +62,46 @@ def switch_to_main_page(skip_validation=False):
 
 
 def valid_url_or_file(url_or_file):
-    return bool(url_or_file)
+    """
+    Validates the provided URL or file input.
+
+    This function checks whether the input provided by the user is valid.
+
+    Parameters:
+        url_or_file (str): The URL or file input provided by the user.
+
+    Returns:
+        bool: Returns True if the input is valid, False otherwise.
+    """
+    return bool(url_or_file) # TODO: add actual checking for validiy of URL
 
 
 def get_input():
+    """
+    Retrieves the user's input from the session state.
+
+    This function fetches the 'reviews' data stored in the Streamlit session state.
+
+    Returns:
+        str: The user's input, either a URL or file data.
+    """
     reviews = st.session_state.get("reviews")
     return reviews
 
 
 def extract_paper_id(url):
+    """
+    Extracts the paper ID from a given OpenReview URL.
+
+    This function parses the provided URL to extract the paper ID, ensuring that
+    the URL is valid and points to an OpenReview forum.
+
+    Parameters:
+        url (str): The OpenReview URL from which to extract the paper ID.
+
+    Returns:
+        str or None: The extracted paper ID if successful, None otherwise.
+    """
     parsed_url = urlparse(url)
     if parsed_url.netloc != 'openreview.net':
         st.error("Invalid OpenReview URL.")
@@ -66,7 +120,27 @@ def extract_paper_id(url):
 
 # %% Landing Page Function
 def landing_page(custom_css):
+    """
+    Renders the Landing page with options to provide a URL or upload a file for review aggregation.
+
+    This function applies custom CSS styles, displays instructions to the user, and provides
+    interactive elements such as file uploaders and login forms for OpenReview. It handles
+    user authentication, processes uploaded files, and navigates to the main dashboard upon
+    successful input validation.
+
+    Parameters:
+        custom_css (str): A string containing CSS styles to customize the appearance of the
+                          Streamlit application.
+    """
+
     def provide_sample_download():
+        """
+        Provides a download button for users to download a sample DOCM file template.
+
+        This function loads a sample DOCM file from the local directory and renders a download
+        button using Streamlit. Users can click the button to download the template for
+        formatting their review files.
+        """
 
         # Base path for images
         base_path = Path(__file__).parent
@@ -89,13 +163,22 @@ def landing_page(custom_css):
             )
 
     def content():
+        """
+        Defines the main content structure of the Landing page.
+
+        This function applies custom CSS, displays instructional text, creates tabs for URL
+        input and file uploads, handles user authentication with OpenReview, processes
+        uploaded files, and provides navigation buttons for initiating analysis.
+        """
+
         # Apply custom CSS
         st.markdown(custom_css, unsafe_allow_html=True)
 
         st.title("Paper Review Aggregator")
 
         st.write(
-            "You can either provide a link of a openreview thread for the desired paper review aggregation (account of openreview login credentials required) or you provide us a file containing all reviews to aggregate. In this case you must use our template format.")
+            "You can either provide a link of an OpenReview thread for the desired paper review aggregation (account of OpenReview login credentials required) or you provide us a file containing all reviews to aggregate. In this case you must use our template format."
+        )
 
         # Create tabs
         # tab1, tab2 = st.tabs(["Enter URL", "Upload file"])
@@ -105,6 +188,12 @@ def landing_page(custom_css):
 
         # Function to display the "Show Analysis" button
         def display_show_analysis_button(key):
+            """
+            Displays a "Show Analysis" button that triggers navigation to the main dashboard.
+
+            Parameters:
+                key (str): A unique key identifier for the Streamlit button to manage state.
+            """
             col1, col2 = st.columns([4.5, 1])
             with col2:
                 if st.button("Show Analysis", key=key):
@@ -113,6 +202,12 @@ def landing_page(custom_css):
 
         # Function to update the active tab in session state
         def set_active_tab(tab_name):
+            """
+            Updates the active tab in the Streamlit session state.
+
+            Parameters:
+                tab_name (str): The name of the tab to set as active.
+            """
             st.session_state['active_tab'] = tab_name
 
         # Initialize session state for active tab
@@ -124,9 +219,11 @@ def landing_page(custom_css):
             set_active_tab("Enter URL")
 
             st.write(
-                "To provide the aggregation of your desired paper we need your openreview login creditals and a valid link to the desired reviews that will be aggregated.")
+                "To provide the aggregation of your desired paper, we need your OpenReview login credentials and a valid link to the desired reviews that will be aggregated."
+            )
             st.write(
-                "In case you don't have an openreview account you can either create one at openreview.com or upload a file instead (use tab above).")
+                "In case you don't have an OpenReview account, you can either create one at openreview.com or upload a file instead (use tab above)."
+            )
 
             # Session states
             if 'logged_in' not in st.session_state:
@@ -138,10 +235,10 @@ def landing_page(custom_css):
                 col1, col2 = st.columns([1, 2])
                 with col1:
                     # Create the username field
-                    username = st.text_input("Username (Openreview)")
+                    username = st.text_input("Username (OpenReview)")
 
                     # Create the password field
-                    password = st.text_input("Password (Openreview)", type="password")
+                    password = st.text_input("Password (OpenReview)", type="password")
 
                 with col2:
                     st.markdown('<div class="invisbible-line-small">  </div>', unsafe_allow_html=True)
@@ -208,7 +305,7 @@ def landing_page(custom_css):
             set_active_tab("Upload file")
 
             st.write(
-                "In case you cannot provide a URL you can also upload a docx file containing all reviews. "
+                "In case you cannot provide a URL, you can also upload a DOCX file containing all reviews. "
                 "To do so, please download a sample file and provide your data in this format."
             )
             provide_sample_download()  # template download
@@ -241,11 +338,6 @@ def landing_page(custom_css):
                             st.error(f"File {uploaded_file.name} could not be found.")
                         except Exception as e:
                             st.error(f"An unexpected error occurred while processing {uploaded_file.name}.")
-
-
-                else:
-                    st.info("Please upload at least one DOCX file to proceed.")
-
             except Exception as e:
                 st.error("An error occurred while uploading files. Please try again.")
 

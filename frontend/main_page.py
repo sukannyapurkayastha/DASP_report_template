@@ -1,3 +1,15 @@
+# main_page.py
+
+"""
+Main Page Module
+
+This module defines the `main_page` function, which renders the main dashboard of the
+Paper Review Aggregator application. It handles the retrieval and display of aggregated
+review data, including overview, request information, attitude roots, and summary. The
+module interacts with backend APIs to process review data and utilizes various submodules
+to present the information in an organized and visually appealing manner.
+"""
+
 import streamlit as st
 from streamlit_extras.stylable_container import stylable_container
 import os
@@ -15,19 +27,19 @@ from modules.shared_methods import use_default_container
 import requests
 import sys
 
-# Fügen Sie den übergeordneten Pfad hinzu
+# Add parent path
 current_dir = os.path.dirname(os.path.abspath(__file__))
 parent_dir = os.path.abspath(os.path.join(current_dir, '..'))
 if parent_dir not in sys.path:
     sys.path.append(parent_dir)
 
-# Jetzt können Sie importieren
+# Now import
 
 # from backend.model_backend import classify_paper
 
 # %% global variables
 
-# custom CSS for main_page
+# Custom CSS for main_page
 main_page_css = """
     <style>
     h1, h2, h3, p, div, span {
@@ -126,21 +138,32 @@ main_page_css = """
 
 # %%% Set the page configuration
 def get_classification_with_api():
+    """
+    Retrieve classification data by sending review data to the backend API.
+
+    This function collects review data from the Streamlit session state, sends it to the
+    backend API endpoint for processing, and retrieves the aggregated classification
+    results including overview, request information, attitude roots, and summary.
+
+    Returns:
+        tuple: A tuple containing four pandas DataFrames:
+            - df_overview: Overview of the paper reviews.
+            - df_requests: Classified request information.
+            - df_attitudes: Classified attitude roots.
+            - df_summary: Generated summary of the reviews.
+
+    Raises:
+        Exception: If an error occurs during the API request or data processing.
+    """
     try:
-        # Überprüfen, ob die benötigten Variablen existieren
-        # if "paper_id" not in st.session_state or not st.session_state["paper_id"]:
-        #     st.error("Invalid OpenReview URL.")
-        #     return pd.DataFrame()  # Rückgabe eines leeren DataFrame
-
-        # if not client:
-        #     st.error("Client is not initialized.")
-        #     return pd.DataFrame()  # Rückgabe eines leeren DataFrame
-
+        # Check if there are reviews to analyze
         if "reviews" not in st.session_state:
             st.error("No reviews to analyze")
 
+        # Prepare the payload by converting review objects to dictionaries
         payload = [review.__dict__ for review in st.session_state.reviews]
 
+        # Send a POST request to the backend API for processing
         response = requests.post(
             "http://localhost:8080/process",
             json={"data": payload}
@@ -152,42 +175,53 @@ def get_classification_with_api():
             df_overview = pd.DataFrame(data["overview"])
             df_requests = pd.DataFrame(data["request_response"])
             df_attitudes = pd.DataFrame(data["attitude_response"])
-            # Todo: add other returned data
+            df_summary = pd.DataFrame(data["summary_response"])
         else:
             st.error(f"Error: {response.text}")
 
-        # Todo: Return all the dataframes (once we returned them from the api)
-        return df_overview, df_requests, df_attitudes
+        # Return all the dataframes
+        return df_overview, df_requests, df_attitudes, df_summary
 
     except Exception as e:
         st.error(f"An error occurred: {e}")
-        return pd.DataFrame()  # Rückgabe eines leeren DataFrame
+        return pd.DataFrame()  # Return an empty DataFrame
 
 
 def main_page(custom_css):
+    """
+    Render the Main Page with aggregated review data and interactive visualizations.
+
+    This function applies custom CSS styles, retrieves and manages aggregated review data
+    from the backend, handles fallback to dummy data if necessary, and displays various
+    sections including overview, attitude roots, request information, and summary using
+    dedicated modules. It also incorporates a slideshow component to navigate through
+    different data sections and displays contact information.
+
+    Parameters:
+        custom_css (str): A string containing CSS styles to customize the appearance
+                          of the Streamlit application.
+    """
     base_path = os.getcwd()
     # Apply custom CSS Styles
     st.markdown(main_page_css, unsafe_allow_html=True)
 
     if "main_page_variables" not in st.session_state:
         # Fetch data and store it in session state
-        overview, request_information, attitude_roots = get_classification_with_api()
+        overview, request_information, attitude_roots, summary = get_classification_with_api()
         st.session_state.main_page_variables = {
             "overview": overview,
             "request_information": request_information,
             "attitude_roots": attitude_roots,
+            "summary": summary
         }
 
     # Access data from session state
     overview = st.session_state.main_page_variables["overview"]
     attitude_roots = st.session_state.main_page_variables["attitude_roots"]
     request_information = st.session_state.main_page_variables["request_information"]
+    summary = st.session_state.main_page_variables["summary"]
 
-    # save results table for overview summary analysis
-    # overview.to_csv('results/overview.csv', index=False)
-    # request_information.to_csv('results/request_information.csv', index=False)
-    # attitude_roots.to_csv('results/attitude_roots.csv', index=False)
-
+    # Fallback to dummy data if any DataFrame is empty
     if overview.empty:
         st.warning("No data available for overview.")
         with open(os.path.join('dummy_data', 'dummy_overview.pkl'), 'rb') as file:
@@ -200,17 +234,21 @@ def main_page(custom_css):
         st.warning("No data available for request classification.")
         with open(os.path.join(base_path, 'dummy_data', 'dummy_requests.pkl'), 'rb') as file:
             request_information = pickle.load(file)
+    if summary.empty:
+        st.warning("No data available for summary - display dummy data instead!") 
+        summary = pd.read_csv(os.path.join(base_path, "dummy_data", "dummy_summary.csv"), sep=";", encoding="utf-8")
 
-    summary = pd.read_csv(os.path.join(base_path, "dummy_data", "dummy_summary.csv"), sep=";", encoding="utf-8")
-
+    # Show overview container
     use_default_container(modules.overview.show_overview, overview)
+    
+    # Show slideshow containing attitude roots, request information and summary
     attitude_root_container = lambda: modules.attitude_roots.show_attitude_roots_data(attitude_roots)
-    request_information_container = lambda: modules.request_information.show_request_information_data(
-        request_information)
+    request_information_container = lambda: modules.request_information.show_request_information_data(request_information)
     summary_container = lambda: modules.summary.show_summary_data(summary)
 
     slideshow = ss.StreamlitSlideshow([attitude_root_container, request_information_container, summary_container],
                                       ["Attitude Roots", "Request Information", "Summary"])
     use_default_container(slideshow.show)
 
+    # Show contact info
     use_default_container(modules.contact_info.show_contact_info)

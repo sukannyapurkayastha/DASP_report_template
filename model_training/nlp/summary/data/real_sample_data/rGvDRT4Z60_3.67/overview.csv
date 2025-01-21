@@ -1,0 +1,5 @@
+Category,Avg_Score,Individual_scores
+Rating,3.6666666666666665,"[['Reviewer p5Rv', 3.0], ['Reviewer Mex5', 3.0], ['Reviewer XkhF', 5.0]]"
+Soundness,2.6666666666666665,"[['Reviewer p5Rv', 2.0], ['Reviewer Mex5', 3.0], ['Reviewer XkhF', 3.0]]"
+Presentation,3.3333333333333335,"[['Reviewer p5Rv', 3.0], ['Reviewer Mex5', 3.0], ['Reviewer XkhF', 4.0]]"
+Contribution,1.6666666666666667,"[['Reviewer p5Rv', 2.0], ['Reviewer Mex5', 1.0], ['Reviewer XkhF', 2.0]]"

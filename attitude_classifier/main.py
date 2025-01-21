@@ -5,7 +5,6 @@ import uvicorn
 from model_prediction import (
     combine_roots_and_themes
 )
-from utils import download_repo_files
 
 app = FastAPI()
 

@@ -1,3 +1,14 @@
+# app.py
+
+"""
+Paper Review Generator Streamlit Application
+
+This application provides a user interface for aggregating and generating summaries
+of paper reviews. It includes navigation between different pages such as Home,
+Review Aggregation, Contact, and About. The application is styled using custom CSS
+and incorporates logos and other UI elements to enhance user experience.
+"""
+
 import streamlit as st
 import base64
 from pathlib import Path
@@ -8,11 +19,13 @@ import os
 import contact
 import about
 
+# Configure the Streamlit page
 st.set_page_config(
     page_title="Paper Review Generator",
     page_icon=os.path.join("images", "logo.png")
 )
 
+# Custom CSS for styling the application
 custom_css = """
     <style>
     h1, h2, h3, p, div, span {
@@ -101,25 +114,58 @@ custom_css = """
     </style>
     """
 
-
 def safe_delete_session_state(key):
-    '''
-    Deletes Session state to ensure variables are deleted after user leaves a page
-    '''
+    """
+    Deletes a key from the Streamlit session state.
+
+    This function ensures that specific variables are removed from the session state
+    when a user navigates away from a page, preventing unintended data persistence.
+
+    Parameters:
+        key (str): The key in the session state to be deleted.
+    """
     if key in st.session_state:
         del st.session_state[key]
 
-
 def show_navigation_bar_and_content():
+    """
+    Displays the navigation sidebar and renders content based on the selected page.
+
+    This function handles the loading of the logo, setting up the sidebar with navigation
+    buttons, and rendering the appropriate page content based on the user's selection.
+    It also applies custom CSS for styling various UI elements.
+
+    The supported pages include:
+        - Home
+        - Review Aggregation
+        - Contact
+        - About
+
+    The function ensures that session state variables are appropriately managed when
+    navigating between pages.
+    """
+
     def load_logo(filepath):
+        """
+        Loads and encodes a logo image to Base64.
+
+        This nested function reads an image file from the specified filepath and encodes
+        it in Base64 format, which is suitable for embedding in HTML.
+
+        Parameters:
+            filepath (Path): The path to the logo image file.
+
+        Returns:
+            str: The Base64-encoded string of the logo image.
+        """
         with open(filepath, "rb") as logo_file:
             return base64.b64encode(logo_file.read()).decode("utf-8")
 
-    # Path to your local logo file
+    # Path to the local logo file
     base_path = Path(__file__).parent
     logo_base64 = load_logo(base_path / "images/logo_header.png")
 
-    # Sidebar Logo and Navigation
+    # Display the logo in the sidebar
     st.sidebar.markdown(
         f"""
         <div style="text-align: center;">
@@ -129,11 +175,11 @@ def show_navigation_bar_and_content():
         unsafe_allow_html=True,
     )
 
-    # Initialize session state for page tracking
+    # Initialize session state for page tracking if not already set
     if 'page' not in st.session_state:
         st.session_state.page = 'Home'
 
-    # Custom CSS to style buttons in the sidebar
+    # Apply custom CSS to style buttons in the sidebar
     st.sidebar.markdown("""
         <style>
         /* Button styling */
@@ -163,7 +209,7 @@ def show_navigation_bar_and_content():
         </style>
     """, unsafe_allow_html=True)
 
-    # Sidebar buttons for navigation
+    # Sidebar title and navigation buttons
     st.sidebar.title("Paper Review Aggregator")
 
     if st.sidebar.button("Home"):
@@ -177,7 +223,7 @@ def show_navigation_bar_and_content():
     if st.sidebar.button("About"):
         st.session_state.page = "About"
 
-    # Display content based on the current page
+    # Render content based on the selected page
     if st.session_state.page == "Home":
         safe_delete_session_state("main_page_variables")
         st.session_state.page = home_page.home_page(custom_css)
@@ -193,5 +239,5 @@ def show_navigation_bar_and_content():
         safe_delete_session_state("main_page_variables")
         about.about_page(custom_css)
 
-
+# Execute the navigation and content display
 show_navigation_bar_and_content()

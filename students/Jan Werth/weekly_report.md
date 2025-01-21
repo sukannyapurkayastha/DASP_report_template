@@ -88,4 +88,13 @@
     - Frontend/Streamlit tests (How do you test the frontend? I wrote tests for our functions that we need in streamlit, but I don't know how to test the successfull generation of streamlit components.)
     - Integration tests 
 
+
+### Week [9]
+
+- **Update 1**: Integration test
+- **Update 2**: 
+- **Update 3**:
+- **Challenges**: Writing integration tests, never did it before, had a lot of dependency problems and still have problems with the paths
+- **Next Steps**:
+
 ---

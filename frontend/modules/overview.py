@@ -1,3 +1,16 @@
+# overview.py
+
+"""
+Overview Module
+
+This module provides functions to display an overview of paper reviews within the
+Paper Review Aggregator application. It includes utilities for selecting colors
+based on review fractions, calculating fractions from scores, drawing donut charts,
+and rendering individual and overall overview sections. The module leverages
+Streamlit for interactive web components and integrates with shared methods for
+consistent styling and functionality.
+"""
+
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -9,6 +22,18 @@ import math
 
 # Helper methods
 def select_color_and_text_overview(fraction):
+    """
+    Select an appropriate color based on the provided fraction for the overview section.
+    
+    This function maps a numerical fraction to a specific color from the predefined
+    color palette, indicating different levels of classification in the overview.
+    
+    Args:
+        fraction (float): A numerical value representing the fraction or proportion.
+    
+    Returns:
+        str: A hex color code corresponding to the classification level.
+    """
     palette = get_colour_palette()
     if fraction < 0.125:
         return palette['bad_m4']
@@ -29,16 +54,42 @@ def select_color_and_text_overview(fraction):
 
 
 def calculate_fraction(score, category):
+    """
+    Calculate the fraction based on the score and category.
+    
+    This function normalizes the score to a fraction between 0 and 1 depending on
+    the category of the score. For 'Rating', the score is divided by 10, and for
+    'Soundness', 'Presentation', and 'Contribution', the score is divided by 4.
+    Any other category retains the original score value.
+    
+    Args:
+        score (float): The score value to be normalized.
+        category (str): The category of the score (e.g., 'Rating', 'Soundness').
+    
+    Returns:
+        float: A normalized fraction between 0 and 1.
+    """
     if category == 'Rating':
         fraction = score / 10
     elif category in ['Soundness', 'Presentation', 'Contribution']:
         fraction = score / 4
     else:
-        fraction = score  # Oder eine andere Standardbehandlung
-    return min(max(fraction, 0), 1)  # Sicherstellen, dass fraction zwischen 0 und 1 liegt
+        fraction = score  # Or another default handling
+    return min(max(fraction, 0), 1)  # Ensure fraction is between 0 and 1
 
 
 def draw_donut_chart(fraction, score_text):
+    """
+    Draw a donut chart representing the fraction with a central score text.
+    
+    This function creates a donut-shaped pie chart using Matplotlib, where the filled
+    portion corresponds to the provided fraction. The central area displays the score
+    text. The chart is then rendered in the Streamlit application.
+    
+    Args:
+        fraction (float): The fraction to be represented in the donut chart.
+        score_text (str): The text to be displayed at the center of the donut chart.
+    """
     sizes = [1 - fraction, fraction]
     signal_color = select_color_and_text_overview(fraction)
     colors = [grey, signal_color]
@@ -69,6 +120,15 @@ def draw_donut_chart(fraction, score_text):
 
 
 def draw_circle(row):
+    """
+    Draw a donut chart for a specific category based on the row data.
+    
+    This function extracts the average score and category from the provided row,
+    calculates the corresponding fraction, and renders a donut chart with the score.
+    
+    Args:
+        row (pd.Series): A row from the DataFrame containing 'Avg_Score' and 'Category'.
+    """
     score = float(row['Avg_Score'])
     category = row['Category']
     fraction = calculate_fraction(score, category)
@@ -76,6 +136,18 @@ def draw_circle(row):
 
 
 def draw_individual_circle(score_value, category, author):
+    """
+    Draw an individual donut chart for a specific author's score.
+    
+    This function validates the score value, calculates the corresponding fraction,
+    and renders a donut chart with the score. It also displays the author's name
+    below the chart.
+    
+    Args:
+        score_value (str or float): The score value provided by the author.
+        category (str): The category of the score (e.g., 'Rating', 'Soundness').
+        author (str): The name of the author providing the score.
+    """
     try:
         score_value = float(score_value)
     except (ValueError, TypeError):
@@ -88,6 +160,16 @@ def draw_individual_circle(score_value, category, author):
 
 
 def show_overview_individual(row_data):
+    """
+    Display individual scores within the overview section.
+    
+    This function organizes individual scores into a grid layout, determining the
+    number of rows and columns based on the number of scores. Each score is rendered
+    as an individual donut chart with the author's name.
+    
+    Args:
+        row_data (pd.Series): A row from the DataFrame containing 'Category' and 'Individual_scores'.
+    """
     category = row_data['Category']
     individual_scores_list = row_data['Individual_scores']
     if not individual_scores_list or individual_scores_list == 'None':
@@ -111,6 +193,17 @@ def show_overview_individual(row_data):
 
 
 def show_overview(overview_data):
+    """
+    Display the overview section with aggregated review data.
+    
+    This function renders the main overview section, including donut charts for each
+    category and a slideshow containing detailed information on attitude roots,
+    request information, and summary. It handles cases where data might be missing
+    by displaying appropriate warnings and loading dummy data if necessary.
+    
+    Args:
+        overview_data (pd.DataFrame): A DataFrame containing aggregated overview information.
+    """
     with st.container():
         st.title("Paper Review Aggregation")
         st.markdown('<div class="invisbible-line-minor">  </div>', unsafe_allow_html=True)
