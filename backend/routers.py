@@ -27,7 +27,7 @@ async def process_data(input_data: RawInput) -> dict:
             logger.info(f"Tyring to post: {'http://localhost:8082/classify_attitudes'}")
 
             response_attitude = requests.post(
-                "http://localhost:8082/classify_attitudes",
+                "http://attitude_classifier:8082/classify_attitudes",
                 json={"data": sentences}
             )
             if response_attitude.status_code == 200:

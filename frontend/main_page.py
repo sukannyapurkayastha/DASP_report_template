@@ -162,10 +162,11 @@ def get_classification_with_api():
 
         # Prepare the payload by converting review objects to dictionaries
         payload = [review.__dict__ for review in st.session_state.reviews]
-
         # Send a POST request to the backend API for processing
+        # http://backend:8080/process
+        # http://localhost:8080/process
         response = requests.post(
-            "http://localhost:8080/process",
+            "http://backend:8080/process",
             json={"data": payload}
         )
 
