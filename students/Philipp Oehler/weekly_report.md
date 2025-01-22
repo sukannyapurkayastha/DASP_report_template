@@ -29,10 +29,10 @@
 ### Week [9]
 
 - **Update 1**: Entirely revamp summary generator as real world data is way to long! Caused some serious issues in the pipeline as the logic of how data is split and predictions are made changed fundamentally!
-- **Update 2**: 
-- **Update 3**: 
+- **Update 2**: Integrated best model into frontend! 
+- **Update 3**: Added docstrings to my code where it was still missing!
 - **Challenges**: change of evaluation metric to BERT-Score caused very intensive debugging (see tons of log structure of the provided code!)
-- **Next Steps**: 1. Integrate best model into frontend! 2. Add docstrings to my code where it is still missing!
+- **Next Steps**: 
 
 ### Week [8]
 
