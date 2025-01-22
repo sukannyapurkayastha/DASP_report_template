@@ -153,7 +153,7 @@ def process_dataframe_request(df: pd.DataFrame, local_dir: str, local_dir_fine_r
 
     # Filter rows where coarse-grained prediction indicates a request
     df_requests = df[df['coarse_label_pred'] == 1].copy()
-    print(df_requests)
+    #print(df_requests)
 
     logger.info("Loading fine-grained BERT model")
     tokenizer_bert_fine = BertTokenizer.from_pretrained(local_dir_fine_request)
@@ -210,7 +210,7 @@ def process_dataframe_request(df: pd.DataFrame, local_dir: str, local_dir_fine_r
     # 5) Summarize results
     #------------------------------------------------------------------#
     df_requests_summarized = summarize_requests_by_authors(df_requests)
-    print(df_requests_summarized)
+    #print(df_requests_summarized)
     return df_requests_summarized
     
     # # Load the fine-grained request classifier
@@ -248,75 +248,75 @@ def process_dataframe_request(df: pd.DataFrame, local_dir: str, local_dir_fine_r
     # return df_requests_summarized
     
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
     
-    data = {
+#     data = {
 
-    "author": ["Reviewer e53u", "Reviewer jp4i", "Reviewer jp4i", "Reviewer wi9j", "Reviewer wi9j",
+#     "author": ["Reviewer e53u", "Reviewer jp4i", "Reviewer jp4i", "Reviewer wi9j", "Reviewer wi9j",
 
-               "Reviewer wi9j", "Reviewer wi9j", "Reviewer a6Ps", "Reviewer a6Ps", "Reviewer a6Ps",
+#                "Reviewer wi9j", "Reviewer wi9j", "Reviewer a6Ps", "Reviewer a6Ps", "Reviewer a6Ps",
 
-               "Reviewer a6Ps", "Reviewer F7em", "Reviewer F7em"],
+#                "Reviewer a6Ps", "Reviewer F7em", "Reviewer F7em"],
 
-    "tag": ["questions", "weaknesses", "weaknesses", "weaknesses", "weaknesses", 
+#     "tag": ["questions", "weaknesses", "weaknesses", "weaknesses", "weaknesses", 
 
-            "weaknesses", "weaknesses", "questions", "questions", "questions",
+#             "weaknesses", "weaknesses", "questions", "questions", "questions",
 
-            "weaknesses", "weaknesses", "weaknesses"],
+#             "weaknesses", "weaknesses", "weaknesses"],
 
-    "sentence": [
+#     "sentence": [
 
-        "The reason why other methods are much better is unclear.",
+#         "The reason why other methods are much better is unclear.",
 
-        "The main weakness of this paper is...",
+#         "The main weakness of this paper is...",
 
-        "Since the proposed method can enhance performance, why does it lack robustness?",
+#         "Since the proposed method can enhance performance, why does it lack robustness?",
 
-        "Please compare the proposed method with existing benchmarks.",
+#         "Please compare the proposed method with existing benchmarks.",
 
-        "Why are the features of the proposed model less explainable?",
+#         "Why are the features of the proposed model less explainable?",
 
-        "This paper also targets on clarity, but there are missing evaluations.",
+#         "This paper also targets on clarity, but there are missing evaluations.",
 
-        "In Tab.1, only CPAE proposed in...",
+#         "In Tab.1, only CPAE proposed in...",
 
-        "Would SO(3) invariance be sufficient for the method?",
+#         "Would SO(3) invariance be sufficient for the method?",
 
-        "Will it work out of the 16-category data?",
+#         "Will it work out of the 16-category data?",
 
-        "Would non-gt and/or biased key points be more impactful?",
+#         "Would non-gt and/or biased key points be more impactful?",
 
-        "The main issue of the proposed method seems to be lack of...",
+#         "The main issue of the proposed method seems to be lack of...",
 
-        "From Fig. 6 in the supplementary, ...",
+#         "From Fig. 6 in the supplementary, ...",
 
-        "How about the performance of other benchmarks?"
+#         "How about the performance of other benchmarks?"
 
-    ],
+#     ],
 
-    "coarse_label_pred": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+#     "coarse_label_pred": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 
-    "fine_grained_label": [1, 1, 2, 1, 0, 2, 0, 2, 2, 2, 1, 1, 2],
+#     "fine_grained_label": [1, 1, 2, 1, 0, 2, 0, 2, 2, 2, 1, 1, 2],
 
-    "fine_grained_label_name": [
+#     "fine_grained_label_name": [
 
-        "Request for Explanation", "Request for Improvement", "Request for Experiment",
+#         "Request for Explanation", "Request for Improvement", "Request for Experiment",
 
-        "Request for Improvement", "Request for Explanation", "Request for Experiment",
+#         "Request for Improvement", "Request for Explanation", "Request for Experiment",
 
-        "Request for Explanation", "Request for Experiment", "Request for Experiment",
+#         "Request for Explanation", "Request for Experiment", "Request for Experiment",
 
-        "Request for Experiment", "Request for Improvement", "Request for Improvement",
+#         "Request for Experiment", "Request for Improvement", "Request for Improvement",
 
-        "Request for Experiment"
+#         "Request for Experiment"
 
-    ]
+#     ]
 
-}
+# }
 
-local_dir_request_classifier = "request_classifier/models/request_classifier"
-local_dir_fine_request_classifier = "model_training/nlp/request_classifier/models/classification/sciBERT_neg_finetuned"
+# local_dir_request_classifier = "request_classifier/models/request_classifier"
+# local_dir_fine_request_classifier = "model_training/nlp/request_classifier/models/classification/sciBERT_neg_finetuned"
 
-df_example = pd.DataFrame(data)
-df = process_dataframe_request(df_example, local_dir_request_classifier, local_dir_fine_request_classifier)
-print(df["Comments"])
+# df_example = pd.DataFrame(data)
+# df = process_dataframe_request(df_example, local_dir_request_classifier, local_dir_fine_request_classifier)
+# print(df["Comments"])
