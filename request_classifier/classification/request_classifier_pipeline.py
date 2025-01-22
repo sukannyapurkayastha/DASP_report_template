@@ -210,7 +210,7 @@ def process_dataframe_request(df: pd.DataFrame, local_dir: str, local_dir_fine_r
     # 5) Summarize results
     #------------------------------------------------------------------#
     df_requests_summarized = summarize_requests_by_authors(df_requests)
-
+    print(df_requests_summarized)
     return df_requests_summarized
     
     # # Load the fine-grained request classifier
@@ -314,8 +314,9 @@ if __name__ == "__main__":
 
 }
 
-local_dir_request_classifier = "../models/request_classifier/"
+local_dir_request_classifier = "request_classifier/models/request_classifier"
+local_dir_fine_request_classifier = "model_training/nlp/request_classifier/models/classification/sciBERT_neg_finetuned"
 
 df_example = pd.DataFrame(data)
-df = process_dataframe_request(df_example, local_dir_request_classifier, local_dir_request_classifier)
-print(df)
+df = process_dataframe_request(df_example, local_dir_request_classifier, local_dir_fine_request_classifier)
+print(df["Comments"])

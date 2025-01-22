@@ -1,4 +1,4 @@
-text,index,review_action,fine_review_action,aspect,target
+﻿sentence,index,review_action,fine_review_action,aspect,target
 It would be highly beneficial to evaluate these aspects.,,arg_request,arg-request_experiment,asp_soundness-correctness,2
 "Furthermore, it would be beneficial to provide more information about the baselines; in particular the type of count-based exploration.",,arg_request,arg-request_clarification,asp_substance,4
 "For the generated figures, it would be beneficial to include standard deviation and mean over multiple runs to not only evaluate performance but also robustness.",,arg_request,arg-request_edit,asp_substance,1
