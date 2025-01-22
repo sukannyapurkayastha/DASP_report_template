@@ -32,7 +32,7 @@
 - **Update 2**: Integrated best model into frontend! 
 - **Update 3**: Added docstrings to my code where it was still missing!
 - **Challenges**: change of evaluation metric to BERT-Score caused very intensive debugging (see tons of log structure of the provided code!)
-- **Next Steps**: 
+- **Next Steps**: Solve llama2 (public) upload prohibited issue + Test everything on docker and then on VM
 
 ### Week [8]
 
