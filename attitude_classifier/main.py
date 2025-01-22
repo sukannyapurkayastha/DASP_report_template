@@ -5,6 +5,7 @@ import uvicorn
 from model_prediction import (
     combine_roots_and_themes
 )
+from loguru import logger
 
 app = FastAPI()
 
@@ -25,7 +26,8 @@ async def predict(request: RawInput):
         # download_repo_files(repo_id=repo_id, subdir="Attitude_Classifier/", local_dir='models/attitude_root')
         # # download attitude theme
         # download_repo_files(repo_id=repo_id, subdir="Theme_Classifier/", local_dir='models/attitude_theme')
-    
+
+        logger.info("Predicting attitudes...")
         result = combine_roots_and_themes(df_sentences)
         # TODO: description
         result = result.fillna('none')

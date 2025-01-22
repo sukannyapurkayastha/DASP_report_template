@@ -1,5 +1,5 @@
-import pandas as pd
 import tensorflow as tf
+from loguru import logger
 from transformers import (
     DistilBertTokenizer, 
     TFDistilBertForSequenceClassification,
@@ -17,16 +17,25 @@ import os
 
 def predict_root_category(text):
     # Load the tokenizer
-    tokenizer = DistilBertTokenizer.from_pretrained('models/attitude_root/')
+    logger.info("Predicting root category")
+    try:
+        tokenizer = DistilBertTokenizer.from_pretrained('models/attitude_root')
+    except Exception as e:
+        logger.error(f"Could not load DistilBertTokenizer {e}.")
 
     # Load the model
-    model = TFDistilBertForSequenceClassification.from_pretrained('models/attitude_root/', num_labels=9)
+    try:
+        model = TFDistilBertForSequenceClassification.from_pretrained('models/attitude_root/', num_labels=9)
+    except Exception as e:
+        logger.error(f"Could not load TFDistilBertForSequenceClassification {e}.")
+
     predict_input = tokenizer.encode(text,
                                     truncation=True,
                                     padding=True,
                                     return_tensors="tf")
     output = model(predict_input)[0]
     prediction_value = tf.argmax(output, axis=1).numpy()[0]
+    logger.info(f"Prediction done.")
     return prediction_value
 
 def attitude_roots_prediction(data):
@@ -49,6 +58,7 @@ def attitude_roots_prediction(data):
 
 def predict_theme_category(text):
     # Load the pretrained model and tokenizer
+    logger.info("Predicting attitude theme category")
     model = BertForSequenceClassification.from_pretrained("models/attitude_theme/", num_labels=11, problem_type="multi_label_classification")
     tokenizer = BertTokenizer.from_pretrained("models/attitude_theme/")
     model.eval()
