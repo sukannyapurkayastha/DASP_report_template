@@ -77,8 +77,9 @@ Output: "Summary: The reviewer wants an explanation for LSTNet’s underperforma
 # **Now**:
 
 1. **Read** the input that follows.
-2. **Do not** add extra commentary or disclaimers. **Only** produce one final text in the required format, nothing else.
+2. **Do not** add extra commentary or disclaimers. **Only** produce one final summary in the required format, nothing else.
 3. Start your summary with "Summary: The reviewers ..." or "Summary: The reviewer ..."
+4. Write in sentences.
 
 ----
 

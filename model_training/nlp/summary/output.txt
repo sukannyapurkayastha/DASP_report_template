@@ -203,60 +203,54 @@ Overview:
 - Contribution is 2.4 out of 4.
  Attitude Roots: 
 - Substance(EXP) appears 80% of the time. Experimental study not strong enough. 
-AI aggregated comments: Summary: The reviewers raise several concerns regarding the experimental evaluation in the paper. They recommend conducting experiments on real-world datasets, providing more methods for comparison, and explaining the reasoning behind transforming "global" features to "local" ones. Additionally, they suggest including more baselines for fair comparison and conducting experiments on downstream tasks like pose estimation. 
+AI aggregated comments: Summary: Reviewers raise several issues regarding the experimental evaluations in the paper, primarily focusing on the simplicity of the synthetic datasets used and the lack of real-world experiments. Additionally, they question the reasoning behind the transformation from "global" to "local" features and request further explanations. Finally, they suggest including more baselines and real-world datasets in the experiments to provide a more comprehensive validation of the proposed method. 
 
 - Substance(MET) appears 80% of the time. Incomplete details on perfromance of the method. 
-AI aggregated comments: Summarizing the reviews, the main issues are:
-
-* Clarify the experimental setup and methodologies.
-* Provide more comprehensive comparisons with relevant methods.
-* Address the concern regarding the sufficiency of learning-based methods for real-world scenarios.
-* Explain the reasoning behind adopting SO(3)-invariance in the proposed approach.
-* Offer insights into the relationship between the proposed method's performance and the quality of the input data. 
+AI aggregated comments: Summary: The reviewers raise several issues regarding the experimental evaluation and methodology of the proposed method. They question the relevance of comparing the proposed method solely to a single baseline, suggest adding more traditional methods for better comparison, and argue that real-dataset experiments are necessary for demonstrating the method's robustness. Additionally, they query the necessity of learning SO(3)-invariance in an end-to-end manner when rough alignments may suffice for existing methods. Finally, they express confusion over the proposed method's ability to handle diverse density distributions and its transferability to estimating relative rotations/translations. 
 
 - Clarity(OAL) appears 60% of the time. 3. The paper is not nicely written or rather easy to follow.. 
-AI aggregated comments: Summary: The reviewers find the organization and writing quality acceptable. 
+AI aggregated comments: Summary: The reviewers find the paper well-organized and easy to follow. 
 
 - Substance(DAT) appears 60% of the time. Less datasets used. 
-AI aggregated comments: Summary: The reviewers question the effectiveness of the proposed method on complex domains beyond the simple point clouds seen in the synthetic tests. They recommend evaluating the approach on real-world datasets like KeypointNet to demonstrate its applicability outside of the laboratory environment. Additionally, they ask whether additional training data or adjustments would be necessary to improve performance in novel scenarios. 
+AI aggregated comments: Summary: The reviewers raise several concerns regarding the experimental evaluation of the proposed method. They suggest evaluating additional methods, including traditional ones, for a more comprehensive comparison. Additionally, they question whether the method will generalize to more complex domains like the 16-category domain. Finally, they suggest conducting experiments on real-world datasets, such as the 3Dmatch dataset, to demonstrate the robustness of the proposed approach. 
 
 - Originality(MET) appears 40% of the time. Limited novelty in theoretical contribution. 
-AI aggregated comments: Summary: The reviewer questions whether the method’s contributions are enough for ICLR, suggesting that while the local shape transform and self-supervised correspondence mechanism are innovative, the pipeline primarily builds upon established SO(3)-equivariant representations. 
+AI aggregated comments: Summary: The reviewer 1 finds the method's focus on leveraging established representations limiting its novelty for ICLR, while Reviewer 2 suggests the pipeline's reliance on VNNs and local shape transform contribute the main contributions. 
 
 - Meaningful-comparison(MET) appears 40% of the time. Missing theoretical comparisons. 
-AI aggregated comments: Summary: The reviewer raises several concerns regarding the performance of the proposed method in the I/I scenario, including its inferiority to state-of-the-art (SOTA) methods and a request for additional analysis to explain the drop in performance. Additionally, the reviewer suggests comparing the proposed method with newer papers like [SC3K: Self-supervised and Coherent 3D Keypoints Estimation from Rotated, Noisy, and Decimated Point Cloud Data]. 
+AI aggregated comments: Summary: The reviewer notes that the proposed method's performance on the I/I scenario is inferior to the state-of-the-art (SOTA), requesting additional analysis to explain the decrease in performance. Additionally, the reviewer suggests comparing the proposed method with recent papers like [SC3K: Self-supervised and Coherent 3D Keypoints Estimation from Rotated, Noisy, and Decimated Point Cloud Data]. 
 
 - Clarity(MET) appears 40% of the time. Unclear description of method. 
-AI aggregated comments: Summary: The reviewer asks for an explanation of LSTNet's inferior performance in I/I setting, while requesting discussion of relevant equivariant/invariant point cloud registration works. 
+AI aggregated comments: Summary: The reviewer asks for an explanation of LSTNet's inferior performance in I/I setting. Additionally, they request discussion of relevant SO(3)-equivariant/invariant point cloud registration works for comprehensiveness. 
 
 - Originality(PDI) appears 40% of the time. The main reason is that from the narration, I cannot figure out what is the idea or technique of other works and what is the contribution of this paper.. 
-AI aggregated comments: Summary: The reviewers question the significance of LSTNet's superiority in the I/I setup without justification, request clarification regarding other equivariance/invariance approaches in point cloud registration literature, and raise user personalization and privacy concerns within the ad ecosystem. 
+AI aggregated comments: Summary: The reviewer finds the factorization of point cloud descriptors into SO(3)-equivariant global shape descriptors and dynamic SO(3)-invariant point-wise local shape transforms innovative. They also find the concept of cross-reconstruction for generating inter-object correspondences through self-supervision intriguing. 
 
 - Clarity(RWK) appears 20% of the time. Improper writing of realted work section (as in 1 paragraph rather than multiple for related work, explanation of somepapers, etc). 
-AI aggregated comments: Summary: The reviewer suggests discussing equivariant/invariant point cloud registration works for completeness. 
+AI aggregated comments: Summary: The reviewer suggests discussing relevant SO(3)-equivariant/invariant point cloud registration works to provide a comprehensive view. 
 
 - Meaningful-comparison(TNF) appears 20% of the time. Missing explanation of comparsion with related work in tables and figures. 
-AI aggregated comments: Summary: The reviewer notes that the proposed method's performance in the I/I scenario is subpar compared to state-of-the-art and calls for additional analysis to understand the decrease in performance. Additionally, the reviewer suggests providing performance comparisons across various rotation angles for a more comprehensive evaluation. 
+AI aggregated comments: Summary: The reviewer notes that the proposed method's performance on the I/I scenario is significantly inferior to the state-of-the-art (SOTA) method according to Fig. 6 in the supplementary materials. Additionally, the reviewer suggests providing further analysis of the drop in performance and comparing the performance of different methods across various rotation angles for better evaluation. 
 
 - Meaningful-comparison(RWK) appears 20% of the time. Missing baselines. 
-AI aggregated comments: Summary: The reviewer asks for comparison with newer papers like SC3K, questioning whether the proposed method remains competitive against more recently developed techniques. 
+AI aggregated comments: Summary: The reviewer asks for a comparison with more recent papers like SC3K, highlighting the importance of self-supervision and coherence in 3D keypoint estimation. 
 
 - Substance(TNF) appears 20% of the time. Incomprehensible tables and figures (what is the point of the plot, no decription of figure in main text, etc). 
-AI aggregated comments: Summary: The reviewer questions whether the SO(3)-invariance claim holds given the diverse experimental outcomes in Table 1, particularly across categories, even with synthetic data. 
+AI aggregated comments: Summary: The reviewer questions why the method’s results differ significantly between I/SO(3) and SO(3)/SO(3) experiments if it is truly SO(3)-invariant, asking for an explanation despite the synthetic, clean data. 
 
 
  Request Information: 
 - Improvement was requested 80% of the time. 
-AI aggregated comments: Summary: The reviewers raise several issues regarding the proposed method's experimental evaluation, including the need for more comprehensive comparisons with traditional methods and providing evidence of its robustness on real-world datasets. Additionally, they question whether SO(3) invariance is sufficient and request explanations for the mechanism behind the local shape transform. Finally, they suggest including more diverse baselines in the experiments and discussing relevant equivariant and invariant point cloud registration works. 
+AI aggregated comments: Summary: The reviewers raise several issues regarding the experimental evaluation and methodological aspects of the proposed approach. Specifically, they suggest evaluating additional methods, providing more insights into the drop of performance, and discussing relevant literature for point cloud registration. Additionally, they question whether SO(3) invariance is enough and propose exploring SE(3) or Sim(3) invariance for robustness against noise and sparsity. 
 
 - Experiment was requested 60% of the time. 
-AI aggregated comments: Summary: The reviewers question whether the network is robust to differences in density distributions between inputs and outputs, and whether it can handle 16 categories. They ask for experimental validation in a real-world scenario and justify the necessity of further extension to achieve real-world usability. Additionally, they suggest exploring the application of dense correspondence estimates for relative rotations/translations via ICP methods. Finally, they encourage evaluating the estimated correspondences on downstream tasks like 6D pose estimation or point cloud registration. 
+AI aggregated comments: Summary: The reviewers ask if the network will remain functional when input and output densities differ, and if it can handle 16-class domains without additional training data. They suggest performing real-world experiments to justify the current approach and explore possible extensions like estimating relative rotations/translations or conducting 6D pose estimation tasks. 
 
 - Explanation was requested 60% of the time. 
-AI aggregated comments: Summary: The reviewers question whether learning SO(3)-invariant correspondences in an end-to-end manner is necessary if other methods already achieve good performance with a rough alignment of the initial shape. They request an explanation for the difference in performance between I/SO(3) and SO(3)/SO(3) experiments in Table 1, despite using synthetic and clean data. 
+AI aggregated comments: Summary: The reviewers question why LSTNet performs worse than other methods in the I/I setting, requesting an explanation for its underperformance. Additionally, they ask for justification of why the Encoder's features are global and whether the method can generate SO(3)-invariant correspondences as claimed in Table 1, given the diverse experimental results. 
 
 - Result was requested 20% of the time. 
-AI aggregated comments: Summary: The reviewer wonders whether non-GT and potentially biased key points and semantic parts would transfer correctly. 
+AI aggregated comments: Summary: The reviewer wonders whether non-GT and potentially biased key points and semantic parts will be accurately transferred through the method. 
 
 
 -------------------------------------------------------------------
