@@ -12,6 +12,16 @@
 
 ### Week [7]
 
+- **Update 1**: Adjustment on Poster
+- **Update 2**: 
+- **Update 3**: 
+- **Update 4**: 
+- **Challenges**: 
+- **Next Steps**: Deployment
+  
+
+### Week [7]
+
 - **Update 1**: Bugfixing
 - **Update 2**: Poster Presentation
 - **Update 3**: Tests
