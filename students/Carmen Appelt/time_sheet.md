@@ -55,6 +55,7 @@
 | [15.01.2024]  | [15.01.2025]  | [Teammeeting]            | [Meeting with supervisor]            | [1]           | [Completed] |
 | [15.01.2024]  | [15.01.2025]  | [Teammeeting]            | [Internal Meeting]            | [1]           | [Completed] |
 | [22.01.2024]  | [22.01.2025]  | [Teammeeting]            | [Meeting with supervisor]            | [1]           | [Completed] |
+| [25.01.2024]  | [25.01.2025]  | [Poster Presentation]            | [Adjustements on Poster]            | [4]           | [Completed] |
 ---
 ---
 
