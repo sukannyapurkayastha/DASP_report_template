@@ -5,23 +5,38 @@ import pandas as pd
 import torch
 from torch.nn import Sigmoid
 import os
-from utils import load_DistilBertTokenizer, load_TFDistilBertForSequenceClassification, load_BertTokenizer, \
-    load_BertForSequenceClassification
+
+from transformers import BertTokenizer, BertForSequenceClassification
+
+# from utils import load_DistilBertTokenizer, load_TFDistilBertForSequenceClassification, load_BertTokenizer, \
+#     load_BertForSequenceClassification
 
 
 def predict_root_category(text):
-    # Load the tokenizer
-    logger.info("Predicting root category")
-    tokenizer = load_DistilBertTokenizer()
-    model = load_TFDistilBertForSequenceClassification(num_labels=9)
+    local_path = "models/attitude_root/"
+    huggingface_model_path = "DASP-ROG/AttitudeModel"
 
-    predict_input = tokenizer.encode(text,
-                                     truncation=True,
-                                     padding=True,
-                                     return_tensors="tf")
-    output = model(predict_input)[0]
-    prediction_value = tf.argmax(output, axis=1).numpy()[0]
-    logger.info(f"Prediction done.")
+    # Load the tokenizer and model from huggingface if not available locally
+    logger.info("Loading tokenizer and model for root category ...")
+    tokenizer = BertTokenizer.from_pretrained(huggingface_model_path, cache_dir=local_path)
+    model = BertForSequenceClassification.from_pretrained(huggingface_model_path, num_labels=9,
+                                                          cache_dir=local_path)
+
+    predict_input = tokenizer.encode(
+        text,
+        truncation=True,
+        padding=True,
+        return_tensors="tf"
+    )
+    print(predict_input)
+    logger.info("Predicting root category")
+    try:
+        outputs = model(predict_input)
+        logits = outputs.logits
+    except Exception as e:
+        logger.error(e)
+    prediction_value = tf.argmax(logits, axis=1).numpy()[0]
+    logger.info(f"Root category prediction done.")
     return prediction_value
 
 
@@ -47,8 +62,12 @@ def attitude_roots_prediction(data):
 def predict_theme_category(text):
     # Load the pretrained model and tokenizer
     logger.info("Predicting attitude theme category")
-    tokenizer = load_BertTokenizer()
-    model = load_BertForSequenceClassification(num_labels=11)
+    local_path = "models/attitude_theme/"
+    huggingface_model_path = "DASP-ROG/ThemeModel"
+    tokenizer = BertTokenizer.from_pretrained(huggingface_model_path, cache_dir=local_path)
+    model = BertForSequenceClassification.from_pretrained(huggingface_model_path, num_labels=11, cache_dir=local_path,
+                                                          problem_type="multi_label_classification")
+
     model.eval()
     threshold = 0.5
 
