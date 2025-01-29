@@ -1,42 +1,29 @@
 import tensorflow as tf
 from loguru import logger
-from transformers import (
-    DistilBertTokenizer, 
-    TFDistilBertForSequenceClassification,
-    BertForSequenceClassification,
-    BertTokenizer
-)
+
 import pandas as pd
 import torch
 from torch.nn import Sigmoid
 import os
+from utils import load_DistilBertTokenizer, load_TFDistilBertForSequenceClassification, load_BertTokenizer, \
+    load_BertForSequenceClassification
 
-# # Create a Pydantic model to handle the input data
-# class SentenceData(BaseModel):
-#     data: list[Dict]
 
 def predict_root_category(text):
     # Load the tokenizer
     logger.info("Predicting root category")
-    try:
-        tokenizer = DistilBertTokenizer.from_pretrained('models/attitude_root')
-    except Exception as e:
-        logger.error(f"Could not load DistilBertTokenizer {e}.")
-
-    # Load the model
-    try:
-        model = TFDistilBertForSequenceClassification.from_pretrained('models/attitude_root/', num_labels=9)
-    except Exception as e:
-        logger.error(f"Could not load TFDistilBertForSequenceClassification {e}.")
+    tokenizer = load_DistilBertTokenizer()
+    model = load_TFDistilBertForSequenceClassification(num_labels=9)
 
     predict_input = tokenizer.encode(text,
-                                    truncation=True,
-                                    padding=True,
-                                    return_tensors="tf")
+                                     truncation=True,
+                                     padding=True,
+                                     return_tensors="tf")
     output = model(predict_input)[0]
     prediction_value = tf.argmax(output, axis=1).numpy()[0]
     logger.info(f"Prediction done.")
     return prediction_value
+
 
 def attitude_roots_prediction(data):
     data['attitude_root_number'] = data['sentence'].apply(predict_root_category)
@@ -52,17 +39,19 @@ def attitude_roots_prediction(data):
         8: 'None'
     }
     data['attitude_root'] = data['attitude_root_number'].map(label_mapping)
-    data = data[data['attitude_root']!= 'None']
+    data = data[data['attitude_root'] != 'None']
 
     return data
+
 
 def predict_theme_category(text):
     # Load the pretrained model and tokenizer
     logger.info("Predicting attitude theme category")
-    model = BertForSequenceClassification.from_pretrained("models/attitude_theme/", num_labels=11, problem_type="multi_label_classification")
-    tokenizer = BertTokenizer.from_pretrained("models/attitude_theme/")
+    tokenizer = load_BertTokenizer()
+    model = load_BertForSequenceClassification(num_labels=11)
     model.eval()
     threshold = 0.5
+
     # Tokenize the input text using tokenizer (handles padding, truncation, etc.)
     inputs = tokenizer(text, truncation=True, padding="max_length", max_length=128, return_tensors="pt")
 
@@ -88,11 +77,6 @@ def predict_theme_category(text):
     return true_labels
 
 
-
-def attitude_themes_prediction(data):
-    data['attitude_themes'] = data['sentence'].apply(predict_theme_category)
-    return data
-
 def create_clusters(row):
     # Extract root and themes
     root = row["attitude_root"]
@@ -102,19 +86,22 @@ def create_clusters(row):
     clusters = [f"{root}({theme})" for theme in themes]
     return clusters
 
+
 def combine_roots_and_themes(preprocessed_data):
     df = attitude_roots_prediction(preprocessed_data)
-    df = attitude_themes_prediction(df)
+    df['attitude_themes'] = df['sentence'].apply(predict_theme_category)  # attitude_themes_prediction
+
     # Apply the function to create clusters
     df.loc[:, "clusters"] = df.apply(create_clusters, axis=1)
     df = df.explode("clusters", ignore_index=True)
+
     # Count distinct authors
     distinct_authors_count = df['author'].nunique()
     # Group by 'author' and 'clusters', and aggregate the sentences into a list
     aggregated_df = df.groupby(['clusters', 'author'])['sentence'].apply(list).reset_index()
     final_df = aggregated_df.groupby('clusters').agg(
-            comments=('sentence', lambda x: [[author, sentences] for author, sentences in zip(aggregated_df['author'], x)])
-        ).reset_index()
+        comments=('sentence', lambda x: [[author, sentences] for author, sentences in zip(aggregated_df['author'], x)])
+    ).reset_index()
     final_df['Frequency'] = final_df['comments'].apply(len) / distinct_authors_count
     final_df['Descriptions'] = 'none'
     final_df = final_df.rename(columns={'comments': 'Comments', 'clusters': 'Attitude_roots'})
@@ -124,7 +111,8 @@ def combine_roots_and_themes(preprocessed_data):
     current_path = os.path.dirname(os.path.abspath(__file__))
     desc = pd.read_csv(os.path.join(current_path, 'attitudes_desc.csv'))
 
-    merged_df = pd.merge(final_df , desc, on=['Attitude_roots'], how='left') # todo:what happens if attitude + theme combi is not known
+    merged_df = pd.merge(final_df, desc, on=['Attitude_roots'],
+                         how='left')  # todo:what happens if attitude + theme combi is not known
     merged_df.rename(columns={'Descriptions_y': 'Descriptions'}, inplace=True)
 
     # Drop Descriptions_x column

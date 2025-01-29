@@ -1,39 +1,53 @@
-import shutil
-
-from huggingface_hub import hf_hub_download, list_repo_files, snapshot_download
 import os
 from loguru import logger
+from transformers import BertTokenizer, BertForSequenceClassification
 
-def download_repo_files(repo_id: str, subdir: str, local_dir: str):
-    os.makedirs(local_dir, exist_ok=True)
 
-    # List all files in the repository
-    all_files = list_repo_files(repo_id=repo_id, repo_type="model")
+def load_BertTokenizer(local_path: str, huggingface_model_path: str):
+    """
+    Load the load_BertTokenizer, checking for local availability.
+    :param local_path: Local path of the BertTokenizer.
+    :param huggingface_model_path: Hugging Face model path.
+    :return: load_BertTokenizer
+    """
+    if os.path.exists(local_path) and os.path.isdir(local_path):
+        # Check if required tokenizer files exist in the directory
+        tokenizer_files = ["vocab.txt", "tokenizer.json", "config.json"]
+        if all(os.path.exists(os.path.join(local_path, f)) for f in tokenizer_files):
+            logger.info(f"Loading tokenizer from local path: {local_path}")
+            tokenizer = BertTokenizer.from_pretrained(local_path)
+            return tokenizer
+        else:
+            logger.info("Tokenizer files are missing locally.")
+    else:
+        logger.info("Local path does not exist or is not a directory.")
 
-    # Filter the files to only those in the specified subdirectory
-    files_to_download = [f for f in all_files if f.startswith(subdir)]
+    # If the local tokenizer is not available, download from Hugging Face
+    logger.info(f"Downloading tokenizer from Hugging Face: {huggingface_model_path}")
+    tokenizer = BertTokenizer.from_pretrained(huggingface_model_path)
+    return tokenizer
 
-    for filename in files_to_download:
-        # Determine local path
-        relative_path = filename[len(subdir):]  # strip the subdir prefix
-        local_subpath = os.path.join(local_dir, relative_path)
 
-        # Check if local file already exists
-        if os.path.exists(local_subpath):
-            logger.info(f"Skipping {filename} because it already exists locally.")
-            continue
+def load_BertForSequenceClassification(local_path: str, huggingface_model_path: str):
+    """
+    Load the BertForSequenceClassification, checking for local availability.
+        :param local_path: Local path of the BertTokenizer.
+    :param huggingface_model_path: Hugging Face model path.
+    :return: BertForSequenceClassification
+    """
+    if os.path.exists(local_path) and os.path.isdir(local_path):
+        # Check if required model files exist in the directory
+        model_files = ["config.json", "model.safetensor"]
+        if all(os.path.exists(os.path.join(local_path, f)) for f in model_files):
+            logger.info(f"Loading model from local path: {local_path}")
+            model = BertForSequenceClassification.from_pretrained(local_path)
+            return model
+        else:
+            logger.info("Model files are missing locally.")
+    else:
+        logger.info("Local path does not exist or is not a directory.")
 
-        # Make sure nested directories exist
-        os.makedirs(os.path.dirname(local_subpath), exist_ok=True)
-
-        # Download the file (hf_hub_download returns a path in cache)
-        downloaded_file_path = hf_hub_download(
-            repo_id=repo_id,
-            filename=filename,
-            repo_type="model",
-            revision="main",
-        )
-
-        # Move from cache to your desired directory
-        os.replace(downloaded_file_path, local_subpath)
-        logger.info(f"Downloaded and saved {filename} to {local_subpath}")
+    # If the local model is not available, download from Hugging Face
+    logger.info(f"Downloading model from Hugging Face: {huggingface_model_path}")
+    model = BertForSequenceClassification.from_pretrained(huggingface_model_path)
+    return model

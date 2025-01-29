@@ -1,37 +1,119 @@
-from huggingface_hub import hf_hub_download, list_repo_files
 import os
 from loguru import logger
 
-def download_repo_files(repo_id: str, subdir: str, local_dir: str):
-    os.makedirs(local_dir, exist_ok=True)
+from transformers import (
+    DistilBertTokenizer,
+    TFDistilBertForSequenceClassification,
+    BertForSequenceClassification,
+    BertTokenizer
+)
 
-    # List all files in the repository
-    all_files = list_repo_files(repo_id=repo_id, repo_type="model")
 
-    # Filter the files to only those in the specified subdirectory
-    files_to_download = [f for f in all_files if f.startswith(subdir)]
+def load_DistilBertTokenizer():
+    """
+    Load the DistilBertTokenizer, checking for local availability.
+    :return: DistilBertTokenizer
+    """
 
-    for filename in files_to_download:
-        # Determine local path
-        relative_path = filename[len(subdir):]  # strip the subdir prefix
-        local_subpath = os.path.join(local_dir, relative_path)
+    local_path = "models/attitude_root/"
+    huggingface_model_path = "DASP-ROG/AttitudeModel"
 
-        # Check if local file already exists
-        if os.path.exists(local_subpath):
-            logger.info(f"Skipping {filename} because it already exists locally.")
-            continue
+    if os.path.exists(local_path) and os.path.isdir(local_path):
+        # Check if required tokenizer files exist in the directory
+        tokenizer_files = ["vocab.txt", "tokenizer_config.json", "config.json"]
+        if all(os.path.exists(os.path.join(local_path, f)) for f in tokenizer_files):
+            logger.info(f"Loading tokenizer from local path: {local_path}")
+            tokenizer = DistilBertTokenizer.from_pretrained(local_path)
+            return tokenizer
+        else:
+            logger.info("Tokenizer files are missing locally.")
+    else:
+        logger.info("Local path does not exist or is not a directory.")
 
-        # Make sure nested directories exist
-        os.makedirs(os.path.dirname(local_subpath), exist_ok=True)
+    # If the local tokenizer is not available, download from Hugging Face
+    logger.info(f"Downloading tokenizer from Hugging Face: {huggingface_model_path}")
+    tokenizer = DistilBertTokenizer.from_pretrained(huggingface_model_path)
+    return tokenizer
 
-        # Download the file (hf_hub_download returns a path in cache)
-        downloaded_file_path = hf_hub_download(
-            repo_id=repo_id,
-            filename=filename,
-            repo_type="model",
-            revision="main",
-        )
 
-        # Move from cache to your desired directory
-        os.replace(downloaded_file_path, local_subpath)
-        logger.info(f"Downloaded and saved {filename} to {local_subpath}")
+def load_TFDistilBertForSequenceClassification(num_labels: int = 9):
+    """
+    Load the TFDistilBertForSequenceClassification, checking for local availability.
+    :return: TFDistilBertForSequenceClassification
+    """
+
+    local_path = "models/attitude_root/"
+    huggingface_model_path = "DASP-ROG/AttitudeModel"
+
+    if os.path.exists(local_path) and os.path.isdir(local_path):
+        # Check if required model files exist in the directory
+        model_files = ["config.json", "tf_model.h5"]
+        if all(os.path.exists(os.path.join(local_path, f)) for f in model_files):
+            logger.info(f"Loading model from local path: {local_path}")
+            model = TFDistilBertForSequenceClassification.from_pretrained(local_path, num_labels=num_labels)
+            return model
+        else:
+            logger.info("Model files are missing locally.")
+    else:
+        logger.info("Local path does not exist or is not a directory.")
+
+    # If the local model is not available, download from Hugging Face
+    logger.info(f"Downloading model from Hugging Face: {huggingface_model_path}")
+    model = TFDistilBertForSequenceClassification.from_pretrained(local_path, num_labels=num_labels)
+    return model
+
+
+def load_BertTokenizer():
+    """
+    Load the load_BertTokenizer, checking for local availability.
+    :return: load_BertTokenizer
+    """
+
+    local_path = "models/attitude_theme/"
+    huggingface_model_path = "DASP-ROG/ThemeModel"
+
+    if os.path.exists(local_path) and os.path.isdir(local_path):
+        # Check if required tokenizer files exist in the directory
+        tokenizer_files = ["vocab.txt", "tokenizer_config.json", "config.json"]
+        if all(os.path.exists(os.path.join(local_path, f)) for f in tokenizer_files):
+            logger.info(f"Loading tokenizer from local path: {local_path}")
+            tokenizer = BertTokenizer.from_pretrained(local_path)
+            return tokenizer
+        else:
+            logger.info("Tokenizer files are missing locally.")
+    else:
+        logger.info("Local path does not exist or is not a directory.")
+
+    # If the local tokenizer is not available, download from Hugging Face
+    logger.info(f"Downloading tokenizer from Hugging Face: {huggingface_model_path}")
+    tokenizer = BertTokenizer.from_pretrained(huggingface_model_path)
+    return tokenizer
+
+
+def load_BertForSequenceClassification(num_labels: int = 11):
+    """
+    Load the BertForSequenceClassification, checking for local availability.
+    :return: BertForSequenceClassification
+    """
+
+    local_path = "models/attitude_theme/"
+    huggingface_model_path = "DASP-ROG/ThemeModel"
+
+    if os.path.exists(local_path) and os.path.isdir(local_path):
+        # Check if required model files exist in the directory
+        model_files = ["config.json", "model.safetensors"]
+        if all(os.path.exists(os.path.join(local_path, f)) for f in model_files):
+            logger.info(f"Loading model from local path: {local_path}")
+            model = BertForSequenceClassification.from_pretrained(local_path, num_labels=num_labels,
+                                                                  problem_type="multi_label_classification")
+            return model
+        else:
+            logger.info("Model files are missing locally.")
+    else:
+        logger.info("Local path does not exist or is not a directory.")
+
+    # If the local model is not available, download from Hugging Face
+    logger.info(f"Downloading model from Hugging Face: {huggingface_model_path}")
+    model = BertForSequenceClassification.from_pretrained(huggingface_model_path, num_labels=num_labels,
+                                                          problem_type="multi_label_classification")
+    return model
