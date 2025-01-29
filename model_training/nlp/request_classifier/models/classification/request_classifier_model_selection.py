@@ -261,7 +261,7 @@ def main():
         f.write(f"Metrics log started at {current_time}\n\n")
 
     model_names = [
-        "allenai/scibert_scivocab_uncased",
+       
         "model_training/nlp/request_classifier/models/classification/sciBERT_neg"
     ]
 

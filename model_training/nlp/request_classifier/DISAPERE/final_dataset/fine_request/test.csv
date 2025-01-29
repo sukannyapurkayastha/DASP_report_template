@@ -1,4 +1,4 @@
-text,index,review_action,fine_review_action,aspect,target
+sentence,index,review_action,fine_review_action,aspect,target
 "1. Why the color distribution of generated images is evaluated on a sampled subset of pixels, not full images?",,arg_request,arg-request_explanation,asp_clarity,0
 "2. On Figure 6, which classes are outlying on transformation limitation / data variability plots (bottom-right corner) and how it may be explained?",,arg_request,arg-request_explanation,asp_clarity,0
 "3. While StyleGAN can not preserve geometry of objects for shift in location-based attributes, when walks are learned in the W space, have you experimented on manipulating those attributes with z space? What are the results?",,arg_request,arg-request_explanation,asp_clarity,0

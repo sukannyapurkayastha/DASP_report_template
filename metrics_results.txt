@@ -1,0 +1,30 @@
+Metrics log started at 2025-01-20 14:01:18
+
+==============================================
+Model Name: model_training/nlp/request_classifier/models/classification/sciBERT_neg/
+Data Cleaning: False
+Oversampling: False
+Thresholding: True
+Epochs: 5
+
+Validation Metrics:
+  Accuracy:  0.6725
+  Precision: 0.6518
+  Recall:    0.6725
+  F1-Score:  0.6523
+
+Test Metrics:
+  Accuracy:  0.6203
+  Precision: 0.6317
+  Recall:    0.6203
+  F1-Score:  0.6095
+
+Confusion Matrix (Test):
+[[ 94  17  11   0  19   0]
+ [  2  99  13   7   2   0]
+ [ 27  38 139   0   3   0]
+ [  2  25   0  51   0   0]
+ [ 43  17   7   1  27   0]
+ [  4   5   7   0   1   0]]
+==============================================
+

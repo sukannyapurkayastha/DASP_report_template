@@ -15,6 +15,7 @@
 | [xx/01/25] | [xx/01/25] | [Dummy]                     | []                                                                        | [0.0]              | [Pending]     | 
 | [xx/01/25] | [xx/01/25] | [Dummy]                     | []                                                                        | [0.0]              | [Completed]   |
 | [xx/01/25] | [xx/01/25] | [Dummy]                     | []                                                                        | [0.0]              | [In Progress] |
+| [23/01/25] | [23/01/25] | [Summary generator VI]       | [Provide llama2 to johannes for HF-Upload]                    | [0.5]              | [Completed] |
 | [20/01/25] | [21/01/25] | [Summary generator V]       | [Integrate best model into frontend]                    | [5.0]              | [Completed] |
 | [15/01/25] | [19/01/25] | [Summary generator IV]      | [Entirely revamp summary generator as real world data is way to long! Caused some serious issues in the pipeline as the logic of how data is split and predictions are made changed fundamentally! + change of evaluation metric to BERT-Score caused very intensive debugging (see tons of log structure of the provided code!)]                     | [32.0]              | [Completed]   |
 | [15/01/25] | [15/01/25] | [Weekly]                    | [Meeting itself, internal teammeeting, updating timesheets]               | [1]                | [Completed]   |

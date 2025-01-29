@@ -20,11 +20,11 @@
 
 ### Week [10]
 
-- **Update 1**: 
-- **Update 2**: 
+- **Update 1**: Solved upload issue + distributed autodownload in the respective scripts for all models to a teammember due to overtime (200h+)
+- **Update 2**: Waiting for docker and VM made by Zhijing... 
 - **Update 3**: 
 - **Challenges**: 
-- **Next Steps**: 
+- **Next Steps**: Test llama2 pipeline on VM as soon as they run.
 
 ### Week [9]
 

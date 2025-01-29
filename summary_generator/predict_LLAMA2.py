@@ -113,6 +113,11 @@ def predict(
     result = decoded[0]
     if result.startswith(prompt):
         result = result[len(prompt):]
+        
+    # 9) Remove "Summary: " prefix if present
+    summary_prefix = "Summary: "
+    if result.startswith(summary_prefix):
+        result = result[len(summary_prefix):]
 
     return result.strip()
 
