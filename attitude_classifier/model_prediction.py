@@ -26,16 +26,18 @@ def predict_root_category(text):
         text,
         truncation=True,
         padding=True,
-        return_tensors="tf"
+        return_tensors="pt"
     )
-    print(predict_input)
+
     logger.info("Predicting root category")
     try:
-        outputs = model(predict_input)
-        logits = outputs.logits
+        with torch.no_grad():
+            outputs = model(predict_input)
+            logits = outputs.logits
+        prediction_value = torch.argmax(logits, dim=1).item()
     except Exception as e:
         logger.error(e)
-    prediction_value = tf.argmax(logits, axis=1).numpy()[0]
+
     logger.info(f"Root category prediction done.")
     return prediction_value
 

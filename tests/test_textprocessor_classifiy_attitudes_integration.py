@@ -1,6 +1,7 @@
 from backend.text_processing import TextProcessor
 from frontend.clients import OpenReviewClient
 import requests
+import pandas as pd
 
 
 
@@ -30,3 +31,9 @@ def test_textprocessor_classifiy_attitudes_integration(username, password):
     response = requests.post("http://localhost:8082/classify_attitudes", json={"data": sentences})
 
     assert response.status_code == 200
+
+    df = pd.DataFrame(response.json())
+
+    assert df is not None
+    assert df.shape == (27, 4)
+    assert df.columns.tolist() == ['Attitude_roots', 'Frequency', 'Descriptions', 'Comments']
