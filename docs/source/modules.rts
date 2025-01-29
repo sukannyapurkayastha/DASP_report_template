@@ -1,0 +1,32 @@
+API Documentation
+==================
+
+.. automodule:: attitude_classifier
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: frontend
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: backend
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: model_training
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: request_classifier
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: students
+   :members:
+   :undoc-members:
+   :show-inheritance:
