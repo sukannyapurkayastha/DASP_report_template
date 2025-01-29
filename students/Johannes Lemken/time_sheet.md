@@ -68,8 +68,13 @@
 | [18/1/2025] | [18/1/2025] | [Documentation]          | [Docstrings, writing and automatic generation]                             | [2]               | [In Progress] |
 | [20/1/2025] | [20/1/2025] | [Coding]          | [Structured fine tuning to summarize results / Fine Request and Attitude]         | [2]               | [In Progress] |
 | [20/1/2025] | [20/1/2025] | [Coding]          | [Structured fine tuning to summarize results / Fine Request and Attitude]         | [2]               | [Completed] |
-| [10/1/2025] | [20/1/2025] | [Coding]          | [Creating table for F1- Scores]                                                   | [1]               | [Completed] |
-| [20/1/2025] | [20/1/2025] | [Coding]          | [Fitting the pipeline to the new model]                                           | [2]  21             | [Completed] |
+| [10/1/2025] | [20/1/2025] | [Coding]          | [Creating table for F1- Scores]                                                   | [2]               | [Completed] |
+| [20/1/2025] | [20/1/2025] | [Coding]          | [Fitting the pipeline to the new model]                                           | [3]  21             | [Completed] |
+| [22/1/2025] | [22/1/2025] | [Meeting]          | [Team meeting]                                                                   | [1]                | [Completed] |
+| [22/1/2025] | [22/1/2025] | [Hugging Face]          | [Setting up new repos and uploading all models]                             | [3]             | [Completed] |
+| [25/1/2025] | [25/1/2025] | [Coding]          | [Updated models for attitude and ran code for Carmen]                             | [1]             | [Completed] |
+| [25/1/2025] | [25/1/2025] | [Hugging Face]          | [Checking repos for missing files and addind them]                          | [2]              | [Completed] |
+| [29/1/2025] | [29/1/2025] | [Documentation]          | [Create documentation with sphinx]                                         | [4]             | [In progress] |
 ---
 
 > **Status Options**: "In Progress," "Completed," or "Pending."

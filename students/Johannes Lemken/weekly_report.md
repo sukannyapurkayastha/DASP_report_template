@@ -72,8 +72,34 @@
 - **Update 1**: getting slurm running  
 - **Update 2**: builing prompts for fine request
 - **Update 3**: 
+- **Challenges**: some challenges with slurm (encoding, getting code running)
+- **Next Steps**: more focus on documentation
+
+### Week [12]
+
+- **Update 1**: added docstrings  
+- **Update 2**: wrote readme 
+- **Update 3**: summarizing and making result tables
 - **Challenges**: 
-- **Next Steps**: 
+- **Next Steps**: looking into documentation generation
+
+
+### Week [13]
+
+- **Update 1**: new organisation of repos   
+- **Update 2**: added gh page with sphinx 
+- **Update 3**: 
+- **Challenges**: adding whole models via command line
+- **Next Steps**: checking the results of gh page
+
+
+### Week [14]
+
+- **Update 1**: 
+- **Update 2**: 
+- **Update 3**: 
+- **Challenges**: 
+- **Next Steps**:
 
 ---
 
