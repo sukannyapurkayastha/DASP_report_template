@@ -11,8 +11,7 @@ RUN apt-get update && apt-get install -y \
 
 # Copy necessary files
 COPY requirements.txt ./
-COPY main.py ./ 
-COPY utils.py ./ 
+COPY main.py ./
 COPY models ./models
 COPY df_sentences.csv ./df_sentences.csv
 COPY sentences_author.csv ./sentences_author.csv

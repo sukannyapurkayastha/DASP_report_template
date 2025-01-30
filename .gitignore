@@ -173,7 +173,8 @@ summary_generator/final
 summary_generator/models/llama2
 
 model_training/nlp/review_to_theme/results/
-request_classifier/models/attitude_classifier/tf_model.h5
+request_classifier/models_old/models/attitude_classifier/tf_model.h5
 *.h5
 /model_training/nlp/attitude_classifier/logs
 attitude_classifier/models/
+request_classifier/models/

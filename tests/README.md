@@ -8,7 +8,7 @@ pipeline since the backend server works as an orchestrator and makes multiple fu
 
     conda env create -f integration_tests_env.yaml
     conda activate DASP_integration
-    python -m spacy download en
+    python -m spacy download en_core_web_sm
 
 
 **2. Run the tests**

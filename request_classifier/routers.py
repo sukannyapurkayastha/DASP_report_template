@@ -3,6 +3,7 @@ from typing import List
 import pandas as pd
 from fastapi import APIRouter
 from pydantic import BaseModel
+from loguru import logger
 
 from classification.request_classifier_pipeline import process_dataframe_request
 
@@ -21,14 +22,14 @@ async def classify_request(request: RawInput) -> list[dict]:
     except Exception:
         df_sentences = pd.read_csv("sentences_author.csv")
 
-    # Check if model exists for request classifier
+    logger.info("Predicting requests...")
 
-    local_dir_request_classifier = "models/request_classifier"
+    local_dir_request_classifier = "models/request_classifier/"
     hf_request_classifier = "DASP-ROG/RequestModel"
-    local_dir_fine_request_classifier = "models/fine_request_classifier"
+    local_dir_fine_request_classifier = "models/fine_request_classifier/"
     hf_fine_request_classifier = "DASP-ROG/FineRequestModel"
 
-    df_result = process_dataframe_request(df=df_sentences, local_dir=local_dir_request_classifier,
+    df_result = process_dataframe_request(df=df_sentences, local_dir_request=local_dir_request_classifier,
                                           hf_request_classifier=hf_request_classifier,
                                           local_dir_fine_request=local_dir_fine_request_classifier,
                                           hf_fine_request_classifier=hf_fine_request_classifier)
