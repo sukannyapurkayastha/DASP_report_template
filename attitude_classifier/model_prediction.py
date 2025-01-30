@@ -45,16 +45,17 @@ def predict_root_category(text):
 def attitude_roots_prediction(data):
     data['attitude_root_number'] = data['sentence'].apply(predict_root_category)
     label_mapping = {
-        0: 'Other',
-        1: 'Clarity',
-        2: 'Meaningful-comparison',
-        3: 'Motivation-impact',
-        4: 'Originality',
-        5: 'Replicability',
-        6: 'Soundness-correctness',
-        7: 'Substance',
-        8: 'None'
+        0: 'None',
+        1: 'Substance',
+        2: 'Originality',
+        3: 'Clarity',
+        4: 'Soundness-correctness',
+        5: 'Motivation-impact',
+        6: 'Meaningful-comparison',
+        7: 'Replicabilitye',
+        8: 'Other'
     }
+    
     data['attitude_root'] = data['attitude_root_number'].map(label_mapping)
     data = data[data['attitude_root'] != 'None']
 
