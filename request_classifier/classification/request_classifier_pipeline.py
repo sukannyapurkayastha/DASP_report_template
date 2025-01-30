@@ -4,14 +4,16 @@ from tqdm import tqdm
 from transformers import T5Tokenizer, T5ForConditionalGeneration, BertTokenizer, BertForSequenceClassification
 from loguru import logger
 
-#Import helper functions from the fine-grained request classifier module
-# from classification.fine_request_classifier_llama import (
-#     map_prediction_to_label,
-#     generate_predictions_from_dataset,
-#     few_shot_examples,
-#     label_map,
-# )
+# Set higher timeout to prevent ReadTimeout
+# https://github.com/huggingface/transformers/issues/12575
+import socket
+from urllib3.connection import HTTPConnection
 
+HTTPConnection.default_socket_options = (
+        HTTPConnection.default_socket_options + [
+    (socket.SOL_SOCKET, socket.SO_SNDBUF, 2000000),
+    (socket.SOL_SOCKET, socket.SO_RCVBUF, 2000000)
+])
 
 label_map = {
     "Request for Improvement": 0,
@@ -31,6 +33,8 @@ fine_to_category_map = {
     "arg-request_clarification": "Request for Clarification",
     "arg-request_result": "Request for Result",
 }
+
+
 def summarize_requests_by_authors(df_requests: pd.DataFrame) -> pd.DataFrame:
     """
     Aggregates fine-grained labels and summarizes them by the number of unique authors 
@@ -86,15 +90,17 @@ def summarize_requests_by_authors(df_requests: pd.DataFrame) -> pd.DataFrame:
     return summary
 
 
-
-def process_dataframe_request(df: pd.DataFrame, local_dir: str, local_dir_fine_request: str) -> pd.DataFrame:
+def process_dataframe_request(df: pd.DataFrame, local_dir_request: str, hf_request_classifier: str,
+                              local_dir_fine_request: str, hf_fine_request_classifier: str) -> pd.DataFrame:
     """
     Processes a DataFrame containing sentences for coarse and fine-grained classification.
 
     Parameters:
     df (pd.DataFrame): Input DataFrame with a column `sentence` containing text to classify.
-    local_dir (str): Local directory of the binary classifier.
+    local_dir_request (str): Local directory of the binary classifier.
+    hf_request_classifier (str): Hugging Face model path for the binary request classifier.
     local_dir_fine_request (str): Local directory of the multiclass classifier.
+    hf_fine_request_classifier (str): Hugging Face model path for the multiclass classifier.
 
     Returns:
     pd.DataFrame: DataFrame with added columns for coarse and fine-grained labels.
@@ -105,8 +111,10 @@ def process_dataframe_request(df: pd.DataFrame, local_dir: str, local_dir_fine_r
     texts = df['sentence'].tolist()
 
     # Load the coarse-grained request classifier
-    tokenizer_bert = BertTokenizer.from_pretrained(local_dir)
-    model_bert = BertForSequenceClassification.from_pretrained(local_dir)
+    tokenizer_bert = BertTokenizer.from_pretrained(hf_request_classifier, cache_dir=local_dir_request)
+    model_bert = BertForSequenceClassification.from_pretrained(hf_request_classifier, cache_dir=local_dir_request)
+    # tokenizer_bert = load_BertTokenizer(local_path=local_dir, huggingface_model_path=hf_request_classifier)
+    # model_bert = load_BertForSequenceClassification(local_path=local_dir, huggingface_model_path=hf_request_classifier)
     model_bert.eval()
     # device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     device = "cpu"
@@ -153,11 +161,18 @@ def process_dataframe_request(df: pd.DataFrame, local_dir: str, local_dir_fine_r
 
     # Filter rows where coarse-grained prediction indicates a request
     df_requests = df[df['coarse_label_pred'] == 1].copy()
-    #print(df_requests)
+    # print(df_requests)
 
     logger.info("Loading fine-grained BERT model")
-    tokenizer_bert_fine = BertTokenizer.from_pretrained(local_dir_fine_request)
-    model_bert_fine = BertForSequenceClassification.from_pretrained(local_dir_fine_request)
+    tokenizer_bert_fine = BertTokenizer.from_pretrained(hf_fine_request_classifier, cache_dir=local_dir_fine_request)
+    model_bert_fine = BertForSequenceClassification.from_pretrained(hf_fine_request_classifier,
+                                                                    cache_dir=local_dir_fine_request)
+    # tokenizer_bert_fine = load_BertTokenizer(local_path=local_dir_fine_request,
+    #                                          huggingface_model_path=hf_fine_request_classifier)
+    # model_bert_fine = load_BertForSequenceClassification(local_path=local_dir_fine_request,
+    #                                                      huggingface_model_path=hf_fine_request_classifier)
+    # tokenizer_bert_fine = BertTokenizer.from_pretrained(local_dir_fine_request)
+    # model_bert_fine = BertForSequenceClassification.from_pretrained(local_dir_fine_request)
     model_bert_fine.eval()
     device_fine = "cuda" if torch.cuda.is_available() else "cpu"
     model_bert_fine.to(device_fine)
@@ -180,9 +195,9 @@ def process_dataframe_request(df: pd.DataFrame, local_dir: str, local_dir_fine_r
         logits = outputs.logits
         return torch.argmax(logits, dim=-1).cpu().numpy()
 
-    #------------------------------------------------------------------#
+    # ------------------------------------------------------------------#
     # 4) Perform fine-grained classification (only for request rows)
-    #------------------------------------------------------------------#
+    # ------------------------------------------------------------------#
     if not df_requests.empty:
         logger.info("Performing fine-grained classification with second BERT")
         texts_fine = df_requests['sentence'].tolist()
@@ -206,117 +221,9 @@ def process_dataframe_request(df: pd.DataFrame, local_dir: str, local_dir_fine_r
         df_requests['fine_grained_label'] = -1
         df_requests['fine_grained_label_name'] = None
 
-    #------------------------------------------------------------------#
+    # ------------------------------------------------------------------#
     # 5) Summarize results
-    #------------------------------------------------------------------#
+    # ------------------------------------------------------------------#
     df_requests_summarized = summarize_requests_by_authors(df_requests)
-    #print(df_requests_summarized)
+    # print(df_requests_summarized)
     return df_requests_summarized
-    
-    # # Load the fine-grained request classifier
-    # logger.info("Loading fine-grained T5 model")
-    # model_path_fine_request_classifier = "backend/models/request_classifier/fine_request_classifier/"
-    # tokenizer_t5 = T5Tokenizer.from_pretrained(local_dir_fine_request)
-    # model_t5 = T5ForConditionalGeneration.from_pretrained(local_dir_fine_request)
-    # model_t5.eval()
-    # # device_t5 = "cuda" if torch.cuda.is_available() else "cpu"
-    # device_t5 = "cpu"
-    # model_t5.to(device_t5)
-    # tokenizer_t5.pad_token_id = tokenizer_t5.eos_token_id
-
-    # # Perform fine-grained classification
-    # if not df_requests.empty:
-    #     logger.info("Performing fine-grained classification")
-    #     predictions_t5 = generate_predictions_from_dataset(
-    #         df_requests[['sentence']], few_shot_examples, tokenizer_t5, model_t5
-    #     )
-
-    #     # Map predictions to fine-grained labels
-    #     mapped_predictions = [map_prediction_to_label(pred, label_map) for pred in predictions_t5]
-    #     df_requests['fine_grained_label'] = mapped_predictions
-
-    #     # Map numeric labels to their corresponding category names
-    #     reverse_label_map = {v: k for k, v in label_map.items()}
-    #     df_requests['fine_grained_label_name'] = df_requests['fine_grained_label'].map(reverse_label_map)
-    # else:
-    #     # If no requests are detected, set fine-grained labels to default values
-    #     df_requests['fine_grained_label'] = -1
-    #     df_requests['fine_grained_label_name'] = None
-
-    # df_requests_summarized = summarize_requests_by_authors(df_requests)    
-
-    # return df_requests_summarized
-    
-
-# if __name__ == "__main__":
-    
-#     data = {
-
-#     "author": ["Reviewer e53u", "Reviewer jp4i", "Reviewer jp4i", "Reviewer wi9j", "Reviewer wi9j",
-
-#                "Reviewer wi9j", "Reviewer wi9j", "Reviewer a6Ps", "Reviewer a6Ps", "Reviewer a6Ps",
-
-#                "Reviewer a6Ps", "Reviewer F7em", "Reviewer F7em"],
-
-#     "tag": ["questions", "weaknesses", "weaknesses", "weaknesses", "weaknesses", 
-
-#             "weaknesses", "weaknesses", "questions", "questions", "questions",
-
-#             "weaknesses", "weaknesses", "weaknesses"],
-
-#     "sentence": [
-
-#         "The reason why other methods are much better is unclear.",
-
-#         "The main weakness of this paper is...",
-
-#         "Since the proposed method can enhance performance, why does it lack robustness?",
-
-#         "Please compare the proposed method with existing benchmarks.",
-
-#         "Why are the features of the proposed model less explainable?",
-
-#         "This paper also targets on clarity, but there are missing evaluations.",
-
-#         "In Tab.1, only CPAE proposed in...",
-
-#         "Would SO(3) invariance be sufficient for the method?",
-
-#         "Will it work out of the 16-category data?",
-
-#         "Would non-gt and/or biased key points be more impactful?",
-
-#         "The main issue of the proposed method seems to be lack of...",
-
-#         "From Fig. 6 in the supplementary, ...",
-
-#         "How about the performance of other benchmarks?"
-
-#     ],
-
-#     "coarse_label_pred": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-
-#     "fine_grained_label": [1, 1, 2, 1, 0, 2, 0, 2, 2, 2, 1, 1, 2],
-
-#     "fine_grained_label_name": [
-
-#         "Request for Explanation", "Request for Improvement", "Request for Experiment",
-
-#         "Request for Improvement", "Request for Explanation", "Request for Experiment",
-
-#         "Request for Explanation", "Request for Experiment", "Request for Experiment",
-
-#         "Request for Experiment", "Request for Improvement", "Request for Improvement",
-
-#         "Request for Experiment"
-
-#     ]
-
-# }
-
-# local_dir_request_classifier = "request_classifier/models/request_classifier"
-# local_dir_fine_request_classifier = "model_training/nlp/request_classifier/models/classification/sciBERT_neg_finetuned"
-
-# df_example = pd.DataFrame(data)
-# df = process_dataframe_request(df_example, local_dir_request_classifier, local_dir_fine_request_classifier)
-# print(df["Comments"])

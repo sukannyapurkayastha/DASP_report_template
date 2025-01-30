@@ -261,4 +261,3 @@ dependencies:
       - sympy==1.13.1
       - tokenizers==0.20.2
       - transformers==4.32.1
-prefix: /ukp-storage-1/oehler/miniconda3/envs/summary_env4
