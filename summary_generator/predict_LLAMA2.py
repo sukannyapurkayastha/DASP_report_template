@@ -37,9 +37,10 @@ def load_LLAMA2_model(model_dir: str = "./models/llama2"):
     """
     logger.info(f"Loading model '{model_dir}' from Hugging Face...")
 
-    tokenizer = LlamaTokenizer.from_pretrained(model_dir, legacy=True)
+    hf_dir = "DASP-ROG/SummaryModel"
+    tokenizer = LlamaTokenizer.from_pretrained(hf_dir, cache_dir=model_dir, legacy=True)
     model = LlamaForCausalLM.from_pretrained(
-        "DASP-ROG/SummaryModel",
+        hf_dir,
         cache_dir=model_dir,
         device_map="auto",
         offload_folder="models/llama2/offload_folder/",
