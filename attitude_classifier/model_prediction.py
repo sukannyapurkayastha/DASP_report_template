@@ -26,16 +26,18 @@ def predict_root_category(text):
         text,
         truncation=True,
         padding=True,
-        return_tensors="tf"
+        return_tensors="pt"
     )
-    print(predict_input)
+
     logger.info("Predicting root category")
     try:
-        outputs = model(predict_input)
-        logits = outputs.logits
+        with torch.no_grad():
+            outputs = model(predict_input)
+            logits = outputs.logits
+        prediction_value = torch.argmax(logits, dim=1).item()
     except Exception as e:
         logger.error(e)
-    prediction_value = tf.argmax(logits, axis=1).numpy()[0]
+
     logger.info(f"Root category prediction done.")
     return prediction_value
 
@@ -43,16 +45,17 @@ def predict_root_category(text):
 def attitude_roots_prediction(data):
     data['attitude_root_number'] = data['sentence'].apply(predict_root_category)
     label_mapping = {
-        0: 'Other',
-        1: 'Clarity',
-        2: 'Meaningful-comparison',
-        3: 'Motivation-impact',
-        4: 'Originality',
-        5: 'Replicability',
-        6: 'Soundness-correctness',
-        7: 'Substance',
-        8: 'None'
+        0: 'None',
+        1: 'Substance',
+        2: 'Originality',
+        3: 'Clarity',
+        4: 'Soundness-correctness',
+        5: 'Motivation-impact',
+        6: 'Meaningful-comparison',
+        7: 'Replicabilitye',
+        8: 'Other'
     }
+    
     data['attitude_root'] = data['attitude_root_number'].map(label_mapping)
     data = data[data['attitude_root'] != 'None']
 

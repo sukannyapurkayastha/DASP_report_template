@@ -4,16 +4,16 @@ from tqdm import tqdm
 from transformers import T5Tokenizer, T5ForConditionalGeneration, BertTokenizer, BertForSequenceClassification
 from loguru import logger
 
-from util.utils import load_BertTokenizer, load_BertForSequenceClassification
+# Set higher timeout to prevent ReadTimeout
+# https://github.com/huggingface/transformers/issues/12575
+import socket
+from urllib3.connection import HTTPConnection
 
-# Import helper functions from the fine-grained request classifier module
-# from classification.fine_request_classifier_llama import (
-#     map_prediction_to_label,
-#     generate_predictions_from_dataset,
-#     few_shot_examples,
-#     label_map,
-# )
-
+HTTPConnection.default_socket_options = (
+        HTTPConnection.default_socket_options + [
+    (socket.SOL_SOCKET, socket.SO_SNDBUF, 2000000),
+    (socket.SOL_SOCKET, socket.SO_RCVBUF, 2000000)
+])
 
 label_map = {
     "Request for Improvement": 0,
@@ -90,14 +90,14 @@ def summarize_requests_by_authors(df_requests: pd.DataFrame) -> pd.DataFrame:
     return summary
 
 
-def process_dataframe_request(df: pd.DataFrame, local_dir: str, hf_request_classifier: str, local_dir_fine_request: str,
-                              hf_fine_request_classifier: str) -> pd.DataFrame:
+def process_dataframe_request(df: pd.DataFrame, local_dir_request: str, hf_request_classifier: str,
+                              local_dir_fine_request: str, hf_fine_request_classifier: str) -> pd.DataFrame:
     """
     Processes a DataFrame containing sentences for coarse and fine-grained classification.
 
     Parameters:
     df (pd.DataFrame): Input DataFrame with a column `sentence` containing text to classify.
-    local_dir (str): Local directory of the binary classifier.
+    local_dir_request (str): Local directory of the binary classifier.
     hf_request_classifier (str): Hugging Face model path for the binary request classifier.
     local_dir_fine_request (str): Local directory of the multiclass classifier.
     hf_fine_request_classifier (str): Hugging Face model path for the multiclass classifier.
@@ -111,8 +111,10 @@ def process_dataframe_request(df: pd.DataFrame, local_dir: str, hf_request_class
     texts = df['sentence'].tolist()
 
     # Load the coarse-grained request classifier
-    tokenizer_bert = load_BertTokenizer(local_path=local_dir, huggingface_model_path=hf_request_classifier)
-    model_bert = load_BertForSequenceClassification(local_path=local_dir, huggingface_model_path=hf_request_classifier)
+    tokenizer_bert = BertTokenizer.from_pretrained(hf_request_classifier, cache_dir=local_dir_request)
+    model_bert = BertForSequenceClassification.from_pretrained(hf_request_classifier, cache_dir=local_dir_request)
+    # tokenizer_bert = load_BertTokenizer(local_path=local_dir, huggingface_model_path=hf_request_classifier)
+    # model_bert = load_BertForSequenceClassification(local_path=local_dir, huggingface_model_path=hf_request_classifier)
     model_bert.eval()
     # device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     device = "cpu"
@@ -162,10 +164,13 @@ def process_dataframe_request(df: pd.DataFrame, local_dir: str, hf_request_class
     # print(df_requests)
 
     logger.info("Loading fine-grained BERT model")
-    tokenizer_bert_fine = load_BertTokenizer(local_path=local_dir_fine_request,
-                                             huggingface_model_path=hf_fine_request_classifier)
-    model_bert_fine = load_BertForSequenceClassification(local_path=local_dir_fine_request,
-                                                         huggingface_model_path=hf_fine_request_classifier)
+    tokenizer_bert_fine = BertTokenizer.from_pretrained(hf_fine_request_classifier, cache_dir=local_dir_fine_request)
+    model_bert_fine = BertForSequenceClassification.from_pretrained(hf_fine_request_classifier,
+                                                                    cache_dir=local_dir_fine_request)
+    # tokenizer_bert_fine = load_BertTokenizer(local_path=local_dir_fine_request,
+    #                                          huggingface_model_path=hf_fine_request_classifier)
+    # model_bert_fine = load_BertForSequenceClassification(local_path=local_dir_fine_request,
+    #                                                      huggingface_model_path=hf_fine_request_classifier)
     # tokenizer_bert_fine = BertTokenizer.from_pretrained(local_dir_fine_request)
     # model_bert_fine = BertForSequenceClassification.from_pretrained(local_dir_fine_request)
     model_bert_fine.eval()
