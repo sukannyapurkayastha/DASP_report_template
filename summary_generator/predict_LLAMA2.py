@@ -37,13 +37,12 @@ def load_LLAMA2_model(model_dir: str = "./models/llama2"):
     """
     logger.info(f"Loading model '{model_dir}' from Hugging Face...")
 
-    # 'legacy=True' is sometimes needed for older model conversions,
-    # but if you see deprecation warnings, remove it or try without it.
     tokenizer = LlamaTokenizer.from_pretrained(model_dir, legacy=True)
     model = LlamaForCausalLM.from_pretrained(
-        model_dir,
+        "DASP-ROG/SummaryModel",
+        cache_dir=model_dir,
         device_map="auto",
-        offload_folder="./models/llama2/offload_folder",  # Replace with your desired path
+        offload_folder="models/llama2/offload_folder/",
         offload_state_dict=True  # Ensure the state dict is offloaded
     )
 
@@ -55,12 +54,12 @@ def load_LLAMA2_model(model_dir: str = "./models/llama2"):
 
 
 def predict(
-    input_text: str,
-    model=None,
-    tokenizer=None,
-    model_dir: str = "/storage/ukp/shared/shared_model_weights/models--llama-2-hf/7B-Chat",
-    min_new_tokens: int = 20,
-    max_new_tokens_cap: int = 512,
+        input_text: str,
+        model=None,
+        tokenizer=None,
+        model_dir: str = "/storage/ukp/shared/shared_model_weights/models--llama-2-hf/7B-Chat",
+        min_new_tokens: int = 20,
+        max_new_tokens_cap: int = 512,
 ):
     """
     Build the prompt from real data, run generation on LLaMA 2, 
@@ -82,7 +81,7 @@ def predict(
 
     # 2) Build the final prompt from the input data
     prompt = input_to_prompt_converter.build_llama2_prompt(input_text)
-    #logger.info("Prompt is ready. Calculating lengths and generating...")
+    # logger.info("Prompt is ready. Calculating lengths and generating...")
 
     # 3) Measure the prompt and input length in tokens
     prompt_tokens = tokenizer(prompt, return_tensors="pt", add_special_tokens=False)
@@ -113,7 +112,7 @@ def predict(
     result = decoded[0]
     if result.startswith(prompt):
         result = result[len(prompt):]
-        
+
     # 9) Remove "Summary: " prefix if present
     summary_prefix = "Summary: "
     if result.startswith(summary_prefix):
@@ -128,8 +127,9 @@ if __name__ == "__main__":
     - load model, build prompt from some dummy data, generate, print result.
     """
     import dfs_to_input_converter
+
     dummy_input_data = dfs_to_input_converter.generate_dummy_input_text()
-    
-    pred = predict(input_text=dummy_input_data)
+
+    pred = predict(input_text=dummy_input_data, model_dir="model/llama2/")
     print("\n---------- LLaMA 2 PREDICTION ----------\n")
     print(pred)
