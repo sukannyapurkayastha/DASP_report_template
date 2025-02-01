@@ -35,8 +35,8 @@ async def predict(overview_df: RawInput, attitude_df: RawInput, request_df: RawI
         # # 4) just reuse the finalized overview data
         # summary = []
         # summary.append("#### Overview")
-        # for attribute in overview_df.iterrows():
-        #     summary.append(overview_output)
+        # for line in overview_output.splitlines():
+        #     summary.append(line)
 
         # # 5) add given Attitude Roots and their AI generated summary of comments
         # summary.append("")
