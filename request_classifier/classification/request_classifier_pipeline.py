@@ -1,7 +1,7 @@
 import torch
 import pandas as pd
 from tqdm import tqdm
-from transformers import T5Tokenizer, T5ForConditionalGeneration, BertTokenizer, BertForSequenceClassification
+from transformers import BertTokenizer, BertForSequenceClassification
 from loguru import logger
 
 # Set higher timeout to prevent ReadTimeout

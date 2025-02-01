@@ -24,7 +24,7 @@ async def process_data(input_data: RawInput) -> dict:
 
         # Run attitude classifer
         try:
-            logger.info(f"Tyring to post: {'http://localhost:8082/classify_attitudes'}")
+            logger.info(f"Tyring to post: {'http://attitude_classifier:8082/classify_attitudes'}")
 
             response_attitude = requests.post(
                 "http://attitude_classifier:8082/classify_attitudes",
@@ -41,9 +41,9 @@ async def process_data(input_data: RawInput) -> dict:
 
         # Run request classifier
         try:
-            logger.info(f"Tyring to post: {'http://localhost:8081/classify_request'}")
+            logger.info(f"Tyring to post: {'http://request_classifier:8081/classify_request'}")
             response_request = requests.post(
-                "http://localhost:8081/classify_request",
+                "http://request_classifier:8081/classify_request",
                 json={"data": sentences}
             )
 
@@ -60,9 +60,9 @@ async def process_data(input_data: RawInput) -> dict:
         
         # Run summary generator
         try: 
-            logger.info(f"Tyring to post: {'http://localhost:8083/generate_summary'}")
+            logger.info(f"Tyring to post: {'http://summary_generator:8083/generate_summary'}")
             response_summary = requests.post(
-                "http://localhost:8083/generate_summary",
+                "http://summary_generator:8083/generate_summary",
                 json={"overview_df": {"data": overview}, 
                       "attitude_df": {"data": pd.DataFrame(attitude_data).to_dict(orient='records')}, 
                       "request_df": {"data": pd.DataFrame(request_data).to_dict(orient='records')}}
