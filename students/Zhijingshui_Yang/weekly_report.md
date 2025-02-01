@@ -50,11 +50,11 @@
 
 ### Week [2]
 
-- **Update 1**: 
-- **Update 2**: 
+- **Update 1**: try to run review-to-description model in slurm
+- **Update 2**: check backend possibilities (FastAPI, Streamlit and Docker)
 - **Update 3**: 
 - **Challenges**: libs install for jitsupeer repo not successful, it causes error even with requirements.txt
-- **Next Steps**: 
+- **Next Steps**: try to run through review-to-description model
 
 ### Week [3]
 
@@ -74,9 +74,73 @@
 
 ### Week [5]
 
-- **Update 1**: connect attitude themes to frontend with fastapi
+- **Update 1**: restructure backend, connection between attitude themes and frontend, debug
 - **Update 2**: check data leakage of attitude themes classifier, analyse dataset and results of attitude themes classifier
-- **Update 3**: 
+- **Update 3**: slurm script writing for more efficient attitute theme classifier training
 - **Challenges**: train-test-val data split for multilabel scenario
-- **Next Steps**: improve attitute theme classifier; merge branches
+- **Next Steps**: connect components to run website; merge branches
+
+### Week [6]
+
+- **Update 1**: components are connected: frontend, backend(segmentation and preprocess), attitude classifier, request classifier
+- **Update 2**: prepare for presentation
+- **Update 3**: 
+- **Challenges**: orchestrating components together is time consuming.
+- **Next Steps**: use docker to automate building process; further investigate attitude themes classifier
+
+### Week [7]
+
+- **Update 1**: winter break
+- **Update 2**: 
+- **Update 3**: 
+- **Challenges**: 
+- **Next Steps**: 
+
+### Week [8]
+
+- **Update 1**: winter break
+- **Update 2**: 
+- **Update 3**: 
+- **Challenges**: 
+- **Next Steps**:
+  
+### Week [9]
+
+- **Update 1**: sent vm usage requirements for applying vm
+- **Update 2**: build docker for frontend and backend
+- **Update 3**: 
+- **Challenges**: 
+- **Next Steps**: further investigate attitude themes classifier, further docker scripts for model components
+
+### Week [10]
+
+- **Update 1**: try out different models for attitude themes; automate pipeline in slurm: send training with diff models at same time, evaluate results and save
+- **Update 2**: build docker for frontend and backend
+- **Update 3**: 
+- **Challenges**: description mapping method leads to none for some classes, need to switch to description generation
+- **Next Steps**: further docker scripts for model components; description generation
+
+### Week [11]
+
+- **Update 1**: assist overview generation by providing input data
+- **Update 2**: build docker for attitude classifier; set up docker compose file, docker network 
+- **Update 3**: 
+- **Challenges**: 
+- **Next Steps**: description generation; docker scripts for request classifier and summary generation
+
+### Week [12]
+
+- **Update 1**: collect hardware statistics information, confirm requests for applying vm
+- **Update 2**: bug fixing due to changes in models, model inference and loading method
+- **Update 3**: 
+- **Challenges**: due to changes in models, model inference and loading method, some components failed, it's blockage for docker building
+- **Next Steps**: description generation, docker scripts for request classifier and summary generation
+
+### Week [13]
+
+- **Update 1**: docker scripts for request classifier and summary generation are finished, docker automation process is almost finished
+- **Update 2**: 
+- **Update 3**: 
+- **Challenges**: running summary generation with llama in pc is time consuming, can't properly debug, since vm is not accessible yet.
+- **Next Steps**: description generation; deploy web server in vm if it's available
 ---
