@@ -139,7 +139,7 @@
 ### Week [13]
 
 - **Update 1**: docker scripts for request classifier and summary generation are finished, docker automation process is almost finished
-- **Update 2**: 
+- **Update 2**: update poster
 - **Update 3**: 
 - **Challenges**: running summary generation with llama in pc is time consuming, can't properly debug, since vm is not accessible yet.
 - **Next Steps**: description generation; deploy web server in vm if it's available
