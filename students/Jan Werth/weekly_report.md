@@ -77,7 +77,7 @@
     - Help Philipp with frontend tests
     - Documentation? At the moment only in the code
 
-### Week [6, 7, 8]
+### Week [6, 7, 8] (Christmas break)
 
 - **Update 1**: Writing tests for backend finished
 - **Update 2**: Writing tests for frontend (data loaders and streamlit to some degree)
@@ -85,16 +85,28 @@
 - **Challenges**: Writing test for data loaders, I had to specify a lot of sample information to create tests,
   especially for xml it was really confusing.
 - **Next Steps**:
-    - Frontend/Streamlit tests (How do you test the frontend? I wrote tests for our functions that we need in streamlit, but I don't know how to test the successfull generation of streamlit components.)
-    - Integration tests 
-
+    - Frontend/Streamlit tests (How do you test the frontend? I wrote tests for our functions that we need in streamlit,
+      but I don't know how to test the successful generation of streamlit components.)
+    - Integration tests
 
 ### Week [9]
 
 - **Update 1**: Integration test
-- **Update 2**: 
+- **Update 2**:
 - **Update 3**:
-- **Challenges**: Writing integration tests, never did it before, had a lot of dependency problems and still have problems with the paths
+- **Challenges**: Writing integration tests, never did it before, had a lot of dependency problems and still have
+  problems with the paths
 - **Next Steps**:
+
+### Week [10]
+
+- **Update 1**: Wrote some more Integration test
+- **Update 2**: Automatically downloading models from huggingface if they don't existing offline
+- **Update 3**: Fixing some environments (transformers and huggingface cross dependency issue?)
+- **Challenges**: Downloading huggingface models sometimes leads to timeouts and I don't understand why, to prevent it I
+  increased the TimeOut, but I'm not sure why this is happening
+- **Next Steps**:
+    - Preparing for poster presentation
+    - Writing report
 
 ---

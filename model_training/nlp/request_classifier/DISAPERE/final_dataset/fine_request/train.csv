@@ -1,4 +1,4 @@
-text,index,review_action,fine_review_action,aspect,target
+sentence,index,review_action,fine_review_action,aspect,target
 "How are the lambda and threshold parameters tuned? The authors mention a validation set, are they just exhaustively explored on a 3D grid on the validation set?",,arg_request,arg-request_explanation,asp_replicability,0
 "The results only compare with Shim et al. Why only this method? Why would it be expected to be faster than all the other alternatives? Wouldn't similar alternatives like the sparsely gated MoE, D-softmax and adaptive-softmax have chances of being faster?",,arg_request,arg-request_explanation,asp_soundness-correctness,0
 """Sparse Mixture of Sparse of Sparse Experts""",,arg_request,arg-request_edit,asp_clarity,1

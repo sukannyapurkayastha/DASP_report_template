@@ -20,19 +20,19 @@
 
 ### Week [10]
 
-- **Update 1**: 
-- **Update 2**: 
+- **Update 1**: Solved upload issue + distributed autodownload in the respective scripts for all models to a teammember due to overtime (200h+)
+- **Update 2**: Waiting for docker and VM made by Zhijing... 
 - **Update 3**: 
 - **Challenges**: 
-- **Next Steps**: 
+- **Next Steps**: Test llama2 pipeline on VM as soon as they run.
 
 ### Week [9]
 
 - **Update 1**: Entirely revamp summary generator as real world data is way to long! Caused some serious issues in the pipeline as the logic of how data is split and predictions are made changed fundamentally!
-- **Update 2**: 
-- **Update 3**: 
+- **Update 2**: Integrated best model into frontend! 
+- **Update 3**: Added docstrings to my code where it was still missing!
 - **Challenges**: change of evaluation metric to BERT-Score caused very intensive debugging (see tons of log structure of the provided code!)
-- **Next Steps**: 1. Integrate best model into frontend! 2. Add docstrings to my code where it is still missing!
+- **Next Steps**: Solve llama2 (public) upload prohibited issue + Test everything on docker and then on VM
 
 ### Week [8]
 

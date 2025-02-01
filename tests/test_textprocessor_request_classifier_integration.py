@@ -4,10 +4,9 @@ import requests
 import pandas as pd
 
 
-
-def test_textprocessor_classifiy_attitudes_integration(username, password):
+def test_textprocessor_request_classifier_integration(username, password):
     """
-    Integration test for combine_roots_and_themes
+    Integration test for process_dataframe_request in the request_classifier module
     """
     openreview_client = OpenReviewClient(username, password)
 
@@ -27,13 +26,15 @@ def test_textprocessor_classifiy_attitudes_integration(username, password):
     assert df_sentences is not None
     assert df_overview is not None
 
-    sentences = df_sentences.to_dict(orient='records')
-    response = requests.post("http://localhost:8082/classify_attitudes", json={"data": sentences})
+    sentences = df_sentences.to_dict(orient="records")
+    response = requests.post("http://localhost:8081/classify_request", json={"data": sentences})
 
     assert response.status_code == 200
 
     df = pd.DataFrame(response.json())
 
     assert df is not None
-    assert df.shape == (27, 4)
-    assert df.columns.tolist() == ['Attitude_roots', 'Frequency', 'Descriptions', 'Comments']
+    assert df.shape == (5, 3)
+    assert df.columns.tolist() == ["Request Information", "Frequency", "Comments"]
+    assert df["Request Information"].values.tolist() == ["Improvement", "Explanation", "Clarification", "Experiment",
+                                                         "Typo Fix"]

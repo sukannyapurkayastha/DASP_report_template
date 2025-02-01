@@ -359,6 +359,12 @@ def train_and_evaluate_model(
         f.write(str(cm) + "\n")
         f.write("==============================================\n\n")
 
+    save_path = "model_training/nlp/request_classifier/models/classification/sciBERT_neg_finetuned/"
+    os.makedirs(save_path, exist_ok=True)  # Erstelle den Zielordner, falls er nicht existiert
+    model.save_pretrained(save_path)  # Speichere das Modell
+    tokenizer.save_pretrained(save_path)  # Speichere auch den Tokenizer
+    print(f"Model and tokenizer saved to {save_path}")
+
 
 def predict(texts, model_path="./bert_request_classifier_model"):
     """
@@ -423,9 +429,7 @@ def main():
 
     # Define different parameter combinations to test
     missing_combos = [
-        (True, False, True),   # cleaning=True, oversampling=False, thresholding=True
-        (True, True, False),   # cleaning=True, oversampling=True,  thresholding=False
-        (True, True, True)     # cleaning=True, oversampling=True,  thresholding=True
+        (False, False, True),   # cleaning=True, oversampling=False, thresholding=True
     ]
 
     for model_name in model_names:
@@ -448,6 +452,7 @@ def main():
                 class_thresholds=class_thresholds,
                 num_labels=6
             )
+
 
 
 if __name__ == "__main__":

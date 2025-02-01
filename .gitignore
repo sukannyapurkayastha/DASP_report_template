@@ -173,7 +173,12 @@ summary_generator/final
 summary_generator/models/llama2
 
 model_training/nlp/review_to_theme/results/
-request_classifier/models/attitude_classifier/tf_model.h5
+request_classifier/models_old/models/attitude_classifier/tf_model.h5
 *.h5
 /model_training/nlp/attitude_classifier/logs
 attitude_classifier/models/
+models/attitude_root/.locks/
+models/attitude_root/models--DASP-ROG--AttitudeModel/
+request_classifier/models/
+models/llama2/.locks/models--DASP-ROG--SummaryModel/
+models/llama2/models--DASP-ROG--SummaryModel/
