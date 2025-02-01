@@ -42,9 +42,7 @@ def load_LLAMA2_model(model_dir: str = "./models/llama2"):
     model = LlamaForCausalLM.from_pretrained(
         hf_dir,
         cache_dir=model_dir,
-        device_map="auto",
-        offload_folder="models/llama2/offload_folder/",
-        offload_state_dict=True  # Ensure the state dict is offloaded
+        device_map="auto"
     )
 
     # Set pad_token to eos_token
