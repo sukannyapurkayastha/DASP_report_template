@@ -66,6 +66,12 @@
 | [1/22/24] | [1/22/24] | [docker]   | [dockerfile for attitude classifier]  | [1]       | [Completed]     |
 | [1/22/24] | [1/22/24] | [docker compose]   | [set up docker compose file, docker network, learning by doing]  | [2]       | [Completed]     |
 | [1/22/24] | [1/22/24] | [commucation]   | [verify environment for reproducibility and docker, so that teammate can run the project. Conda env including linux packages leads to error]  | [1.5]       | [Pending]     |
+| [1/29/24] | [1/29/24] | [docker]   | [run request module in docker, but throws error when running request, debug]  | [2]       | [Pending]     |
+| [1/29/24] | [1/29/24] | [vm]   | [collect information like hardware statistics for running website and apply for vm]  | [1.5]       | [Pending]     |
+| [1/29/24] | [1/29/24] | [communication]   | [general internal communication with teammates]  | [1]       | [Completed]     |
+| [1/30/24] | [1/30/24] | [poster]   | [rebuild diagram]  | [1.5]       | [Completed]     |
+| [1/31/24] | [2/1/24] | [summary generation]   | [run summary generation without vm is challenging]  | [5]       | [pending]     |
+| [1/31/24] | [2/1/24] | [communication]   | [talk to teammate to cooperate on summary generation]  | [1]       | [pending]     |
 
 ---
 
