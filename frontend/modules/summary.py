@@ -30,3 +30,8 @@ def show_summary_data(summary_data):
         else:
             for index, row in summary_data.iterrows():
                 st.write(row[0])  # Write summary
+            
+            # add minor hint that AI makes failures
+            st.markdown('<div class="invisbible-line-minor">  </div>', unsafe_allow_html=True)
+            st.write("*Please note that these comments have been aggregated using AI. They may contain errors.*")    
+            

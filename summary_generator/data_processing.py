@@ -118,7 +118,7 @@ def generate_overview_prompts(overview_df):
         scores = [score for (_, score) in individual_scores if score is not None]
         outliers = [sc for sc in scores if abs(sc - avg_score) > threshold]
 
-        sentence = f"- {category} is {avg_score} out of {max_score}."
+        sentence = f"- **{category}** is {avg_score} out of {max_score}."
         if outliers:
             unique_outliers = sorted(set(outliers))
             if len(unique_outliers) == 1:
@@ -164,7 +164,7 @@ def generate_attitude_roots_prompts(attitude_df):
             combined_comments.append(" ".join(comment_chunk))
 
         all_comments = " ".join(combined_comments)
-        line = f"- {root} appears {freq:.0f}% of the time. {descr}."
+        line = f"- **{root}** was indicated in {freq:.0f}% of responses. {descr}."
         lines.append(line)
         comments.append(all_comments)
 
@@ -201,7 +201,7 @@ def generate_request_information_prompts(request_df):
             combined_comments.append(" ".join(chunk))
 
         all_comments = " ".join(combined_comments)
-        line = f"- {request_type} was requested {freq:.0f}% of the time."
+        line = f"- **{request_type}** was requested in {freq:.0f}% of replies."
         lines.append(line)
         comments.append(all_comments)
 

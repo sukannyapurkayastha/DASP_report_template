@@ -42,7 +42,9 @@ def load_LLAMA2_model(model_dir: str = "./models/llama2"):
     model = LlamaForCausalLM.from_pretrained(
         hf_dir,
         cache_dir=model_dir,
-        device_map="auto"
+        device_map="auto",
+        offload_folder="models/llama2/offload_folder/",
+        offload_state_dict=True  # Ensure the state dict is offloaded
     )
 
     # Set pad_token to eos_token
@@ -62,8 +64,7 @@ def predict(
 ):
     """
     Build the prompt from real data, run generation on LLaMA 2, 
-    and return an output that is ~2/3 of the prompt length (with a min
-    of `min_new_tokens`), but also capped by `max_new_tokens_cap`.
+    and return an output that is capped by `max_new_tokens_cap`.
 
     Args:
         input_text (str): Raw text or data for the prompt builder.
@@ -113,7 +114,8 @@ def predict(
         result = result[len(prompt):]
 
     # 9) Remove "Summary: " prefix if present
-    summary_prefix = "Summary: "
+    result = result.lstrip()
+    summary_prefix = "Summary:"
     if result.startswith(summary_prefix):
         result = result[len(summary_prefix):]
 
