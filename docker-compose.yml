@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    ports:
+      - "8000:8000"
+    depends_on:
+      - backend
+
+  backend:
+    build: ./backend
+    container_name: backend
+    depends_on:
+      - attitude_classifier
+
+  attitude_classifier:
+    build: ./attitude_classifier
+    container_name: attitude_classifier
+    depends_on:
+      - summary_generator
+
+  request_classifier:
+    build: ./request_classifier
+    container_name: request_classifier
+    depends_on:
+      - summary_generator
+
+  summary_generator:
+    build: ./summary_generator
+    container_name: summary_generator

@@ -53,7 +53,7 @@
 | [12/20/24] | [12/20/24] | [communication]   | [meeting with supervisor]  | [1]       | [Completed]     |
 | [12/4/24] | [12/20/24] | [communication]   | [general internal communication with teammates]  | [1]       | [Completed]     |
 | [12/21/24] | [1/7/24] | [communication]   | [general internal communication with teammates, answering questions and help other teammates solve slurm issues]  | [0.5]       | [Completed]     |
-| [12/3/24] | [12/3/24] | [attitude themes]   | [refine attitude themes trainer]  | [6]       | [Completed]     |
+| [1/3/24] | [1/3/24] | [attitude themes]   | [refine attitude themes trainer]  | [6]       | [Completed]     |
 | [1/6/24] | [1/6/24] | [vm usage research]   | [investigate vm usage requirements]  | [2]       | [Completed]     |
 | [1/7/24] | [1/7/24] | [build docker]   | [build docker for frontend and backend]  | [4]       | [Completed]     |
 | [1/14/24] | [1/15/24] | [attitude themes]   | [automate pipeline in slurm: send training with diff models at same time, evaluate results and save]  | [5]       | [Completed]     |
@@ -71,8 +71,9 @@
 | [1/29/24] | [1/29/24] | [communication]   | [general internal communication with teammates]  | [1]       | [Completed]     |
 | [1/30/24] | [1/30/24] | [poster]   | [rebuild diagram]  | [1.5]       | [Completed]     |
 | [1/31/24] | [2/1/24] | [summary generation]   | [run summary generation without vm is challenging]  | [5]       | [pending]     |
-| [1/31/24] | [2/1/24] | [communication]   | [talk to teammate to cooperate on summary generation]  | [1]       | [pending]     |
-
+| [1/31/24] | [2/1/24] | [communication]   | [talk to teammate to cooperate on summary generation]  | [2]       | [pending]     |
+| [1/31/24] | [2/1/24] | [summary generation]   | [monitor summary generation input and output, run summary generation in slurm]  | [2]       | [completed]     |
+| [1/31/24] | [2/1/24] | [docker compose]   | [docker scripts for request classifier and summary generation and compose]  | [3]       | [completed]     |
 ---
 
 > **Status Options**: "In Progress," "Completed," or "Pending."

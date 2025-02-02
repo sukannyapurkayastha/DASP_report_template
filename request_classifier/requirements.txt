@@ -5,3 +5,7 @@ pandas
 uvicorn
 spacy
 tqdm
+tensorflow
+transformers
+tf-keras
+torch

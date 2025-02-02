@@ -12,15 +12,7 @@ from transformers import BertTokenizer, BertForSequenceClassification
 #     load_BertForSequenceClassification
 
 
-def predict_root_category(text):
-    local_path = "models/attitude_root/"
-    huggingface_model_path = "DASP-ROG/AttitudeModel"
-
-    # Load the tokenizer and model from huggingface if not available locally
-    logger.info("Loading tokenizer and model for root category ...")
-    tokenizer = BertTokenizer.from_pretrained(huggingface_model_path, cache_dir=local_path)
-    model = BertForSequenceClassification.from_pretrained(huggingface_model_path, num_labels=9,
-                                                          cache_dir=local_path)
+def predict_root_category(text, model, tokenizer):
 
     predict_input = tokenizer.encode(
         text,
@@ -29,7 +21,6 @@ def predict_root_category(text):
         return_tensors="pt"
     )
 
-    logger.info("Predicting root category")
     try:
         with torch.no_grad():
             outputs = model(predict_input)
@@ -38,12 +29,24 @@ def predict_root_category(text):
     except Exception as e:
         logger.error(e)
 
-    logger.info(f"Root category prediction done.")
     return prediction_value
 
 
 def attitude_roots_prediction(data):
-    data['attitude_root_number'] = data['sentence'].apply(predict_root_category)
+    local_path = "models/attitude_root/"
+    huggingface_model_path = "DASP-ROG/AttitudeModel"
+
+    # Load the tokenizer and model from huggingface if not available locally
+    logger.info("Loading tokenizer and model for root category ...")
+    tokenizer = BertTokenizer.from_pretrained(huggingface_model_path, cache_dir=local_path)
+    model = BertForSequenceClassification.from_pretrained(huggingface_model_path, num_labels=9,
+                                                          cache_dir=local_path)
+    model.eval()
+
+    logger.info("Predicting root category")
+    data['attitude_root_number'] = data['sentence'].apply(lambda x: predict_root_category(x, model, tokenizer))
+    logger.info(f"Root category prediction done.")
+
     label_mapping = {
         0: 'None',
         1: 'Substance',
@@ -62,16 +65,7 @@ def attitude_roots_prediction(data):
     return data
 
 
-def predict_theme_category(text):
-    # Load the pretrained model and tokenizer
-    logger.info("Predicting attitude theme category")
-    local_path = "models/attitude_theme/"
-    huggingface_model_path = "DASP-ROG/ThemeModel"
-    tokenizer = BertTokenizer.from_pretrained(huggingface_model_path, cache_dir=local_path)
-    model = BertForSequenceClassification.from_pretrained(huggingface_model_path, num_labels=11, cache_dir=local_path,
-                                                          problem_type="multi_label_classification")
-
-    model.eval()
+def predict_theme_category(text, model, tokenizer):
     threshold = 0.5
 
     # Tokenize the input text using tokenizer (handles padding, truncation, etc.)
@@ -111,7 +105,19 @@ def create_clusters(row):
 
 def combine_roots_and_themes(preprocessed_data):
     df = attitude_roots_prediction(preprocessed_data)
-    df['attitude_themes'] = df['sentence'].apply(predict_theme_category)  # attitude_themes_prediction
+
+    # Load the pretrained model and tokenizer
+    local_path = "models/attitude_theme/"
+    huggingface_model_path = "DASP-ROG/ThemeModel"
+    tokenizer = BertTokenizer.from_pretrained(huggingface_model_path, cache_dir=local_path)
+    model = BertForSequenceClassification.from_pretrained(huggingface_model_path, num_labels=11, cache_dir=local_path,
+                                                          problem_type="multi_label_classification")
+
+    model.eval()
+    # theme prediction
+    logger.info("Predicting attitude theme category")
+    df['attitude_themes'] = df['sentence'].apply(lambda x: predict_theme_category(x, model, tokenizer))  # attitude_themes_prediction
+    logger.info("Attitude theme prediction done")
 
     # Apply the function to create clusters
     df.loc[:, "clusters"] = df.apply(create_clusters, axis=1)

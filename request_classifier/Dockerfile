@@ -2,7 +2,7 @@
 FROM nvidia/cuda:12.4.0-base-ubuntu22.04
 
 # Set the working directory
-WORKDIR /attitude_classifier
+WORKDIR /request_classifier
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
@@ -18,4 +18,4 @@ RUN pip3 install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Set the entry point to run the FastAPI app with Uvicorn
-ENTRYPOINT ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8082"]
+ENTRYPOINT ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8081"]
