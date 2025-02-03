@@ -68,6 +68,29 @@ Once the Frontend submits data (whether uploaded files or URLs), the Backend sta
 ##### **3.2.3 Model Training**
 As part of our framework, there is the model training. Initially we trained the models used in the Backend to perform the neccesary classification tasks. This training process results in Model Artifacts, such as updated model parameters, which the Backend uses during its prediction steps. If necessary, the existing model and code files can be used to update and improve existing models with new data or better models.
 
+*Request Classifier*
+
+For the Request Classifier we used two fine tuned models to firstly label what sentences are requests and then have a fine grained classification for the type of request. The first is a binary classifier which achieved an F1 Score of 91%, we tried oversampling, but the results were worse. For the fine requests we have a multi class prediction for which we also tried different models and approaches. The best results were with the addition of thresholding resulting in a F1 score of 62%.
+
+*Attitude and Theme Classifier*
+
+For the Attitude Roots which represent the underlying believes we made a multi class prediction and tried different models and approaches (normal training, oversampling and hybrid with normal training and oversampling). We achieved an F1 Score of 62% with the BERT model which was pretrained on domain knowledge.
+
+
+*Summary Generation*
+
+To create the summary—which aggregates all results sorted by “Overview”, “Attitude Roots” and “Request Information”—we tried different models and evaluated their performance using the BERT score. More specifically, we pre-structured the summary using Python and then generated predictions only for the collections of comments corresponding to a particular attitude root or request, as determined by our other models.
+
+Data Collection and Labeling Process:
+Data Crawling:
+We crawled data from 10 random review threads on OpenReview. Instead of treating each individual comment as a data point, we aggregated comments into collections. Each collection was specified by a particular attitude root or request by our auxiliary models. This resulted in 174 aggregated data points (see model_training/nlp/summary/data/real_world_data_unlabeled.jsonl).
+Labeling:
+Next, these aggregated comment collections (each related to a specific attitude root or request) were labeled using OpenAI's so far most capable model ChatGPT o1. We then proofread these labels to ensure high quality (see model_training/nlp/summary/data/real_world_data_labeled.jsonl).
+
+Prediction:
+We tried sequence to sequence approaches with BART-large and T5 using an 80%-10%-10% train-validation-test split.
+The best results were obtained using Llama2 with a 10-shot prompt, achieving an F1-BERT score of 69% on the test data.
+
 ##### **3.2.3 Communication Flow**
 Frontend → Backend
 
@@ -145,7 +168,7 @@ The model training folder includes the scripts and data which which the models w
   - `request_classifier`: includes the data (DISAPERE) and the scripts for binary classication for Review_Action Request vs. All 
                           and a multi class classification for the fine review actions 
   - `review_to_theme`: includes scripts for mapping review sentences to themes
-  - `summary`: includes scripts for summary generation models. Specifically training of T5-large, BART-large and Llama2.
+  - `summary`: includes scripts for training of summary generation models. Specifically training of T5-large, BART-large and Llama2.
 ---
 
 #### **4.4 `attitude_classifier`**
@@ -180,16 +203,17 @@ The request classifier can contains the model and contains the scripts for the r
 The summyry generator folder can contains the model and contains the scripts for the summary generations.
 
 - **Subdirectories**:
-  - `models/llama2`: includes llama2 model
+  - `models/llama2`: contains llama2 model
 
 
 - **Files**:
   - `main.py`: creates FastAPI app, runs it and defines a FastAPI endpoint and executes the actual prediction by making each prediction step by step and structures processed data into a list that is turned into a dictonaries
   - `data_processing.py`: Generates structured input text for llama2 from overview, attitude, and request DataFrames.
-  - `input_to_pompt_converter.py`: converts a given string into a few-shot-prompt
+  - `input_to_pompt_converter.py`: restructures the input from the models into a prompts for the LLM
   - `predict_LLAMA2.py`: makes a prediction for the given prompt
   - `requirements.txt`: contains packages used to execute prediction. Can be used especially for exection on windows
   - `summary_env.yml`: contains the packages and dependencies for the summary generator when running on linux/slurm servers
+  - `slurm_test.py`: test function for slurm
   
 ## **5 Data**
 
