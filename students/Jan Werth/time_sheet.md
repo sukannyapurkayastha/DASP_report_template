@@ -45,6 +45,8 @@
 | [22/01/25] | [22/01/25] | [Meeting]            | [Internal meeting]                                                           | [0.5]              | [Completed] |
 | [29/01/25] | [29/01/25] | [Meeting]            | [Weekly meeting]                                                             | [0.5]              | [Completed] |
 | [22/01/25] | [30/01/25] | [Meeting]            | [Model loading]                                                              | [4]                | [Completed] |
+| [29/01/25] | [03/02/25] | [Meeting]            | [Poster presentation]                                                        | [7]                | [Ongoing]   |
+| [31/01/25] | [03/02/25] | [Meeting]            | [Poster (printing)]                                                          | [1.5]              | [Ongoing]   |
 
 ---
 
