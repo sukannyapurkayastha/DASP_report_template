@@ -1,3 +1,11 @@
+"""
+data_processing.py
+
+Provides functions for processing CSV files, converting DataFrames into input text,
+and exporting data. Also includes functions for generating prompts for overview,
+attitude roots, and request information.
+"""
+
 import os
 import pandas as pd
 import ast

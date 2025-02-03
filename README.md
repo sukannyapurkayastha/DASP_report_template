@@ -145,6 +145,7 @@ The model training folder includes the scripts and data which which the models w
   - `request_classifier`: includes the data (DISAPERE) and the scripts for binary classication for Review_Action Request vs. All 
                           and a multi class classification for the fine review actions 
   - `review_to_theme`: includes scripts for mapping review sentences to themes
+  - `summary`: includes scripts for summary generation models. Specifically training of T5-large, BART-large and Llama2.
 ---
 
 #### **4.4 `attitude_classifier`**
@@ -179,13 +180,17 @@ The request classifier can contains the model and contains the scripts for the r
 The summyry generator folder can contains the model and contains the scripts for the summary generations.
 
 - **Subdirectories**:
-  - `classification`: includes scripts for using the request classifier pipeline
+  - `models/llama2`: includes llama2 model
 
 
 - **Files**:
-  - `main.py`: creates FastAPI app and runs it
-  - `routers.py`: defines a FastAPI endpoint and structures processed data into dictonaries
-  - `backend_env.yaml`: contains the packages and dependencies for the backend
+  - `main.py`: creates FastAPI app, runs it and defines a FastAPI endpoint and executes the actual prediction by making each prediction step by step and structures processed data into a list that is turned into a dictonaries
+  - `data_processing.py`: Generates structured input text for llama2 from overview, attitude, and request DataFrames.
+  - `input_to_pompt_converter.py`: converts a given string into a few-shot-prompt
+  - `predict_LLAMA2.py`: makes a prediction for the given prompt
+  - `requirements.txt`: contains packages used to execute prediction. Can be used especially for exection on windows
+  - `summary_env.yml`: contains the packages and dependencies for the summary generator when running on linux/slurm servers
+  
 ## **5 Data**
 
 For this project, we utilized two primary datasets:
