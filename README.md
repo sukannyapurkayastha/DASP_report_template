@@ -92,18 +92,19 @@ We tried sequence to sequence approaches with BART-large and T5 using an 80%-10%
 The best results were obtained using Llama2 with a 10-shot prompt, achieving an F1-BERT score of 69% on the test data.
 
 ##### **3.2.3 Communication Flow**
-Frontend → Backend
+
+*Frontend → Backend*
 
 The Frontend issues secure API calls to the Backend when users log in, provide URLs, or upload filled templates.
 The Backend processes these incoming requests—formatting and segmenting the data—and routes them to the appropriate prediction modules.
 The Backend functions as a API gateway.
 
-Backend → Frontend
+*Backend → Frontend*
 
 Once the predictions are complete, the Backend responds via API calls back to the Frontend, delivering classified sentences, sentiment results, or other structured outputs.
 The Frontend then displays these results to the user in a clear, readable format.
 
-Model Training and Backend:
+*Model Training and Backend*
 
 The models trained in the Backend are stored in the designated containers with are activated when the Backend is called.
 
@@ -215,13 +216,13 @@ The summyry generator folder can contains the model and contains the scripts for
 
 For this project, we utilized two primary datasets:
 
-JiujitsuPeer Dataset
+*JiujitsuPeer Dataset*
 
 Used for developing the attitude and theme prediction models.
 The dataset comes pre-labeled by its original creators, providing ground truth annotations for sentiment or stance (attitude) and thematic categories (theme).
 We selectively extracted and subdivided only those sections most relevant for our model objectives, ensuring training data remained highly focused on the classification tasks at hand.
 
-DISAPERE Dataset
+*DISAPERE Dataset*
 
 Used for building and refining our request prediction models.
 Like the JiujitsuPeer Dataset, DISAPERE was pre-labeled with relevant review actions and requests, allowing us to apply segmentation and filtering specific to the request-classification requirements.
@@ -233,12 +234,12 @@ By leveraging these pre-labeled datasets—and performing only minimal pre-proce
 
 We adopted a multi-level testing strategy to ensure both reliability and maintainability across our application:
 
-Unit Tests
+*Unit Tests*
 
 Implemented extensively for backend modules and individual model components.
 Validate each function's correctness, focusing on data loading, preprocessing methods, and core inference logic in isolation.
 
-Integration Tests
+*Integration Tests*
 
 Primarily target the frontend and its interactions with the backend APIs.
 Assess end-to-end functionality—verifying that data flows correctly from the user interface, through the backend services, and back again with the expected responses and outputs.
