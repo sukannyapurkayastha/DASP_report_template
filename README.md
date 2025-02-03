@@ -170,7 +170,7 @@ The model training folder includes the scripts and data which which the models w
   - `request_classifier`: includes the data (DISAPERE) and the scripts for binary classication for Review_Action Request vs. All 
                           and a multi class classification for the fine review actions 
   - `review_to_theme`: includes scripts for mapping review sentences to themes
-  - `summary`: includes script for using LLAMA2 and creating a summary based on the output of previous classifiers
+  - `summary`: includes scripts for training of summary generation models. Specifically training of T5-large, BART-large and Llama2.
 ---
 
 #### **4.4 `attitude_classifier`**
@@ -204,15 +204,19 @@ The request classifier can contains the model and contains the scripts for the r
 
 The summyry generator folder can contains the model and contains the scripts for the summary generations.
 
+- **Subdirectories**:
+  - `models/llama2`: contains llama2 model
+
+
 - **Files**:
-  - `input_to_prompt_conveter.py`: restructures the input from the models into a prompts for the LLM
-  - `main.py`: takes the prompt and generates a summary using LLAMA2
-  - `main.py`: creates FastAPI app and runs it
-  - `routers.py`: defines a FastAPI endpoint and structures processed data into dictonaries
-  - `summary_env.yaml`: contains the packages and dependencies for the enviroment
+  - `main.py`: creates FastAPI app, runs it and defines a FastAPI endpoint and executes the actual prediction by making each prediction step by step and structures processed data into a list that is turned into a dictonaries
+  - `data_processing.py`: Generates structured input text for llama2 from overview, attitude, and request DataFrames.
+  - `input_to_pompt_converter.py`: restructures the input from the models into a prompts for the LLM
+  - `predict_LLAMA2.py`: makes a prediction for the given prompt
+  - `requirements.txt`: contains packages used to execute prediction. Can be used especially for exection on windows
+  - `summary_env.yml`: contains the packages and dependencies for the summary generator when running on linux/slurm servers
   - `slurm_test.py`: test function for slurm
-
-
+  
 ## **5 Data**
 
 For this project, we utilized two primary datasets:

@@ -1,10 +1,16 @@
+"""
+main.py
+
+A FastAPI application that exposes an endpoint for generating summaries
+from preprocessed data.
+"""
+
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import pandas as pd
 import uvicorn
 from data_processing import generate_input_text, predict_data
 import predict_LLAMA2
-from loguru import logger
 import json
 
 app = FastAPI()
@@ -15,6 +21,17 @@ class RawInput(BaseModel):
 
 @app.post("/generate_summary")
 async def predict(overview_df: RawInput, attitude_df: RawInput, request_df: RawInput) -> list[dict]:
+    """
+    Generate a summary using the provided overview, attitude, and request data.
+    
+    Args:
+        overview_df (RawInput): Overview data.
+        attitude_df (RawInput): Attitude roots data.
+        request_df (RawInput): Request information data.
+    
+    Returns:
+        list[dict]: A list of summary lines formatted as dictionaries.
+    """
     try:
         
         # 1) Transform json files into dfs
@@ -84,7 +101,6 @@ async def predict(overview_df: RawInput, attitude_df: RawInput, request_df: RawI
     
     
     except Exception as e:
-        logger.exception("An error occurred!")
         raise HTTPException(status_code=500, detail=f"Error processing data: {str(e)}")
     
 # Run the application on port 8083
