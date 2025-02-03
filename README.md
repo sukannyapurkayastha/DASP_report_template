@@ -36,12 +36,16 @@ This guide helps you set up and run the project, which consists of three main pa
 
       pip install requirements.txt
 
-      conda env create -f model_env.yaml
-      conda activate your-model-env
-      conda env create -f backend_env.yaml
-      conda activate your-backend-env
       conda env create -f frontend_env.yaml
-      conda activate your-frontend-env
+      conda activate frontend_env.yaml
+      conda env create -f backend_env.yaml
+      conda activate backend_env.yaml
+      conda env create -f attitude_classifier_env.yaml
+      conda activate attitude_classifier_env.yaml
+      conda env create -f request_classifier_env.yaml
+      conda activate request_classifier_env.yaml
+      conda env create -f summary_env.yaml
+      conda activate summary_env.yaml
 
 **3. Start the application**
 
@@ -69,6 +73,7 @@ Frontend → Backend
 
 The Frontend issues secure API calls to the Backend when users log in, provide URLs, or upload filled templates.
 The Backend processes these incoming requests—formatting and segmenting the data—and routes them to the appropriate prediction modules.
+The Backend functions as a API gateway.
 
 Backend → Frontend
 
@@ -90,22 +95,20 @@ The backend is responsible for data collection from OpenReview, preprocessing th
 
 - **Subdirectories**:
   - `dataloading`: includes scripts for using the open review API
-  - `models`: includes the models which are used to predict the NLP component of this application
-  - `nlp`: ...
   - `text_processing`: includes file and scripts which are used to preprocess and prepare review for the models
+  - `test`: includes test for the text processing
 
 - **Files**:
-  - `__init__.py`: ...
-  - `backend_env.yaml`: includes specific enviroment for the backend functionality
   - `data_processing.py`: calls functions from text processing  
   - `main.py`: creates FastAPI app and runs it
   - `routers.py`: defines a FastAPI endpoint and structures processed data into dictonaries
+  - `backend_env.yaml`: contains the packages and dependencies for the backend
 
 ---
 
 #### **4.2 `frontend`**
 
-Thies front end of this application is the user-facing interface built with Streamlit and related UI components. It is responsible for displaying the overview over the given reviews, receive the data in form of URL or file, and providing an interactive experience within the application. It is connected via API calls to the backend and includes several features of displaying the data for the user.
+The front end of this application is the user-facing interface built with Streamlit and related UI components. It is responsible for displaying the overview over the given reviews, receive the data in form of URL or file, and providing an interactive experience within the application. It is connected via API calls to the backend and includes several features of displaying the data for the user.
 
 - **Subdirectories**:
   - `images`: includes the images needed for displaying the front end 
@@ -144,19 +147,60 @@ The model training folder includes the scripts and data which which the models w
   - `review_to_theme`: includes scripts for mapping review sentences to themes
 ---
 
+#### **4.4 `attitude_classifier`**
+
+The attitude classifier can contains the model and contains the scripts for the request classifier pipeline.
+
+- **Files**:
+  - `main.py`: creates FastAPI app and runs it
+  - `routers.py`: defines a FastAPI endpoint and structures processed data into dictonaries
+  - `backend_env.yaml`: contains the packages and dependencies for the backend
+  - `attitude_classifier.yaml`: contains the packages and dependencies for the enviroment
+
+---
+
+#### **4.5 `request_classifier`**
+
+The request classifier can contains the model and contains the scripts for the request classifier pipeline.
+
+- **Subdirectories**:
+  - `classification`: includes scripts for using the request classifier pipeline
+
+
+- **Files**:
+  - `main.py`: creates FastAPI app and runs it
+  - `routers.py`: defines a FastAPI endpoint and structures processed data into dictonaries
+  - `request_classifier.yaml`: contains the packages and dependencies for the enviroment
+
+---
+
+#### **4.5 `summary_generator`**
+
+The summyry generator folder can contains the model and contains the scripts for the summary generations.
+
+- **Subdirectories**:
+  - `classification`: includes scripts for using the request classifier pipeline
+
+
+- **Files**:
+  - `main.py`: creates FastAPI app and runs it
+  - `routers.py`: defines a FastAPI endpoint and structures processed data into dictonaries
+  - `backend_env.yaml`: contains the packages and dependencies for the backend
 ## **5 Data**
 
 For this project, we utilized two primary datasets:
 
-    JiujitsuPeer Dataset
-        Used for developing the attitude and theme prediction models.
-        The dataset comes pre-labeled by its original creators, providing ground truth annotations for sentiment or stance (attitude) and thematic categories (theme).
-        We selectively extracted and subdivided only those sections most relevant for our model objectives, ensuring training data remained highly focused on the classification tasks at hand.
+JiujitsuPeer Dataset
 
-    DISAPERE Dataset
-        Used for building and refining our request prediction models.
-        Like the JiujitsuPeer Dataset, DISAPERE was pre-labeled with relevant review actions and requests, allowing us to apply segmentation and filtering specific to the request-classification requirements.
-        We further tailored the dataset by removing or restructuring fields not pertinent to predicting review actions, simplifying integration with our overall pipeline.
+Used for developing the attitude and theme prediction models.
+The dataset comes pre-labeled by its original creators, providing ground truth annotations for sentiment or stance (attitude) and thematic categories (theme).
+We selectively extracted and subdivided only those sections most relevant for our model objectives, ensuring training data remained highly focused on the classification tasks at hand.
+
+DISAPERE Dataset
+
+Used for building and refining our request prediction models.
+Like the JiujitsuPeer Dataset, DISAPERE was pre-labeled with relevant review actions and requests, allowing us to apply segmentation and filtering specific to the request-classification requirements.
+We further tailored the dataset by removing or restructuring fields not pertinent to predicting review actions, simplifying integration with our overall pipeline.
 
 By leveraging these pre-labeled datasets—and performing only minimal pre-processing to isolate the pertinent fields—we streamlined the model training phase while retaining high-quality annotations for the core prediction tasks.
 
