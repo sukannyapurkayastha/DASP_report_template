@@ -177,12 +177,13 @@ We adopted a multi-level testing strategy to ensure both reliability and maintai
 
 If you have any questions or suggestions regarding this project, feel free to reach out:
 
-- **Your Name**: [Max Mustermann]
-- **Email**: [your.email@example.com]
-- **GitHub Profile**: [Max Mustermann](https://github.com/YourUsername)
+- **Your Name**: Johannes Lemken
+- **Email**: johannes.lemken@stud.tu-darmstadt.de
+- **GitHub Profile**: Johannes Lemken (https://github.com/JohannesLemken)
 
 Thank you for your interest in this project!
 
 ## **6 Contributions**
 
-in this project participated ... and our supervisor ....
+In this project participated Johannes Lemken, Carmen Appelt, Zhijingshui Yang, Philipp Oehler and Jan Werth.
+We were supervised by Sukannya Purkayastha.
