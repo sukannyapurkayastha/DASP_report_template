@@ -141,6 +141,7 @@ The front end of this application is the user-facing interface built with Stream
               of the website like the side bar
   - `clients`: includes the client for excessing OpenReview
   - `.streamlit`: includes a configfile for the custom design
+  - `tests`: tests for the frontend
 
 - **Files**:
   - `__init__.py`: Initializes the Python package and sets up the module structure (not in use)
