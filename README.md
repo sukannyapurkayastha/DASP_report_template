@@ -38,11 +38,11 @@ This guide helps you set up and run the project, which consists of three main pa
 
 The application runs as a set of Docker containers orchestrated with Docker Compose. To start the app detached in your local device simply run:
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 Check logs for a specific service (current status or error message):
 ```bash
-docker-compose logs -f <service_name>
+docker compose logs -f <service_name>
 ```
 for example <service_name> could be: request_classifier
 
