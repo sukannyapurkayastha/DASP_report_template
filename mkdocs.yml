@@ -1,0 +1,40 @@
+site_name: DASP Report Template Dokumentation
+site_description: "Dokumentation des DASP Report Template Projekts inklusive automatischer Docstring-Integration."
+site_author: Johannes Lemken
+repo_url: https://github.com/dein_username/DASP_report_template
+
+theme:
+  name: material
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          # 1) Pfade angeben, die in sys.path aufgenommen werden sollen
+          #    (z. B. dein Quellcode-Ordner oder weitere Libraries).
+          paths:
+            - .
+
+          
+nav:
+  - Main Page: api/readme/main_page.md
+  - Setup: api/readme/setup.md
+  - Architecture: api/readme/architecture.md
+  - Files: api/readme/files.md
+  - Data: api/readme/data.md
+  - Testing: api/readme/testing.md
+  - Code:
+      - Frontend: api/frontend.md
+      - Backend: api/backend.md
+      - Model Training: 
+          - Summary Generator: api/model_training/summary.md
+          - Request Classifier: api/model_training/request_classifier.md
+          - Attitude Classifier: api/model_training/attitude.md
+          - Theme Classifier: api/model_training/theme.md
+          - Theme to Description: api/model_training/theme_to_desc.md
+      - Attitude Classifier: api/attitude_classifier.md
+      - Request Classifier: api/request_classifier.md
+      - Summary Generator: api/summary_generator.md
+      - Tests: api/tests.md
+  
