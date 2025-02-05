@@ -52,28 +52,31 @@
 | [12/13/24] | [12/13/24] | [mid-term presentation]   | [listening to pres on Fri]  | [2]       | [Completed]     |
 | [12/20/24] | [12/20/24] | [communication]   | [meeting with supervisor]  | [1]       | [Completed]     |
 | [12/4/24] | [12/20/24] | [communication]   | [general internal communication with teammates]  | [1]       | [Completed]     |
-| [12/21/24] | [1/7/24] | [communication]   | [general internal communication with teammates, answering questions and help other teammates solve slurm issues]  | [0.5]       | [Completed]     |
-| [1/3/24] | [1/3/24] | [attitude themes]   | [refine attitude themes trainer]  | [6]       | [Completed]     |
-| [1/6/24] | [1/6/24] | [vm usage research]   | [investigate vm usage requirements]  | [2]       | [Completed]     |
-| [1/7/24] | [1/7/24] | [build docker]   | [build docker for frontend and backend]  | [4]       | [Completed]     |
-| [1/14/24] | [1/15/24] | [attitude themes]   | [automate pipeline in slurm: send training with diff models at same time, evaluate results and save]  | [5]       | [Completed]     |
-| [1/15/24] | [1/15/24] | [communication]   | [meeting with supervisor]  | [1]       | [Completed]     |
-| [1/15/24] | [1/15/24] | [communication]   | [meeting with teammates]  | [1]       | [Completed]     |
-| [1/8/24] | [1/15/24] | [communication]   | [general internal communication with teammates, answering questions and help other teammates solve slurm issues]  | [1]       | [Completed]     |
-| [1/15/24] | [1/16/24] | [overview generation]   | [assist overview generation by providing input data]  | [2]       | [Completed]     |
-| [1/15/24] | [1/16/24] | [debug]   | [find bugs while generating input data]  | [2.5]       | [Completed]     |
-| [1/15/24] | [1/16/24] | [codes cleaning]   | [fix small bugs]  | [1.5]       | [Completed]     |
-| [1/22/24] | [1/22/24] | [docker]   | [dockerfile for attitude classifier]  | [1]       | [Completed]     |
-| [1/22/24] | [1/22/24] | [docker compose]   | [set up docker compose file, docker network, learning by doing]  | [2]       | [Completed]     |
-| [1/22/24] | [1/22/24] | [commucation]   | [verify environment for reproducibility and docker, so that teammate can run the project. Conda env including linux packages leads to error]  | [1.5]       | [Pending]     |
-| [1/29/24] | [1/29/24] | [docker]   | [run request module in docker, but throws error when running request, debug]  | [2]       | [Pending]     |
-| [1/29/24] | [1/29/24] | [vm]   | [collect information like hardware statistics for running website and apply for vm]  | [1.5]       | [Pending]     |
-| [1/29/24] | [1/29/24] | [communication]   | [general internal communication with teammates]  | [1]       | [Completed]     |
-| [1/30/24] | [1/30/24] | [poster]   | [rebuild diagram]  | [1.5]       | [Completed]     |
-| [1/31/24] | [2/1/24] | [summary generation]   | [run summary generation without vm is challenging]  | [5]       | [pending]     |
-| [1/31/24] | [2/1/24] | [communication]   | [talk to teammate to cooperate on summary generation]  | [2]       | [pending]     |
-| [1/31/24] | [2/1/24] | [summary generation]   | [monitor summary generation input and output, run summary generation in slurm]  | [2]       | [completed]     |
-| [1/31/24] | [2/1/24] | [docker compose]   | [docker scripts for request classifier and summary generation and compose]  | [3]       | [completed]     |
+| [12/21/24] | [1/7/25] | [communication]   | [general internal communication with teammates, answering questions and help other teammates solve slurm issues]  | [0.5]       | [Completed]     |
+| [1/3/25] | [1/3/25] | [attitude themes]   | [refine attitude themes trainer]  | [6]       | [Completed]     |
+| [1/6/25] | [1/6/25] | [vm usage research]   | [investigate vm usage requirements]  | [2]       | [Completed]     |
+| [1/7/25] | [1/7/25] | [build docker]   | [build docker for frontend and backend]  | [4]       | [Completed]     |
+| [1/14/25] | [1/15/25] | [attitude themes]   | [automate pipeline in slurm: send training with diff models at same time, evaluate results and save]  | [5]       | [Completed]     |
+| [1/15/25] | [1/15/25] | [communication]   | [meeting with supervisor]  | [1]       | [Completed]     |
+| [1/15/25] | [1/15/25] | [communication]   | [meeting with teammates]  | [1]       | [Completed]     |
+| [1/8/25] | [1/15/25] | [communication]   | [general internal communication with teammates, answering questions and help other teammates solve slurm issues]  | [1]       | [Completed]     |
+| [1/15/25] | [1/16/25] | [overview generation]   | [assist overview generation by providing input data]  | [2]       | [Completed]     |
+| [1/15/25] | [1/16/25] | [debug]   | [find bugs while generating input data]  | [2.5]       | [Completed]     |
+| [1/15/25] | [1/16/25] | [codes cleaning]   | [fix small bugs]  | [1.5]       | [Completed]     |
+| [1/22/25] | [1/22/25] | [docker]   | [dockerfile for attitude classifier]  | [1]       | [Completed]     |
+| [1/22/25] | [1/22/25] | [docker compose]   | [set up docker compose file, docker network, learning by doing]  | [2]       | [Completed]     |
+| [1/22/25] | [1/22/25] | [commucation]   | [verify environment for reproducibility and docker, so that teammate can run the project. Conda env including linux packages leads to error]  | [1.5]       | [Pending]     |
+| [1/29/25] | [1/29/25] | [docker]   | [run request module in docker, but throws error when running request, debug]  | [2]       | [Pending]     |
+| [1/29/25] | [1/29/25] | [vm]   | [collect information like hardware statistics for running website and apply for vm]  | [1.5]       | [Pending]     |
+| [1/29/25] | [1/29/25] | [communication]   | [general internal communication with teammates]  | [1]       | [Completed]     |
+| [1/30/25] | [1/30/25] | [poster]   | [rebuild diagram]  | [1.5]       | [Completed]     |
+| [1/31/25] | [2/1/25] | [summary generation]   | [run summary generation without vm is challenging]  | [5]       | [pending]     |
+| [1/31/25] | [2/1/25] | [communication]   | [talk to teammate to cooperate on summary generation]  | [2]       | [pending]     |
+| [1/31/25] | [2/1/25] | [summary generation]   | [monitor summary generation input and output, run summary generation in slurm]  | [2]       | [completed]     |
+| [1/31/25] | [2/1/25] | [docker compose]   | [docker scripts for request classifier and summary generation and compose]  | [3]       | [completed]     |
+| [2/4/25] | [2/4/25] | [connect to vm]   | [try to connect to vm, but there is no proper username and password information]  | [2]       | [pending]     |
+| [2/4/25] | [2/4/25] | [final pre]   | [provide information/bullet points for final pre]  | [0.5]       | [completed]     |
+| [2/5/25] | [2/5/25] | [communication]   | [meeting with supervisor]  | [0.5]       | [completed]     |
 ---
 
 > **Status Options**: "In Progress," "Completed," or "Pending."
