@@ -13,18 +13,22 @@
       
       
       
+        <link rel="prev" href="../developer_guide/">
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+        <link rel="next" href="../files/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.2">
     
     
       
-        <title>DASP Report Template Dokumentation</title>
+        <title>Architecture and Design Notes - DASP Report Template Dokumentation</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.d7758b05.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.d7758b05.min.css">
       
       
 
@@ -43,9 +47,9 @@
       
     
     
-      <link rel="stylesheet" href="assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -63,6 +67,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#31-architecture" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -75,7 +84,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="DASP Report Template Dokumentation" class="md-header__button md-logo" aria-label="DASP Report Template Dokumentation" data-md-component="logo">
+    <a href="../../.." title="DASP Report Template Dokumentation" class="md-header__button md-logo" aria-label="DASP Report Template Dokumentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -95,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Home
+              Architecture and Design Notes
             
           </span>
         </div>
@@ -182,7 +191,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="DASP Report Template Dokumentation" class="md-nav__button md-logo" aria-label="DASP Report Template Dokumentation" data-md-component="logo">
+    <a href="../../.." title="DASP Report Template Dokumentation" class="md-nav__button md-logo" aria-label="DASP Report Template Dokumentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -212,7 +221,7 @@
   
   
     <li class="md-nav__item">
-      <a href="api/readme/main_page/" class="md-nav__link">
+      <a href="../main_page/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -233,7 +242,7 @@
   
   
     <li class="md-nav__item">
-      <a href="api/readme/setup/" class="md-nav__link">
+      <a href="../setup/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -254,7 +263,7 @@
   
   
     <li class="md-nav__item">
-      <a href="api/readme/developer_guide/" class="md-nav__link">
+      <a href="../developer_guide/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -272,10 +281,29 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="api/readme/architecture/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Architecture and Design Notes
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -285,6 +313,84 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#31-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 Architecture
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32-design-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 Design Notes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 Design Notes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#321-frontend" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2.1 Frontend
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#322-backend" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2.2 Backend
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#323-model-training" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2.3 Model Training
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#323-communication-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2.3 Communication Flow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -296,7 +402,7 @@
   
   
     <li class="md-nav__item">
-      <a href="api/readme/files/" class="md-nav__link">
+      <a href="../files/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -317,7 +423,7 @@
   
   
     <li class="md-nav__item">
-      <a href="api/readme/data/" class="md-nav__link">
+      <a href="../data/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -338,7 +444,7 @@
   
   
     <li class="md-nav__item">
-      <a href="api/readme/testing/" class="md-nav__link">
+      <a href="../testing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -395,7 +501,7 @@
   
   
     <li class="md-nav__item">
-      <a href="api/frontend/" class="md-nav__link">
+      <a href="../../frontend/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -417,7 +523,7 @@
   
   
     <li class="md-nav__item">
-      <a href="api/backend/" class="md-nav__link">
+      <a href="../../backend/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -475,7 +581,7 @@
   
   
     <li class="md-nav__item">
-      <a href="api/model_training/summary/" class="md-nav__link">
+      <a href="../../model_training/summary/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -497,7 +603,7 @@
   
   
     <li class="md-nav__item">
-      <a href="api/model_training/request_classifier/" class="md-nav__link">
+      <a href="../../model_training/request_classifier/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -519,7 +625,7 @@
   
   
     <li class="md-nav__item">
-      <a href="api/model_training/attitude/" class="md-nav__link">
+      <a href="../../model_training/attitude/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -541,7 +647,7 @@
   
   
     <li class="md-nav__item">
-      <a href="api/model_training/theme/" class="md-nav__link">
+      <a href="../../model_training/theme/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -563,7 +669,7 @@
   
   
     <li class="md-nav__item">
-      <a href="api/model_training/theme_to_desc/" class="md-nav__link">
+      <a href="../../model_training/theme_to_desc/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -593,7 +699,7 @@
   
   
     <li class="md-nav__item">
-      <a href="api/attitude_classifier/" class="md-nav__link">
+      <a href="../../attitude_classifier/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -615,7 +721,7 @@
   
   
     <li class="md-nav__item">
-      <a href="api/request_classifier/" class="md-nav__link">
+      <a href="../../request_classifier/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -637,7 +743,7 @@
   
   
     <li class="md-nav__item">
-      <a href="api/summary_generator/" class="md-nav__link">
+      <a href="../../summary_generator/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -659,7 +765,7 @@
   
   
     <li class="md-nav__item">
-      <a href="api/tests.md" class="md-nav__link">
+      <a href="../../tests.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -688,7 +794,7 @@
   
   
     <li class="md-nav__item">
-      <a href="api/readme/contact/" class="md-nav__link">
+      <a href="../contact/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -720,6 +826,74 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#31-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 Architecture
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32-design-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 Design Notes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 Design Notes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#321-frontend" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2.1 Frontend
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#322-backend" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2.2 Backend
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#323-model-training" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2.3 Model Training
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#323-communication-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2.3 Communication Flow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -737,19 +911,44 @@
   
 
 
-  <h1>Home</h1>
+  <h1>Architecture and Design Notes</h1>
 
-<p align="center" style="display: flex; gap: 100px;">
-  <img src="api/images/logo.png" alt="Logo 1" width="200">
-  <img src="api/images/logo_header.png" alt="Logo 2" width="200">
+<h4 id="31-architecture"><strong>3.1 Architecture</strong></h4>
+<p align="center" style="display: flex; gap: 20px; justify-content: center;">
+  <img src="../../images/image.png" alt="Bild 1" width="500" height="auto">
 </p>
 
-<p><strong>Review Overview Generation</strong></p>
-<p>At <strong>Paper Review Aggregator</strong>, our mission is to simplify the work of meta-reviewers by providing an AI-driven platform that aggregates and summarizes paper reviews. By reducing manual effort and enhancing decision-making, we aim to streamline the peer-review process for academic research.
-This application was developed as part of the <strong>"Data Analysis Software Project"</strong> course at <strong>Technische Universität Darmstadt, Germany</strong>. The project allowed Master’s students to apply their data analysis, software engineering, and machine learning skills to solve real-world problems.</p>
-<p><strong>Contributions</strong></p>
-<p>In this project participated Johannes Lemken, Carmen Appelt, Zhijingshui Yang, Philipp Oehler and Jan Werth.
-We were supervised by Sukannya Purkayastha.</p>
+<h4 id="32-design-notes"><strong>3.2 Design Notes</strong></h4>
+<h5 id="321-frontend"><strong>3.2.1 Frontend</strong></h5>
+<p>The Frontend is the user interface of the system where individuals log in, provide a URL to OpenReview, and optionally download and then upload the filled out templates. The Frontend handles interactions, collects the user’s input (including files and URLs), and displays the resulting classification output once the Backend has processed everything.</p>
+<h5 id="322-backend"><strong>3.2.2 Backend</strong></h5>
+<p>Once the Frontend submits data (whether uploaded files or URLs), the Backend starts analyzing the provided data. It first performs formatting and segmentation, breaking the reviews into sentences. From there, the system routes the segments to various prediction modules. The “Request Prediction” module handles general categorization of the Request, while an “Attitude/Theme Prediction” module determines attitude and corresponding themes and descriptions. After processing these steps, the Backend compiles the outputs—now in the form of classified sentences or structured results—and sends them back to the Frontend to display to the user.</p>
+<h5 id="323-model-training"><strong>3.2.3 Model Training</strong></h5>
+<p>As part of our framework, there is the model training. Initially we trained the models used in the Backend to perform the neccesary classification tasks. This training process results in Model Artifacts, such as updated model parameters, which the Backend uses during its prediction steps. If necessary, the existing model and code files can be used to update and improve existing models with new data or better models.</p>
+<p><em>Request Classifier</em></p>
+<p>For the Request Classifier we used two fine tuned models to firstly label what sentences are requests and then have a fine grained classification for the type of request. The first is a binary classifier which achieved an F1 Score of 91%, we tried oversampling, but the results were worse. For the fine requests we have a multi class prediction for which we also tried different models and approaches. The best results were with the addition of thresholding resulting in a F1 score of 62%.</p>
+<p><em>Attitude and Theme Classifier</em></p>
+<p>For the Attitude Roots which represent the underlying believes we made a multi class prediction and tried different models and approaches (normal training, oversampling and hybrid with normal training and oversampling). We achieved an F1 Score of 62% with the BERT model which was pretrained on domain knowledge.</p>
+<p><em>Summary Generation</em></p>
+<p>To create the summary—which aggregates all results sorted by “Overview”, “Attitude Roots” and “Request Information”—we tried different models and evaluated their performance using the BERT score. More specifically, we pre-structured the summary using Python and then generated predictions only for the collections of comments corresponding to a particular attitude root or request, as determined by our other models.</p>
+<p>Data Collection and Labeling Process:
+Data Crawling:
+We crawled data from 10 random review threads on OpenReview. Instead of treating each individual comment as a data point, we aggregated comments into collections. Each collection was specified by a particular attitude root or request by our auxiliary models. This resulted in 174 aggregated data points (see model_training/nlp/summary/data/real_world_data_unlabeled.jsonl).
+Labeling:
+Next, these aggregated comment collections (each related to a specific attitude root or request) were labeled using OpenAI's so far most capable model ChatGPT o1. We then proofread these labels to ensure high quality (see model_training/nlp/summary/data/real_world_data_labeled.jsonl).</p>
+<p>Prediction:
+We tried sequence to sequence approaches with BART-large and T5 using an 80%-10%-10% train-validation-test split.
+The best results were obtained using Llama2 with a 10-shot prompt, achieving an F1-BERT score of 69% on the test data.</p>
+<h5 id="323-communication-flow"><strong>3.2.3 Communication Flow</strong></h5>
+<p><em>Frontend → Backend</em></p>
+<p>The Frontend issues secure API calls to the Backend when users log in, provide URLs, or upload filled templates.
+The Backend processes these incoming requests—formatting and segmenting the data—and routes them to the appropriate prediction modules.
+The Backend functions as a API gateway.</p>
+<p><em>Backend → Frontend</em></p>
+<p>Once the predictions are complete, the Backend responds via API calls back to the Frontend, delivering classified sentences, sentiment results, or other structured outputs.
+The Frontend then displays these results to the user in a clear, readable format.</p>
+<p><em>Model Training and Backend</em></p>
+<p>The models trained in the Backend are stored in the designated containers with are activated when the Backend is called.</p>
 
 
 
@@ -796,10 +995,10 @@ We were supervised by Sukannya Purkayastha.</p>
     </div>
     
     
-    <script id="__config" type="application/json">{"base": ".", "features": [], "search": "assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="assets/javascripts/bundle.f13b1293.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.f13b1293.min.js"></script>
       
     
   </body>
