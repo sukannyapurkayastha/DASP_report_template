@@ -34,7 +34,7 @@ This guide helps you set up and run the project, which consists of three main pa
       git clone https://github.com/sukannyapurkayastha/DASP_report_template.git
       cd your-project
 
-**2. Application Deployment**
+#### **2. Application Deployment**
 
 The application runs as a set of Docker containers orchestrated with Docker Compose. To start the app detached in your local device simply run:
 ```bash
@@ -50,6 +50,32 @@ If you are hosting the application on your local device, by default the website 
 
 The application is available online at **[https://reviewoverview.ukp.informatik.tu-darmstadt.de](https://reviewoverview.ukp.informatik.tu-darmstadt.de)**, if you have access to UKP or HRZ VPN. Since the proxy handles SSL termination, currently we don't have webserver in front of Streamlit.
 
+#### **3. Developer Guide**
+
+We have currently 5 components:
+- frontend
+- backend (preprocess, segmentation and score calculation)
+- attitude_classifier
+- request_classifier
+- summary_generator
+
+##### **3.1 Install Environment**
+
+Folders have same name as components. In each folder there is a requirements file and conda environment file. 
+- usage of conda environment file: It contains all information for environment like python verison, list of libs and versions of libs. It's recommended to use this file firstly, if it omits error, try requirements.txt file.
+- usage of requirements.txt: It's served for docker. But you can also install your environment with this file. Python 3.10 is used for all containers. Versions of libs are not specified in requirements file, in order to prevent version mismatching errors.
+
+##### **3.2 Run Services From Terminal**
+```bash
+cd frontend
+streamlit run app.py
+```
+Following command is valid for all these 4 components, replace {component_folder} with backend, attitude_classifier, request_classifier, summary_generator
+```bash
+cd {component_folder}
+python main.py
+```
+After running all 5 commands, the web application is running on localhost:80
 
 ## **3. Architecture and Design Notes**
 #### **3.1 Architecture**
