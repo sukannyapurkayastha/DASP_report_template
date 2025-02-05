@@ -1,4 +1,4 @@
-## **5 Testing**
+
 
 We adopted a multi-level testing strategy to ensure both reliability and maintainability across our application:
 

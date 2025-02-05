@@ -1,4 +1,3 @@
-## **5 Data**
 
 For this project, we utilized two primary datasets:
 

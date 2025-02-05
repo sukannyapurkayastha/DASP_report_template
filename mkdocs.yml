@@ -19,8 +19,9 @@ plugins:
           
 nav:
   - Main Page: api/readme/main_page.md
-  - Setup: api/readme/setup.md
-  - Architecture: api/readme/architecture.md
+  - Setup and Installation: api/readme/setup.md
+  - Developer Guide: api/readme/developer_guide.md
+  - Architecture and Design Notes: api/readme/architecture.md
   - Files: api/readme/files.md
   - Data: api/readme/data.md
   - Testing: api/readme/testing.md
@@ -37,4 +38,4 @@ nav:
       - Request Classifier: api/request_classifier.md
       - Summary Generator: api/summary_generator.md
       - Tests: api/tests.md
-  
+  - Contact: api/readme/contact.md

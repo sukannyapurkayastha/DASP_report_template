@@ -1,5 +1,4 @@
 
-## **4. Detailed description of the files**
 
 #### **4.1 `backend`**
 

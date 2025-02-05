@@ -1,6 +1,3 @@
-
-
-## **3. Architecture and Design Notes**
 #### **3.1 Architecture**
 
 

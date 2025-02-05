@@ -1,5 +1,4 @@
----
-## **2. Installation and Setup Instructions**
+
 
 This guide helps you set up and run the project, which consists of three main parts:
 - **Model Training (NLP models environment)**
@@ -11,8 +10,10 @@ This guide helps you set up and run the project, which consists of three main pa
 #### **Prerequisites**
 
 - **Git** for cloning the repository.
-- **Python 3.12.7+** installed on your system.
-- **conda**  for managing Python environments.
+- **Docker** for containerizing and running the application.
+- **Docker Compose** for managing multi-container environments.
+- **NVIDIA Container Toolkit** enables GPU acceleration with nvidia/cuda images.
+[Installing the NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html)
 
 ---
 #### **1. Clone the Repository** 
@@ -20,21 +21,18 @@ This guide helps you set up and run the project, which consists of three main pa
       git clone https://github.com/sukannyapurkayastha/DASP_report_template.git
       cd your-project
 
-**2. Set Up the Model Environment**
+#### **2. Application Deployment**
 
-      pip install requirements.txt
+The application runs as a set of Docker containers orchestrated with Docker Compose. To start the app detached in your local device simply run:
+```bash
+docker compose up -d
+```
+Check logs for a specific service (current status or error message):
+```bash
+docker compose logs -f <service_name>
+```
+for example <service_name> could be: request_classifier
 
-      conda env create -f frontend_env.yaml
-      conda activate frontend_env.yaml
-      conda env create -f backend_env.yaml
-      conda activate backend_env.yaml
-      conda env create -f attitude_classifier_env.yaml
-      conda activate attitude_classifier_env.yaml
-      conda env create -f request_classifier_env.yaml
-      conda activate request_classifier_env.yaml
-      conda env create -f summary_env.yaml
-      conda activate summary_env.yaml
+If you are hosting the application on your local device, by default the website is published at port 80 on your local machine. For deployment it's highly recommanded to put the application behind a webserver like Caddy, Apache or Nginx.
 
-**3. Start the application**
-
-      streamlit app.py
+The application is available online at **[https://reviewoverview.ukp.informatik.tu-darmstadt.de](https://reviewoverview.ukp.informatik.tu-darmstadt.de)**, if you have access to UKP or HRZ VPN. Since the proxy handles SSL termination, currently we don't have webserver in front of Streamlit.
