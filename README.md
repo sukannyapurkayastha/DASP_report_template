@@ -75,7 +75,7 @@ Following command is valid for all these 4 components, replace {component_folder
 cd {component_folder}
 python main.py
 ```
-After running all 5 commands, the web application is running on localhost:80
+After running all 5 commands, the web application is running on localhost:8000. Note that running without docker, it's available at port 8000.
 
 ## **3. Architecture and Design Notes**
 #### **3.1 Architecture**
