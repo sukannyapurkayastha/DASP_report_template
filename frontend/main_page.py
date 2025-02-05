@@ -165,8 +165,9 @@ def get_classification_with_api():
         # Send a POST request to the backend API for processing
         # http://backend:8080/process
         # http://localhost:8080/process
+        backend_url = os.environ.get("BACKEND_URL", "http://localhost:8080")
         response = requests.post(
-            "http://backend:8080/process",
+            f"{backend_url}/process",
             json={"data": payload}
         )
 

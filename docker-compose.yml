@@ -4,6 +4,8 @@ services:
   frontend:
     build: ./frontend
     container_name: frontend
+    environment:
+      - BACKEND_URL=http://backend:8080
     ports:
       - "80:8000"
     depends_on:
@@ -12,8 +14,14 @@ services:
   backend:
     build: ./backend
     container_name: backend
+    environment:
+      - ATTITUDE_CLASSIFIER_URL=http://attitude_classifier:8082
+      - REQUEST_CLASSIFIER_URL=http://request_classifier:8081
+      - SUMMARY_GENERATOR_URL=http://summary_generator:8083
     depends_on:
       - attitude_classifier
+      - request_classifier
+      - summary_generator
 
   attitude_classifier:
     build: ./attitude_classifier

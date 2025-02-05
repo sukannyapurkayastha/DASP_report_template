@@ -4,6 +4,7 @@ from fastapi import APIRouter, HTTPException
 from data_processing import process_file
 from loguru import logger
 from pydantic import BaseModel
+import os
 
 router = APIRouter()
 
@@ -23,11 +24,12 @@ async def process_data(input_data: RawInput) -> dict:
 
 
         # Run attitude classifer
+        attitude_classifier_url = os.environ.get("ATTITUDE_CLASSIFIER_URL", "http://localhost:8082")
         try:
             logger.info(f"Tyring to post: {'http://attitude_classifier:8082/classify_attitudes'}")
 
             response_attitude = requests.post(
-                "http://attitude_classifier:8082/classify_attitudes",
+                f"{attitude_classifier_url}/classify_attitudes",
                 json={"data": sentences}
             )
             if response_attitude.status_code == 200:
@@ -40,10 +42,11 @@ async def process_data(input_data: RawInput) -> dict:
             logger.error(f"Error communicating with Model Attitude Classifier: {e}")
 
         # Run request classifier
+        request_classifier_url = os.environ.get("REQUEST_CLASSIFIER_URL", "http://localhost:8081")
         try:
             logger.info(f"Tyring to post: {'http://request_classifier:8081/classify_request'}")
             response_request = requests.post(
-                "http://request_classifier:8081/classify_request",
+                f"{request_classifier_url}/classify_request",
                 json={"data": sentences}
             )
 
@@ -59,10 +62,11 @@ async def process_data(input_data: RawInput) -> dict:
         
         
         # Run summary generator
+        summary_generator_url = os.environ.get("SUMMARY_GENERATOR_URL", "http://localhost:8083")
         try: 
             logger.info(f"Tyring to post: {'http://summary_generator:8083/generate_summary'}")
             response_summary = requests.post(
-                "http://summary_generator:8083/generate_summary",
+                f"{summary_generator_url}/generate_summary",
                 json={"overview_df": {"data": overview}, 
                       "attitude_df": {"data": pd.DataFrame(attitude_data).to_dict(orient='records')}, 
                       "request_df": {"data": pd.DataFrame(request_data).to_dict(orient='records')}}
