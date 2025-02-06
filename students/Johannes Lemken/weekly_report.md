@@ -95,11 +95,11 @@
 
 ### Week [14]
 
-- **Update 1**: 
-- **Update 2**: 
+- **Update 1**: implemented documentation with mk docs
+- **Update 2**: preperation for poster presentation
 - **Update 3**: 
-- **Challenges**: 
-- **Next Steps**:
+- **Challenges**: understanding what went wrong with sphinx / changing to mkdocs
+- **Next Steps**: presenting
 
 ---
 
