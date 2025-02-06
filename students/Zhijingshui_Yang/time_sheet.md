@@ -77,6 +77,10 @@
 | [2/4/25] | [2/4/25] | [connect to vm]   | [try to connect to vm, but there is no proper username and password information]  | [2]       | [pending]     |
 | [2/4/25] | [2/4/25] | [final pre]   | [provide information/bullet points for final pre]  | [0.5]       | [completed]     |
 | [2/5/25] | [2/5/25] | [communication]   | [meeting with supervisor]  | [0.5]       | [completed]     |
+| [2/5/25] | [2/6/25] | [communication]   | [communicate to get vm access]  | [1]       | [completed]     |
+| [2/5/25] | [2/6/25] | [documentation]   | [update README]  | [1.5]       | [completed]     |
+| [2/5/25] | [2/6/25] | [docker and communication]   | [help teammate check if docker runs properly]  | [1]       | [completed]     |
+| [2/5/25] | [2/6/25] | [debug]   | [udd environment var so that codes run both in docker and without docker, due to diff network name]  | [1]       | [completed]     |
 ---
 
 > **Status Options**: "In Progress," "Completed," or "Pending."
