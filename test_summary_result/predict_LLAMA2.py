@@ -41,6 +41,7 @@ def load_LLAMA2_model(model_dir: str = "./models/llama2"):
     tokenizer = LlamaTokenizer.from_pretrained(hf_dir, cache_dir=model_dir, legacy=True)
     model = LlamaForCausalLM.from_pretrained(
         hf_dir,
+        torch_dtype=torch.float16,
         cache_dir=model_dir,
         device_map="auto"
     )
