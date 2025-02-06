@@ -5,5 +5,4 @@ pandas
 uvicorn
 tqdm
 transformers
-tf-keras
 torch
