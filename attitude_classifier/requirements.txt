@@ -2,7 +2,6 @@ fastapi
 pydantic
 loguru
 pandas
-tensorflow
 transformers
 torch
 uvicorn
