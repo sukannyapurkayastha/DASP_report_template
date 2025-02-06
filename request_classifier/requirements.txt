@@ -3,7 +3,6 @@ pydantic
 loguru
 pandas
 uvicorn
-spacy
 tqdm
 transformers
 tf-keras

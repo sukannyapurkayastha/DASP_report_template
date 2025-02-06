@@ -3,6 +3,5 @@ pydantic
 loguru
 pandas
 transformers
-torch
+torch==1.6.0
 uvicorn
-tf-keras
