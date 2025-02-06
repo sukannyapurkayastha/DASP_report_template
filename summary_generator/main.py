@@ -12,6 +12,7 @@ import uvicorn
 from data_processing import generate_input_text, predict_data
 import predict_LLAMA2
 import json
+from loguru import logger
 
 app = FastAPI()
 
@@ -46,9 +47,11 @@ async def predict(overview_df: RawInput, attitude_df: RawInput, request_df: RawI
 
         # 2) Transform overview into its final text and extract lists with attributes and comments of attitude and request
         overview_output, attitude_list, request_list = generate_input_text(overview_df, attitude_df, request_df)
+        logger.info("Generating input text from data")
 
         # 3) load model for prediction
         model, tokenizer = predict_LLAMA2.load_LLAMA2_model(model_dir="models/llama2/")
+        logger.info("Model loaded successfully.")
 
         # 4) just reuse the finalized overview data
         summary = []
@@ -58,6 +61,7 @@ async def predict(overview_df: RawInput, attitude_df: RawInput, request_df: RawI
         #    summary.append(line)
 
         # 5) add given Attitude Roots and their AI generated summary of comments
+        logger.info("Processing Attitude Roots...")
         summary.append("")
         summary.append ("#### Attitude Roots")
         attitude_roots, comments = attitude_list
@@ -73,6 +77,7 @@ async def predict(overview_df: RawInput, attitude_df: RawInput, request_df: RawI
 
 
         # 6) add given Reqest Information and their AI generated summary of comments
+        logger.info("Processing Request Information...")
         summary.append("")
         summary.append("#### Request Information")
         requests, comments = request_list
@@ -92,6 +97,7 @@ async def predict(overview_df: RawInput, attitude_df: RawInput, request_df: RawI
         # # summary_df = pd.DataFrame(["## Temporary dummy", "We currently commented out AI summary generation. Go to DASP_report_template/summary_generator/main.py to use it again."])
         
         summary_df_dict = summary_df.to_dict(orient="records")
+        logger.info("Summary generation completed successfully.")
         
         # with open("summary.json", "r") as f:
         #     summary_df_dict = json.load(f)
