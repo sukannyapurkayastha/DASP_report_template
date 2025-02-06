@@ -3,5 +3,5 @@ pydantic
 loguru
 pandas
 transformers
-torch==1.6.0
+torch
 uvicorn
