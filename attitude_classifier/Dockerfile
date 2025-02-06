@@ -1,5 +1,5 @@
 # Use NVIDIA's CUDA base image
-FROM nvidia/cuda:12.4.0-base-ubuntu22.04
+FROM nvidia/cuda:12.8.0-cudnn-runtime-ubuntu22.04
 
 # Set the working directory
 WORKDIR /attitude_classifier
