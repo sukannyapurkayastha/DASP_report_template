@@ -76,6 +76,9 @@
 | [29/1/2025] | [29/1/2025] | [Documentation]           | [Create documentation with sphinx]                                        | [4]             | [In progress] |
 | [3/2/2025] | [3/2/2025] | [Documentation]             | [Update ReadMe to the new status]                                         | [3]             | [In progress] |
 | [3/2/2025] | [3/2/2025] | [Presentation]              | [Preparing for poster presentation]                                       | [3]             | [In progress] |
+| [4/2/2025] | [6/2/2025] | [Presentation]              | [Preparing for poster presentation]                                       | [3]             | [Completed] |
+| [5/2/2025] | [5/2/2025] | [Meeting]                   | [Team meeting]                                                            | [1]             | [Completed] |
+| [3/2/2025] | [6/2/2025] | [Coding]                    | [Documentation with mkdocs / try with sphinx]                             | [9]             | [Completed] |
 ---
 
 > **Status Options**: "In Progress," "Completed," or "Pending."
