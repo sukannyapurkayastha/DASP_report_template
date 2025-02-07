@@ -143,4 +143,12 @@
 - **Update 3**: try to connect to vm, but there is connection issue
 - **Challenges**: running summary generation with llama in pc is time consuming, can't properly debug, since vm is not accessible yet.
 - **Next Steps**: description generation; deploy web server in vm if it's available
+
+### Week [14]
+
+- **Update 1**: web is deployed and is available with url inside HRZ network
+- **Update 2**: update documentation about how to use repo in docker/deploy mode or developer mode
+- **Update 3**: 
+- **Challenges**: 1. have access to vm; 2. current deployment using LLaMA without optimized inference frameworks (like vLLM or Ollama) was a big issue, because it loads and reloads model into gpu upon request, then I changed so that it loads when service starts and never reload. current deployment using LLaMA without optimized inference frameworks (like vLLM or Ollama) can still lead to inefficient resource usage and higher latency; 3. vm doesn't have avx/avx2, however tensorflow, tf-keras needs them, so docker container always exits with 132, it took quite some time to find out what was the error cause.
+- **Next Steps**: description generation; paper
 ---
