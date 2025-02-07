@@ -28,13 +28,40 @@ services:
     container_name: attitude_classifier
     depends_on:
       - summary_generator
+    volumes:
+      - /opt/models/attitude:/attitude_classifier/models
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
 
   request_classifier:
     build: ./request_classifier
     container_name: request_classifier
     depends_on:
       - summary_generator
+    volumes:
+      - /opt/models/request:/request_classifier/models
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
 
   summary_generator:
     build: ./summary_generator
     container_name: summary_generator
+    volumes:
+      - /opt/models/summary:/summary_generator/models
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
