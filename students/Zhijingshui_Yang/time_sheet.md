@@ -81,6 +81,7 @@
 | [2/5/25] | [2/6/25] | [documentation]   | [update README]  | [1.5]       | [completed]     |
 | [2/5/25] | [2/6/25] | [docker and communication]   | [help teammate check if docker runs properly]  | [1]       | [completed]     |
 | [2/5/25] | [2/6/25] | [debug]   | [udd environment var so that codes run both in docker and without docker, due to diff network name]  | [1]       | [completed]     |
+| [2/6/25] | [2/7/25] | [deploy in vm]   | [deploy web application in vm, install necessary prerequistes, debugging and generate url]  | [8]       | [completed]     |
 ---
 
 > **Status Options**: "In Progress," "Completed," or "Pending."
