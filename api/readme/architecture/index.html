@@ -9,7 +9,7 @@
         <meta name="description" content="Dokumentation des DASP Report Template Projekts inklusive automatischer Docstring-Integration.">
       
       
-        <meta name="author" content="Johannes Lemken">
+        <meta name="author" content="Johannes Lemken, Carmen Appelt, Phillip Oehler, Jan Werth, Zhijingshui Yang">
       
       
       
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#31-architecture" class="md-skip">
+        <a href="#architecture" class="md-skip">
           Skip to content
         </a>
       
@@ -328,55 +328,55 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#31-architecture" class="md-nav__link">
+  <a href="#architecture" class="md-nav__link">
     <span class="md-ellipsis">
-      3.1 Architecture
+      Architecture
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#32-design-notes" class="md-nav__link">
+  <a href="#design-notes" class="md-nav__link">
     <span class="md-ellipsis">
-      3.2 Design Notes
+      Design Notes
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="3.2 Design Notes">
+    <nav class="md-nav" aria-label="Design Notes">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#321-frontend" class="md-nav__link">
+  <a href="#1-frontend" class="md-nav__link">
     <span class="md-ellipsis">
-      3.2.1 Frontend
+      1 Frontend
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#322-backend" class="md-nav__link">
+  <a href="#2-backend" class="md-nav__link">
     <span class="md-ellipsis">
-      3.2.2 Backend
+      2 Backend
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#323-model-training" class="md-nav__link">
+  <a href="#3-model-training" class="md-nav__link">
     <span class="md-ellipsis">
-      3.2.3 Model Training
+      3 Model Training
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#323-communication-flow" class="md-nav__link">
+  <a href="#4-communication-flow" class="md-nav__link">
     <span class="md-ellipsis">
-      3.2.3 Communication Flow
+      4 Communication Flow
     </span>
   </a>
   
@@ -765,7 +765,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tests.md" class="md-nav__link">
+      <a href="../../test/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -833,55 +833,55 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#31-architecture" class="md-nav__link">
+  <a href="#architecture" class="md-nav__link">
     <span class="md-ellipsis">
-      3.1 Architecture
+      Architecture
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#32-design-notes" class="md-nav__link">
+  <a href="#design-notes" class="md-nav__link">
     <span class="md-ellipsis">
-      3.2 Design Notes
+      Design Notes
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="3.2 Design Notes">
+    <nav class="md-nav" aria-label="Design Notes">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#321-frontend" class="md-nav__link">
+  <a href="#1-frontend" class="md-nav__link">
     <span class="md-ellipsis">
-      3.2.1 Frontend
+      1 Frontend
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#322-backend" class="md-nav__link">
+  <a href="#2-backend" class="md-nav__link">
     <span class="md-ellipsis">
-      3.2.2 Backend
+      2 Backend
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#323-model-training" class="md-nav__link">
+  <a href="#3-model-training" class="md-nav__link">
     <span class="md-ellipsis">
-      3.2.3 Model Training
+      3 Model Training
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#323-communication-flow" class="md-nav__link">
+  <a href="#4-communication-flow" class="md-nav__link">
     <span class="md-ellipsis">
-      3.2.3 Communication Flow
+      4 Communication Flow
     </span>
   </a>
   
@@ -913,17 +913,17 @@
 
   <h1>Architecture and Design Notes</h1>
 
-<h4 id="31-architecture"><strong>3.1 Architecture</strong></h4>
+<h4 id="architecture"><strong>Architecture</strong></h4>
 <p align="center" style="display: flex; gap: 20px; justify-content: center;">
   <img src="../../images/image.png" alt="Bild 1" width="500" height="auto">
 </p>
 
-<h4 id="32-design-notes"><strong>3.2 Design Notes</strong></h4>
-<h5 id="321-frontend"><strong>3.2.1 Frontend</strong></h5>
+<h4 id="design-notes"><strong>Design Notes</strong></h4>
+<h5 id="1-frontend"><strong>1 Frontend</strong></h5>
 <p>The Frontend is the user interface of the system where individuals log in, provide a URL to OpenReview, and optionally download and then upload the filled out templates. The Frontend handles interactions, collects the user’s input (including files and URLs), and displays the resulting classification output once the Backend has processed everything.</p>
-<h5 id="322-backend"><strong>3.2.2 Backend</strong></h5>
+<h5 id="2-backend"><strong>2 Backend</strong></h5>
 <p>Once the Frontend submits data (whether uploaded files or URLs), the Backend starts analyzing the provided data. It first performs formatting and segmentation, breaking the reviews into sentences. From there, the system routes the segments to various prediction modules. The “Request Prediction” module handles general categorization of the Request, while an “Attitude/Theme Prediction” module determines attitude and corresponding themes and descriptions. After processing these steps, the Backend compiles the outputs—now in the form of classified sentences or structured results—and sends them back to the Frontend to display to the user.</p>
-<h5 id="323-model-training"><strong>3.2.3 Model Training</strong></h5>
+<h5 id="3-model-training"><strong>3 Model Training</strong></h5>
 <p>As part of our framework, there is the model training. Initially we trained the models used in the Backend to perform the neccesary classification tasks. This training process results in Model Artifacts, such as updated model parameters, which the Backend uses during its prediction steps. If necessary, the existing model and code files can be used to update and improve existing models with new data or better models.</p>
 <p><em>Request Classifier</em></p>
 <p>For the Request Classifier we used two fine tuned models to firstly label what sentences are requests and then have a fine grained classification for the type of request. The first is a binary classifier which achieved an F1 Score of 91%, we tried oversampling, but the results were worse. For the fine requests we have a multi class prediction for which we also tried different models and approaches. The best results were with the addition of thresholding resulting in a F1 score of 62%.</p>
@@ -939,7 +939,7 @@ Next, these aggregated comment collections (each related to a specific attitude 
 <p>Prediction:
 We tried sequence to sequence approaches with BART-large and T5 using an 80%-10%-10% train-validation-test split.
 The best results were obtained using Llama2 with a 10-shot prompt, achieving an F1-BERT score of 69% on the test data.</p>
-<h5 id="323-communication-flow"><strong>3.2.3 Communication Flow</strong></h5>
+<h5 id="4-communication-flow"><strong>4 Communication Flow</strong></h5>
 <p><em>Frontend → Backend</em></p>
 <p>The Frontend issues secure API calls to the Backend when users log in, provide URLs, or upload filled templates.
 The Backend processes these incoming requests—formatting and segmenting the data—and routes them to the appropriate prediction modules.

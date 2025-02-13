@@ -9,7 +9,7 @@
         <meta name="description" content="Dokumentation des DASP Report Template Projekts inklusive automatischer Docstring-Integration.">
       
       
-        <meta name="author" content="Johannes Lemken">
+        <meta name="author" content="Johannes Lemken, Carmen Appelt, Phillip Oehler, Jan Werth, Zhijingshui Yang">
       
       
       
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#model_training.nlp.review_to_theme.main" class="md-skip">
+        <a href="#theme-classification-model-training-code-documentation" class="md-skip">
           Skip to content
         </a>
       
@@ -560,6 +560,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
@@ -590,6 +592,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -601,6 +605,24 @@
   <a href="#model_training.nlp.review_to_theme.main" class="md-nav__link">
     <span class="md-ellipsis">
       main
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#model_training.nlp.review_to_theme.functions_docu" class="md-nav__link">
+    <span class="md-ellipsis">
+      functions_docu
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#model_training.nlp.review_to_theme.functions_docu.read_epoch_lr_json" class="md-nav__link">
+    <span class="md-ellipsis">
+      read_epoch_lr_json
     </span>
   </a>
   
@@ -718,7 +740,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tests.md" class="md-nav__link">
+      <a href="../../test/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -778,6 +800,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -789,6 +813,24 @@
   <a href="#model_training.nlp.review_to_theme.main" class="md-nav__link">
     <span class="md-ellipsis">
       main
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#model_training.nlp.review_to_theme.functions_docu" class="md-nav__link">
+    <span class="md-ellipsis">
+      functions_docu
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#model_training.nlp.review_to_theme.functions_docu.read_epoch_lr_json" class="md-nav__link">
+    <span class="md-ellipsis">
+      read_epoch_lr_json
     </span>
   </a>
   
@@ -813,8 +855,7 @@
   
 
 
-  <h1>Theme Classifier</h1>
-
+<h1 id="theme-classification-model-training-code-documentation">Theme Classification Model Training Code Documentation</h1>
 <!-- ::: model_training.nlp.review_to_theme.data_encode_training
 ::: model_training.nlp.review_to_theme.data_encode -->
 
@@ -849,7 +890,303 @@
 
     </div>
 
-</div><!-- ::: model_training.nlp.review_to_theme.performance_eval -->
+</div>
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="model_training.nlp.review_to_theme.functions_docu"></a>
+    <div class="doc doc-contents first">
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="model_training.nlp.review_to_theme.functions_docu.read_epoch_lr_json" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">read_epoch_lr_json</span><span class="p">(</span><span class="n">base_dirs</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Navigates through subfolders to read JSON files and extract model evaluation metrics.</p>
+<p>This function iterates through a list of base directories, searches for subdirectories 
+representing epoch numbers and learning rates, and reads <code>all_results.json</code> files to 
+extract evaluation metrics.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>base_dirs</code>
+            </td>
+            <td>
+                  <code>list[str]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>List of base directories, each corresponding to a model name.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>df</code>
+            </td>
+            <td>
+                  <code><span title="pd.DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A DataFrame to which the extracted data will be appended.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>tuple</code></td>            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <ul>
+<li>pd.DataFrame: Updated DataFrame with extracted data.</li>
+<li>str: Last found epoch value.</li>
+<li>float: Last found learning rate value.</li>
+</ul>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<details class="the-dataframe-will-have-the-following-columns" open>
+  <summary>The DataFrame will have the following columns</summary>
+  <ul>
+<li>'model_name': Name of the model (base directory).</li>
+<li>'epoch': Epoch number extracted from folder names.</li>
+<li>'learning_rate': Learning rate extracted from folder names.</li>
+<li>'eval_accuracy': Accuracy metric from JSON file.</li>
+<li>'eval_f1': F1-score from JSON file.</li>
+<li>'eval_precision': Precision metric from JSON file.</li>
+<li>'eval_recall': Recall metric from JSON file.</li>
+</ul>
+</details>
+            <details class="quote">
+              <summary>Source code in <code>model_training\nlp\review_to_theme\functions_docu.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span>
+<span class="normal">87</span>
+<span class="normal">88</span>
+<span class="normal">89</span>
+<span class="normal">90</span>
+<span class="normal">91</span>
+<span class="normal">92</span>
+<span class="normal">93</span>
+<span class="normal">94</span>
+<span class="normal">95</span>
+<span class="normal">96</span>
+<span class="normal">97</span>
+<span class="normal">98</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">read_epoch_lr_json</span><span class="p">(</span><span class="n">base_dirs</span><span class="p">,</span> <span class="n">df</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Navigates through subfolders to read JSON files and extract model evaluation metrics.</span>
+
+<span class="sd">    This function iterates through a list of base directories, searches for subdirectories </span>
+<span class="sd">    representing epoch numbers and learning rates, and reads `all_results.json` files to </span>
+<span class="sd">    extract evaluation metrics.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        base_dirs (list[str]): List of base directories, each corresponding to a model name.</span>
+<span class="sd">        df (pd.DataFrame): A DataFrame to which the extracted data will be appended.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        tuple:</span>
+<span class="sd">            - pd.DataFrame: Updated DataFrame with extracted data.</span>
+<span class="sd">            - str: Last found epoch value.</span>
+<span class="sd">            - float: Last found learning rate value.</span>
+
+<span class="sd">    The DataFrame will have the following columns:</span>
+<span class="sd">        - &#39;model_name&#39;: Name of the model (base directory).</span>
+<span class="sd">        - &#39;epoch&#39;: Epoch number extracted from folder names.</span>
+<span class="sd">        - &#39;learning_rate&#39;: Learning rate extracted from folder names.</span>
+<span class="sd">        - &#39;eval_accuracy&#39;: Accuracy metric from JSON file.</span>
+<span class="sd">        - &#39;eval_f1&#39;: F1-score from JSON file.</span>
+<span class="sd">        - &#39;eval_precision&#39;: Precision metric from JSON file.</span>
+<span class="sd">        - &#39;eval_recall&#39;: Recall metric from JSON file.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">epoch_value</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">lr_value</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">base_dir</span> <span class="ow">in</span> <span class="n">base_dirs</span><span class="p">:</span>
+        <span class="c1"># Iterate through subfolders A, B, C, D, E, F</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">base_dir</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">epoch_folder</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">base_dir</span><span class="p">):</span>
+                <span class="n">epoch_folder_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_dir</span><span class="p">,</span> <span class="n">epoch_folder</span><span class="p">)</span>
+
+                <span class="c1"># Check if the folder name is an integer (epoch value)</span>
+                <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">epoch_folder_path</span><span class="p">):</span>
+                    <span class="n">epoch_value</span> <span class="o">=</span> <span class="n">epoch_folder</span>
+
+                    <span class="k">for</span> <span class="n">lr_folder</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">epoch_folder_path</span><span class="p">):</span>
+                        <span class="n">lr_folder_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">epoch_folder_path</span><span class="p">,</span> <span class="n">lr_folder</span><span class="p">)</span>
+
+                        <span class="c1"># Check if the folder name is a valid learning rate (float value)</span>
+                        <span class="k">try</span><span class="p">:</span>
+                            <span class="n">lr_value</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">lr_folder</span><span class="p">)</span>
+                        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                            <span class="k">continue</span>  <span class="c1"># Skip folders that do not represent learning rate</span>
+
+                        <span class="c1"># Now, look for the json file in the learning rate folder</span>
+                        <span class="n">json_file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lr_folder_path</span><span class="p">,</span> <span class="s1">&#39;all_results.json&#39;</span><span class="p">)</span>
+
+                        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">json_file_path</span><span class="p">):</span>
+                            <span class="c1"># Read the JSON file</span>
+                            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">json_file_path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                                <span class="n">json_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+                            <span class="c1"># Store the result with epoch, learning rate, and json content</span>
+                            <span class="c1"># Extract necessary values</span>
+                            <span class="n">eval_accuracy</span> <span class="o">=</span> <span class="n">json_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;eval_accuracy&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+                            <span class="n">eval_f1</span> <span class="o">=</span> <span class="n">json_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;eval_f1&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+                            <span class="n">eval_precision</span> <span class="o">=</span> <span class="n">json_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;eval_precision&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+                            <span class="n">eval_recall</span> <span class="o">=</span> <span class="n">json_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;eval_recall&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+                            <span class="c1"># Create a new row with the current values</span>
+                            <span class="n">new_row</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([{</span>
+                                <span class="s1">&#39;model_name&#39;</span><span class="p">:</span> <span class="n">base_dir</span><span class="p">,</span>  <span class="c1"># model_name corresponds to the base_dir</span>
+                                <span class="s1">&#39;epoch&#39;</span><span class="p">:</span> <span class="n">epoch_value</span><span class="p">,</span>
+                                <span class="s1">&#39;learning_rate&#39;</span><span class="p">:</span> <span class="n">lr_value</span><span class="p">,</span>
+                                <span class="s1">&#39;eval_accuracy&#39;</span><span class="p">:</span> <span class="n">eval_accuracy</span><span class="p">,</span>
+                                <span class="s1">&#39;eval_f1&#39;</span><span class="p">:</span> <span class="n">eval_f1</span><span class="p">,</span>
+                                <span class="s1">&#39;eval_precision&#39;</span><span class="p">:</span> <span class="n">eval_precision</span><span class="p">,</span>
+                                <span class="s1">&#39;eval_recall&#39;</span><span class="p">:</span> <span class="n">eval_recall</span>
+                            <span class="p">}])</span>
+                            <span class="c1"># Append the new row to the DataFrame</span>
+                            <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">,</span> <span class="n">new_row</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df</span><span class="p">,</span> <span class="n">epoch_value</span><span class="p">,</span> <span class="n">lr_value</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div><!-- ::: model_training.nlp.review_to_theme.eval_wo_test_data.eval_plots -->
+<!-- ::: model_training.nlp.review_to_theme.performance_eval -->
 
 
 

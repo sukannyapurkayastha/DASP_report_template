@@ -9,7 +9,7 @@
         <meta name="description" content="Dokumentation des DASP Report Template Projekts inklusive automatischer Docstring-Integration.">
       
       
-        <meta name="author" content="Johannes Lemken">
+        <meta name="author" content="Johannes Lemken, Carmen Appelt, Phillip Oehler, Jan Werth, Zhijingshui Yang">
       
       
       
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#31-install-environment" class="md-skip">
+        <a href="#1-install-environment" class="md-skip">
           Skip to content
         </a>
       
@@ -307,18 +307,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#31-install-environment" class="md-nav__link">
+  <a href="#1-install-environment" class="md-nav__link">
     <span class="md-ellipsis">
-      3.1 Install Environment
+      1 Install Environment
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#32-run-services-from-terminal" class="md-nav__link">
+  <a href="#2-run-services-from-terminal" class="md-nav__link">
     <span class="md-ellipsis">
-      3.2 Run Services From Terminal
+      2 Run Services From Terminal
     </span>
   </a>
   
@@ -723,7 +723,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tests.md" class="md-nav__link">
+      <a href="../../test/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -791,18 +791,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#31-install-environment" class="md-nav__link">
+  <a href="#1-install-environment" class="md-nav__link">
     <span class="md-ellipsis">
-      3.1 Install Environment
+      1 Install Environment
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#32-run-services-from-terminal" class="md-nav__link">
+  <a href="#2-run-services-from-terminal" class="md-nav__link">
     <span class="md-ellipsis">
-      3.2 Run Services From Terminal
+      2 Run Services From Terminal
     </span>
   </a>
   
@@ -835,11 +835,11 @@
 - attitude_classifier
 - request_classifier
 - summary_generator</p>
-<h4 id="31-install-environment"><strong>3.1 Install Environment</strong></h4>
+<h4 id="1-install-environment"><strong>1 Install Environment</strong></h4>
 <p>Folders have same name as components. In each folder there is a requirements file and conda environment file. 
 - usage of conda environment file: It contains all information for environment like python verison, list of libs and versions of libs. It's recommended to use this file firstly, if it omits error, try requirements.txt file.
 - usage of requirements.txt: It's served for docker. But you can also install your environment with this file. Python 3.10 is used for all containers. Versions of libs are not specified in requirements file, in order to prevent version mismatching errors.</p>
-<h4 id="32-run-services-from-terminal"><strong>3.2 Run Services From Terminal</strong></h4>
+<h4 id="2-run-services-from-terminal"><strong>2 Run Services From Terminal</strong></h4>
 <pre><code class="language-bash">cd frontend
 streamlit run app.py
 </code></pre>

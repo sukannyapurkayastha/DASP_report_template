@@ -9,7 +9,7 @@
         <meta name="description" content="Dokumentation des DASP Report Template Projekts inklusive automatischer Docstring-Integration.">
       
       
-        <meta name="author" content="Johannes Lemken">
+        <meta name="author" content="Johannes Lemken, Carmen Appelt, Phillip Oehler, Jan Werth, Zhijingshui Yang">
       
       
       
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#41-backend" class="md-skip">
+        <a href="#1-backend" class="md-skip">
           Skip to content
         </a>
       
@@ -349,54 +349,54 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#41-backend" class="md-nav__link">
+  <a href="#1-backend" class="md-nav__link">
     <span class="md-ellipsis">
-      4.1 backend
+      1 backend
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#42-frontend" class="md-nav__link">
+  <a href="#2-frontend" class="md-nav__link">
     <span class="md-ellipsis">
-      4.2 frontend
+      2 frontend
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#43-model_training" class="md-nav__link">
+  <a href="#3-model_training" class="md-nav__link">
     <span class="md-ellipsis">
-      4.3 model_training
+      3 model_training
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#44-attitude_classifier" class="md-nav__link">
+  <a href="#4-attitude_classifier" class="md-nav__link">
     <span class="md-ellipsis">
-      4.4 attitude_classifier
+      4 attitude_classifier
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#45-request_classifier" class="md-nav__link">
+  <a href="#5-request_classifier" class="md-nav__link">
     <span class="md-ellipsis">
-      4.5 request_classifier
+      5 request_classifier
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#45-summary_generator" class="md-nav__link">
+  <a href="#6-summary_generator" class="md-nav__link">
     <span class="md-ellipsis">
-      4.5 summary_generator
+      6 summary_generator
     </span>
   </a>
   
@@ -759,7 +759,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tests.md" class="md-nav__link">
+      <a href="../../test/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -827,54 +827,54 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#41-backend" class="md-nav__link">
+  <a href="#1-backend" class="md-nav__link">
     <span class="md-ellipsis">
-      4.1 backend
+      1 backend
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#42-frontend" class="md-nav__link">
+  <a href="#2-frontend" class="md-nav__link">
     <span class="md-ellipsis">
-      4.2 frontend
+      2 frontend
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#43-model_training" class="md-nav__link">
+  <a href="#3-model_training" class="md-nav__link">
     <span class="md-ellipsis">
-      4.3 model_training
+      3 model_training
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#44-attitude_classifier" class="md-nav__link">
+  <a href="#4-attitude_classifier" class="md-nav__link">
     <span class="md-ellipsis">
-      4.4 attitude_classifier
+      4 attitude_classifier
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#45-request_classifier" class="md-nav__link">
+  <a href="#5-request_classifier" class="md-nav__link">
     <span class="md-ellipsis">
-      4.5 request_classifier
+      5 request_classifier
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#45-summary_generator" class="md-nav__link">
+  <a href="#6-summary_generator" class="md-nav__link">
     <span class="md-ellipsis">
-      4.5 summary_generator
+      6 summary_generator
     </span>
   </a>
   
@@ -901,7 +901,7 @@
 
   <h1>Files</h1>
 
-<h4 id="41-backend"><strong>4.1 <code>backend</code></strong></h4>
+<h4 id="1-backend"><strong>1 <code>backend</code></strong></h4>
 <p>The backend is responsible for data collection from OpenReview, preprocessing the data, and managing the workflow between the models and the frontend. It sends preprocessed data to the models for processing, retrieves the results, and communicates the processed data to the frontend for further use.</p>
 <ul>
 <li><strong>Subdirectories</strong>:</li>
@@ -919,7 +919,7 @@
 <li><code>backend_env.yaml</code>: contains the packages and dependencies for the backend</li>
 </ul>
 <hr />
-<h4 id="42-frontend"><strong>4.2 <code>frontend</code></strong></h4>
+<h4 id="2-frontend"><strong>2 <code>frontend</code></strong></h4>
 <p>The front end of this application is the user-facing interface built with Streamlit and related UI components. It is responsible for displaying the overview over the given reviews, receive the data in form of URL or file, and providing an interactive experience within the application. It is connected via API calls to the backend and includes several features of displaying the data for the user.</p>
 <ul>
 <li><strong>Subdirectories</strong>:</li>
@@ -949,7 +949,7 @@
 <li><code>streamlit_app.py</code>: The primary Streamlit script coordinating UI components, page navigation, and interactions</li>
 </ul>
 <hr />
-<h4 id="43-model_training"><strong>4.3 <code>model_training</code></strong></h4>
+<h4 id="3-model_training"><strong>3 <code>model_training</code></strong></h4>
 <p>The model training folder includes the scripts and data which which the models where trained.</p>
 <ul>
 <li><strong>Subdirectories</strong>:</li>
@@ -962,7 +962,7 @@
 <li><code>summary</code>: includes scripts for training of summary generation models. Specifically training of T5-large, BART-large and Llama2.</li>
 </ul>
 <hr />
-<h4 id="44-attitude_classifier"><strong>4.4 <code>attitude_classifier</code></strong></h4>
+<h4 id="4-attitude_classifier"><strong>4 <code>attitude_classifier</code></strong></h4>
 <p>The attitude classifier can contains the model and contains the scripts for the request classifier pipeline.</p>
 <ul>
 <li><strong>Files</strong>:</li>
@@ -972,7 +972,7 @@
 <li><code>attitude_classifier.yaml</code>: contains the packages and dependencies for the enviroment</li>
 </ul>
 <hr />
-<h4 id="45-request_classifier"><strong>4.5 <code>request_classifier</code></strong></h4>
+<h4 id="5-request_classifier"><strong>5 <code>request_classifier</code></strong></h4>
 <p>The request classifier can contains the model and contains the scripts for the request classifier pipeline.</p>
 <ul>
 <li><strong>Subdirectories</strong>:</li>
@@ -987,7 +987,7 @@
 <li><code>request_classifier.yaml</code>: contains the packages and dependencies for the enviroment</li>
 </ul>
 <hr />
-<h4 id="45-summary_generator"><strong>4.5 <code>summary_generator</code></strong></h4>
+<h4 id="6-summary_generator"><strong>6 <code>summary_generator</code></strong></h4>
 <p>The summyry generator folder can contains the model and contains the scripts for the summary generations.</p>
 <ul>
 <li><strong>Subdirectories</strong>:</li>

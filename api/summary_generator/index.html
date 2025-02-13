@@ -9,14 +9,14 @@
         <meta name="description" content="Dokumentation des DASP Report Template Projekts inklusive automatischer Docstring-Integration.">
       
       
-        <meta name="author" content="Johannes Lemken">
+        <meta name="author" content="Johannes Lemken, Carmen Appelt, Phillip Oehler, Jan Werth, Zhijingshui Yang">
       
       
       
         <link rel="prev" href="../request_classifier/">
       
       
-        <link rel="next" href="../readme/contact/">
+        <link rel="next" href="../test/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -66,6 +66,11 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
+      
+        
+        <a href="#summary-generator-api-documentation" class="md-skip">
+          Skip to content
+        </a>
       
     </div>
     <div data-md-component="announce">
@@ -649,6 +654,20 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Summary Generator
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -660,6 +679,169 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary_generator.main" class="md-nav__link">
+    <span class="md-ellipsis">
+      main
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary_generator.main.load_LLAMA2_model" class="md-nav__link">
+    <span class="md-ellipsis">
+      load_LLAMA2_model
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary_generator.main.predict" class="md-nav__link">
+    <span class="md-ellipsis">
+      predict
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary_generator.predict_LLAMA2" class="md-nav__link">
+    <span class="md-ellipsis">
+      predict_LLAMA2
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary_generator.predict_LLAMA2.predict" class="md-nav__link">
+    <span class="md-ellipsis">
+      predict
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary_generator.slurm_test" class="md-nav__link">
+    <span class="md-ellipsis">
+      slurm_test
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary_generator.input_to_prompt_converter" class="md-nav__link">
+    <span class="md-ellipsis">
+      input_to_prompt_converter
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary_generator.data_processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      data_processing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary_generator.data_processing.convert_dataframes_to_input" class="md-nav__link">
+    <span class="md-ellipsis">
+      convert_dataframes_to_input
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary_generator.data_processing.export_unlabeled_data" class="md-nav__link">
+    <span class="md-ellipsis">
+      export_unlabeled_data
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary_generator.data_processing.generate_attitude_roots_prompts" class="md-nav__link">
+    <span class="md-ellipsis">
+      generate_attitude_roots_prompts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary_generator.data_processing.generate_input_text" class="md-nav__link">
+    <span class="md-ellipsis">
+      generate_input_text
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary_generator.data_processing.generate_overview_prompts" class="md-nav__link">
+    <span class="md-ellipsis">
+      generate_overview_prompts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary_generator.data_processing.generate_request_information_prompts" class="md-nav__link">
+    <span class="md-ellipsis">
+      generate_request_information_prompts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary_generator.data_processing.predict_data" class="md-nav__link">
+    <span class="md-ellipsis">
+      predict_data
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary_generator.data_processing.process_csv_files" class="md-nav__link">
+    <span class="md-ellipsis">
+      process_csv_files
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -673,7 +855,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tests.md" class="md-nav__link">
+      <a href="../test/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -733,6 +915,160 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary_generator.main" class="md-nav__link">
+    <span class="md-ellipsis">
+      main
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary_generator.main.load_LLAMA2_model" class="md-nav__link">
+    <span class="md-ellipsis">
+      load_LLAMA2_model
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary_generator.main.predict" class="md-nav__link">
+    <span class="md-ellipsis">
+      predict
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary_generator.predict_LLAMA2" class="md-nav__link">
+    <span class="md-ellipsis">
+      predict_LLAMA2
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary_generator.predict_LLAMA2.predict" class="md-nav__link">
+    <span class="md-ellipsis">
+      predict
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary_generator.slurm_test" class="md-nav__link">
+    <span class="md-ellipsis">
+      slurm_test
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary_generator.input_to_prompt_converter" class="md-nav__link">
+    <span class="md-ellipsis">
+      input_to_prompt_converter
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary_generator.data_processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      data_processing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary_generator.data_processing.convert_dataframes_to_input" class="md-nav__link">
+    <span class="md-ellipsis">
+      convert_dataframes_to_input
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary_generator.data_processing.export_unlabeled_data" class="md-nav__link">
+    <span class="md-ellipsis">
+      export_unlabeled_data
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary_generator.data_processing.generate_attitude_roots_prompts" class="md-nav__link">
+    <span class="md-ellipsis">
+      generate_attitude_roots_prompts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary_generator.data_processing.generate_input_text" class="md-nav__link">
+    <span class="md-ellipsis">
+      generate_input_text
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary_generator.data_processing.generate_overview_prompts" class="md-nav__link">
+    <span class="md-ellipsis">
+      generate_overview_prompts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary_generator.data_processing.generate_request_information_prompts" class="md-nav__link">
+    <span class="md-ellipsis">
+      generate_request_information_prompts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary_generator.data_processing.predict_data" class="md-nav__link">
+    <span class="md-ellipsis">
+      predict_data
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary_generator.data_processing.process_csv_files" class="md-nav__link">
+    <span class="md-ellipsis">
+      process_csv_files
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -751,9 +1087,2062 @@
   
 
 
-  <h1>Summary Generator</h1>
+<h1 id="summary-generator-api-documentation">Summary Generator API Documentation</h1>
 
 
+<div class="doc doc-object doc-module">
+
+
+
+<a id="summary_generator.main"></a>
+    <div class="doc doc-contents first">
+
+        <p>main.py</p>
+<p>A FastAPI application that exposes an endpoint for generating summaries
+from preprocessed data.</p>
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="summary_generator.main.load_LLAMA2_model" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">load_LLAMA2_model</span><span class="p">(</span><span class="n">model_dir</span><span class="o">=</span><span class="s1">&#39;./models/llama2&#39;</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Load a LLaMA 2 model from Hugging Face that is supposed to be stored locally at the given path.
+For a real-world scenario, ensure you have:
+  - 'transformers&gt;=4.30'
+  - 'sentencepiece'
+  - You have accepted the license for LLaMA2 if it's gated.</p>
+<p>Args:
+      model_dir (str): path to directory where the model is supposed to be stored.</p>
+
+            <details class="quote">
+              <summary>Source code in <code>summary_generator\main.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">on_event</span><span class="p">(</span><span class="s2">&quot;startup&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">load_LLAMA2_model</span><span class="p">(</span><span class="n">model_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;./models/llama2&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Load a LLaMA 2 model from Hugging Face that is supposed to be stored locally at the given path.</span>
+<span class="sd">    For a real-world scenario, ensure you have:</span>
+<span class="sd">      - &#39;transformers&gt;=4.30&#39;</span>
+<span class="sd">      - &#39;sentencepiece&#39;</span>
+<span class="sd">      - You have accepted the license for LLaMA2 if it&#39;s gated.</span>
+
+<span class="sd">      Args:</span>
+<span class="sd">          model_dir (str): path to directory where the model is supposed to be stored.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">model</span><span class="p">,</span> <span class="n">tokenizer</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Loading model &#39;</span><span class="si">{</span><span class="n">model_dir</span><span class="si">}</span><span class="s2">&#39; from Hugging Face...&quot;</span><span class="p">)</span>
+
+    <span class="n">hf_dir</span> <span class="o">=</span> <span class="s2">&quot;DASP-ROG/SummaryModel&quot;</span>
+    <span class="n">tokenizer</span> <span class="o">=</span> <span class="n">LlamaTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">hf_dir</span><span class="p">,</span> <span class="n">cache_dir</span><span class="o">=</span><span class="n">model_dir</span><span class="p">,</span> <span class="n">legacy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">LlamaForCausalLM</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
+        <span class="n">hf_dir</span><span class="p">,</span>
+        <span class="n">torch_dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float16</span><span class="p">,</span>
+        <span class="n">cache_dir</span><span class="o">=</span><span class="n">model_dir</span><span class="p">,</span>
+        <span class="n">device_map</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Set pad_token to eos_token</span>
+    <span class="n">tokenizer</span><span class="o">.</span><span class="n">pad_token</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">eos_token</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">pad_token_id</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">eos_token_id</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Model loaded successfully.&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="summary_generator.main.predict" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">predict</span><span class="p">(</span><span class="n">overview_df</span><span class="p">,</span> <span class="n">attitude_df</span><span class="p">,</span> <span class="n">request_df</span><span class="p">)</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-async"><code>async</code></small>
+  </span>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Generate a summary using the provided overview, attitude, and request data.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>overview_df</code>
+            </td>
+            <td>
+                  <code><span title="summary_generator.main.RawInput">RawInput</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Overview data.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>attitude_df</code>
+            </td>
+            <td>
+                  <code><span title="summary_generator.main.RawInput">RawInput</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Attitude roots data.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>request_df</code>
+            </td>
+            <td>
+                  <code><span title="summary_generator.main.RawInput">RawInput</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Request information data.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code>list[dict]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>list[dict]: A list of summary lines formatted as dictionaries.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+            <details class="quote">
+              <summary>Source code in <code>summary_generator\main.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/generate_summary&quot;</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="n">overview_df</span><span class="p">:</span> <span class="n">RawInput</span><span class="p">,</span> <span class="n">attitude_df</span><span class="p">:</span> <span class="n">RawInput</span><span class="p">,</span> <span class="n">request_df</span><span class="p">:</span> <span class="n">RawInput</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generate a summary using the provided overview, attitude, and request data.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        overview_df (RawInput): Overview data.</span>
+<span class="sd">        attitude_df (RawInput): Attitude roots data.</span>
+<span class="sd">        request_df (RawInput): Request information data.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        list[dict]: A list of summary lines formatted as dictionaries.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">model</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">tokenizer</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;Model not loaded yet&quot;</span><span class="p">)</span>
+
+        <span class="c1"># 1) Transform json files into dfs</span>
+        <span class="n">overview</span> <span class="o">=</span> <span class="n">overview_df</span><span class="o">.</span><span class="n">data</span>
+        <span class="n">overview_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">overview</span><span class="p">)</span>
+
+        <span class="n">attitude</span> <span class="o">=</span> <span class="n">attitude_df</span><span class="o">.</span><span class="n">data</span>
+        <span class="n">attitude_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">attitude</span><span class="p">)</span>
+
+        <span class="n">request</span> <span class="o">=</span> <span class="n">request_df</span><span class="o">.</span><span class="n">data</span>
+        <span class="n">request_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+
+        <span class="c1"># 2) Transform overview into its final text and extract lists with attributes and comments of attitude and request</span>
+        <span class="n">overview_output</span><span class="p">,</span> <span class="n">attitude_list</span><span class="p">,</span> <span class="n">request_list</span> <span class="o">=</span> <span class="n">generate_input_text</span><span class="p">(</span><span class="n">overview_df</span><span class="p">,</span> <span class="n">attitude_df</span><span class="p">,</span> <span class="n">request_df</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Generating input text from data&quot;</span><span class="p">)</span>
+
+        <span class="c1"># # 3) load model for prediction</span>
+        <span class="c1"># model, tokenizer = predict_LLAMA2.load_LLAMA2_model(model_dir=&quot;models/llama2/&quot;)</span>
+        <span class="c1"># logger.info(&quot;Model loaded successfully.&quot;)</span>
+
+        <span class="c1"># 4) just reuse the finalized overview data</span>
+        <span class="n">summary</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">summary</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;#### Overview&quot;</span><span class="p">)</span>
+        <span class="n">summary</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">overview_output</span><span class="p">)</span>
+        <span class="c1">#for line in overview_output.splitlines():</span>
+        <span class="c1">#    summary.append(line)</span>
+
+        <span class="c1"># 5) add given Attitude Roots and their AI generated summary of comments</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Processing Attitude Roots...&quot;</span><span class="p">)</span>
+        <span class="n">summary</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">summary</span><span class="o">.</span><span class="n">append</span> <span class="p">(</span><span class="s2">&quot;#### Attitude Roots&quot;</span><span class="p">)</span>
+        <span class="n">attitude_roots</span><span class="p">,</span> <span class="n">comments</span> <span class="o">=</span> <span class="n">attitude_list</span>
+
+        <span class="c1"># case of no return what means that there arent any attitude roots</span>
+        <span class="k">if</span> <span class="n">attitude_roots</span> <span class="o">==</span> <span class="p">[]</span> <span class="ow">and</span> <span class="n">comments</span> <span class="o">==</span> <span class="p">[]:</span>
+            <span class="n">summary</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;No attitude roots were found during analysis.&quot;</span><span class="p">)</span>
+
+        <span class="c1"># case of return what means we can predict!</span>
+        <span class="k">for</span> <span class="n">attitude</span><span class="p">,</span> <span class="n">comment</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">attitude_roots</span><span class="p">,</span> <span class="n">comments</span><span class="p">):</span>
+            <span class="n">pred</span> <span class="o">=</span> <span class="n">predict_LLAMA2</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">comment</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">tokenizer</span><span class="o">=</span><span class="n">tokenizer</span><span class="p">)</span>
+            <span class="n">summary</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">attitude</span><span class="si">}</span><span class="s2">  </span><span class="se">\n</span><span class="s2"> *AI aggregated comments*: </span><span class="si">{</span><span class="n">pred</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+        <span class="c1"># 6) add given Reqest Information and their AI generated summary of comments</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Processing Request Information...&quot;</span><span class="p">)</span>
+        <span class="n">summary</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">summary</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;#### Request Information&quot;</span><span class="p">)</span>
+        <span class="n">requests</span><span class="p">,</span> <span class="n">comments</span> <span class="o">=</span> <span class="n">request_list</span>
+
+        <span class="c1"># case of no return what means that there arent any attitude roots</span>
+        <span class="k">if</span> <span class="n">requests</span> <span class="o">==</span> <span class="p">[]</span> <span class="ow">and</span> <span class="n">comments</span> <span class="o">==</span> <span class="p">[]:</span>
+            <span class="n">summary</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;No request information were found during analysis.&quot;</span><span class="p">)</span>
+
+        <span class="c1"># case of return what means we can predict!</span>
+        <span class="k">for</span> <span class="n">request</span><span class="p">,</span> <span class="n">comment</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">requests</span><span class="p">,</span> <span class="n">comments</span><span class="p">):</span>
+            <span class="n">pred</span> <span class="o">=</span> <span class="n">predict_LLAMA2</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">comment</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">tokenizer</span><span class="o">=</span><span class="n">tokenizer</span><span class="p">)</span>
+            <span class="n">summary</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">request</span><span class="si">}</span><span class="s2">  </span><span class="se">\n</span><span class="s2"> *AI aggregated comments*: </span><span class="si">{</span><span class="n">pred</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="n">summary_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">summary</span><span class="p">)</span>
+
+        <span class="c1"># # TODO: remove this line when we use the model for prediction</span>
+        <span class="c1"># # summary_df = pd.DataFrame([&quot;## Temporary dummy&quot;, &quot;We currently commented out AI summary generation. Go to DASP_report_template/summary_generator/main.py to use it again.&quot;])</span>
+
+        <span class="n">summary_df_dict</span> <span class="o">=</span> <span class="n">summary_df</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="s2">&quot;records&quot;</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Summary generation completed successfully.&quot;</span><span class="p">)</span>
+
+        <span class="c1"># with open(&quot;summary.json&quot;, &quot;r&quot;) as f:</span>
+        <span class="c1">#     summary_df_dict = json.load(f)</span>
+
+
+        <span class="k">return</span> <span class="n">summary_df_dict</span>
+
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Error processing data: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="summary_generator.predict_LLAMA2"></a>
+    <div class="doc doc-contents first">
+
+        <p>predict_LLAMA2.py</p>
+<p>A script that:
+1) Loads a LLaMA2 model from Hugging Face
+2) Predicts summary of input</p>
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="summary_generator.predict_LLAMA2.predict" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">predict</span><span class="p">(</span><span class="n">input_text</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tokenizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">model_dir</span><span class="o">=</span><span class="s1">&#39;/storage/ukp/shared/shared_model_weights/models--llama-2-hf/7B-Chat&#39;</span><span class="p">,</span> <span class="n">min_new_tokens</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">max_new_tokens_cap</span><span class="o">=</span><span class="mi">512</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Build the prompt from real data, run generation on LLaMA 2, 
+and return an output that is capped by <code>max_new_tokens_cap</code>.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>input_text</code>
+            </td>
+            <td>
+                  <code>str</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Raw text or data for the prompt builder.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>model_dir</code>
+            </td>
+            <td>
+                  <code>str</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Path or HF repo for your LLaMA2 model.</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;/storage/ukp/shared/shared_model_weights/models--llama-2-hf/7B-Chat&#39;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>min_new_tokens</code>
+            </td>
+            <td>
+                  <code>int</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Ensures we generate at least this many tokens.</p>
+              </div>
+            </td>
+            <td>
+                  <code>20</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>max_new_tokens_cap</code>
+            </td>
+            <td>
+                  <code>int</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Hard upper bound on new tokens generated.</p>
+              </div>
+            </td>
+            <td>
+                  <code>512</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>str</code></td>            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The final generated text (prompt echo stripped).</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+            <details class="quote">
+              <summary>Source code in <code>summary_generator\predict_LLAMA2.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span>
+<span class="normal">87</span>
+<span class="normal">88</span>
+<span class="normal">89</span>
+<span class="normal">90</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">predict</span><span class="p">(</span>
+        <span class="n">input_text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">model</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">tokenizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">model_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;/storage/ukp/shared/shared_model_weights/models--llama-2-hf/7B-Chat&quot;</span><span class="p">,</span>
+        <span class="n">min_new_tokens</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span>
+        <span class="n">max_new_tokens_cap</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">512</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Build the prompt from real data, run generation on LLaMA 2, </span>
+<span class="sd">    and return an output that is capped by `max_new_tokens_cap`.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        input_text (str): Raw text or data for the prompt builder.</span>
+<span class="sd">        model_dir (str): Path or HF repo for your LLaMA2 model.</span>
+<span class="sd">        min_new_tokens (int): Ensures we generate at least this many tokens.</span>
+<span class="sd">        max_new_tokens_cap (int): Hard upper bound on new tokens generated.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: The final generated text (prompt echo stripped).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># 1) Load model &amp; tokenizer if needed</span>
+    <span class="c1"># if (model is None and tokenizer is None):</span>
+    <span class="c1">#     model, tokenizer = load_LLAMA2_model(model_dir)</span>
+
+    <span class="c1"># 2) Build the final prompt from the input data</span>
+    <span class="n">prompt</span> <span class="o">=</span> <span class="n">input_to_prompt_converter</span><span class="o">.</span><span class="n">build_llama2_prompt</span><span class="p">(</span><span class="n">input_text</span><span class="p">)</span>
+    <span class="c1"># logger.info(&quot;Prompt is ready. Calculating lengths and generating...&quot;)</span>
+
+    <span class="c1"># 3) Measure the prompt and input length in tokens</span>
+    <span class="n">prompt_tokens</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="p">(</span><span class="n">prompt</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s2">&quot;pt&quot;</span><span class="p">,</span> <span class="n">add_special_tokens</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1"># 4) Move everything to the model&#39;s device</span>
+    <span class="n">device</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">device</span>
+    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">prompt_tokens</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">prompt_tokens</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+    <span class="c1"># 5) Create generation config</span>
+    <span class="n">gen_config</span> <span class="o">=</span> <span class="n">GenerationConfig</span><span class="p">(</span>
+        <span class="n">max_new_tokens</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span>
+        <span class="n">do_sample</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">temperature</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
+        <span class="n">top_p</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
+        <span class="n">repetition_penalty</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span>  <span class="c1"># helps reduce repeated tokens</span>
+        <span class="c1"># Additional parameters (e.g., num_beams) if desired</span>
+    <span class="p">)</span>
+
+    <span class="c1"># 6) Generate</span>
+    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+        <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="o">**</span><span class="n">prompt_tokens</span><span class="p">,</span> <span class="n">generation_config</span><span class="o">=</span><span class="n">gen_config</span><span class="p">)</span>
+
+    <span class="c1"># 7) Decode</span>
+    <span class="n">decoded</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">batch_decode</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">skip_special_tokens</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># 8) LLaMA often re-echos the prompt. Remove it if present:</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">decoded</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">prompt</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">prompt</span><span class="p">):]</span>
+
+    <span class="c1"># 9) Remove &quot;Summary: &quot; prefix if present</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">lstrip</span><span class="p">()</span>
+    <span class="n">summary_prefix</span> <span class="o">=</span> <span class="s2">&quot;Summary:&quot;</span>
+    <span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">summary_prefix</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">summary_prefix</span><span class="p">):]</span>
+
+    <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="summary_generator.slurm_test"></a>
+    <div class="doc doc-contents first">
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="summary_generator.input_to_prompt_converter"></a>
+    <div class="doc doc-contents first">
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="summary_generator.data_processing"></a>
+    <div class="doc doc-contents first">
+
+        <p>data_processing.py</p>
+<p>Provides functions for processing CSV files, converting DataFrames into input text,
+and exporting data. Also includes functions for generating prompts for overview,
+attitude roots, and request information.</p>
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="summary_generator.data_processing.convert_dataframes_to_input" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">convert_dataframes_to_input</span><span class="p">(</span><span class="n">folder_dataframes</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Converts a dictionary of folder DataFrames into input strings for each folder.</p>
+<p>This function takes the processed DataFrames for each folder and generates input text
+using the <code>generate_input_text</code> function. It ensures that each folder has exactly three
+DataFrames before processing.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>folder_dataframes</code>
+            </td>
+            <td>
+                  <code>dict</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A dictionary where each key is a folder name and each value
+                      is a list of three DataFrames (overview, attitude_roots, request_information).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>dict</code></td>            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A dictionary where each key is a folder name and each value is the generated input text.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+            <details class="quote">
+              <summary>Source code in <code>summary_generator\data_processing.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span>
+<span class="normal">87</span>
+<span class="normal">88</span>
+<span class="normal">89</span>
+<span class="normal">90</span>
+<span class="normal">91</span>
+<span class="normal">92</span>
+<span class="normal">93</span>
+<span class="normal">94</span>
+<span class="normal">95</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">convert_dataframes_to_input</span><span class="p">(</span><span class="n">folder_dataframes</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Converts a dictionary of folder DataFrames into input strings for each folder.</span>
+
+<span class="sd">    This function takes the processed DataFrames for each folder and generates input text</span>
+<span class="sd">    using the `generate_input_text` function. It ensures that each folder has exactly three</span>
+<span class="sd">    DataFrames before processing.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        folder_dataframes (dict): A dictionary where each key is a folder name and each value</span>
+<span class="sd">                                  is a list of three DataFrames (overview, attitude_roots, request_information).</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dict: A dictionary where each key is a folder name and each value is the generated input text.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Dictionary to store input strings for each folder</span>
+    <span class="n">folder_inputs</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">for</span> <span class="n">folder</span><span class="p">,</span> <span class="n">dfs</span> <span class="ow">in</span> <span class="n">folder_dataframes</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">dfs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="n">overview_df</span><span class="p">,</span> <span class="n">attitude_df</span><span class="p">,</span> <span class="n">request_df</span> <span class="o">=</span> <span class="n">dfs</span>
+            <span class="c1"># Generate input text using the imported function</span>
+            <span class="n">input_text</span> <span class="o">=</span> <span class="n">generate_input_text</span><span class="p">(</span><span class="n">overview_df</span><span class="p">,</span> <span class="n">attitude_df</span><span class="p">,</span> <span class="n">request_df</span><span class="p">)</span>
+            <span class="n">folder_inputs</span><span class="p">[</span><span class="n">folder</span><span class="p">]</span> <span class="o">=</span> <span class="n">input_text</span>
+
+    <span class="k">return</span> <span class="n">folder_inputs</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="summary_generator.data_processing.export_unlabeled_data" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">export_unlabeled_data</span><span class="p">()</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Exports aggregated comments from all folders into a JSON Lines file.</p>
+<p>This function processes CSV files from each folder, generates input text,
+extracts comments from attitude roots and request information, and writes them
+as JSON objects to a <code>.jsonl</code> file. Each line in the file represents a JSON object
+with an "input" key containing the comment text.</p>
+<p>The exported file is named "real_world_data_unlabeled.jsonl".</p>
+
+            <details class="quote">
+              <summary>Source code in <code>summary_generator\data_processing.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">export_unlabeled_data</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Exports aggregated comments from all folders into a JSON Lines file.</span>
+
+<span class="sd">    This function processes CSV files from each folder, generates input text,</span>
+<span class="sd">    extracts comments from attitude roots and request information, and writes them</span>
+<span class="sd">    as JSON objects to a `.jsonl` file. Each line in the file represents a JSON object</span>
+<span class="sd">    with an &quot;input&quot; key containing the comment text.</span>
+
+<span class="sd">    The exported file is named &quot;real_world_data_unlabeled.jsonl&quot;.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">complete_export</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">folder_dataframes</span> <span class="o">=</span> <span class="n">process_csv_files</span><span class="p">()</span>  <span class="c1"># return a list [overview_df, attitude_df, request_df]</span>
+    <span class="c1"># dfs = [overview_df, attitude_df, request_df]</span>
+    <span class="k">for</span> <span class="n">folder</span><span class="p">,</span> <span class="n">dfs</span> <span class="ow">in</span> <span class="n">folder_dataframes</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">overview_df</span><span class="p">,</span> <span class="n">attitude_df</span><span class="p">,</span> <span class="n">request_df</span> <span class="o">=</span> <span class="n">dfs</span>
+        <span class="n">overview_output</span><span class="p">,</span> <span class="n">attitude_list</span><span class="p">,</span> <span class="n">request_list</span> <span class="o">=</span> <span class="n">generate_input_text</span><span class="p">(</span><span class="n">overview_df</span><span class="p">,</span> <span class="n">attitude_df</span><span class="p">,</span> <span class="n">request_df</span><span class="p">)</span>
+
+        <span class="c1"># export each comment</span>
+        <span class="n">attitude_roots</span><span class="p">,</span> <span class="n">comments</span> <span class="o">=</span> <span class="n">attitude_list</span>
+        <span class="k">for</span> <span class="n">comment</span> <span class="ow">in</span> <span class="n">comments</span><span class="p">:</span>
+            <span class="n">part_string_for_export</span> <span class="o">=</span> <span class="s1">&#39;{&quot;input&quot;: &quot;&#39;</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">comment</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s1">&#39;&quot;}</span><span class="se">\n</span><span class="s1">&#39;</span>
+            <span class="n">complete_export</span> <span class="o">+=</span> <span class="n">part_string_for_export</span>
+
+        <span class="n">request</span><span class="p">,</span> <span class="n">comments</span> <span class="o">=</span> <span class="n">request_list</span>
+        <span class="k">for</span> <span class="n">comments</span> <span class="ow">in</span> <span class="n">comments</span><span class="p">:</span>
+            <span class="n">part_string_for_export</span> <span class="o">=</span> <span class="s1">&#39;{&quot;input&quot;: &quot;&#39;</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">comments</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s1">&#39;&quot;}</span><span class="se">\n</span><span class="s1">&#39;</span>
+            <span class="n">complete_export</span> <span class="o">+=</span> <span class="n">part_string_for_export</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">complete_export</span><span class="p">)</span>        
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;real_world_data_unlabeled.jsonl&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">output_file</span><span class="p">:</span>
+        <span class="n">output_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">complete_export</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Predictions have been exported to real_word_data_unlabeled.jsonl&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="summary_generator.data_processing.generate_attitude_roots_prompts" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">generate_attitude_roots_prompts</span><span class="p">(</span><span class="n">attitude_df</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Summarizes attitude roots by frequency and aggregates related comments.</p>
+<p>This function processes the attitude roots DataFrame to generate descriptive lines
+indicating how often each attitude root appears and includes any associated descriptions.
+It also aggregates comments related to each attitude root.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>attitude_df</code>
+            </td>
+            <td>
+                  <code><span title="pandas.DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>DataFrame containing attitude roots information with columns
+                        like 'Attitude_roots', 'Frequency', 'Descriptions', and 'Comments'.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>list</code></td>            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A list containing two elements:
+  1. A list of summary lines for each attitude root.
+  2. A list of aggregated comments for each attitude root.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+            <details class="quote">
+              <summary>Source code in <code>summary_generator\data_processing.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">generate_attitude_roots_prompts</span><span class="p">(</span><span class="n">attitude_df</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Summarizes attitude roots by frequency and aggregates related comments.</span>
+
+<span class="sd">    This function processes the attitude roots DataFrame to generate descriptive lines</span>
+<span class="sd">    indicating how often each attitude root appears and includes any associated descriptions.</span>
+<span class="sd">    It also aggregates comments related to each attitude root.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        attitude_df (pd.DataFrame): DataFrame containing attitude roots information with columns</span>
+<span class="sd">                                    like &#39;Attitude_roots&#39;, &#39;Frequency&#39;, &#39;Descriptions&#39;, and &#39;Comments&#39;.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        list: A list containing two elements:</span>
+<span class="sd">              1. A list of summary lines for each attitude root.</span>
+<span class="sd">              2. A list of aggregated comments for each attitude root.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">attitude_df</span><span class="p">[</span><span class="s1">&#39;Frequency_Percent&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">attitude_df</span><span class="p">[</span><span class="s1">&#39;Frequency&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">comments</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">attitude_df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+        <span class="n">root</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Attitude_roots&#39;</span><span class="p">]</span>
+        <span class="n">freq</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Frequency_Percent&#39;</span><span class="p">]</span>
+        <span class="n">descr</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Descriptions&#39;</span><span class="p">]</span>
+        <span class="n">comments_list</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Comments&#39;</span><span class="p">]</span>
+
+        <span class="n">combined_comments</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">comment_chunk</span> <span class="ow">in</span> <span class="n">comments_list</span><span class="p">:</span>
+            <span class="n">combined_comments</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">comment_chunk</span><span class="p">))</span>
+
+        <span class="n">all_comments</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">combined_comments</span><span class="p">)</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;- **</span><span class="si">{</span><span class="n">root</span><span class="si">}</span><span class="s2">** was indicated in </span><span class="si">{</span><span class="n">freq</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">% of responses. </span><span class="si">{</span><span class="n">descr</span><span class="si">}</span><span class="s2">.&quot;</span>
+        <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+        <span class="n">comments</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">all_comments</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">[</span><span class="n">lines</span><span class="p">,</span> <span class="n">comments</span><span class="p">]</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="summary_generator.data_processing.generate_input_text" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">generate_input_text</span><span class="p">(</span><span class="n">overview_df</span><span class="p">,</span> <span class="n">attitude_df</span><span class="p">,</span> <span class="n">request_df</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Generates structured input text from overview, attitude, and request DataFrames.</p>
+<p>This function combines the outputs from generating overview prompts, attitude roots prompts,
+and request information prompts into a single structured input. It organizes the data
+with clear section headings for further processing or model input.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>overview_df</code>
+            </td>
+            <td>
+                  <code><span title="pandas.DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>DataFrame containing overview information.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>attitude_df</code>
+            </td>
+            <td>
+                  <code><span title="pandas.DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>DataFrame containing attitude roots information.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>request_df</code>
+            </td>
+            <td>
+                  <code><span title="pandas.DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>DataFrame containing request information.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>tuple</code></td>            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A tuple containing three elements:
+   1. Overview summary string.
+   2. List containing attitude roots summary lines and aggregated comments.
+   3. List containing request information summary lines and aggregated comments.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+            <details class="quote">
+              <summary>Source code in <code>summary_generator\data_processing.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">generate_input_text</span><span class="p">(</span><span class="n">overview_df</span><span class="p">,</span> <span class="n">attitude_df</span><span class="p">,</span> <span class="n">request_df</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generates structured input text from overview, attitude, and request DataFrames.</span>
+
+<span class="sd">    This function combines the outputs from generating overview prompts, attitude roots prompts,</span>
+<span class="sd">    and request information prompts into a single structured input. It organizes the data</span>
+<span class="sd">    with clear section headings for further processing or model input.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        overview_df (pd.DataFrame): DataFrame containing overview information.</span>
+<span class="sd">        attitude_df (pd.DataFrame): DataFrame containing attitude roots information.</span>
+<span class="sd">        request_df (pd.DataFrame): DataFrame containing request information.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        tuple: A tuple containing three elements:</span>
+<span class="sd">               1. Overview summary string.</span>
+<span class="sd">               2. List containing attitude roots summary lines and aggregated comments.</span>
+<span class="sd">               3. List containing request information summary lines and aggregated comments.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Collect all prompts from the three scripts</span>
+    <span class="n">overview_output</span> <span class="o">=</span> <span class="n">generate_overview_prompts</span><span class="p">(</span><span class="n">overview_df</span><span class="p">)</span>
+    <span class="n">attitude_list</span> <span class="o">=</span> <span class="n">generate_attitude_roots_prompts</span><span class="p">(</span><span class="n">attitude_df</span><span class="p">)</span>
+    <span class="n">request_list</span> <span class="o">=</span> <span class="n">generate_request_information_prompts</span><span class="p">(</span><span class="n">request_df</span><span class="p">)</span>
+
+    <span class="c1"># Combine all data into a single prompt with clear section headings</span>
+
+    <span class="k">return</span> <span class="n">overview_output</span><span class="p">,</span> <span class="n">attitude_list</span><span class="p">,</span> <span class="n">request_list</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="summary_generator.data_processing.generate_overview_prompts" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">generate_overview_prompts</span><span class="p">(</span><span class="n">overview_df</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Builds summary lines for each category based on average scores and identifies outliers.</p>
+<p>This function processes the overview DataFrame to generate descriptive sentences
+summarizing the average scores for each category. It also identifies and notes any
+outlier scores that deviate significantly from the average.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>overview_df</code>
+            </td>
+            <td>
+                  <code><span title="pandas.DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>DataFrame containing overview information with columns
+                         like 'Category', 'Avg_Score', and 'Individual_scores'.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>str</code></td>            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A concatenated string of summary sentences for each category.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+            <details class="quote">
+              <summary>Source code in <code>summary_generator\data_processing.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">generate_overview_prompts</span><span class="p">(</span><span class="n">overview_df</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Builds summary lines for each category based on average scores and identifies outliers.</span>
+
+<span class="sd">    This function processes the overview DataFrame to generate descriptive sentences</span>
+<span class="sd">    summarizing the average scores for each category. It also identifies and notes any</span>
+<span class="sd">    outlier scores that deviate significantly from the average.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        overview_df (pd.DataFrame): DataFrame containing overview information with columns</span>
+<span class="sd">                                     like &#39;Category&#39;, &#39;Avg_Score&#39;, and &#39;Individual_scores&#39;.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: A concatenated string of summary sentences for each category.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">max_scores</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Rating&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;Soundness&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;Presentation&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;Contribution&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">}</span>
+    <span class="n">threshold</span> <span class="o">=</span> <span class="mf">1.5</span>
+    <span class="n">overview_sentences</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">overview_df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+        <span class="n">category</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Category&#39;</span><span class="p">]</span>
+        <span class="n">avg_score</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Avg_Score&#39;</span><span class="p">]</span>
+        <span class="n">individual_scores</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Individual_scores&#39;</span><span class="p">]</span>
+        <span class="n">max_score</span> <span class="o">=</span> <span class="n">max_scores</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">category</span><span class="p">,</span> <span class="s2">&quot;Unknown&quot;</span><span class="p">)</span>
+
+        <span class="n">scores</span> <span class="o">=</span> <span class="p">[</span><span class="n">score</span> <span class="k">for</span> <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">score</span><span class="p">)</span> <span class="ow">in</span> <span class="n">individual_scores</span> <span class="k">if</span> <span class="n">score</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">]</span>
+        <span class="n">outliers</span> <span class="o">=</span> <span class="p">[</span><span class="n">sc</span> <span class="k">for</span> <span class="n">sc</span> <span class="ow">in</span> <span class="n">scores</span> <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">sc</span> <span class="o">-</span> <span class="n">avg_score</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">]</span>
+
+        <span class="n">sentence</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;- **</span><span class="si">{</span><span class="n">category</span><span class="si">}</span><span class="s2">** is </span><span class="si">{</span><span class="n">avg_score</span><span class="si">}</span><span class="s2"> out of </span><span class="si">{</span><span class="n">max_score</span><span class="si">}</span><span class="s2">.&quot;</span>
+        <span class="k">if</span> <span class="n">outliers</span><span class="p">:</span>
+            <span class="n">unique_outliers</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">outliers</span><span class="p">))</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">unique_outliers</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">outliers_text</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;a rating at </span><span class="si">{</span><span class="n">unique_outliers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">outliers_text</span> <span class="o">=</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="sa">f</span><span class="s2">&quot;a rating at </span><span class="si">{</span><span class="n">sc</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">sc</span> <span class="ow">in</span> <span class="n">unique_outliers</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+                <span class="n">outliers_text</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot; and a rating at </span><span class="si">{</span><span class="n">unique_outliers</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="n">sentence</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot; Outlier was </span><span class="si">{</span><span class="n">outliers_text</span><span class="si">}</span><span class="s2">.&quot;</span>
+
+        <span class="n">overview_sentences</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">overview_sentences</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="summary_generator.data_processing.generate_request_information_prompts" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">generate_request_information_prompts</span><span class="p">(</span><span class="n">request_df</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Summarizes request information by type, frequency, and aggregates related comments.</p>
+<p>This function processes the request information DataFrame to generate descriptive lines
+indicating how often each type of request was made. It also aggregates comments related
+to each request type.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>request_df</code>
+            </td>
+            <td>
+                  <code><span title="pandas.DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>DataFrame containing request information with columns
+                       like 'Request Information', 'Frequency', and 'Comments'.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>list</code></td>            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A list containing two elements:
+  1. A list of summary lines for each request type.
+  2. A list of aggregated comments for each request type.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+            <details class="quote">
+              <summary>Source code in <code>summary_generator\data_processing.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">generate_request_information_prompts</span><span class="p">(</span><span class="n">request_df</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Summarizes request information by type, frequency, and aggregates related comments.</span>
+
+<span class="sd">    This function processes the request information DataFrame to generate descriptive lines</span>
+<span class="sd">    indicating how often each type of request was made. It also aggregates comments related</span>
+<span class="sd">    to each request type.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        request_df (pd.DataFrame): DataFrame containing request information with columns</span>
+<span class="sd">                                   like &#39;Request Information&#39;, &#39;Frequency&#39;, and &#39;Comments&#39;.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        list: A list containing two elements:</span>
+<span class="sd">              1. A list of summary lines for each request type.</span>
+<span class="sd">              2. A list of aggregated comments for each request type.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">request_df</span><span class="p">[</span><span class="s1">&#39;Frequency_Percent&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">request_df</span><span class="p">[</span><span class="s1">&#39;Frequency&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">comments</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">request_df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+        <span class="n">request_type</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Request Information&#39;</span><span class="p">]</span>
+        <span class="n">freq</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Frequency_Percent&#39;</span><span class="p">]</span>
+        <span class="n">comments_list</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Comments&#39;</span><span class="p">]</span>
+
+        <span class="n">combined_comments</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">comments_list</span><span class="p">:</span>
+            <span class="n">combined_comments</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">chunk</span><span class="p">))</span>
+
+        <span class="n">all_comments</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">combined_comments</span><span class="p">)</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;- **</span><span class="si">{</span><span class="n">request_type</span><span class="si">}</span><span class="s2">** was requested in </span><span class="si">{</span><span class="n">freq</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">% of replies.&quot;</span>
+        <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+        <span class="n">comments</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">all_comments</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">[</span><span class="n">lines</span><span class="p">,</span> <span class="n">comments</span><span class="p">]</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="summary_generator.data_processing.predict_data" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">predict_data</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">tokenizer</span><span class="p">,</span> <span class="n">overview_df</span><span class="p">,</span> <span class="n">attitude_df</span><span class="p">,</span> <span class="n">request_df</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Generates predictions by aggregating summaries using a machine learning model.</p>
+<p>This function processes the overview, attitude roots, and request information DataFrames
+to generate summaries. It utilizes the provided model and tokenizer to generate AI-aggregated
+comments for attitude roots and request information sections.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>model</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The machine learning model used to generate predictions.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>tokenizer</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The tokenizer associated with the model for processing input text.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>overview_df</code>
+            </td>
+            <td>
+                  <code><span title="pandas.DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>DataFrame containing overview information.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>attitude_df</code>
+            </td>
+            <td>
+                  <code><span title="pandas.DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>DataFrame containing attitude roots information.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>request_df</code>
+            </td>
+            <td>
+                  <code><span title="pandas.DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>DataFrame containing request information.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>str</code></td>            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The aggregated summary containing both original and AI-generated sections.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+            <details class="quote">
+              <summary>Source code in <code>summary_generator\data_processing.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
+<span class="normal">316</span>
+<span class="normal">317</span>
+<span class="normal">318</span>
+<span class="normal">319</span>
+<span class="normal">320</span>
+<span class="normal">321</span>
+<span class="normal">322</span>
+<span class="normal">323</span>
+<span class="normal">324</span>
+<span class="normal">325</span>
+<span class="normal">326</span>
+<span class="normal">327</span>
+<span class="normal">328</span>
+<span class="normal">329</span>
+<span class="normal">330</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">predict_data</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">tokenizer</span><span class="p">,</span> <span class="n">overview_df</span><span class="p">,</span> <span class="n">attitude_df</span><span class="p">,</span> <span class="n">request_df</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generates predictions by aggregating summaries using a machine learning model.</span>
+
+<span class="sd">    This function processes the overview, attitude roots, and request information DataFrames</span>
+<span class="sd">    to generate summaries. It utilizes the provided model and tokenizer to generate AI-aggregated</span>
+<span class="sd">    comments for attitude roots and request information sections.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        model: The machine learning model used to generate predictions.</span>
+<span class="sd">        tokenizer: The tokenizer associated with the model for processing input text.</span>
+<span class="sd">        overview_df (pd.DataFrame): DataFrame containing overview information.</span>
+<span class="sd">        attitude_df (pd.DataFrame): DataFrame containing attitude roots information.</span>
+<span class="sd">        request_df (pd.DataFrame): DataFrame containing request information.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: The aggregated summary containing both original and AI-generated sections.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">overview_output</span><span class="p">,</span> <span class="n">attitude_list</span><span class="p">,</span> <span class="n">request_list</span> <span class="o">=</span> <span class="n">generate_input_text</span><span class="p">(</span><span class="n">overview_df</span><span class="p">,</span> <span class="n">attitude_df</span><span class="p">,</span> <span class="n">request_df</span><span class="p">)</span>
+
+    <span class="c1"># 1) Write Overview part without AI</span>
+    <span class="n">summary</span> <span class="o">=</span> <span class="s2">&quot;Overview: </span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="n">summary</span> <span class="o">+=</span> <span class="n">overview_output</span>
+
+    <span class="c1"># 2) add AI generated summary of Attitude Roots</span>
+    <span class="n">summary</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Attitude Roots: </span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="n">attitude_roots</span><span class="p">,</span> <span class="n">comments</span> <span class="o">=</span> <span class="n">attitude_list</span>
+    <span class="k">for</span> <span class="n">attitude</span><span class="p">,</span> <span class="n">comment</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">attitude_roots</span><span class="p">,</span> <span class="n">comments</span><span class="p">):</span>
+        <span class="n">pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">comment</span><span class="p">,</span> <span class="n">tokenizer</span><span class="p">)</span>  <span class="c1"># TODO: Implement model prediction</span>
+        <span class="n">summary</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">attitude</span><span class="si">}</span><span class="s2"> AI aggregated Comments: </span><span class="si">{</span><span class="n">pred</span><span class="si">}</span><span class="s2"> </span><span class="se">\n</span><span class="s2">&quot;</span>
+
+    <span class="c1"># 3) add AI generated summary of Request Information</span>
+    <span class="n">summary</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Request Information: </span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="n">requests</span><span class="p">,</span> <span class="n">comments</span> <span class="o">=</span> <span class="n">request_list</span>
+    <span class="k">for</span> <span class="n">request</span><span class="p">,</span> <span class="n">comment</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">requests</span><span class="p">,</span> <span class="n">comments</span><span class="p">):</span>
+        <span class="n">pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">comment</span><span class="p">)</span>  <span class="c1"># TODO: Implement model prediction</span>
+        <span class="n">summary</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">request</span><span class="si">}</span><span class="s2"> AI aggregated Comments: </span><span class="si">{</span><span class="n">pred</span><span class="si">}</span><span class="s2"> </span><span class="se">\n</span><span class="s2">&quot;</span>
+
+    <span class="k">return</span> <span class="n">summary</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="summary_generator.data_processing.process_csv_files" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">process_csv_files</span><span class="p">(</span><span class="n">base_path</span><span class="o">=</span><span class="s1">&#39;data/real_sample_data&#39;</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Processes CSV files within each subdirectory of the specified base path.</p>
+<p>This function iterates through each folder in the base directory, reads specific CSV files
+in a defined order, parses certain columns, rounds numerical values, and stores the resulting
+DataFrames in a dictionary keyed by folder name.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>base_path</code>
+            </td>
+            <td>
+                  <code>str</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The path to the base directory containing subfolders with CSV files.
+             Defaults to "data/real_sample_data".</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;data/real_sample_data&#39;</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>dict</code></td>            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A dictionary where each key is a folder name and each value is a list of DataFrames
+  corresponding to the CSV files in that folder.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+            <details class="quote">
+              <summary>Source code in <code>summary_generator\data_processing.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">process_csv_files</span><span class="p">(</span><span class="n">base_path</span><span class="o">=</span><span class="s2">&quot;data/real_sample_data&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Processes CSV files within each subdirectory of the specified base path.</span>
+
+<span class="sd">    This function iterates through each folder in the base directory, reads specific CSV files</span>
+<span class="sd">    in a defined order, parses certain columns, rounds numerical values, and stores the resulting</span>
+<span class="sd">    DataFrames in a dictionary keyed by folder name.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        base_path (str): The path to the base directory containing subfolders with CSV files.</span>
+<span class="sd">                         Defaults to &quot;data/real_sample_data&quot;.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dict: A dictionary where each key is a folder name and each value is a list of DataFrames</span>
+<span class="sd">              corresponding to the CSV files in that folder.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Dictionary to hold dataframes for each folder, with each folder containing a list of DataFrames</span>
+    <span class="n">folder_dataframes</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="c1"># Iterate through folders</span>
+    <span class="k">for</span> <span class="n">folder</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">base_path</span><span class="p">):</span>
+        <span class="n">folder_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_path</span><span class="p">,</span> <span class="n">folder</span><span class="p">)</span>
+
+        <span class="c1"># Ensure it&#39;s a directory</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">folder_path</span><span class="p">):</span>
+            <span class="c1"># Ensure specific order of CSV files</span>
+            <span class="n">csv_order</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;overview.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;attitude_roots.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;request_information.csv&quot;</span><span class="p">]</span>
+
+            <span class="n">folder_csvs</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># List to store DataFrames for this folder</span>
+
+            <span class="k">for</span> <span class="n">csv_file</span> <span class="ow">in</span> <span class="n">csv_order</span><span class="p">:</span>
+                <span class="n">file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder_path</span><span class="p">,</span> <span class="n">csv_file</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
+                    <span class="c1"># Read CSV file into DataFrame</span>
+                    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+
+                    <span class="c1"># Parse the &#39;Individual_scores&#39; column (if present)</span>
+                    <span class="k">if</span> <span class="s1">&#39;Individual_scores&#39;</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+                        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Individual_scores&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Individual_scores&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">ast</span><span class="o">.</span><span class="n">literal_eval</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+                    <span class="c1"># Parse and adjust &#39;Comments&#39; column (if present)</span>
+                    <span class="k">if</span> <span class="s1">&#39;Comments&#39;</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+                        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Comments&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Comments&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">ast</span><span class="o">.</span><span class="n">literal_eval</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="k">else</span> <span class="n">x</span><span class="p">)</span>
+
+                    <span class="c1"># Round numerical columns (if any)</span>
+                    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;float&#39;</span><span class="p">,</span> <span class="s1">&#39;int&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+                        <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+                    <span class="n">folder_csvs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+            <span class="n">folder_dataframes</span><span class="p">[</span><span class="n">folder</span><span class="p">]</span> <span class="o">=</span> <span class="n">folder_csvs</span>
+
+    <span class="k">return</span> <span class="n">folder_dataframes</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
 
 
 
