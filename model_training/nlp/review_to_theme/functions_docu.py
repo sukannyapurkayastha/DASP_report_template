@@ -1,13 +1,24 @@
-import os
-import json
-import pandas as pd
+from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score
+def compute_metrics(eval_pred):
+    predictions, labels = eval_pred
+    # Convert logits to predictions for multi-class classification
+    probs = torch.sigmoid(torch.tensor(predictions))
+    # Convert probabilities to binary predictions using a threshold of 0.5
+    threshold = 0.5
+    binary_preds = (probs > threshold).int()
+    # Calculate metrics
+    accuracy = accuracy_score(labels, binary_preds)
+    precision = precision_score(labels, binary_preds, average="macro")
+    recall = recall_score(labels, binary_preds, average="macro")
+    f1 = f1_score(labels, binary_preds, average="macro")
 
-# Define the base directories
-#"/mnt/beegfs/work/yang1/attitude_theme_classifier/results/scibert_all/scibert_scivocab_uncased/"
-base_dirs = ['bert-base-uncased_all', 'bert-base-uncased_neg', 'roberta-base_all', 'roberta-base_neg',
-             'scibert_all/scibert_scivocab_uncased', 'scibert_neg/scibert_scivocab_uncased']
+    return {
+        "accuracy": accuracy,
+        "precision": precision,
+        "recall": recall,
+        "f1": f1,
+    }
 
-# Function to navigate through subfolders and read the JSON files
 def read_epoch_lr_json(base_dirs, df):
     """
     Navigates through subfolders to read JSON files and extract model evaluation metrics.
@@ -85,10 +96,3 @@ def read_epoch_lr_json(base_dirs, df):
                             df = pd.concat([df, new_row], ignore_index=True)
 
     return df, epoch_value, lr_value
-
-# Run the function and print the results
-# Initialize an empty DataFrame with the specified columns
-columns = ['model_name', 'epoch', 'learning_rate', 'eval_accuracy', 'eval_f1', 'eval_precision', 'eval_recall']
-df = pd.DataFrame(columns=columns)
-results, e, lr = read_epoch_lr_json(base_dirs,df)
-results.to_csv(f'{e}_{lr}_eval_results.csv', index=False)

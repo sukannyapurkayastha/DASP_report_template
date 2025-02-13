@@ -16,12 +16,12 @@ This guide helps you set up and run the project, which consists of three main pa
 [Installing the NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html)
 
 ---
-#### **1. Clone the Repository** 
+#### **1 Clone the Repository** 
 
       git clone https://github.com/sukannyapurkayastha/DASP_report_template.git
       cd your-project
 
-#### **2. Application Deployment**
+#### **2 Application Deployment**
 
 The application runs as a set of Docker containers orchestrated with Docker Compose. To start the app detached in your local device simply run:
 ```bash

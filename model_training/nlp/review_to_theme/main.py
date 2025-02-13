@@ -37,6 +37,15 @@ def main(args):
 
     # Tokenize the dataset
     def tokenize_function(examples):
+        """
+        Tokenizes input sentences using the specified tokenizer.
+
+        Args:
+            examples (dict): A dictionary containing the "sentence" key with text data.
+
+        Returns:
+            dict: Tokenized output with padding and truncation applied.
+        """
         return tokenizer(examples["sentence"], truncation=True, padding="max_length", max_length=128)
 
     dataset = dataset.map(tokenize_function, batched=True)
@@ -53,6 +62,21 @@ def main(args):
 
     # Define compute metrics function
     def compute_metrics(eval_pred):
+        """
+        Computes classification metrics for model evaluation.
+
+        Args:
+            eval_pred (tuple): A tuple containing:
+                - predictions (np.ndarray): Model output logits.
+                - labels (np.ndarray): True labels.
+
+        Returns:
+            dict: Dictionary with computed metrics:
+                - "accuracy": Accuracy score.
+                - "precision": Precision score (macro-averaged).
+                - "recall": Recall score (macro-averaged).
+                - "f1": F1-score (macro-averaged).
+     """
         predictions, labels = eval_pred
         probs = torch.sigmoid(torch.tensor(predictions))
         threshold = 0.5

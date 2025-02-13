@@ -1,662 +1,290 @@
-﻿sentence,index,review_action,fine_review_action,aspect,target
-It would be highly beneficial to evaluate these aspects.,,arg_request,arg-request_experiment,asp_soundness-correctness,2
-"Furthermore, it would be beneficial to provide more information about the baselines; in particular the type of count-based exploration.",,arg_request,arg-request_clarification,asp_substance,4
-"For the generated figures, it would be beneficial to include standard deviation and mean over multiple runs to not only evaluate performance but also robustness.",,arg_request,arg-request_edit,asp_substance,1
-- Reward formulations for the baselines as part of the appendix.,,arg_request,arg-request_edit,asp_replicability,1
-- Same scale for the y-axes across figures,,arg_request,arg-request_edit,asp_clarity,1
-"4.	Number of objects vs. ratios is not disentangled: While the paper clarifies that not only a smaller number of objects are used, it would be interesting to understand if similar conclusions hold if only the same number or about the same number of total objects are used but the ratios change (at least for more extreme ratios, 1:2, this seems to be the case as they achieve 100% accuracy).",,arg_request,arg-request_experiment,asp_substance,2
-It would be valuable to compare them to see how different systems (can) solve this task.,,arg_request,arg-request_experiment,asp_substance,2
-The paper FiLM uses global max-pooling and I am wondering if this affect this ability.,,arg_request,arg-request_clarification,asp_substance,4
-"Maybe beyond the scope of this work, but it would be interesting to understand how much training data different models need to obtain this capability.",,arg_request,arg-request_experiment,asp_substance,2
-"8.	For evaluation: Are there distractors, i.e. elements which don’t belong to set A or B? If not, how would distractors affect it.",,arg_request,arg-request_clarification,asp_substance,4
-9.1.,,arg_request,arg-request_typo,asp_clarity,3
-9.2.	In formula (1.5) “<=>” seems to be used at different levels (?) it would be good to use brackets to make clear which level “<=>” refers to.,,arg_request,arg-request_edit,asp_clarity,1
-10.	The title suggests that the paper studies multiple VQA models but only a single model is studied.,,arg_request,arg-request_edit,asp_clarity,1
-"On the other hand, perhaps these methods could be used to identify the kind of spurious correlations that models tend to rely on, which could then be used in a more automated data augmentation process.",,arg_request,arg-request_experiment,asp_clarity,2
-"If that's the goal, however, a more detailed error analysis would need to be included.",,arg_request,arg-request_experiment,asp_substance,2
-"* There was some analysis of the augmented IMDB dataset, but none of the SNLI dataset.",,arg_request,arg-request_clarification,asp_substance,4
-I would love to see a more detailed investigation of what annotators usually did.,,arg_request,arg-request_clarification,asp_clarity,4
-"Do people leave the negations in when modifying such examples for entailment or neutrality, thus breaking the simple correspondence?",,arg_request,arg-request_clarification,asp_soundness-correctness,4
-"That's a very simple kind of question; more generally, I'd like to see more analysis of the new dataset.",,arg_request,arg-request_experiment,asp_substance,2
-* The BiLSTM they use is very small (embedding and hidden dimension 50).,,arg_request,arg-request_edit,asp_substance,1
-"Given that BERT is most robust against their manipulation, it would be good to see a more powerful recurrent model for comparison.",,arg_request,arg-request_edit,asp_meaningful-comparison,1
-"It would be easy to use ELMo here, if the main question is about Transformers vs recurrent models.",,arg_request,arg-request_clarification,asp_soundness-correctness,4
-"* abstract: ""with revise"" should be ""with revising""",,arg_request,arg-request_typo,asp_substance,3
-* first paragraph page 2: some references to causality literature and definition of spuriousness as common cause,,arg_request,arg-request_edit,asp_substance,1
-"* page 2, ""We show that..."" I'd break this into two sentences to make it easier to parse.",,arg_request,arg-request_typo,asp_clarity,3
-* Table 3: I would make two columns for each model with accuracy on original versus revised.,,arg_request,arg-request_clarification,asp_clarity,4
-2) Does the proposed method store immediate activations or recompute the activations in the backward pass?,,arg_request,arg-request_explanation,asp_substance,0
-"-In describing Eqn 3 there are some weird remarks, e.g. ""N is the sum of all frequencies"". Do you mean that N is the total number of available frequencies? i.e.",,arg_request,arg-request_clarification,asp_clarity,4
-It would make sense to use image captioning data to create the image lookup.,,arg_request,arg-request_experiment,asp_substance,2
-"Also, what will be the performance of a standard image captioning system on the task ?",,arg_request,arg-request_experiment,asp_substance,2
-"I believe it will not be great, but I think for completeness, you should add such a baseline.",,arg_request,arg-request_experiment,asp_substance,2
-1. What is M in Algorithm 1 ?,,arg_request,arg-request_explanation,asp_clarity,0
-"2. First paragraph in related work is very unrelated to the current subject, please remove.",,arg_request,arg-request_edit,asp_clarity,1
-The decoder used to measure privacy is very important. Can you provide more detail about the decoders used in all the four cases?,,arg_request,arg-request_explanation,asp_replicability,0
-"If possible, evaluating the privacy with different decoders may provide a stronger evidence for the proposed method.",,arg_request,arg-request_experiment,asp_substance,2
-"If the two NNs used in DNN and DNN(resized) are different, I believe it’s still possible to apply the algorithm in DNN(resized) to the NN used in DNN, and get a full trace in the figure as noise and projection changes, which would lead to more fair comparison.",,arg_request,arg-request_experiment,asp_meaningful-comparison,2
-Section 2.2 mentioned how different kind of layers would help with the encoder’s utility and privacy. It would be better to back up the argument with some experiments.,,arg_request,arg-request_experiment,asp_substance,2
-I think it needs to be made clearer how reconstruction error works as a measure of privacy.,,arg_request,arg-request_clarification,asp_substance,4
-"In term of reference, it’s better to cite more articles with different kind of privacy attacks for how raw data can cause privacy risks.",,arg_request,arg-request_edit,asp_meaningful-comparison,1
-"For the “Noisy Data” method, it’s better to cite more articles on differential privacy and local differential privacy.",,arg_request,arg-request_edit,asp_meaningful-comparison,1
-"The author may consider making the figures larger (maybe with a 2 by 2 layout), adjusting the position of the legend & scale of x-axis for Figure 3, and using markers with different colors for Figure 4.",,arg_request,arg-request_edit,asp_clarity,1
-"- Authors do not visualize the attention (as is common in previous work involving attention in e.g., NLP).",,arg_request,arg-request_result,asp_substance,5
-"1. As pointed by one public comment, the ablation study should show how much improvement is from BERT vectors.",,arg_request,arg-request_result,asp_substance,5
-"2. I'd like to see another ablation study of whether RE helps NER. If you remove the RE component, does the NER performance suffer?",,arg_request,arg-request_experiment,asp_substance,2
-3. how are predicted labels embedded? Do you learn a vector of each tag of BIOES and then take a weighted sum of these vectors with predicted probabilities as weights?,,arg_request,arg-request_explanation,asp_replicability,0
-"One main concern is, how general this approach would be? As it is a good extension for Neural LP, it is not clear that the framework of Neural LP is flexible or powerful enough in general.",,arg_request,arg-request_explanation,asp_substance,0
-"For example, if rules contain quantifiers, how would this be extended?",,arg_request,arg-request_explanation,asp_substance,0
-"1) 4.1,  “O(n^2/2)” -- just put O(n^2) or simply write as n^2/2.",,arg_request,arg-request_edit,asp_soundness-correctness,1
-"2) How are the rules from in Eq (2)? i.e., how is \beta_i selected for each i?",,arg_request,arg-request_explanation,asp_replicability,0
-"3) I would suggest a different name other than Neural-LP-N, as it is somewhat underselling this work. Also it makes Table 2 not that easy to read.",,arg_request,arg-request_edit,asp_clarity,1
-"Given that you observed that SVHN has higher likelihood on all three model types (PixelCNN, VAE, Glow), why investigate a component specific to just flow-based models (the volume term)?",,arg_request,arg-request_experiment,asp_meaningful-comparison,2
-"Given the title of the paper, it would have been nice if this paper explored more than just MNIST vs NotMNIST and SVHN vs CIFAR10, so that the readers can gain a better feel for when generative models will be able to detect outliers.",,arg_request,arg-request_experiment,asp_substance,2
-"For instance, a scenario where the data statistics (pixel means and variances) are nearly equivalent for both datasets would be interesting.",,arg_request,arg-request_experiment,asp_substance,2
-"While the authors provided numerical plots to compare it with the SGD linearization, I personally prefer to see some analytically comparsion between SGD linearization and LPL even on the simplest case.",,arg_request,arg-request_explanation,asp_substance,0
-Can the authors show the convergence plots of these methods (similar to Figure 2)?,,arg_request,arg-request_experiment,asp_substance,2
-"I did not find many flaws to point out, except I believe the paper could benefit from more extensive  comparisons in Figure 4A against other IIG methods such as Deep Stack, as well as comparing on much larger IIG settings with many more states to see how the neural CFR methods hold up in the regime where they are most needed.",,arg_request,arg-request_experiment,asp_substance,2
-"Typo:  ""care algorithm design"" -> ""careful algorithm design""",,arg_request,arg-request_typo,asp_clarity,3
-It is important to place the contributions in this paper in context of these other works.,,arg_request,arg-request_experiment,asp_meaningful-comparison,2
-"More details should be provided, and when comparisons to past works or inter-life curiosity are made, this should be controlled for.",,arg_request,arg-request_experiment,asp_substance,2
-"The two ideas (use of grids, and intra-life curiosity vs inter-life curiosity) should be independently investigated and put in context of past work.",,arg_request,arg-request_experiment,asp_substance,2
-3. I will encourage investigation on a more varied set of tasks.,,arg_request,arg-request_experiment,asp_substance,2
-"Perhaps, also using some MuJoCo environments, or 3D navigation environments.",,arg_request,arg-request_experiment,asp_substance,2
-It should probably be rephrased,,arg_request,arg-request_edit,asp_clarity,1
-"- at the start of section 3: what is an ""experiment""?",,arg_request,arg-request_explanation,asp_substance,0
-"- in 3.1 towards the end of the first paragraph, what is a ""study"", is that the same as experiment or something different?",,arg_request,arg-request_explanation,asp_substance,0
-- (minor) stating that lower is better in the graphs might be useful,,arg_request,arg-request_edit,asp_substance,1
-"- (minor) typo in page 5 ""We use a fixed the number""",,arg_request,arg-request_typo,asp_substance,3
-"For example, how does the method compare with (variants of) Variational Autoencoder?",,arg_request,arg-request_experiment,asp_meaningful-comparison,2
-A discussion on this or some empirical evaluations would be nice.,,arg_request,arg-request_experiment,asp_meaningful-comparison,2
-"-- The machine learned advice is assumed to be flawless at identifying the Heavy Hitters, authors might want to consider incorporating errors in the analysis.",,arg_request,arg-request_edit,asp_substance,1
-"The authors are encouraged to review some of the related literature on optimal teaching, which also has developed a rich set of approaches to agent modeling, e.g. the work by Patrick Shafto.",,arg_request,arg-request_edit,asp_meaningful-comparison,1
-“differs from this in two folds”,,arg_request,arg-request_typo,asp_clarity,3
-“by generate queries”,,arg_request,arg-request_typo,asp_clarity,3
-Are the results averaged across different runs? Can you show the variance?,,arg_request,arg-request_edit,asp_substance,1
-It is hard to understand the results without discussing it.,,arg_request,arg-request_clarification,asp_clarity,4
-2. It is hard to understand what the model has learned compared to hand-crafted schedule. Are there any analysis other than the results alone?,,arg_request,arg-request_result,asp_substance,5
-3. Why do you set S=1 in the experiments? What’s the importance of S?,,arg_request,arg-request_explanation,asp_substance,0
-I think more analysis is needed to support this claim.,,arg_request,arg-request_explanation,asp_substance,0
-1. The usage of footnote 2 is incorrect.,,arg_request,arg-request_typo,asp_clarity,3
-"2. In references, some words should be capitalized properly such as gan->GAN.",,arg_request,arg-request_typo,asp_clarity,3
-- Why does temporal correlation reduce the non-stationarity of the MARL problem?,,arg_request,arg-request_explanation,asp_substance,0
-- Why does structured exploration reduce the number of network parameters that need to be learned?,,arg_request,arg-request_explanation,asp_substance,0
-- Why does partial parameter sharing make it easier for each agent to estimate other agents potential changes in behavior?,,arg_request,arg-request_explanation,asp_substance,0
-"In summary, I think this is interesting work, but a clearer explanation of the relationship between HRL and MARL, as well as a clearer main argument, supported by experimental evidence, would greatly improve this paper.",,arg_request,arg-request_explanation,asp_clarity,0
-"Quick summary: While I liked aspects of this -- including the motivation of having a lightweight way of understanding how well representations transfer across tasks, overall my concerns surrounding the methodology and some missing analysis leads me to believe this needs more work before it is ready for publication.",,arg_request,arg-request_experiment,asp_soundness-correctness,2
-"I would have liked to see results for both trivial baselines like random ranking as well as more informed baselines where we can estimate transfer potential using say k representation techniques, and then use that to help us understand how well it would do on the other representations.",,arg_request,arg-request_experiment,asp_soundness-correctness,2
-Changing the number/sizes of the network layers or using sparse weight matrices (perhaps with sparsity-inducing regularization) would be natural ways to reduce the parameter space.,,arg_request,arg-request_experiment,asp_substance,2
-"Later, space (and time) efficiency is revealed as the motivation for the sparsity, but it would be helpful if the paper said this earlier.",,arg_request,arg-request_edit,asp_clarity,1
-"Equation 6 seems to have an error, the probability should be P(w_t | w_t-1...) instead of P(w_t , w_t-1...) if this is to represent the standard LM objective (the probability of the corpus).",,arg_request,arg-request_typo,asp_soundness-correctness,3
-"Sec 3.3: ""all models sare""",,arg_request,arg-request_typo,asp_clarity,3
-"I was wondering if the authors find that the agents are forcibly exploring the entire environment during each rollout? Even if the agent knows what/where the actual goal is. There is a hint to this behaviour in section 4, on exploration in sparse domains.",,arg_request,arg-request_explanation,asp_soundness-correctness,0
-I would like to see a convergence proof where the batch size $B_{t}$ is treated as a small constant like other SGD proofs assume.,,arg_request,arg-request_experiment,asp_substance,2
-3. It would be helpful to show the $\gamma$ value on each experiment with different tasks.,,arg_request,arg-request_experiment,asp_substance,2
-It would be good to know how $\gamma$ varies across tasks.,,arg_request,arg-request_experiment,asp_substance,2
-"4. I think in the comparative experiments, the plain SGD should be added as another reference algorithm.",,arg_request,arg-request_edit,asp_substance,1
-"Also, xgboost was the winning algorithm for many competitions for tabular data, would be good to compare the NN with properly optimised xgboost.",,arg_request,arg-request_experiment,asp_meaningful-comparison,2
-"If the paper cannot compare various architecture, it is more convincing to at least use some standard architecture, like DCGAN. Or at least report the parameter tuning effort made for getting the results.",,arg_request,arg-request_experiment,asp_substance,2
-"Thus my question for the rebuttal period: How would pGAN perform when defense mechanisms are deployed during the learning phase? (ideally, a thorough experiment illustrating the strength of pGAN against a few defense mechanisms would help re-evaluating the score)",,arg_request,arg-request_experiment,asp_substance,2
--  Figure 2 are hard to read for different M's. It would be better if the authors can show the exact accuracy numbers rather than the overlapped lines,,arg_request,arg-request_edit,asp_clarity,1
-"In the paper's variational deficiency setting, although plotting I(Z;Y) vs I(Z;X) is necessary, it would be also helpful for the authors' to plot Deficiency vs I(Z;X), because this is what new objective is trading-off.",,arg_request,arg-request_experiment,asp_substance,2
-- How do the paper estimate I(Z;Y) and I(Z;X) for plotting these figures? Does the paper use lower bound or some estimators? It should be made clear in the paper since these are non-trivial estimations.,,arg_request,arg-request_clarification,asp_replicability,4
-It would also be helpful for the authors to do a comparison or connection section with this paper.,,arg_request,arg-request_experiment,asp_meaningful-comparison,2
-"-In k-means clustering (E-step and M-step), is it correct to multiply \tilde x to (c-v)?",,arg_request,arg-request_explanation,asp_soundness-correctness,0
-"-Does minimizing reconstruction error minimizes the training loss (before any further fine-tuning) compared to naïve PQ? If not,",,arg_request,arg-request_explanation,asp_substance,0
--Is there any guideline for choosing the optimal number of centroids and the optimal block size given a target compression rate?,,arg_request,arg-request_explanation,asp_substance,0
-"-Is there any reason not comparing the proposed algorithm with other compression schemes? (e.g., network pruning and low-rank approximation)",,arg_request,arg-request_explanation,asp_substance,0
-My one ask would have been a survey of how activations might affect performance.,,arg_request,arg-request_experiment,asp_substance,2
-"I sense that everyone has settled upon LeakyReLUs for internal layers, but a survey of that work and experimentation within the authors' framework would have been nice.",,arg_request,arg-request_experiment,asp_substance,2
-It would be interesting to see what these metrics would reveal when applied to other types of data (e.g. scientific images).,,arg_request,arg-request_experiment,asp_substance,2
-"In addition, different charts presenting only one loss function, with their spectral normalization and gradient penalty variants, would have made the effects of the normalization more obvious on the FID distribution graphs.",,arg_request,arg-request_edit,asp_clarity,1
-"If this can be changed before publication, I would strongly suggest it.",,arg_request,arg-request_edit,asp_clarity,1
-I would suggest changing the title to be more appropriate and accurate (the researchers are primarily focused on showing the positive and negative effects of normalization across various loss functions and architectures).,,arg_request,arg-request_edit,arg_other,1
-"Apart from global vs. local, can the authors provide more examples of what sort of information this approach can disentangle? (Even for global vs. local, is there a transformation that can remove local information as opposed to global information?)",,arg_request,arg-request_experiment,asp_clarity,2
-- Can this approach learn multiple factors as opposed to just two?,,arg_request,arg-request_experiment,asp_substance,2
-- What if the desired factors are not clearly disjoint and collectively exhaustive? (e.g. mustache vs. gender on human faces.),,arg_request,arg-request_experiment,asp_substance,2
-- What is the choice of beta in the beta-VAE training objective?,,arg_request,arg-request_clarification,asp_clarity,4
-Can the proposed approach perform just as well without a modified objective?,,arg_request,arg-request_experiment,asp_substance,2
-Ablation studies that show the proposed algorithm can improve upon the baseline in all settings would make this a stronger paper.,,arg_request,arg-request_experiment,asp_substance,2
-"- Why were 30 discrete categories used in the clustering experiment? Is this still comparable to the approaches that use 10, which would correspond to the number of classes?",,arg_request,arg-request_explanation,asp_clarity,0
-"Comparing to this approach, I wonder if it would be better to provide samples that exhibit a particular factor, or samples that conceal the factor?",,arg_request,arg-request_experiment,asp_substance,2
-"The use of beta>1 is fine if it helps alongside the use of this approach, but it would have been better to see the effects of this approach and beta>1 (and other hyperparameters such as k in Table 1) in isolation.",,arg_request,arg-request_experiment,asp_substance,2
-have you thought about how it would be possible to avoid this step and keep the original variable-size embeddings?,,arg_request,arg-request_experiment,asp_substance,2
-"- One comparison that I believe is missing (I could be misreading the tables) is comparing directly to Merity et al.'s approach (adaptive softmax but fixed embedding/softmax dimension among the bands). Presumably you're faster, but is there a perplexity trade-off?",,arg_request,arg-request_experiment,asp_meaningful-comparison,2
-- The discussion/explanation of the differing performance of tying or not tying each part of the embedding weights for the different datasets is confusing; I think it could benefit from tightening up the wording but mostly I just had to read it a couple times. Perhaps all that's complicated is the distinction between embedding and projection weights; it would definitely be helpful to be as explicit about that as possible upfront.,,arg_request,arg-request_edit,asp_clarity,1
-You could also try a scatterplot of log freq vs. average loss by individual word/BPE token.,,arg_request,arg-request_experiment,asp_clarity,2
-- Do you have thoughts as to why full-softmax BPE is worse than adaptive softmax word level?,,arg_request,arg-request_explanation,asp_meaningful-comparison,0
-How the case where two images have a very similar latent factor is avoided while generating pairs of images for the Siamese network?,,arg_request,arg-request_experiment,asp_clarity,2
-"For example, when the edge extractor is used, what kind of information is modeled by the latent variables? Is it consistent across different samples?",,arg_request,arg-request_experiment,asp_substance,2
-"In my opinion, the authors could start from the existing state of the art implementations on this dataset, and report if negative feedback (NF) improves upon.",,arg_request,arg-request_experiment,asp_replicability,2
-"As the authors’ main claim is improved stability I am curious to see more detailed analysis on real-world datasets (e.g. multiple seed runs, 2nd-moment estimates over iterations as in Chavdarova et al. 2019).",,arg_request,arg-request_explanation,asp_substance,0
-"- Page 3, Eq. 5: as D and G are functions of time here, eq 5 should maybe be written in more detail to include t",,arg_request,arg-request_edit,asp_soundness-correctness,1
-"-  Page 3, Sec. 3: I think citing works that also focus on Dirac-GAN would motivate better why you focus on Dirac-GAN in this paper (e.g. writing `as in Mescheder et al. 2018`)",,arg_request,arg-request_edit,asp_clarity,1
-- Page 4: infinity - infinite,,arg_request,arg-request_typo,asp_clarity,3
-- Page 5: can also.. explains ->  explain,,arg_request,arg-request_typo,asp_clarity,3
-"My suggestion for a further experiment would be to apply the movie review classifiers to, say, book reviews -- something where the task is fundamentally the same but the context is different. If the classifier trained on the union of the original and altered datasets performs better than a classifier trained on only on dataset, then that is strong evidence that this approach yields better extrapolation.",,arg_request,arg-request_experiment,asp_substance,2
-"I infer that this was necessary to achieve good performance, but it would be instructive to see the results without this additional input, since it does in a sense constitute a form of supervision, and therefore limits the types of training data which can be used.",,arg_request,arg-request_experiment,asp_substance,2
-"The transfer metrics (MMD and kNN) are opaque to the reader: for instance, in table 1, is a knn score of 43173 qualitatively different than 43180?",,arg_request,arg-request_clarification,asp_soundness-correctness,4
-What is the criteria for bolding here?,,arg_request,arg-request_clarification,asp_soundness-correctness,4
-"It would be helpful if these scores could be calibrated in some way, e.g., with reference to",,arg_request,arg-request_result,asp_soundness-correctness,5
-"Since the authors do additional information here for each sample (notes), it would be possible to pair generated and real examples by instrument and note, rather than (in addition to) unsupervised, feature-space pairing by MMD.",,arg_request,arg-request_experiment,asp_soundness-correctness,2
-"This could provide a slightly stronger version of the comparison in Figure 3, which shows that the overall distribution of spectral centroids is approximated by transfer, but does not demonstrate per-sample correspondence.",,arg_request,arg-request_experiment,asp_meaningful-comparison,2
-"At several points in the manuscript, the authors refer to ""invertible"" representations (e.g., page 4, just after eq. 1), but it seems like what they mean is approximately invertible or decodable.",,arg_request,arg-request_edit,asp_clarity,1
-It would be better if the authors were a little more careful in their use of terminology here.,,arg_request,arg-request_edit,asp_clarity,1
-"In the definition of the RBF kernel (page 4), why is there a summation?",,arg_request,arg-request_clarification,asp_clarity,4
-What does this index? How are the kernel bandwidths defined?,,arg_request,arg-request_clarification,asp_clarity,4
-"How exactly are reconstruction errors calculated: using the NSGT magnitude representation, or after resynthesis in the time domain?",,arg_request,arg-request_explanation,asp_substance,0
-It would be interesting to compare FICM against simpler exploration baselines such as epsilon-greedy or entropy regularization.,,arg_request,arg-request_experiment,asp_substance,2
-"- I’d also like to see more extensive comparisons between FICM and ICM across different datasets, for example, Super Mario Bros. and the Atari games, instead of only comparing FICM against ICM on ViZDoom.",,arg_request,arg-request_experiment,asp_meaningful-comparison,2
-1. Please provide experiments and/or citation for using the face identity as a proxy for face image diversity.,,arg_request,arg-request_experiment,asp_substance,2
-2. Were there experiments that applies your metric to the training datasets like CelebA and FFHQ? In theory your metric should show no gap between N_R_obs and N_R_ref measured on the training dataset since that's the sampled ground truth.,,arg_request,arg-request_clarification,asp_substance,4
-"1. If we do not have access to the model parameter, the training data, or the artifacts during training like the discriminator, what are some of the real world situations that fit this description? In those cases, is it too much to assume that we can control the random seed input to G?",,arg_request,arg-request_explanation,asp_substance,0
-2. Is it reasonable to assume some constraints on how much data we can get from the blackbox generator?,,arg_request,arg-request_explanation,asp_substance,0
-"1. I found the argument about FID in section 2.1 unconvincing. Are there proofs or citations for the claim that real images don't follow multivariate gaussian distribution after applying FID? Copying is indeed an issue that FID cannot detect, but it may be tangential to model collapse for real world concerns like privacy.",,arg_request,arg-request_clarification,asp_soundness-correctness,4
-"3. You may want to consider stating the work as ""a pilot study"" (sec 6.) earlier in the abstract or in the introduction, so that the reader knows what to expect.",,arg_request,arg-request_edit,arg_other,1
-At least this limitation should be pointed out in the paper.,,arg_request,arg-request_edit,asp_soundness-correctness,1
-"- On page 4 footnote 2, as far as I know the paper did not define BPD.",,arg_request,arg-request_edit,asp_clarity,1
-"- There are two lines of text between Fig. 4 and Fig. 5, which is confusing.",,arg_request,arg-request_typo,asp_clarity,3
-"However, there are papers empirically analyzing novelty detection using generative model -- should analyze or at least cite:",,arg_request,arg-request_edit,asp_meaningful-comparison,1
-"According to the conclusions of the paper, such dataset pairs should be easy to find -- just find a dataset that ""lies within"" another. Did you try e.g. CIFAR-100 train and CIFAR-10 test?",,arg_request,arg-request_experiment,asp_substance,2
-1. I am curious about what would you get if you use ADP on BPE vocab set?,,arg_request,arg-request_experiment,asp_meaningful-comparison,2
-2. How much of the perplexity reduction of 8.7 actually come from ADP instead of the transformer and optimization?,,arg_request,arg-request_explanation,asp_substance,0
-"As proposed in the comments, this should be assessed in the paper by replacing BERT representations by non-contextual representations such as GloVE.",,arg_request,arg-request_experiment,asp_substance,2
-"- ""NN has achieved"" => ""Neural Networks have achieved""",,arg_request,arg-request_typo,asp_clarity,3
-"- ""performances"" => performance",,arg_request,arg-request_typo,asp_clarity,3
-"- ""explicitly leverages"" => ""explicitly leverage""",,arg_request,arg-request_typo,asp_clarity,3
-"- (top of p. 2) What exactly is the difference between ""implicit feature combinations"" and ""explicit (?), expressive feature combinations""",,arg_request,arg-request_clarification,asp_clarity,4
-"- what is the benefit brought by the 'Structural Knowledge' transfer? is this quantified anywhere? based on the description, I don't understand if this is an add-on to TabNN or whether it is incorporated in TabNN.",,arg_request,arg-request_explanation,asp_soundness-correctness,0
-"Recommendations for the authors: Would it be possible to provide an analysis of the cases when TabNN is expected to outperform GBDT by a sizable margin? Or, if not, are there other reasons why using a neural network would make more sense than just simply running GBDT?",,arg_request,arg-request_experiment,asp_substance,2
-"Typos: That l8 abstract; systems l9 intro; and l2 related work; directly evaluation l2 Section4, must has l-10 p4;",,arg_request,arg-request_typo,asp_clarity,3
-* the choice \sigma = 15 in Section 6.2 should be justified by the following study,,arg_request,arg-request_explanation,asp_substance,0
-* \sigma is not given in Figure 3(a),,arg_request,arg-request_edit,asp_replicability,1
-The experiments of this paper lack comparisons to certified verification,,arg_request,arg-request_experiment,asp_substance,2
-methods. There are some scalable property verification methods that can give a,,arg_request,arg-request_experiment,asp_substance,2
-lower bound on the input perturbation (see [1][2][3]),,arg_request,arg-request_experiment,asp_substance,2
-The authors should,,arg_request,arg-request_experiment,asp_meaningful-comparison,2
-compare the sampling based method with these lower and upper bounds.,,arg_request,arg-request_experiment,asp_meaningful-comparison,2
-For,,arg_request,arg-request_experiment,asp_meaningful-comparison,2
-"example, what is log(I) for epsilon larger than upper bound?",,arg_request,arg-request_experiment,asp_meaningful-comparison,2
-"Additionally, in section 6.4, the results in Figure 2 also does not look very",,arg_request,arg-request_experiment,asp_clarity,2
-positive - it unlikely to be true that an undefended network is predominantly,,arg_request,arg-request_experiment,asp_clarity,2
-"robust to perturbation of size epsilon = 0.1. Without any adversarial training,",,arg_request,arg-request_experiment,asp_clarity,2
-adversarial examples (or counter-examples for property verification) with L_inf,,arg_request,arg-request_experiment,asp_clarity,2
-distortion less than 0.1 (at least on some images) should be able to find.,,arg_request,arg-request_experiment,asp_clarity,2
-It,,arg_request,arg-request_experiment,asp_substance,2
-is better to conduct strong adversarial attacks after each epoch and see what,,arg_request,arg-request_experiment,asp_substance,2
-are the epsilons of adversarial examples.,,arg_request,arg-request_experiment,asp_substance,2
-Ideas on further improvement:,,arg_request,arg-request_experiment,asp_substance,2
-The proposed method can become more useful if it is not a point-wise method.,,arg_request,arg-request_experiment,asp_motivation-impact,2
-"If given a point, current formal verification method can tell if a property is",,arg_request,arg-request_experiment,asp_motivation-impact,2
-hold or not.,,arg_request,arg-request_experiment,asp_motivation-impact,2
-This,,arg_request,arg-request_experiment,asp_motivation-impact,2
-is the place where we really need a probabilistic verification method.,,arg_request,arg-request_experiment,asp_motivation-impact,2
-"For finding counter-examples for a property, using gradient based methods might",,arg_request,arg-request_experiment,asp_substance,2
-be a better way.,,arg_request,arg-request_experiment,asp_substance,2
-The authors can consider adding Hamiltonian Monte Carlo,,arg_request,arg-request_edit,arg_other,1
-to,,arg_request,arg-request_edit,arg_other,1
-this framework,,arg_request,arg-request_edit,arg_other,1
-(1) I want to clarify how the skills of the agents play a role in the problem setup. Does it show up in the expression for the manager's reward?,,arg_request,arg-request_clarification,asp_clarity,4
-"In particular, does it affect the Indicator for whether a goal is completed Eq. (2) via a process that need not be explicitly modeled but can be observed via a feedback of whether or not the goal is completed?",,arg_request,arg-request_clarification,asp_clarity,4
-"So in the case of resource collection example, the skill set is a binary value for each resource, whether it can be collected or not?",,arg_request,arg-request_clarification,asp_clarity,4
-"(2) Related to the first point, the motivation for modeling the agents as maximizing their utility is the assumption that agents do not know their skills. I am wondering, is this really justified? Over the course of episodes, can the agents learn their skills based on the relationship between their intention and the goals they achieve? In the resource collection example, when they reach a resource and are not able to collect it, they understand that they do not have the corresponding skill.",,arg_request,arg-request_explanation,asp_soundness-correctness,0
-Is there a way to extrapolate the results from this paper to such a setting?,,arg_request,arg-request_explanation,asp_soundness-correctness,0
-"Are there alternate ways to overcome maintaining the UCB explicitly, especially for the number of time-steps?",,arg_request,arg-request_explanation,asp_soundness-correctness,0
-(1) What are the units for rewards in the plots? Is it the average per episode reward? It would be good to mention this in the caption.,,arg_request,arg-request_clarification,asp_clarity,4
-"- Last line in Page 5: ""quantitative"" -> ""quantity""",,arg_request,arg-request_typo,asp_clarity,3
-- Page 8: skills nad preferences -> skills and preferences,,arg_request,arg-request_typo,asp_clarity,3
-- Page 8: For which we combining -> for which we combine,,arg_request,arg-request_typo,asp_clarity,3
-"- It would help to have a discussion about how to implement (7), for example do you use a target network to keep the target value R_t+r_t fixed for several steps?",,arg_request,arg-request_clarification,asp_replicability,4
-"Since you assume the number of information nodes is large, you cannot minimize the l2 loss over all states. Do you assume you generate states by following some policy? Which policy?",,arg_request,arg-request_explanation,asp_soundness-correctness,0
-"In Section 6.1, the authors mention the good generalization is due to large number of steps at a high learning rate. Can we possibly get any theoretical justification on this?",,arg_request,arg-request_explanation,asp_substance,0
-"Can this approach be applied for structure prediction, for example, various ranking loss?",,arg_request,arg-request_experiment,asp_substance,2
-Minor comment: An interesting line of work is that of [3] which could be included in the discussion.,,arg_request,arg-request_edit,asp_substance,1
-"1. What are the key limitations of AutoLoss ? Did we observe some undesirable behavior of the learned optimization schedule, especially when transfer between different datasets or different models ?",,arg_request,arg-request_explanation,asp_replicability,0
-More discussions on these questions can be very helpful to further understand the proposed method.,,arg_request,arg-request_explanation,asp_replicability,0
-"2. As the problem is formulated as an RL problem, which is well-known for its difficulty in training, did we encounter similar issues? More details in the implementation can be very helpful for reproducibility.",,arg_request,arg-request_experiment,asp_replicability,2
-3. Any plan for open source ?,,arg_request,arg-request_clarification,asp_replicability,4
-More experiments based on other types of data sets with clear global structures such as faces or stop signs will,,arg_request,arg-request_experiment,asp_substance,2
-"* In the introduction, ""the classical approach"" is mentioned but to be the latter is",,arg_request,arg-request_edit,asp_clarity,1
-"* page 2, ""predict the probability"": rather employ ""estimate"" in such context?",,arg_request,arg-request_typo,asp_soundness-correctness,3
-"* ""linear piecewise"": ""piecewise linear""?",,arg_request,arg-request_typo,asp_soundness-correctness,3
-"* what is ""an exact upper bound""?",,arg_request,arg-request_clarification,asp_clarity,4
-"* I am not an expert but to me ""the density of adversarial examples"" calls for further",,arg_request,arg-request_clarification,asp_clarity,4
-"While this follows from the current framework, the paper might benefit from some more",,arg_request,arg-request_edit,asp_soundness-correctness,1
-"* In the discussion: is it really ""a new measure"" that is introduced here?",,arg_request,arg-request_clarification,asp_soundness-correctness,4
-"In the appendix: the MH acronym should better be introduced, as should the notation",,arg_request,arg-request_edit,asp_clarity,1
-"Besides this, writing ""the last samples"" requires disambiguation (using ""respective""?).",,arg_request,arg-request_edit,asp_clarity,1
-"- The paper should perform a literature search on related work from operations research, including especially principal-agent problems, which are not currently surveyed, and perhaps also optimal scheduling problems.",,arg_request,arg-request_experiment,asp_meaningful-comparison,2
-- How do the problems introduced either map onto real applications or map onto environments studied in existing literature (such as in operations research)?,,arg_request,arg-request_explanation,asp_soundness-correctness,0
-- More details should be given on the mind tracker module.,,arg_request,arg-request_edit,asp_clarity,1
-- Is it necessary to use deep reinforcement learning for contract generation?,,arg_request,arg-request_clarification,asp_clarity,4
-"- For the speed processing experiment, did you test what the performance would be if K matrix is replaced by a fully connected layer?",,arg_request,arg-request_experiment,asp_substance,2
-"Though this is stated very clearly in the Appendix, I hope the authors can also communicate this clearly in the main text as it appears to be a crucial component of the experimental setup.",,arg_request,arg-request_clarification,asp_substance,4
-- How easy is it to train with K matrices? Did you have to change optimizer hyperparameter compared to existing baselines?,,arg_request,arg-request_experiment,asp_substance,2
-- There seems to be some blurring between the meaning of structure (used to motivate K matrices in the introduction) and sparsity (used to analyze K matrices).,,arg_request,arg-request_explanation,asp_substance,0
-"For instance, while Kaleidoscope matrices might include the subclass of circulant matrices, can they also capture the same properties or ""inductive bias"" (for lack of better word) as convolutional layers when trained?",,arg_request,arg-request_clarification,asp_substance,4
-"Is the energy-based model particularly well-suited to the random-projection setup, or are there other reasons for using it, independent of the use of random projections?",,arg_request,arg-request_explanation,asp_replicability,0
-"The index over which the sum happens is n, but n is fixed? So this looks like a sum with just one component in it, namely the first n-gram.",,arg_request,arg-request_clarification,asp_replicability,4
-It looks like all the results are given on the test set. Did you not do any tuning on the validation data?,,arg_request,arg-request_clarification,asp_soundness-correctness,4
-"It would be useful to have a table, like the one on the last page, which clearly shows the baseline vs. the random-projection model, with some description of the results in the main body of the text.",,arg_request,arg-request_result,asp_clarity,5
-"For example, there are lots of typos such as ""instead of trying to probability of a target word"".",,arg_request,arg-request_typo,asp_clarity,3
-The authors mention that they hardly encounter any issues with training stability and mode collapse. Is that because of the design of the multiple discriminator architecture?,,arg_request,arg-request_explanation,asp_replicability,0
-- I believe one should not compare the distance shown between the left and right columns of Figure 3 as they are obtained from two different models.,,arg_request,arg-request_edit,asp_meaningful-comparison,1
-"Though the paper is not suggesting that, it would help to clarify it in the paper.",,arg_request,arg-request_edit,asp_clarity,1
-"Furthermore, it would help if the paper elaborates why the distance between the test and training dataset is smaller in an adversarially trained network compared to a naturally trained network.",,arg_request,arg-request_explanation,asp_substance,0
-- Are the results in Table 1 for an adversarially trained network or a naturally trained network?,,arg_request,arg-request_clarification,asp_replicability,4
-"Either way, it could be also interesting to see the average K-L divergence between an adversarially and a naturally trained network on the same dataset.",,arg_request,arg-request_experiment,asp_replicability,2
-- Please provide more visualization similarly to those shown in Fig 4.,,arg_request,arg-request_edit,asp_clarity,1
-"To change to a firm accept, I think the paper needs some changes in written style mainly, to make it friendlier to newcomers to the area, which can easily be implemented in the camera ready stage of paper preparation.",,arg_request,arg-request_edit,asp_clarity,1
-- I think the structure of the paper is fine for this sort of work. Perhaps at the beginning it would be more useful to spend more time on a roadmap of the results presented in the paper and to explain the exact significance of why the reader should want to continue reading.,,arg_request,arg-request_edit,asp_clarity,1
-"- I think the selection of experiments is nice, containing both regression and classification. What would have been nicer would be to perform some sort of ablation study, where the authors studied how the representational capacity of the network changed as a result of them introducing the universal linear transmission layer.",,arg_request,arg-request_experiment,asp_replicability,2
-- A direct theoretical and experimental comparison between PointNet and PointNetST would have been useful for me to understand the impact of the change that the authors introduce.,,arg_request,arg-request_experiment,asp_meaningful-comparison,2
-- Where is the conclusion section?,,arg_request,arg-request_clarification,asp_clarity,4
-"Def 4.4: ""a notion of Fisher information"" -- maybe ""variant"" is better than ""notion"", which implies there are different kinds of Fisher information",,arg_request,arg-request_edit,asp_clarity,1
-Def 3.1 mu is overloaded: parameter or measure?,,arg_request,arg-request_clarification,asp_replicability,4
-"4.4, law of total variation -- define",,arg_request,arg-request_clarification,asp_clarity,4
-What does E_{pi|s} refer to in Eqn 4.1?,,arg_request,arg-request_clarification,asp_clarity,4
-Can you clarify what it means for the map T to be a sufficient statistic for theta? (Theorem 4.6),,arg_request,arg-request_clarification,asp_clarity,4
-Experiment 5.1: Why would we expect APG with a 2d Gaussian to perform better than a 1d Gaussian,,arg_request,arg-request_explanation,asp_motivation-impact,0
-Paragraph 2 of section 3 seems like the key to the whole paper -- I would make it more prominent.,,arg_request,arg-request_edit,asp_originality,1
-I would include a short 'measure theory' appendix or equivalent reference for the lay reader.,,arg_request,arg-request_edit,asp_clarity,1
-"- In equations, please use \inf, \sup, and \text{...} for text such as distance, data, ...",,arg_request,arg-request_edit,asp_clarity,1
-What is the definition of f^* and g^* in Eq. (22)? Some explanatory text would be valuable.,,arg_request,arg-request_explanation,asp_replicability,0
-"For example, I have trouble understanding the sentence ""So the existed algorithms should be heuristic or it can get a bad result even we train the neural networks with lots of datasets."" in the introduction.",,arg_request,arg-request_explanation,asp_clarity,0
-- The aspect ratio in Fig. 5 should be fixed.,,arg_request,arg-request_edit,asp_clarity,1
-"While the idea of the work might be useful in practice, the current submission requires significant revision and work before publication.",,arg_request,arg-request_edit,asp_clarity,1
-1. The authors should provide more details on how the hand-crafted demonstrator agents were made.,,arg_request,arg-request_explanation,asp_replicability,0
-"I assume something similar to an a* algorithm was probably used for the passing task, but what about the maze navigation task?",,arg_request,arg-request_explanation,asp_replicability,0
-"Thus, the question is 1) how well will this method work with a human acting as the demonstrator? and 2) how can this method work if you are not able to have access to a demonstrator long periods of time (or even at all)?",,arg_request,arg-request_explanation,asp_soundness-correctness,0
-- Equation 1 typo?:,,arg_request,arg-request_typo,asp_clarity,3
-"In equation 1, different time steps are being compared, m^t and m^{t-1}, but the comparison should be between the predicted time step t and real time step t. Can the authors clarify why different time steps are compared in the equation?",,arg_request,arg-request_clarification,asp_soundness-correctness,4
-- Baseline missing: Random actions from expert,,arg_request,arg-request_experiment,asp_meaningful-comparison,2
-A simple baseline to compare against could be to simply force the expert to take a few random actions during its trajectory and let the imitator learn from these.,,arg_request,arg-request_experiment,asp_meaningful-comparison,2
-Comparing against this baseline could serve as evidence that we need to actually learn the probing agent to acquire a more optimal policy.,,arg_request,arg-request_experiment,asp_meaningful-comparison,2
-- Baseline missing: Simple RNN policies that communicate hidden states.,,arg_request,arg-request_experiment,asp_meaningful-comparison,2
-Another baseline could be to simply model the imitator and probing policies as RNNs and let them communicate with each other via the hidden states.,,arg_request,arg-request_experiment,asp_meaningful-comparison,2
-While optimizing the curiosity reward the hidden states could be used as well.,,arg_request,arg-request_experiment,asp_soundness-correctness,2
-"If successful, this baseline can show that we actually need to model the “behavior” with a separate network.",,arg_request,arg-request_experiment,asp_substance,2
-"Having said that, I feel this paper needs to improve in the aspects mentioned above.",,arg_request,arg-request_edit,arg_other,1
-"If the authors present more convincing evidence that successfully address the comments above, I am willing to increase my score.",,arg_request,arg-request_experiment,asp_substance,2
-Q1: Has the authors tried more complicated datasets such as CIFAR-10 to evaluate the pGAN method? It would make the paper more convincing to add results on more complex datasets.,,arg_request,arg-request_experiment,asp_substance,2
-Q2: Can the authors structure the experimental results with different sections? Currently it is just a single section which is difficult to read.,,arg_request,arg-request_edit,asp_clarity,1
-So I would like to see how would pGAN perform in this case?,,arg_request,arg-request_experiment,asp_substance,2
-This would be an effective baseline to compare. (Correct me if I am wrong here.),,arg_request,arg-request_experiment,asp_substance,2
-"If this is the case, authors should state it more clearly in the paper that a large proportion of the gap in performance between MixMatch and ReMixMatch is the introduction of stronger transformations (Autoaugment style).",,arg_request,arg-request_edit,asp_clarity,1
-"However, I would like to see in the paper a more general overview on the fact that strong transformations can further improve semi-supervised methods and ReMixMatch is a way to leverage those transformations.",,arg_request,arg-request_edit,asp_soundness-correctness,1
-"- Instead of using the rescaling trick for distribution alignment, what about enforcing the marginal distribution on the annotated data and the marginal distribution of the model to be similar with KL divergence? Would it be better or worse than the proposed approach?",,arg_request,arg-request_experiment,asp_substance,2
-"If we define both maximum and minimum thresholds based on the CIFAR-train histogram, it seems like one could detect most SVHN samples just by the virtue that there likelihoods are much higher than even the max threshold determined by the CIFAR-train histogram?",,arg_request,arg-request_explanation,asp_substance,0
-3. Why does the constant image (all zeros) in Figure 9 (appendix) have such a high likelihood? It’s mean (=0 trivially) is clearly different from the means of the CIFAR-10 images (Figure 6a) so the second order analysis of Section 5 doesn’t seem applicable.,,arg_request,arg-request_explanation,asp_soundness-correctness,0
-4. How much of this phenomena do you think is characteristic for images specifically? Would be interesting to test anomaly detection using deep generative models trained on modalities other than images.,,arg_request,arg-request_experiment,asp_substance,2
-5. One of the anonymous comments on OpenReview is very interesting: samples from a CIFAR model look nothing like SVHN.,,arg_request,arg-request_explanation,asp_soundness-correctness,0
-This seems to call the validity of the anomalous into question. Curious what the authors have to say about this.,,arg_request,arg-request_explanation,asp_soundness-correctness,0
-Minor nitpick: There seems to be some space crunching going on via Latex margin and spacing hacks that the authors should ideally avoid :),,arg_request,arg-request_typo,asp_clarity,3
-"The algorithm employed in the paper is actually not Frank-Wolfe (FW) but Block-Coordinate Frank-Wolfe (BCFW), as it minimizes w.r.t. a block of dual variables belonging to the min-batch of samples.",,arg_request,arg-request_edit,asp_substance,1
-"Though the algorithm can be easily extended to the min-batch case, the author should discuss more how the batch size is interpreted in this case (i.e. minimizing w.r.t. a larger block of dual variables belonging to the batch of samples) and the algorithmic block (Algorithm 1) should be presented in a way reflecting the batch size since this is the way people use an algorithm in practice (to improve the utilization rate of a GPU).",,arg_request,arg-request_edit,asp_substance,1
-It would be more insightful to compare SGD vs dual-BCFW when both of them are optimizing the same loss functions (either hinge loss or cross-entropy loss) in the experimental comparison.,,arg_request,arg-request_experiment,asp_substance,2
-"At the same time, I think the paper can be made stronger and more interesting to read, if the authors added some experiments aimed at understanding the proposed modifications.",,arg_request,arg-request_experiment,asp_substance,2
-One set of experiments that I think would be interesting is aimed at understanding the distribution-matching part.,,arg_request,arg-request_experiment,asp_substance,2
-"For example, it would be great if the author could demonstrate that without this loss term the distribution of the predicted classes is wrong in the experiments from Section 4.",,arg_request,arg-request_experiment,asp_soundness-correctness,2
-"It would also be interesting to see an experiment where the labeled data has a skewed distribution of classes, but we provide the method with information about the true class distribution, and demonstrating that this information helps predictive performance.",,arg_request,arg-request_experiment,asp_substance,2
-"For the learnable data augmentation it would be great if the authors could provide more insight into the method, how it works, and why is it better than the alternatives.",,arg_request,arg-request_explanation,asp_clarity,0
-Just analyzing the learned data augmentation in different settings and adding more intuition for what happens would make the paper more insightful and interesting to read.,,arg_request,arg-request_edit,asp_clarity,1
-What is the reason for the difference?,,arg_request,arg-request_explanation,asp_clarity,0
-I would recommend discussing these results briefly in the paper.,,arg_request,arg-request_edit,asp_substance,1
-This needs to be justified.,,arg_request,arg-request_explanation,asp_soundness-correctness,0
-Marquet -> Marquardt,,arg_request,arg-request_typo,asp_soundness-correctness,3
-title of Section 3: revisitED,,arg_request,arg-request_typo,asp_soundness-correctness,3
-1st paragraph of Section 3: audience -> reader,,arg_request,arg-request_edit,asp_soundness-correctness,1
-caption of Fig 1: extractS,,arg_request,arg-request_typo,asp_soundness-correctness,3
-Eq (2) cannot have Delta Chi on the two sides.,,arg_request,arg-request_edit,asp_soundness-correctness,1
-before Eq (3): the 'photometric ..' -> a 'photometric ..',,arg_request,arg-request_typo,asp_soundness-correctness,3
-1st paragraph of Section 4.3: difficulties -> reason,,arg_request,arg-request_edit,asp_soundness-correctness,1
-typo in absolute in caption of Fig 4,,arg_request,arg-request_typo,asp_soundness-correctness,3
-Eq (6): Is B the same for all scenes?,,arg_request,arg-request_clarification,asp_clarity,4
-It would be interesting to visualize it.,,arg_request,arg-request_result,asp_substance,5
-Section 4.5: applies -,,arg_request,arg-request_typo,asp_soundness-correctness,3
-> apply,,arg_request,arg-request_typo,asp_soundness-correctness,3
-"Why for example not using a simple score based on the histogram, or even the mean distance?",,arg_request,arg-request_clarification,asp_clarity,4
-"As a minor note, were different feature extractors compared?",,arg_request,arg-request_explanation,asp_substance,0
-Is that also true in this domain?,,arg_request,arg-request_explanation,asp_substance,0
-"In the author response period, I would like the author give more details about the pedestrian detection experiments, such as how many dense layers are used after ResNet-101, what are the training and inference time, is it possible to report results on PASCAL VOC (only the person class).",,arg_request,arg-request_clarification,asp_replicability,4
-I would like to encourage the authors to release the code and let the whole object detection community overcome the limitation in the paper.,,arg_request,arg-request_edit,asp_replicability,1
-"I do not understand the ""deep integration of MARL and HRL"" that is claimed in the Introduction.",,arg_request,arg-request_clarification,asp_clarity,4
-"I also do not agree with another claim that ""We consider the simulation and training environment to be another novel contribution... few simulator support more than one agent, at most 2"".",,arg_request,arg-request_clarification,asp_clarity,4
-"Almost half of the technical details are buried in ""8. Supplementary material"".",,arg_request,arg-request_edit,asp_clarity,1
-"Since it is not fair to use ""Supplementary material"" as a way to extend the page limit, I will make my judgement of the paper solely based on the contents up to Section 7.",,arg_request,arg-request_edit,asp_clarity,1
-"In the main text (up to Section 7), there is no mentioning of how the low-level controllers are learned, and how to combine PPO in a MARL partial parameter sharing setting.",,arg_request,arg-request_edit,asp_clarity,1
-Most of these should be moved to the main text.,,arg_request,arg-request_edit,asp_clarity,1
-"1) Certain paragraphs in the main text can be significantly shortened, such as the reward shaping in Section 5.2.",,arg_request,arg-request_edit,asp_clarity,1
-"2) It would be great if the paper can clearly define the experiments: ""waypoint"", ""oncoming"", ""mall"", and ""bottleneck"".",,arg_request,arg-request_edit,asp_clarity,1
-"3) The paper needs a thorough proof-reading. There are many grammar mistakes, typos, missing citations. For example,",,arg_request,arg-request_typo,asp_clarity,3
-"However, there is a lot of work coming out in the field of GANs currently, so I am not able to comment on the novelty of this regularization approach, and I am interested to know how this method performs when compared to other techniques to avoid mode collapse such as feature matching and mini-batch discrimination, etc.",,arg_request,arg-request_experiment,asp_meaningful-comparison,2
-"* The architecture of the particular model is described very briefly, and at multiple points there’s an implication that this is an investigation of “deep learning models” more generally, even though those models may vary widely.",,arg_request,arg-request_edit,asp_substance,1
-"While the authors are using an existing model, they shouldn't assume that the reader has read the paper describing that model.",,arg_request,arg-request_edit,asp_meaningful-comparison,1
-"I would like to see more discussion of whether it is at all plausible for this model to acquire the pairing strategy, compared to alternative VQA models (e.g., using relation networks).",,arg_request,arg-request_edit,asp_meaningful-comparison,1
-I don't understand what is meant by cognitively plausible but not human-like; perhaps an example of a cognitively implausible mechanism would help clarify this issue.,,arg_request,arg-request_clarification,asp_clarity,4
-isn't it better to have it count exactly how many red dots there are compared to non-red dots?,,arg_request,arg-request_experiment,asp_soundness-correctness,2
-"* The authors assume that explicit counting is not ""likely to be learned by the 'one-glance' feed-forward-style neural network"" evaluated in the paper. What is this statement based on? Why would a ""one-glance"" network have trouble counting objects?",,arg_request,arg-request_clarification,asp_substance,4
-(What is a “one-glance network”?),,arg_request,arg-request_explanation,asp_substance,0
-"What is ""pattern matching"" and how does it differ from ""higher-level concepts""?",,arg_request,arg-request_clarification,asp_substance,4
-* Why would the pairing strategy in a neural network be affected by the clustering of the objects?,,arg_request,arg-request_explanation,asp_substance,0
-"* Is the definition of ""most"" really a central piece of evidence for ""the apparent importance of a cardinality concept to human cognition""? Our ability to count seems sufficient to me. Perhaps I'm not understanding what the authors have in mind here.",,arg_request,arg-request_clarification,asp_clarity,4
-"* Please use the terms ""interpretation"" and ""verification"" consistently.",,arg_request,arg-request_edit,asp_clarity,1
-"* ""One over the other strategy"" -> ""one strategy over the other"".",,arg_request,arg-request_typo,asp_clarity,3
-2. The authors should provide ablation study and analysis of their CTAugment.,,arg_request,arg-request_experiment,asp_substance,2
-"For example, they should compare with simple random augmentation policy.",,arg_request,arg-request_experiment,asp_substance,2
-It is also recommended to show the learned weights of the distortion parameter.,,arg_request,arg-request_edit,asp_clarity,1
-Also does larger K value when applied for vanilla MixMatch approach the results in ReMixMatch?,,arg_request,arg-request_clarification,asp_substance,4
-3. The authors should provide more detail of the setting in the ablation study.,,arg_request,arg-request_edit,asp_replicability,1
-5. It is recommended to evaluate the method on larger datasets such as CIFAR-100.,,arg_request,arg-request_experiment,asp_replicability,2
-"1. For Table 2 and Table 3, it should be “error rate” rather than “accuracy”.",,arg_request,arg-request_typo,asp_soundness-correctness,3
-2. How is the loss weight λr tuned in the 40 labeled setting? How are the hyper-parameters tuned in general?,,arg_request,arg-request_clarification,asp_replicability,4
-"Although the idea is interesting, I would like to see more experimental results showing the scalability of the proposed method and for evaluating defense strategies against different types of adversarial attacks.",,arg_request,arg-request_experiment,asp_substance,2
-"- How does the performance of the proposed method scale wrt scalability? It will be useful to do an ablation study, i.e. keep the input model fixed and slowly increase the dimension.",,arg_request,arg-request_experiment,asp_substance,2
-- Did you experiment with other MH proposal beyond a random walk proposal? Is it possible to measure the diversity of the samples using techniques such as the effective sample size (ESS) from the SMC literature?,,arg_request,arg-request_experiment,asp_meaningful-comparison,2
-"- What is the performance of the proposed method against ""universal adversarial examples""?",,arg_request,arg-request_explanation,asp_substance,0
-- The most interesting question is whether this method gives reasonable robustness estimates even for large networks such as AlexNet?,,arg_request,arg-request_explanation,asp_motivation-impact,0
-"- Please provide some intuition for this line in Figure 3: ""while the robustness to perturbations of size  = 0:3 actually starts to decrease after around 20 epochs.""",,arg_request,arg-request_explanation,asp_clarity,0
-"Isn't it possible to use the proposed method to quantify the increase in the robustness towards an attack model using a particular defense strategy? If it is possible to show that the results of the proposed method match the conclusions from these papers, then this will be an important contribution.",,arg_request,arg-request_experiment,asp_substance,2
-"- The analysis has focused on a very simple case of having a linear discriminator which for example in WGAN, forces the first moments to match. How does the analysis extend to more realistic cases?",,arg_request,arg-request_experiment,asp_substance,2
-The connections of the proposed approach with existing literature should be better explained.,,arg_request,arg-request_explanation,asp_substance,0
-"- In the empirical results, the performance of the proposed method and Reg-GAN (from the numerics of GAN paper) are quite similar. Are there instances that the proposed approach significantly improves the stability of practical GAN architectures?",,arg_request,arg-request_explanation,asp_substance,0
-Authors should scope the paper to the specific function family these networks can approximate.,,arg_request,arg-request_edit,asp_substance,1
-"If these networks can truly solve these problems, authors should report the success rate while varying the threshold, not individual accuracy of the items which can be arbitrarily high by violating constraints.",,arg_request,arg-request_experiment,asp_substance,2
-"Also, the authors should compare with few more graphnet + transmission layer (GraphNetST) baselines with the graph layers: $P(X)_i = Ax_i + \sum_{j \in N(x_i, X)} Bx_j + c$ and the same single transmission layer $\mathbf{1}\mathbf{1}^TXB$ in PointNetST.",,arg_request,arg-request_experiment,asp_soundness-correctness,2
-PointNet is a specialization of graphnets and GraphNetST should be added as a baseline with reasonable adjacency.,,arg_request,arg-request_experiment,asp_soundness-correctness,2
-Also experiment figures are extremely compact. Try using log scale or other lines to make the gaps wider.,,arg_request,arg-request_edit,arg_other,1
-Spare few lines of equations to define what are DeepSets and PointNetSeg in the paper and point out the difference since these networks are used throughout the paper extensively without proper mathematical definition.,,arg_request,arg-request_edit,asp_meaningful-comparison,1
-"""For a vector $x \in R^K$ and a multi-index ..."" I think it was moved out of the next paragraph",,arg_request,arg-request_typo,arg_other,3
-"Also, try using the consistent dimension for x throughout the paper, it confuses the reader.",,arg_request,arg-request_edit,arg_other,1
-"As of now, the greedy nature of the algorithm is hidden across a number of sections (not introduced when presenting the main algorithm).",,arg_request,arg-request_clarification,asp_substance,4
-Some comment as to this bias -- or even suggesting that it might exist would be useful.,,arg_request,arg-request_explanation,asp_substance,0
-"Nevertheless, further understanding as to this would be useful.",,arg_request,arg-request_explanation,asp_substance,0
-3. The structure of the meta-training loop was unclear to me.,,arg_request,arg-request_clarification,asp_substance,4
-5.1/Figure 1: I think there is an overloaded use of lambda?,,arg_request,arg-request_clarification,asp_clarity,4
-"6. Validation data / test sets: Throughout this work, it is unclear what / how validation is performed.",,arg_request,arg-request_clarification,asp_clarity,4
-"It seems you performing controller optimization (optimizing phi), on the validation set loss, while also reporting scores on this validation set.",,arg_request,arg-request_clarification,asp_clarity,4
-This should most likely instead be a 3rd dataset.,,arg_request,arg-request_clarification,asp_clarity,4
-"You have 3 datasets worth of data for the regression task (it is still unclear, however, what is being used for evaluation), but it doesn't look like this is addressed in the larger scale experiments at all.",,arg_request,arg-request_clarification,asp_clarity,4
-It is unclear to me how this will avoid these.,,arg_request,arg-request_clarification,asp_clarity,4
-"In particular, the ""exploding"" will come from the \nabla log p term, not from the reward (unless you have reason to believe the rewards will grow exponentially).",,arg_request,arg-request_clarification,asp_clarity,4
-Why is IS squared in the reward for GAN training for example? Why is the scaling term required on all rewards?,,arg_request,arg-request_explanation,asp_substance,0
-Having some guiding idea or theory for these choices or rational would be appreciated.,,arg_request,arg-request_explanation,asp_substance,0
-11. Why is PPO introduced?,,arg_request,arg-request_explanation,asp_substance,0
-"In algorithm 1, it is unclear how PPO would fit into this?",,arg_request,arg-request_explanation,asp_substance,0
-More details or an alternative algorithm in the appendix would be useful.,,arg_request,arg-request_explanation,asp_substance,0
-Why wasn't PPO used on all larger scale models? Does the training / performance of the meta-optimizer (policy gradient  vs ppo) matter?,,arg_request,arg-request_explanation,asp_substance,0
-15. Figure 4a. Consider reformatting data (maybe histogram of differences? Or scatter plot).,,arg_request,arg-request_edit,asp_clarity,1
-"page 2, ""objective term. on GANs, the AutoLoss: Capital o is needed.",,arg_request,arg-request_typo,asp_clarity,3
-Page 3: Parameter Learning heading the period is not bolded.,,arg_request,arg-request_typo,arg_other,3
-[1] Learning step size controllers for robust neural network training.,,arg_request,arg-request_typo,arg_other,3
-[2]http://torch.ch/blog/2015/11/13/gan.html,,arg_request,arg-request_typo,arg_other,3
-"[3] Understanding Short-Horizon Bias in Stochastic Meta-Optimization, Wu et.al.",,arg_request,arg-request_typo,arg_other,3
-Is it because the ML solution would be faster to compute with big instances? Is it because with the proposed approach one can curate sophisticated heuristic solutions when provable optimality is out of reach?,,arg_request,arg-request_explanation,asp_clarity,0
-"Authors acknowledge the fact that their experimental setup is rather limited in Appendix C.1, which I agree with and they also claim that there is a representation for a uniform algorithm for any number of advertisers for the AdWords problem, however they leave this as a future work, which I find unfortunate. I would recommend taking this direction rigorously and expand the contribution, which would prove to be a very sound contribution.",,arg_request,arg-request_experiment,asp_substance,2
-How can one evaluate the solutions generated by this framework similar to how GAN generators are evaluated?,,arg_request,arg-request_clarification,asp_replicability,4
-"Can one walk the latent distribution of the algorithm agent and draw insights, which might lead into tailoring some algorithms that would be appropriate for some input distribution although in general inferior in terms of worst case guarantees?",,arg_request,arg-request_explanation,asp_substance,0
-2. The main technical contribution claim needs to be elaborated.,,arg_request,arg-request_experiment,asp_substance,2
-I understand how the game theoretic framework is established but how does this manifest itself in the algorithm described in Section 3.1 needs more explanation.,,arg_request,arg-request_experiment,asp_substance,2
-They need to elaborate how their method overcomes these issues better.,,arg_request,arg-request_experiment,asp_substance,2
-What are the shortcomings?,,arg_request,arg-request_experiment,asp_substance,2
-"However, they state they loosely follow this approach. What does that entail? What kind of theoretical guarantees are given up due to not following this, a better exposition on this topic would help to support the claims.",,arg_request,arg-request_explanation,asp_substance,0
-In particular what is the conclusion to be drawn from Figure 5.,,arg_request,arg-request_explanation,asp_clarity,0
-This needs more elaboration. Is this way of training results expected? What is the lesson learned?,,arg_request,arg-request_explanation,asp_clarity,0
-What are the significance of these examples? How they help us understand the problem instance generation was actually able to find interesting instances? What kind of dynamics are under covered?,,arg_request,arg-request_explanation,asp_substance,0
-"I can understand the point that training NNLM accelerates the experiments, but the author(s) should consider trying a simply LSTM model after the best settings had been discovered (e.g. Table 1).",,arg_request,arg-request_experiment,asp_substance,2
-"Thus, it might be helpful to test the result on another dataset (e.g. WikiText).",,arg_request,arg-request_experiment,asp_substance,2
-1. I do not get the point of bringing up NCE. Did you actually use NCE loss? Did you only refer to NCE as a weight tying which can be used in a standard XENT loss [3]? The first paragraph of 3.3 did not help clarify this point either.,,arg_request,arg-request_clarification,asp_replicability,4
-"3. Shouldn't random indexing produce non-uniform numbers of non-zero entries depending on alpha? Why did you have an exact number of non-zero entries, s, in the experiments?",,arg_request,arg-request_clarification,asp_replicability,4
-"- ""... is that instead of trying to probability ..."" => ""... tying ...""",,arg_request,arg-request_typo,asp_clarity,3
-"- ""... All models sare trained ..."" => ""... are",,arg_request,arg-request_typo,asp_clarity,3
-"- ""... Tho get the feature ..."" => ?",,arg_request,arg-request_typo,asp_clarity,3
-"For the motivation of this methods, why would the graph be constructed within each class? If there is correlation between different classes, how could the model use such class-wise correlation to clean the label?",,arg_request,arg-request_clarification,asp_motivation-impact,4
-"Maybe I missed it, but how is the relevance score / predicted label determined for testing data given the graphs constructed in each class of training data?",,arg_request,arg-request_clarification,asp_substance,4
-"Did the authors tried this alternative architecture for the generator, which uses the white noisy z as network input (similar as flow-based models, e.g., Parallel WaveNet) and the conditional features as bias term in the convolutional layers?",,arg_request,arg-request_clarification,asp_substance,4
-"2, Could the authors comment the importance of serval architecture choices in this work?",,arg_request,arg-request_explanation,asp_clarity,0
-Could the authors shed some light on the potential reason? Does the ensemble of RWD regularizes the training?,,arg_request,arg-request_explanation,asp_replicability,0
-What's your experience for training FullD (does not have random window ) and cRWD_1 (only has one random window discriminator),,arg_request,arg-request_explanation,asp_substance,0
-Are they still very stable?,,arg_request,arg-request_explanation,asp_substance,0
-"Also, could the authors comment on the importance of large batch size -- 1024 for stable training of GAN-TTS?",,arg_request,arg-request_explanation,asp_replicability,0
-"5, Although there is a notable difference, one may properly mention previous work Yamamoto et al. (2019), which uses GAN as an auxiliary loss within ClariNet and obtains high-fidelity speech ( https://r9y9.github.io/demos/projects/interspeech2019/ ).",,arg_request,arg-request_edit,arg_other,1
-"4,  It would be very interesting to see an analysis of model stability with smaller batch sizes.",,arg_request,arg-request_experiment,asp_substance,2
-This can be dome by removing one of the outputs from the previous layer.,,arg_request,arg-request_experiment,asp_substance,2
-This can be a symptom of a redundant input.,,arg_request,arg-request_experiment,asp_substance,2
-"Another option is exploiting ""vertical"" redundancy: this happens when output y_i' is correlated with output y_{i'+N/m}. This allows the same code-word to be reused vertically.",,arg_request,arg-request_experiment,asp_substance,2
-This can be a symptom of a redundant output.,,arg_request,arg-request_experiment,asp_substance,2
-It could also be the case that compressibility could be further subtantially improved by trying different matrix row permutations.,,arg_request,arg-request_experiment,asp_meaningful-comparison,2
-"Also, if one notices that y_i' ir correlated with y_i'', it might make sense to permute matrix rows in such a way that both rows would end up a multiple N/m apart.",,arg_request,arg-request_experiment,asp_meaningful-comparison,2
-It would be interesting to see how this would affect compressibility.,,arg_request,arg-request_result,asp_substance,5
-The third case is when code words are reused in arbitrary cases.,,arg_request,arg-request_experiment,asp_replicability,2
-It would have been interesting to see this and other possibilities explored in the paper.,,arg_request,arg-request_experiment,asp_substance,2
-I feel that the idea deserves a broader analysis beyond just a single choice of disentanglement.,,arg_request,arg-request_experiment,asp_substance,2
-I would be curious to see an analysis of how that works out as compared to the separate encoders case.,,arg_request,arg-request_experiment,asp_substance,2
-Is there a constraint on the CFS and classifiers that ensure the difference between the weights really captures what is suggested?,,arg_request,arg-request_clarification,asp_clarity,4
-"Is it not the case that classifier weights could come out quite different despite the tasks being quite similar if the linear classifiers learned to capitalize on dissimilar, yet equally fruitful patterns in the input features?",,arg_request,arg-request_clarification,asp_soundness-correctness,4
-Do you have thoughts on how this could be applied outside the context of sentence representations and further outside the context of classification?,,arg_request,arg-request_explanation,asp_substance,0
-It would be nice to see a comparison to such baselines in order to get a sense of how the proposed methods give insights that other unsupervised or supervised methods might give just as well.,,arg_request,arg-request_experiment,asp_meaningful-comparison,2
-"Otherwise, it is hard to tell how significant these correlations are. Since the end goal is to determine transferability of tasks and not the methods, it does seem like there are simpler baselines that you could compare against.",,arg_request,arg-request_experiment,asp_meaningful-comparison,2
-"It might be nice to carefully delineate the authors' work from the former, and present their contributions.",,arg_request,arg-request_edit,asp_originality,1
-"Page 4: Other Connections with Lower bounds: The first line "" ""we may also consider ... "". This line is vague. How will you ensure the amount of deformation is such that the set \bar{U} is contained in U ?",,arg_request,arg-request_clarification,asp_soundness-correctness,4
-"It needs to be ascertained when equality holds in the bounds you propose, so that we know how tight they are. What if the bounds are too loose to be practical?",,arg_request,arg-request_explanation,asp_soundness-correctness,0
-eqn (8): use something else to denote the function 'U'.,,arg_request,arg-request_edit,asp_clarity,1
-You used 'U' before to denote the set.,,arg_request,arg-request_edit,asp_clarity,1
-eqn (12): does \tilde{O} hide polylog factors? please clarify.,,arg_request,arg-request_clarification,asp_replicability,4
-1. Can you comment on the quantization time of the suggested method? Repeatedly solving the EM steps can add up to quite an overhead.,,arg_request,arg-request_explanation,asp_substance,0
-Does it pose a difficulty? How does it compare to other methods?,,arg_request,arg-request_explanation,asp_substance,0
-"2. Can you elaborate on the issue of non-linearity? It is mentioned only briefly in the conclusion. What is the difficulty in incorporating it? Is it in solving equation (4)? And perhaps, how do you expect it to effect the results?",,arg_request,arg-request_explanation,asp_substance,0
-"The loss term is motivated by the idea that we want the output distribution to retain some information about the context, but why should that be the case?",,arg_request,arg-request_explanation,asp_soundness-correctness,0
-- Perhaps it can be applied to other sequence models.,,arg_request,arg-request_experiment,asp_meaningful-comparison,2
-They might be more convincing if there were results on a very large corpus such as 1 billion word corpus.,,arg_request,arg-request_experiment,asp_substance,2
-The authors' should add some wording to explain this value.,,arg_request,arg-request_edit,asp_substance,1
-It would be very interesting to see a discussion of the class of functions these nonlinear kernels represent.,,arg_request,arg-request_experiment,asp_substance,2
-"This kind of discussion would give the reader  motivation for the choice of function, ideas for how to improve in this class of functions, and insight into why it works.",,arg_request,arg-request_experiment,asp_substance,2
-It would be nice if the authors pointed to a git repository with their code an experiments.,,arg_request,arg-request_explanation,asp_replicability,0
-"If this is a method for image recognition, it would be better to present results for a more substantial image recognition problem than MNIST and CIFAR-10.",,arg_request,arg-request_experiment,asp_substance,2
-How do performance and model size trade off?,,arg_request,arg-request_explanation,asp_soundness-correctness,0
-How were the number of layers and kernels chosen?,,arg_request,arg-request_explanation,asp_soundness-correctness,0
-Was the 5x10x20x10 topology used for MNIST the only topology tried?,,arg_request,arg-request_explanation,asp_soundness-correctness,0
-What is the performance on all of the other topologies tried for the proposed algorithm?,,arg_request,arg-request_result,asp_substance,5
-Was crossvalidation used to select the topology?,,arg_request,arg-request_explanation,asp_replicability,0
-"If so, what was the methodology.",,arg_request,arg-request_explanation,asp_replicability,0
-All of these issues should be addressed in a future version of the paper.,,arg_request,arg-request_edit,asp_clarity,1
-.  They should be removed.,,arg_request,arg-request_typo,asp_clarity,3
-"- In Table 1, for ImageNet, Shadow Attach does not always generate adversarial examples that have on average larger certified radii than the natural parallel, at least for sigma=0.5 and 1.0. Could the authors explain the reason?",,arg_request,arg-request_explanation,asp_soundness-correctness,0
-"- In Table 2, it is not clear to me what is the point for comparing errors of the natural images (which measures the misclassification rate of a natural image) and that of the adversarial images (which measures successful attacks rate), and why this comparison helps to support the claim that the attack results in a stronger certificates.",,arg_request,arg-request_explanation,asp_soundness-correctness,0
-"In my opinion, to support the above claim, shouldn’t the authors provide a similar table as Table 1, directly comparing the certified radii of the natural images and adversarial images?",,arg_request,arg-request_experiment,asp_substance,2
-"- From Figure 9, we see the certificate radii of the natural have at least two peaks. Though on average the certificate radii of the adversarial attacks is higher than that of the natural images, it is smaller than the right peak. Could the authors elaborate more of the results?",,arg_request,arg-request_explanation,asp_substance,0
-- Sim(delta) should be Dissim(delta) which measures the dissimilarity between channels.,,arg_request,arg-request_edit,asp_soundness-correctness,1
-- Lambda sim and lambda s are used interchangeably. Please make it consistent.,,arg_request,arg-request_edit,asp_clarity,1
-- The caption of Table 1 is a little vague. Please clearly state the meaning of the numbers in the table.,,arg_request,arg-request_edit,asp_clarity,1
-"- I think the authors want to make an explicit connection to counterfactuals as understood in the causality community. Then they shy away from it saying they are inspired by it. May be a formal exposition in the supplement about counterfactuals and generating mechanisms could help readers from other communities (NLP) even it means repeating standard/synthetic examples. Its good to say what exactly in a counterfactual generation process, the ""people"" in amazon turk were substituting.",,arg_request,arg-request_clarification,asp_soundness-correctness,4
--  Is the romantic/ horror flips and their absence the only spurious thing in Figure 4 ?,,arg_request,arg-request_clarification,asp_soundness-correctness,4
-"-  In figure 6, it appears that BERT is sensitive to the domain - does it mean that it is bad ? - Authors indicate that ideally it must not be so. Because Table 3 results seem to indicate that BERT performs the best in almost all the cases .",,arg_request,arg-request_clarification,asp_substance,4
--  Can the authors highlight the best performances in each case in the Tables by a bold face.,,arg_request,arg-request_clarification,asp_clarity,4
-"So any insights on the nature of these bounds will be valuable, especially with some comments on how these bounds change if the teacher model is itself realized as a 2-layer neural network.",,arg_request,arg-request_explanation,asp_replicability,0
-"- The parameter count of a 2-layer network with $h$ hidden units and input dimension $d$ is $O(dh)$. So perhaps it makes sense to study an asymptotic regime where $dh/n$ approaches $\gamma$, instead of both d and h growing linearly in n. While this issue is hinted at in the discussion section, I don't understand the statement ""the mechanism that provably gives rise to double descent from previous works Hastie et al. (2019); Belkin et al. (2019) might not translate to optimizing two-layer neural networks.""",,arg_request,arg-request_explanation,asp_clarity,0
-- Another future direction that could be included in discussions is the setting where both layers are trained simultaneously.,,arg_request,arg-request_experiment,asp_substance,2
-"- Do you have any explanations as to why the number of images, if too large, actually hurts translation performance? Is it because more images also leads to a higher chance of noisy images?",,arg_request,arg-request_explanation,asp_replicability,0
-- It would be nice to have an experiment that varies the size of the external paired sentence-image dataset and tested the impact on performance.,,arg_request,arg-request_experiment,asp_substance,2
-- Please comment on the extra computation required for obtaining image data for MT sentences and for learning image representations.,,arg_request,arg-request_explanation,asp_replicability,0
-- Why are there missing BLEU scores and the number of parameters in Table 1?,,arg_request,arg-request_explanation,asp_soundness-correctness,0
-"Clarification of the connections/differences, and comparison with these related methods should be made to show the efficacy of the proposed method.",,arg_request,arg-request_clarification,asp_originality,4
-It is not clear how the compression ratio in table 1 is obtained.,,arg_request,arg-request_result,asp_substance,5
-"Say for block size d=4, an index is required for each block, and the resulting compression ratio is at most 4 (correct me if I understand it wrong).",,arg_request,arg-request_result,asp_substance,5
-Can the authors provide an example to explain how to compute the compression ratio?,,arg_request,arg-request_explanation,asp_substance,0
-"One comment from the math side: it would be interesting (albeit probably difficult) to study kappa in (3.10) as a function of a. In particular at face value it looks like one only benefits from taking a larger, so why not study the limiting behavior of a->infty? What is the limiting value of kappa? Can you perform those calculations in the convex case at least?",,arg_request,arg-request_experiment,asp_soundness-correctness,2
-The authors should try to find a real-world domain which can really demonstrate the effectiveness of the method.,,arg_request,arg-request_experiment,asp_substance,2
-A good place to start with is to visualize(print out) the learned numerical rules and see if they make any sense.,,arg_request,arg-request_experiment,asp_substance,2
-"The experiment section needs significant improvement, especially when there is space left.",,arg_request,arg-request_experiment,asp_substance,2
-"Given the special structure of the family, the reviewer might guess that having K-matrices can slow down the training, i.e. it might require more epochs to achieve the reported results compared to baselines.",,arg_request,arg-request_edit,asp_substance,1
-Providing training plots might increase the quality of the paper.,,arg_request,arg-request_result,asp_substance,5
-"1. Even though K-matrices are aimed at structured matrices, it would be curious either to empirically compare K-matrices to linear transformations in fully-connected networks (i.e. dense matrices) or to provide some theoretical analysis.",,arg_request,arg-request_result,asp_meaningful-comparison,5
-"2. Section 3.3 argues that K-matrices allow to obtain an improvement of inference speed, however, providing the results of convergence speed (e.g. training plots with a number of epochs) will allow a better understanding of the proposed approach and will improve the quality of the paper.",,arg_request,arg-request_explanation,asp_substance,0
-"A more rigorous setting is to, for N runs, each run splitting the validation and testing set differently.",,arg_request,arg-request_experiment,asp_substance,2
-"Since this paper is an application paper, rather than a theoretical paper that bears theoretical findings, I would expect much more thorough experimental setup and analysis.",,arg_request,arg-request_experiment,asp_substance,2
-"Results and discussion about how the previous methods with full features perform compared to SASNet, and also how we can include those features into SASNet should complete the paper.",,arg_request,arg-request_experiment,asp_substance,2
-"1)	on page 4, Section 3, the first paragraph, shouldn’t “C_p^{val} of 55” be “C_p^{test} of 55”?",,arg_request,arg-request_typo,asp_clarity,3
-3)	Some discussion on why the “SASNet ensemble” would yield better performance would be good; could it be overfitting?,,arg_request,arg-request_explanation,asp_substance,0
-It would be nice to see some discussion (or at least speculation) on why that is.,,arg_request,arg-request_explanation,asp_substance,0
-"• In the abstract, it might be good to clarify that the exponentiation is elementwise.",,arg_request,arg-request_edit,asp_clarity,1
-I would only suggest evaluating this technique on AWD-LSTM-MoS of Yang et al. (2017) to get a more complete picture.,,arg_request,arg-request_experiment,asp_meaningful-comparison,2
-"What probability term does it correspond to? It is supposed to make probabilities of different cardinalities comparable, but the exact mechanism is unclear.",,arg_request,arg-request_clarification,asp_clarity,4
-"If so, why does term f2 in Eq 5 contain the permutation head output O2 and how do the two relate?",,arg_request,arg-request_clarification,asp_clarity,4
-"Key aspects of the model are not particularly clear, specifically about how the permutation prediction ( the key novelty here) is used to benefit training.",,arg_request,arg-request_clarification,asp_soundness-correctness,4
-"— Term f2 in Eq5 uses w~ estimates, which appeared to be based on statistics from past SGD runs, yet also depends on the output of the permutation head O2. Am I misinterpreting the method?",,arg_request,arg-request_clarification,asp_clarity,4
-"— In the paragraph right after Eq5, it’s claimed that “Empirically, in our applications, we found out that estimation of the permutations from just f1 [in Eq5] is sufficient to train properly … by using the Hungarian algorithm”. So then f2 term is not even used in. Eq5? If so, what is the significance of the permutation head other than adding an auxiliary loss?",,arg_request,arg-request_clarification,asp_substance,4
-"Furthermore, there are no experimental results demonstrating the effect of the permutation head and the design choices above — if we could get by with only using the Hungarian algorithm, why bother classifying an exponential number of permutations? Do they help when added as an auxiliary loss?",,arg_request,arg-request_result,asp_substance,5
-The results are interesting proofs-of-concept but a few more experiments/answers would be helpful:,,arg_request,arg-request_experiment,asp_substance,2
-Any idea as to why?,,arg_request,arg-request_explanation,asp_substance,0
-"- Ablation results on the effect of the permutation predictions vs Hungarian algorithm, etc would be helpful, as discussed above.",,arg_request,arg-request_experiment,asp_substance,2
-"- How sensitive is the method to seeing a certain cardinality? What if it never sees 3 pedestrians in an image, but only 1,2,4 will it fail to predict 3? Or alternatively, if we train a model that can handle up to 5-6 entities with examples than have <=4? What is the right way of data augmentation for this model (was there any and should there be?)",,arg_request,arg-request_result,asp_substance,5
-"- Given that values for U differ across applications, how sensitive is the output / how much sweeping did you have to do?",,arg_request,arg-request_result,asp_substance,5
-It would help to cite more recent work that decreases detector dependence on NMS.,,arg_request,arg-request_edit,asp_meaningful-comparison,1
-"For example, ""Learning Non-Maximum Suppression"", Hosang, Benenson, Schiele, CVPR 2017 or ""Relation Networks for Object Detection"", by Hu et al, CVPR 2018 and references therein.",,arg_request,arg-request_edit,asp_meaningful-comparison,1
-"For instance, I would like to see the comparison between DeepCS and SmartHash by Tang et al 2017.",,arg_request,arg-request_experiment,asp_substance,2
-https://openreview.net/references/pdf?id=Sy2fzU9gl,,arg_request,arg-request_experiment,asp_meaningful-comparison,2
-https://arxiv.org/abs/1802.05822,,arg_request,arg-request_experiment,asp_meaningful-comparison,2
-https://arxiv.org/abs/1802.05983,,arg_request,arg-request_experiment,asp_meaningful-comparison,2
-https://arxiv.org/abs/1802.04942,,arg_request,arg-request_experiment,asp_meaningful-comparison,2
-"Importantly, there are no quantitative metrics.",,arg_request,arg-request_experiment,asp_substance,2
-"3) Typos need to be corrected in next version, e.g., all equations should have punctuation mark at the end, all e.g., i.e., et al., etc. should be italic, format of references should be consistent.",,arg_request,arg-request_typo,asp_substance,3
-"- The critical structural choices (such as the attention model in section 3.2) are presented without too much justification, discussion of alternatives, etc.",,arg_request,arg-request_explanation,asp_substance,0
-"- The experiments show the learning results, but do not provide a peak ""under the hood"" to understand the way attention evolved and contributed to the results.",,arg_request,arg-request_explanation,asp_substance,0
-"- ""Transfer-based attackS ... since they ...*",,arg_request,arg-request_typo,asp_clarity,3
-"- ""of adversarial exampleS ...""",,arg_request,arg-request_typo,asp_clarity,3
-"- ""from model A can transfer to model B""",,arg_request,arg-request_typo,asp_clarity,3
-"- ""less transferable than *those from* a shallow model""?",,arg_request,arg-request_typo,asp_clarity,3
-"- ""investigations, We "": don't capitalize",,arg_request,arg-request_typo,asp_clarity,3
-"- ""the averaging *has* a smoothing effect""",,arg_request,arg-request_typo,asp_clarity,3
-"- ""our motivation are""",,arg_request,arg-request_typo,asp_clarity,3
-"- ""contributed it to""",,arg_request,arg-request_typo,asp_clarity,3
-"- ""available *to the* adversary""",,arg_request,arg-request_typo,asp_clarity,3
-"- ""crafting adversarial perturbationS""",,arg_request,arg-request_typo,asp_clarity,3
-"- ""directly evaluation""",,arg_request,arg-request_typo,asp_clarity,3
-"- ""be fixed 100""",,arg_request,arg-request_typo,asp_clarity,3
-"- the higher-order features T*a*b are useful only when a is noun and b is an adjective: why not investigate using T to model higher-order interaction for all (a,b) pairs regardless of the syntactic relationships between a and b?",,arg_request,arg-request_experiment,asp_substance,2
-My only question is on the possibility of deriving realistic APG algorithms beyond the class of angular Gaussian policy.,,arg_request,arg-request_experiment,asp_substance,2
-"In terms of the layout of the paper, I would also recommend including the exact algorithm pseudo-code used in the main paper.",,arg_request,arg-request_experiment,asp_substance,2
-"Further, the authors claim that DB is able to obtain more compressed representations (But is the goal a compressed representation, or an informative one?).",,arg_request,arg-request_clarification,asp_motivation-impact,4
-"The paper would also benefit from evaluation of the representation itself, and comparison to other non-information bottleneck based algorithms.",,arg_request,arg-request_experiment,asp_meaningful-comparison,2
-I think the author should have some discussions about these related methods.,,arg_request,arg-request_explanation,asp_meaningful-comparison,0
-"Second, I notice that compared to the result in Table 1, PGD attack can yield better results [1].",,arg_request,arg-request_result,asp_substance,5
-I don't really understand how learning lambda would _guarantee_ that the optimization will converge to a better solution.,,arg_request,arg-request_clarification,asp_soundness-correctness,4
-"Given this, I wonder why all experiments are conducted on sets of two to five images, even for Kitti where standard evaluation protocols would demand predicting entire sequences.",,arg_request,arg-request_explanation,asp_replicability,0
-- Does section 2.2 depend on the assumption of linear dynamics?,,arg_request,arg-request_clarification,asp_meaningful-comparison,4
-- Does the E in eq.7 come from eq. 4?,,arg_request,arg-request_clarification,asp_substance,4
-"- Could you give some intuition for the paragraph above section 3.4, about the different form of inputs when treating D and G as dynamics?",,arg_request,arg-request_explanation,asp_substance,0
-"For consistency, it is perhaps better to keep the dependency of p_D and p_G on x explicit (same for eq. 10), unless this is intended?",,arg_request,arg-request_edit,asp_substance,1
-What’s the reason for this discrepancy?,,arg_request,arg-request_explanation,asp_substance,0
-Missing references - authors may want to consider citing https://arxiv.org/abs/1906.06187 as well in Sec. 2 - it seems very related to this work.,,arg_request,arg-request_edit,arg_other,1
-"Does this cause some issues, e.g., do we need to set the number of steps so high that the initialization does not matter so much any more? Or would it make more sense to reset the value function to some ""mean value function"" after every individual?",,arg_request,arg-request_explanation,asp_replicability,0
-"Thus, the evidence of the experiments is not enough.",,arg_request,arg-request_experiment,asp_substance,2
-"p2-3, Section 3.1 - I found the equations impossible to read. What",,arg_request,arg-request_explanation,asp_clarity,0
-"In (2) is (N+1)x(N+1) the kernel size (sums are over 0,1,...,N?)??",,arg_request,arg-request_explanation,asp_soundness-correctness,0
-"Is the output of the first convolution a single HxW feature planes, or a HxWx(N+1)x(N+1) tensor?",,arg_request,arg-request_explanation,asp_soundness-correctness,0
-"Equation (4). What is d_{k,l}? A pixel-wise target label? Where does it come from?",,arg_request,arg-request_explanation,asp_replicability,0
-"It would therefore be much more interesting to compare your networks with ShuffleNet style networks designed for computational efficiency, rather than networks designed mainly to push the benchmark numbers down whatever the cost.",,arg_request,arg-request_experiment,asp_substance,2
-"It would be helpful to have the computational cost of the network in FLOPs, and running time compared a regular ConvNet using Winograd/Fourier convolutions.",,arg_request,arg-request_experiment,asp_substance,2
-"* The use of fully connected layers also implies that it requires fixed length input, so windowing and stitching are necessary for it to be applied to recordings of arbitrary length. Why not train a convolutional model instead?",,arg_request,arg-request_explanation,asp_soundness-correctness,0
-* I think the choice of a 3-dimensional latent space is poorly justified. Why not use more dimensions and project them down to 3 for visualisation and interpetation purposes with e.g. PCA or t-SNE?,,arg_request,arg-request_explanation,asp_soundness-correctness,0
-"* In the introduction, an adversarial criterion is referred to as a ""discriminative objective"", but ""adversarial"" (i.e. featuring a discriminator) and ""discriminative"" mean different things. I don't think it is correct to refer to an adversarial criterion as discriminative.",,arg_request,arg-request_edit,asp_soundness-correctness,1
-"* Some turns of phrase like ""recently gained a flourishing interest"", ""there is still a wide gap in quality of results"", ""which implies a variety of underlying factors"", ... are vague / do not make much sense and should probably be reformulated to enhance readability.",,arg_request,arg-request_edit,asp_clarity,1
-"* Introduction, top of page 2: should read ""does not learn"" instead of ""do not learns"".",,arg_request,arg-request_typo,asp_clarity,3
-"* Mor et al. (2018) do actually make use of an adversarial training criterion (referred to as a ""domain confusion loss""), contrary to what is claimed in the introduction.",,arg_request,arg-request_edit,asp_soundness-correctness,1
-I think all claims about running time should be corroborated by controlled experiments.,,arg_request,arg-request_experiment,asp_replicability,2
-"* Section 3.1, ""amounts to optimizing"" instead of ""amounts to optimize""",,arg_request,arg-request_typo,asp_clarity,3
-This should probably be cited instead.,,arg_request,arg-request_edit,arg_other,1
-"* ""circle-consistency"" should read ""cycle-consistency"" everywhere.",,arg_request,arg-request_typo,asp_clarity,3
-"* The model name ""FILM-poi"" is only used in the ""implementation details"" section, it doesn't seem to be referred to anywhere else. Is this a typo?",,arg_request,arg-request_clarification,asp_clarity,4
-* The differences between UNIT (GAN; C-po) and UNIT (MMD; C-po) in Table 1 seem very small and I'm not convinced that they are significant. Why does the MMD version constitute an improvement? Or is it simply more stable to train?,,arg_request,arg-request_explanation,asp_soundness-correctness,0
-"It is a pity to see that the authors provide acronyms without explicitly explaining them such as DDPG and TD3, and this right from the abstract.",,arg_request,arg-request_typo,asp_clarity,3
-"by the existence of several typos, and the writing in certain passages can be improved. Example of typos include  “an surrogate gradient”, “""an hybrid algorithm”,  “most fit individuals are used ” and so on…",,arg_request,arg-request_typo,asp_clarity,3
-"In equation 1, 2 the updates of  \mu_new and \sigma_new uses \lambda_i, however the authors provide common choices for \lambda without any justification or references.",,arg_request,arg-request_edit,asp_substance,1
-"Though the title promises a contribution to an understanding of word embedding compositions in general, they barely expound on the broader implications of their idea in representing elements of language through vectors.",,arg_request,arg-request_edit,asp_soundness-correctness,1
-One would at least expect an after-the-fact interpretation for the weighted tensor term and what this implies with regard to their method and syntactic embedding compositions in general.,,arg_request,arg-request_edit,asp_substance,1
-Negative points: (1) The authors should provide more justification on equation-3.,,arg_request,arg-request_explanation,asp_replicability,0
-Why do the authors directly average different loss for the discriminator and the classifer?,,arg_request,arg-request_explanation,asp_replicability,0
-Does the discriminator exclude the poisoning data according to certain rule?,,arg_request,arg-request_explanation,asp_replicability,0
-It would make more sense if the classification error measured from the data the discriminator selects.,,arg_request,arg-request_experiment,asp_substance,2
-Why can pGAN lead to the inclination? Is it possible for pGAN to control the specific error tendency?,,arg_request,arg-request_explanation,asp_replicability,0
-"(4) For the error-specific attack task, it would be better to provide an ablation experiment.",,arg_request,arg-request_experiment,asp_substance,2
-"For example, authors could implement pGAN by ignoring the detectability of the discriminator (i.e. \alpha=0) or typical pGAN when they compare with the label-flip operation.",,arg_request,arg-request_experiment,asp_substance,2
-Please explain which component contribute to the error-specific inclination.,,arg_request,arg-request_explanation,none,0
-They should try different train/test splits and report the performance.,,arg_request,arg-request_experiment,asp_substance,2
-"- The authors should include citations and motivation for some of their choices (what sequence identity is used, what cut-offs are used etc)",,arg_request,arg-request_edit,asp_motivation-impact,1
--  The authors should compare to at least some popular previous approaches that use a feature engineering based methodology such as - IntPred,,arg_request,arg-request_experiment,asp_meaningful-comparison,2
-Can they show performance at various ratios of positive:negative examples?,,arg_request,arg-request_experiment,asp_substance,2
-1) How to choose \lambda?,,arg_request,arg-request_clarification,asp_replicability,4
-"Instead of just one scalar value, it could be better to learn a map of \lambdas, which indicates the distribution of local stability and how it is related to global stability.",,arg_request,arg-request_experiment,asp_substance,2
-The visualization of the \lambda map might be more interpretable for understanding the stability prediction.,,arg_request,arg-request_experiment,asp_substance,2
-"I would suggest the authors to either introduce the two problems earlier or to simply say that near-optimal results are achieved, without giving detailed results, because it is very hard to understand them without any introduction of the task being achieved.",,arg_request,arg-request_edit,asp_substance,1
-I would suggest restructuring the paper into a more classical structure such as: <intro without detailed results - previous work & problematic - approach taken with more details for reproducibility - description of the two tasks - description of experiments with more details for reproducibility - results - conclusion>.,,arg_request,arg-request_edit,asp_clarity,1
-"- typo at the beginning of section 3.1: missing 'be' in  ""This can either *be* by an ...""",,arg_request,arg-request_typo,asp_clarity,3
-"- typo at the beginning os section 4:  missing 'be' in ""... the algorithm must irrevocably *be* allocated to ...""",,arg_request,arg-request_typo,asp_clarity,3
-- Axis' names to the different plots in the Figures would help understand them better.,,arg_request,arg-request_edit,asp_soundness-correctness,1
-"Also, the description of some figures could benefit more details that could be taken off from the text.",,arg_request,arg-request_edit,asp_replicability,1
-"I must probably be missing something, and I encourage the authors to clarify what the main novelties are when compared to the several papers by Dupuis & al.",,arg_request,arg-request_clarification,asp_originality,4
-- The envisioned scenario (and hence utility) of these metrics is a bit unclear to me here.,,arg_request,arg-request_explanation,asp_motivation-impact,0
-"The LSTM architecture used is reasonable, but it would be nice to see how much results change (if at all) with alternative architectures.",,arg_request,arg-request_experiment,asp_meaningful-comparison,2
-"- The CFS metric depends on a hyperparameter (the ""retention ratio""), which here is arbitrarily set to 80% without any justification.",,arg_request,arg-request_explanation,asp_replicability,0
-"- What is the motivation for the restriction to linear models? In the referenced probing paper, for example, MLPs were also used to explore whether attributes were coded for 'non-linearly'.",,arg_request,arg-request_explanation,asp_motivation-impact,0
-"To evaluate the impact of the proposed changes in this paper, one would have to perform extended evaluations and ablations for the submission.",,arg_request,arg-request_experiment,asp_soundness-correctness,2
-- Direct duplication of text between parts of section 5.3 and 8.3 leading to the duplication of the error of describing the value function learning rate as 0.000.,,arg_request,arg-request_typo,asp_clarity,3
-- Self-referential sentences in the supplementary materials (i.e. referral to itself),,arg_request,arg-request_typo,asp_clarity,3
-- Missing references on page 3,,arg_request,arg-request_typo,asp_clarity,3
-- The egocentric velocity field is not described (section 5),,arg_request,arg-request_clarification,asp_clarity,4
-- The wording new paradigm in MARL might be unsuited given existing work on complex domains.,,arg_request,arg-request_edit,asp_clarity,1
-"This could be discussed and a relevant control would be to keep a population (ensemble) of policies, but only update using RL while sharing experience across all actors.",,arg_request,arg-request_experiment,asp_soundness-correctness,2
-"This change is noted, but it would be useful to make a least a brief (i.e. one sentence) comment on the motivation for this change.",,arg_request,arg-request_edit,asp_clarity,1
-- The paper is over the hard page limit for ICLR so needs to be edit to reduce the length.,,arg_request,arg-request_edit,arg_other,1
-1.	Can you comment about the scalability of the proposed solution when the number of possible subtasks increases? When the sub-task dependency graph size increases?,,arg_request,arg-request_explanation,asp_soundness-correctness,0
-2.	What is the reason for using rule-based agents in all the experiments? It would have been more useful if all the analysis are done with RL agents rather than rule-based agents.,,arg_request,arg-request_explanation,asp_soundness-correctness,0
-3.	Are the authors willing to release the code? Overall the model looks complicated and the appendix is not sufficient to reproduce the results in the paper.,,arg_request,arg-request_clarification,asp_replicability,4
-I would increase my rating if the authors are willing to release the code to reproduce all the results reported in the paper.,,arg_request,arg-request_edit,asp_replicability,1
-"1.	Page 3, line 9: “typical” -> “typically”",,arg_request,arg-request_typo,asp_clarity,3
-"2.	Page 3, “intention” section: “Based on the its reward ..” Check grammar.",,arg_request,arg-request_typo,asp_clarity,3
-"3.	Page 5, last line: “the total quantitative is 10” check grammar.",,arg_request,arg-request_typo,asp_clarity,3
-"4.	Page 8, conclusions, second line: “nad” -> “and”",,arg_request,arg-request_typo,asp_clarity,3
-"5.	Page 8, conclusions, 4th line: “combing” -> “combine”",,arg_request,arg-request_typo,asp_clarity,3
-How do “we choose a specific number of assignments based on prediction probabilities”?,,arg_request,arg-request_clarification,asp_replicability,4
-"This should be explained in detail since Line 15 is the main output of the algorithm, which is fed (Line 16) to an existing solver for completing the assignment.",,arg_request,arg-request_edit,asp_soundness-correctness,1
-"The example at the end of section 3.3 is not very helpful: namely, the CNF formula $(x_2) \land (\neg x_2)$ is clearly unsatisfiable, so how can the model predict that it is satisfiable with 80% probability? And, if we try here $x_2 = 1$, we immediately get $\bot$ (the unsat CNF), but not $x_1$ (which was already assigned to $0$).",,arg_request,arg-request_explanation,asp_soundness-correctness,0
-"Finally, the CNN architecture should be compared with modern SAT solvers which have been participating to SAT competitions.",,arg_request,arg-request_experiment,asp_meaningful-comparison,2
-"To sum up, I would recommend to compare the CNNSAT architecture with well-known SAT solvers such as MinSAT, Glucose, March, or Dimetheus [9] which has been one of the strongest solvers in recent years for tackling random instances.",,arg_request,arg-request_experiment,asp_meaningful-comparison,2
-"Also, as mentioned above, it would be interesting to incorporate some structures (such as, for example, community attachments or popularity-similarities) in SAT instances, in order to estimate whether CNNSAT could handle pseudo-industrial problems.",,arg_request,arg-request_experiment,asp_substance,2
-What would the pairing-based strategy look like in Figure 6 right? Are there not significance tests that could be used to more carefully quantify the level of support for the two alternative strategies?,,arg_request,arg-request_explanation,asp_substance,0
-"While this paper is acknowledged in the related work, it would be helpful to expand further on the relationship between these works, so the originality and contribution of this paper can be better evaluated.",,arg_request,arg-request_experiment,asp_originality,2
-"Therefore, it might be interesting to consider, are there any circumstances under which the CNN would learn a pairing based algorithm?",,arg_request,arg-request_experiment,asp_substance,2
-"For example, what if the spatial configuration of the pairs was simplified, so they were always side-by-side at a fixed distance? If pairing-based algorithms emerged under simplified scenarios, this might have implications for the design of CNN filters (if we want models that are capable of learning these types of functions).",,arg_request,arg-request_experiment,asp_substance,2
-"3. Since there are many tasks and each task has a large-scale data, I'm afraid that the running time will explode. How to deal with this issue?",,arg_request,arg-request_clarification,asp_soundness-correctness,4
-1. Why there is still a need to combine adaptive convolutions with regular convolutions? What would the model performance be for a model with only adaptive kernels?,,arg_request,arg-request_explanation,asp_soundness-correctness,0
-"2. I might have missed it, but I couldn't find any motivation on why tanh is used as nonlinearity. Would the method work with relu?",,arg_request,arg-request_explanation,asp_replicability,0
-How big is the generalization gap for the tested models when adaptive kernel is used?,,arg_request,arg-request_experiment,asp_substance,2
-4. How sensitive are the results to the number of adaptive kernels in the layers.,,arg_request,arg-request_experiment,asp_substance,2
-"5. Adaptive kernels have only been tested in the first convolutional layer, would the adaptive kernels work well also in different layers?",,arg_request,arg-request_experiment,asp_substance,2
-It would be interesting to see how the performance of adaptive kernels based CNNs scales with the number of parameters.,,arg_request,arg-request_experiment,asp_substance,2
-"7. The evaluation on two datasets seems to be rather limited, additional comparisons should be included.",,arg_request,arg-request_experiment,asp_substance,2
-It might be beneficial to include comparison to this approach in the experimental section.,,arg_request,arg-request_experiment,asp_substance,2
-"Moreover, given the similarities, it might be good to discuss the differences in the approaches in the introduction section.",,arg_request,arg-request_experiment,asp_substance,2
-It would be nice to position the ideas from the paper w.r.t. this line of research too.,,arg_request,arg-request_experiment,asp_substance,2
-10. Another related paper seems to be Spatial Transformer Networks (Jaderberg et al.).,,arg_request,arg-request_experiment,asp_substance,2
-"I like the drawings, however, the font on the drawings is too small - making it hard to read.",,arg_request,arg-request_edit,asp_clarity,1
-1. the difficult to train the network,,arg_request,arg-request_typo,asp_clarity,3
-2. table 2: Dynamic -> Adaptive?,,arg_request,arg-request_typo,asp_clarity,3
-I'd encourage the authors to extend the intro and position the ideas w.r.t. existing works and extend the evaluation.,,arg_request,arg-request_experiment,asp_substance,2
-It would be interesting to know the evaluation times for the BA-net and more importantly to have some implementation details to ensure reproducibility.,,arg_request,arg-request_explanation,asp_replicability,0
-It would be nice to see more details on the subnet for depth estimator and output of the net.,,arg_request,arg-request_result,asp_substance,5
-Overall it would be helpful for reproducibility if authors can visualize all the layers of all the different parts of the network as it is commonly done in the DL papers.,,arg_request,arg-request_edit,asp_replicability,1
--	Attention should be given to the notation in formulas (3) and (4).,,arg_request,arg-request_edit,asp_clarity,1
--	How the first camera pose is initialized?,,arg_request,arg-request_explanation,asp_replicability,0
--	In Figure 2.b I’m surprised by the difference obtained in the feature maps for images which seems very similar (only the lighting seems to be different). Is it three consecutive frames?,,arg_request,arg-request_explanation,asp_soundness-correctness,0
-"-	Attention should be given to the grammar, formatting in particular the bibliography.",,arg_request,arg-request_edit,asp_clarity,1
-The paper has few really minor grammatical errors and typos. Please fix those before uploading the final draft.,,arg_request,arg-request_typo,asp_substance,3
-Why larger reconstruction error achieves stronger privacy protection? I could not find any formal relationship between reconstruction error and privacy.,,arg_request,arg-request_explanation,asp_motivation-impact,0
-This kind of regularization parameter should be exponentially varied so that the privacy-utility Pareto front covers a wide range.,,arg_request,arg-request_edit,asp_substance,1
-What randomness is considered in this probability?,,arg_request,arg-request_clarification,asp_substance,4
-Do you mean privacy guaranteed by the proposed method is different for each data? This should be defined as expectation over T or max over T.,,arg_request,arg-request_clarification,asp_substance,4
-"In page 4. ""The reason we choose this specific architecture is that an exactly reversed mode is intuitively the mode powerful adversarial against the Encoder."" I could not find any justification for this setting. Why ""exactly reversed mode"" can be the most powerful adversary? What is an exactly reversed mode?",,arg_request,arg-request_explanation,asp_substance,0
-How can you choose k and n?,,arg_request,arg-request_experiment,asp_substance,2
-Generalizing this to the multi-channel input as the next step could make the proof more accessible.,,arg_request,arg-request_edit,asp_clarity,1
-"Given the fact that it applies the same MLP independently to individual set members, it is obvious that it is not universal equivariant (for example, consider a function that performs a fixed permutation to its input), and I fail to see why the paper goes into the trouble of having theorems and experiments just to demonstrate this point. If there were any other objectives beyond this in the experiments could you please clarify?",,arg_request,arg-request_clarification,asp_soundness-correctness,4
-"Finally, could you give a more accurate citation (chapter-page number) for the single-channel version of Theorem 2.?",,arg_request,arg-request_edit,arg_other,1
+sentence,index,review_action,fine_review_action,aspect,target
+"1. Why the color distribution of generated images is evaluated on a sampled subset of pixels, not full images?",,arg_request,arg-request_explanation,asp_clarity,0
+"2. On Figure 6, which classes are outlying on transformation limitation / data variability plots (bottom-right corner) and how it may be explained?",,arg_request,arg-request_explanation,asp_clarity,0
+"3. While StyleGAN can not preserve geometry of objects for shift in location-based attributes, when walks are learned in the W space, have you experimented on manipulating those attributes with z space? What are the results?",,arg_request,arg-request_explanation,asp_clarity,0
+1. Pictures in Fig. 2 are mixed up between G(z) and G(z + \alpha w),,arg_request,arg-request_edit,asp_clarity,1
+"2. In Fig. 2 edit(G(z, \alpha)) -> edit(G(z), \alpha))",,arg_request,arg-request_typo,asp_clarity,3
+3. In eq. (2) f^n(z) -> G(f^n(z)),,arg_request,arg-request_typo,asp_clarity,3
+4. In eq. (6) +\alpha^* -> -\alpha^*,,arg_request,arg-request_typo,asp_clarity,3
+"Overall, I quite liked the paper and think it is well-written, but I believe the authors need to highlight at least one practical advance introduced by the CW distance (in which case I will raise my score).",,arg_request,arg-request_explanation,asp_substance,0
+The authors could run each WAE training process K times (with random initialization) to see if the closed-form distance enables more stable results.,,arg_request,arg-request_experiment,asp_substance,2
+"Since the novelty of this work lies in the introduction of the CW distance, I would like to see an independent evaluation of this distance as a  general statistical distance measure (independently of its use in CWAE).",,arg_request,arg-request_experiment,asp_substance,2
+Can you use this distance as a multivariate-Gaussian goodness of fit measure for high-dimensional data drawn from both Gaussian and non-Gaussian distributions and show that it actually outperforms other standard statistical distances (e.g. in two-sample testing power)?,,arg_request,arg-request_experiment,asp_substance,2
+"Besides having closed form in the case of a Gaussian prior (which other statistical distances could potentially also achieve), it would be nice to see some discussion of why the authors believe their CW-distance is conceptually superior to such alternatives.",,arg_request,arg-request_explanation,asp_substance,0
+- Silverman's rule of thumb is only asymptotically optimal when the underlying data-generating distribution itself is Gaussian. Perhaps you can argue here that due to CLT: the projected data (for high-dimensional latent spaces) should look approximately Gaussian?,,arg_request,arg-request_explanation,asp_substance,0
+How this proxy incentives the agent to explore poorly-understood regions?,,arg_request,arg-request_explanation,asp_substance,0
+Is it a baseline with the best hyperprameters in hindsight?,,arg_request,arg-request_explanation,asp_substance,0
+The explanation in Fig 2 on why this is the case seem to me not so clear. Are you trying to show that the Wave-U-Net does not work since there is no 1/f^2 law for clean audio signals?,,arg_request,arg-request_explanation,asp_clarity,0
+"There is a little typo in Formula 1 for the STFT spectrogram, I would use the modulus |.| rather than || . ||.",,arg_request,arg-request_edit,asp_clarity,1
+Is Harmonic Convolution applicable to complex STFT coefficients as well?,,arg_request,arg-request_clarification,asp_replicability,4
+If so it would be better to define the operator in a more general notation.,,arg_request,arg-request_edit,asp_replicability,1
+"In Section 4.3 and 4.4, is the x_0 (defined in Section 2.1) complex-valued STFT coefficients or something else?",,arg_request,arg-request_explanation,asp_replicability,0
+"What is the L1 loss defined in Section 4.4? To obtain the final separated audio waveform, an inverse STFT is applied on what?",,arg_request,arg-request_explanation,asp_replicability,0
+These details can be written in supplementary material if more space is needed.,,arg_request,arg-request_explanation,asp_replicability,0
+"I would ideally like to see results on more optimizers, at the very least for Adam, even if for fixed hyper-parameters.",,arg_request,arg-request_experiment,asp_substance,2
+"As far as I understand, this involves only minor changes in the code since reasonable hyperparameters required for the convergence of Adam have been extensively studied.",,arg_request,arg-request_experiment,asp_substance,2
+"- Given the current form of the paper, the abstract and introduction should be modified to reflect the fact that only limited architectures and optimizers were experimented with, and the claims of the paper are not experimentally validated in general.",,arg_request,arg-request_edit,asp_substance,1
+- It would be nice if more network architectures were analysed (such as VGG and DenseNets).,,arg_request,arg-request_experiment,asp_substance,2
+- It would be nice if different stopping criteria were analysed.,,arg_request,arg-request_experiment,asp_substance,2
+- It would greatly benefit the reader if eq. 5 were expanded.,,arg_request,arg-request_explanation,asp_replicability,0
+I think this work would have much greater impact if the authors can show that the power-law form holds for a larger variety of architectures and optimizers thus allowing researchers to more confidently incorporate the results of this work into the design and training deep neural networks.,,arg_request,arg-request_experiment,asp_substance,2
+The above papers are not cited in this paper.,,arg_request,arg-request_edit,arg_other,1
+I highly encourage the authors to finetune the ImageNet pre-trained BagNet on PASCAL VOC and compare to the previous patch-based deep networks.,,arg_request,arg-request_experiment,asp_substance,2
+"2. The model seems to be sensitive to the hyper-parameter \alpha, is this parameter always fixed at 0.5 or needed to fine-tune for different datasets?",,arg_request,arg-request_clarification,asp_clarity,4
+"- In the case of the search space II, how many GPU days does the proposed method require?",,arg_request,arg-request_explanation,asp_substance,0
+"- About line 10 in Algorithm 1, how does the proposed method update the population P? Please elaborate on this procedure.",,arg_request,arg-request_explanation,asp_substance,0
+"* Page 2 -- Paragraph 2: ""Therefore, methods than can exploit...""",,arg_request,arg-request_typo,asp_substance,3
+* Page 3 -- 2nd line of math: Super-scripts are missing for some entries of the matrices W^A and W^{A+B},,arg_request,arg-request_typo,asp_substance,3
+"* Page 5 -- Last paragraph: ""...merged logical units is more likly to get get stuck in a ...""",,arg_request,arg-request_typo,asp_substance,3
+"* Page 5 -- Last paragraph: ""...and combining their distributions using the mulistart heuristic...""",,arg_request,arg-request_typo,asp_substance,3
+- it is unclear and possibly could be better explained why one needs to concatenate the goals (what would change if we would not concatenate but estimate state densities rather than trajectories?),,arg_request,arg-request_clarification,asp_substance,4
+"- 3.3 ""It is known that PER can become very expensive in computational time"" - please supply a reference",,arg_request,arg-request_edit,asp_clarity,1
+"- 3.3 ""After each update of the model, the agent needs to update the priorities of the transitions in the replay buffer with the new TD-errors"" - However the method only renews priorities of randomly selected transitions (why would there be a large overhead?).",,arg_request,arg-request_clarification,asp_soundness-correctness,4
+The authors should on the claimed contributions.,,arg_request,arg-request_edit,asp_originality,1
+Is it a combination of DGR and HAT with some capacity expansion?,,arg_request,arg-request_explanation,asp_originality,0
+"Clearly, replaying data accurately from all tasks will work well, but why is it harder to guard against the generative forgetting problem than the discriminative one?",,arg_request,arg-request_explanation,asp_substance,0
+"- Relatedly, better baselines should be used; for example, if the memory used by the generative model is merely put to storing randomly chosen instances from the tasks, how will the results compare? Clearly storing instances bypasses the forgetting problem completely (as memory size approaches the dataset size it turns into the joint problem) and it's not clear how many instances are really needed per task, especially for these simpler problems.",,arg_request,arg-request_experiment,asp_meaningful-comparison,2
+"- There are several methodological issues: Why are CIFAR results not shown in a table as is done for the other dataset? How many times were the experiments run and what were the variances? How many parameters are used (since capacity can increase?) It is for example not clear that the comparison to joint training is fair, when stating: ""Interestingly, DGM outperforms joint training on the MNIST dataset using the same architecture.",,arg_request,arg-request_edit,asp_replicability,1
+This suggests that the strictly incremental training methodology indeed forced the network to learn better generalizations,,arg_request,arg-request_explanation,asp_substance,0
+"1) The introduction makes it seem the generative replay is new, without citing approaches such as DGR (which are cited in the related work).",,arg_request,arg-request_edit,asp_originality,1
+"The initial narrative mixes prior works' contributions and this paper's contributions; the contributions of the paper itself should be made clear,",,arg_request,arg-request_edit,asp_originality,1
+"2) Using the word ""task"" in describing ""joint training"" of the generative, discriminative, and classification networks is very confusing (since ""task"" is used for the continual learning description too,",,arg_request,arg-request_edit,asp_clarity,1
+3) There is no legend for CIFAR; what do the colors represent?,,arg_request,arg-request_clarification,asp_substance,4
+"4) There are several typos/grammar issues e.g. ""believed to occurs"", ""important parameters sections"", ""capacity that if efficiently allocated"", etc.).",,arg_request,arg-request_typo,arg_other,3
+I would like to see how these curves vary with,,arg_request,arg-request_experiment,asp_substance,2
+"But the way it is presented and explained lacks of clarity: for instance in Section 2, some notations are not well defined (e.g what is f?) .",,arg_request,arg-request_clarification,asp_clarity,4
+"So, my suggestion would be to improve the writing of this section to make the message stronger and relevant for a larger audience.",,arg_request,arg-request_clarification,asp_clarity,4
+"II) The Infoword model can be seen as a simple instance of word masking based models, and as an extension of deep infomax for sequences (it would be certainly nice to describe a little bit what Deep InfoMax is to facilitate the reading).",,arg_request,arg-request_clarification,asp_clarity,4
+Having a first loss function after paragraph 4 could help to understand the principle of this model (before restricting the model to n-grams),,arg_request,arg-request_edit,asp_clarity,1
+At last,,arg_request,arg-request_explanation,asp_substance,0
+What was wrong with LSTMs/GRUs as they've been used extensively for recursive problems including operations on trees?,,arg_request,arg-request_explanation,asp_substance,0
+"Even if it's not possible to prove something about this strategy, it would be useful to just state a desirable property that the sampling mechanism should have and then argue informally that this mechanism has that property.",,arg_request,arg-request_edit,asp_substance,1
+- What implementation of the other algorithms did you use?,,arg_request,arg-request_clarification,asp_substance,4
+"I would suggest saying something like s = ((x^g, x^c), g) where s is a state from the perspective of value iteration, (x^g, x^c) is a state of the system, which is a vector of values divided into two sub-vectors, x^g is the part of the system state that involves the state variables that are specified in the goal, x^c (for 'context')",,arg_request,arg-request_edit,asp_clarity,1
+"Why? If we are learning the distribution, would not it make sense to sample all architectures only after training the supernet at our best?",,arg_request,arg-request_explanation,asp_replicability,0
+"This is a lot of architectures, which makes me wonder: how would a “cost-aware” random sampling perform with the same number of sampled architectures?",,arg_request,arg-request_experiment,asp_substance,2
+Do they here refer to the gradients with respect to the weights ONLY?,,arg_request,arg-request_clarification,asp_replicability,4
+Could we say that the advantage of the Gumbel Softmax technique is two-fold? i) make the loss differentiable with respect to the arch parameters; ii) reduce the variance of the estimate of the loss gradients with respect to the network weights.,,arg_request,arg-request_explanation,asp_replicability,0
+"2)	Can the author discuss why the soft sampling procedure in [1] is not enough? I have an intuitive understanding of this, but I think this should be clearly discussed in the manuscript as this is a central aspect of the paper.",,arg_request,arg-request_explanation,asp_replicability,0
+3)	The authors use a certain number of warmup steps to train the network weights without updating the architecture parameters to ensure that “the weights are sufficiently trained”. Can the authors discuss the choice on the number of warmup epochs?,,arg_request,arg-request_explanation,asp_replicability,0
+"As a generative model for unseen data, I would like to see the generated results, which is more convincing.",,arg_request,arg-request_experiment,asp_substance,2
+"I am wondering for more complicated images, how is the performance?",,arg_request,arg-request_explanation,asp_clarity,0
+(a) a comparison to other methods (outside the current framework) for sound separation,,arg_request,arg-request_experiment,asp_substance,2
+(b) a significant clarification of Figure 4.,,arg_request,arg-request_clarification,asp_soundness-correctness,4
+(c) The authors should present what they mean by a dilated convolution using the notation of the paper.,,arg_request,arg-request_explanation,asp_replicability,0
+"(d) In Figure 2, it is unclear to me how the 1/f^2 law is observed in (a) but not in (c) or (e).",,arg_request,arg-request_explanation,asp_replicability,0
+I would recommend that the authors perhaps shorten section 3 or remove figure 9 to fit it into 8 pages.,,arg_request,arg-request_edit,arg_other,1
+I would strongly recommend including the computational cost of each method in the evaluation section.,,arg_request,arg-request_experiment,asp_substance,2
+"Can you explain somewhere exactly what you mean when you say ""learning dynamics of deep learning""? Given the specific nature of the results presented in the paper it would be nice to be precise also when it comes to the overall topic under study.",,arg_request,arg-request_clarification,asp_replicability,4
+"In Corollary 3.3. you characterize the convergence speed in a nice way, but I am missing the link to the behaviors observed empirically in e.g. Fig. 2. What am I missing?",,arg_request,arg-request_explanation,asp_replicability,0
+"Tiny detail: The axes of several of the plots given in the paper mis the lables which makes it hard to read. Straightforward to fix, but worth mentioning nevertheless.",,arg_request,arg-request_edit,asp_clarity,1
+"- Theorem 3.2: ""[...] converges at a speed proportional to [...]"". Isn't \bar{u}_t logarithmic (non-linear) in t?",,arg_request,arg-request_clarification,asp_substance,4
+"- Theorem 3.2: Even if strong, I don't mind the assumption on a dataset merely consisting of two (weighted) data points. I would suggest to simulate this case without putting any condition on the initialization of the weights (ie, without assumptions H1-H2), and compare the empirical shape of the classification error with the one you obtain analytically in Figure 2 Right.",,arg_request,arg-request_experiment,asp_substance,2
+"- Theorem 3.2 Interpretation: unfinished sentence ""We can characterize the convergence speeds more quantitatively with the""",,arg_request,arg-request_typo,asp_substance,3
+"- Theorem 4.1: Can you give an intuition or lower/upper bounds for u(t) for the Hinge case, to make evident its difference from the binary entropy case (where u(t) ~ log(t))",,arg_request,arg-request_explanation,asp_substance,0
+"If the paper could provide some guidance for model and data selection, that would be an interesting paper for the ICLR audience.",,arg_request,arg-request_explanation,asp_substance,0
+"For instance, how deep should a model be for a classification or regression task?",,arg_request,arg-request_explanation,asp_substance,0
+What is the minimum/maximum layers of a deep model? How much data is sufficient for a model to learn?,,arg_request,arg-request_explanation,asp_substance,0
+What is the minimum/maximum size of the data set? Do we really need a large data set or just a subset that covers the data distribution?,,arg_request,arg-request_explanation,asp_substance,0
+"What's the relation between the size of a model and that of a data set? By increasing the depth/width of a neural network, how much new data should be collected for achieving a reasonable performance?",,arg_request,arg-request_explanation,asp_substance,0
+How about the gain of the task performance?,,arg_request,arg-request_explanation,asp_substance,0
+"(4) based on the name ""CW distance"" I would expect the authors to actually prove that it is indeed a distance (i.e. all the main axioms).",,arg_request,arg-request_edit,asp_soundness-correctness,1
+(6) What is image(X) in Remark 4.1?,,arg_request,arg-request_clarification,asp_clarity,4
+It would be good to add further details on practical limitations.,,arg_request,arg-request_edit,asp_soundness-correctness,1
+Is there any hope this could be applied to problems like 3D imaging data or videos?,,arg_request,arg-request_explanation,asp_soundness-correctness,0
+How is the approach different in comparison to the StackGAN and it's variable which also use multiple levels of crude to fine image generation?,,arg_request,arg-request_explanation,asp_substance,0
+So how does the paper try to make contributions to improve the disentangled features with the proposed method?,,arg_request,arg-request_explanation,asp_substance,0
+"Apart from combining these to existing ideas, what can be considered as an added novelty to improve the quality of the disentangled features?",,arg_request,arg-request_clarification,asp_substance,4
+"Moreover if x must be equal to 0 Ax \leq 0 and at that point Ax = 0, then that means there exists no x for which Ax < 0, so why not just say this outright?",,arg_request,arg-request_edit,asp_clarity,1
+Perhaps a cleaner definition would just be “A is full rank and there does not exist any X such that Ax < 0?,,arg_request,arg-request_edit,asp_clarity,1
+Also perhaps better to use the curly sign for vector inequality.,,arg_request,arg-request_edit,asp_clarity,1
+|_{y>0} x + b |_{y>0}  <— what is the purpose of the subscripts here? Why is this notation never introduced?,,arg_request,arg-request_explanation,asp_clarity,0
+"The paper offers some analysis, suggesting when each of the conditions occurs, upper bounds the smallest singular value of D A (where the example dependent diagonal matrix D incorporates the ReLU activation (shouldn’t this be more clearly introduced and notated?).",,arg_request,arg-request_edit,asp_clarity,1
+“From a high-level perspective both of these approaches” --> missing comma after “perspective”,,arg_request,arg-request_typo,asp_clarity,3
+"""as well as the gradient correspond to the highest",,arg_request,arg-request_typo,asp_clarity,3
+"""analyzing the lowest possible response"" what does ""response' mean here?",,arg_request,arg-request_explanation,asp_clarity,0
+"""We provide upper bounds on the smallest singular value"" -- the singular value of what? This hasn't been stated yet.",,arg_request,arg-request_explanation,asp_clarity,0
+"""reverse view on adversarial examples"" --- what this means isn't clear from the preceding text.",,arg_request,arg-request_explanation,asp_clarity,0
+"""we aim to theoretically derive means to uncover mechanisms of rectifier networks without assumptions on the weights"" -- what does ""mechanisms"" mean here?",,arg_request,arg-request_explanation,asp_clarity,0
+"Notation section -- need a sentence here at the beginning, can't just have a section heading followed by bullets.",,arg_request,arg-request_edit,asp_clarity,1
+"""realated""",,arg_request,arg-request_typo,asp_clarity,3
+More explanations are needed.,,arg_request,arg-request_explanation,asp_clarity,0
+One other limitation seems to be that Theorem 1 requires using a step size which seems to be much smaller than what one may hope to use in practice. Can you comment on this?,,arg_request,arg-request_explanation,asp_soundness-correctness,0
+"A minor comment is that the mutual information I(., .) being a function of two variables suddenly became a function of a single variable in Eq. (1) and in the text which precedes it.",,arg_request,arg-request_typo,asp_clarity,3
+There is a previous work that these authors should cite:,,arg_request,arg-request_edit,asp_meaningful-comparison,1
+"Ullrich, K., Berg, R.V.D., Brubaker, M., Fleet, D. and Welling, M., 2019. Differentiable probabilistic models of scientific imaging with the Fourier slice theorem. arXiv preprint arXiv:1906.07582.",,arg_request,arg-request_result,asp_meaningful-comparison,5
+How does your method compare to this paper?,,arg_request,arg-request_explanation,asp_meaningful-comparison,0
+"I think these statistics would be useful to report in your work, as they are more familiar with folks in the cryoEM field.",,arg_request,arg-request_edit,asp_substance,1
+"In Equation 3, how does one calculate Z, the normalization constant?",,arg_request,arg-request_clarification,asp_clarity,4
+"For the decoder, how large of the 3D space are you generating? What are the units? Are you using voxels to represent atomic density? What is the voxel size? Is it the same as on Page 11?",,arg_request,arg-request_explanation,asp_clarity,0
+I think more description of the neural network architecture would be useful (more than what is reported on page 12).,,arg_request,arg-request_edit,asp_clarity,1
+Further technical background and detail would drastically improve the paper.,,arg_request,arg-request_edit,asp_replicability,1
+"In addition, only the transformer baselines were considered, and it would seem natural to consider LSTM-based baselines, or some other related techniques.",,arg_request,arg-request_experiment,asp_substance,2
+"For example, one question is how often a single partial tree has multiple possible completions in the data.",,arg_request,arg-request_clarification,asp_replicability,4
+Why is the random seed being used to compare the performance of different arms? Do you instead mean that s and s’ are two values of the arm in Figure 4?,,arg_request,arg-request_clarification,asp_substance,4
+2. Can you elaborate more on the metric for measuring the learning progress LP? Why does the myopic metric make sense in spite of the there being plateaus in the training curves?,,arg_request,arg-request_explanation,asp_substance,0
+"Even if done disjointly, how does the proposed joint learning is compared to those algorithms in these domains?",,arg_request,arg-request_clarification,asp_meaningful-comparison,4
+"3) Top row of Figure 3 nicely explains how the learned sampling paradigm performs compared to other mechanisms (such as uniform, random, low-pass). But there is no comparision against other non-fixed techniques.",,arg_request,arg-request_edit,asp_clarity,1
+"It would be helpful to move some of the stuff in the appendix to the main text, and present in a neat way.",,arg_request,arg-request_edit,asp_clarity,1
+I also struggled a little to understand what is the difference between forward interpolate and filtering.,,arg_request,arg-request_clarification,asp_clarity,4
+The clarity of this paper needs to be strengthened.,,arg_request,arg-request_edit,asp_clarity,1
+"- abstract: uncover nonlinear observation? -> maybe change ""observation"" to ""latent dynamics""?",,arg_request,arg-request_typo,asp_clarity,3
+What's your opinion?,,arg_request,arg-request_explanation,asp_soundness-correctness,0
+"2) What's the relationship between reconstructed performance, heterogeneity of the sample and dimensions of latent space?",,arg_request,arg-request_explanation,asp_clarity,0
+"3) It would be interesting to show any relationship, reconstruction error with respect to the number of discrete multiclass.",,arg_request,arg-request_experiment,asp_substance,2
+4) How is the proposed method generalizable?,,arg_request,arg-request_explanation,asp_clarity,0
+Perhaps the authors could give examples of situations where this would naturally arise.,,arg_request,arg-request_experiment,asp_substance,2
+I was also curious as to why the learned Y's are blurry.,,arg_request,arg-request_clarification,asp_substance,4
+"This sort of two-stage generation is also potentially interesting, I was wondering if the authors had ideas to generalize this idea.",,arg_request,arg-request_experiment,asp_replicability,2
+- It is a bit unclear to me how the authors propose to obtain independent posteriors over z and c. Is it purely empirical or is there a formal reason that guarantees it?,,arg_request,arg-request_explanation,asp_substance,0
+"- In Figure 3, it would be good to label the upper trapezoid.",,arg_request,arg-request_edit,asp_substance,1
+- Some paragraphs are very long and the manuscript may benefit from segmenting them into multiple paragraphs.,,arg_request,arg-request_edit,asp_substance,1
+My only issue here is that very little information was given about the size of the training sets. Did they use all the samples?,,arg_request,arg-request_experiment,asp_substance,2
+"Note: there is an error on page 9, in Figure 3.",,arg_request,arg-request_typo,asp_substance,3
+"Thus, I suggest the authors could show the space and time comparisons with the baseline methods to show effectiveness of the proposed method.",,arg_request,arg-request_experiment,asp_meaningful-comparison,2
+"In addition, I observe that in Table 1, the proposed method does not outperform the Joint Training in SVHN with A_10.",,arg_request,arg-request_explanation,asp_meaningful-comparison,0
+I hope the author could explain this phenomenon.,,arg_request,arg-request_explanation,asp_meaningful-comparison,0
+"Furthermore, I do not see legend in Figure 3 and thus I cannot figure out what the curves represent.",,arg_request,arg-request_edit,asp_clarity,1
+"Fourth, there are some grammar mistakes and typos.",,arg_request,arg-request_typo,asp_clarity,3
+"For example, there are two ""the"" in the end of the third paragraph in Related Work.",,arg_request,arg-request_typo,asp_clarity,3
+"In the last paragraph in Related Work, ""provide"" should be ""provides"".",,arg_request,arg-request_typo,asp_clarity,3
+"In page 8, the double quotation marks of ""short-term"" are not correct.",,arg_request,arg-request_typo,asp_clarity,3
+It also seems that curiosity in this context seems to be very related to surprise? There are neuroscience evidence indicating that humans turns to remember (putting more weights) on events that are more surprising.,,arg_request,arg-request_clarification,asp_motivation-impact,4
+"In what way are the planes ""around their initialization""? If the initial depth map spans over multiple orders of magnitude, will the planes be uniformly sampled between the minimum and maximum disparity of the initial map?",,arg_request,arg-request_clarification,asp_substance,4
+"If yes, it seems that the initial depth map is not really needed, just its minimum and maximum value is needed, but then how come the method can be applied iteratively with respect to depth?",,arg_request,arg-request_clarification,asp_substance,4
+"Is there a mechanism to protect from interpolating across discontinuities? If no, were bleeding edge artifacts observed?",,arg_request,arg-request_explanation,asp_substance,0
+"Lastly, if the authors are not planning to release the code, the implementation details section is a bit too high-level and does not contain enough details to reimplement the Author's technique.",,arg_request,arg-request_explanation,asp_replicability,0
+"- more details about this network are needed, as well as the others in the paper.",,arg_request,arg-request_clarification,asp_replicability,4
+1. How does varying the number of nearest neighbors change the network behavior?,,arg_request,arg-request_explanation,asp_soundness-correctness,0
+"2. At test time, a fixed number of images are used for denoising - how does the choice of these images change accuracy or adversarial robustness?",,arg_request,arg-request_explanation,asp_soundness-correctness,0
+"3. Does just simple filtering of the feature map, say, by local averaging, perform equally well?",,arg_request,arg-request_clarification,asp_soundness-correctness,4
+4. When do things start to break down? I imagine randomly replacing feature map values (i.e. with very poor nearest neighbors) will cause robustness and accuracy to go down - was this tested?,,arg_request,arg-request_explanation,asp_soundness-correctness,0
+Comparison with attention models is necessary to compare the important patches obtained from conventional networks.,,arg_request,arg-request_experiment,asp_substance,2
+"Consider doing cross validation over those 42-49 data points, and report the mean of deviations computed on the test folds.",,arg_request,arg-request_experiment,asp_substance,2
+Taking the standard deviation over the deviations measured on different folds of the data would be better measure of uncertainty.,,arg_request,arg-request_experiment,asp_substance,2
+"- Page 8: ""differntiable methods for NAS."" differentiable is misspelled.",,arg_request,arg-request_typo,asp_clarity,3
+- It would be good to understand what benefit does the stochasticity of RBMs provide.,,arg_request,arg-request_clarification,asp_substance,4
+How do deterministic neural networks perform on the addition and factoring tasks?,,arg_request,arg-request_explanation,asp_substance,0
+"- The paper would be stronger if it includes more complex tasks, e.g., TSP, and show that the same ideas can be applied to improve the learning a solver for such tasks.",,arg_request,arg-request_experiment,asp_substance,2
+"Overall, while I find the proposed approach simple -- the paper needs to address some issues regarding the claims made and should provide more quantitative experimental results justifying the same.",,arg_request,arg-request_edit,asp_substance,1
+"In this light, experiments demonstrating comparisons between GANs and VAEs as the reference generative model for explanations would have made the paper stronger (as the proposed approach relies explicitly on how good the generative model is).",,arg_request,arg-request_edit,asp_meaningful-comparison,1
+"- The paper proposes an interesting experiment to show that the proposed approach is somewhat capable of capturing slightly adversarial biases in the input domain (adding square to the top-left of images of class ‘8’). While I like this experiment, I feel this has not been explored to completion in the sense of experimenting with robustness with respect to structured as well as unstructured perturbations.",,arg_request,arg-request_experiment,asp_substance,2
+- Typographical Errors: Section 3.1 repeats the use of D for a discriminator as well as the input distribution.,,arg_request,arg-request_typo,asp_soundness-correctness,3
+Procedure 1 and Procedure 2 share the same titles -- which is slightly misleading.,,arg_request,arg-request_edit,asp_soundness-correctness,1
+"In addition, Procedure 1 is not referenced in the text which makes is hard to understand the utility of the same.",,arg_request,arg-request_edit,asp_clarity,1
+"Citations used for Gradcam are wrong -- Sundarajan et al., 2016 should be changed to Selvaraju et al., 2017.",,arg_request,arg-request_edit,asp_meaningful-comparison,1
+Additional experiments on at least ImageNet would have made the paper stronger.,,arg_request,arg-request_experiment,asp_substance,2
+"Regarding contrastive explanations, experiments on datasets where distractor classes (y_probe) are present in addition to the class interest (y_true) seem important -- PASCAL VOC, COCO, etc.",,arg_request,arg-request_experiment,asp_substance,2
+"Specifically, since the explanations provided are visual saliency maps the paper would have been stronger if there were experiments suggesting -- what needs to change in a region of an image classified as a ‘cat’ to be classified as a ‘dog’ while there is an instance of the class - ‘dog’ present in the image itself.",,arg_request,arg-request_experiment,asp_substance,2
+Is there a particular reason the authors did not choose to adopt the above technique as a baseline?,,arg_request,arg-request_explanation,asp_clarity,0
+"Since, there is no clear metric to evaluate contrastive explanations -- human studies to judge the class-discriminativeness (or trust) of the proposed approach would have made the paper stronger.",,arg_request,arg-request_typo,asp_soundness-correctness,3
+"In that regard, I would like the authors to comment on the worst-case computational complexity of the numerical analysis for determining the volume of a preimage through multiple layers.",,arg_request,arg-request_experiment,asp_substance,2
+The structure is obtained by the shared and sparse rows of matrix A. I would like the authors to comment on how the studies will be affected by this property of the common networks.,,arg_request,arg-request_experiment,asp_substance,2
+"It would have been very interesting to study the quality of interpolations on more models and datasets, and compare their generalization capabilities as well as the bias present in the different datasets.",,arg_request,arg-request_experiment,asp_substance,2
+- Does training the generator and interpolation jointly improve the quality of the generator in general ? It would have been nice to run this method on more complicated dataset like CIFAR10 and see if this method increase the overall FID score.,,arg_request,arg-request_experiment,asp_substance,2
+However it's not clear how is this range used in practice ? Do you sample uniformly $\alpha$ in this range to train the linear interpolation ?,,arg_request,arg-request_clarification,asp_replicability,4
+Also how many steps are required to learn the linear interpolation ? How much the does it influence the quality of the interpolation ?,,arg_request,arg-request_clarification,asp_replicability,4
+- There is a typo in equation 6,,arg_request,arg-request_typo,asp_clarity,3
+- In figure 6: What does the right figure represent ? especially what are the different colours ?,,arg_request,arg-request_clarification,asp_replicability,4
+"Readability suggestion: the paper starts with a very nice motivating example, but when the setup is provided, i.e., that (x,c) pairs are the input to the learner, the intended content of c is not immediately clear- control variates could assume anything from general context information to privileged information.",,arg_request,arg-request_edit,asp_clarity,1
+A similarly informative example would be great!,,arg_request,arg-request_edit,asp_clarity,1
+"Clarification regarding lemma 1: it seems that if the true posterior cannot be expressed by q, a gap will necessarily remain, even in the “limit” of perfect learning. Is this correct?",,arg_request,arg-request_explanation,asp_clarity,0
+The paper misses the key baseline in Bayesian optimisation using tree structure [1] which can perform the prediction under the tree-structure dependencies.,,arg_request,arg-request_edit,arg_other,1
+Why doesn't the proposed bandit algorithm not pick out the best hyper-parameter?,,arg_request,arg-request_explanation,asp_substance,0
+would a simpler hyper-parameter search procedure (picking the best hyper-parameter after the first 2000 episodes)?,,arg_request,arg-request_explanation,asp_substance,0
+"Clarifications of these points, and more in general the philosophy behind the architectural choices made, would make this paper a much clearer accept.",,arg_request,arg-request_explanation,asp_replicability,0
+"- the general architecture, and specifically the logic behind the edge-to-edge convolution, and generally the different blocks in fig.1 ""graph translator"".",,arg_request,arg-request_explanation,asp_replicability,0
+"- how exactly do you do a L1 loss on graphs? I'd have to assume the topology of the graph is unchanged between Gy and T(Gx) ~ and then maybe take L1 of weight matrix? But then is this general enough ~ given your stated goal of modeling different topologies? Either ways, more explanation / and perhaps equations to clarify this loss would be very helpful.",,arg_request,arg-request_explanation,asp_replicability,0
+"- why do you need a conditional GAN discriminator, if you already model similarity by L1?",,arg_request,arg-request_explanation,asp_soundness-correctness,0
+Please explain the logic for this architectural choice.,,arg_request,arg-request_explanation,asp_soundness-correctness,0
+"-  could you please explain the setting for the “gold standard” experiment. I'd have to assume, for instance, you train a GNN in a supervised way by using both source (non-suspicious) and target (suspicious) behaviour, and label accordingly? That said I am not 100% sure of this problem setting.",,arg_request,arg-request_explanation,asp_substance,0
+"Overall, if you want to claim theoretical guarantees you will have to significantly improve the manuscript.",,arg_request,arg-request_edit,asp_substance,1
+What are the differences to your approach?,,arg_request,arg-request_explanation,arg_other,0
+"Also, please place the related work earlier on in the paper.",,arg_request,arg-request_edit,asp_clarity,1
+This needs to be changed: a) you should run all the baselines for each of the current tasks b) you should also expand the experiments evaluated to include tasks where it is not obvious that a hierarchy would help/is necessary c) you should include more baselines.,,arg_request,arg-request_experiment,asp_substance,2
+- The paper is currently oriented towards discrete states. What can you say about continuous spaces?,,arg_request,arg-request_explanation,arg_other,0
+- The use of random exploration for the discoverer is underwhelming. Have you tried different approaches? Would more advanced exploration techniques work or improve the performance?,,arg_request,arg-request_explanation,asp_substance,0
+Please run at least 10 experiments.,,arg_request,arg-request_experiment,asp_substance,2
+"- The use of RAM is a fairly serious limitation of your experimental setting in my view. You should include results also for the pixel space, even if negative.",,arg_request,arg-request_experiment,asp_substance,2
+"Even if they did show these convincingly, it is not obvious to me that it is valuable; the authors need to *show* that uniform usage is desirable.",,arg_request,arg-request_edit,asp_soundness-correctness,1
+"2:    The authors should compare against several costs/algorithms (e.g. l_0 with OMP, l_1 with LARS, etc.), and across various N_0/sparsity penalties, and across several datasets.",,arg_request,arg-request_experiment,asp_meaningful-comparison,2
+- Some arguments that are presented could deserve a bit more precision.,,arg_request,arg-request_edit,asp_soundness-correctness,1
+"Similarly, using vector quantization does allow for on-chip low memory: we do not need to re-instantiate the compressed layer but we can compute the forward in the compressed domain (by splitting the activations into similar block sizes and computing dot products).",,arg_request,arg-request_edit,asp_soundness-correctness,1
+"For instance, authors could compress the widely used (and more challenging) ResNet-50 architecture, or try other tasks such as image detection (Mask R-CNN).",,arg_request,arg-request_experiment,asp_substance,2
+"The table is missing results from: ""Hardware Automated Quantization"", Wang et al ; ""Trained Ternary Quantization"", Zhu et al ; ""Deep Compression"",  Han et al; ""Ternary weight networks"", Li et al (not an extensive list).",,arg_request,arg-request_result,asp_meaningful-comparison,5
+"- Similarly, providing some code and numbers for inference time would greatly strengthen the paper and the possible usage of this method by the community.",,arg_request,arg-request_clarification,asp_replicability,4
+"Indeed, I wonder what the overhead of decrypting the weights on-the-fly is (although it only involves XOR operations and products)",,arg_request,arg-request_explanation,asp_clarity,0
+"- Small typos: for instance, two points at the very end of section 5.",,arg_request,arg-request_typo,asp_clarity,3
+"However, I think the paper would need either (1) more thorough experimental results (see comments above, points 2 and 3 of weaknesses) or (2) more justifications for its existence (see comments above, point 1 of weaknesses).",,arg_request,arg-request_experiment,asp_substance,2
+- Using < > for latex brakets is not ideal.,,arg_request,arg-request_edit,asp_substance,1
+"- ""derivable"" I guess you mean ""differentiable""",,arg_request,arg-request_typo,asp_substance,3
+- Oliphant and Hunter are cited for Numpy/scipy and matplotlib but the,,arg_request,arg-request_edit,asp_substance,1
+"While the generation of this type of explanations is somewhat novel, from the text it seems that the proposed method may not be able to indicate what part of the image content drove the model to predict class A. Is this indeed the case?",,arg_request,arg-request_clarification,asp_clarity,4
+The manuscript would benefit from positioning the proposed method w.r.t. these works.,,arg_request,arg-request_edit,asp_meaningful-comparison,1
+"In this regard, I encourage the authors to update the supplementary material in order to show extended qualitative results of the explanations produced by their method.",,arg_request,arg-request_experiment,asp_substance,2
+"In addition, I recommend complementing the presented qualitative comparisons with quantitative evaluations following protocols proposed in existing work, e.g. a) occlusion analysis (Zeiler et al., ECCV 2014, Samek et al.,3017), a pointing experiment (Zhang et al., ECCV 2016), or c) a measurement of explanation accuracy by feature coverage",,arg_request,arg-request_edit,asp_meaningful-comparison,1
+It’s not clear to me that the proposed method can guarantee optimality any better.,,arg_request,arg-request_clarification,asp_clarity,4
+"It would be very interesting to see the test time behavior of the network when it is run with more iterations than it is trained with (say 10 or 20), especially since the depth error does not seem to have stopped decreasing at only 4 iterations.",,arg_request,arg-request_experiment,asp_substance,2
+It’s not made entirely clear whether the training backpropagates through the update/construction of the pose and depth cost volumes.,,arg_request,arg-request_clarification,asp_substance,4
+"In equation 5, “x” should be “i”.",,arg_request,arg-request_typo,asp_clarity,3
+"I would also expect more ablation studies about how to pick p_{\had d}, which seems to be the key of this approach, in MNIST and CIFAR10.",,arg_request,arg-request_experiment,asp_substance,2
+A question I have is why the method doesn't perform well in certain cases.,,arg_request,arg-request_explanation,asp_substance,0
+Edit: I also wonder if incorporating idf would be better if the values were computed by a larger corpus.,,arg_request,arg-request_explanation,asp_substance,0
+"A citation to ""Beyond BLEU:Training Neural Machine Translation with Semantic Similarity"" from ACL 2019 should be incorporated into the related work.",,arg_request,arg-request_edit,arg_other,1
+Have you tried BERTScore on sentence similarity tasks? It's possible BERTScore could have strong performance and some readers may wonder this.,,arg_request,arg-request_result,asp_substance,5
+"A citation to ""Deep Reinforcement Learning with Distributional Semantic Rewards for Abstractive Summarization"" from EMNLP 2019 should also be incorporated.",,arg_request,arg-request_edit,arg_other,1
+"The word ""language"" is misspelled twice in Appendix E.",,arg_request,arg-request_typo,asp_substance,3
+> Consider explaining cryoSPARC in detail given that is the state-of-the-art technique and to which all the cryoDGRN results are compared.,,arg_request,arg-request_edit,asp_meaningful-comparison,1
+> In Figure 4 and the related experiment,,arg_request,arg-request_explanation,asp_soundness-correctness,0
+"> What would runtime comparisons be for cryoSPARK and cryoDGRN, for an unsupervised heteregeneous reconstruction?",,arg_request,arg-request_explanation,asp_clarity,0
+It is also not clear how this theoretical result can shed insight on the empirical study of neural networks.,,arg_request,arg-request_explanation,asp_soundness-correctness,0
+Why is the second objective log(#params) instead of just #params when the introduction mentions explicitly that tuning the scales between different objectives is not needed in LEMONADE?,,arg_request,arg-request_clarification,asp_meaningful-comparison,4
+How could scaling be handled?,,arg_request,arg-request_explanation,asp_substance,0
+I would have expected to see some analysis and results on the translation quality over systematic noise applied to the input graph.,,arg_request,arg-request_experiment,asp_substance,2
+Do we know how does the connectedness of the  input graph affect the translation quality in the case of strongly connected directed graphs? Or what happens if the target graph has a strong connectivity?,,arg_request,arg-request_explanation,asp_replicability,0
+"Towards this, how does the computational complexity scale wrt to the connectedness?",,arg_request,arg-request_explanation,asp_replicability,0
+A lot of clarity is required on the choice of evaluation metric; for example choice of distance measure ?,,arg_request,arg-request_explanation,asp_replicability,0
+What is the L1 norm applied on?,,arg_request,arg-request_explanation,asp_replicability,0
+Typo:. The “Inf” in Tabel 1,,arg_request,arg-request_typo,asp_clarity,3
+My main question is that: what is the main advantage of the Cramer-Wold distance to an MMD with a proper kernel?,,arg_request,arg-request_explanation,asp_substance,0
+"My question here is that how is this method better than the standard VAE, where we also have an analytic form for the ELBO when the prior is Gaussian, an no sampling is required.",,arg_request,arg-request_explanation,asp_substance,0
+"- the conditions presented in Theorem 4, seem hard to check in practice; what is the time complexity of this operation? I believe that checking if A is omnidirectional is equivalent to an LP but how do you solve the combinatorial size of doing that over all set of indices?",,arg_request,arg-request_explanation,asp_clarity,0
+Maybe more explanation and quantitative analysis (e.g. relating the volume of the preimage of an epsilon ball around z to the singular values) could be helpful.,,arg_request,arg-request_edit,asp_clarity,1
+- Is there actionable consequences one could draw from your papers? The way the results are presented seem like they are only useful inspection after training; are your results able to derive methods to enforce conditions on the pre-images for example?,,arg_request,arg-request_explanation,asp_soundness-correctness,0
+It is not clear how those observations can affect practical algorithms and this is something I hope the author can address.,,arg_request,arg-request_result,asp_soundness-correctness,5
+"1. The authors insist that their fous is on transfer and not competing on credit assignment. If accurate credit assignment leads to better transfer, shouldn't achieving the best credit assignment model (thus competing in credit assignment) lead to better transfer results?",,arg_request,arg-request_clarification,asp_substance,4
+2. What effect does the window size for transforming states to observations have on the performance of SECRET?,,arg_request,arg-request_explanation,asp_substance,0
+"3. On a high-level, how does SECRET compare to transfer through relational deep reinforcement learning: https://arxiv.org/abs/1806.01830? Relational models use self-attention mechanisms to extract and exploit relations between entities in the scenes for better generalization and transfer.",,arg_request,arg-request_experiment,asp_meaningful-comparison,2
+I'm curious what happens if SECRET is allowed to exploit relations in the environment.,,arg_request,arg-request_experiment,asp_substance,2
+4. What happens if the reward model uses very few trajectories and is not able to predict good rewards? Does transfer through credit assignment become detrimental?,,arg_request,arg-request_explanation,asp_substance,0
+5. Are the samples generated in the target domain for collecting attention weights included in the number of episodes when evaluating SECRET?,,arg_request,arg-request_explanation,asp_substance,0
+"6. On a lighter note, I don't believe using a coffe-brewing machine has a 'universally invariant structure' of coffee-making. That's a luxurious way of making coffee :) In the developing world, we still need to boil water, pour coffee powder in it, etc., all without a coffee-brewing machine.",,arg_request,arg-request_experiment,asp_substance,2
+"In equations 1 and 2, should a, b be written in capital? Since they represent random variables.",,arg_request,arg-request_typo,asp_clarity,3
+"1. How did you get the instance boxes, union boxes, and binary masks in testing?",,arg_request,arg-request_explanation,asp_substance,0
+2. What are the training and inference time?,,arg_request,arg-request_explanation,asp_substance,0
+"1. In Section 2, I find the sentence ""We follow a similar intuition but instead of decomposing a 1D signal of time into its components, we transform the time itself and feed its transformation into the model that is to consume the time information"" really unclear. Could you rephrase it?",,arg_request,arg-request_edit,asp_substance,1
+Did you try these encodings with non-recurrent architectures?,,arg_request,arg-request_experiment,asp_substance,2
+"3. In Section 5.2, did you mean 'fixing t2v(\tau)[n] = sin(2\pi n \tau / 16)'? i.e. I think it's missing a 'tau'",,arg_request,arg-request_typo,asp_substance,3
+"5. Could you clarify exactly how time is encoded for LSTM + T? Are you, in fact, just passing a float value? How is this encoded for each data set?",,arg_request,arg-request_clarification,asp_substance,4
+"I would introduce the notation for t2v(tau) upfront and use that to define a(tau, k)[j] and f_j",,arg_request,arg-request_edit,asp_substance,1
+"You show that this works for a rescaling from 2pi/7 to 2pi/14, but it would be nice if there was experimental confirmation of this property with frequency > 1.",,arg_request,arg-request_result,asp_substance,5
+"Still, it would be good to show that trained performance doesn't depend on the initialization values more than a standard LSTM+T model.",,arg_request,arg-request_experiment,asp_substance,2
+"* You have an interesting corner case where your neural network parameters are interpretable: you can interpret the omega values from your model as frequencies and investigate their values to see which kinds of periodicity your model uses. You do something like this on p.7, but it would be neat to see a histogram like the one you have for EventMNIST for one of the real-world datasets to see if it learns the domain-relevant time knowledge you claim that it should learn.",,arg_request,arg-request_experiment,asp_substance,2
+"Overall, the paper requires significant improvement.",,arg_request,arg-request_edit,asp_substance,1
+4. A theoretical analysis of the convergence of the optimization algorithm could be needed.,,arg_request,arg-request_explanation,asp_substance,0
+1. What is the Gumbel-max trick?,,arg_request,arg-request_explanation,asp_substance,0
+2. How to tune the parameters discussed in training details in the experiments?,,arg_request,arg-request_clarification,asp_substance,4
+3. Why to use experience replay for the linear experiments?,,arg_request,arg-request_explanation,asp_substance,0
+4. Are there evaluations on the utility of proposed compared to existing approaches?,,arg_request,arg-request_explanation,asp_substance,0
+5. Does the proposed approach work in real-world problems?,,arg_request,arg-request_result,asp_substance,5
+6. Was there any concrete theoretical guarantee to ensure the convergence of the algorithm.,,arg_request,arg-request_clarification,asp_substance,4
+Some additional experiments can make the paper stronger:,,arg_request,arg-request_experiment,asp_substance,2
+* Compare the result of the procedure to an exhaustive search in a setting where the latter is feasible (shallow architecture on an easy task with few possible bit widths),,arg_request,arg-request_experiment,asp_substance,2
+"* Compare the procedure to other state of the art NAS procedures (DARTS and ENAS) with the same search space adapted to the quantization problem, to empirically show that the proposed procedure is a compromise between these two methods as claimed by the authors.",,arg_request,arg-request_experiment,asp_substance,2
+1.	The paper is easy to follow but the authors are expected to clarify the rationality in integration of the loss function.,,arg_request,arg-request_edit,asp_clarity,1
+"How the parameter of \lambda_r, \lambda_t, and \lambda_r influence the performance.",,arg_request,arg-request_explanation,asp_substance,0
+It would be better if the authors could present some analysis.,,arg_request,arg-request_explanation,asp_substance,0
+"The authors are expected to make more comprehensive analysis with the state-of-the-art methods, and also analyze why some alternative methods outperforms the proposed methods in table I and table II.",,arg_request,arg-request_experiment,asp_soundness-correctness,2
+3.,,arg_request,arg-request_edit,asp_clarity,1
+
+

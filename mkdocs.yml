@@ -1,6 +1,6 @@
 site_name: DASP Report Template Dokumentation
 site_description: "Dokumentation des DASP Report Template Projekts inklusive automatischer Docstring-Integration."
-site_author: Johannes Lemken
+site_author: Johannes Lemken, Carmen Appelt, Phillip Oehler, Jan Werth, Zhijingshui Yang
 repo_url: https://github.com/dein_username/DASP_report_template
 
 theme:
@@ -15,7 +15,7 @@ plugins:
           #    (z. B. dein Quellcode-Ordner oder weitere Libraries).
           paths:
             - .
-
+  - mkdocs-jupyter
           
 nav:
   - Main Page: api/readme/main_page.md
@@ -37,5 +37,5 @@ nav:
       - Attitude Classifier: api/attitude_classifier.md
       - Request Classifier: api/request_classifier.md
       - Summary Generator: api/summary_generator.md
-      - Tests: api/tests.md
+      - Tests: api/test.md
   - Contact: api/readme/contact.md

@@ -12,6 +12,17 @@ from transformers import BertTokenizer, BertForSequenceClassification
 
 
 def predict_root_category(text, model, tokenizer):
+    """
+    Predicts the root category of a given text using a pre-trained BERT model.
+
+    Args:
+        text (str): The input text for classification.
+        model (BertForSequenceClassification): Pre-trained BERT model for root category classification.
+        tokenizer (BertTokenizer): Tokenizer corresponding to the BERT model.
+
+    Returns:
+        int: The predicted category index.
+    """
 
     predict_input = tokenizer.encode(
         text,
@@ -32,6 +43,17 @@ def predict_root_category(text, model, tokenizer):
 
 
 def attitude_roots_prediction(data):
+    """
+    Predicts attitude root categories for given textual data.
+
+    Args:
+        data (pd.DataFrame): A DataFrame containing a 'sentence' column.
+
+    Returns:
+        pd.DataFrame: The input DataFrame with additional columns:
+                      - 'attitude_root_number': The predicted root category index.
+                      - 'attitude_root': The corresponding category label.
+    """
     local_path = "models/attitude_root/"
     huggingface_model_path = "DASP-ROG/AttitudeModel"
 
@@ -65,6 +87,17 @@ def attitude_roots_prediction(data):
 
 
 def predict_theme_category(text, model, tokenizer):
+    """
+    Predicts the theme category of a given text using a pre-trained BERT model.
+
+    Args:
+        text (str): The input text for classification.
+        model (BertForSequenceClassification): Pre-trained BERT model for theme classification.
+        tokenizer (BertTokenizer): Tokenizer corresponding to the BERT model.
+
+    Returns:
+        list[str]: A list of predicted theme labels.
+    """
     threshold = 0.5
 
     # Tokenize the input text using tokenizer (handles padding, truncation, etc.)
@@ -93,6 +126,15 @@ def predict_theme_category(text, model, tokenizer):
 
 
 def create_clusters(row):
+    """
+    Combines root category with theme labels to create clusters.
+
+    Args:
+        row (pd.Series): A row from a DataFrame containing 'attitude_root' and 'attitude_themes'.
+
+    Returns:
+        list[str]: A list of combined root and theme clusters.
+    """
     # Extract root and themes
     root = row["attitude_root"]
     themes = row["attitude_themes"]
@@ -103,6 +145,19 @@ def create_clusters(row):
 
 
 def combine_roots_and_themes(preprocessed_data):
+    """
+    Combines root category predictions with theme category predictions.
+
+    Args:
+        preprocessed_data (pd.DataFrame): A DataFrame containing sentences to be classified.
+
+    Returns:
+        pd.DataFrame: A DataFrame containing:
+                      - 'Attitude_roots': Combined root and theme clusters.
+                      - 'Frequency': Frequency of each cluster occurrence.
+                      - 'Descriptions': Descriptions of each category.
+                      - 'Comments': Aggregated comments associated with each category.
+    """
     df = attitude_roots_prediction(preprocessed_data)
 
     # Load the pretrained model and tokenizer

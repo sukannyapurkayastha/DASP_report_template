@@ -13,6 +13,12 @@ from .models import Review
 # SpaCy component to split only at linebreaks
 @Language.component("split_only_at_linebreaks")
 def split_only_at_linebreaks(doc: Doc) -> Doc:
+    """
+    Custom SpaCy component to split sentences only at line breaks.
+
+    :param doc: SpaCy Doc object
+    :return: Processed Doc object with sentence boundaries set at line breaks only.
+    """ 
     for token in doc:
         token.is_sent_start = False
 
@@ -24,7 +30,16 @@ def split_only_at_linebreaks(doc: Doc) -> Doc:
 
 
 class TextProcessor:
+    """
+    A class for processing and analyzing textual review data. This includes preprocessing, segmentation,
+    and generating statistical overviews.
+    """
     def __init__(self, reviews: list[Review]):
+        """
+        Initializes the TextProcessor with a list of Review objects.
+
+        :param reviews: List of Review objects to be processed.
+        """
         self.reviews = reviews
         self.config = {"punct_chars": ['\n']}
         self.nlp = spacy.load("en_core_web_sm", exclude=["parser"])
@@ -41,12 +56,25 @@ class TextProcessor:
 
     @staticmethod
     def _protect_abbreviation(abbreviations: list[str], text: str) -> str:
+        """
+        Replaces periods in abbreviations with a placeholder to avoid unintended sentence splitting.
+
+        :param abbreviations: List of abbreviations to protect.
+        :param text: Text in which abbreviations should be protected.
+        :return: Processed text with protected abbreviations.
+        """
         for abbr in abbreviations:
             protected = abbr.replace(".", "<DOT>")
             text = text.replace(abbr, protected)
         return text
 
     def _preprocess_text(self, reviews: list[Review]) -> list[Review]:
+        """
+        Cleans and normalizes text fields within the review objects.
+
+        :param reviews: List of Review objects.
+        :return: List of processed Review objects with cleaned text fields.
+        """
         for review in reviews:
             for key in self.keys_to_extract:
                 text = getattr(review, key, "")
@@ -65,6 +93,12 @@ class TextProcessor:
         return reviews
 
     def _segment_content(self, reviews: list[Review]) -> (list[Review], pd.DataFrame):
+        """
+        Segments text content into sentences using SpaCy and stores them in a DataFrame.
+
+        :param reviews: List of Review objects.
+        :return: Tuple containing the updated list of reviews and a DataFrame with segmented sentences.
+        """
         sent_df = []
         for review in tqdm(reviews, desc="Segmenting content"):
             for key in self.keys_to_extract:
@@ -81,6 +115,12 @@ class TextProcessor:
         return reviews, df
 
     def _get_overview(self, reviews: list[Review]) -> pd.DataFrame:
+        """
+        Computes an overview of review scores.
+
+        :param reviews: List of Review objects.
+        :return: DataFrame summarizing average scores per category.
+        """
         df_list = []
 
         for key in self.overview_keys:

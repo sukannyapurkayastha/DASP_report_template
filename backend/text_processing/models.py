@@ -25,6 +25,15 @@ class Review:
 
     @classmethod
     def from_dict(cls, data: dict):
+        """
+        Creates an instance of the `Review` class from a dictionary.
+
+        Args:
+            data (dict): A dictionary containing review data, with keys matching the attributes of the class.
+
+        Returns:
+            Review: An instance of the `Review` class populated with the given data.
+        """
         # Collect field names from the dataclass
         field_names = {field.name for field in fields(cls)}
         # Filter the data dict to only include keys that match the class fields

@@ -1,6 +1,6 @@
 
 
-#### **4.1 `backend`**
+#### **1 `backend`**
 
 The backend is responsible for data collection from OpenReview, preprocessing the data, and managing the workflow between the models and the frontend. It sends preprocessed data to the models for processing, retrieves the results, and communicates the processed data to the frontend for further use.
 
@@ -17,7 +17,7 @@ The backend is responsible for data collection from OpenReview, preprocessing th
 
 ---
 
-#### **4.2 `frontend`**
+#### **2 `frontend`**
 
 The front end of this application is the user-facing interface built with Streamlit and related UI components. It is responsible for displaying the overview over the given reviews, receive the data in form of URL or file, and providing an interactive experience within the application. It is connected via API calls to the backend and includes several features of displaying the data for the user.
 
@@ -46,7 +46,7 @@ The front end of this application is the user-facing interface built with Stream
 
 ---
 
-#### **4.3 `model_training`**
+#### **3 `model_training`**
 
 The model training folder includes the scripts and data which which the models where trained.
 
@@ -60,7 +60,7 @@ The model training folder includes the scripts and data which which the models w
   - `summary`: includes scripts for training of summary generation models. Specifically training of T5-large, BART-large and Llama2.
 ---
 
-#### **4.4 `attitude_classifier`**
+#### **4 `attitude_classifier`**
 
 The attitude classifier can contains the model and contains the scripts for the request classifier pipeline.
 
@@ -72,7 +72,7 @@ The attitude classifier can contains the model and contains the scripts for the 
 
 ---
 
-#### **4.5 `request_classifier`**
+#### **5 `request_classifier`**
 
 The request classifier can contains the model and contains the scripts for the request classifier pipeline.
 
@@ -87,7 +87,7 @@ The request classifier can contains the model and contains the scripts for the r
 
 ---
 
-#### **4.5 `summary_generator`**
+#### **6 `summary_generator`**
 
 The summyry generator folder can contains the model and contains the scripts for the summary generations.
 
