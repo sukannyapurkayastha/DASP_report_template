@@ -182,3 +182,5 @@ models/attitude_root/models--DASP-ROG--AttitudeModel/
 request_classifier/models/
 models/llama2/.locks/models--DASP-ROG--SummaryModel/
 models/llama2/models--DASP-ROG--SummaryModel/
+model_training/nlp/attitude_classifier/label_distribution_horizontal.png
+model_training/nlp/attitude_classifier/finetuning_v4.ipynb
