@@ -14,44 +14,12 @@ import os
 
 import input_to_prompt_converter
 from transformers import (
-    LlamaTokenizer,
-    LlamaForCausalLM,
     GenerationConfig,
 )
 
 # Configure logging
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
-
-
-def load_LLAMA2_model(model_dir: str = "./models/llama2"):
-    """
-    Load a LLaMA 2 model from Hugging Face that is supposed to be stored locally at the given path.
-    For a real-world scenario, ensure you have:
-      - 'transformers>=4.30'
-      - 'sentencepiece'
-      - You have accepted the license for LLaMA2 if it's gated.
-      
-      Args:
-          model_dir (str): path to directory where the model is supposed to be stored.
-    """
-    logger.info(f"Loading model '{model_dir}' from Hugging Face...")
-
-    hf_dir = "DASP-ROG/SummaryModel"
-    tokenizer = LlamaTokenizer.from_pretrained(hf_dir, cache_dir=model_dir, legacy=True)
-    model = LlamaForCausalLM.from_pretrained(
-        hf_dir,
-        cache_dir=model_dir,
-        device_map="auto",
-        offload_folder="models/llama2/offload_folder/",
-        offload_state_dict=True  # Ensure the state dict is offloaded
-    )
-
-    # Set pad_token to eos_token
-    tokenizer.pad_token = tokenizer.eos_token
-    model.config.pad_token_id = tokenizer.eos_token_id
-
-    return model, tokenizer
+# logging.basicConfig(level=logging.INFO)
+# logger = logging.getLogger(__name__)
 
 
 def predict(
@@ -76,8 +44,8 @@ def predict(
         str: The final generated text (prompt echo stripped).
     """
     # 1) Load model & tokenizer if needed
-    if (model is None and tokenizer is None):
-        model, tokenizer = load_LLAMA2_model(model_dir)
+    # if (model is None and tokenizer is None):
+    #     model, tokenizer = load_LLAMA2_model(model_dir)
 
     # 2) Build the final prompt from the input data
     prompt = input_to_prompt_converter.build_llama2_prompt(input_text)
