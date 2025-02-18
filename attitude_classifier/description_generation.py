@@ -1,4 +1,4 @@
-from transformers import AutoModelForSeq2SeqLM, AutoTokenizer, AutoModel
+from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
 import torch
 from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
@@ -11,7 +11,7 @@ local_path = "models/description_generator"
 huggingface_model_path = "DASP-ROG/DescriptionModel"
 logger.info("Loading tokenizer and model for description generation ...")
 tokenizer = AutoTokenizer.from_pretrained(huggingface_model_path, cache_dir=local_path)
-model = AutoModelForSeq2SeqLM.from_pretrained(huggingface_model_path, cache_dir=local_path, torch_dtype=torch.float16)
+model = AutoModelForSeq2SeqLM.from_pretrained(huggingface_model_path, cache_dir=local_path, torch_dtype=torch.float32)
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
 model.to(device)
