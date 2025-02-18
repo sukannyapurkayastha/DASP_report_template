@@ -102,19 +102,6 @@ def create_clusters(row):
     return clusters
 
 
-def extract_sentences(data):
-    """
-    Extracts all sentences from a nested list while ignoring reviewer names.
-
-    :param data: List of lists where each sublist contains a reviewer name and a list of sentences.
-    :return: A flattened list of all sentences.
-    """
-    return [sentence for item in data for sentence in item[1]]
-
-# def generate_desc(df):
-
-
-
 def combine_roots_and_themes(preprocessed_data):
     df = attitude_roots_prediction(preprocessed_data)
 
@@ -159,7 +146,8 @@ def combine_roots_and_themes(preprocessed_data):
     merged_df.drop(columns=['Descriptions_x'], inplace=True)
 
     # generate description if there is no corresponding description
-
+    if merged_df['Descriptions'].isna().any():
+        merged_df = generate_desc(merged_df)
 
     # change order as expected from frontend
     merged_df = merged_df[['Attitude_roots', 'Frequency', 'Descriptions', 'Comments']]
