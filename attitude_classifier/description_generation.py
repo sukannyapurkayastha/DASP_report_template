@@ -119,7 +119,9 @@ def generate_desc(df):
             # Generate descriptions if it's missing or empty
             comments = row['Comments']  
             input_texts = extract_sentences(comments)
+            logger.info(f'input sentences: {input_texts}')
             best_sentence = get_most_representative_sentence(input_texts)
+            logger.info(f'desc: {best_sentence}')
             
             # Set the best sentence as the description
             df.at[index, 'Descriptions'] = best_sentence
