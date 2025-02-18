@@ -3,6 +3,7 @@ import torch
 from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
 import pandas as pd
+from loguru import logger
 
 
 # Load the pretrained model and tokenizer
@@ -34,6 +35,7 @@ def get_most_representative_sentence(sentences):
 
     # Compute cosine similarity matrix for the tokenized outputs
     similarity_matrix = cosine_similarity(embeddings)  # Shape: (num_sentences, num_sentences)
+    logger.info(similarity_matrix)
     
     # Compute the average similarity for each sentence
     avg_similarities = similarity_matrix.mean(axis=1)
@@ -123,3 +125,8 @@ def generate_desc(df):
             df.at[index, 'Descriptions'] = best_sentence
     
     return df
+
+if __name__ == "__main__":
+    data = pd.read_pickle('test_data.pkl')
+    result = generate_desc(data)
+    result.to_pickle('test_data_result.pkl')
