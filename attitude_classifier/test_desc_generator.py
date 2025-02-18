@@ -2,8 +2,7 @@ from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
 import torch
 
 # Load the pretrained model and tokenizer
-
-local_path = "/opt/models/attitude/description_generator"
+local_path = "models/description_generator"
 huggingface_model_path = "DASP-ROG/DescriptionModel"
 tokenizer = AutoTokenizer.from_pretrained(huggingface_model_path, cache_dir=local_path)
 model = AutoModelForSeq2SeqLM.from_pretrained(huggingface_model_path, cache_dir=local_path, torch_dtype=torch.float16)
