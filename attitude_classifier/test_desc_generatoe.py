@@ -1,12 +1,12 @@
-from transformers import T5Tokenizer, T5ForConditionalGeneration
+from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
 import torch
 
 # Load the pretrained model and tokenizer
 
 local_path = "/opt/models/attitude/description_generator"
 huggingface_model_path = "DASP-ROG/DescriptionModel"
-tokenizer = T5Tokenizer.from_pretrained(huggingface_model_path, cache_dir=local_path)
-model = T5ForConditionalGeneration.from_pretrained(huggingface_model_path, cache_dir=local_path, torch_dtype=torch.float16)
+tokenizer = AutoTokenizer.from_pretrained(huggingface_model_path, cache_dir=local_path)
+model = AutoModelForSeq2SeqLM.from_pretrained(huggingface_model_path, cache_dir=local_path, torch_dtype=torch.float16)
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
 model.to(device)
