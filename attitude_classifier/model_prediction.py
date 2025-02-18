@@ -4,7 +4,7 @@ import pandas as pd
 import torch
 from torch.nn import Sigmoid
 import os
-
+from description_generation import extract_sentences, get_most_representative_sentence
 from transformers import BertTokenizer, BertForSequenceClassification
 
 # from utils import load_DistilBertTokenizer, load_TFDistilBertForSequenceClassification, load_BertTokenizer, \
@@ -147,7 +147,28 @@ def combine_roots_and_themes(preprocessed_data):
 
     # generate description if there is no corresponding description
     if merged_df['Descriptions'].isna().any():
-        merged_df = generate_desc(merged_df)
+        logger.info('New attitude clusters appear, generating description...')
+        # Iterate through the rows and generate description for missing descriptions
+        for index, row in merged_df.iterrows():
+            if pd.isna(row['Descriptions']):
+                attitude_root = row['Attitude_roots']
+                logger.info(f'New attitude clusters appear: {attitude_root}')
+                # Generate descriptions if it's missing
+                comments = row['Comments']  
+                input_texts = extract_sentences(comments)
+                logger.info(f'input sentences: {input_texts}')
+                best_sentence = get_most_representative_sentence(input_texts)
+                logger.info(f'desc: {best_sentence}')
+                
+                # Set the best sentence as the description
+                merged_df.at[index, 'Descriptions'] = best_sentence
+
+                # Update the corresponding entry in desc DataFrame with the new attitude_root and description
+                new_row = pd.DataFrame({'Attitude_roots': [attitude_root], 'Descriptions': [best_sentence]})
+                desc = pd.concat([desc, new_row], ignore_index=True)
+        # Save the updated desc DataFrame back to CSV
+        logger.info('New attitude clusters appear, update attitudes_desc.csv')
+        desc.to_csv(os.path.join(current_path, 'attitudes_desc.csv'), index=False)
 
     # change order as expected from frontend
     merged_df = merged_df[['Attitude_roots', 'Frequency', 'Descriptions', 'Comments']]

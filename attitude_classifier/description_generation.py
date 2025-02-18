@@ -128,7 +128,7 @@ def generate_desc(df):
     
     return df
 
-if __name__ == "__main__":
-    data = pd.read_pickle('test_data.pkl')
-    result = generate_desc(data)
-    result.to_pickle('test_data_result.pkl')
+# if __name__ == "__main__":
+#     data = pd.read_pickle('test_data.pkl')
+#     result = generate_desc(data)
+#     result.to_pickle('test_data_result.pkl')
