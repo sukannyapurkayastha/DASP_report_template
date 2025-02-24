@@ -77,20 +77,16 @@ python main.py
 ```
 After running all 5 commands, the web application is running on localhost:8000. Note that running without docker, it's available at port 8000.
 
-## **3. Architecture and Design Notes**
-#### **3.1 Architecture**
+## **3. Architecture**
 
-![alt text](image.png)
 
-#### **3.2 Design Notes**
-
-##### **3.2.1 Frontend**
+##### **3.1 Frontend**
 The Frontend is the user interface of the system where individuals log in, provide a URL to OpenReview, and optionally download and then upload the filled out templates. The Frontend handles interactions, collects the user’s input (including files and URLs), and displays the resulting classification output once the Backend has processed everything.
 
-##### **3.2.2 Backend**
+##### **3.2 Backend**
 Once the Frontend submits data (whether uploaded files or URLs), the Backend starts analyzing the provided data. It first performs formatting and segmentation, breaking the reviews into sentences. From there, the system routes the segments to various prediction modules. The “Request Prediction” module handles general categorization of the Request, while an “Attitude/Theme Prediction” module determines attitude and corresponding themes and descriptions. After processing these steps, the Backend compiles the outputs—now in the form of classified sentences or structured results—and sends them back to the Frontend to display to the user.
 
-##### **3.2.3 Model Training**
+##### **3.3 Model Training**
 As part of our framework, there is the model training. Initially we trained the models used in the Backend to perform the neccesary classification tasks. This training process results in Model Artifacts, such as updated model parameters, which the Backend uses during its prediction steps. If necessary, the existing model and code files can be used to update and improve existing models with new data or better models.
 
 *Request Classifier*
@@ -107,16 +103,14 @@ For the Attitude Roots which represent the underlying believes we made a multi c
 To create the summary—which aggregates all results sorted by “Overview”, “Attitude Roots” and “Request Information”—we tried different models and evaluated their performance using the BERT score. More specifically, we pre-structured the summary using Python and then generated predictions only for the collections of comments corresponding to a particular attitude root or request, as determined by our other models.
 
 Data Collection and Labeling Process:
-Data Crawling:
-We crawled data from 10 random review threads on OpenReview. Instead of treating each individual comment as a data point, we aggregated comments into collections. Each collection was specified by a particular attitude root or request by our auxiliary models. This resulted in 174 aggregated data points (see model_training/nlp/summary/data/real_world_data_unlabeled.jsonl).
-Labeling:
-Next, these aggregated comment collections (each related to a specific attitude root or request) were labeled using OpenAI's so far most capable model ChatGPT o1. We then proofread these labels to ensure high quality (see model_training/nlp/summary/data/real_world_data_labeled.jsonl).
+We manually collected data from ten OpenReview threads to ensure a balanced distribution of overall ratings. The selection included two examples with very low ratings, two near the 25th percentile, two with average ratings, two near the 75th percentile, and two with very high ratings. Rather than treating each individual comment as a separate data point, we clustered sentences such that each cluster corresponded to a specific attitude root or request recognized by the respective models. This process resulted in 174 aggregated data points (see model_training/nlp/summary/data/real_world_data_unlabeled.jsonl). 
+Next, each data point (each related to a specific attitude root or request) was labeled using OpenAI's so far most capable model ChatGPT o1. We then proofread these labels to ensure high quality (see model_training/nlp/summary/data/real_world_data_labeled.jsonl).
 
 Prediction:
 We tried sequence to sequence approaches with BART-large and T5 using an 80%-10%-10% train-validation-test split.
 The best results were obtained using Llama2 with a 10-shot prompt, achieving an F1-BERT score of 69% on the test data.
 
-##### **3.2.3 Communication Flow**
+##### **3.4 Communication Flow**
 
 *Frontend → Backend*
 
