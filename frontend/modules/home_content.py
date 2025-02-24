@@ -69,17 +69,10 @@ def show_home_teaser():
         """
         st.session_state.page = "Review Aggregation"
     
-    def change_to_preview():
-        """
-        Change the current page to 'Meta Reviewer Dashboard' when the corresponding button is clicked.
-        """
-        st.session_state.page = "Meta Reviewer Dashboard"
-    
     st.markdown('<div class="invisbible-line-small">  </div>', unsafe_allow_html=True)
-    col0, col1, col2, col3 = st.columns([2,2,2,2])
+
+    col0, col1, col2 = st.columns([4,2.5,4])
     with col1:
         st.button("Review Aggregation ", on_click=change_to_upload)
-    with col2:
-        st.button("Show Example", on_click=change_to_preview)
         
     st.markdown('<div class="invisbible-line-small">  </div>', unsafe_allow_html=True)
