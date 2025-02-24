@@ -17,7 +17,7 @@
 | [xx/01/25] | [xx/01/25] | [Dummy]                     | []                                                                        | [0.0]              | [In Progress] |
 | [22/02/25] | [22/02/25] | [Frontend finishing]        | [removed not working button, made adjustments for dummy data in case of invalid URL or empty dfs returned from API to frontend, improved readability of landing_page.py and removed unneccesary function]                    | [3]              | [Completed] |
 | [20/02/25] | [20/02/25] | [Updating report]           | [Wrote abstract, completed introduction, checked on feedback from sukannya]                    | [4]              | [Completed] |
-| [19/01/25] | [19/01/25] | [Weekly]                    | [Meeting itself, internal teammeeting, updating timesheets]               | [0.5]                | [Completed]   |
+| [19/02/25] | [19/02/25] | [Weekly]                    | [Meeting itself, internal teammeeting, updating timesheets]               | [0.5]                | [Completed]   |
 | [23/01/25] | [23/01/25] | [Summary generator VI]       | [Provide llama2 to johannes for HF-Upload]                    | [0.5]              | [Completed] |
 | [20/01/25] | [21/01/25] | [Summary generator V]       | [Integrate best model into frontend]                    | [5.0]              | [Completed] |
 | [15/01/25] | [19/01/25] | [Summary generator IV]      | [Entirely revamp summary generator as real world data is way to long! Caused some serious issues in the pipeline as the logic of how data is split and predictions are made changed fundamentally! + change of evaluation metric to BERT-Score caused very intensive debugging (see tons of log structure of the provided code!)]                     | [32.0]              | [Completed]   |
