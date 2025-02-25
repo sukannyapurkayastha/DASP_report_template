@@ -195,10 +195,11 @@ The model training folder includes the scripts and data which which the models w
 The attitude classifier can contains the model and contains the scripts for the request classifier pipeline.
 
 - **Files**:
-  - `main.py`: creates FastAPI app and runs it
-  - `routers.py`: defines a FastAPI endpoint and structures processed data into dictonaries
-  - `backend_env.yaml`: contains the packages and dependencies for the backend
-  - `attitude_classifier.yaml`: contains the packages and dependencies for the enviroment
+  - `main.py`: defines a FastAPI endpoint, creates FastAPI app and runs it
+  - `model_prediction.py`:  structures, classifies and transforms processed data into target table
+  - `description_generation.py`: generates description for class clusters
+  - `attitude_classifier_env.yaml`: contains the packages and dependencies
+  - `attitude_desc.csv`: contains mapping information between attitude clusters and description
 
 ---
 
