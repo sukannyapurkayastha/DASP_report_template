@@ -13,12 +13,16 @@ This application was developed as part of the **"Data Analysis Software Project"
 ---
 ## **2. Installation and Setup Instructions**
 
-This guide helps you set up and run the project, which consists of three main parts:
-- **Model Training (NLP models environment)**
-- **Backend (APIs connecting frontend and models)**
-- **Frontend (UI environment via streamlit)**
+This guide helps you set up and run the project, which consists of 2 main parts:
+- **Deployment**
+- **Setup Instructions for Developer**
 
+#### **Clone the Repository** 
+
+      git clone https://github.com/sukannyapurkayastha/DASP_report_template.git
+      cd your-project
 ---
+### 2.1 Deployment
 
 #### **Prerequisites**
 
@@ -28,13 +32,7 @@ This guide helps you set up and run the project, which consists of three main pa
 - **NVIDIA Container Toolkit** enables GPU acceleration with nvidia/cuda images.
 [Installing the NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html)
 
----
-#### **1. Clone the Repository** 
-
-      git clone https://github.com/sukannyapurkayastha/DASP_report_template.git
-      cd your-project
-
-#### **2. Application Deployment**
+#### **Application Deployment**
 
 The application runs as a set of Docker containers orchestrated with Docker Compose. To start the app detached in your local device simply run:
 ```bash
@@ -50,8 +48,8 @@ If you are hosting the application on your local device, by default the website 
 
 The application is available online at **[https://reviewoverview.ukp.informatik.tu-darmstadt.de](https://reviewoverview.ukp.informatik.tu-darmstadt.de)**, if you have access to UKP or HRZ VPN. Since the proxy handles SSL termination, currently we don't have webserver in front of Streamlit.
 
-#### **3. Developer Guide**
-
+### **2.2 Developer Guide**
+This is the instruction for developers, who want to debug or directly work with our codes.
 We have currently 5 components:
 - frontend
 - backend (preprocess, segmentation and score calculation)
@@ -59,13 +57,13 @@ We have currently 5 components:
 - request_classifier
 - summary_generator
 
-##### **3.1 Install Environment**
+#### **Install Environment**
 
 Folders have same name as components. In each folder there is a requirements file and conda environment file. 
 - usage of conda environment file: It contains all information for environment like python verison, list of libs and versions of libs. It's recommended to use this file firstly, if it omits error, try requirements.txt file.
 - usage of requirements.txt: It's served for docker. But you can also install your environment with this file. Python 3.10 is used for all containers. Versions of libs are not specified in requirements file, in order to prevent version mismatching errors.
 
-##### **3.2 Run Services From Terminal**
+#### **Run Services From Terminal**
 ```bash
 cd frontend
 streamlit run app.py
