@@ -1,3 +1,7 @@
 models/
 __pycache__/
 attitude_classifier_env.yaml
+description.ipynb
+test_data_result.pkl
+test_data.pkl
+test_desc_generator.py
