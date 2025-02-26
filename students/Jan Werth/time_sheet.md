@@ -37,16 +37,19 @@
 | [04/12/24] | [12/12/24] | [Coding]             | [Restructuring of Project (on branch -> merged)]                             | [25]               | [Completed] |
 | [11/12/24] | [11/12/24] | [Meeting]            | [Weekly meeting]                                                             | [1]                | [Completed] |
 | [11/12/24] | [11/12/24] | [Meeting]            | [Internal meeting]                                                           | [2]                | [Completed] |
-| [9/12/24]  | [11/12/24] | [Meeting]            | [Midterm presentation preparation]                                           | [4]                | [Completed] |
+| [9/12/24]  | [11/12/24] | [Presentation]       | [Midterm presentation preparation]                                           | [4]                | [Completed] |
 | [12/12/24] | [30/01/25] | [Meeting]            | [Writing test]                                                               | [47]               | [Completed] |
 | [15/01/25] | [15/01/25] | [Meeting]            | [Weekly meeting]                                                             | [1]                | [Completed] |
 | [15/01/25] | [15/01/25] | [Meeting]            | [Internal meeting]                                                           | [0.5]              | [Completed] |
 | [22/01/25] | [22/01/25] | [Meeting]            | [Weekly meeting]                                                             | [1]                | [Completed] |
 | [22/01/25] | [22/01/25] | [Meeting]            | [Internal meeting]                                                           | [0.5]              | [Completed] |
 | [29/01/25] | [29/01/25] | [Meeting]            | [Weekly meeting]                                                             | [0.5]              | [Completed] |
-| [22/01/25] | [30/01/25] | [Meeting]            | [Model loading]                                                              | [4]                | [Completed] |
-| [29/01/25] | [03/02/25] | [Meeting]            | [Poster presentation]                                                        | [7]                | [Ongoing]   |
-| [31/01/25] | [03/02/25] | [Meeting]            | [Poster (printing)]                                                          | [1.5]              | [Ongoing]   |
+| [22/01/25] | [30/01/25] | [Coding]             | [Model loading]                                                              | [4]                | [Completed] |
+| [29/01/25] | [07/02/25] | [Presentation]       | [Poster presentation]                                                        | [14]               | [Completed] |
+| [31/01/25] | [03/02/25] | [Presentation]       | [Poster (printing)]                                                          | [1.5]              | [Completed] |
+| [07/02/25] | [27/02/25] | [Report]             | [Writing Report]                                                             | [8]                | [Ongoing]   |
+| [19/02/25] | [19/02/25] | [Meeting]            | [Internal meeting]                                                           | [0.5]              | [Completed] |
+| [26/02/25] | [26/02/25] | [Meeting]            | [Internal meeting]                                                           | [0.5]              | [Completed] |
 
 ---
 
