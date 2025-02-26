@@ -58,7 +58,7 @@
 - **Challenges**: 
 - **Next Steps**: further documentation
 
-### Week [7-10]
+### Week [7-9]
 
 - **Update 1**: structured model training for table
 - **Update 2**: some documentation
@@ -67,7 +67,7 @@
 - **Next Steps**: tables for all request approaches
 
 
-### Week [11]
+### Week [10]
 
 - **Update 1**: getting slurm running  
 - **Update 2**: builing prompts for fine request
@@ -75,7 +75,7 @@
 - **Challenges**: some challenges with slurm (encoding, getting code running)
 - **Next Steps**: more focus on documentation
 
-### Week [12]
+### Week [11]
 
 - **Update 1**: added docstrings  
 - **Update 2**: wrote readme 
@@ -84,7 +84,7 @@
 - **Next Steps**: looking into documentation generation
 
 
-### Week [13]
+### Week [12]
 
 - **Update 1**: new organisation of repos   
 - **Update 2**: added gh page with sphinx 
@@ -93,7 +93,7 @@
 - **Next Steps**: checking the results of gh page
 
 
-### Week [14]
+### Week [13]
 
 - **Update 1**: implemented documentation with mk docs
 - **Update 2**: preperation for poster presentation
@@ -101,5 +101,21 @@
 - **Challenges**: understanding what went wrong with sphinx / changing to mkdocs
 - **Next Steps**: presenting
 
+
+### Week [14]
+
+- **Update 1**: held poster presentation
+- **Update 2**: preperation for poster presentation
+- **Update 3**: 
+- **Challenges**: coordinating the report
+- **Next Steps**: writing the report
+
+### Week [15-16]
+
+- **Update 1**: report
+- **Update 2**: bringing docu up to date
+- **Update 3**: 
+- **Challenges**: 
+- **Next Steps**: 
 ---
 

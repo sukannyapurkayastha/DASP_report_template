@@ -1,4 +1,4 @@
-# Frontend API Documentation
+# Frontend Code Documentation
 
 ::: frontend.home_page
 ::: frontend.landing_page
