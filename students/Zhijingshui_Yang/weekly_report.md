@@ -151,4 +151,20 @@
 - **Update 3**: 
 - **Challenges**: 1. have access to vm; 2. current deployment using LLaMA without optimized inference frameworks (like vLLM or Ollama) was a big issue, because it loads and reloads model into gpu upon request, then I changed so that it loads when service starts and never reload. current deployment using LLaMA without optimized inference frameworks (like vLLM or Ollama) can still lead to inefficient resource usage and higher latency; 3. vm doesn't have avx/avx2, however tensorflow, tf-keras needs them, so docker container always exits with 132, it took quite some time to find out what was the error cause.
 - **Next Steps**: description generation; paper
+
+### Week [15]
+
+- **Update 1**: description generation is implemented and integrated into backend
+- **Update 2**: write deployment, performance and model training section
+- **Update 3**: 
+- **Challenges**: not enough time to do properly description model evaluation
+- **Next Steps**: paper
+
+### Week [16]
+
+- **Update 1**: write model results for theme classification, add results as table
+- **Update 2**: update readme
+- **Update 3**: 
+- **Challenges**: tables and figures in appendix are positioned inappropriately, but hard to fix
+- **Next Steps**: paper refinement
 ---

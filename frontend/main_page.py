@@ -203,19 +203,27 @@ def main_page(custom_css):
         custom_css (str): A string containing CSS styles to customize the appearance
                           of the Streamlit application.
     """
-    base_path = os.getcwd()
     # Apply custom CSS Styles
     st.markdown(main_page_css, unsafe_allow_html=True)
 
+    # avoid API recall when using the next buttons by reusing main_page_variables if already set in this session
     if "main_page_variables" not in st.session_state:
-        # Fetch data and store it in session state
-        overview, request_information, attitude_roots, summary = get_classification_with_api()
-        st.session_state.main_page_variables = {
-            "overview": overview,
-            "request_information": request_information,
-            "attitude_roots": attitude_roots,
-            "summary": summary
-        }
+        
+        try: # Fetch data and store it in session state
+            overview, request_information, attitude_roots, summary = get_classification_with_api()
+            st.session_state.main_page_variables = {
+                "overview": overview,
+                "request_information": request_information,
+                "attitude_roots": attitude_roots,
+                "summary": summary
+            }
+        except: # Fallback to dummy data if anything goes wrong
+            st.session_state.main_page_variables = {
+                "overview": None,
+                "request_information": None,
+                "attitude_roots": None,
+                "summary": None,
+            }
 
     # Access data from session state
     overview = st.session_state.main_page_variables["overview"]
@@ -224,20 +232,21 @@ def main_page(custom_css):
     summary = st.session_state.main_page_variables["summary"]
 
     # Fallback to dummy data if any DataFrame is empty
-    if overview.empty:
-        st.warning("No data available for overview.")
-        with open(os.path.join('dummy_data', 'dummy_overview.pkl'), 'rb') as file:
+    base_path = os.getcwd()
+    if overview is None or overview.empty:
+        st.warning("No data available for overview. - display dummy data instead!")
+        with open(os.path.join(base_path, 'dummy_data', 'dummy_overview.pkl'), 'rb') as file:
             overview = pickle.load(file)
-    if attitude_roots.empty:
-        st.warning("No data available for attitudes classification.")
-        with open(os.path.join('dummy_data', 'dummy_attitude_roots.pkl'), 'rb') as file:
+    if attitude_roots is None or attitude_roots.empty:
+        st.warning("No data available for attitudes classification. - display dummy data instead!")
+        with open(os.path.join(base_path, 'dummy_data', 'dummy_attitude_roots.pkl'), 'rb') as file:
             attitude_roots = pickle.load(file)
-    if request_information.empty:
-        st.warning("No data available for request classification.")
+    if request_information is None or request_information.empty:
+        st.warning("No data available for request classification. - display dummy data instead!")
         with open(os.path.join(base_path, 'dummy_data', 'dummy_requests.pkl'), 'rb') as file:
             request_information = pickle.load(file)
-    if summary.empty:
-        st.warning("No data available for summary - display dummy data instead!") 
+    if summary is None or summary.empty:
+        st.warning("No data available for summary. - display dummy data instead!") 
         summary = pd.read_csv(os.path.join(base_path, "dummy_data", "dummy_summary.csv"), sep=";", encoding="utf-8")
 
     # Show overview container

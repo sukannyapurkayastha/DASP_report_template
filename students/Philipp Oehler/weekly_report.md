@@ -10,13 +10,29 @@
 
 ## Reports
 
-### Week [11]
+### Week [13]
 
-- **Update 1**: 
+- **Update 1**: Added abstract, finished introduction, checked for feedback of sukannya
 - **Update 2**: 
 - **Update 3**: 
 - **Challenges**: 
-- **Next Steps**: 
+- **Next Steps**: finish report and hand in everything
+
+### Week [12]
+
+- **Update 1**: frontend finished for submission
+- **Update 2**: wrote summary generation part for report
+- **Update 3**: 
+- **Challenges**: 
+- **Next Steps**: write remaining report as team
+
+### Week [11]
+
+- **Update 1**: final presentation was a success
+- **Update 2**: zhijing was able to deploy VM running our app
+- **Update 3**: 
+- **Challenges**: 
+- **Next Steps**: frontend finishing, writing report
 
 ### Week [10]
 

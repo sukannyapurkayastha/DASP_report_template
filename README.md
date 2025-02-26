@@ -13,12 +13,16 @@ This application was developed as part of the **"Data Analysis Software Project"
 ---
 ## **2. Installation and Setup Instructions**
 
-This guide helps you set up and run the project, which consists of three main parts:
-- **Model Training (NLP models environment)**
-- **Backend (APIs connecting frontend and models)**
-- **Frontend (UI environment via streamlit)**
+This guide helps you set up and run the project, which consists of 2 main parts:
+- **Deployment**
+- **Setup Instructions for Developer**
 
+#### **Clone the Repository** 
+
+      git clone https://github.com/sukannyapurkayastha/DASP_report_template.git
+      cd your-project
 ---
+### 2.1 Deployment
 
 #### **Prerequisites**
 
@@ -28,13 +32,7 @@ This guide helps you set up and run the project, which consists of three main pa
 - **NVIDIA Container Toolkit** enables GPU acceleration with nvidia/cuda images.
 [Installing the NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html)
 
----
-#### **1. Clone the Repository** 
-
-      git clone https://github.com/sukannyapurkayastha/DASP_report_template.git
-      cd your-project
-
-#### **2. Application Deployment**
+#### **Application Deployment**
 
 The application runs as a set of Docker containers orchestrated with Docker Compose. To start the app detached in your local device simply run:
 ```bash
@@ -50,8 +48,8 @@ If you are hosting the application on your local device, by default the website 
 
 The application is available online at **[https://reviewoverview.ukp.informatik.tu-darmstadt.de](https://reviewoverview.ukp.informatik.tu-darmstadt.de)**, if you have access to UKP or HRZ VPN. Since the proxy handles SSL termination, currently we don't have webserver in front of Streamlit.
 
-#### **3. Developer Guide**
-
+### **2.2 Developer Guide**
+This is the instruction for developers, who want to debug or directly work with our codes.
 We have currently 5 components:
 - frontend
 - backend (preprocess, segmentation and score calculation)
@@ -59,13 +57,13 @@ We have currently 5 components:
 - request_classifier
 - summary_generator
 
-##### **3.1 Install Environment**
+#### **Install Environment**
 
 Folders have same name as components. In each folder there is a requirements file and conda environment file. 
 - usage of conda environment file: It contains all information for environment like python verison, list of libs and versions of libs. It's recommended to use this file firstly, if it omits error, try requirements.txt file.
 - usage of requirements.txt: It's served for docker. But you can also install your environment with this file. Python 3.10 is used for all containers. Versions of libs are not specified in requirements file, in order to prevent version mismatching errors.
 
-##### **3.2 Run Services From Terminal**
+#### **Run Services From Terminal**
 ```bash
 cd frontend
 streamlit run app.py
@@ -77,20 +75,16 @@ python main.py
 ```
 After running all 5 commands, the web application is running on localhost:8000. Note that running without docker, it's available at port 8000.
 
-## **3. Architecture and Design Notes**
-#### **3.1 Architecture**
+## **3. Architecture**
 
-![alt text](image.png)
 
-#### **3.2 Design Notes**
-
-##### **3.2.1 Frontend**
+##### **3.1 Frontend**
 The Frontend is the user interface of the system where individuals log in, provide a URL to OpenReview, and optionally download and then upload the filled out templates. The Frontend handles interactions, collects the user’s input (including files and URLs), and displays the resulting classification output once the Backend has processed everything.
 
-##### **3.2.2 Backend**
+##### **3.2 Backend**
 Once the Frontend submits data (whether uploaded files or URLs), the Backend starts analyzing the provided data. It first performs formatting and segmentation, breaking the reviews into sentences. From there, the system routes the segments to various prediction modules. The “Request Prediction” module handles general categorization of the Request, while an “Attitude/Theme Prediction” module determines attitude and corresponding themes and descriptions. After processing these steps, the Backend compiles the outputs—now in the form of classified sentences or structured results—and sends them back to the Frontend to display to the user.
 
-##### **3.2.3 Model Training**
+##### **3.3 Model Training**
 As part of our framework, there is the model training. Initially we trained the models used in the Backend to perform the neccesary classification tasks. This training process results in Model Artifacts, such as updated model parameters, which the Backend uses during its prediction steps. If necessary, the existing model and code files can be used to update and improve existing models with new data or better models.
 
 *Request Classifier*
@@ -107,16 +101,14 @@ For the Attitude Roots which represent the underlying believes we made a multi c
 To create the summary—which aggregates all results sorted by “Overview”, “Attitude Roots” and “Request Information”—we tried different models and evaluated their performance using the BERT score. More specifically, we pre-structured the summary using Python and then generated predictions only for the collections of comments corresponding to a particular attitude root or request, as determined by our other models.
 
 Data Collection and Labeling Process:
-Data Crawling:
-We crawled data from 10 random review threads on OpenReview. Instead of treating each individual comment as a data point, we aggregated comments into collections. Each collection was specified by a particular attitude root or request by our auxiliary models. This resulted in 174 aggregated data points (see model_training/nlp/summary/data/real_world_data_unlabeled.jsonl).
-Labeling:
-Next, these aggregated comment collections (each related to a specific attitude root or request) were labeled using OpenAI's so far most capable model ChatGPT o1. We then proofread these labels to ensure high quality (see model_training/nlp/summary/data/real_world_data_labeled.jsonl).
+We manually collected data from nine OpenReview threads to ensure a balanced distribution of overall ratings. Specifically, the selection includes three examples from each rating category: "low" with overall score < 4, "average" with overall score >=4 but < 7 and "high" with overall score >= 7. Instead of treating each individual comment as a separate data point, we clustered sentences so that each cluster represents the set of comments associated with a single paper and corresponds to a specific "attitude root" or request as identified by our preliminary models (e.g., all comments complaining about a typo). This clustering resulted in 174 aggregated data points (see model_training/nlp/summary/data/real_world_data_unlabeled.jsonl).
+Next, each data point was labeled using OpenAI's so far most capable model ChatGPT o1. We then proofread these labels to ensure high quality (see model_training/nlp/summary/data/real_world_data_labeled.jsonl).
 
 Prediction:
 We tried sequence to sequence approaches with BART-large and T5 using an 80%-10%-10% train-validation-test split.
 The best results were obtained using Llama2 with a 10-shot prompt, achieving an F1-BERT score of 69% on the test data.
 
-##### **3.2.3 Communication Flow**
+##### **3.4 Communication Flow**
 
 *Frontend → Backend*
 
@@ -203,10 +195,11 @@ The model training folder includes the scripts and data which which the models w
 The attitude classifier can contains the model and contains the scripts for the request classifier pipeline.
 
 - **Files**:
-  - `main.py`: creates FastAPI app and runs it
-  - `routers.py`: defines a FastAPI endpoint and structures processed data into dictonaries
-  - `backend_env.yaml`: contains the packages and dependencies for the backend
-  - `attitude_classifier.yaml`: contains the packages and dependencies for the enviroment
+  - `main.py`: defines a FastAPI endpoint, creates FastAPI app and runs it
+  - `model_prediction.py`:  structures, classifies and transforms processed data into target table
+  - `description_generation.py`: generates description for class clusters
+  - `attitude_classifier_env.yaml`: contains the packages and dependencies
+  - `attitude_desc.csv`: contains mapping information between attitude clusters and description
 
 ---
 
