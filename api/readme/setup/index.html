@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#prerequisites" class="md-skip">
+        <a href="#clone-the-repository" class="md-skip">
           Skip to content
         </a>
       
@@ -286,6 +286,25 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#clone-the-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clone the Repository
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      1 Deployment
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1 Deployment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#prerequisites" class="md-nav__link">
     <span class="md-ellipsis">
       Prerequisites
@@ -293,22 +312,18 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#1-clone-the-repository" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#application-deployment" class="md-nav__link">
     <span class="md-ellipsis">
-      1 Clone the Repository
+      Application Deployment
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#2-application-deployment" class="md-nav__link">
-    <span class="md-ellipsis">
-      2 Application Deployment
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -800,6 +815,25 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#clone-the-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clone the Repository
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      1 Deployment
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1 Deployment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#prerequisites" class="md-nav__link">
     <span class="md-ellipsis">
       Prerequisites
@@ -807,22 +841,18 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#1-clone-the-repository" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#application-deployment" class="md-nav__link">
     <span class="md-ellipsis">
-      1 Clone the Repository
+      Application Deployment
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#2-application-deployment" class="md-nav__link">
-    <span class="md-ellipsis">
-      2 Application Deployment
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -847,11 +877,12 @@
 
   <h1>Setup and Installation</h1>
 
-<p>This guide helps you set up and run the project, which consists of three main parts:
-- <strong>Model Training (NLP models environment)</strong>
-- <strong>Backend (APIs connecting frontend and models)</strong>
-- <strong>Frontend (UI environment via streamlit)</strong></p>
+<h4 id="clone-the-repository"><strong>Clone the Repository</strong></h4>
+<pre><code>  git clone https://github.com/sukannyapurkayastha/DASP_report_template.git
+  cd your-project
+</code></pre>
 <hr />
+<h3 id="1-deployment">1 Deployment</h3>
 <h4 id="prerequisites"><strong>Prerequisites</strong></h4>
 <ul>
 <li><strong>Git</strong> for cloning the repository.</li>
@@ -860,12 +891,7 @@
 <li><strong>NVIDIA Container Toolkit</strong> enables GPU acceleration with nvidia/cuda images.
 <a href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html">Installing the NVIDIA Container Toolkit</a></li>
 </ul>
-<hr />
-<h4 id="1-clone-the-repository"><strong>1 Clone the Repository</strong></h4>
-<pre><code>  git clone https://github.com/sukannyapurkayastha/DASP_report_template.git
-  cd your-project
-</code></pre>
-<h4 id="2-application-deployment"><strong>2 Application Deployment</strong></h4>
+<h4 id="application-deployment"><strong>Application Deployment</strong></h4>
 <p>The application runs as a set of Docker containers orchestrated with Docker Compose. To start the app detached in your local device simply run:</p>
 <pre><code class="language-bash">docker compose up -d
 </code></pre>
