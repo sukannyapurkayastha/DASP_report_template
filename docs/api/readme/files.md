@@ -1,5 +1,3 @@
-
-
 #### **1 `backend`**
 
 The backend is responsible for data collection from OpenReview, preprocessing the data, and managing the workflow between the models and the frontend. It sends preprocessed data to the models for processing, retrieves the results, and communicates the processed data to the frontend for further use.
@@ -65,10 +63,11 @@ The model training folder includes the scripts and data which which the models w
 The attitude classifier can contains the model and contains the scripts for the request classifier pipeline.
 
 - **Files**:
-  - `main.py`: creates FastAPI app and runs it
-  - `routers.py`: defines a FastAPI endpoint and structures processed data into dictonaries
-  - `backend_env.yaml`: contains the packages and dependencies for the backend
-  - `attitude_classifier.yaml`: contains the packages and dependencies for the enviroment
+  - `main.py`: defines a FastAPI endpoint, creates FastAPI app and runs it
+  - `model_prediction.py`:  structures, classifies and transforms processed data into target table
+  - `description_generation.py`: generates description for class clusters
+  - `attitude_classifier_env.yaml`: contains the packages and dependencies
+  - `attitude_desc.csv`: contains mapping information between attitude clusters and description
 
 ---
 
@@ -103,4 +102,3 @@ The summyry generator folder can contains the model and contains the scripts for
   - `requirements.txt`: contains packages used to execute prediction. Can be used especially for exection on windows
   - `summary_env.yml`: contains the packages and dependencies for the summary generator when running on linux/slurm servers
   - `slurm_test.py`: test function for slurm
-  

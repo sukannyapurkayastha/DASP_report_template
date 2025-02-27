@@ -5,8 +5,6 @@
   <img src="../../images/image.png" alt="Bild 1" width="500" height="auto">
 </p>
 
-#### **Design Notes**
-
 ##### **1 Frontend**
 The Frontend is the user interface of the system where individuals log in, provide a URL to OpenReview, and optionally download and then upload the filled out templates. The Frontend handles interactions, collects the user’s input (including files and URLs), and displays the resulting classification output once the Backend has processed everything.
 
@@ -30,10 +28,8 @@ For the Attitude Roots which represent the underlying believes we made a multi c
 To create the summary—which aggregates all results sorted by “Overview”, “Attitude Roots” and “Request Information”—we tried different models and evaluated their performance using the BERT score. More specifically, we pre-structured the summary using Python and then generated predictions only for the collections of comments corresponding to a particular attitude root or request, as determined by our other models.
 
 Data Collection and Labeling Process:
-Data Crawling:
-We crawled data from 10 random review threads on OpenReview. Instead of treating each individual comment as a data point, we aggregated comments into collections. Each collection was specified by a particular attitude root or request by our auxiliary models. This resulted in 174 aggregated data points (see model_training/nlp/summary/data/real_world_data_unlabeled.jsonl).
-Labeling:
-Next, these aggregated comment collections (each related to a specific attitude root or request) were labeled using OpenAI's so far most capable model ChatGPT o1. We then proofread these labels to ensure high quality (see model_training/nlp/summary/data/real_world_data_labeled.jsonl).
+We manually collected data from nine OpenReview threads to ensure a balanced distribution of overall ratings. Specifically, the selection includes three examples from each rating category: "low" with overall score < 4, "average" with overall score >=4 but < 7 and "high" with overall score >= 7. Instead of treating each individual comment as a separate data point, we clustered sentences so that each cluster represents the set of comments associated with a single paper and corresponds to a specific "attitude root" or request as identified by our preliminary models (e.g., all comments complaining about a typo). This clustering resulted in 174 aggregated data points (see model_training/nlp/summary/data/real_world_data_unlabeled.jsonl).
+Next, each data point was labeled using OpenAI's so far most capable model ChatGPT o1. We then proofread these labels to ensure high quality (see model_training/nlp/summary/data/real_world_data_labeled.jsonl).
 
 Prediction:
 We tried sequence to sequence approaches with BART-large and T5 using an 80%-10%-10% train-validation-test split.
@@ -55,4 +51,3 @@ The Frontend then displays these results to the user in a clear, readable format
 *Model Training and Backend*
 
 The models trained in the Backend are stored in the designated containers with are activated when the Backend is called.
-

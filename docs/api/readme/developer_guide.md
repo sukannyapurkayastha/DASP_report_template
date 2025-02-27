@@ -1,4 +1,9 @@
+#### **Clone the Repository** 
 
+      git clone https://github.com/sukannyapurkayastha/DASP_report_template.git
+      cd your-project
+
+This is the instruction for developers, who want to debug or directly work with our codes.
 We have currently 5 components:
 - frontend
 - backend (preprocess, segmentation and score calculation)
@@ -6,13 +11,13 @@ We have currently 5 components:
 - request_classifier
 - summary_generator
 
-#### **1 Install Environment**
+### **Install Environment**
 
 Folders have same name as components. In each folder there is a requirements file and conda environment file. 
 - usage of conda environment file: It contains all information for environment like python verison, list of libs and versions of libs. It's recommended to use this file firstly, if it omits error, try requirements.txt file.
 - usage of requirements.txt: It's served for docker. But you can also install your environment with this file. Python 3.10 is used for all containers. Versions of libs are not specified in requirements file, in order to prevent version mismatching errors.
 
-#### **2 Run Services From Terminal**
+### **Run Services From Terminal**
 ```bash
 cd frontend
 streamlit run app.py

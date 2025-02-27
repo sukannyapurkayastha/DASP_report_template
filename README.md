@@ -218,7 +218,7 @@ The request classifier can contains the model and contains the scripts for the r
 
 ---
 
-#### **4.5 `summary_generator`**
+#### **4.6 `summary_generator`**
 
 The summyry generator folder can contains the model and contains the scripts for the summary generations.
 
