@@ -1,11 +1,9 @@
+#### **Clone the Repository** 
 
-
-This guide helps you set up and run the project, which consists of three main parts:
-- **Model Training (NLP models environment)**
-- **Backend (APIs connecting frontend and models)**
-- **Frontend (UI environment via streamlit)**
-
+      git clone https://github.com/sukannyapurkayastha/DASP_report_template.git
+      cd your-project
 ---
+###  Deployment
 
 #### **Prerequisites**
 
@@ -15,13 +13,7 @@ This guide helps you set up and run the project, which consists of three main pa
 - **NVIDIA Container Toolkit** enables GPU acceleration with nvidia/cuda images.
 [Installing the NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html)
 
----
-#### **1 Clone the Repository** 
-
-      git clone https://github.com/sukannyapurkayastha/DASP_report_template.git
-      cd your-project
-
-#### **2 Application Deployment**
+#### **Application Deployment**
 
 The application runs as a set of Docker containers orchestrated with Docker Compose. To start the app detached in your local device simply run:
 ```bash

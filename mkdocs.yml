@@ -1,7 +1,7 @@
 site_name: DASP Report Template Dokumentation
 site_description: "Dokumentation des DASP Report Template Projekts inklusive automatischer Docstring-Integration."
 site_author: Johannes Lemken, Carmen Appelt, Phillip Oehler, Jan Werth, Zhijingshui Yang
-repo_url: https://github.com/dein_username/DASP_report_template
+repo_url: https://github.com/sukannyapurkayastha/DASP_report_template
 
 theme:
   name: material
