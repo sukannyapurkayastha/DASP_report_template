@@ -24,7 +24,7 @@
     
     
       
-        <title>Architecture and Design Notes - DASP Report Template Dokumentation</title>
+        <title>Architecture, Data Flow and Design Notes - DASP Report Template Dokumentation</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#architecture" class="md-skip">
+        <a href="#data-flow" class="md-skip">
           Skip to content
         </a>
       
@@ -104,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Architecture and Design Notes
+              Architecture, Data Flow and Design Notes
             
           </span>
         </div>
@@ -295,7 +295,7 @@
           
   
   <span class="md-ellipsis">
-    Architecture and Design Notes
+    Architecture, Data Flow and Design Notes
     
   </span>
   
@@ -307,7 +307,7 @@
         
   
   <span class="md-ellipsis">
-    Architecture and Design Notes
+    Architecture, Data Flow and Design Notes
     
   </span>
   
@@ -328,16 +328,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#architecture" class="md-nav__link">
+  <a href="#data-flow" class="md-nav__link">
     <span class="md-ellipsis">
-      Architecture
+      Data Flow
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Architecture">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#1-frontend" class="md-nav__link">
     <span class="md-ellipsis">
       1 Frontend
@@ -345,8 +344,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#2-backend" class="md-nav__link">
     <span class="md-ellipsis">
       2 Backend
@@ -354,8 +353,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#3-model-training" class="md-nav__link">
     <span class="md-ellipsis">
       3 Model Training
@@ -363,18 +362,13 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#4-communication-flow" class="md-nav__link">
     <span class="md-ellipsis">
       4 Communication Flow
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -824,16 +818,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#architecture" class="md-nav__link">
+  <a href="#data-flow" class="md-nav__link">
     <span class="md-ellipsis">
-      Architecture
+      Data Flow
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Architecture">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#1-frontend" class="md-nav__link">
     <span class="md-ellipsis">
       1 Frontend
@@ -841,8 +834,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#2-backend" class="md-nav__link">
     <span class="md-ellipsis">
       2 Backend
@@ -850,8 +843,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#3-model-training" class="md-nav__link">
     <span class="md-ellipsis">
       3 Model Training
@@ -859,18 +852,13 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#4-communication-flow" class="md-nav__link">
     <span class="md-ellipsis">
       4 Communication Flow
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -893,13 +881,13 @@
   
 
 
-  <h1>Architecture and Design Notes</h1>
+  <h1>Architecture, Data Flow and Design Notes</h1>
 
-<h4 id="architecture"><strong>Architecture</strong></h4>
+<h5 id="data-flow"><strong>Data Flow</strong></h5>
 <p align="center" style="display: flex; gap: 20px; justify-content: center;">
-  <img src="../../images/image.png" alt="Bild 1" width="500" height="auto">
+  <img src="../../images/image_dataflow.jpg" alt="Bild 1" width="500" height="auto">
 </p>
-
+<p>The diagramm shows the dataflow starting at the user input and ending in displaying the output.</p>
 <h5 id="1-frontend"><strong>1 Frontend</strong></h5>
 <p>The Frontend is the user interface of the system where individuals log in, provide a URL to OpenReview, and optionally download and then upload the filled out templates. The Frontend handles interactions, collects the user’s input (including files and URLs), and displays the resulting classification output once the Backend has processed everything.</p>
 <h5 id="2-backend"><strong>2 Backend</strong></h5>
