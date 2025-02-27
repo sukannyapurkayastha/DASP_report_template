@@ -966,10 +966,11 @@
 <p>The attitude classifier can contains the model and contains the scripts for the request classifier pipeline.</p>
 <ul>
 <li><strong>Files</strong>:</li>
-<li><code>main.py</code>: creates FastAPI app and runs it</li>
-<li><code>routers.py</code>: defines a FastAPI endpoint and structures processed data into dictonaries</li>
-<li><code>backend_env.yaml</code>: contains the packages and dependencies for the backend</li>
-<li><code>attitude_classifier.yaml</code>: contains the packages and dependencies for the enviroment</li>
+<li><code>main.py</code>: defines a FastAPI endpoint, creates FastAPI app and runs it</li>
+<li><code>model_prediction.py</code>:  structures, classifies and transforms processed data into target table</li>
+<li><code>description_generation.py</code>: generates description for class clusters</li>
+<li><code>attitude_classifier_env.yaml</code>: contains the packages and dependencies</li>
+<li><code>attitude_desc.csv</code>: contains mapping information between attitude clusters and description</li>
 </ul>
 <hr />
 <h4 id="5-request_classifier"><strong>5 <code>request_classifier</code></strong></h4>

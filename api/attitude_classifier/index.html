@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#backend-api-documentation" class="md-skip">
+        <a href="#attitude-classification-code-documentation" class="md-skip">
           Skip to content
         </a>
       
@@ -943,7 +943,7 @@
   
 
 
-<h1 id="backend-api-documentation">Backend API Documentation</h1>
+<h1 id="attitude-classification-code-documentation">Attitude Classification Code Documentation</h1>
 
 
 <div class="doc doc-object doc-module">
@@ -1257,7 +1257,34 @@
 <span class="normal">200</span>
 <span class="normal">201</span>
 <span class="normal">202</span>
-<span class="normal">203</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">combine_roots_and_themes</span><span class="p">(</span><span class="n">preprocessed_data</span><span class="p">):</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">combine_roots_and_themes</span><span class="p">(</span><span class="n">preprocessed_data</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Combines root category predictions with theme category predictions.</span>
 
@@ -1312,6 +1339,33 @@
 
     <span class="c1"># Drop Descriptions_x column</span>
     <span class="n">merged_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Descriptions_x&#39;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># generate description if there is no corresponding description</span>
+    <span class="k">if</span> <span class="n">merged_df</span><span class="p">[</span><span class="s1">&#39;Descriptions&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;New attitude clusters appear, generating description...&#39;</span><span class="p">)</span>
+        <span class="c1"># Iterate through the rows and generate description for missing descriptions</span>
+        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">merged_df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Descriptions&#39;</span><span class="p">]):</span>
+                <span class="n">attitude_root</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Attitude_roots&#39;</span><span class="p">]</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;New attitude clusters appear: </span><span class="si">{</span><span class="n">attitude_root</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+                <span class="c1"># Generate descriptions if it&#39;s missing</span>
+                <span class="n">comments</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Comments&#39;</span><span class="p">]</span>  
+                <span class="n">input_texts</span> <span class="o">=</span> <span class="n">extract_sentences</span><span class="p">(</span><span class="n">comments</span><span class="p">)</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;input sentences: </span><span class="si">{</span><span class="n">input_texts</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+                <span class="n">best_sentence</span> <span class="o">=</span> <span class="n">get_most_representative_sentence</span><span class="p">(</span><span class="n">input_texts</span><span class="p">)</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;desc: </span><span class="si">{</span><span class="n">best_sentence</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+                <span class="c1"># Set the best sentence as the description</span>
+                <span class="n">merged_df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="s1">&#39;Descriptions&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">best_sentence</span>
+
+                <span class="c1"># Update the corresponding entry in desc DataFrame with the new attitude_root and description</span>
+                <span class="n">new_row</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Attitude_roots&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">attitude_root</span><span class="p">],</span> <span class="s1">&#39;Descriptions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">best_sentence</span><span class="p">]})</span>
+                <span class="n">desc</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">desc</span><span class="p">,</span> <span class="n">new_row</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="c1"># Save the updated desc DataFrame back to CSV</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;New attitude clusters appear, update attitudes_desc.csv&#39;</span><span class="p">)</span>
+        <span class="n">desc</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">current_path</span><span class="p">,</span> <span class="s1">&#39;attitudes_desc.csv&#39;</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1"># change order as expected from frontend</span>
     <span class="n">merged_df</span> <span class="o">=</span> <span class="n">merged_df</span><span class="p">[[</span><span class="s1">&#39;Attitude_roots&#39;</span><span class="p">,</span> <span class="s1">&#39;Frequency&#39;</span><span class="p">,</span> <span class="s1">&#39;Descriptions&#39;</span><span class="p">,</span> <span class="s1">&#39;Comments&#39;</span><span class="p">]]</span>
     <span class="k">return</span> <span class="n">merged_df</span>
 </code></pre></div></td></tr></table></div>

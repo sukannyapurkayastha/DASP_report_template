@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#1-install-environment" class="md-skip">
+        <a href="#clone-the-repository" class="md-skip">
           Skip to content
         </a>
       
@@ -307,18 +307,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-install-environment" class="md-nav__link">
+  <a href="#clone-the-repository" class="md-nav__link">
     <span class="md-ellipsis">
-      1 Install Environment
+      Clone the Repository
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-run-services-from-terminal" class="md-nav__link">
+  <a href="#install-environment" class="md-nav__link">
     <span class="md-ellipsis">
-      2 Run Services From Terminal
+      Install Environment
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-services-from-terminal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Run Services From Terminal
     </span>
   </a>
   
@@ -791,18 +800,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-install-environment" class="md-nav__link">
+  <a href="#clone-the-repository" class="md-nav__link">
     <span class="md-ellipsis">
-      1 Install Environment
+      Clone the Repository
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-run-services-from-terminal" class="md-nav__link">
+  <a href="#install-environment" class="md-nav__link">
     <span class="md-ellipsis">
-      2 Run Services From Terminal
+      Install Environment
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-services-from-terminal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Run Services From Terminal
     </span>
   </a>
   
@@ -829,17 +847,22 @@
 
   <h1>Developer Guide</h1>
 
-<p>We have currently 5 components:
+<h4 id="clone-the-repository"><strong>Clone the Repository</strong></h4>
+<pre><code>  git clone https://github.com/sukannyapurkayastha/DASP_report_template.git
+  cd your-project
+</code></pre>
+<p>This is the instruction for developers, who want to debug or directly work with our codes.
+We have currently 5 components:
 - frontend
 - backend (preprocess, segmentation and score calculation)
 - attitude_classifier
 - request_classifier
 - summary_generator</p>
-<h4 id="1-install-environment"><strong>1 Install Environment</strong></h4>
+<h3 id="install-environment"><strong>Install Environment</strong></h3>
 <p>Folders have same name as components. In each folder there is a requirements file and conda environment file. 
 - usage of conda environment file: It contains all information for environment like python verison, list of libs and versions of libs. It's recommended to use this file firstly, if it omits error, try requirements.txt file.
 - usage of requirements.txt: It's served for docker. But you can also install your environment with this file. Python 3.10 is used for all containers. Versions of libs are not specified in requirements file, in order to prevent version mismatching errors.</p>
-<h4 id="2-run-services-from-terminal"><strong>2 Run Services From Terminal</strong></h4>
+<h3 id="run-services-from-terminal"><strong>Run Services From Terminal</strong></h3>
 <pre><code class="language-bash">cd frontend
 streamlit run app.py
 </code></pre>
