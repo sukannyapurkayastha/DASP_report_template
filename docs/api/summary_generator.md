@@ -1,4 +1,4 @@
-# Summary Generator APCodeI Documentation
+# Summary Generator Code Documentation
 
 ::: summary_generator.main
 ::: summary_generator.predict_LLAMA2

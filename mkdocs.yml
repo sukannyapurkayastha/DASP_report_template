@@ -21,7 +21,7 @@ nav:
   - Main Page: api/readme/main_page.md
   - Setup and Installation: api/readme/setup.md
   - Developer Guide: api/readme/developer_guide.md
-  - Architecture and Design Notes: api/readme/architecture.md
+  - Architecture, Data Flow and Design Notes: api/readme/architecture.md
   - Files: api/readme/files.md
   - Data: api/readme/data.md
   - Testing: api/readme/testing.md

@@ -80,7 +80,7 @@
 | [5/2/2025] | [5/2/2025] | [Meeting]                   | [Team meeting]                                                            | [1]             | [Completed] |
 | [3/2/2025] | [6/2/2025] | [Coding]                    | [Documentation with mkdocs / try with sphinx]                             | [9]             | [Completed] |
 | [7/2/2025] | [7/2/2025] | [Presentation]              | [Presetation]                                                             | [2]             | [Completed] |
-| [9/2/2025] | [26/2/2025] | [Report]                   | [Writing report]                                                          | [12]            | [Completed] |
+| [9/2/2025] | [27/2/2025] | [Report]                   | [Writing report]                                                          | [14]            | [Completed] |
 | [26/2/2025] | [27/2/2025] | [Presentation]            | [Docu updating]                                                           | [3]             | [Completed] |
 ---
 

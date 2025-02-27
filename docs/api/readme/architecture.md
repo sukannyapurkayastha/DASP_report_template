@@ -1,9 +1,11 @@
-#### **Architecture**
 
+
+##### **Data Flow**
 
 <p align="center" style="display: flex; gap: 20px; justify-content: center;">
-  <img src="../../images/image.png" alt="Bild 1" width="500" height="auto">
+  <img src="../../images/image_dataflow.jpg" alt="Bild 1" width="500" height="auto">
 </p>
+The diagramm shows the dataflow starting at the user input and ending in displaying the output.
 
 ##### **1 Frontend**
 The Frontend is the user interface of the system where individuals log in, provide a URL to OpenReview, and optionally download and then upload the filled out templates. The Frontend handles interactions, collects the user’s input (including files and URLs), and displays the resulting classification output once the Backend has processed everything.
