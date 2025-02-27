@@ -20,6 +20,7 @@ This guide helps you set up and run the project, which consists of 2 main parts:
 - **Docker Compose** for managing multi-container environments.
 - **NVIDIA Container Toolkit** enables GPU acceleration with nvidia/cuda images.
 [Installing the NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html)
+- `/opt` folder in linux. The model files are stored in `/opt`. If you want to put model files somewhere else, please change `volume` in docker compose file. You can also find code folder in `/opt`.
 
 #### **Application Deployment**
 
